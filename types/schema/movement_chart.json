@@ -1,0 +1,23 @@
+{
+  "$id": "https://raw.githubusercontent.com/Codename-Recon/Codename-Recon/types/master/schema/movement_chart.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Movement chart",
+  "description": "Movement chart with indexing of [enum/terrain][enum/weather][enum/movement_type]",
+  "type": "array",
+  "minItems": 18,
+  "maxItems": 18,
+  "items": {
+    "type": "array",
+    "minItems": 3,
+    "maxItems": 3,
+    "items": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    }
+  }
+}

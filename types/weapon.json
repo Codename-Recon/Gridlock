@@ -1,0 +1,22 @@
+{
+  "$id": "https://raw.githubusercontent.com/Codename-Recon/types/master/schema/weapon.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Weapon",
+  "type": "object",
+  "properties": {
+    "name": { "$ref": "/schema/enum.json#/definitions/weapon" },
+    "description": { "type": "string" },
+    "effectiveness": {
+      "type": "object",
+      "properties": {
+        "infantry": { "type": "number", "minimum": -1, "maximum": 1 },
+        "vehicle": { "type": "number", "minimum": -1, "maximum": 1 },
+        "air": { "type": "number", "minimum": -1, "maximum": 1 },
+        "helicopter": { "type": "number", "minimum": -1, "maximum": 1 },
+        "ship": { "type": "number", "minimum": -1, "maximum": 1 },
+        "sub": { "type": "number", "minimum": -1, "maximum": 1 }
+      }
+    }
+  },
+  "required": ["name", "description", "effectiveness"]
+}

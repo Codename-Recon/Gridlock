@@ -1,0 +1,72 @@
+{
+  "$id": "https://raw.githubusercontent.com/Codename-Recon/Codename-Recon/types/master/schema/unit.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Unit",
+  "type": "object",
+  "properties": {
+    "name": {
+      "$ref": "/Codename-Recon/types/master/schema/enum.json#/definitions/unit"
+    },
+    "description": { "type": "string" },
+    "cost": { "type": "integer", "minimum": 0 },
+    "health": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "mp": { "type": "integer", "minimum": 0, "description": "movement_points" },
+    "movement_type": {
+      "type": "integer",
+      "description": "Uses index of enum/movement_type as an id reference.",
+      "minimum": 0,
+      "maximum": 7
+    },
+    "fuel": { "type": "integer", "minimum": 0 },
+    "turn_fuel": { "type": "integer", "minimum": 0 },
+    "hidden_turn_fuel": { "type": "integer", "minimum": 0 },
+    "vision": { "type": "integer", "minimum": 0 },
+    "ammo": { "type": "integer", "minimum": -1 },
+    "weapons": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": -1, "maximum": 7 },
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "Uses index of enum/weapon as an id reference. Uses -1 for null."
+    },
+    "min_range": { "type": "integer", "minimum": 0 },
+    "max_range": { "type": "integer", "minimum": 0 },
+    "can_supply": { "type": "boolean" },
+    "can_repair": { "type": "boolean" },
+    "can_capture": { "type": "boolean" },
+    "can_move_and_attack": { "type": "boolean" },
+    "can_hide": { "type": "boolean" },
+    "can_dive": { "type": "boolean" },
+    "can_carry": { "type": "boolean" },
+    "carrying_types": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 0, "maximum": 23 },
+      "description": "Uses index of enum/unit as an id reference."
+    },
+    "carrying_size": { "type": "integer", "minimum": 0 }
+  },
+  "required": [
+    "name",
+    "description",
+    "cost",
+    "health",
+    "mp",
+    "movement_type",
+    "fuel",
+    "turn_fuel",
+    "hidden_turn_fuel",
+    "vision",
+    "ammo",
+    "weapons",
+    "min_range",
+    "max_range",
+    "can_supply",
+    "can_capture",
+    "can_move_and_attack",
+    "can_hide",
+    "can_dive",
+    "can_carry",
+    "carrying_types",
+    "carrying_size"
+  ]
+}
