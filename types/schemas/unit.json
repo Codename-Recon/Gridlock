@@ -1,11 +1,11 @@
 {
-  "$id": "https://raw.githubusercontent.com/Codename-Recon/Codename-Recon/types/master/schemas/unit.json",
+  "$id": "https://raw.githubusercontent.com/Codename-Recon/Codename-Recon/master/types/schemas/unit.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Unit",
   "type": "object",
   "properties": {
     "name": {
-      "$ref": "/Codename-Recon/types/master/schemas/enum.json#/definitions/unit"
+      "$ref": "./enum.json#/definitions/unit"
     },
     "description": { "type": "string" },
     "cost": { "type": "integer", "minimum": 0 },
