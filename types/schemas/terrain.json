@@ -1,10 +1,12 @@
 {
-  "$id": "https://raw.githubusercontent.com/Codename-Recon/Codename-Recon/types/master/schemas/terrain.json",
+  "$id": "https://raw.githubusercontent.com/Codename-Recon/Codename-Recon/master/types/schemas/terrain.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Terrain",
   "type": "object",
   "properties": {
-    "name": { "$ref": "./enum.json#/definitions/terrain" },
+    "name": {
+      "$ref": "./enum.json#/definitions/terrain"
+    },
     "description": { "type": "string" },
     "type": {
       "type": "integer",
