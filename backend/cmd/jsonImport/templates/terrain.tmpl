@@ -1,0 +1,26 @@
+/////////////////////////////
+/// GENERATED DO NOT EDIT ///
+/////////////////////////////
+
+package models
+
+import (
+	"github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/terrain"
+)
+
+var Terrains = [terrain.SIZE]Terrain{
+{{- range . }}
+	{
+		Name:         "{{ .Name }}",
+		Description:  "{{ .Description }}",
+		Type:         terrain.{{ .Type }},
+		Defense:      {{ .Defense }},
+		Health:       {{ .Health }},
+		CanCapture:   {{ .CanCapture }},
+		CaptureValue: {{ .CaptureValue }},
+		Owner:        {{ .Owner }},
+		Funds:        {{ .Funds }},
+		Ammo:         {{ .Ammo }},
+	},
+{{- end }}
+}

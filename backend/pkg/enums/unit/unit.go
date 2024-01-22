@@ -36,7 +36,7 @@ func (e EUnit) String() string {
 		"ANTI_AIR",
 		"APC",
 		"ARTILLERY",
-		"B-COPTER",
+		"BCOPTER",
 		"BATTLESHIP",
 		"BLACK_BOAT",
 		"BLACK_BOMB",
@@ -56,7 +56,7 @@ func (e EUnit) String() string {
 		"ROCKET",
 		"STEALTH",
 		"SUB",
-		"T-COPTER",
+		"TCOPTER",
 		"TANK",
 	}[e]
 }

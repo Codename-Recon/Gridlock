@@ -10,7 +10,7 @@ type Unit struct {
 	Description      string                 `json:"description"`
 	Cost             int                    `json:"cost"`
 	Health           int                    `json:"health"`
-	Mp               int                    `json:"mp" description:"movement_points"`     // movement_points
+	Mp               int                    `json:"mp"`                                   // movement_points
 	MovementType     movement.EMovementType `json:"movement_type" jsonschema:"minimum=0"` // Uses index of enum/movement_type as an id reference
 	Fuel             int                    `json:"fuel"`
 	TurnFuel         int                    `json:"turn_fuel"`
