@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	REPO_BASE string = "github.com/Codename-Recon/Codename-Recon/go"
+	REPO_BASE string = "github.com/Codename-Recon/Codename-Recon/backend"
 )
 
 func saveStructToJson(r *jsonschema.Reflector, obj any, filename string) error {
