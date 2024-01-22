@@ -32,6 +32,11 @@
       "description": "0 = neutral, all other numbers coorespond to player number",
       "minimum": 0
     },
+    "funds": {
+      "type": "integer",
+      "description": "Funds provided to owner per turn.",
+      "minimum": 0
+    },
     "ammo": {
       "type": "integer",
       "description": "Primarily used for missile silos",
