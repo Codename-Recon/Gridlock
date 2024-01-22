@@ -1,11 +1,11 @@
 {
-  "$id": "https://raw.githubusercontent.com/Codename-Recon/types/master/schema/weapon.json",
+  "$id": "https://raw.githubusercontent.com/Codename-Recon/types/master/schemas/weapon.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Weapon",
   "type": "object",
   "properties": {
     "name": {
-      "$ref": "/Codename-Recon/types/master/schema/enum.json#/definitions/weapon"
+      "$ref": "/Codename-Recon/types/master/schemas/enum.json#/definitions/weapon"
     },
     "description": { "type": "string" },
     "effectiveness": {

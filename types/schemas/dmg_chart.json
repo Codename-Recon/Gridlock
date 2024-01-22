@@ -1,5 +1,5 @@
 {
-  "$id": "https://raw.githubusercontent.com/Codename-Recon/Codename-Recon/types/master/schema/dmg_chart.json",
+  "$id": "https://raw.githubusercontent.com/Codename-Recon/Codename-Recon/types/master/schemas/dmg_chart.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Damage chart",
   "description": "Damage chart with [enum/unit][enum/unit] [attacker][defender]",

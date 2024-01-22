@@ -1,5 +1,5 @@
 {
-  "$id": "https://raw.githubusercontent.com/Codename-Recon/Codename-Recon/types/master/schema/movement_chart.json",
+  "$id": "https://raw.githubusercontent.com/Codename-Recon/Codename-Recon/types/master/schemas/movement_chart.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Movement chart",
   "description": "Movement chart with indexing of [enum/terrain][enum/weather][enum/movement_type]",
