@@ -6,7 +6,7 @@
   "properties": {
     "name": { "$ref": "./enum.json#/definitions/terrain" },
     "description": { "type": "string" },
-    "terrain": {
+    "type": {
       "type": "integer",
       "description": "Uses index of enum/terrain as an id reference.",
       "minimum": 0,

@@ -1,7 +1,7 @@
 {
   "name": "HQ",
   "description": "The most importnat property on the map; if the HQ is captured the team is defeated and can no longer play.",
-  "terrain": 11,
+  "type": 11,
   "defense": 4,
   "health": 0,
   "can_capture": true,

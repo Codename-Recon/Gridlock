@@ -1,7 +1,7 @@
 {
   "name": "REEF",
   "description": "Reefs give some defence to sea units and also make excellent hiding places.",
-  "terrain": 16,
+  "type": 16,
   "defense": 1,
   "health": 0,
   "can_capture": false,

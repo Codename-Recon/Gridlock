@@ -1,7 +1,7 @@
 {
   "name": "SILO",
   "description": "Missile silos are activated by an Infantry or Mech unit. The missile they fire has a 5x5 square diamond shape and does 3HP of damage to any unit caught in the blast and doesn't distinguish between ally or enemy. Each silo can only be used once.",
-  "terrain": 13,
+  "type": 13,
   "defense": 3,
   "health": 0,
   "can_capture": false,

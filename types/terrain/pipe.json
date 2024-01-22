@@ -1,7 +1,7 @@
 {
   "name": "PIPE",
   "description": "Pipelines are nigh-impassable terrain that are used for carrying materials.",
-  "terrain": 12,
+  "type": 12,
   "defense": 0,
   "health": 100,
   "can_capture": false,

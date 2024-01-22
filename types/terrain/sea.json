@@ -1,7 +1,7 @@
 {
   "name": "SEA",
   "description": "Seas make up the majority of the terrain that navies battle on.",
-  "terrain": 5,
+  "type": 5,
   "defense": 0,
   "health": 0,
   "can_capture": false,
