@@ -10,7 +10,7 @@
       "type": "integer",
       "description": "Uses index of enum/terrain as an id reference.",
       "minimum": 0,
-      "maximum": 18
+      "maximum": 16
     },
     "defense": { "type": "integer", "minimum": 0, "maximum": 4 },
     "health": {
@@ -21,9 +21,20 @@
     "can_capture": {
       "type": "boolean"
     },
+    "capture_value": {
+      "type": "integer",
+      "description": "Current status of capture by Infantry or Mech.",
+      "minimum": 0,
+      "maximum": 20
+    },
     "owner": {
       "type": "integer",
       "description": "0 = neutral, all other numbers coorespond to player number",
+      "minimum": 0
+    },
+    "ammo": {
+      "type": "integer",
+      "description": "Primarily used for missile silos",
       "minimum": 0
     }
   },
@@ -34,6 +45,8 @@
     "defense",
     "health",
     "can_capture",
-    "owner"
+    "capture_value",
+    "owner",
+    "ammo"
   ]
 }

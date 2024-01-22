@@ -1,0 +1,11 @@
+{
+  "name": "RIVER",
+  "description": "Rivers restrict the movement of ground units and can only be traversed by Infantry, Mechs and air units.",
+  "terrain": 3,
+  "defense": 0,
+  "health": 0,
+  "can_capture": false,
+  "capture_value": 0,
+  "owner": 0,
+  "ammo": 0
+}

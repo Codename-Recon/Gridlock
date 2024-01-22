@@ -1,0 +1,11 @@
+{
+  "name": "BASE",
+  "description": "Bases are a property for building and maintaining ground units.",
+  "terrain": 8,
+  "defense": 3,
+  "health": 0,
+  "can_capture": true,
+  "capture_value": 0,
+  "owner": 0,
+  "ammo": 0
+}

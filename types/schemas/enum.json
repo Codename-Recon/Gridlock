@@ -55,7 +55,6 @@
         "ROAD",
         "BRIDGE",
         "SEA",
-        "BEACH",
         "SHOAL",
         "CITY",
         "BASE",
@@ -65,7 +64,8 @@
         "PIPE",
         "SILO",
         "COM_TOWER",
-        "LAB"
+        "LAB",
+        "REEF"
       ]
     },
     "terrain_sprite": {

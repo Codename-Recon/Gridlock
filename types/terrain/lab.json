@@ -1,0 +1,11 @@
+{
+  "name": "LAB",
+  "description": "Laboratories act as research centers and can unlock restricted units.",
+  "terrain": 15,
+  "defense": 3,
+  "health": 0,
+  "can_capture": true,
+  "capture_value": 0,
+  "owner": 0,
+  "ammo": 0
+}
