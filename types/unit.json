@@ -31,6 +31,11 @@
     },
     "min_range": { "type": "integer", "minimum": 0 },
     "max_range": { "type": "integer", "minimum": 0 },
+    "exp": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Experience for veternancy"
+    },
     "can_supply": { "type": "boolean" },
     "can_repair": { "type": "boolean" },
     "can_capture": { "type": "boolean" },
@@ -60,6 +65,7 @@
     "weapons",
     "min_range",
     "max_range",
+    "exp",
     "can_supply",
     "can_capture",
     "can_move_and_attack",

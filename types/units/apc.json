@@ -13,6 +13,7 @@
   "weapons": [-1, -1],
   "min_range": 0,
   "max_range": 0,
+  "exp": 0,
   "can_supply": true,
   "can_repair": false,
   "can_capture": false,
