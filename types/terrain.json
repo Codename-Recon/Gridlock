@@ -4,7 +4,7 @@
   "title": "Terrain",
   "type": "object",
   "properties": {
-    "name": { "$ref": "/schema/enum.json#/definitions/terrain_sprite" },
+    "name": { "$ref": "./schema/enum.json#/definitions/terrain_sprite" },
     "description": { "type": "string" },
     "terrain": {
       "type": "integer",

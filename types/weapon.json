@@ -4,7 +4,7 @@
   "title": "Weapon",
   "type": "object",
   "properties": {
-    "name": { "$ref": "/schema/enum.json#/definitions/weapon" },
+    "name": { "$ref": "./schema/enum.json#/definitions/weapon" },
     "description": { "type": "string" },
     "effectiveness": {
       "type": "object",

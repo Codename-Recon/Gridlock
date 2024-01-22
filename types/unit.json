@@ -5,7 +5,7 @@
   "type": "object",
   "properties": {
     "name": {
-      "$ref": "/Codename-Recon/types/master/schema/enum.json#/definitions/unit"
+      "$ref": "./schema/enum.json#/definitions/unit"
     },
     "description": { "type": "string" },
     "cost": { "type": "integer", "minimum": 0 },
