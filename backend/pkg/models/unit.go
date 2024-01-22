@@ -1,8 +1,8 @@
 package models
 
 import (
-	"github.com/Codename-Recon/Codename-Recon/go/pkg/enums/movement"
-	"github.com/Codename-Recon/Codename-Recon/go/pkg/enums/unit"
+	"github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/movement"
+	"github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/unit"
 )
 
 type Unit struct {

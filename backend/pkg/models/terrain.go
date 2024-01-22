@@ -1,6 +1,6 @@
 package models
 
-import "github.com/Codename-Recon/Codename-Recon/go/pkg/enums/terrain"
+import "github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/terrain"
 
 type Terrain struct {
 	Name         string           `json:"name"`

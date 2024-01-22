@@ -3,9 +3,9 @@ package models
 import (
 	"math"
 
-	"github.com/Codename-Recon/Codename-Recon/go/pkg/enums/movement"
-	"github.com/Codename-Recon/Codename-Recon/go/pkg/enums/terrain"
-	"github.com/Codename-Recon/Codename-Recon/go/pkg/enums/weather"
+	"github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/movement"
+	"github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/terrain"
+	"github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/weather"
 )
 
 type MovementCostArr [terrain.SIZE][weather.SIZE][movement.SIZE]int
