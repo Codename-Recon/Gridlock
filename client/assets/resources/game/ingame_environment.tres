@@ -1,0 +1,35 @@
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://cnfs7yc8vv2d"]
+
+[sub_resource type="Gradient" id="Gradient_t56kh"]
+offsets = PackedFloat32Array(0, 0.76951, 0.889292, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.806534, 0.806534, 0.806534, 1, 0.978221, 0.978221, 0.978221, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1jr8j"]
+gradient = SubResource("Gradient_t56kh")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mu5pw"]
+sky_top_color = Color(0.34902, 0.607843, 0.890196, 1)
+sky_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
+sky_curve = 0.0494816
+ground_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
+ground_curve = 0.0400001
+
+[sub_resource type="Sky" id="Sky_72toi"]
+sky_material = SubResource("ProceduralSkyMaterial_mu5pw")
+
+[resource]
+background_color = Color(0.34902, 0.607843, 0.890196, 1)
+sky = SubResource("Sky_72toi")
+ambient_light_source = 1
+tonemap_exposure = 2.0
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_normalized = true
+glow_strength = 0.44
+glow_bloom = 0.06
+glow_blend_mode = 0
+volumetric_fog_density = 0.002
+volumetric_fog_ambient_inject = 0.4
+adjustment_enabled = true
+adjustment_saturation = 1.3
+adjustment_color_correction = SubResource("GradientTexture1D_1jr8j")

@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0fgjj53xl6xb"]
+
+[ext_resource type="Script" path="res://logic/scripts/game/terrain.gd" id="1_w5sbx"]
+[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="2_5rp5a"]
+[ext_resource type="Script" path="res://logic/scripts/game/terrain_property.gd" id="2_e4w6b"]
+
+[sub_resource type="Resource" id="Resource_uw2t0"]
+script = ExtResource("2_e4w6b")
+name = "FOREST"
+movement_costs = {
+"AIR": 1,
+"BOOTS": 1,
+"FOOT": 1,
+"LANDER": -1,
+"PIPE": -1,
+"SEA": -1,
+"THREADS": 2,
+"TIRES": 3
+}
+defence_level = 2
+is_capturable = false
+capture_health = 200
+round_funding = 0
+can_repair = false
+can_buy = false
+shop_units = Array[PackedScene]([])
+description = "FOREST_DESCRIPTION"
+generate_movement_costs = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6vuw"]
+atlas = ExtResource("2_5rp5a")
+region = Rect2(64, 96, 16, 16)
+
+[node name="Forest" type="Area2D"]
+collision_layer = 9
+script = ExtResource("1_w5sbx")
+properties = SubResource("Resource_uw2t0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_k6vuw")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)

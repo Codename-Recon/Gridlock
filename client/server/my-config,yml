@@ -1,0 +1,21 @@
+name: nakama-node-1
+data_dir: "./data/"
+
+logger:
+    stdout: false
+    level: "warn"
+    file: "/nakama/data/logfile.log"
+
+console:
+    port: 7351
+    username: "my_user"
+    password: "Erfwi07iyN2c7aKCLbwLaFmzdTuGxSfunb4yZpigupkzJi"
+
+socket:
+  server_key: "pMywin8T8IGN9NYyn3180CTco1birqE1VEU"
+
+session:
+  encryption_key: "Qc1nT1c99CabgdrvtfBLewh0qXUxMF9QmUr"
+
+runtime:
+  http_key: "oszFD0Y04aqG73aYzL0suSp1gopc9NjaAxY"

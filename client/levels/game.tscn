@@ -1,0 +1,899 @@
+[gd_scene load_steps=56 format=3 uid="uid://cbc6sawc766k"]
+
+[ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_6xhvo"]
+[ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_81uaa"]
+[ext_resource type="AudioStream" uid="uid://d3v2kbjeq8aiy" path="res://assets/musics/Juhani Junkala [Chiptune Adventures] 1. Stage 1.ogg" id="2_bwdut"]
+[ext_resource type="AudioStream" uid="uid://dfbk7wtfn1vh" path="res://assets/musics/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" id="3_vihhq"]
+[ext_resource type="AudioStream" uid="uid://canqp6ndc2u7a" path="res://assets/musics/song18.mp3" id="4_ujg86"]
+[ext_resource type="AudioStream" uid="uid://jb7gbt1oe4d2" path="res://assets/musics/awake10_megaWall.mp3" id="5_g50or"]
+[ext_resource type="Script" path="res://logic/scripts/game/viewport.gd" id="8_rh0i3"]
+[ext_resource type="Script" path="res://logic/scripts/game/game.gd" id="9_gl6qd"]
+[ext_resource type="PackedScene" uid="uid://df4e0v877neen" path="res://logic/scenes/ui/shop.tscn" id="10_rtev0"]
+[ext_resource type="PackedScene" uid="uid://dw3qqdstw803h" path="res://logic/scenes/game/decal_layer.tscn" id="11_cenw6"]
+[ext_resource type="PackedScene" uid="uid://chwkab0kw6j3l" path="res://logic/scenes/game/move_arrow.tscn" id="12_lqnrk"]
+[ext_resource type="PackedScene" uid="uid://bculbumef41nx" path="res://logic/scenes/game/capture_particles.tscn" id="13_xtqp8"]
+[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="14_cwg7q"]
+[ext_resource type="PackedScene" uid="uid://wq46v3oiq0rg" path="res://logic/scenes/ui/floating_info.tscn" id="14_vnmkc"]
+[ext_resource type="Script" path="res://logic/scripts/ui/action_panel.gd" id="17_0h3pk"]
+[ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="24_w3m5b"]
+[ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="25_h7n7d"]
+[ext_resource type="Texture2D" uid="uid://ivwpfjehvqxs" path="res://assets/images/theme/greenSheet.png" id="25_pugn6"]
+[ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/scenes/ui/menu.tscn" id="26_j0w8f"]
+[ext_resource type="Script" path="res://logic/scripts/ui/escape_panel.gd" id="26_o1gt5"]
+[ext_resource type="Script" path="res://logic/scripts/game/audio_stream_player.gd" id="27_2jj2m"]
+[ext_resource type="Script" path="res://logic/scripts/ui/round_label.gd" id="27_lmqwv"]
+[ext_resource type="Script" path="res://logic/scripts/ui/game_buttons_menu_switch.gd" id="29_fbj1t"]
+[ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="29_jy0gc"]
+[ext_resource type="PackedScene" uid="uid://c4qct2liggfuy" path="res://logic/scenes/ui/settings_content.tscn" id="30_umdul"]
+[ext_resource type="AudioStream" uid="uid://kkificbsstvo" path="res://assets/sounds/confirmation_001.ogg" id="36_v003w"]
+
+[sub_resource type="GDScript" id="GDScript_aos13"]
+script/source = "extends Control
+
+signal map_loaded
+
+@export var musics: Array[AudioStream]
+
+var _last_music: AudioStream
+var _global: GlobalGlobal = Global
+var _multiplayer: GlobalMultiplayer = Multiplayer
+
+func end_game() -> void:
+	get_tree().change_scene_to_packed(_global.gameover_scene)
+	if _multiplayer.client_role != _multiplayer.ClientRole.NONE:
+		_multiplayer.nakama_disconnect_from_match()
+
+func _ready() -> void:
+	Music.music_finished.connect(_on_music_finished)
+	_set_music()
+	%MapSlot.add_child(_global.selected_map.instantiate())
+	map_loaded.emit()
+
+func _on_music_finished() -> void:
+	_set_music()
+	
+func _set_music() -> void:
+	var new_music: AudioStream = musics.pick_random()
+	while _last_music == new_music:
+		new_music = musics.pick_random()
+	Music.change_music(new_music)
+	_last_music = new_music
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g05kj"]
+size = Vector2(1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4mh3"]
+atlas = ExtResource("14_cwg7q")
+region = Rect2(112, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7el8"]
+atlas = ExtResource("25_h7n7d")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjx10"]
+atlas = ExtResource("25_h7n7d")
+region = Rect2(320, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nj7i"]
+atlas = ExtResource("25_h7n7d")
+region = Rect2(256, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi472"]
+atlas = ExtResource("25_h7n7d")
+region = Rect2(288, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tinqa"]
+atlas = ExtResource("25_h7n7d")
+region = Rect2(320, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u80nd"]
+atlas = ExtResource("25_h7n7d")
+region = Rect2(0, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10xuy"]
+atlas = ExtResource("25_h7n7d")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3wd4"]
+atlas = ExtResource("24_w3m5b")
+region = Rect2(148, 433, 36, 37)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2lgku"]
+texture = SubResource("AtlasTexture_n3wd4")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ammf5"]
+atlas = ExtResource("25_h7n7d")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0kah"]
+atlas = ExtResource("25_h7n7d")
+region = Rect2(224, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq50x"]
+atlas = ExtResource("25_pugn6")
+region = Rect2(339, 94, 49, 49)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hukwh"]
+texture = SubResource("AtlasTexture_pq50x")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kug87"]
+atlas = ExtResource("25_pugn6")
+region = Rect2(288, 194, 49, 49)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rrm6m"]
+texture = SubResource("AtlasTexture_kug87")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np0c3"]
+atlas = ExtResource("25_pugn6")
+region = Rect2(239, 194, 49, 45)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5n5ow"]
+texture = SubResource("AtlasTexture_np0c3")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3thj"]
+atlas = ExtResource("29_jy0gc")
+region = Rect2(200, 400, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ydd1"]
+atlas = ExtResource("29_jy0gc")
+region = Rect2(50, 300, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4rh4"]
+atlas = ExtResource("29_jy0gc")
+region = Rect2(400, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qldl"]
+atlas = ExtResource("29_jy0gc")
+region = Rect2(0, 450, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl7jc"]
+atlas = ExtResource("29_jy0gc")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="Animation" id="Animation_hia7m"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interface/RoundAnimation/RoundLabel:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Interface/RoundAnimation:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Interface/RoundAnimation:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Interface/RoundAnimation/RoundLabel:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Interface/RoundAnimation/RoundRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Interface/EndGameAnimation/Polygon2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1000, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Interface/EndGameAnimation/Polygon2D2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2600, 896)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Interface/EndGameAnimation/Polygon2D:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Interface/EndGameAnimation/Polygon2D2:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Interface/EndGameAnimation:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d1yik"]
+resource_name = "end_game"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interface/EndGameAnimation/Polygon2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1000, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Interface/EndGameAnimation/Polygon2D2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2600, 896), Vector2(1600, 896)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Interface/EndGameAnimation/Polygon2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Interface/EndGameAnimation/Polygon2D2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_game"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Interface/EndGameAnimation:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yht45"]
+resource_name = "round_change"
+length = 2.5
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interface/RoundAnimation/RoundLabel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Interface/RoundAnimation/RoundLabel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1191.98, -0.25, 0, 0.25, 0, 384.22, 0, -77.3967, 0.15, 270.888, 380, -0.4, 21.4991, 0.505219, 0.338745, 380, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.15, 0.7, 1.4, 2.5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Interface/RoundAnimation:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Interface/RoundAnimation:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/Camera2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"round_change_ended"],
+"method": &"emit_signal"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Interface/RoundAnimation/RoundRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("36_v003w")
+}],
+"times": PackedFloat32Array(0.6)
+}
+tracks/6/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3djqj"]
+_data = {
+"RESET": SubResource("Animation_hia7m"),
+"end_game": SubResource("Animation_d1yik"),
+"round_change": SubResource("Animation_yht45")
+}
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_81uaa")
+script = SubResource("GDScript_aos13")
+musics = Array[AudioStream]([ExtResource("2_bwdut"), ExtResource("3_vihhq"), ExtResource("4_ujg86"), ExtResource("5_g50or")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_6xhvo")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+size = Vector2i(1600, 900)
+size_2d_override = Vector2i(1600, 900)
+render_target_update_mode = 4
+script = ExtResource("8_rh0i3")
+
+[node name="CursorCollider" type="Area2D" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/CursorCollider"]
+shape = SubResource("RectangleShape2D_g05kj")
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+zoom = Vector2(3, 3)
+script = ExtResource("9_gl6qd")
+_shop_scene = ExtResource("10_rtev0")
+_move_layer = ExtResource("11_cenw6")
+_move_arrow = ExtResource("12_lqnrk")
+_capture_particles = ExtResource("13_xtqp8")
+_floating_info = ExtResource("14_vnmkc")
+
+[node name="SelectionDecal" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+modulate = Color(1, 1, 1, 0.690196)
+z_index = 1
+position = Vector2(0, 2)
+rotation = 1.5708
+scale = Vector2(1, 1.02)
+texture = SubResource("AtlasTexture_t4mh3")
+
+[node name="MapSlot" type="Node" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+
+[node name="InputTimer" type="Timer" parent="SubViewportContainer/SubViewport"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Interface" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ActionPanel" type="Panel" parent="Interface"]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -282.0
+offset_right = 106.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_0h3pk")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/ActionPanel"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ButtonMove" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
+layout_mode = 2
+text = "MOVE"
+icon = SubResource("AtlasTexture_i7el8")
+
+[node name="ButtonAttack" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
+layout_mode = 2
+text = "ATTACK"
+icon = SubResource("AtlasTexture_pjx10")
+
+[node name="ButtonEnter" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
+layout_mode = 2
+text = "ENTER"
+icon = SubResource("AtlasTexture_0nj7i")
+
+[node name="ButtonDeploy" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
+layout_mode = 2
+text = "DEPLOY"
+icon = SubResource("AtlasTexture_vi472")
+
+[node name="ButtonJoin" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
+layout_mode = 2
+text = "JOIN"
+icon = SubResource("AtlasTexture_tinqa")
+
+[node name="ButtonSupply" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
+layout_mode = 2
+text = "SUPPLY"
+icon = SubResource("AtlasTexture_u80nd")
+
+[node name="ButtonCapture" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
+layout_mode = 2
+text = "CAPTURE"
+icon = SubResource("AtlasTexture_10xuy")
+
+[node name="MoneyPanel" type="Panel" parent="Interface"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 8.0
+offset_right = 213.0
+offset_bottom = 54.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2lgku")
+
+[node name="MoneyLabel" type="Label" parent="Interface/MoneyPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 58.0
+offset_top = 2.0
+offset_right = 198.0
+offset_bottom = 43.0
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Interface/MoneyPanel"]
+modulate = Color(0.599893, 0.599893, 0.599893, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 74.0
+offset_bottom = 71.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_ammf5")
+
+[node name="RoundPanel" type="Panel" parent="Interface"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 8.0
+offset_right = 362.0
+offset_bottom = 54.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2lgku")
+
+[node name="RoundNumberLabel" type="Label" parent="Interface/RoundPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 58.0
+offset_top = 2.0
+offset_right = 123.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.235294, 1, 0.360784, 1)
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Interface/RoundPanel"]
+modulate = Color(0.599893, 0.599893, 0.599893, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 74.0
+offset_bottom = 71.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_j0kah")
+
+[node name="RoundButton" type="Button" parent="Interface"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -289.0
+offset_top = -84.0
+offset_right = -18.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.709804, 0.439216, 0.321569, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_hukwh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rrm6m")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5n5ow")
+text = "NEXT_ROUND"
+icon = SubResource("AtlasTexture_m3thj")
+metadata/_edit_layout_mode = 1
+
+[node name="RoundAnimation" type="Control" parent="Interface"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Interface/RoundAnimation"]
+modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_layout_mode = 1
+
+[node name="RoundRect" type="Polygon2D" parent="Interface/RoundAnimation"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-884.658, 152)
+scale = Vector2(1.98593, 0.683036)
+color = Color(1, 1, 1, 0.45098)
+antialiased = true
+polygon = PackedVector2Array(435.976, 327.948, 378.491, 550.484, 1252.26, 550.484, 1304, 327.948)
+
+[node name="RoundLabel" type="Label" parent="Interface/RoundAnimation"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1600.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 100
+text = "Player 1 Turn"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("27_lmqwv")
+metadata/_edit_layout_mode = 1
+
+[node name="ShopPlace" type="Control" parent="Interface"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.0
+offset_top = -247.0
+offset_right = -319.0
+offset_bottom = -247.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="EndGameAnimation" type="Control" parent="Interface"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Polygon2D" type="Polygon2D" parent="Interface/EndGameAnimation"]
+visible = false
+position = Vector2(-1000, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-256, -64, -256, 960, 960, 960, 640, -64)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Interface/EndGameAnimation"]
+visible = false
+position = Vector2(2600, 896)
+rotation = 3.14159
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-256, -64, -256, 960, 960, 960, 640, -64)
+
+[node name="EscapePanel" type="Control" parent="Interface"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("26_o1gt5")
+
+[node name="GrayBackground" type="ColorRect" parent="Interface/EscapePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.423529)
+
+[node name="EscapeMenu" parent="Interface/EscapePanel" instance=ExtResource("26_j0w8f")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 647.0
+offset_top = 267.0
+offset_right = -661.0
+offset_bottom = -208.0
+grow_horizontal = 2
+grow_vertical = 2
+title = "MENU"
+
+[node name="OptionButton" type="Button" parent="Interface/EscapePanel/EscapeMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 62.0
+grow_horizontal = 2
+text = "SETTINGS"
+icon = SubResource("AtlasTexture_8ydd1")
+script = ExtResource("29_fbj1t")
+next_menu = NodePath("../../SettingsMenu")
+
+[node name="ExitButton" type="Button" parent="Interface/EscapePanel/EscapeMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 72.0
+offset_bottom = 134.0
+grow_horizontal = 2
+text = "EXIT_TO_MENU"
+icon = SubResource("AtlasTexture_d4rh4")
+script = ExtResource("29_fbj1t")
+
+[node name="BackButton" type="Button" parent="Interface/EscapePanel/EscapeMenu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "CONTINUE"
+icon = SubResource("AtlasTexture_8qldl")
+script = ExtResource("29_fbj1t")
+
+[node name="SettingsMenu" parent="Interface/EscapePanel" instance=ExtResource("26_j0w8f")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 647.0
+offset_top = 267.0
+offset_right = -661.0
+offset_bottom = -208.0
+grow_horizontal = 2
+grow_vertical = 2
+title = "SETTINGS"
+
+[node name="SettingsContent" parent="Interface/EscapePanel/SettingsMenu" instance=ExtResource("30_umdul")]
+layout_mode = 1
+
+[node name="OptionButton" type="Button" parent="Interface/EscapePanel/SettingsMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK"
+icon = SubResource("AtlasTexture_kl7jc")
+script = ExtResource("29_fbj1t")
+next_menu = NodePath("../../EscapeMenu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_3djqj")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer"]
+volume_db = -10.0
+script = ExtResource("27_2jj2m")
+
+[connection signal="map_loaded" from="." to="SubViewportContainer/SubViewport/Camera2D" method="_on_game_map_loaded"]
+[connection signal="timeout" from="SubViewportContainer/SubViewport/InputTimer" to="SubViewportContainer/SubViewport/Camera2D" method="_on_input_timer_timeout"]
+[connection signal="action_selected" from="Interface/ActionPanel" to="SubViewportContainer/SubViewport/Camera2D" method="_on_panel_action_selected"]
+[connection signal="resized" from="Interface/ActionPanel/VBoxContainer" to="Interface/ActionPanel" method="_on_v_box_container_resized"]
+[connection signal="pressed" from="Interface/RoundButton" to="SubViewportContainer/SubViewport/Camera2D" method="_on_round_button_pressed"]
+[connection signal="pressed" from="Interface/EscapePanel/EscapeMenu/ExitButton" to="Interface/EscapePanel" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Interface/EscapePanel/EscapeMenu/BackButton" to="Interface/EscapePanel" method="_on_back_button_pressed"]

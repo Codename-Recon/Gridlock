@@ -1,0 +1,32 @@
+extends Control
+class_name Shop
+
+signal element_selected
+
+@export_category("External")
+@export var units: Array[PackedScene]
+
+@export_category("Internal")
+@export var shop_element_scene: PackedScene
+
+func _ready() -> void:
+	for unit: PackedScene in units:
+		var element: ShopElement = shop_element_scene.instantiate()
+		element.unit_scene = unit
+		element.unit_selected.connect(_on_element_clicked)
+		%VBoxContainer.add_child(element)
+		_add_v_split()
+	hide()
+	
+func _add_v_split() -> void:
+	var split: VSplitContainer = VSplitContainer.new()
+	split.custom_minimum_size.y = ProjectSettings.get_setting("global/shop_element_vspace")
+	%VBoxContainer.add_child(split)
+
+func _on_close_pressed() -> void:
+	element_selected.emit(null)
+	hide()
+
+func _on_element_clicked(unit: PackedScene) -> void:
+	element_selected.emit(unit)
+	hide()
