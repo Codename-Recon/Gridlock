@@ -2,9 +2,9 @@ name: nakama-node-1
 data_dir: "./data/"
 
 logger:
-  stdout: false
+  stdout: true
   level: "warn"
-  file: "/nakama/data/logfile.log"
+  # file: "/nakama/data/nakama.log"
 
 console:
   port: 7351

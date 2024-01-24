@@ -15,4 +15,8 @@ data_*/
 mono_crash.*.json
 
 .DS_STORE
-*.env
+.env*
+
+# Nakama binary for arm64
+backend/nakama-*
+backend/data
