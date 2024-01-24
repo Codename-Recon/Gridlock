@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://bculbumef41nx"]
+
+[sub_resource type="GDScript" id="GDScript_8htxd"]
+script/source = "extends Node3D
+
+func _on_timer_timeout() -> void:
+	queue_free()
+"
+
+[sub_resource type="Gradient" id="Gradient_3713l"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1p4ci"]
+gradient = SubResource("Gradient_3713l")
+
+[sub_resource type="Curve" id="Curve_q3plf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.996, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_aliyw"]
+curve = SubResource("Curve_q3plf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticlesMaterial_li24v"]
+direction = Vector3(0, 10, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 7.0
+scale_curve = SubResource("CurveTexture_aliyw")
+color_ramp = SubResource("GradientTexture1D_1p4ci")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8f1e5"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.686275)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_84xya"]
+material = SubResource("StandardMaterial3D_8f1e5")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="GDScript" id="GDScript_7ny81"]
+script/source = "extends GPUParticles3D
+
+func _ready() -> void:
+	emitting = true
+"
+
+[node name="CaptureParticles" type="Node3D"]
+script = SubResource("GDScript_8htxd")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266, 0)
+emitting = false
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = true
+process_material = SubResource("ParticlesMaterial_li24v")
+draw_pass_1 = SubResource("BoxMesh_84xya")
+script = SubResource("GDScript_7ny81")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

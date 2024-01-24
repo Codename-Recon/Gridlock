@@ -1,0 +1,212 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4qct2liggfuy"]
+
+[sub_resource type="GDScript" id="GDScript_axvkl"]
+script/source = "extends OptionButton
+
+var _global: GlobalGlobal = Global
+
+func _ready() -> void:
+	for key: String in Graphic.AntiAliasingQuality.keys():
+		add_item(tr(key))
+	selected = ProjectSettings.get_setting(\"game/graphics_anti_aliasing\")
+
+
+func _on_option_button_aa_item_selected(index: int) -> void:
+	ProjectSettings.set_setting(\"game/graphics_anti_aliasing\", index)
+	Graphic.settings_changed.emit()
+	_global.save_config(\"graphics_anti_aliasing\", index)
+"
+
+[sub_resource type="GDScript" id="GDScript_kje1n"]
+script/source = "extends OptionButton
+
+var _global: GlobalGlobal = Global
+
+func _ready() -> void:
+	for key: String in Graphic.ShadowQuality.keys():
+		add_item(tr(key))
+	selected = ProjectSettings.get_setting(\"game/graphics_shadow_quality\")
+	# Save rendering settings to match quality game settings (if changed manually in file)
+	_global.save_config(\"shadows/directional_shadow/size\", Graphic.ShadowQualityMap[selected], _global.RENDERING_SECTION)
+
+func _on_option_button_shaows_item_selected(index: int) -> void:
+	ProjectSettings.set_setting(\"game/graphics_shadow_quality\", index)
+	Graphic.settings_changed.emit()
+	_global.save_config(\"graphics_shadow_quality\", index)
+	_global.save_config(\"shadows/directional_shadow/size\", Graphic.ShadowQualityMap[index], _global.RENDERING_SECTION)
+"
+
+[sub_resource type="GDScript" id="GDScript_53xr3"]
+script/source = "extends HSlider
+
+var _global: GlobalGlobal = Global
+
+func _ready() -> void:
+	max_value = ProjectSettings.get_setting(\"global/sound_max_value\")
+	min_value = ProjectSettings.get_setting(\"global/sound_min_value\")
+	value = ProjectSettings.get_setting(\"game/music_volume\")
+
+
+func _on_music_h_slider_drag_ended(slider_changed: bool) -> void:
+	ProjectSettings.set_setting(\"game/music_volume\", value)
+	Music.settings_changed.emit()
+	_global.save_config(\"music_volume\", value)
+"
+
+[sub_resource type="GDScript" id="GDScript_fnuxv"]
+script/source = "extends HSlider
+
+var _global: GlobalGlobal = Global
+
+func _ready() -> void:
+	max_value = ProjectSettings.get_setting(\"global/sound_max_value\")
+	min_value = ProjectSettings.get_setting(\"global/sound_min_value\")
+	value = ProjectSettings.get_setting(\"game/sound_volume\")
+
+func _on_sound_h_slider_drag_ended(slider_changed: bool) -> void:
+	ProjectSettings.set_setting(\"game/sound_volume\", value)
+	Sound.settings_changed.emit(value)
+	_global.save_config(\"sound_volume\", value)
+"
+
+[node name="SettingsContent" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="ScrollContainer"]
+custom_minimum_size = Vector2(292, 300)
+layout_mode = 2
+
+[node name="TitleGraphics" type="Label" parent="ScrollContainer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 25.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "GRAPHICS"
+horizontal_alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="AntiAliasing" type="Label" parent="ScrollContainer/Control"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 164.0
+offset_bottom = 73.0
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "ANTI_ALIASING"
+metadata/_edit_layout_mode = 1
+
+[node name="OptionButtonAA" type="OptionButton" parent="ScrollContainer/Control"]
+layout_mode = 2
+offset_left = 188.0
+offset_top = 48.0
+offset_right = 268.0
+offset_bottom = 80.0
+script = SubResource("GDScript_axvkl")
+metadata/_edit_layout_mode = 1
+
+[node name="Shadows" type="Label" parent="ScrollContainer/Control"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 94.0
+offset_bottom = 129.0
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "SHADOWS"
+metadata/_edit_layout_mode = 1
+
+[node name="OptionButtonShadows" type="OptionButton" parent="ScrollContainer/Control"]
+layout_mode = 2
+offset_left = 188.0
+offset_top = 104.0
+offset_right = 268.0
+offset_bottom = 136.0
+script = SubResource("GDScript_kje1n")
+metadata/_edit_layout_mode = 1
+
+[node name="TitleAudio" type="Label" parent="ScrollContainer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = 168.0
+offset_right = 30.0
+offset_bottom = 193.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "AUDIO"
+horizontal_alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="Music" type="Label" parent="ScrollContainer/Control"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 216.0
+offset_right = 70.0
+offset_bottom = 241.0
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "MUSIC"
+metadata/_edit_layout_mode = 1
+
+[node name="Sound" type="Label" parent="ScrollContainer/Control"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 264.0
+offset_right = 68.0
+offset_bottom = 289.0
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "SOUND"
+metadata/_edit_layout_mode = 1
+
+[node name="MusicHSlider" type="HSlider" parent="ScrollContainer/Control"]
+layout_mode = 2
+offset_left = 136.0
+offset_top = 220.0
+offset_right = 268.0
+offset_bottom = 236.0
+script = SubResource("GDScript_53xr3")
+
+[node name="SoundHSlider" type="HSlider" parent="ScrollContainer/Control"]
+layout_mode = 2
+offset_left = 136.0
+offset_top = 268.0
+offset_right = 268.0
+offset_bottom = 284.0
+script = SubResource("GDScript_fnuxv")
+
+[connection signal="item_selected" from="ScrollContainer/Control/OptionButtonAA" to="ScrollContainer/Control/OptionButtonAA" method="_on_option_button_aa_item_selected"]
+[connection signal="item_selected" from="ScrollContainer/Control/OptionButtonShadows" to="ScrollContainer/Control/OptionButtonShadows" method="_on_option_button_shaows_item_selected"]
+[connection signal="drag_ended" from="ScrollContainer/Control/MusicHSlider" to="ScrollContainer/Control/MusicHSlider" method="_on_music_h_slider_drag_ended"]
+[connection signal="drag_ended" from="ScrollContainer/Control/SoundHSlider" to="ScrollContainer/Control/SoundHSlider" method="_on_sound_h_slider_drag_ended"]

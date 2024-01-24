@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpr3trog5kdn4"]
+
+[ext_resource type="Script" path="res://logic/scripts/game/terrain.gd" id="1_7skrb"]
+[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="2_7shbv"]
+[ext_resource type="Script" path="res://logic/scripts/game/terrain_property.gd" id="2_e1yta"]
+[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_cpr13"]
+[ext_resource type="PackedScene" uid="uid://54war5m37akr" path="res://logic/scenes/game/terrain_stats.tscn" id="6_ennre"]
+
+[sub_resource type="Resource" id="Resource_4lil6"]
+script = ExtResource("2_e1yta")
+name = "CITY"
+movement_costs = {
+"AIR": 1,
+"BOOTS": 1,
+"FOOT": 1,
+"LANDER": -1,
+"PIPE": -1,
+"SEA": -1,
+"THREADS": 1,
+"TIRES": 1
+}
+defence_level = 3
+is_capturable = true
+capture_health = 200
+round_funding = 1000
+can_repair = true
+can_buy = false
+shop_units = Array[PackedScene]([])
+description = "CITY_DESCRIPTION"
+generate_movement_costs = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gl3f1"]
+resource_local_to_scene = true
+shader = ExtResource("3_cpr13")
+shader_parameter/shifting = true
+shader_parameter/shift_level_h = 0.095
+shader_parameter/shift_level_s = 0.236
+shader_parameter/shift_level_b = 1.0
+shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
+shader_parameter/new_color = Color(0.0056, 0.01, 0.00941333, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2rcu"]
+atlas = ExtResource("2_7shbv")
+region = Rect2(128, 16, 16, 16)
+
+[node name="City" type="Area2D"]
+collision_layer = 9
+script = ExtResource("1_7skrb")
+color = Color(0.0056, 0.01, 0.00941333, 1)
+properties = SubResource("Resource_4lil6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gl3f1")
+texture = SubResource("AtlasTexture_f2rcu")
+
+[node name="TerrainStats" parent="." instance=ExtResource("6_ennre")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)

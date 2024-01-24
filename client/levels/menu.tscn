@@ -1,0 +1,852 @@
+[gd_scene load_steps=46 format=3 uid="uid://crj13jqmktmtn"]
+
+[ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/scenes/ui/menu.tscn" id="1_6wj44"]
+[ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
+[ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_s3gg3"]
+[ext_resource type="AudioStream" uid="uid://bochpfaxckbqm" path="res://assets/musics/Cyberpunk Moonlight Sonata v2.mp3" id="2_pyafi"]
+[ext_resource type="Script" path="res://logic/scripts/game/viewport.gd" id="4_qshs6"]
+[ext_resource type="Texture2D" uid="uid://dmp3yy3lmavys" path="res://assets/images/game/menu/background.png" id="5_p3s4b"]
+[ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="7_1imcl"]
+[ext_resource type="PackedScene" uid="uid://c0oddna5vf8nd" path="res://logic/scenes/maps/vs_ai/01_big_brain.tscn" id="15_7gwmg"]
+[ext_resource type="PackedScene" uid="uid://ckd3eep5ebgh6" path="res://logic/scenes/maps/vs_ai/02_the_flowers.tscn" id="16_arpb2"]
+[ext_resource type="PackedScene" uid="uid://tr1b43h8d24w" path="res://logic/scenes/maps/hotseat/01_big_brain.tscn" id="16_pp71h"]
+[ext_resource type="PackedScene" uid="uid://c0iswr2xw1ywu" path="res://logic/scenes/maps/hotseat/02_the_flowers.tscn" id="18_m8pbv"]
+[ext_resource type="PackedScene" uid="uid://cvkntlq7wjkcn" path="res://logic/scenes/maps/lobby/01_big_brain.tscn" id="19_kr7y1"]
+[ext_resource type="PackedScene" uid="uid://btefxje3orxfq" path="res://logic/scenes/maps/lobby/02_the_flowers.tscn" id="20_bxw0a"]
+[ext_resource type="Script" path="res://logic/scripts/ui/game_buttons_menu_switch.gd" id="34_rl1iq"]
+[ext_resource type="Script" path="res://logic/scripts/ui/game_buttons.gd" id="40_om04v"]
+[ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="41_n387a"]
+[ext_resource type="Script" path="res://logic/scripts/ui/multiplayer_menu.gd" id="44_lyjww"]
+[ext_resource type="PackedScene" uid="uid://cqf0atgg02hdq" path="res://logic/scenes/ui/map_selection.tscn" id="46_qlnwy"]
+[ext_resource type="Script" path="res://logic/scripts/ui/lobby_list.gd" id="47_e0sht"]
+[ext_resource type="Script" path="res://logic/scripts/ui/lobby.gd" id="50_pl5uo"]
+[ext_resource type="PackedScene" uid="uid://c4qct2liggfuy" path="res://logic/scenes/ui/settings_content.tscn" id="50_xtsh5"]
+
+[sub_resource type="GDScript" id="GDScript_a3jqb"]
+script/source = "extends Control
+
+@export var music: AudioStream
+
+var _multiplayer: GlobalMultiplayer = Multiplayer
+
+func _ready() -> void:
+	($\"MainMenu\" as Control).show()
+	Music.change_music(music)
+	_multiplayer.client_role = _multiplayer.ClientRole.NONE
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p8hk"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(150, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqnei"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(500, 200, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv0in"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(50, 300, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvkem"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(100, 450, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq716"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(400, 350, 50, 50)
+
+[sub_resource type="GDScript" id="GDScript_8xvtj"]
+script/source = "extends GameButton
+
+func _pressed() -> void:
+	super._pressed()
+	await get_tree().create_timer(0.5).timeout
+	get_tree().quit()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmpwf"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(300, 400, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vifrl"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(300, 250, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gq56"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(300, 350, 50, 50)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1ai7k"]
+load_path = "res://.godot/imported/sheet_white1x.png-d237bd7956ee8dc396efd927abb3c19c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohi5a"]
+atlas = SubResource("CompressedTexture2D_1ai7k")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6ha0"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(350, 300, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5qvd"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(350, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdtg4"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(300, 100, 50, 50)
+
+[sub_resource type="GDScript" id="GDScript_squbr"]
+script/source = "extends GameButton
+
+@export var game_scene: PackedScene
+
+func _pressed() -> void:
+	super._pressed()
+	get_tree().change_scene_to_packed(game_scene)
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xajh4"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(200, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs5kb"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(400, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gntye"]
+atlas = ExtResource("7_1imcl")
+region = Rect2(0, 450, 50, 50)
+
+[sub_resource type="GDScript" id="GDScript_rkgf1"]
+script/source = "extends Control
+
+@export var back_control: Control
+
+func _on_button_back_pressed() -> void:
+	if back_control:
+		back_control.show()
+		hide()
+	else:
+		queue_free()
+
+func _ready() -> void:
+	if not Engine.is_editor_hint():
+		hide()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn8jt"]
+atlas = ExtResource("41_n387a")
+region = Rect2(148, 433, 36, 36)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cnvg4"]
+texture = SubResource("AtlasTexture_gn8jt")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="GDScript" id="GDScript_nccyj"]
+script/source = "extends GameButton
+
+func _pressed() -> void:
+	super._pressed()
+"
+
+[sub_resource type="GDScript" id="GDScript_xjdvj"]
+script/source = "extends RichTextLabel
+
+func _on_rich_text_label_meta_clicked(meta: Variant) -> void:
+	OS.shell_open(str(meta))
+"
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqavw")
+script = SubResource("GDScript_a3jqb")
+music = ExtResource("2_pyafi")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_s3gg3")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_3d = true
+size = Vector2i(1600, 900)
+render_target_update_mode = 4
+script = ExtResource("4_qshs6")
+
+[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Background" type="Sprite2D" parent="SubViewportContainer/SubViewport/Node2D"]
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("5_p3s4b")
+centered = false
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/Node2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainMenu" parent="." instance=ExtResource("1_6wj44")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -169.0
+offset_right = 146.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+title = "MAIN_MENU"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="ButtonSinglePlayer" type="Button" parent="MainMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 53.0
+grow_horizontal = 2
+text = "SINGLEPLAYER"
+icon = SubResource("AtlasTexture_6p8hk")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../SingleplayerMenu")
+
+[node name="ButtonMultiplayer" type="Button" parent="MainMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 72.0
+offset_bottom = 127.0
+grow_horizontal = 2
+text = "MULTIPLAYER"
+icon = SubResource("AtlasTexture_bqnei")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../MultiplayerMenu")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ButtonSettings" type="Button" parent="MainMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 144.0
+offset_bottom = 201.0
+grow_horizontal = 2
+text = "SETTINGS"
+icon = SubResource("AtlasTexture_yv0in")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../SettingsMenu")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ButtonCredits" type="Button" parent="MainMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 216.0
+offset_bottom = 273.0
+grow_horizontal = 2
+text = "CREDITS"
+icon = SubResource("AtlasTexture_wvkem")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../Credits")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ButtonExit" type="Button" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "EXIT"
+icon = SubResource("AtlasTexture_tq716")
+script = SubResource("GDScript_8xvtj")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="SingleplayerMenu" parent="." instance=ExtResource("1_6wj44")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -169.0
+offset_right = 146.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+title = "SINGLEPLAYER_MENU"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="ButtonTutorial" type="Button" parent="SingleplayerMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 56.0
+grow_horizontal = 2
+disabled = true
+text = "TUTORIAL"
+icon = SubResource("AtlasTexture_bmpwf")
+script = ExtResource("40_om04v")
+
+[node name="ButtonCampaign" type="Button" parent="SingleplayerMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 72.0
+offset_bottom = 128.0
+grow_horizontal = 2
+disabled = true
+text = "CAMPAIGN"
+icon = SubResource("AtlasTexture_vifrl")
+script = ExtResource("40_om04v")
+metadata/_edit_layout_mode = 1
+
+[node name="ButtonAI" type="Button" parent="SingleplayerMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 144.0
+offset_bottom = 198.0
+grow_horizontal = 2
+text = "VS_AI"
+icon = SubResource("AtlasTexture_8gq56")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../SingleplayerMapSelection")
+metadata/_edit_layout_mode = 1
+
+[node name="ButtonBack" type="Button" parent="SingleplayerMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK"
+icon = SubResource("AtlasTexture_ohi5a")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../MainMenu")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="MultiplayerMenu" parent="." instance=ExtResource("1_6wj44")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -169.0
+offset_right = 146.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("44_lyjww")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="ButtonHotseat" type="Button" parent="MultiplayerMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 62.0
+grow_horizontal = 2
+text = "HOT_SEAT"
+icon = SubResource("AtlasTexture_n6ha0")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../MultiplayerHotSeatMapSelection")
+metadata/_edit_layout_mode = 1
+
+[node name="ButtonLobby" type="Button" parent="MultiplayerMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 72.0
+offset_bottom = 134.0
+grow_horizontal = 2
+text = "LOBBY"
+icon = SubResource("AtlasTexture_l5qvd")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../MPLobbyListMenu")
+metadata/_edit_use_custom_anchors = false
+metadata/_edit_layout_mode = 1
+
+[node name="ButtonRanked" type="Button" parent="MultiplayerMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 144.0
+offset_bottom = 206.0
+grow_horizontal = 2
+disabled = true
+text = "RANKED"
+icon = SubResource("AtlasTexture_tdtg4")
+script = SubResource("GDScript_squbr")
+metadata/_edit_use_custom_anchors = false
+metadata/_edit_layout_mode = 1
+
+[node name="ButtonBack" type="Button" parent="MultiplayerMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK"
+icon = SubResource("AtlasTexture_ohi5a")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../MainMenu")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="MPLobbyListMenu" parent="." node_paths=PackedStringArray("username_text", "lobby_list_container", "lobby_menu") instance=ExtResource("1_6wj44")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -323.0
+offset_top = -150.0
+offset_right = 323.0
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("47_e0sht")
+username_text = NodePath("ControlUsername/TextEditUsername")
+lobby_list_container = NodePath("ControlLobbyList/VBoxContainer")
+lobby_menu = NodePath("../MPLobbyMenu")
+title = "MULTIPLAYER_MENU"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="HBoxContainerLobby" type="HBoxContainer" parent="MPLobbyListMenu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="ButtonBack" type="Button" parent="MPLobbyListMenu/HBoxContainerLobby" node_paths=PackedStringArray("next_menu", "parent_override")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BACK"
+icon = SubResource("AtlasTexture_ohi5a")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../../MultiplayerMenu")
+parent_override = NodePath("../..")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ButtonRefresh" type="Button" parent="MPLobbyListMenu/HBoxContainerLobby"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "REFRESH"
+icon = SubResource("AtlasTexture_xajh4")
+script = ExtResource("34_rl1iq")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ButtonHost" type="Button" parent="MPLobbyListMenu/HBoxContainerLobby" node_paths=PackedStringArray("next_menu", "parent_override")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HOST"
+icon = SubResource("AtlasTexture_qs5kb")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../../MultiplayerLobbyMapSelection")
+parent_override = NodePath("../..")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ControlUsername" type="Control" parent="MPLobbyListMenu"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MPLobbyListMenu/ControlUsername"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 71.0
+offset_right = 306.0
+offset_bottom = 116.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "USERNAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextEditUsername" type="TextEdit" parent="MPLobbyListMenu/ControlUsername"]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 72.0
+offset_right = 543.0
+offset_bottom = 117.0
+size_flags_horizontal = 3
+text = "..."
+
+[node name="ControlLobbyList" type="ScrollContainer" parent="MPLobbyListMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -139.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MPLobbyListMenu/ControlLobbyList"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MPLobbyMenu" parent="." node_paths=PackedStringArray("lobby_container", "start_button") instance=ExtResource("1_6wj44")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -323.0
+offset_top = -150.0
+offset_right = 323.0
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("50_pl5uo")
+lobby_container = NodePath("ControlLobbyList/VBoxContainer")
+start_button = NodePath("HBoxContainerLobby/ButtonStart")
+title = "LOBBY_MENU"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="ControlLobbyList" type="ScrollContainer" parent="MPLobbyMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MPLobbyMenu/ControlLobbyList"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainerLobby" type="HBoxContainer" parent="MPLobbyMenu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="ButtonBack" type="Button" parent="MPLobbyMenu/HBoxContainerLobby" node_paths=PackedStringArray("next_menu", "parent_override")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BACK"
+icon = SubResource("AtlasTexture_ohi5a")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../../MPLobbyListMenu")
+parent_override = NodePath("../..")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ButtonStart" type="Button" parent="MPLobbyMenu/HBoxContainerLobby"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "START"
+icon = SubResource("AtlasTexture_gntye")
+script = ExtResource("34_rl1iq")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="SettingsMenu" parent="." instance=ExtResource("1_6wj44")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -169.0
+offset_right = 146.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+title = "SETTING_MENU"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="SettingsContent" parent="SettingsMenu" instance=ExtResource("50_xtsh5")]
+layout_mode = 1
+
+[node name="ButtonBack" type="Button" parent="SettingsMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK"
+icon = SubResource("AtlasTexture_ohi5a")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../MainMenu")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="SingleplayerMapSelection" parent="." node_paths=PackedStringArray("back_control") instance=ExtResource("46_qlnwy")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -562.5
+offset_top = -344.0
+offset_right = 562.5
+offset_bottom = 344.0
+back_control = NodePath("../SingleplayerMenu")
+maps = Array[PackedScene]([ExtResource("15_7gwmg"), ExtResource("16_arpb2")])
+metadata/_edit_layout_mode = 1
+
+[node name="MultiplayerHotSeatMapSelection" parent="." node_paths=PackedStringArray("back_control") instance=ExtResource("46_qlnwy")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -562.5
+offset_top = -344.0
+offset_right = 562.5
+offset_bottom = 344.0
+back_control = NodePath("../MultiplayerMenu")
+maps = Array[PackedScene]([ExtResource("16_pp71h"), ExtResource("18_m8pbv")])
+metadata/_edit_layout_mode = 1
+
+[node name="MultiplayerLobbyMapSelection" parent="." node_paths=PackedStringArray("back_control", "next_control") instance=ExtResource("46_qlnwy")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -562.5
+offset_top = -344.0
+offset_right = 562.5
+offset_bottom = 344.0
+back_control = NodePath("../MPLobbyListMenu")
+next_control = NodePath("../MPLobbyMenu")
+maps = Array[PackedScene]([ExtResource("19_kr7y1"), ExtResource("20_bxw0a")])
+next_button_text_override = "HOST"
+metadata/_edit_layout_mode = 1
+
+[node name="Credits" type="Control" parent="." node_paths=PackedStringArray("back_control")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_rkgf1")
+back_control = NodePath("../MainMenu")
+
+[node name="Panel" type="Panel" parent="Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -283.5
+offset_right = 237.5
+offset_bottom = 283.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cnvg4")
+
+[node name="ButtonBack" type="Button" parent="Credits/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.5
+offset_top = -62.0
+offset_right = 96.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK"
+icon = SubResource("AtlasTexture_ohi5a")
+script = SubResource("GDScript_nccyj")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Credits/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -460.0
+offset_right = 9.0
+offset_bottom = 500.0
+grow_horizontal = 0
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
+metadata/_edit_layout_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Panel/ScrollContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(455, 500)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 42
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
+text = "[center][b]Credits[/b][/center]
+
+Hunter99
+[indent][i]Lead Engine Developer[/i][/indent]
+
+Ghost
+[indent][i]Engine Developer[/i][/indent]
+
+jaume
+[indent][i]Engine Developer[/i][/indent]
+
+Darkbladercr
+[indent][i]Lead Backend Developer[/i][/indent]
+
+seerfox
+[indent][i]Lead CO Art Director[/i][/indent]
+[indent][i]Lead UI Designer[/i][/indent]
+
+[center][b]External[/b][/center]
+
+[url=https://www.kenney.nl/assets]Kenney Game Assets[/url]
+[indent][i]2D Art, Sound[/i][/indent]
+
+[url=https://opengameart.org/content/menu-music]mrpoly[/url]
+[indent][i]Music[/i][/indent]
+
+[url=https://opengameart.org/content/awake-megawall-10]cynicmusic[/url]
+[indent][i]Music[/i][/indent]
+
+[url=https://opengameart.org/content/cyberpunk-moonlight-sonata]Joth[/url]
+[indent][i]Music[/i][/indent]
+
+[url=https://opengameart.org/content/4-chiptunes-adventure]SubspaceAudio[/url]
+[indent][i]Music[/i][/indent]
+
+[url=https://akveo.github.io/eva-icons/]Eva Icons[/url]
+[indent][i]2D Art[/i][/indent]
+
+
+[center][b]Game Engine[/b][/center]
+
+[url=https://godotengine.org]Godot Engine[/url]
+[indent][i][url]https://godotengine.org/license[/url][/i][/indent]
+
+[center][img]res://godot_icon.svg[/img][/center]"
+script = SubResource("GDScript_xjdvj")
+
+[node name="Version" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -56.0
+offset_right = -38.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "v.0.6.20"
+metadata/_edit_layout_mode = 1
+
+[connection signal="visibility_changed" from="MultiplayerMenu" to="MultiplayerMenu" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="MPLobbyListMenu" to="MPLobbyListMenu" method="_on_visibility_changed"]
+[connection signal="pressed" from="MPLobbyListMenu/HBoxContainerLobby/ButtonRefresh" to="MPLobbyListMenu" method="_on_button_refresh_pressed"]
+[connection signal="pressed" from="MPLobbyListMenu/HBoxContainerLobby/ButtonHost" to="MPLobbyListMenu" method="_on_button_host_pressed"]
+[connection signal="focus_exited" from="MPLobbyListMenu/ControlUsername/TextEditUsername" to="MPLobbyListMenu" method="_on_text_edit_username_focus_exited"]
+[connection signal="text_changed" from="MPLobbyListMenu/ControlUsername/TextEditUsername" to="MPLobbyListMenu" method="_on_text_edit_username_text_changed"]
+[connection signal="visibility_changed" from="MPLobbyMenu" to="MPLobbyMenu" method="_on_visibility_changed"]
+[connection signal="pressed" from="MPLobbyMenu/HBoxContainerLobby/ButtonBack" to="MPLobbyMenu" method="_on_button_back_pressed"]
+[connection signal="pressed" from="MPLobbyMenu/HBoxContainerLobby/ButtonStart" to="MPLobbyMenu" method="_on_button_start_pressed"]
+[connection signal="pressed" from="Credits/Panel/ButtonBack" to="Credits" method="_on_button_back_pressed"]
+[connection signal="meta_clicked" from="Credits/Panel/ScrollContainer/RichTextLabel" to="Credits/Panel/ScrollContainer/RichTextLabel" method="_on_rich_text_label_meta_clicked"]
