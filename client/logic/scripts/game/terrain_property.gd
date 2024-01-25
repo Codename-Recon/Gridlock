@@ -1,8 +1,7 @@
 @icon("res://assets/images/icons/settings-2-outline.svg")
 @tool
-
-extends Resource
 class_name TerrainProperty
+extends Resource
 
 @export var name: String = "Terrain"
 @export var movement_costs: Dictionary = {}
@@ -21,6 +20,7 @@ class_name TerrainProperty
 			movement_costs = {}
 			for i: String in UnitProperty.MovementType.keys():
 				movement_costs[i] = 0
+
 
 func get_movement_cost(type: UnitProperty.MovementType) -> int:
 	return movement_costs[UnitProperty.MovementType.keys()[type]]

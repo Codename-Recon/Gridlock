@@ -1,5 +1,5 @@
-extends Node2D
 class_name FloatingInfo
+extends Node2D
 signal finished
 
 @export var text: String:
@@ -9,6 +9,7 @@ signal finished
 @export_color_no_alpha var color: Color:
 	set(value):
 		color = value
+
 
 func _ready() -> void:
 	var text_label: Label = %Text

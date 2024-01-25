@@ -1,11 +1,15 @@
 @tool
-extends ProgressBar
 class_name ProgressBarEnhanced
+extends ProgressBar
 
-var super_fore_ground: StyleBoxTexture = preload("res://assets/resources/theme/progress_bar_enhanced_style_box.tres")
+var super_fore_ground: StyleBoxTexture = preload(
+	"res://assets/resources/theme/progress_bar_enhanced_style_box.tres"
+)
+
 
 func _ready() -> void:
 	pass
+
 
 func _draw() -> void:
 	if super_fore_ground and visible:

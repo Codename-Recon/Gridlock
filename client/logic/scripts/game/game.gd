@@ -640,20 +640,20 @@ func _do_state_commanding_clicked_left() -> void:
 				await get_tree().create_timer(0.1).timeout
 				var end_curve_terrain: Terrain = last_selected_unit.get_terrain_on_point(_move_arrow_node.curve.get_point_position(_move_arrow_node.curve.point_count - 1))
 				last_action_terrain = end_curve_terrain
-				if last_selected_terrain and last_selected_terrain.is_neighbor(end_curve_terrain) \
-						# block direct attack, when path end has a unit, except when it's the unit itself (eg. attacking other unit next to it)
-						and not (end_curve_terrain.has_unit() and end_curve_terrain.get_unit() != last_selected_unit):
-					state = GameConst.State.ATTACKING
-					# to fire left click event
-					_simulated_first_click = true
-					_deselect_unit()
-					_unattack()
-					_unrefill()
-					_unenter()
-					_undeploy()
-					_unjoin()
-					_create_and_set_attack_area(last_selected_unit, last_action_terrain)
-					return
+				if last_selected_terrain and last_selected_terrain.is_neighbor(end_curve_terrain):
+					# block direct attack, when path end has a unit, except when it's the unit itself (eg. attacking other unit next to it)
+					if not (end_curve_terrain.has_unit() and end_curve_terrain.get_unit() != last_selected_unit):
+						state = GameConst.State.ATTACKING
+						# to fire left click event
+						_simulated_first_click = true
+						_deselect_unit()
+						_unattack()
+						_unrefill()
+						_unenter()
+						_undeploy()
+						_unjoin()
+						_create_and_set_attack_area(last_selected_unit, last_action_terrain)
+						return
 	_sound.play("Deselect")
 	state = GameConst.State.SELECTING
 	_deselect_unit()
@@ -1382,16 +1382,16 @@ func _calculate_damage(attacking_unit: Unit, defending_unit: Unit, random_luck: 
 	var weapon_type: int = -1
 	
 	# when attacking unit has enough ammo for primary weapon
-	if (attacking_unit.properties.ammo == -1 or attacking_unit.get_unit_stats().ammo > 0) \
+	if (attacking_unit.properties.ammo == -1 or attacking_unit.get_unit_stats().ammo > 0):
 		# and defending unit "accepts" primary weapon
-		and defending_unit.properties.damage_table.has(attacking_unit.properties.weapons[0]):
+		if defending_unit.properties.damage_table.has(attacking_unit.properties.weapons[0]):
 			base_damage = defending_unit.properties.damage_table[attacking_unit.properties.weapons[0]]
 			weapon_type = 0
 	else:
 		# check if there is a secondary weapon present
-		if len(attacking_unit.properties.weapons) > 1 \
+		if len(attacking_unit.properties.weapons) > 1:
 			# and defending unit "accepts" secondary weapon
-			and defending_unit.properties.damage_table.has(attacking_unit.properties.weapons[1]):
+			if defending_unit.properties.damage_table.has(attacking_unit.properties.weapons[1]):
 				base_damage = defending_unit.properties.damage_table[attacking_unit.properties.weapons[1]]
 				weapon_type = 1
 		else:

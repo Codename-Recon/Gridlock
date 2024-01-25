@@ -1,18 +1,8 @@
 @icon("res://assets/images/icons/settings-2-outline.svg")
-extends Resource
 class_name UnitProperty
+extends Resource
 
-enum MovementType{
-	NONE,
-	THREADS,
-	TIRES,
-	AIR,
-	SEA,
-	LANDER,
-	FOOT,
-	BOOTS,
-	PIPE
-}
+enum MovementType { NONE, THREADS, TIRES, AIR, SEA, LANDER, FOOT, BOOTS, PIPE }
 
 @export var name: String = "Unit"
 @export var health: int = 100

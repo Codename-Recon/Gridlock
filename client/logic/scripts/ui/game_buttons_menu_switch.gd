@@ -1,11 +1,12 @@
-extends GameButton
 class_name GameButtonMenuSwitch
+extends GameButton
 
 @export var next_menu: Control
 @export var parent_override: Control
 
-func _pressed() -> void:
-	super._pressed()
+
+func pressed() -> void:
+	super.pressed()
 	if next_menu:
 		if parent_override:
 			parent_override.hide()

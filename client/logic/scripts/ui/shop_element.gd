@@ -1,11 +1,12 @@
-extends SelectableElement
 class_name ShopElement
+extends SelectableElement
 
 signal unit_selected
 
 @export var unit_scene: PackedScene
 
 var _unit: Unit
+
 
 func _ready() -> void:
 	super()
@@ -16,9 +17,7 @@ func _ready() -> void:
 	(%Body as Label).text = tr(_unit.properties.description)
 	(%Cost as Label).text = str(_unit.properties.cost)
 	%SpawnSpot.add_child(_unit)
-	
-func _process(delta: float) -> void:
-	pass
-		
+
+
 func _on_selected() -> void:
 	unit_selected.emit(unit_scene)
