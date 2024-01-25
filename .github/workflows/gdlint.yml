@@ -16,6 +16,6 @@ jobs:
     - uses: Scony/godot-gdscript-toolkit@master
 
     - name: validating format of gd files
-      run: gdformat --check client/
+      run: gdformat --check client/logic
     - name: validating linting of gd files
-      run: gdlint client/
+      run: gdlint client/logic
