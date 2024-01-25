@@ -7,17 +7,17 @@ var user_element_scene: PackedScene = preload("res://logic/scenes/ui/lobby_user_
 var _multiplayer: GlobalMultiplayer = Multiplayer
 var _global: GlobalGlobal = Global
 
+
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
-	pass
 
 func _on_visibility_changed() -> void:
 	if visible:
 		_create_game.call_deferred()
 	else:
 		_remove_game.call_deferred()
+
 
 func _create_game() -> void:
 	if _multiplayer.client_role == _multiplayer.ClientRole.HOST:
@@ -33,10 +33,12 @@ func _create_game() -> void:
 		start_button.hide()
 	_multiplayer.nakama_presence_changed.connect(_update_player_list)
 	_multiplayer.match_started.connect(_on_match_started)
-	
+
+
 func _remove_game() -> void:
 	_multiplayer.nakama_presence_changed.disconnect(_update_player_list)
 	_multiplayer.match_started.disconnect(_on_match_started)
+
 
 func _update_player_list() -> void:
 	if len(_multiplayer.presences) > 1:
@@ -51,14 +53,17 @@ func _update_player_list() -> void:
 		user_element.deactivated = true
 		lobby_container.add_child(user_element)
 
+
 func _on_button_back_pressed() -> void:
 	_multiplayer.nakama_disconnect_from_match()
 
+
 func _on_button_start_pressed() -> void:
 	randomize()
-	var _seed: int = randi()
-	var _data: String = JSON.stringify({'seed': _seed})
-	_multiplayer.nakama_send_match_state(_multiplayer.OpCodes.MATCH_START, _data)
+	var seed: int = randi()
+	var data: String = JSON.stringify({"seed": seed})
+	_multiplayer.nakama_send_match_state(_multiplayer.OpCodes.MATCH_START, data)
+
 
 func _on_match_started() -> void:
 	get_tree().change_scene_to_packed(_global.game_scene)

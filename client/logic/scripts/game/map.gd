@@ -1,7 +1,9 @@
 @icon("res://assets/images/icons/layers-outline.svg")
 @tool
-extends Node2D
 class_name Map
+extends Node2D
+
+const DUPLICATE_TEST_SIZE: int = 4
 
 @export var map_name: String
 @export var creator: String
@@ -13,7 +15,6 @@ class_name Map
 		_test_for_duplicates()
 @export_multiline var duplicate_result: String = ""
 
-const DUPLICATE_TEST_SIZE: int = 4
 
 func _ready() -> void:
 	# TODO workaround for adding nodes to exported typed array
@@ -27,9 +28,9 @@ func _test_for_duplicates() -> void:
 	for child: Node in get_children():
 		if is_instance_of(child, Terrain):
 			var terrain: Terrain = child as Terrain
-			var result: Array[Node] = get_children().filter(func(x: Node) -> bool: return x != terrain \
-					and is_instance_of(x, Terrain) \
-					and ((x as Terrain).global_position - terrain.global_position).length_squared() < DUPLICATE_TEST_SIZE)
+			var result: Array[Node] = get_children().filter(func(x: Node) -> bool: 
+				var length_squared = ((x as Terrain).global_position - terrain.global_position).length_squared()
+				return x != terrain and is_instance_of(x, Terrain)	and length_squared < DUPLICATE_TEST_SIZE)
 			for r: Terrain in result:
 				duplicate_result += str(r) + "\n"
 				found_duplicates = true

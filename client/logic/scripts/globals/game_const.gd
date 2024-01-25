@@ -1,6 +1,6 @@
 @icon("res://assets/images/icons/paper-plane-outline.svg")
-extends Node
 class_name GameConst
+extends Node
 
 enum Actions {
 	NONE,
@@ -13,7 +13,7 @@ enum Actions {
 	CAPTURE,
 }
 
-enum State{
+enum State {
 	NONE,
 	EARNING,
 	REPAIRING,
@@ -32,7 +32,7 @@ enum State{
 	ENDING,
 }
 
-enum Event{
+enum Event {
 	NONE,
 	CLICKED_RIGHT,
 	CLICKED_LEFT,
@@ -41,13 +41,13 @@ enum Event{
 	CLICKED_END_ROUND,
 }
 
-enum InputType{
+enum InputType {
 	HUMAN,
 	AI,
 	NETWORK,
 }
 
-enum AiDifficulty{
+enum AiDifficulty {
 	SELECTABLE,
 	EASY,
 	MEDIUM,

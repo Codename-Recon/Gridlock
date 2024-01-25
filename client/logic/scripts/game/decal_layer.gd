@@ -1,20 +1,15 @@
-extends Sprite2D
 class_name DecalLayer
-@export var textures: Array[Texture]
+extends Sprite2D
 
-enum Type{
-	MOVE,
-	ATTACK,
-	REFILL,
-	ENTER,
-	DEPLOY,
-	JOIN
-}
+enum Type { MOVE, ATTACK, REFILL, ENTER, DEPLOY, JOIN }
+
+@export var textures: Array[Texture]
 
 var type: Type:
 	set(value):
 		type = value
 		texture = textures[type]
+
 
 func _ready() -> void:
 	($AnimationPlayer as AnimationPlayer).play("init")
