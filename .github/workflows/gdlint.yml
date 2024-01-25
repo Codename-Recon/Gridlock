@@ -1,0 +1,21 @@
+name: Static checks
+
+on:
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - 'gdlintrc'
+      - 'client/'
+
+jobs:
+  static-checks:
+    name: 'Static checks'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: Scony/godot-gdscript-toolkit@master
+
+    - name: validating format of gd files
+      run: gdformat --check client/
+    - name: validating linting of gd files
+      run: gdlint client/
