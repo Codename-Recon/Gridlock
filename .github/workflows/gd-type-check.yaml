@@ -1,0 +1,40 @@
+name: "gd script validations"
+on:
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - ".github/workflows/gd-type-check.yaml"
+      - 'client/'
+
+env:
+  GODOT_VERSION: 4.2.1
+  EXPORT_NAME: test-project
+  PROJECT_PATH: test-project
+
+jobs:
+  type-check:
+    name: Check the types in the project
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.2.1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+
+      - name: Run checks
+        run: |
+          cd client
+          set +e
+          godot --project . --headless --quit-after 100 -e 2>/dev/null
+          godot --project . --headless --quit 2>&1 | grep SCRIPT -A 1 > ./test_err
+          COUNT=$(wc -l test_err)
+          if [ "$COUNT" != "0 test_err" ]; then 
+            cat test_err
+            exit 1
+          else
+            echo "It worked, is green, everything should be fine!"
+            exit 0
+          fi
