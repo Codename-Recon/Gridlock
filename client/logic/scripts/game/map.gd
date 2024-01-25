@@ -29,7 +29,7 @@ func _test_for_duplicates() -> void:
 		if is_instance_of(child, Terrain):
 			var terrain: Terrain = child as Terrain
 			var result: Array[Node] = get_children().filter(func(x: Node) -> bool: 
-				var length_squared = ((x as Terrain).global_position - terrain.global_position).length_squared()
+				var length_squared: float = ((x as Terrain).global_position - terrain.global_position).length_squared()
 				return x != terrain and is_instance_of(x, Terrain)	and length_squared < DUPLICATE_TEST_SIZE)
 			for r: Terrain in result:
 				duplicate_result += str(r) + "\n"

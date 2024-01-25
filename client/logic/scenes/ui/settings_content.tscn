@@ -27,13 +27,13 @@ func _ready() -> void:
 		add_item(tr(key))
 	selected = ProjectSettings.get_setting(\"game/graphics_shadow_quality\")
 	# Save rendering settings to match quality game settings (if changed manually in file)
-	_global.save_config(\"shadows/directional_shadow/size\", Graphic.ShadowQualityMap[selected], _global.RENDERING_SECTION)
+	_global.save_config(\"shadows/directional_shadow/size\", Graphic.shadow_quality_map[selected], _global.RENDERING_SECTION)
 
 func _on_option_button_shaows_item_selected(index: int) -> void:
 	ProjectSettings.set_setting(\"game/graphics_shadow_quality\", index)
 	Graphic.settings_changed.emit()
 	_global.save_config(\"graphics_shadow_quality\", index)
-	_global.save_config(\"shadows/directional_shadow/size\", Graphic.ShadowQualityMap[index], _global.RENDERING_SECTION)
+	_global.save_config(\"shadows/directional_shadow/size\", Graphic.shadow_quality_map[index], _global.RENDERING_SECTION)
 "
 
 [sub_resource type="GDScript" id="GDScript_53xr3"]
