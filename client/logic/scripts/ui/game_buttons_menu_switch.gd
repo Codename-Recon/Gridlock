@@ -5,8 +5,8 @@ extends GameButton
 @export var parent_override: Control
 
 
-func pressed() -> void:
-	super.pressed()
+func _pressed() -> void:
+	super._pressed()
 	if next_menu:
 		if parent_override:
 			parent_override.hide()

@@ -146,8 +146,8 @@ func look_at_plane_global_tween(global_point_position: Vector2) -> void:
 
 func get_terrain_on_point(point: Vector2) -> Terrain:
 	var terrains: Array[Node] = get_tree().get_nodes_in_group("terrain")
-	terrains = terrains.filter(func(t: Node) -> bool: 
-		var pos: Vector2 = (t as Terrain).global_position
+	terrains = terrains.filter(func(t: Terrain) -> bool: 
+		var pos: Vector2 = t.global_position
 		return round(pos.x) == round(point.x) and round(pos.y) == round(point.y))
 	var terrain: Terrain
 	if len(terrains) > 0:

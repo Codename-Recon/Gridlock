@@ -205,6 +205,6 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="Menu/ButtonBack" to="." method="_on_button_back_pressed"]
