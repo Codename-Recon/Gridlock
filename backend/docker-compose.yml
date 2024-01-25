@@ -1,0 +1,77 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres
+    env_file: .env
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata16:/var/lib/postgresql/data
+    networks:
+      - nakama-network
+    ports:
+      - "5432:5432"
+
+  # nakama:
+  #   image: registry.heroiclabs.com/heroiclabs/nakama:3.20.0
+  #   container_name: nakama
+  #   env_file: .env
+  #   entrypoint:
+  #     - "/bin/sh"
+  #     - "-ecx"
+  #     - >
+  #       /nakama/nakama migrate up \
+  #       --database.address ${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/${POSTGRES_DB} &&
+  #       exec /nakama/nakama \
+  #       --config /nakama/data/nakama.yml \
+  #       --name nakama1 \
+  #       --database.address ${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/${POSTGRES_DB} \
+  #       --logger.level DEBUG \
+  #       --session.token_expiry_sec 7200 \
+  #       --metrics.prometheus_port 9100
+  #   restart: always
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #     prometheus:
+  #       condition: service_started
+  #   volumes:
+  #     - ./nakama.yml:/nakama/data/nakama.yml
+  #   networks:
+  #     - nakama-network
+  #   expose:
+  #     - "7349"
+  #     - "7350"
+  #     - "7351"
+  #     - "9100"
+  #   ports:
+  #     - "7349-7351:7349-7351"
+  #     - "9100:9100"
+  #   healthcheck:
+  #     test: ["CMD", "nakama/nakama", "healthcheck"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+
+  prometheus:
+    image: prom/prometheus:v2.45.3
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - nakama-network
+    ports:
+      - "9090:9090"
+
+volumes:
+  pgdata16:
+
+networks:
+  nakama-network:
+    driver: bridge
