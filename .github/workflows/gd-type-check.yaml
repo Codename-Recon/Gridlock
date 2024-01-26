@@ -51,9 +51,9 @@ jobs:
       image: barichello/godot-ci:4.2.1
     
     steps:
-      # - name: Create godot caches
-      #   run: |
-      #     cd client
+      - name: Changing directory
+        run: |
+          cd client
       #     set +e
       #     godot --project . --headless --quit-after 100 -e 2>/dev/null
       
