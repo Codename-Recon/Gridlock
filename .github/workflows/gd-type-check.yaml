@@ -8,8 +8,8 @@ on:
 
 env:
   GODOT_VERSION: 4.2.1
-  EXPORT_NAME: test-project
-  PROJECT_PATH: test-project
+  EXPORT_NAME: codename-recon
+  PROJECT_PATH: codename-recon
 
 jobs:
   type-check:
@@ -38,3 +38,47 @@ jobs:
             echo "It worked, is green, everything should be fine!"
             exit 0
           fi
+
+  export:
+    name: Export plattform binaries
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.2.1
+    
+    steps:
+      - name: Create godot caches
+        run: |
+          cd client
+          set +e
+          godot --project . --headless --quit-after 100 -e 2>/dev/null
+      
+      - name: Export linux
+        run: |
+          mkdir -v -p export/desktop/linux
+          godot -v --export "Linux/X11" ./export/desktop/linux/$EXPORT_NAME.x86_64
+
+      - name: Export windows
+        run: |
+          mkdir -v -p export/desktop/windows
+          godot -v --export "Windows Desktop" ./export/desktop/windows/$EXPORT_NAME.exe
+
+      - name: Export mac-os
+        run: |
+          mkdir -v -p export/desktop/mac
+          godot -v --export "Mac OSX" ./export/desktop/mac/$EXPORT_NAME.zip
+
+      - name: Export html
+        run: |
+          mkdir -v -p export/html
+          godot -v --export "HTML5" ./export/html/index.html
+          zip -r html.zip export/html
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: exports
+          path: |
+            ./export/desktop/linux/$EXPORT_NAME.x86_64
+            ./export/desktop/windows/$EXPORT_NAME.exe
+            ./export/desktop/mac/$EXPORT_NAME.zip
+            ./export/html/html.zip
