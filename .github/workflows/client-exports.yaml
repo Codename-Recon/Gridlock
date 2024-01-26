@@ -35,7 +35,7 @@ jobs:
         run: |
           mkdir -v -p build/windows
           cd $PROJECT_PATH
-          godot --project . --headless --quit-after 100 -e 2>/dev/null
+          godot --project . --headless --quit-after 200 -e 2>/dev/null
           godot --headless --verbose --export-release "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
@@ -61,7 +61,7 @@ jobs:
         run: |
           mkdir -v -p build/linux
           cd $PROJECT_PATH
-          godot --project . --headless --quit-after 100 -e 2>/dev/null
+          godot --project . --headless --quit-after 200 -e 2>/dev/null
           godot --headless --verbose --export-release "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
@@ -87,7 +87,7 @@ jobs:
         run: |
           mkdir -v -p build/web
           cd $PROJECT_PATH
-          godot --project . --headless --quit-after 100 -e 2>/dev/null
+          godot --project . --headless --quit-after 200 -e 2>/dev/null
           godot --headless --verbose --export-release "Web" ../build/web/index.html
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
@@ -121,7 +121,7 @@ jobs:
         run: |
           mkdir -v -p build/mac
           cd $PROJECT_PATH
-          godot --project . --headless --quit-after 100 -e 2>/dev/null
+          godot --project . --headless --quit-after 200 -e 2>/dev/null
           godot --headless --verbose --export-release "macOS" ../build/mac/$EXPORT_NAME.zip
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
