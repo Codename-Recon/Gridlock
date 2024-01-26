@@ -83,7 +83,7 @@ jobs:
         with:
           name: exports
           path: |
-            export/desktop/linux/*
-            export/desktop/windows/*
-            export/desktop/mac/*
-            export/html/html.zip
+            ./export/desktop/linux/$EXPORT_NAME.x86_64
+            ./export/desktop/windows/$EXPORT_NAME.exe
+            ./export/desktop/mac/$EXPORT_NAME.zip
+            ./export/html/html.zip
