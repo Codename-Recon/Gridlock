@@ -1,14 +1,14 @@
-name: "gd script validations"
+name: "client exports"
 on:
   pull_request:
     branches: [ "master" ]
     paths:
-      - ".github/workflows/gd-type-check.yaml"
+      - ".github/workflows/client-exports.yaml"
       - 'client/**'
   push:
     branches: [ "master" ]
     paths:
-      - ".github/workflows/gd-type-check.yaml"
+      - ".github/workflows/client-exports.yaml"
       - 'client/**'
 
 env:
@@ -17,33 +17,6 @@ env:
   PROJECT_PATH: client
 
 jobs:
-  type-check:
-    name: Check the types in the project
-    runs-on: ubuntu-20.04
-    container:
-      image: barichello/godot-ci:4.2.1
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          lfs: true
-
-      - name: Run checks
-        run: |
-          cd client
-          set +e
-          godot --project . --headless --quit-after 100 -e 2>/dev/null
-          godot --project . --headless --quit 2>&1 | grep SCRIPT -A 1 > ./test_err
-          COUNT=$(wc -l test_err)
-          if [ "$COUNT" != "0 test_err" ]; then 
-            cat test_err
-            exit 1
-          else
-            echo "It worked, is green, everything should be fine!"
-            exit 0
-          fi
-
   export-windows:
     name: Windows Export
     runs-on: ubuntu-20.04
