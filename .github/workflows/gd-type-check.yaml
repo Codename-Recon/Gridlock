@@ -59,6 +59,7 @@ jobs:
       
       - name: Export linux
         run: |
+          pwd
           mkdir -v -p export/desktop/linux
           godot -v --headless --export-release "Linux/X11" ./export/desktop/linux/$EXPORT_NAME.x86_64
 
