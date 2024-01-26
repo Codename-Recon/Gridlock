@@ -5,6 +5,11 @@ on:
     paths:
       - ".github/workflows/gd-type-check.yaml"
       - 'client/'
+  push:
+    branches: [ "master" ]
+    paths:
+      - ".github/workflows/gd-type-check.yaml"
+      - 'client/'
 
 env:
   GODOT_VERSION: 4.2.1
