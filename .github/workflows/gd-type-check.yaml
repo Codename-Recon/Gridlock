@@ -56,11 +56,11 @@ jobs:
         with:
           lfs: true
 
-      - name: Changing directory
+      - name: Creating cache files
         run: |
           cd client
-      #     set +e
-      #     godot --project . --headless --quit-after 100 -e 2>/dev/null
+          set +e
+          godot --project . --headless --quit-after 100 -e 2>/dev/null
       
       - name: Export linux
         run: |
