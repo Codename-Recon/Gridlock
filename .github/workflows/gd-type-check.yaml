@@ -14,7 +14,7 @@ on:
 env:
   GODOT_VERSION: 4.2.1
   EXPORT_NAME: codename-recon
-  PROJECT_PATH: codename-recon
+  PROJECT_PATH: client
 
 jobs:
   type-check:
@@ -44,52 +44,110 @@ jobs:
             exit 0
           fi
 
-  export:
-    name: Export plattform binaries
+  export-windows:
+    name: Windows Export
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci:4.2.1
-    
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           lfs: true
-
-      - name: Creating cache files
+      - name: Setup
         run: |
-          cd client
-          set +e
-          godot --project . --headless --quit-after 100 -e 2>/dev/null
-      
-      - name: Export linux
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Windows Build
         run: |
-          cd client
-          mkdir -v -p export/desktop/linux
-          godot -v --headless --export-release "Linux/X11" ./export/desktop/linux/$EXPORT_NAME.x86_64
-
-      - name: Export windows
-        run: |
-          mkdir -v -p export/desktop/windows
-          godot -v --headless --export-release "Windows Desktop" ./export/desktop/windows/$EXPORT_NAME.exe
-
-      - name: Export mac-os
-        run: |
-          mkdir -v -p export/desktop/mac
-          godot -v --headless --export-release "Mac OSX" ./export/desktop/mac/$EXPORT_NAME.zip
-
-      - name: Export html
-        run: |
-          mkdir -v -p export/html
-          godot -v --headless --export-release "HTML5" ./export/html/index.html
-          zip -r html.zip export/html
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+          mkdir -v -p build/windows
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
         with:
-          name: exports
-          path: |
-            ./export/desktop/linux/$EXPORT_NAME.x86_64
-            ./export/desktop/windows/$EXPORT_NAME.exe
-            ./export/desktop/mac/$EXPORT_NAME.zip
-            ./export/html/html.zip
+          name: windows
+          path: build/windows
+
+  export-linux:
+    name: Linux Export
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.2.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Linux Build
+        run: |
+          mkdir -v -p build/linux
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: linux
+          path: build/linux
+
+  export-web:
+    name: Web Export
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.2.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Web Build
+        run: |
+          mkdir -v -p build/web
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "HTML5" ../build/web/index.html
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: web
+          path: build/web
+      # - name: Install rsync 📚
+      #   run: |
+      #     apt-get update && apt-get install -y rsync
+      # - name: Deploy to GitHub Pages 🚀
+      #   uses: JamesIves/github-pages-deploy-action@releases/v4
+      #   with:
+      #     branch: gh-pages # The branch the action should deploy to.
+      #     folder: build/web # The folder the action should deploy.
+
+  export-mac:
+    name: Mac Export
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.2.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Mac Build
+        run: |
+          mkdir -v -p build/mac
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Mac OSX" ../build/mac/$EXPORT_NAME.zip
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: mac
+          path: build/mac
