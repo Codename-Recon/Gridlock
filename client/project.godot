@@ -107,6 +107,7 @@ network/lobby_key="pMywin8T8IGN9NYyn3180CTco1birqE1VEU"
 network/debug_accounts=false
 network/debug_accounts.debug=false
 round_overlay=Color(0.384314, 0.384314, 0.384314, 1)
+unit_move_tween_time=0.8
 
 [gui]
 

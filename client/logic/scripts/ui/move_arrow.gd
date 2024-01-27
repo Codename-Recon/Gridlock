@@ -41,4 +41,3 @@ func create_arrow() -> void:
 		sprite.rotation = direction.angle() + PI / 2
 		sprite.global_position = curve.get_point_position(curve.point_count - 1)
 		add_child(sprite)
-		print(sprite.global_position)
