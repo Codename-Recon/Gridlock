@@ -41,11 +41,10 @@ signal died
 		if not Engine.is_editor_hint():
 			if value:
 				move_curve = value.duplicate()
-				move_curve.remove_point(0)
 				if has_node("AudioMove"):
 					_audio_move.play()
 				# to prevent emitting moved signal too fast the first move step should be called some time later (deferred). this is importand when moving on the same spot.
-				_move_one_step_in_curve.call_deferred()
+				_move_on_curve.call_deferred()
 
 # Node which holds carried units 
 @export var cargo: Node
@@ -238,27 +237,29 @@ func _move(start: Terrain, terrains: Array, movement_left: int, direction: Vecto
 			if direction != Vector2.LEFT or allow_backwards:
 				_move(start.get_right(), terrains, movement_left, direction, step + 1, allow_backwards)
 
-func _move_one_step_in_curve() -> void:
+func _move_on_curve() -> void:
 	if not Engine.is_editor_hint():
 		if move_curve:
-			if move_curve.get_point_count() > 0:
-				var point: Vector2 = move_curve.get_point_position(0)
-				var terrain: Terrain = get_terrain_on_point(point)
-				point = terrain.get_move_on_global_position()
-				move_curve.remove_point(0)
-				look_at_plane_global(point)
-				var tween: Tween = create_tween()
-				tween.tween_property(self, "global_position", point, 0.2)
-				tween.tween_callback(_move_one_step_in_curve)
-				get_unit_stats().fuel -= 1
-			else:
-				_end_move()
+			var path: Path2D = Path2D.new()
+			path.curve = move_curve
+			get_terrain().get_parent().add_child(path)
+			var follow: PathFollow2D = PathFollow2D.new()
+			follow.rotates = false
+			path.add_child(follow)
+			reparent(follow)
+			var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+			var time: float = ProjectSettings.get_setting("global/unit_move_tween_time") as float
+			tween.tween_property(follow, "progress_ratio", 1, time)
+			get_unit_stats().fuel -= move_curve.get_point_count() - 1
+			await tween.finished
+			_end_move()
+			path.queue_free()
+			follow.queue_free()
 
 func _end_move() -> void:
 	var terrain: Terrain = get_terrain_on_point(global_position)
 	var tmp_transform: Transform3D = global_transform
-	get_parent().remove_child(self)
-	terrain.add_child(self)
+	reparent(terrain)
 	global_transform = tmp_transform
 	move_curve = null
 	_set_unit_stars()
