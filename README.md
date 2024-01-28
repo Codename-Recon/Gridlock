@@ -31,6 +31,12 @@ Thank you for your interest in contributing to our Godot Engine project! We welc
 - Utilize optional typing:
   - [GDScript Static Typing](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/static_typing.html)
 
+## Asset Contribution :art:
+
+For contributing assets such as art, animations, audio, or other resources, please follow a slightly different approach. To maintain the quality and consistency of our project's assets, we kindly ask you to contact the project leader (Mangs) directly via email at [mangsmemes@gmail.com](mailto:mangsmemes@gmail.com).
+
+In your email, please include an introduction about yourself, detailing any relevant experience or projects you have in creating the type of assets you wish to contribute. This information will help us better understand your background and review your work accordingly. Additionally, provide a brief description of your contribution, along with relevant links to asset files. We appreciate your interest and look forward to potentially featuring your assets in Codename-Recon! 
+
 ## Communication 🗣️
 
 - Open communication is key for successful collaboration. Feel free to reach out to us through issues, pull requests, or any other preferred communication channel.
