@@ -6,7 +6,7 @@ Thank you for your interest in contributing to our Godot Engine project! We welc
 
 ### Before You Begin 🏄
 
-- Familiarize yourself with the [Godot Engine documentation](https://docs.godotengine.org/en/stable/tutorials/index.html):
+- Familiarize yourself with the [Godot Engine documentation](https://docs.godotengine.org/en/stable/index.html):
   - [GDScript Basics](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html)
   - [Godot Engine Best Practices](https://docs.godotengine.org/en/stable/tutorials/best_practices/index.html)
 
