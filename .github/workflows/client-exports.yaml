@@ -16,6 +16,9 @@ env:
   EXPORT_NAME: codename-recon
   PROJECT_PATH: client
 
+permissions:
+  contents: write
+
 jobs:
   export-windows:
     name: Windows Export
@@ -24,7 +27,7 @@ jobs:
       image: barichello/godot-ci:4.2.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           lfs: true
       - name: Setup
@@ -50,7 +53,7 @@ jobs:
       image: barichello/godot-ci:4.2.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           lfs: true
       - name: Setup
@@ -76,7 +79,7 @@ jobs:
       image: barichello/godot-ci:4.2.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           lfs: true
       - name: Setup
@@ -94,14 +97,15 @@ jobs:
         with:
           name: web
           path: build/web
-      # - name: Install rsync 📚
-      #   run: |
-      #     apt-get update && apt-get install -y rsync
-      # - name: Deploy to GitHub Pages 🚀
-      #   uses: JamesIves/github-pages-deploy-action@releases/v4
-      #   with:
-      #     branch: gh-pages # The branch the action should deploy to.
-      #     folder: build/web # The folder the action should deploy.
+      - name: download and inject coi-serviceworker
+        run: |
+          wget -O build/web/coi-serviceworker.js https://raw.githubusercontent.com/gzuidhof/coi-serviceworker/master/coi-serviceworker.min.js
+          sed -i "/<head>/a<script src=\"coi-serviceworker.js\"><\\/script>\n" build/web/index.html
+      - name: Deploy 🚀
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build/web
 
   export-mac:
     name: Mac Export
@@ -110,7 +114,7 @@ jobs:
       image: barichello/godot-ci:4.2.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           lfs: true
       - name: Setup
