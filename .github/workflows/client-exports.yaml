@@ -13,7 +13,7 @@ on:
 
 env:
   GODOT_VERSION: 4.2.1
-  EXPORT_NAME: codename-recon
+  EXPORT_NAME: Codename-Recon
   PROJECT_PATH: client
 
 permissions:
@@ -34,6 +34,18 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Replace version string
+        env:
+          VERSION_REGEX: '<VERSION>'
+          COMMIT_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          if [ ${{ github.event_name }} == 'pull_request' ]; then
+            COMMIT_SHA=${{ github.event.pull_request.head.sha }}
+          fi
+          VERSION=${COMMIT_SHA:0:7}
+          echo $VERSION
+          sed -i "s|$VERSION_REGEX|$VERSION|g" client/levels/menu.tscn # Replace the literal string '<VERSION>' with the new constant declaration
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
@@ -60,6 +72,18 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Replace version string
+        env:
+          VERSION_REGEX: '<VERSION>'
+          COMMIT_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          if [ ${{ github.event_name }} == 'pull_request' ]; then
+            COMMIT_SHA=${{ github.event.pull_request.head.sha }}
+          fi
+          VERSION=${COMMIT_SHA:0:7}
+          echo $VERSION
+          sed -i "s|$VERSION_REGEX|$VERSION|g" client/levels/menu.tscn # Replace the literal string '<VERSION>' with the new constant declaration
       - name: Linux Build
         run: |
           mkdir -v -p build/linux
@@ -86,6 +110,18 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Replace version string
+        env:
+          VERSION_REGEX: '<VERSION>'
+          COMMIT_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          if [ ${{ github.event_name }} == 'pull_request' ]; then
+            COMMIT_SHA=${{ github.event.pull_request.head.sha }}
+          fi
+          VERSION=${COMMIT_SHA:0:7}
+          echo $VERSION
+          sed -i "s|$VERSION_REGEX|$VERSION|g" client/levels/menu.tscn # Replace the literal string '<VERSION>' with the new constant declaration
       - name: Web Build
         run: |
           mkdir -v -p build/web
@@ -121,6 +157,18 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Replace version string
+        env:
+          VERSION_REGEX: '<VERSION>'
+          COMMIT_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          if [ ${{ github.event_name }} == 'pull_request' ]; then
+            COMMIT_SHA=${{ github.event.pull_request.head.sha }}
+          fi
+          VERSION=${COMMIT_SHA:0:7}
+          echo $VERSION
+          sed -i "s|$VERSION_REGEX|$VERSION|g" client/levels/menu.tscn # Replace the literal string '<VERSION>' with the new constant declaration
       - name: Mac Build
         run: |
           mkdir -v -p build/mac
