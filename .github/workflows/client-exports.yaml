@@ -69,6 +69,7 @@ jobs:
             COMMIT_SHA=${{ github.event.pull_request.head.sha }}
           fi
           VERSION=${COMMIT_SHA:0:7}
+          echo $VERSION
           sed -i "s|$VERSION_REGEX|$VERSION|g" client/levels/menu.tscn # Replace the literal string '<VERSION>' with the new constant declaration
       - name: Linux Build
         run: |
