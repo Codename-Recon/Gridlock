@@ -28,6 +28,15 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Replace version string
+        env:
+          VERSION_REGEX: '<VERSION>'
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          TAG=${GITHUB_REF#refs/tags/}
+          echo "TAG=$TAG" >> $GITHUB_ENV
+          VERSION=$(echo $TAG)
+          sed -i "s|$VERSION_REGEX|$REPLACEMENT|g" client/levels/menu.tscn # Replace the literal string '<VERSION>' with the new constant declaration
       - name: Builds
         run: |
           mkdir -v -p build/windows
