@@ -31,7 +31,6 @@ jobs:
       - name: Replace version string
         env:
           VERSION_REGEX: '<VERSION>'
-          COMMIT_SHA: ${{ github.sha }}
         run: |
           TAG=${GITHUB_REF#refs/tags/}
           echo "TAG=$TAG" >> $GITHUB_ENV
