@@ -65,7 +65,7 @@ jobs:
           VERSION_REGEX: '<VERSION>'
           COMMIT_SHA: ${{ github.sha }}
         run: |
-          if [ ${{ github.event_name }} == 'pull_request' ]; then
+          if [ ${{ github.event_name }} = 'pull_request' ]; then
             COMMIT_SHA=${{ github.event.pull_request.head.sha }}
           fi
           VERSION=${COMMIT_SHA:0:7}
