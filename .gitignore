@@ -19,3 +19,6 @@ mono_crash.*.json
 # Nakama binary for arm64
 backend/nakama-*
 backend/data
+
+# Python
+.mypy_cache
