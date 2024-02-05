@@ -18,7 +18,6 @@ func _on_draw() -> void:
 
 func create_arrow() -> void:
 	get_children().map(func(n: Node) -> void: n.queue_free())
-	var points: PackedVector2Array = curve.get_baked_points()
 	var direction: Vector2 = Vector2.ZERO
 	var old_direction: Vector2
 	for i: int in curve.point_count - 1:

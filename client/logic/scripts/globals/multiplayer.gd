@@ -84,7 +84,7 @@ func nakama_get_user_id() -> String:
 
 
 func nakama_set_username(user_name: String) -> void:
-	var update: NakamaAsyncResult = await nakama_client.update_account_async(
+	var _update: NakamaAsyncResult = await nakama_client.update_account_async(
 		nakama_session, null, user_name
 	)
 
