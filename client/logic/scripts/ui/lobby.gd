@@ -60,8 +60,8 @@ func _on_button_back_pressed() -> void:
 
 func _on_button_start_pressed() -> void:
 	randomize()
-	var seed: int = randi()
-	var data: String = JSON.stringify({"seed": seed})
+	var rand_seed: int = randi()
+	var data: String = JSON.stringify({"seed": rand_seed})
 	_multiplayer.nakama_send_match_state(_multiplayer.OpCodes.MATCH_START, data)
 
 
