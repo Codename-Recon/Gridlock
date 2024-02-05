@@ -57,15 +57,17 @@ func _on_music_h_slider_drag_ended(slider_changed: bool) -> void:
 script/source = "extends HSlider
 
 var _global: GlobalGlobal = Global
+var _sound: GlobalSound = Sound
 
 func _ready() -> void:
 	max_value = ProjectSettings.get_setting(\"global/sound_max_value\")
 	min_value = ProjectSettings.get_setting(\"global/sound_min_value\")
 	value = ProjectSettings.get_setting(\"game/sound_volume\")
 
+
 func _on_sound_h_slider_drag_ended(slider_changed: bool) -> void:
 	ProjectSettings.set_setting(\"game/sound_volume\", value)
-	Sound.settings_changed.emit(value)
+	_sound.settings_changed.emit(value)
 	_global.save_config(\"sound_volume\", value)
 "
 
