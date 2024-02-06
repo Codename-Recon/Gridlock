@@ -1,9 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://crj13jqmktmtn"]
+[gd_scene load_steps=47 format=3 uid="uid://crj13jqmktmtn"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/scenes/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
 [ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_s3gg3"]
 [ext_resource type="AudioStream" uid="uid://bochpfaxckbqm" path="res://assets/musics/Cyberpunk Moonlight Sonata v2.mp3" id="2_pyafi"]
+[ext_resource type="Resource" uid="uid://m4hik08vcy1v" path="res://version-info.tres" id="3_rt007"]
 [ext_resource type="Script" path="res://logic/scripts/game/viewport.gd" id="4_qshs6"]
 [ext_resource type="Texture2D" uid="uid://dmp3yy3lmavys" path="res://assets/images/game/menu/background.png" id="5_p3s4b"]
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="7_1imcl"]
@@ -25,7 +26,18 @@
 [sub_resource type="GDScript" id="GDScript_a3jqb"]
 script/source = "extends Control
 
+var _buildInfo: BuildInfo
+@onready var version: Label = $Version
+
 @export var music: AudioStream
+@export var buildInfo: BuildInfo:
+	set(newInfo):
+		if version:
+			version.text=newInfo.version
+		_buildInfo = newInfo
+	
+	get:
+		return _buildInfo
 
 var _multiplayer: GlobalMultiplayer = Multiplayer
 
@@ -33,6 +45,9 @@ func _ready() -> void:
 	($\"MainMenu\" as Control).show()
 	Music.change_music(music)
 	_multiplayer.client_role = _multiplayer.ClientRole.NONE
+	
+	if _buildInfo:
+		version.text = _buildInfo.version
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6p8hk"]
@@ -173,6 +188,7 @@ grow_vertical = 2
 theme = ExtResource("1_eqavw")
 script = SubResource("GDScript_a3jqb")
 music = ExtResource("2_pyafi")
+buildInfo = ExtResource("3_rt007")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_s3gg3")

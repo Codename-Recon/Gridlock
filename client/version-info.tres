@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BuildInfo" load_steps=2 format=3 uid="uid://m4hik08vcy1v"]
+
+[ext_resource type="Script" path="res://logic/scripts/ui/build_info.gd" id="1_3l4c0"]
+
+[resource]
+script = ExtResource("1_3l4c0")
+version = "v0.7-alpha"
+commit_hash = ""
