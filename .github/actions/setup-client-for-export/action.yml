@@ -1,0 +1,25 @@
+name: Setup the client for exports
+description: | 
+  this will create folders and change the different places where 
+  the version must be inserted
+
+runs:
+  using: composite
+  steps:
+    - name: Setup
+      run: |
+        mkdir -v -p ~/.local/share/godot/export_templates
+        mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      shell: bash
+    - name: Replace version string
+      env:
+        VERSION_REGEX: '<VERSION>'
+        COMMIT_SHA: ${{ github.sha }}
+      shell: bash
+      run: |
+        if [ ${{ github.event_name }} == 'pull_request' ]; then
+          COMMIT_SHA=${{ github.event.pull_request.head.sha }}
+        fi
+        VERSION=${COMMIT_SHA:0:7}
+        echo $VERSION
+        sed -i "s|$VERSION_REGEX|$VERSION|g" client/levels/menu.tscn # Replace the literal string '<VERSION>' with the new constant declaration
