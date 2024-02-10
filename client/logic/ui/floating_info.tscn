@@ -110,6 +110,7 @@ script = ExtResource("1_28lu4")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 0.929412, 0.976471, 0.835294)
+z_index = 2
 position = Vector2(0, 1)
 
 [node name="Control" type="Control" parent="Sprite2D"]
