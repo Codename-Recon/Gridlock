@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6da73v4k3k0e"]
-
-[ext_resource type="Script" path="res://logic/scripts/globals/global.gd" id="1_tibsr"]
-
-[node name="Global" type="Node"]
-script = ExtResource("1_tibsr")

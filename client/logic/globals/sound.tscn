@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=3 uid="uid://dc3i5x6c2hdef"]
+
+[ext_resource type="Script" path="res://logic/globals/sound.gd" id="1_edwok"]
+[ext_resource type="AudioStream" uid="uid://cceg53cljfnr2" path="res://assets/sounds/toggle_001.ogg" id="2_chb2a"]
+[ext_resource type="Script" path="res://logic/game/audio_stream_player.gd" id="3_midku"]
+[ext_resource type="AudioStream" uid="uid://b1fop4jqymq6u" path="res://assets/sounds/select_004.ogg" id="4_67igr"]
+[ext_resource type="AudioStream" uid="uid://uw0s1rrh4hu7" path="res://assets/sounds/back_003.ogg" id="5_evw4i"]
+[ext_resource type="AudioStream" uid="uid://8o01qml05dmj" path="res://assets/sounds/question_004.ogg" id="6_jyxog"]
+[ext_resource type="AudioStream" uid="uid://cq7dc74poiwrl" path="res://assets/sounds/switch_004.ogg" id="7_i4ojp"]
+[ext_resource type="AudioStream" uid="uid://dkt7erddtyt8n" path="res://assets/sounds/doorOpen_002.ogg" id="8_e4wpy"]
+[ext_resource type="AudioStream" uid="uid://ch6eydpi2s03s" path="res://assets/sounds/chipsHandle6.ogg" id="9_fnkdx"]
+[ext_resource type="AudioStream" uid="uid://4ec26uofkvxi" path="res://assets/sounds/scroll_001.ogg" id="10_0e73r"]
+[ext_resource type="AudioStream" uid="uid://c6t87v27x52ul" path="res://assets/sounds/question_003.ogg" id="11_wckng"]
+
+[node name="Sound" type="Node"]
+script = ExtResource("1_edwok")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_chb2a")
+script = ExtResource("3_midku")
+
+[node name="Click2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_67igr")
+script = ExtResource("3_midku")
+
+[node name="Deselect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_evw4i")
+script = ExtResource("3_midku")
+
+[node name="Capturing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_jyxog")
+volume_db = -10.0
+script = ExtResource("3_midku")
+
+[node name="Entering" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_i4ojp")
+volume_db = -10.0
+script = ExtResource("3_midku")
+
+[node name="Fusion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_e4wpy")
+volume_db = -10.0
+script = ExtResource("3_midku")
+
+[node name="Coin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_fnkdx")
+volume_db = -10.0
+script = ExtResource("3_midku")
+
+[node name="Repair" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_0e73r")
+volume_db = -10.0
+script = ExtResource("3_midku")
+
+[node name="Refill" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_wckng")
+volume_db = -20.0
+script = ExtResource("3_midku")

@@ -1,0 +1,210 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqf0atgg02hdq"]
+
+[ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="2_6akxv"]
+[ext_resource type="PackedScene" uid="uid://b6kyqmss2ywu" path="res://logic/ui/map_selection_element.tscn" id="3_co8m8"]
+[ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="4_di267"]
+
+[sub_resource type="GDScript" id="GDScript_uc47i"]
+script/source = "extends Control
+
+@export var back_control: Control
+@export var next_control: Control
+@export var maps: Array[PackedScene]
+@export var map_select_element_scene: PackedScene
+@export var next_button_text_override: String
+
+@onready var _button_next: Button = %ButtonNext
+
+var last_selected_map: PackedScene
+var last_instantiated_map: Map
+
+var _global: GlobalGlobal = Global
+
+func _ready() -> void:
+	if next_button_text_override:
+		_button_next.text = next_button_text_override
+	for map_scene: PackedScene in maps:
+		var element: MapSelectableElement = map_select_element_scene.instantiate()
+		element.map_scene = map_scene
+		element.map_selected.connect(_on_element_clicked)
+		%VBoxContainer.add_child(element)
+		_add_v_split()
+		
+func _add_v_split() -> void:
+	var split: VSplitContainer = VSplitContainer.new()
+	split.custom_minimum_size.y = ProjectSettings.get_setting(\"global/shop_element_vspace\")
+	%VBoxContainer.add_child(split)
+
+func _on_button_back_pressed() -> void:
+	if back_control:
+		back_control.show()
+		hide()
+	else:
+		queue_free()
+
+func _on_button_start_pressed() -> void:
+	if next_control:
+		next_control.show()
+		hide()
+	else:
+		get_tree().change_scene_to_packed(_global.game_scene)
+		
+func _on_element_clicked(map_scene: PackedScene) -> void:
+	for child: Node in %SpawnSpot.get_children():
+		child.queue_free()
+	if last_instantiated_map:
+		last_instantiated_map.queue_free()
+	last_instantiated_map = map_scene.instantiate()
+	%SpawnSpot.add_child(last_instantiated_map)
+	_global.selected_map = map_scene
+	_button_next.disabled = false
+
+func _on_visibility_changed() -> void:
+	if visible:
+		if not last_selected_map:
+			_button_next.disabled = true
+	else:
+		last_selected_map = null
+"
+
+[sub_resource type="GDScript" id="GDScript_6sf6c"]
+script/source = "extends Menu
+
+func _ready() -> void:
+	pass
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1sdj"]
+atlas = ExtResource("4_di267")
+region = Rect2(0, 450, 50, 50)
+
+[sub_resource type="GDScript" id="GDScript_0o35y"]
+script/source = "extends GameButton
+
+func _pressed() -> void:
+	super._pressed()
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1ai7k"]
+load_path = "res://.godot/imported/sheet_white1x.png-d237bd7956ee8dc396efd927abb3c19c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vik6"]
+atlas = SubResource("CompressedTexture2D_1ai7k")
+region = Rect2(50, 0, 50, 50)
+
+[node name="map_selection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -475.0
+offset_bottom = -212.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_uc47i")
+map_select_element_scene = ExtResource("3_co8m8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 87.0
+offset_right = 1113.0
+offset_bottom = 648.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Panel"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 471.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="Panel/SubViewportContainer"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(600, 500)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="Panel/SubViewportContainer/SubViewport"]
+position = Vector2(0, 4)
+scale = Vector2(1, 1e-05)
+
+[node name="SpawnSpot" type="Marker2D" parent="Panel/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+
+[node name="Menu" parent="." instance=ExtResource("2_6akxv")]
+layout_mode = 1
+anchor_right = 0.408
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_top = 88.0
+offset_right = -3.05176e-05
+offset_bottom = -49.0
+script = SubResource("GDScript_6sf6c")
+title = "MAP_SELECTION"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.05176e-05
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+metadata/_edit_layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_layout_mode = 1
+
+[node name="ButtonNext" type="Button" parent="Menu"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -62.0
+offset_right = 212.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "START"
+icon = SubResource("AtlasTexture_a1sdj")
+script = SubResource("GDScript_0o35y")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ButtonBack" type="Button" parent="Menu"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -212.0
+offset_top = -62.0
+offset_right = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK"
+icon = SubResource("AtlasTexture_5vik6")
+script = SubResource("GDScript_0o35y")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="Menu/ButtonBack" to="." method="_on_button_back_pressed"]
