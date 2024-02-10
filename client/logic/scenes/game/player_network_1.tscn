@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b71wg52iw0miv"]
-
-[ext_resource type="Script" path="res://logic/scripts/game/player.gd" id="1_dx3ki"]
-
-[node name="Player1" type="Node"]
-script = ExtResource("1_dx3ki")
-player_number = 1
-input_type = 2

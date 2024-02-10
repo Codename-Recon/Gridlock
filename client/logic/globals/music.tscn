@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdwqqmhuhcl2j"]
+
+[ext_resource type="Script" path="res://logic/globals/music.gd" id="1_d2o02"]
+
+[node name="Music" type="Node"]
+script = ExtResource("1_d2o02")
+
+[node name="Player1" type="AudioStreamPlayer" parent="."]
+
+[node name="Player2" type="AudioStreamPlayer" parent="."]
+
+[connection signal="settings_changed" from="." to="." method="_on_music_settings_changed"]
+[connection signal="finished" from="Player1" to="." method="_on_player_1_finished"]
+[connection signal="finished" from="Player2" to="." method="_on_player_2_finished"]

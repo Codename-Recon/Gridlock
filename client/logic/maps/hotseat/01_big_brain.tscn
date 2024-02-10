@@ -1,0 +1,212 @@
+[gd_scene load_steps=14 format=3 uid="uid://tr1b43h8d24w"]
+
+[ext_resource type="Script" path="res://logic/maps/map.gd" id="1_lcdug"]
+[ext_resource type="PackedScene" uid="uid://b71wg52iw0miv" path="res://logic/game/player_network_1.tscn" id="2_hns13"]
+[ext_resource type="PackedScene" uid="uid://beegvonqcwp4y" path="res://logic/game/player_network_2.tscn" id="3_g6i62"]
+[ext_resource type="PackedScene" uid="uid://j2dfnwe4u54k" path="res://logic/terrain/road.tscn" id="4_4yfa2"]
+[ext_resource type="PackedScene" uid="uid://d0fgjj53xl6xb" path="res://logic/terrain/forest.tscn" id="5_6rase"]
+[ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/terrain/qg.tscn" id="6_ro67w"]
+[ext_resource type="PackedScene" uid="uid://c1qfl356w5jbq" path="res://logic/terrain/road_t_cross.tscn" id="6_tvxhd"]
+[ext_resource type="PackedScene" uid="uid://b4giy6a41fm5c" path="res://logic/terrain/base.tscn" id="7_sqtmj"]
+[ext_resource type="PackedScene" uid="uid://bxx88dyd0j7el" path="res://logic/terrain/road_corner.tscn" id="7_t38kf"]
+[ext_resource type="PackedScene" uid="uid://dd0wqod476fk7" path="res://logic/terrain/mountain_low.tscn" id="8_mnpfe"]
+[ext_resource type="PackedScene" uid="uid://cd7cf0w3wkur5" path="res://logic/terrain/grass.tscn" id="9_1m6dc"]
+[ext_resource type="PackedScene" uid="uid://2t61plm4vpda" path="res://logic/units/infantry.tscn" id="9_8dof3"]
+[ext_resource type="PackedScene" uid="uid://dpr3trog5kdn4" path="res://logic/terrain/city.tscn" id="11_vmq13"]
+
+[node name="BigBrain" type="Node2D"]
+script = ExtResource("1_lcdug")
+map_name = "Big Brain"
+creator = "GabrielTheDoggo9078"
+creator_url = "https://awbw.amarriner.com/prevmaps.php?maps_id=81014"
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Player1" parent="Players" instance=ExtResource("2_hns13")]
+input_type = 0
+
+[node name="Player2" parent="Players" instance=ExtResource("3_g6i62")]
+input_type = 0
+
+[node name="Forest" parent="." instance=ExtResource("5_6rase")]
+
+[node name="Forest4" parent="." instance=ExtResource("5_6rase")]
+position = Vector2(16, 16)
+
+[node name="Forest5" parent="." instance=ExtResource("5_6rase")]
+position = Vector2(-16, 48)
+
+[node name="Forest2" parent="." instance=ExtResource("5_6rase")]
+position = Vector2(-16, -16)
+
+[node name="Forest3" parent="." instance=ExtResource("5_6rase")]
+position = Vector2(16, -48)
+
+[node name="Road" parent="." instance=ExtResource("4_4yfa2")]
+position = Vector2(-16, 0)
+
+[node name="Road6" parent="." instance=ExtResource("4_4yfa2")]
+position = Vector2(16, 0)
+
+[node name="Road10" parent="." instance=ExtResource("4_4yfa2")]
+position = Vector2(16, 32)
+
+[node name="Road7" parent="." instance=ExtResource("4_4yfa2")]
+position = Vector2(32, 0)
+
+[node name="Road4" parent="." instance=ExtResource("4_4yfa2")]
+position = Vector2(-16, -32)
+
+[node name="Road2" parent="." instance=ExtResource("4_4yfa2")]
+position = Vector2(-32, 0)
+
+[node name="Road3" parent="." instance=ExtResource("4_4yfa2")]
+position = Vector2(-48, -16)
+rotation = 1.5708
+
+[node name="Road12" parent="." instance=ExtResource("4_4yfa2")]
+position = Vector2(-48, 16)
+rotation = 1.5708
+
+[node name="Road8" parent="." instance=ExtResource("4_4yfa2")]
+position = Vector2(48, -16)
+rotation = 1.5708
+
+[node name="Road9" parent="." instance=ExtResource("4_4yfa2")]
+position = Vector2(48, 16)
+rotation = 1.5708
+
+[node name="Road5" parent="." instance=ExtResource("4_4yfa2")]
+position = Vector2(0, -16)
+rotation = 1.5708
+
+[node name="Road11" parent="." instance=ExtResource("4_4yfa2")]
+position = Vector2(0, 16)
+rotation = 1.5708
+
+[node name="RoadTCross" parent="." instance=ExtResource("6_tvxhd")]
+position = Vector2(-48, 0)
+
+[node name="RoadTCross2" parent="." instance=ExtResource("6_tvxhd")]
+position = Vector2(48, 0)
+rotation = 3.14159
+
+[node name="RoadCorner" parent="." instance=ExtResource("7_t38kf")]
+position = Vector2(-48, -32)
+rotation = -1.5708
+
+[node name="RoadCorner2" parent="." instance=ExtResource("7_t38kf")]
+position = Vector2(48, 32)
+rotation = 1.5708
+
+[node name="Base" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("7_sqtmj")]
+position = Vector2(-32, -16)
+shader_modulate = true
+color = Color(0.85098, 0, 0, 1)
+player_owned = NodePath("../Players/Player2")
+
+[node name="Base3" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("7_sqtmj")]
+position = Vector2(32, 16)
+shader_modulate = true
+color = Color(0, 0.85098, 0, 1)
+player_owned = NodePath("../Players/Player1")
+
+[node name="Base4" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("7_sqtmj")]
+position = Vector2(16, 48)
+shader_modulate = true
+color = Color(0, 0.85098, 0, 1)
+player_owned = NodePath("../Players/Player1")
+
+[node name="Base2" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("7_sqtmj")]
+position = Vector2(-16, -48)
+shader_modulate = true
+color = Color(0.85098, 0, 0, 1)
+player_owned = NodePath("../Players/Player2")
+
+[node name="Infantry" parent="Base2" node_paths=PackedStringArray("player_owned") instance=ExtResource("9_8dof3")]
+color = Color(0.85098, 0, 0, 1)
+player_owned = NodePath("../../Players/Player2")
+
+[node name="QG" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("6_ro67w")]
+position = Vector2(-32, -32)
+shader_modulate = true
+color = Color(0.85098, 0, 0, 1)
+player_owned = NodePath("../Players/Player2")
+
+[node name="QG2" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("6_ro67w")]
+position = Vector2(32, 32)
+shader_modulate = true
+color = Color(0, 0.85098, 0, 1)
+player_owned = NodePath("../Players/Player1")
+
+[node name="MountainLow" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(0, -32)
+
+[node name="MountainLow6" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(0, 32)
+
+[node name="MountainLow2" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(32, -16)
+
+[node name="MountainLow7" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(-32, 32)
+
+[node name="MountainLow8" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(-32, 16)
+
+[node name="MountainLow9" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(-32, 48)
+
+[node name="MountainLow11" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(32, 48)
+
+[node name="MountainLow12" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(48, 48)
+
+[node name="MountainLow10" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(-48, 48)
+
+[node name="MountainLow3" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(32, -32)
+
+[node name="MountainLow4" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(32, -48)
+
+[node name="MountainLow13" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(-32, -48)
+
+[node name="MountainLow14" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(-48, -48)
+
+[node name="MountainLow5" parent="." instance=ExtResource("8_mnpfe")]
+position = Vector2(48, -48)
+
+[node name="City" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("11_vmq13")]
+position = Vector2(0, -48)
+shader_modulate = true
+color = Color(0.85098, 0, 0, 1)
+player_owned = NodePath("../Players/Player2")
+
+[node name="City2" parent="." instance=ExtResource("11_vmq13")]
+position = Vector2(16, -16)
+
+[node name="City4" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("11_vmq13")]
+position = Vector2(0, 48)
+shader_modulate = true
+color = Color(0, 0.85098, 0, 1)
+player_owned = NodePath("../Players/Player1")
+
+[node name="City5" parent="." instance=ExtResource("11_vmq13")]
+position = Vector2(-16, 16)
+
+[node name="City3" parent="." instance=ExtResource("11_vmq13")]
+position = Vector2(48, -32)
+
+[node name="City6" parent="." instance=ExtResource("11_vmq13")]
+position = Vector2(-48, 32)
+
+[node name="Grass" parent="." instance=ExtResource("9_1m6dc")]
+position = Vector2(16, -32)
+
+[node name="Grass2" parent="." instance=ExtResource("9_1m6dc")]
+position = Vector2(-16, 32)

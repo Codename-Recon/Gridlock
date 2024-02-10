@@ -23,13 +23,13 @@ run/main_scene.editor="res://levels/menu.tscn"
 
 [autoload]
 
-Sound="*res://logic/scenes/globals/sound.tscn"
-Music="*res://logic/scenes/globals/music.tscn"
-Graphic="*res://logic/scenes/globals/graphic.tscn"
-Global="*res://logic/scenes/globals/global.tscn"
+Sound="*res://logic/globals/sound.tscn"
+Music="*res://logic/globals/music.tscn"
+Graphic="*res://logic/globals/graphic.tscn"
+Global="*res://logic/globals/global.tscn"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
-Multiplayer="*res://logic/scenes/globals/multiplayer.tscn"
-Messages="*res://logic/scenes/globals/messages.tscn"
+Multiplayer="*res://logic/globals/multiplayer.tscn"
+Messages="*res://logic/globals/messages.tscn"
 
 [debug]
 
