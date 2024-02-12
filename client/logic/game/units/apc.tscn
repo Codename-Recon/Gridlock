@@ -1,0 +1,186 @@
+[gd_scene load_steps=19 format=3 uid="uid://c4iai7oi81hmi"]
+
+[ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_lwul0"]
+[ext_resource type="Script" path="res://logic/game/units/unit_property.gd" id="2_rru76"]
+[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_mycf7"]
+[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_s26s1"]
+[ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="6_cntky"]
+[ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="7_mnlhh"]
+[ext_resource type="Script" path="res://logic/game/audio_stream_player_spatial.gd" id="7_owkmv"]
+[ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="9_rtjsu"]
+[ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="11_2ueb1"]
+[ext_resource type="AudioStream" uid="uid://cin8b6ejg3oby" path="res://assets/sounds/doorOpen_001.ogg" id="27_bx208"]
+
+[sub_resource type="Resource" id="Resource_qjhag"]
+script = ExtResource("2_rru76")
+name = "APC"
+health = 100
+movement_points = 6
+ammo = 0
+fuel = 70
+daily_fuel_decay = 0
+vision = 1
+min_range = 0
+max_range = 0
+movement_type = 1
+cost = 5000
+can_capture = false
+can_move_and_attack = false
+can_refill = true
+weapons = []
+damage_table = {
+"Artillery Cannon": 70,
+"Bazooka": 75,
+"Light Tank Cannon": 75,
+"Machine Gun": 14,
+"Medium Tank Cannon": 95,
+"Rockets": 75,
+"Tank Machine Gun": 45,
+"Vulcan Cannon": 50
+}
+carrying_types = Array[int]([6, 7])
+carrying_size = 1
+description = "APC_DESCRIPTION"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ugl4"]
+resource_local_to_scene = true
+shader = ExtResource("3_s26s1")
+shader_parameter/shifting = true
+shader_parameter/shift_level_h = 0.15
+shader_parameter/shift_level_s = 0.65
+shader_parameter/shift_level_b = 0.32
+shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
+shader_parameter/new_color = Color(0.733333, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avy4d"]
+atlas = ExtResource("3_mycf7")
+region = Rect2(112, 96, 16, 16)
+
+[sub_resource type="Animation" id="Animation_n1mjj"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_fi8y1"]
+resource_name = "damage"
+length = 0.3
+step = 0.05
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_rtjsu")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_ogm23"]
+resource_name = "die"
+length = 1.5
+step = 0.05
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_2ueb1")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"died"],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ikovw"]
+resource_name = "refill"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("27_bx208")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"refill_animation_done"],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_auhi2"]
+_data = {
+"RESET": SubResource("Animation_n1mjj"),
+"damage": SubResource("Animation_fi8y1"),
+"die": SubResource("Animation_ogm23"),
+"refill": SubResource("Animation_ikovw")
+}
+
+[node name="APC" type="Node2D" node_paths=PackedStringArray("cargo")]
+z_index = 1
+script = ExtResource("1_lwul0")
+shader_modulate = true
+properties = SubResource("Resource_qjhag")
+cargo = NodePath("Cargo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6ugl4")
+texture = SubResource("AtlasTexture_avy4d")
+
+[node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
+stream = ExtResource("6_cntky")
+pitch_scale = 2.5
+area_mask = 0
+script = ExtResource("7_owkmv")
+
+[node name="UnitStats" parent="." instance=ExtResource("7_mnlhh")]
+fuel = 70
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_auhi2")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("7_owkmv")
+
+[node name="Cargo" type="Node" parent="."]

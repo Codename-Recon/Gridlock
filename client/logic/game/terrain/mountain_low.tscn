@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd0wqod476fk7"]
+
+[ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_0ahmq"]
+[ext_resource type="Script" path="res://logic/game/terrain/terrain_property.gd" id="2_dnhn3"]
+[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="2_whsyt"]
+
+[sub_resource type="Resource" id="Resource_f36i4"]
+script = ExtResource("2_dnhn3")
+name = "MOUNTAIN"
+movement_costs = {
+"AIR": 1,
+"BOOTS": 1,
+"FOOT": 2,
+"LANDER": -1,
+"PIPE": -1,
+"SEA": -1,
+"THREADS": -1,
+"TIRES": -1
+}
+defence_level = 4
+is_capturable = false
+capture_health = 200
+round_funding = 0
+can_repair = false
+can_buy = false
+shop_units = Array[PackedScene]([])
+description = "MOUNTAIN_DESCRIPTION"
+generate_movement_costs = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm51n"]
+atlas = ExtResource("2_whsyt")
+region = Rect2(80, 0, 16, 16)
+
+[node name="MountainLow" type="Area2D"]
+collision_layer = 9
+script = ExtResource("1_0ahmq")
+properties = SubResource("Resource_f36i4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_pm51n")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)

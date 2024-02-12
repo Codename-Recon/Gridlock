@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://d1lm50b8vcvxp"]
 
-[ext_resource type="Script" path="res://logic/game/unit_stats.gd" id="1_hgwin"]
-[ext_resource type="Script" path="res://logic/game/unit_stats_stars.gd" id="5_xxewy"]
+[ext_resource type="Script" path="res://logic/ui/unit_stats.gd" id="1_hgwin"]
+[ext_resource type="Script" path="res://logic/ui/unit_stats_stars.gd" id="5_xxewy"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="6_7v8pe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1t4ew"]

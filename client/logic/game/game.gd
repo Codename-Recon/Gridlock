@@ -390,7 +390,7 @@ func _process_ai(delta: float) -> void:
 							infantry_count += 1
 					if len(bases) > 0 and infantry_count <= len(bases) * 2:
 						last_selected_terrain = bases[0]
-						last_bought_unit = load("res://logic/units/infantry.tscn")
+						last_bought_unit = load("res://logic/game/units/infantry.tscn")
 						state = GameConst.State.BUYING
 					else:
 						ai_phase += 1

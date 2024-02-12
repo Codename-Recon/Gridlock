@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://j2dfnwe4u54k"]
+
+[ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_o218q"]
+[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="2_j2baf"]
+[ext_resource type="Script" path="res://logic/game/terrain/terrain_property.gd" id="2_yomkd"]
+
+[sub_resource type="Resource" id="Resource_yu2hq"]
+script = ExtResource("2_yomkd")
+name = "ROAD"
+movement_costs = {
+"AIR": 1,
+"BOOTS": 1,
+"FOOT": 1,
+"LANDER": -1,
+"PIPE": -1,
+"SEA": -1,
+"THREADS": 1,
+"TIRES": 1
+}
+defence_level = 0
+is_capturable = false
+capture_health = 200
+round_funding = 0
+can_repair = false
+can_buy = false
+shop_units = Array[PackedScene]([])
+description = "ROAD_DESCRIPTION"
+generate_movement_costs = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snwqm"]
+atlas = ExtResource("2_j2baf")
+region = Rect2(32, 96, 16, 16)
+
+[node name="Road" type="Area2D"]
+collision_layer = 9
+script = ExtResource("1_o218q")
+properties = SubResource("Resource_yu2hq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_snwqm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
