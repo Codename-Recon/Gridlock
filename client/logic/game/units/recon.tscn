@@ -1,0 +1,195 @@
+[gd_scene load_steps=19 format=3 uid="uid://3h53g6pnsmnl"]
+
+[ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_2xvu7"]
+[ext_resource type="Script" path="res://logic/game/units/unit_property.gd" id="2_g41dk"]
+[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_qolh6"]
+[ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="4_beujv"]
+[ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="6_kw3pa"]
+[ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="7_djgan"]
+[ext_resource type="Script" path="res://logic/game/audio_stream_player_spatial.gd" id="7_wm7s5"]
+[ext_resource type="AudioStream" uid="uid://dygiwgkj7il7s" path="res://assets/sounds/spaceEngine_001.ogg" id="9_lxdtk"]
+[ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="15_tbysg"]
+[ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="17_tw04x"]
+
+[sub_resource type="Resource" id="Resource_kenlw"]
+script = ExtResource("2_g41dk")
+name = "RECON"
+health = 100
+movement_points = 8
+ammo = -1
+fuel = 80
+daily_fuel_decay = 0
+vision = 5
+min_range = 1
+max_range = 1
+movement_type = 2
+cost = 4000
+can_capture = false
+can_move_and_attack = true
+can_refill = false
+weapons = ["Tank Machine Gun"]
+damage_table = {
+"Artillery Cannon": 80,
+"Bazooka": 85,
+"Light Tank Cannon": 85,
+"Machine Gun": 15,
+"Medium Tank Cannon": 105,
+"Rockets": 90,
+"Tank Machine Gun": 35,
+"Vulcan Cannon": 60
+}
+carrying_types = null
+carrying_size = 0
+description = "RECON_DESCRIPTION"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ltewp"]
+resource_local_to_scene = true
+shader = ExtResource("3_qolh6")
+shader_parameter/shifting = true
+shader_parameter/shift_level_h = 0.085
+shader_parameter/shift_level_s = 0.23
+shader_parameter/shift_level_b = 1.0
+shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
+shader_parameter/new_color = Color(1, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq8ml"]
+atlas = ExtResource("4_beujv")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="Animation" id="Animation_dxhqm"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_bul74"]
+resource_name = "attack"
+length = 2.5
+step = 0.01
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46, 0.85, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [&"damage_animated"],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated"],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated"],
+"method": &"emit_signal"
+}, {
+"args": [&"attack_animation_done"],
+"method": &"emit_signal"
+}]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 3.76441,
+"start_offset": 0.0,
+"stream": ExtResource("9_lxdtk")
+}],
+"times": PackedFloat32Array(0.01)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_vqtik"]
+resource_name = "damage"
+length = 0.3
+step = 0.05
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_tbysg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_xnwf6"]
+resource_name = "die"
+length = 1.5
+step = 0.05
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("17_tw04x")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"died"],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_spnor"]
+_data = {
+"RESET": SubResource("Animation_dxhqm"),
+"attack": SubResource("Animation_bul74"),
+"damage": SubResource("Animation_vqtik"),
+"die": SubResource("Animation_xnwf6")
+}
+
+[node name="Recon" type="Node2D"]
+z_index = 1
+script = ExtResource("1_2xvu7")
+shader_modulate = true
+properties = SubResource("Resource_kenlw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ltewp")
+texture = SubResource("AtlasTexture_lq8ml")
+
+[node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
+stream = ExtResource("6_kw3pa")
+pitch_scale = 1.5
+area_mask = 0
+script = ExtResource("7_wm7s5")
+
+[node name="UnitStats" parent="." instance=ExtResource("7_djgan")]
+ammo = -1
+fuel = 80
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_spnor")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("7_wm7s5")

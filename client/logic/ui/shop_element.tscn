@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dwneuqauiaxqd"]
 
 [ext_resource type="Script" path="res://logic/ui/shop_element.gd" id="1_bim11"]
-[ext_resource type="PackedScene" uid="uid://4464jjyowffi" path="res://logic/units/antiair.tscn" id="1_mi7lr"]
+[ext_resource type="PackedScene" uid="uid://4464jjyowffi" path="res://logic/game/units/antiair.tscn" id="1_mi7lr"]
 [ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="3_gestn"]
 [ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="5_4up8d"]
 
