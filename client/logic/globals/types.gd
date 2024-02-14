@@ -61,7 +61,9 @@ func _generate_types() -> void:
 
 	path = ProjectSettings.globalize_path("res://") + "../types/damage/secondary.json"
 	secondary_damage = _get_damage_values(path, unit_types)
-
+	
+	_replace_movement_index_with_type()
+	_replace_weapon_index_with_types()
 
 func _get_folder_values(path: String) -> Dictionary:
 	var dic: Dictionary = {}
@@ -118,3 +120,16 @@ func _get_damage_values(path: String, unit_types: Array) -> Dictionary:
 		for d: int in sub_data.size():
 			attacker[unit_types[d]] = sub_data[d]
 	return dic
+
+
+func _replace_movement_index_with_type() -> void:
+	for unit: String in units:
+		units[unit]["movement_type"] = movement_types[units[unit]["movement_type"]]
+
+func _replace_weapon_index_with_types() -> void:
+	for unit: String in units:
+		var weapons: Array = []
+		for index: int in units[unit]["weapons"]:
+			if index >= 0:
+				weapons.append(weapon_types[index])
+		units[unit]["weapons"] = weapons

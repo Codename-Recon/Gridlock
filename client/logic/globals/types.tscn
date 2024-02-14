@@ -30,12 +30,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 2.0,
+"movement_type": "TREADS",
 "mp": 6.0,
 "name": "ANTI_AIR",
 "turn_fuel": 0.0,
 "vision": 2.0,
-"weapons": [7.0, -1.0]
+"weapons": ["Vulcan Cannon"]
 },
 "APC": {
 "ammo": 0.0,
@@ -56,12 +56,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 0.0,
 "min_range": 0.0,
-"movement_type": 2.0,
+"movement_type": "TREADS",
 "mp": 6.0,
 "name": "APC",
 "turn_fuel": 0.0,
 "vision": 1.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "ARTILLERY": {
 "ammo": 9.0,
@@ -82,12 +82,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 3.0,
 "min_range": 2.0,
-"movement_type": 2.0,
+"movement_type": "TREADS",
 "mp": 5.0,
 "name": "ARTILLERY",
 "turn_fuel": 0.0,
 "vision": 1.0,
-"weapons": [0.0, -1.0]
+"weapons": ["Artillery Cannon"]
 },
 "BATTLESHIP": {
 "ammo": 9.0,
@@ -108,12 +108,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 6.0,
 "min_range": 2.0,
-"movement_type": 5.0,
+"movement_type": "SEA",
 "mp": 5.0,
 "name": "BATTLESHIP",
 "turn_fuel": 1.0,
 "vision": 2.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "BCOPTER": {
 "ammo": 6.0,
@@ -134,12 +134,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 4.0,
+"movement_type": "AIR",
 "mp": 6.0,
 "name": "BCOPTER",
 "turn_fuel": 2.0,
 "vision": 3.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "BLACK_BOAT": {
 "ammo": 0.0,
@@ -160,12 +160,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 0.0,
 "min_range": 0.0,
-"movement_type": 6.0,
+"movement_type": "LANDER",
 "mp": 7.0,
 "name": "BLACK_BOAT",
 "turn_fuel": 1.0,
 "vision": 1.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "BLACK_BOMB": {
 "ammo": 0.0,
@@ -186,12 +186,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 0.0,
 "min_range": 0.0,
-"movement_type": 4.0,
+"movement_type": "AIR",
 "mp": 9.0,
 "name": "BLACK_BOMB",
 "turn_fuel": 5.0,
 "vision": 1.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "BOMBER": {
 "ammo": 9.0,
@@ -212,12 +212,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 4.0,
+"movement_type": "AIR",
 "mp": 7.0,
 "name": "BOMBER",
 "turn_fuel": 5.0,
 "vision": 2.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "CARRIER": {
 "ammo": 9.0,
@@ -238,12 +238,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 8.0,
 "min_range": 3.0,
-"movement_type": 5.0,
+"movement_type": "SEA",
 "mp": 5.0,
 "name": "CARRIER",
 "turn_fuel": 1.0,
 "vision": 4.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "CRUISER": {
 "ammo": 6.0,
@@ -264,12 +264,12 @@ units = {
 "hidden_turn_fuel": 5.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 5.0,
+"movement_type": "SEA",
 "mp": 5.0,
 "name": "CRUISER",
 "turn_fuel": 1.0,
 "vision": 5.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "FIGHTER": {
 "ammo": 9.0,
@@ -290,12 +290,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 4.0,
+"movement_type": "AIR",
 "mp": 9.0,
 "name": "FIGHTER",
 "turn_fuel": 5.0,
 "vision": 2.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "INFANTRY": {
 "ammo": -1.0,
@@ -316,12 +316,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 0.0,
+"movement_type": "FOOT",
 "mp": 3.0,
 "name": "INFANTRY",
 "turn_fuel": 0.0,
 "vision": 2.0,
-"weapons": [3.0, -1.0]
+"weapons": ["Machine Gun"]
 },
 "LANDER": {
 "ammo": 0.0,
@@ -342,12 +342,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 0.0,
 "min_range": 0.0,
-"movement_type": 6.0,
+"movement_type": "LANDER",
 "mp": 6.0,
 "name": "LANDER",
 "turn_fuel": 1.0,
 "vision": 1.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "MD_TANK": {
 "ammo": 8.0,
@@ -368,12 +368,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 2.0,
+"movement_type": "TREADS",
 "mp": 5.0,
 "name": "MD_TANK",
 "turn_fuel": 0.0,
 "vision": 1.0,
-"weapons": [4.0, 6.0]
+"weapons": ["Medium Tank Cannon", "Tank Machine Gun"]
 },
 "MECH": {
 "ammo": 3.0,
@@ -394,12 +394,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 1.0,
+"movement_type": "BAZOOKA",
 "mp": 2.0,
 "name": "MECH",
 "turn_fuel": 0.0,
 "vision": 2.0,
-"weapons": [1.0, 3.0]
+"weapons": ["Bazooka", "Machine Gun"]
 },
 "MEGA_TANK": {
 "ammo": 3.0,
@@ -420,12 +420,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 2.0,
+"movement_type": "TREADS",
 "mp": 4.0,
 "name": "MEGA_TANK",
 "turn_fuel": 0.0,
 "vision": 1.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "MISSILE": {
 "ammo": 6.0,
@@ -446,12 +446,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 5.0,
 "min_range": 3.0,
-"movement_type": 3.0,
+"movement_type": "WHEELS",
 "mp": 4.0,
 "name": "MISSILE",
 "turn_fuel": 0.0,
 "vision": 1.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "NEOTANK": {
 "ammo": 9.0,
@@ -472,12 +472,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 2.0,
+"movement_type": "TREADS",
 "mp": 6.0,
 "name": "NEOTANK",
 "turn_fuel": 0.0,
 "vision": 1.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "PIPERUNNER": {
 "ammo": 9.0,
@@ -498,12 +498,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 5.0,
 "min_range": 2.0,
-"movement_type": 7.0,
+"movement_type": "PIPERUNNER",
 "mp": 9.0,
 "name": "PIPERUNNER",
 "turn_fuel": 0.0,
 "vision": 4.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "RECON": {
 "ammo": -1.0,
@@ -524,12 +524,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 3.0,
+"movement_type": "WHEELS",
 "mp": 8.0,
 "name": "RECON",
 "turn_fuel": 0.0,
 "vision": 5.0,
-"weapons": [6.0, -1.0]
+"weapons": ["Tank Machine Gun"]
 },
 "ROCKET": {
 "ammo": 6.0,
@@ -550,12 +550,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 5.0,
 "min_range": 3.0,
-"movement_type": 3.0,
+"movement_type": "WHEELS",
 "mp": 5.0,
 "name": "ROCKET",
 "turn_fuel": 0.0,
 "vision": 1.0,
-"weapons": [5.0, -1.0]
+"weapons": ["Rockets"]
 },
 "STEALTH": {
 "ammo": 6.0,
@@ -576,12 +576,12 @@ units = {
 "hidden_turn_fuel": 8.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 4.0,
+"movement_type": "AIR",
 "mp": 6.0,
 "name": "STEALTH",
 "turn_fuel": 5.0,
 "vision": 4.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 },
 "TANK": {
 "ammo": 9.0,
@@ -602,12 +602,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 1.0,
 "min_range": 1.0,
-"movement_type": 2.0,
+"movement_type": "TREADS",
 "mp": 6.0,
 "name": "TANK",
 "turn_fuel": 0.0,
 "vision": 3.0,
-"weapons": [2.0, 6.0]
+"weapons": ["Light Tank Cannon", "Tank Machine Gun"]
 },
 "TCOPTER": {
 "ammo": 0.0,
@@ -628,12 +628,12 @@ units = {
 "hidden_turn_fuel": 0.0,
 "max_range": 0.0,
 "min_range": 0.0,
-"movement_type": 4.0,
+"movement_type": "AIR",
 "mp": 6.0,
 "name": "TCOPTER",
 "turn_fuel": 2.0,
 "vision": 2.0,
-"weapons": [-1.0, -1.0]
+"weapons": []
 }
 }
 terrains = {
