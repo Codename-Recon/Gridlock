@@ -1,4 +1,5 @@
 @tool
+class_name GlobalTypes
 extends Node
 
 @export var force_update: bool = false:
@@ -23,6 +24,11 @@ extends Node
 # Structure: [String/attacker/unit_type] [String/defender/unit_type]
 @export var primary_damage: Dictionary
 @export var secondary_damage: Dictionary
+
+
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		_generate_types()
 
 
 func _generate_types() -> void:
