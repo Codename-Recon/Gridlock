@@ -43,8 +43,9 @@ extends Area2D
 			self.shader_modulate = true
 			self.color = value.color
 
-# there is currently a bug, where no custom resource type is allowed: https://github.com/godotengine/godot/issues/49443
-@export var properties: TerrainProperty
+@export var id: String
+
+@export var shop_units: Array[PackedScene]
 
 # layer variable for color layer, handled that only one layer can be set (new layer overwrites old one)
 @export var layer: Sprite2D:
@@ -108,12 +109,8 @@ func _set_color(set_color: Color) -> void:
 
 func _cast_collider(direction: Vector2) -> Area2D:
 	var terrains: Array[Node] = get_tree().get_nodes_in_group("terrain")
-	var test_position: Vector2 = (
-		global_position + direction * ProjectSettings.get_setting("global/grid_size").y
-	)
-	terrains = terrains.filter(
-		func(t: Node) -> bool: return (t as Terrain).global_position == test_position
-	)
+	var test_position: Vector2 = (global_position + direction * ProjectSettings.get_setting("global/grid_size").y)
+	terrains = terrains.filter(func(t: Node) -> bool: return (t as Terrain).global_position == test_position)
 	var entity: Area2D
 	if len(terrains) > 0:
 		entity = terrains[0]

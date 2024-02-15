@@ -9,5 +9,4 @@ func _ready() -> void:
 
 
 func reset_capture_health() -> void:
-	var properties: TerrainProperty = (get_parent() as Terrain).properties
-	capture_health = properties.capture_health
+	capture_health = 200

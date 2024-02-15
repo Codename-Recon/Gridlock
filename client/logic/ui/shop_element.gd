@@ -6,16 +6,17 @@ signal unit_selected
 @export var unit_scene: PackedScene
 
 var _unit: Unit
-
+var _types: GlobalTypes = Types
 
 func _ready() -> void:
 	super()
 	($SelectOverlay as ColorRect).hide()
 	_unit = (unit_scene.instantiate() as Unit)
 	_unit.get_unit_stats().hide()
-	(%Title as Label).text = tr(_unit.properties.name)
-	(%Body as Label).text = tr(_unit.properties.description)
-	(%Cost as Label).text = str(_unit.properties.cost)
+
+	(%Title as Label).text = tr(str(_types.units[_unit.id]["name"]))
+	(%Body as Label).text = tr(str(_types.units[_unit.id]["description"]))
+	(%Cost as Label).text = str(_types.units[_unit.id]["cost"])
 	%SpawnSpot.add_child(_unit)
 
 

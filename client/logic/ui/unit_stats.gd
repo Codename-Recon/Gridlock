@@ -1,4 +1,3 @@
-@tool
 class_name UnitStats
 extends Node2D
 signal round_over_changed
@@ -61,16 +60,11 @@ signal round_over_changed
 		if ammo > -1:
 			ammo = value
 			if is_inside_tree():
-				var properties: UnitProperty = (get_parent() as Unit).properties
-				if ammo > properties.ammo:
-					ammo = properties.ammo
-				if (
-					ammo
-					< (
-						properties.ammo
-						* ProjectSettings.get_setting("global/unit_ammo_blink_threshold")
-					)
-				):
+				var unit: Unit = get_parent() as Unit
+				if ammo > _types.units[unit.id]["ammo"]:
+					ammo = _types.units[unit.id]["ammo"]
+				var ammo_threshold: int = ProjectSettings.get_setting("global/unit_ammo_blink_threshold")
+				if (ammo < (_types.units[unit.id]["ammo"] * ammo_threshold)):
 					ammo_low = true
 				else:
 					ammo_low = false
@@ -81,16 +75,11 @@ signal round_over_changed
 		if fuel > -1:
 			fuel = value
 			if is_inside_tree():
-				var properties: UnitProperty = (get_parent() as Unit).properties
-				if fuel > properties.fuel:
-					fuel = properties.fuel
-				if (
-					fuel
-					< (
-						properties.fuel
-						* ProjectSettings.get_setting("global/unit_fuel_blink_threshold")
-					)
-				):
+				var unit: Unit = get_parent() as Unit
+				if fuel > _types.units[unit.id]["fuel"]:
+					fuel = _types.units[unit.id]["fuel"]
+				var fuel_threshold: int = ProjectSettings.get_setting("global/unit_fuel_blink_threshold")
+				if (fuel < (_types.units[unit.id]["fuel"] * fuel_threshold)):
 					fuel_low = true
 				else:
 					fuel_low = false
@@ -109,11 +98,12 @@ signal round_over_changed
 @onready var _animation_fuel: AnimationPlayer = %AnimationFuel as AnimationPlayer
 @onready var _stars: UnitStatsStars = %Stars as UnitStatsStars
 
+var _types: GlobalTypes = Types
 
 func _ready() -> void:
-	var properties: UnitProperty = (get_parent() as Unit).properties
-	ammo = properties.ammo
-	fuel = properties.fuel
+	var unit: Unit = get_parent() as Unit
+	ammo = _types.units[unit.id]["ammo"]
+	fuel = _types.units[unit.id]["fuel"]
 	if ammo_low:
 		_animation_ammo.play("AmmoBlink")
 	else:
@@ -134,5 +124,5 @@ func is_unit_damaged() -> bool:
 
 
 func can_be_refilled() -> bool:
-	var properties: UnitProperty = (get_parent() as Unit).properties
-	return fuel < properties.fuel or ammo < properties.ammo
+	var unit: Unit = get_parent() as Unit
+	return fuel < _types.units[unit.id]["fuel"] or ammo < _types.units[unit.id]["ammo"]

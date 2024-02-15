@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4iai7oi81hmi"]
+[gd_scene load_steps=17 format=3 uid="uid://c4iai7oi81hmi"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_lwul0"]
-[ext_resource type="Script" path="res://logic/game/units/unit_property.gd" id="2_rru76"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_mycf7"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_s26s1"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="6_cntky"]
@@ -10,37 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="9_rtjsu"]
 [ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="11_2ueb1"]
 [ext_resource type="AudioStream" uid="uid://cin8b6ejg3oby" path="res://assets/sounds/doorOpen_001.ogg" id="27_bx208"]
-
-[sub_resource type="Resource" id="Resource_qjhag"]
-script = ExtResource("2_rru76")
-name = "APC"
-health = 100
-movement_points = 6
-ammo = 0
-fuel = 70
-daily_fuel_decay = 0
-vision = 1
-min_range = 0
-max_range = 0
-movement_type = 1
-cost = 5000
-can_capture = false
-can_move_and_attack = false
-can_refill = true
-weapons = []
-damage_table = {
-"Artillery Cannon": 70,
-"Bazooka": 75,
-"Light Tank Cannon": 75,
-"Machine Gun": 14,
-"Medium Tank Cannon": 95,
-"Rockets": 75,
-"Tank Machine Gun": 45,
-"Vulcan Cannon": 50
-}
-carrying_types = Array[int]([6, 7])
-carrying_size = 1
-description = "APC_DESCRIPTION"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ugl4"]
 resource_local_to_scene = true
@@ -157,7 +125,7 @@ _data = {
 z_index = 1
 script = ExtResource("1_lwul0")
 shader_modulate = true
-properties = SubResource("Resource_qjhag")
+id = "APC"
 cargo = NodePath("Cargo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
