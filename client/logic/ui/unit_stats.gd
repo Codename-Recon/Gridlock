@@ -61,7 +61,6 @@ signal round_over_changed
 			ammo = value
 			if is_inside_tree():
 				var unit: Unit = get_parent() as Unit
-				_types.units[unit.id]
 				if ammo > _types.units[unit.id]["ammo"]:
 					ammo = _types.units[unit.id]["ammo"]
 				var ammo_threshold: int = ProjectSettings.get_setting("global/unit_ammo_blink_threshold")

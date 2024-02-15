@@ -70,7 +70,6 @@ func calculate_possible_terrains_to_move() -> void:
 	_possible_terrains_to_move_buffer = []
 	# fuel limits possible movement steps
 	var possible_movement_steps: int
-	_types.units[id]["mp"]
 	if _types.units[id]["mp"] < get_unit_stats().fuel:
 		possible_movement_steps = _types.units[id]["mp"]
 	else:

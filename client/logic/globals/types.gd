@@ -32,7 +32,6 @@ func _ready() -> void:
 
 
 func _generate_types() -> void:
-	var file_name: String
 	var path: String = ProjectSettings.globalize_path("res://") + "../types/enum.json"
 	var enum_file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	if not enum_file:
@@ -83,7 +82,7 @@ func _get_folder_values(path: String) -> Dictionary:
 	return dic
 
 
-func _get_movement_values(path: String, movement_types: Array, terrain_types: Array, weather_types: Array) -> Dictionary:
+func _get_movement_values(path: String, _movement_types: Array, _terrain_types: Array, _weather_types: Array) -> Dictionary:
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	if not file:
 		push_error("Can not open file: " + path)
@@ -95,17 +94,17 @@ func _get_movement_values(path: String, movement_types: Array, terrain_types: Ar
 	for t: int in data.size():
 		var sub_data: Array = data[t]
 		var terrain: Dictionary = {}
-		dic[terrain_types[t]] = terrain
+		dic[_terrain_types[t]] = terrain
 		for w: int in sub_data.size():
 			var sub_sub_data: Array = sub_data[w]
 			var weather: Dictionary = {}
-			terrain[weather_types[w]] = weather
+			terrain[_weather_types[w]] = weather
 			for m: int in sub_sub_data.size():
-				weather[movement_types[m]] = sub_sub_data[m]
+				weather[_movement_types[m]] = sub_sub_data[m]
 	return dic
 
 
-func _get_damage_values(path: String, unit_types: Array) -> Dictionary:
+func _get_damage_values(path: String, _unit_types: Array) -> Dictionary:
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	if not file:
 		push_error("Can not open file: " + path)
@@ -117,9 +116,9 @@ func _get_damage_values(path: String, unit_types: Array) -> Dictionary:
 	for a: int in data.size():
 		var sub_data: Array = data[a]
 		var attacker: Dictionary = {}
-		dic[unit_types[a]] = attacker
+		dic[_unit_types[a]] = attacker
 		for d: int in sub_data.size():
-			attacker[unit_types[d]] = sub_data[d]
+			attacker[_unit_types[d]] = sub_data[d]
 	return dic
 
 
