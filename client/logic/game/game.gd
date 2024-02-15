@@ -1382,7 +1382,7 @@ func _calculate_damage(attacking_unit: Unit, defending_unit: Unit, random_luck: 
 	var primary_damage: int = _types.primary_damage[attacking_unit.id][defending_unit.id]
 	var secondary_damage: int = _types.secondary_damage[attacking_unit.id][defending_unit.id]
 	# when attacking unit has enough ammo for primary weapon
-	if attacking_unit.get_unit_stats().ammo > 0 \
+	if attacking_unit.get_unit_stats().ammo > 0 or attacking_unit.get_unit_stats().ammo == -1 \
 			# and defending unit "accepts" primary weapon
 			and primary_damage > 0:
 		base_damage = primary_damage

@@ -210,8 +210,8 @@ func _move(start: Terrain, terrains: Array, movement_left: int, direction: Vecto
 	if start:
 		if step > 0:
 			var movement_cost: int = _types.movements[start.id]["CLEAR"][_types.units[id]["movement_type"]]
-			# movement cost -1 means not possible to use this terrain
-			if movement_cost < 0 or (start.has_unit() and start.get_unit().player_owned != player_owned):
+			# movement cost 0 means not possible to use this terrain
+			if movement_cost < 1 or (start.has_unit() and start.get_unit().player_owned != player_owned):
 				return
 			movement_left -= movement_cost
 			if movement_left < 0:

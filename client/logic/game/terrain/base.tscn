@@ -1,7 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4giy6a41fm5c"]
+[gd_scene load_steps=16 format=3 uid="uid://b4giy6a41fm5c"]
 
 [ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_la253"]
+[ext_resource type="PackedScene" uid="uid://4464jjyowffi" path="res://logic/game/units/antiair.tscn" id="2_xayqm"]
+[ext_resource type="PackedScene" uid="uid://c4iai7oi81hmi" path="res://logic/game/units/apc.tscn" id="3_0nsrg"]
+[ext_resource type="PackedScene" uid="uid://jgjbc5qgpnh5" path="res://logic/game/units/artillery.tscn" id="4_y66b3"]
+[ext_resource type="PackedScene" uid="uid://2t61plm4vpda" path="res://logic/game/units/infantry.tscn" id="5_sogi7"]
+[ext_resource type="PackedScene" uid="uid://d1vtobfji2rgv" path="res://logic/game/units/mech.tscn" id="6_lrwei"]
 [ext_resource type="PackedScene" uid="uid://54war5m37akr" path="res://logic/ui/terrain_stats.tscn" id="6_oi3i7"]
+[ext_resource type="PackedScene" uid="uid://dfki27p05gtry" path="res://logic/game/units/medium_tank.tscn" id="7_ag8ek"]
+[ext_resource type="PackedScene" uid="uid://3h53g6pnsmnl" path="res://logic/game/units/recon.tscn" id="8_lhjua"]
+[ext_resource type="PackedScene" uid="uid://ch51qqxsd8xsq" path="res://logic/game/units/rocket.tscn" id="9_d3ubg"]
+[ext_resource type="PackedScene" uid="uid://dcy7mn6xmucyw" path="res://logic/game/units/tank.tscn" id="10_42f1p"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="12_ctcoa"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="12_twf8b"]
 
@@ -24,6 +33,7 @@ collision_layer = 9
 script = ExtResource("1_la253")
 color = Color(0.00784314, 0.0117647, 0.00784314, 1)
 id = "BASE"
+shop_units = Array[PackedScene]([ExtResource("5_sogi7"), ExtResource("6_lrwei"), ExtResource("8_lhjua"), ExtResource("3_0nsrg"), ExtResource("4_y66b3"), ExtResource("10_42f1p"), ExtResource("2_xayqm"), ExtResource("9_d3ubg"), ExtResource("7_ag8ek")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_nfy18")
