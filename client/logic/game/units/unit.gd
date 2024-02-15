@@ -274,4 +274,4 @@ func _end_move() -> void:
 
 func _set_unit_stars() -> void:
 	if _unit_stats and is_on_terrain():
-		_unit_stats.star_number = _types.terrains[get_terrain().id]["defence"]
+		_unit_stats.star_number = _types.terrains[get_terrain().id]["defense"]

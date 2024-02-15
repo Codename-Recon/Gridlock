@@ -10,7 +10,7 @@ region = Rect2(48, 48, 16, 16)
 [node name="River" type="Area2D"]
 collision_layer = 9
 script = ExtResource("1_4ge2v")
-terrain_id = "RIVER"
+id = "RIVER"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_rhl3p")

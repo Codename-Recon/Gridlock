@@ -151,7 +151,7 @@ _data = {
 z_index = 1
 script = ExtResource("1_6por7")
 shader_modulate = true
-unit_id = "INFANTRY"
+id = "INFANTRY"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_pb6k5")

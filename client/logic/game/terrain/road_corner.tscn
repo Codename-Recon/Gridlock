@@ -10,7 +10,7 @@ region = Rect2(48, 112, 16, 16)
 [node name="RoadCorner" type="Area2D"]
 collision_layer = 9
 script = ExtResource("1_t1685")
-terrain_id = "ROAD"
+id = "ROAD"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_l0obg")

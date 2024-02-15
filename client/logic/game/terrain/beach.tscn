@@ -10,7 +10,7 @@ region = Rect2(16, 16, 16, 16)
 [node name="Beach" type="Area2D"]
 collision_layer = 9
 script = ExtResource("1_6om8j")
-terrain_id = "BEACH"
+id = "BEACH"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_hgaqy")

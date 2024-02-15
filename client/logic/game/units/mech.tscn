@@ -133,10 +133,11 @@ _data = {
 }
 
 [node name="Mech" type="Node2D"]
+z_index = 1
 script = ExtResource("1_p20bd")
 shader_modulate = true
 color = Color(1, 0.0941176, 0.129412, 1)
-unit_id = "MECH"
+id = "MECH"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0ygvo")

@@ -23,6 +23,7 @@ region = Rect2(128, 16, 16, 16)
 collision_layer = 9
 script = ExtResource("1_7skrb")
 color = Color(0.0056, 0.01, 0.00941333, 1)
+id = "CITY"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_gl3f1")

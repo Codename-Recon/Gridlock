@@ -10,7 +10,7 @@ region = Rect2(64, 96, 16, 16)
 [node name="Forest" type="Area2D"]
 collision_layer = 9
 script = ExtResource("1_w5sbx")
-terrain_id = "WOOD"
+id = "WOOD"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_k6vuw")

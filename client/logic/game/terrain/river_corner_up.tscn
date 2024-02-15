@@ -10,7 +10,7 @@ region = Rect2(64, 16, 16, 16)
 [node name="RiverCornerUp" type="Area2D"]
 collision_layer = 9
 script = ExtResource("1_dcdp8")
-terrain_id = "RIVER"
+id = "RIVER"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_bwb5y")

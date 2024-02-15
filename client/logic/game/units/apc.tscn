@@ -121,12 +121,11 @@ _data = {
 "refill": SubResource("Animation_ikovw")
 }
 
-[node name="APC" type="Node2D" node_paths=PackedStringArray("cargo")]
+[node name="APC" type="Node2D"]
 z_index = 1
 script = ExtResource("1_lwul0")
 shader_modulate = true
-unit_id = "APC"
-cargo = NodePath("")
+id = "APC"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_6ugl4")

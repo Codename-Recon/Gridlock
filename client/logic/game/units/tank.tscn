@@ -129,7 +129,7 @@ _data = {
 z_index = 1
 script = ExtResource("1_ng5nf")
 shader_modulate = true
-unit_id = "TANK"
+id = "TANK"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_xykqe")

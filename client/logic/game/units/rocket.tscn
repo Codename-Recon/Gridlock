@@ -245,7 +245,7 @@ _data = {
 z_index = 1
 script = ExtResource("1_bbk6i")
 shader_modulate = true
-unit_id = "ROCKET"
+id = "ROCKET"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_k3xn6")

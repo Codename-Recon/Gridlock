@@ -23,7 +23,7 @@ region = Rect2(176, 16, 16, 16)
 collision_layer = 9
 script = ExtResource("1_la253")
 color = Color(0.00784314, 0.0117647, 0.00784314, 1)
-terrain_id = "BASE"
+id = "BASE"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_nfy18")

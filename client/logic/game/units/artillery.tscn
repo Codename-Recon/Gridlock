@@ -167,7 +167,7 @@ z_index = 1
 script = ExtResource("1_wmr7a")
 shader_modulate = true
 color = Color(1, 0, 0, 1)
-unit_id = "ARTILLERY"
+id = "ARTILLERY"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_7rexn")

@@ -23,7 +23,7 @@ region = Rect2(144, 16, 16, 16)
 collision_layer = 9
 script = ExtResource("1_4uq48")
 color = Color(0, 0.00784314, 0.0117647, 1)
-terrain_id = "HQ"
+id = "HQ"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_dj43m")

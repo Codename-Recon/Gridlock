@@ -10,7 +10,7 @@ region = Rect2(0, 0, 16, 16)
 [node name="Grass" type="Area2D"]
 collision_layer = 9
 script = ExtResource("1_dajis")
-terrain_id = "PLAIN"
+id = "PLAIN"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_ltwi8")

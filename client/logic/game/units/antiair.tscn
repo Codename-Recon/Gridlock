@@ -175,7 +175,7 @@ z_index = 1
 script = ExtResource("1_off8n")
 shader_modulate = true
 color = Color(1, 0, 0, 1)
-unit_id = "ANTI_AIR"
+id = "ANTI_AIR"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_j5max")

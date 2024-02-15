@@ -10,6 +10,7 @@ region = Rect2(16, 32, 16, 16)
 [node name="Sea" type="Area2D"]
 collision_layer = 9
 script = ExtResource("1_xfbk1")
+id = "SEA"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_82wcl")

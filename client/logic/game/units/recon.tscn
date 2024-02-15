@@ -136,7 +136,7 @@ _data = {
 z_index = 1
 script = ExtResource("1_2xvu7")
 shader_modulate = true
-unit_id = "RECON"
+id = "RECON"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ltewp")

@@ -10,7 +10,7 @@ region = Rect2(16, 128, 16, 16)
 [node name="RoadTCross" type="Area2D"]
 collision_layer = 9
 script = ExtResource("1_7crny")
-terrain_id = "ROAD"
+id = "ROAD"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_pbxpd")

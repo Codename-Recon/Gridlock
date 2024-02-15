@@ -10,7 +10,7 @@ region = Rect2(80, 0, 16, 16)
 [node name="MountainLow" type="Area2D"]
 collision_layer = 9
 script = ExtResource("1_0ahmq")
-terrain_id = "MOUNTAIN"
+id = "MOUNTAIN"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_pm51n")
