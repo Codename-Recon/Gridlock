@@ -1,48 +1,19 @@
-[gd_scene load_steps=20 format=3 uid="uid://d1vtobfji2rgv"]
+[gd_scene load_steps=18 format=3 uid="uid://d1vtobfji2rgv"]
 
-[ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_2glhy"]
-[ext_resource type="Script" path="res://logic/game/units/unit_property.gd" id="2_pfjjt"]
-[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_a510e"]
-[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_n0sp1"]
-[ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="6_bukab"]
-[ext_resource type="Script" path="res://logic/game/audio_stream_player_spatial.gd" id="7_ug5pt"]
-[ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="7_xpj3g"]
-[ext_resource type="AudioStream" uid="uid://duns7rb260nxe" path="res://assets/sounds/laserRetro_003.ogg" id="20_e4byj"]
-[ext_resource type="AudioStream" uid="uid://cvo0vbob1j0pi" path="res://assets/sounds/explosionCrunch_004.ogg" id="21_g47nu"]
-[ext_resource type="AudioStream" uid="uid://b31ajl2bvd1wj" path="res://assets/sounds/impactPlate_medium_004.ogg" id="22_ahpvm"]
-[ext_resource type="AudioStream" uid="uid://by02xaouijj2c" path="res://assets/sounds/hold.ogg" id="23_xshuu"]
-
-[sub_resource type="Resource" id="Resource_k4cr0"]
-script = ExtResource("2_pfjjt")
-name = "BAZOOKA"
-health = 100
-movement_points = 2
-ammo = 3
-fuel = 70
-daily_fuel_decay = 0
-vision = 2
-min_range = 1
-max_range = 1
-movement_type = 7
-cost = 2500
-can_capture = true
-can_move_and_attack = true
-can_refill = false
-weapons = ["Bazooka", "Machine Gun"]
-damage_table = {
-"Artillery Cannon": 90,
-"Machine Gun": 55,
-"Rockets": 90,
-"Tank Machine Gun": 70,
-"Vulcan Cannon": 105
-}
-carrying_types = Array[int]([])
-carrying_size = 0
-description = "BAZOOKA_DESCRIPTION"
+[ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_p20bd"]
+[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_nob08"]
+[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_cwyba"]
+[ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="4_jfrjt"]
+[ext_resource type="Script" path="res://logic/game/audio_stream_player_spatial.gd" id="5_w02do"]
+[ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_h5usk"]
+[ext_resource type="AudioStream" uid="uid://duns7rb260nxe" path="res://assets/sounds/laserRetro_003.ogg" id="7_lk0t1"]
+[ext_resource type="AudioStream" uid="uid://cvo0vbob1j0pi" path="res://assets/sounds/explosionCrunch_004.ogg" id="8_30hm0"]
+[ext_resource type="AudioStream" uid="uid://b31ajl2bvd1wj" path="res://assets/sounds/impactPlate_medium_004.ogg" id="9_c4b7y"]
+[ext_resource type="AudioStream" uid="uid://by02xaouijj2c" path="res://assets/sounds/hold.ogg" id="10_6ruy5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ygvo"]
 resource_local_to_scene = true
-shader = ExtResource("3_n0sp1")
+shader = ExtResource("2_nob08")
 shader_parameter/shifting = true
 shader_parameter/shift_level_h = 0.14
 shader_parameter/shift_level_s = 0.26
@@ -51,7 +22,7 @@ shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
 shader_parameter/new_color = Color(1, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ebhwr"]
-atlas = ExtResource("3_a510e")
+atlas = ExtResource("3_cwyba")
 region = Rect2(272, 96, 16, 16)
 
 [sub_resource type="Animation" id="Animation_42uhv"]
@@ -71,11 +42,11 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("20_e4byj")
+"stream": ExtResource("7_lk0t1")
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("21_g47nu")
+"stream": ExtResource("8_30hm0")
 }],
 "times": PackedFloat32Array(0, 0.8)
 }
@@ -111,7 +82,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("22_ahpvm")
+"stream": ExtResource("9_c4b7y")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -129,7 +100,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("23_xshuu")
+"stream": ExtResource("10_6ruy5")
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -161,11 +132,11 @@ _data = {
 "die": SubResource("Animation_dudry")
 }
 
-[node name="Bazooka" type="Node2D"]
-script = ExtResource("1_2glhy")
+[node name="Mech" type="Node2D"]
+script = ExtResource("1_p20bd")
 shader_modulate = true
 color = Color(1, 0.0941176, 0.129412, 1)
-properties = SubResource("Resource_k4cr0")
+unit_id = "MECH"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0ygvo")
@@ -173,12 +144,12 @@ texture = SubResource("AtlasTexture_ebhwr")
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-stream = ExtResource("6_bukab")
+stream = ExtResource("4_jfrjt")
 pitch_scale = 1.5
 area_mask = 0
-script = ExtResource("7_ug5pt")
+script = ExtResource("5_w02do")
 
-[node name="UnitStats" parent="." instance=ExtResource("7_xpj3g")]
+[node name="UnitStats" parent="." instance=ExtResource("6_h5usk")]
 ammo = 3
 fuel = 70
 
@@ -189,4 +160,4 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("7_ug5pt")
+script = ExtResource("5_w02do")

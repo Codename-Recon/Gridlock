@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bwhubcysg82ir" path="res://logic/game/terrain/river_corner_left.tscn" id="8_2imdi"]
 [ext_resource type="PackedScene" uid="uid://b4giy6a41fm5c" path="res://logic/game/terrain/base.tscn" id="8_71rwo"]
 [ext_resource type="PackedScene" uid="uid://2t61plm4vpda" path="res://logic/game/units/infantry.tscn" id="9_w0w7y"]
-[ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/game/terrain/qg.tscn" id="10_vh3vs"]
+[ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/game/terrain/hq.tscn" id="10_vh3vs"]
 [ext_resource type="PackedScene" uid="uid://dd0wqod476fk7" path="res://logic/game/terrain/mountain_low.tscn" id="11_elgmu"]
 [ext_resource type="PackedScene" uid="uid://dpr3trog5kdn4" path="res://logic/game/terrain/city.tscn" id="12_bvexk"]
 [ext_resource type="PackedScene" uid="uid://cd7cf0w3wkur5" path="res://logic/game/terrain/grass.tscn" id="13_rpyke"]

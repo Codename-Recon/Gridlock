@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://beegvonqcwp4y" path="res://logic/game/players/player_network_2.tscn" id="3_g6i62"]
 [ext_resource type="PackedScene" uid="uid://j2dfnwe4u54k" path="res://logic/game/terrain/road.tscn" id="4_4yfa2"]
 [ext_resource type="PackedScene" uid="uid://d0fgjj53xl6xb" path="res://logic/game/terrain/forest.tscn" id="5_6rase"]
-[ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/game/terrain/qg.tscn" id="6_ro67w"]
+[ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/game/terrain/hq.tscn" id="6_ro67w"]
 [ext_resource type="PackedScene" uid="uid://c1qfl356w5jbq" path="res://logic/game/terrain/road_t_cross.tscn" id="6_tvxhd"]
 [ext_resource type="PackedScene" uid="uid://b4giy6a41fm5c" path="res://logic/game/terrain/base.tscn" id="7_sqtmj"]
 [ext_resource type="PackedScene" uid="uid://bxx88dyd0j7el" path="res://logic/game/terrain/road_corner.tscn" id="7_t38kf"]

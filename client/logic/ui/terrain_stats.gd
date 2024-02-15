@@ -3,11 +3,12 @@ extends Node2D
 
 @export var capture_health: int
 
+var _types: GlobalTypes = Types
+
 
 func _ready() -> void:
 	reset_capture_health()
 
 
 func reset_capture_health() -> void:
-	var properties: TerrainProperty = (get_parent() as Terrain).properties
-	capture_health = properties.capture_health
+	capture_health = 200

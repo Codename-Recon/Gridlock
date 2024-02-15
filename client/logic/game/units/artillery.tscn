@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://jgjbc5qgpnh5"]
+[gd_scene load_steps=19 format=3 uid="uid://jgjbc5qgpnh5"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_wmr7a"]
-[ext_resource type="Script" path="res://logic/game/units/unit_property.gd" id="2_xph8m"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_girpv"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_rpcg3"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="8_p22wk"]
@@ -12,37 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://duns7rb260nxe" path="res://assets/sounds/laserRetro_003.ogg" id="13_jikb0"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="14_2mhce"]
 [ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="16_eo4ax"]
-
-[sub_resource type="Resource" id="Resource_8ceab"]
-script = ExtResource("2_xph8m")
-name = "ARTILLERY"
-health = 100
-movement_points = 5
-ammo = 9
-fuel = 50
-daily_fuel_decay = 0
-vision = 1
-min_range = 2
-max_range = 3
-movement_type = 1
-cost = 6000
-can_capture = false
-can_move_and_attack = false
-can_refill = false
-weapons = ["Artillery Cannon"]
-damage_table = {
-"Artillery Cannon": 75,
-"Bazooka": 70,
-"Light Tank Cannon": 70,
-"Machine Gun": 15,
-"Medium Tank Cannon": 105,
-"Rockets": 80,
-"Tank Machine Gun": 45,
-"Vulcan Cannon": 50
-}
-carrying_types = null
-carrying_size = 0
-description = "ARTILLERY_DESCRIPTION"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7rexn"]
 resource_local_to_scene = true
@@ -199,7 +167,7 @@ z_index = 1
 script = ExtResource("1_wmr7a")
 shader_modulate = true
 color = Color(1, 0, 0, 1)
-properties = SubResource("Resource_8ceab")
+unit_id = "ARTILLERY"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_7rexn")

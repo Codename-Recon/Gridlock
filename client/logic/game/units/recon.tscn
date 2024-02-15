@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://3h53g6pnsmnl"]
+[gd_scene load_steps=17 format=3 uid="uid://3h53g6pnsmnl"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_2xvu7"]
-[ext_resource type="Script" path="res://logic/game/units/unit_property.gd" id="2_g41dk"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_qolh6"]
 [ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="4_beujv"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="6_kw3pa"]
@@ -10,37 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://dygiwgkj7il7s" path="res://assets/sounds/spaceEngine_001.ogg" id="9_lxdtk"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="15_tbysg"]
 [ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="17_tw04x"]
-
-[sub_resource type="Resource" id="Resource_kenlw"]
-script = ExtResource("2_g41dk")
-name = "RECON"
-health = 100
-movement_points = 8
-ammo = -1
-fuel = 80
-daily_fuel_decay = 0
-vision = 5
-min_range = 1
-max_range = 1
-movement_type = 2
-cost = 4000
-can_capture = false
-can_move_and_attack = true
-can_refill = false
-weapons = ["Tank Machine Gun"]
-damage_table = {
-"Artillery Cannon": 80,
-"Bazooka": 85,
-"Light Tank Cannon": 85,
-"Machine Gun": 15,
-"Medium Tank Cannon": 105,
-"Rockets": 90,
-"Tank Machine Gun": 35,
-"Vulcan Cannon": 60
-}
-carrying_types = null
-carrying_size = 0
-description = "RECON_DESCRIPTION"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ltewp"]
 resource_local_to_scene = true
@@ -168,7 +136,7 @@ _data = {
 z_index = 1
 script = ExtResource("1_2xvu7")
 shader_modulate = true
-properties = SubResource("Resource_kenlw")
+unit_id = "RECON"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ltewp")

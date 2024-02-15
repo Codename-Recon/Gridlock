@@ -34,7 +34,7 @@ signal died
 			self.shader_modulate = true
 			self.color = value.color
 
-@export var properties: UnitProperty
+@export var id: String
 
 @export var move_curve: Curve2D:
 	set(value):
@@ -52,6 +52,8 @@ signal died
 var _possible_terrains_to_move_buffer: Array[Terrain]
 var _possible_terrains_to_move_calculating: bool
 
+var _types: GlobalTypes = Types
+
 @onready var _unit_stats: UnitStats = $UnitStats as UnitStats
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer as AnimationPlayer
 @onready var _sprite: Sprite2D = $Sprite2D as Sprite2D
@@ -68,8 +70,9 @@ func calculate_possible_terrains_to_move() -> void:
 	_possible_terrains_to_move_buffer = []
 	# fuel limits possible movement steps
 	var possible_movement_steps: int
-	if properties.movement_points < get_unit_stats().fuel:
-		possible_movement_steps = properties.movement_points
+	_types.units[id]["mp"]
+	if _types.units[id]["mp"] < get_unit_stats().fuel:
+		possible_movement_steps = _types.units[id]["mp"]
 	else:
 		possible_movement_steps = get_unit_stats().fuel
 	_move(parent, _possible_terrains_to_move_buffer, possible_movement_steps, Vector2.ZERO, 0)
@@ -78,7 +81,8 @@ func calculate_possible_terrains_to_move() -> void:
 
 func get_possible_terrains_to_attack_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
 	var terrains: Array[Terrain] = []
-	_attack(start_terrain, terrains, properties.max_range, Vector2.ZERO, 0)
+	var max_range: int = _types.units[id]["max_range"]
+	_attack(start_terrain, terrains, max_range, Vector2.ZERO, 0)
 	return terrains
 
 func get_neighbors_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
@@ -95,8 +99,8 @@ func get_unit_stats() -> UnitStats:
 func refill() -> void:
 	var sound: GlobalSound = Sound as GlobalSound
 	sound.play("Refill")
-	_unit_stats.fuel = properties.fuel
-	_unit_stats.ammo = properties.ammo
+	_unit_stats.fuel = _types.units[id]["fuel"]
+	_unit_stats.ammo = _types.units[id]["ammo"]
 
 func repair(health: int) -> void:
 	var sound: GlobalSound = Sound as GlobalSound
@@ -181,7 +185,7 @@ func _attack(start: Terrain, terrains: Array, distance_left: int, direction: Vec
 			distance_left -= 1
 			if distance_left < 0:
 				return
-		if not start in terrains and distance_left < properties.min_range:
+		if not start in terrains and distance_left < _types.units[id]["min_range"]:
 			terrains.append(start)
 		if step == 0:
 			_attack(start.get_up(), terrains, distance_left, Vector2.UP, step + 1)
@@ -205,7 +209,7 @@ func _attack(start: Terrain, terrains: Array, distance_left: int, direction: Vec
 func _move(start: Terrain, terrains: Array, movement_left: int, direction: Vector2, step: int, allow_backwards: bool = false) -> void:
 	if start:
 		if step > 0:
-			var movement_cost: int = start.properties.get_movement_cost(properties.movement_type)
+			var movement_cost: int = _types.movements[start.id]["CLEAR"][_types.units[id]["movement_type"]]
 			# movement cost -1 means not possible to use this terrain
 			if movement_cost < 0 or (start.has_unit() and start.get_unit().player_owned != player_owned):
 				return
@@ -270,4 +274,4 @@ func _end_move() -> void:
 
 func _set_unit_stars() -> void:
 	if _unit_stats and is_on_terrain():
-		_unit_stats.star_number = get_terrain().properties.defence_level
+		_unit_stats.star_number = _types.terrains[get_terrain().id]["defence"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://2t61plm4vpda"]
+[gd_scene load_steps=17 format=3 uid="uid://2t61plm4vpda"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_6por7"]
-[ext_resource type="Script" path="res://logic/game/units/unit_property.gd" id="2_ofa4c"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_g2qkq"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_jvmps"]
 [ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="5_xjxi4"]
@@ -10,34 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://bluxi27ugieur" path="res://assets/sounds/laserSmall_001.ogg" id="13_cx85l"]
 [ext_resource type="AudioStream" uid="uid://b31ajl2bvd1wj" path="res://assets/sounds/impactPlate_medium_004.ogg" id="14_j8dta"]
 [ext_resource type="AudioStream" uid="uid://by02xaouijj2c" path="res://assets/sounds/hold.ogg" id="15_mv7ka"]
-
-[sub_resource type="Resource" id="Resource_05f40"]
-script = ExtResource("2_ofa4c")
-name = "INFANTRY"
-health = 100
-movement_points = 3
-ammo = -1
-fuel = 99
-daily_fuel_decay = 0
-vision = 2
-min_range = 1
-max_range = 1
-movement_type = 6
-cost = 1000
-can_capture = true
-can_move_and_attack = true
-can_refill = false
-weapons = ["Machine Gun"]
-damage_table = {
-"Artillery Cannon": 90,
-"Machine Gun": 55,
-"Rockets": 90,
-"Tank Machine Gun": 70,
-"Vulcan Cannon": 105
-}
-carrying_types = null
-carrying_size = 0
-description = "INFANTRY_DESCRIPTION"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pb6k5"]
 resource_local_to_scene = true
@@ -180,7 +151,7 @@ _data = {
 z_index = 1
 script = ExtResource("1_6por7")
 shader_modulate = true
-properties = SubResource("Resource_05f40")
+unit_id = "INFANTRY"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_pb6k5")

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bhn7n1v8jj8v0" path="res://logic/game/terrain/river.tscn" id="6_04wcp"]
 [ext_resource type="PackedScene" uid="uid://buh5suebq65kk" path="res://logic/game/terrain/bridge.tscn" id="7_dqayu"]
 [ext_resource type="PackedScene" uid="uid://bwhubcysg82ir" path="res://logic/game/terrain/river_corner_left.tscn" id="8_jls06"]
-[ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/game/terrain/qg.tscn" id="9_j8nln"]
+[ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/game/terrain/hq.tscn" id="9_j8nln"]
 [ext_resource type="PackedScene" uid="uid://dd0wqod476fk7" path="res://logic/game/terrain/mountain_low.tscn" id="10_j844p"]
 [ext_resource type="PackedScene" uid="uid://b4giy6a41fm5c" path="res://logic/game/terrain/base.tscn" id="11_nvj2b"]
 [ext_resource type="PackedScene" uid="uid://2t61plm4vpda" path="res://logic/game/units/infantry.tscn" id="12_nw60u"]

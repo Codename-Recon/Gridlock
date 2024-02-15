@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfki27p05gtry"]
+[gd_scene load_steps=16 format=3 uid="uid://dfki27p05gtry"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_8nu1x"]
-[ext_resource type="Script" path="res://logic/game/units/unit_property.gd" id="2_36moj"]
 [ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="3_ogaip"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_rtrta"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="8_0ycrt"]
@@ -9,37 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="9_henxg"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="12_jnyto"]
 [ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="14_04hq3"]
-
-[sub_resource type="Resource" id="Resource_uuwkx"]
-script = ExtResource("2_36moj")
-name = "MEDIUM_TANK"
-health = 100
-movement_points = 5
-ammo = 8
-fuel = 50
-daily_fuel_decay = 0
-vision = 1
-min_range = 1
-max_range = 1
-movement_type = 1
-cost = 16000
-can_capture = false
-can_move_and_attack = true
-can_refill = false
-weapons = ["Medium Tank Cannon", "Tank Machine Gun"]
-damage_table = {
-"Artillery Cannon": 45,
-"Bazooka": 15,
-"Light Tank Cannon": 15,
-"Machine Gun": 1,
-"Medium Tank Cannon": 50,
-"Rockets": 50,
-"Tank Machine Gun": 1,
-"Vulcan Cannon": 10
-}
-carrying_types = null
-carrying_size = 0
-description = "MEDIUM_TANK_DESCRIPTION"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xgryc"]
 resource_local_to_scene = true
@@ -157,9 +125,10 @@ _data = {
 }
 
 [node name="MediumTank" type="Node2D"]
+z_index = 1
 script = ExtResource("1_8nu1x")
 shader_modulate = true
-properties = SubResource("Resource_uuwkx")
+unit_id = "MD_TANK"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_xgryc")

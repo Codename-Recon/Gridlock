@@ -43,8 +43,9 @@ extends Area2D
 			self.shader_modulate = true
 			self.color = value.color
 
-# there is currently a bug, where no custom resource type is allowed: https://github.com/godotengine/godot/issues/49443
-@export var properties: TerrainProperty
+@export var id: String
+
+@export var shop_units: Array[PackedScene]
 
 # layer variable for color layer, handled that only one layer can be set (new layer overwrites old one)
 @export var layer: Sprite2D:
