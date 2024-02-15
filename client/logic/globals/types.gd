@@ -64,6 +64,7 @@ func _generate_types() -> void:
 	
 	_replace_movement_index_with_type()
 	_replace_weapon_index_with_types()
+	_replace_carrying_index_with_types()
 
 func _get_folder_values(path: String) -> Dictionary:
 	var dic: Dictionary = {}
@@ -133,3 +134,11 @@ func _replace_weapon_index_with_types() -> void:
 			if index >= 0:
 				weapons.append(weapon_types[index])
 		units[unit]["weapons"] = weapons
+
+func _replace_carrying_index_with_types() -> void:
+	for unit: String in units:
+		var carrying_types: Array = []
+		for index: int in units[unit]["carrying_types"]:
+			if index >= 0:
+				carrying_types.append(unit_types[index])
+		units[unit]["carrying_types"] = carrying_types
