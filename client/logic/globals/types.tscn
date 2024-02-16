@@ -1671,10 +1671,10 @@ primary_damage = {
 "PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
-"STEALTH": 0.0,
-"SUB": 100.0,
-"T-COPTER": 0.0,
-"TANK": 115.0
+"STEALTH": 100.0,
+"SUB": 0.0,
+"T-COPTER": 115.0,
+"TANK": 0.0
 },
 "CRUISER": {
 "ANTI_AIR": 0.0,
