@@ -21,10 +21,10 @@
         "ANTI_AIR",
         "APC",
         "ARTILLERY",
-        "B-COPTER",
+        "BCOPTER",
         "BATTLESHIP",
-        "BLACK_BOAT",
-        "BLACK_BOMB",
+        "BLACKBOAT",
+        "BLACKBOMB",
         "BOMBER",
         "CARRIER",
         "CRUISER",
@@ -41,7 +41,7 @@
         "ROCKET",
         "STEALTH",
         "SUB",
-        "T-COPTER",
+        "TCOPTER",
         "TANK"
       ]
     },

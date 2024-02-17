@@ -1,18 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxq4g3bvxh5p3"]
+[gd_scene load_steps=17 format=3 uid="uid://cdvbe6lf1u2w4"]
 
-[ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_g63cb"]
-[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_jdmup"]
-[ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="3_3m82n"]
-[ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_3fxni"]
-[ext_resource type="Script" path="res://logic/game/audio_stream_player_spatial.gd" id="5_jcgav"]
-[ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_fwm3r"]
-[ext_resource type="AudioStream" uid="uid://dygiwgkj7il7s" path="res://assets/sounds/spaceEngine_001.ogg" id="7_4b2lt"]
-[ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="8_ibe12"]
-[ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="9_hhdnf"]
+[ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_stu5s"]
+[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_grlkt"]
+[ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="3_ux61a"]
+[ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_yopvh"]
+[ext_resource type="Script" path="res://logic/game/audio_stream_player_spatial.gd" id="5_g5ddr"]
+[ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_flf4j"]
+[ext_resource type="AudioStream" uid="uid://dygiwgkj7il7s" path="res://assets/sounds/spaceEngine_001.ogg" id="7_dl7bg"]
+[ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="8_v6rdp"]
+[ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="9_sb0f0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ltewp"]
 resource_local_to_scene = true
-shader = ExtResource("2_jdmup")
+shader = ExtResource("2_grlkt")
 shader_parameter/shifting = true
 shader_parameter/shift_level_h = 0.085
 shader_parameter/shift_level_s = 0.23
@@ -21,8 +21,8 @@ shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
 shader_parameter/new_color = Color(1, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lq8ml"]
-atlas = ExtResource("3_3m82n")
-region = Rect2(0, 80, 16, 16)
+atlas = ExtResource("3_ux61a")
+region = Rect2(32, 64, 16, 16)
 
 [sub_resource type="Animation" id="Animation_dxhqm"]
 length = 0.001
@@ -64,7 +64,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 3.76441,
 "start_offset": 0.0,
-"stream": ExtResource("7_4b2lt")
+"stream": ExtResource("7_dl7bg")
 }],
 "times": PackedFloat32Array(0.01)
 }
@@ -84,7 +84,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("8_ibe12")
+"stream": ExtResource("8_v6rdp")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -104,7 +104,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("9_hhdnf")
+"stream": ExtResource("9_sb0f0")
 }],
 "times": PackedFloat32Array(0.1)
 }
@@ -132,11 +132,11 @@ _data = {
 "die": SubResource("Animation_xnwf6")
 }
 
-[node name="Recon" type="Node2D"]
+[node name="MegaTank" type="Node2D"]
 z_index = 1
-script = ExtResource("1_g63cb")
+script = ExtResource("1_stu5s")
 shader_modulate = true
-id = "RECON"
+id = "MEGA_TANK"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ltewp")
@@ -144,12 +144,12 @@ texture = SubResource("AtlasTexture_lq8ml")
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-stream = ExtResource("4_3fxni")
+stream = ExtResource("4_yopvh")
 pitch_scale = 1.5
 area_mask = 0
-script = ExtResource("5_jcgav")
+script = ExtResource("5_g5ddr")
 
-[node name="UnitStats" parent="." instance=ExtResource("6_fwm3r")]
+[node name="UnitStats" parent="." instance=ExtResource("6_flf4j")]
 ammo = -1
 fuel = 80
 
@@ -160,4 +160,4 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("5_jcgav")
+script = ExtResource("5_g5ddr")

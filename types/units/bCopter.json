@@ -1,6 +1,6 @@
 {
   "name": "BCOPTER",
-  "description": "B-COPTER_DESCRIPTION",
+  "description": "BCOPTER_DESCRIPTION",
   "cost": 9000,
   "health": 100,
   "mp": 6,
@@ -17,7 +17,7 @@
   "can_supply": false,
   "can_repair": false,
   "can_capture": false,
-  "can_move_and_attack": false,
+  "can_move_and_attack": true,
   "can_hide": false,
   "can_dive": false,
   "can_carry": false,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4giy6a41fm5c"]
+[gd_scene load_steps=20 format=3 uid="uid://b4giy6a41fm5c"]
 
 [ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_la253"]
 [ext_resource type="PackedScene" uid="uid://4464jjyowffi" path="res://logic/game/units/antiair.tscn" id="2_xayqm"]
@@ -8,11 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://d1vtobfji2rgv" path="res://logic/game/units/mech.tscn" id="6_lrwei"]
 [ext_resource type="PackedScene" uid="uid://54war5m37akr" path="res://logic/ui/terrain_stats.tscn" id="6_oi3i7"]
 [ext_resource type="PackedScene" uid="uid://dfki27p05gtry" path="res://logic/game/units/medium_tank.tscn" id="7_ag8ek"]
-[ext_resource type="PackedScene" uid="uid://3h53g6pnsmnl" path="res://logic/game/units/recon.tscn" id="8_lhjua"]
+[ext_resource type="PackedScene" uid="uid://cxq4g3bvxh5p3" path="res://logic/game/units/recon.tscn" id="8_lhjua"]
 [ext_resource type="PackedScene" uid="uid://ch51qqxsd8xsq" path="res://logic/game/units/rocket.tscn" id="9_d3ubg"]
 [ext_resource type="PackedScene" uid="uid://dcy7mn6xmucyw" path="res://logic/game/units/tank.tscn" id="10_42f1p"]
+[ext_resource type="PackedScene" uid="uid://bhm7dlbtp7crw" path="res://logic/game/units/neo_tank.tscn" id="11_xg03i"]
+[ext_resource type="PackedScene" uid="uid://cdvbe6lf1u2w4" path="res://logic/game/units/mega_tank.tscn" id="12_0j0hg"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="12_ctcoa"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="12_twf8b"]
+[ext_resource type="PackedScene" uid="uid://bss23v6r204mv" path="res://logic/game/units/missile.tscn" id="13_gsija"]
+[ext_resource type="PackedScene" uid="uid://bn78onj8y8e6r" path="res://logic/game/units/piperunner.tscn" id="14_00ju8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nfy18"]
 resource_local_to_scene = true
@@ -33,7 +37,7 @@ collision_layer = 9
 script = ExtResource("1_la253")
 color = Color(0.00784314, 0.0117647, 0.00784314, 1)
 id = "BASE"
-shop_units = Array[PackedScene]([ExtResource("5_sogi7"), ExtResource("6_lrwei"), ExtResource("8_lhjua"), ExtResource("3_0nsrg"), ExtResource("4_y66b3"), ExtResource("10_42f1p"), ExtResource("2_xayqm"), ExtResource("9_d3ubg"), ExtResource("7_ag8ek")])
+shop_units = Array[PackedScene]([ExtResource("5_sogi7"), ExtResource("6_lrwei"), ExtResource("8_lhjua"), ExtResource("3_0nsrg"), ExtResource("4_y66b3"), ExtResource("10_42f1p"), ExtResource("2_xayqm"), ExtResource("9_d3ubg"), ExtResource("7_ag8ek"), ExtResource("11_xg03i"), ExtResource("12_0j0hg"), ExtResource("13_gsija"), ExtResource("14_00ju8")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_nfy18")
