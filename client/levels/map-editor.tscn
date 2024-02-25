@@ -19,8 +19,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Map-editor" type="Node2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(248, 248)
+zoom = Vector2(3, 3)
+
+[node name="Map-editor" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("1_j3yxc")
+camera = NodePath("../Camera2D")
 
 [node name="TileMap" type="TileMap" parent="Map-editor"]
 tile_set = ExtResource("2_44dmf")
@@ -33,10 +38,6 @@ tile_map = NodePath("../TileMap")
 
 [node name="Sprite2D" type="Sprite2D" parent="Map-editor/CursorPreview"]
 texture = SubResource("AtlasTexture_xreqx")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(744, 744)
-zoom = Vector2(3, 3)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

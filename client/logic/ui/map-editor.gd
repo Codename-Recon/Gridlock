@@ -2,9 +2,10 @@
 extends Node2D
 
 @export var map_size: Vector2i = Vector2i(30,30)
+@export var camera: Camera2D
+
 @onready var tile_map: TileMap = $TileMap
 @onready var cursor: Node2D = $CursorPreview
-@onready var camera: Camera2D = get_viewport().get_camera_2d()
 
 var current_terrain_set: int
 var current_terrain: int
