@@ -5,7 +5,7 @@
 [node name="Types" type="Node"]
 script = ExtResource("1_qj7ej")
 movement_types = ["FOOT", "BAZOOKA", "TREADS", "WHEELS", "AIR", "SEA", "LANDER", "PIPERUNNER"]
-unit_types = ["ANTI_AIR", "APC", "ARTILLERY", "BCOPTER", "BATTLESHIP", "BLACK_BOAT", "BLACK_BOMB", "BOMBER", "CARRIER", "CRUISER", "FIGHTER", "INFANTRY", "LANDER", "MD_TANK", "MECH", "MEGA_TANK", "MISSILE", "NEOTANK", "PIPERUNNER", "RECON", "ROCKET", "STEALTH", "SUB", "T-COPTER", "TANK"]
+unit_types = ["ANTI_AIR", "APC", "ARTILLERY", "BCOPTER", "BATTLESHIP", "BLACKBOAT", "BLACKBOMB", "BOMBER", "CARRIER", "CRUISER", "FIGHTER", "INFANTRY", "LANDER", "MD_TANK", "MECH", "MEGA_TANK", "MISSILE", "NEOTANK", "PIPERUNNER", "RECON", "ROCKET", "STEALTH", "SUB", "TCOPTER", "TANK"]
 terrain_types = ["PLAIN", "MOUNTAIN", "WOOD", "RIVER", "ROAD", "BRIDGE", "SEA", "BEACH", "SHOAL", "CITY", "BASE", "AIRPORT", "PORT", "HQ", "PIPE", "SILO", "COM_TOWER", "LAB"]
 terrain_sprite_types = ["PLAIN", "MOUNTAIN", "WOOD", "HRIVER", "VRIVER", "CRIVER", "ESRIVER", "SWRIVER", "WNRIVER", "NERIVER", "ESWRIVER", "SWNRIVER", "WNERIVER", "NESRIVER", "HROAD", "VROAD", "CROAD", "ESROAD", "SWROAD", "WNROAD", "NEROAD", "ESWROAD", "SWNROAD", "WNEROAD", "NESROAD", "HBRIDGE", "VBRIDGE", "SEA", "HSHOAL", "HSHOALN", "VSHOAL", "VSHOALE", "REEF", "VPIPE", "HPIPE", "NEPIPE", "ESPIPE", "SWPIPE", "WNPIPE", "NPIPE_END", "EPIPE_END", "SPIPE_END", "WPIPE_END", "HPIPE_SEAM", "VPIPE_SEAM", "HPIPE_RUBBLE", "VPIPE_RUBBLE", "CITY", "BASE", "AIRPORT", "PORT", "HQ", "PIPE", "SILO", "SILO_EMPTY", "COM_TOWER", "LAB"]
 weapon_types = ["Artillery Cannon", "Bazooka", "Light Tank Cannon", "Machine Gun", "Medium Tank Cannon", "Rockets", "Tank Machine Gun", "Vulcan Cannon"]
@@ -333,7 +333,7 @@ units = {
 "can_repair": false,
 "can_supply": false,
 "carrying_size": 1.0,
-"carrying_types": ["ANTI_AIR", "APC", "ARTILLERY", "INFANTRY", "MD_TANK", "MECH", "MEGA_TANK", "MISSILE", "NEOTANK", "RECON", "T-COPTER"],
+"carrying_types": ["ANTI_AIR", "APC", "ARTILLERY", "INFANTRY", "MD_TANK", "MECH", "MEGA_TANK", "MISSILE", "NEOTANK", "RECON", "TCOPTER"],
 "cost": 12000.0,
 "description": "LANDER_DESCRIPTION",
 "exp": 0.0,
@@ -1465,8 +1465,8 @@ primary_damage = {
 "ARTILLERY": 50.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 120.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 120.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 120.0,
 "BOMBER": 75.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -1483,8 +1483,8 @@ primary_damage = {
 "ROCKET": 55.0,
 "STEALTH": 75.0,
 "SUB": 0.0,
-"T-COPTER": 120.0,
-"TANK": 25.0
+"TANK": 25.0,
+"TCOPTER": 120.0
 },
 "APC": {
 "ANTI_AIR": 0.0,
@@ -1492,8 +1492,8 @@ primary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -1510,8 +1510,8 @@ primary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "ARTILLERY": {
 "ANTI_AIR": 75.0,
@@ -1519,8 +1519,8 @@ primary_damage = {
 "ARTILLERY": 75.0,
 "BATTLESHIP": 40.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 55.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 55.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 45.0,
 "CRUISER": 65.0,
@@ -1537,8 +1537,8 @@ primary_damage = {
 "ROCKET": 80.0,
 "STEALTH": 0.0,
 "SUB": 60.0,
-"T-COPTER": 0.0,
-"TANK": 70.0
+"TANK": 70.0,
+"TCOPTER": 0.0
 },
 "BATTLESHIP": {
 "ANTI_AIR": 85.0,
@@ -1546,8 +1546,8 @@ primary_damage = {
 "ARTILLERY": 80.0,
 "BATTLESHIP": 50.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 95.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 95.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 60.0,
 "CRUISER": 95.0,
@@ -1564,8 +1564,8 @@ primary_damage = {
 "ROCKET": 85.0,
 "STEALTH": 0.0,
 "SUB": 95.0,
-"T-COPTER": 0.0,
-"TANK": 80.0
+"TANK": 80.0,
+"TCOPTER": 0.0
 },
 "BCOPTER": {
 "ANTI_AIR": 25.0,
@@ -1573,8 +1573,8 @@ primary_damage = {
 "ARTILLERY": 65.0,
 "BATTLESHIP": 25.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 25.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 25.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 25.0,
 "CRUISER": 55.0,
@@ -1591,17 +1591,17 @@ primary_damage = {
 "ROCKET": 65.0,
 "STEALTH": 0.0,
 "SUB": 25.0,
-"T-COPTER": 0.0,
-"TANK": 55.0
+"TANK": 55.0,
+"TCOPTER": 0.0
 },
-"BLACK_BOAT": {
+"BLACKBOAT": {
 "ANTI_AIR": 0.0,
 "APC": 0.0,
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -1618,17 +1618,17 @@ primary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
-"BLACK_BOMB": {
+"BLACKBOMB": {
 "ANTI_AIR": 0.0,
 "APC": 0.0,
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -1645,8 +1645,8 @@ primary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "BOMBER": {
 "ANTI_AIR": 95.0,
@@ -1654,8 +1654,8 @@ primary_damage = {
 "ARTILLERY": 105.0,
 "BATTLESHIP": 75.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 95.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 95.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 75.0,
 "CRUISER": 85.0,
@@ -1672,8 +1672,8 @@ primary_damage = {
 "ROCKET": 105.0,
 "STEALTH": 0.0,
 "SUB": 95.0,
-"T-COPTER": 0.0,
-"TANK": 105.0
+"TANK": 105.0,
+"TCOPTER": 0.0
 },
 "CARRIER": {
 "ANTI_AIR": 0.0,
@@ -1681,8 +1681,8 @@ primary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 115.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 120.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 120.0,
 "BOMBER": 100.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -1699,8 +1699,8 @@ primary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 100.0,
 "SUB": 0.0,
-"T-COPTER": 115.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 115.0
 },
 "CRUISER": {
 "ANTI_AIR": 0.0,
@@ -1708,8 +1708,8 @@ primary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 25.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 25.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 5.0,
 "CRUISER": 0.0,
@@ -1726,8 +1726,8 @@ primary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 90.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "FIGHTER": {
 "ANTI_AIR": 0.0,
@@ -1735,8 +1735,8 @@ primary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 100.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 120.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 120.0,
 "BOMBER": 100.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -1753,8 +1753,8 @@ primary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 85.0,
 "SUB": 0.0,
-"T-COPTER": 100.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 100.0
 },
 "INFANTRY": {
 "ANTI_AIR": 5.0,
@@ -1762,8 +1762,8 @@ primary_damage = {
 "ARTILLERY": 15.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 7.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -1780,8 +1780,8 @@ primary_damage = {
 "ROCKET": 25.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 30.0,
-"TANK": 5.0
+"TANK": 5.0,
+"TCOPTER": 30.0
 },
 "LANDER": {
 "ANTI_AIR": 0.0,
@@ -1789,8 +1789,8 @@ primary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -1807,8 +1807,8 @@ primary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "MD_TANK": {
 "ANTI_AIR": 105.0,
@@ -1816,8 +1816,8 @@ primary_damage = {
 "ARTILLERY": 105.0,
 "BATTLESHIP": 10.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 35.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 35.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 10.0,
 "CRUISER": 45.0,
@@ -1834,8 +1834,8 @@ primary_damage = {
 "ROCKET": 105.0,
 "STEALTH": 0.0,
 "SUB": 10.0,
-"T-COPTER": 0.0,
-"TANK": 85.0
+"TANK": 85.0,
+"TCOPTER": 0.0
 },
 "MECH": {
 "ANTI_AIR": 65.0,
@@ -1843,8 +1843,8 @@ primary_damage = {
 "ARTILLERY": 70.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -1861,8 +1861,8 @@ primary_damage = {
 "ROCKET": 85.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 55.0
+"TANK": 55.0,
+"TCOPTER": 0.0
 },
 "MEGA_TANK": {
 "ANTI_AIR": 195.0,
@@ -1870,8 +1870,8 @@ primary_damage = {
 "ARTILLERY": 195.0,
 "BATTLESHIP": 45.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 105.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 105.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 45.0,
 "CRUISER": 65.0,
@@ -1888,8 +1888,8 @@ primary_damage = {
 "ROCKET": 195.0,
 "STEALTH": 0.0,
 "SUB": 45.0,
-"T-COPTER": 0.0,
-"TANK": 180.0
+"TANK": 180.0,
+"TCOPTER": 0.0
 },
 "MISSILE": {
 "ANTI_AIR": 0.0,
@@ -1897,8 +1897,8 @@ primary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 120.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 120.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 120.0,
 "BOMBER": 100.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -1915,8 +1915,8 @@ primary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 100.0,
 "SUB": 0.0,
-"T-COPTER": 120.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 120.0
 },
 "NEOTANK": {
 "ANTI_AIR": 115.0,
@@ -1924,8 +1924,8 @@ primary_damage = {
 "ARTILLERY": 115.0,
 "BATTLESHIP": 15.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 40.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 40.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 15.0,
 "CRUISER": 50.0,
@@ -1942,8 +1942,8 @@ primary_damage = {
 "ROCKET": 125.0,
 "STEALTH": 0.0,
 "SUB": 15.0,
-"T-COPTER": 0.0,
-"TANK": 105.0
+"TANK": 105.0,
+"TCOPTER": 0.0
 },
 "PIPERUNNER": {
 "ANTI_AIR": 85.0,
@@ -1951,8 +1951,8 @@ primary_damage = {
 "ARTILLERY": 80.0,
 "BATTLESHIP": 55.0,
 "BCOPTER": 105.0,
-"BLACK_BOAT": 60.0,
-"BLACK_BOMB": 120.0,
+"BLACKBOAT": 60.0,
+"BLACKBOMB": 120.0,
 "BOMBER": 75.0,
 "CARRIER": 60.0,
 "CRUISER": 85.0,
@@ -1969,8 +1969,8 @@ primary_damage = {
 "ROCKET": 85.0,
 "STEALTH": 75.0,
 "SUB": 85.0,
-"T-COPTER": 105.0,
-"TANK": 80.0
+"TANK": 80.0,
+"TCOPTER": 105.0
 },
 "RECON": {
 "ANTI_AIR": 4.0,
@@ -1978,8 +1978,8 @@ primary_damage = {
 "ARTILLERY": 45.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 12.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -1996,8 +1996,8 @@ primary_damage = {
 "ROCKET": 55.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 35.0,
-"TANK": 6.0
+"TANK": 6.0,
+"TCOPTER": 35.0
 },
 "ROCKET": {
 "ANTI_AIR": 85.0,
@@ -2005,8 +2005,8 @@ primary_damage = {
 "ARTILLERY": 80.0,
 "BATTLESHIP": 55.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 60.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 60.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 60.0,
 "CRUISER": 85.0,
@@ -2023,8 +2023,8 @@ primary_damage = {
 "ROCKET": 85.0,
 "STEALTH": 0.0,
 "SUB": 85.0,
-"T-COPTER": 0.0,
-"TANK": 80.0
+"TANK": 80.0,
+"TCOPTER": 0.0
 },
 "STEALTH": {
 "ANTI_AIR": 50.0,
@@ -2032,8 +2032,8 @@ primary_damage = {
 "ARTILLERY": 75.0,
 "BATTLESHIP": 45.0,
 "BCOPTER": 85.0,
-"BLACK_BOAT": 65.0,
-"BLACK_BOMB": 120.0,
+"BLACKBOAT": 65.0,
+"BLACKBOMB": 120.0,
 "BOMBER": 70.0,
 "CARRIER": 45.0,
 "CRUISER": 35.0,
@@ -2050,8 +2050,8 @@ primary_damage = {
 "ROCKET": 85.0,
 "STEALTH": 55.0,
 "SUB": 55.0,
-"T-COPTER": 95.0,
-"TANK": 75.0
+"TANK": 75.0,
+"TCOPTER": 95.0
 },
 "SUB": {
 "ANTI_AIR": 0.0,
@@ -2059,8 +2059,8 @@ primary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 55.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 95.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 95.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 75.0,
 "CRUISER": 25.0,
@@ -2077,35 +2077,8 @@ primary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 55.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
-},
-"T-COPTER": {
-"ANTI_AIR": 0.0,
-"APC": 0.0,
-"ARTILLERY": 0.0,
-"BATTLESHIP": 0.0,
-"BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
-"BOMBER": 0.0,
-"CARRIER": 0.0,
-"CRUISER": 0.0,
-"FIGHTER": 0.0,
-"INFANTRY": 0.0,
-"LANDER": 0.0,
-"MD_TANK": 0.0,
-"MECH": 0.0,
-"MEGA_TANK": 0.0,
-"MISSILE": 0.0,
-"NEOTANK": 0.0,
-"PIPERUNNER": 0.0,
-"RECON": 0.0,
-"ROCKET": 0.0,
-"STEALTH": 0.0,
-"SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "TANK": {
 "ANTI_AIR": 65.0,
@@ -2113,8 +2086,8 @@ primary_damage = {
 "ARTILLERY": 70.0,
 "BATTLESHIP": 1.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 10.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 10.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 1.0,
 "CRUISER": 5.0,
@@ -2131,8 +2104,35 @@ primary_damage = {
 "ROCKET": 85.0,
 "STEALTH": 0.0,
 "SUB": 1.0,
-"T-COPTER": 0.0,
-"TANK": 55.0
+"TANK": 55.0,
+"TCOPTER": 0.0
+},
+"TCOPTER": {
+"ANTI_AIR": 0.0,
+"APC": 0.0,
+"ARTILLERY": 0.0,
+"BATTLESHIP": 0.0,
+"BCOPTER": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
+"BOMBER": 0.0,
+"CARRIER": 0.0,
+"CRUISER": 0.0,
+"FIGHTER": 0.0,
+"INFANTRY": 0.0,
+"LANDER": 0.0,
+"MD_TANK": 0.0,
+"MECH": 0.0,
+"MEGA_TANK": 0.0,
+"MISSILE": 0.0,
+"NEOTANK": 0.0,
+"PIPERUNNER": 0.0,
+"RECON": 0.0,
+"ROCKET": 0.0,
+"STEALTH": 0.0,
+"SUB": 0.0,
+"TANK": 0.0,
+"TCOPTER": 0.0
 }
 }
 secondary_damage = {
@@ -2142,8 +2142,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2160,8 +2160,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "APC": {
 "ANTI_AIR": 0.0,
@@ -2169,8 +2169,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2187,8 +2187,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "ARTILLERY": {
 "ANTI_AIR": 0.0,
@@ -2196,8 +2196,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2214,8 +2214,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "BATTLESHIP": {
 "ANTI_AIR": 0.0,
@@ -2223,8 +2223,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2241,8 +2241,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "BCOPTER": {
 "ANTI_AIR": 6.0,
@@ -2250,8 +2250,8 @@ secondary_damage = {
 "ARTILLERY": 25.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 65.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2268,17 +2268,17 @@ secondary_damage = {
 "ROCKET": 35.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 95.0,
-"TANK": 6.0
+"TANK": 6.0,
+"TCOPTER": 95.0
 },
-"BLACK_BOAT": {
+"BLACKBOAT": {
 "ANTI_AIR": 0.0,
 "APC": 0.0,
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2295,17 +2295,17 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
-"BLACK_BOMB": {
+"BLACKBOMB": {
 "ANTI_AIR": 0.0,
 "APC": 0.0,
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2322,8 +2322,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "BOMBER": {
 "ANTI_AIR": 0.0,
@@ -2331,8 +2331,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2349,8 +2349,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "CARRIER": {
 "ANTI_AIR": 0.0,
@@ -2358,8 +2358,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2376,8 +2376,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "CRUISER": {
 "ANTI_AIR": 0.0,
@@ -2385,8 +2385,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 115.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 120.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 120.0,
 "BOMBER": 65.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2403,8 +2403,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 100.0,
 "SUB": 0.0,
-"T-COPTER": 115.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 115.0
 },
 "FIGHTER": {
 "ANTI_AIR": 0.0,
@@ -2412,8 +2412,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2430,8 +2430,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "INFANTRY": {
 "ANTI_AIR": 0.0,
@@ -2439,8 +2439,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2457,8 +2457,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "LANDER": {
 "ANTI_AIR": 0.0,
@@ -2466,8 +2466,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2484,8 +2484,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "MD_TANK": {
 "ANTI_AIR": 7.0,
@@ -2493,8 +2493,8 @@ secondary_damage = {
 "ARTILLERY": 45.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 12.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2511,8 +2511,8 @@ secondary_damage = {
 "ROCKET": 45.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 45.0,
-"TANK": 8.0
+"TANK": 8.0,
+"TCOPTER": 45.0
 },
 "MECH": {
 "ANTI_AIR": 6.0,
@@ -2520,8 +2520,8 @@ secondary_damage = {
 "ARTILLERY": 32.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 9.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2538,8 +2538,8 @@ secondary_damage = {
 "ROCKET": 35.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 35.0,
-"TANK": 6.0
+"TANK": 6.0,
+"TCOPTER": 35.0
 },
 "MEGA_TANK": {
 "ANTI_AIR": 17.0,
@@ -2547,8 +2547,8 @@ secondary_damage = {
 "ARTILLERY": 65.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 22.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2565,8 +2565,8 @@ secondary_damage = {
 "ROCKET": 75.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 55.0,
-"TANK": 10.0
+"TANK": 10.0,
+"TCOPTER": 55.0
 },
 "MISSILE": {
 "ANTI_AIR": 0.0,
@@ -2574,8 +2574,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2592,8 +2592,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "NEOTANK": {
 "ANTI_AIR": 17.0,
@@ -2601,8 +2601,8 @@ secondary_damage = {
 "ARTILLERY": 65.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 22.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2619,8 +2619,8 @@ secondary_damage = {
 "ROCKET": 75.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 55.0,
-"TANK": 10.0
+"TANK": 10.0,
+"TCOPTER": 55.0
 },
 "PIPERUNNER": {
 "ANTI_AIR": 0.0,
@@ -2628,8 +2628,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2646,8 +2646,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "RECON": {
 "ANTI_AIR": 0.0,
@@ -2655,8 +2655,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2673,8 +2673,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "ROCKET": {
 "ANTI_AIR": 0.0,
@@ -2682,8 +2682,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2700,8 +2700,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "STEALTH": {
 "ANTI_AIR": 0.0,
@@ -2709,8 +2709,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2727,8 +2727,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "SUB": {
 "ANTI_AIR": 0.0,
@@ -2736,8 +2736,8 @@ secondary_damage = {
 "ARTILLERY": 0.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2754,35 +2754,8 @@ secondary_damage = {
 "ROCKET": 0.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
-},
-"T-COPTER": {
-"ANTI_AIR": 0.0,
-"APC": 0.0,
-"ARTILLERY": 0.0,
-"BATTLESHIP": 0.0,
-"BCOPTER": 0.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
-"BOMBER": 0.0,
-"CARRIER": 0.0,
-"CRUISER": 0.0,
-"FIGHTER": 0.0,
-"INFANTRY": 0.0,
-"LANDER": 0.0,
-"MD_TANK": 0.0,
-"MECH": 0.0,
-"MEGA_TANK": 0.0,
-"MISSILE": 0.0,
-"NEOTANK": 0.0,
-"PIPERUNNER": 0.0,
-"RECON": 0.0,
-"ROCKET": 0.0,
-"STEALTH": 0.0,
-"SUB": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0
+"TANK": 0.0,
+"TCOPTER": 0.0
 },
 "TANK": {
 "ANTI_AIR": 5.0,
@@ -2790,8 +2763,8 @@ secondary_damage = {
 "ARTILLERY": 45.0,
 "BATTLESHIP": 0.0,
 "BCOPTER": 10.0,
-"BLACK_BOAT": 0.0,
-"BLACK_BOMB": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
 "BOMBER": 0.0,
 "CARRIER": 0.0,
 "CRUISER": 0.0,
@@ -2808,7 +2781,34 @@ secondary_damage = {
 "ROCKET": 55.0,
 "STEALTH": 0.0,
 "SUB": 0.0,
-"T-COPTER": 40.0,
-"TANK": 6.0
+"TANK": 6.0,
+"TCOPTER": 40.0
+},
+"TCOPTER": {
+"ANTI_AIR": 0.0,
+"APC": 0.0,
+"ARTILLERY": 0.0,
+"BATTLESHIP": 0.0,
+"BCOPTER": 0.0,
+"BLACKBOAT": 0.0,
+"BLACKBOMB": 0.0,
+"BOMBER": 0.0,
+"CARRIER": 0.0,
+"CRUISER": 0.0,
+"FIGHTER": 0.0,
+"INFANTRY": 0.0,
+"LANDER": 0.0,
+"MD_TANK": 0.0,
+"MECH": 0.0,
+"MEGA_TANK": 0.0,
+"MISSILE": 0.0,
+"NEOTANK": 0.0,
+"PIPERUNNER": 0.0,
+"RECON": 0.0,
+"ROCKET": 0.0,
+"STEALTH": 0.0,
+"SUB": 0.0,
+"TANK": 0.0,
+"TCOPTER": 0.0
 }
 }
