@@ -775,6 +775,9 @@ theme_override_font_sizes/mono_font_size = 32
 bbcode_enabled = true
 text = "[center][b]Credits[/b][/center]
 
+Mangs
+[indent][i]Project Leader[/i][/indent]
+
 Hunter99
 [indent][i]Lead Engine Developer[/i][/indent]
 
@@ -790,6 +793,15 @@ Darkbladercr
 seerfox
 [indent][i]Lead CO Art Director[/i][/indent]
 [indent][i]Lead UI Designer[/i][/indent]
+
+Ephraim225
+[indent][i]Lead Level Design[/i][/indent]
+
+Gloomreach
+[indent][i]Lead Unit Concept Artist[/i][/indent]
+
+Sleepy Tech
+[indent][i]Lead Spriter[/i][/indent]
 
 [center][b]External[/b][/center]
 
