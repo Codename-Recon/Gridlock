@@ -13,7 +13,7 @@ signal round_change_ended
 @onready var _round_button: Button = %RoundButton
 @onready var _escape_panel: Control = %EscapePanel
 @onready var _map_slot: Node = %MapSlot
-@onready var _cursor_collider: Area2D = %CursorCollider
+@onready var _cursor: Cursor = %Cursor
 @onready var _round_label: RoundLabel = %RoundLabel
 @onready var _round_rect: Polygon2D = %RoundRect
 @onready var _round_number_label: Label = %RoundNumberLabel
@@ -56,7 +56,6 @@ var map: Map
 var player_turns: Array[Player]
 var turn_round: int = 0
 var target_camera_zoom: Vector2
-var mouse_position: Vector2
 var camera_move_speed: float
 var camera_zoom_speed: float
 var camera_max_zoom: float
@@ -118,16 +117,15 @@ func _process(delta: float) -> void:
 		
 func _process_human(delta: float) -> void:
 	if _selection_decal:
-		mouse_position = get_global_mouse_position()
-		
 		if not _input_blocked and not _escape_panel.visible:
 			if Input.is_action_just_released("select_first") or _simulated_first_click:
 				_simulated_first_click = false
 				# ignore clicked event when button round was pressed
 				if event != GameConst.Event.CLICKED_END_ROUND:
 					last_mouse_terrain = null 	# to force terrain interface update 
-					if _cursor_collider.has_overlapping_areas():
-						last_selected_terrain = _cursor_collider.get_overlapping_areas()[0]
+					var temp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
+					if temp_terrain.get_terrain_by_position(_cursor.get_tile_position()):
+						last_selected_terrain = temp_terrain.get_terrain_by_position(_cursor.get_tile_position())
 						event = GameConst.Event.CLICKED_LEFT
 						_input_blocked = true
 						_input_timer.start()
@@ -1024,9 +1022,9 @@ func _do_state_ending(local: bool = true) -> void:
 
 # updates selecting decal and, if true, moving arrow
 func _update_ui(update__move_arrow: bool = false) -> void:
-	_cursor_collider.position = mouse_position
-	if(_cursor_collider.has_overlapping_areas()):
-		var terrain: Terrain =  _cursor_collider.get_overlapping_areas()[0]
+	var temp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
+	if temp_terrain.get_terrain_by_position(_cursor.get_tile_position()):
+		var terrain: Terrain =  temp_terrain.get_terrain_by_position(_cursor.get_tile_position())
 		# only update when mouse terrain has changed
 		if terrain and last_mouse_terrain != terrain:
 			var tween: Tween = create_tween()

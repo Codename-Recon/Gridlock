@@ -1,7 +1,7 @@
 @icon("res://assets/images/icons/flag-outline.svg")
 @tool
 class_name Terrain
-extends Area2D
+extends Node2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
@@ -108,6 +108,7 @@ func get_terrain_by_position(pos: Vector2i) -> Terrain:
 
 func generate_terrain_lookup() -> void:
 	var terrains: Array[Node] = get_tree().get_nodes_in_group("terrain")
+	_terrain_lookup = {}
 	for terrain: Terrain in terrains:
 		var pos: Vector2i = terrain.position
 		_terrain_lookup[pos] = terrain

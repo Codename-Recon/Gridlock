@@ -23,8 +23,7 @@ shader_parameter/new_color = Color(0, 0.85098, 0, 1)
 atlas = ExtResource("3_3dc7e")
 region = Rect2(240, 16, 16, 16)
 
-[node name="Airport" type="Area2D"]
-collision_layer = 9
+[node name="Airport" type="Node2D"]
 script = ExtResource("1_jqpq8")
 color = Color(0.0196078, 0.0196078, 0.0196078, 1)
 id = "AIRPORT"
@@ -35,9 +34,3 @@ material = SubResource("ShaderMaterial_36tbs")
 texture = SubResource("AtlasTexture_htb23")
 
 [node name="TerrainStats" parent="." instance=ExtResource("6_48j43")]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-position = Vector2(0.0999994, 0.0999994)
-scale = Vector2(1.00781, 1.00781)
-polygon = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)

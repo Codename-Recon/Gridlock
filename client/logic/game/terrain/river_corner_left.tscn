@@ -7,14 +7,9 @@
 atlas = ExtResource("3_c7u4m")
 region = Rect2(64, 0, 16, 16)
 
-[node name="RiverCornerLeft" type="Area2D"]
-collision_layer = 9
+[node name="RiverCornerLeft" type="Node2D"]
 script = ExtResource("1_b7swn")
 id = "RIVER"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_bwb5y")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)

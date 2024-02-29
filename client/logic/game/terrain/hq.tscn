@@ -19,8 +19,7 @@ shader_parameter/new_color = Color(0, 0.00784314, 0.0117647, 1)
 atlas = ExtResource("3_bscfi")
 region = Rect2(144, 16, 16, 16)
 
-[node name="HQ" type="Area2D"]
-collision_layer = 9
+[node name="HQ" type="Node2D"]
 script = ExtResource("1_4uq48")
 color = Color(0, 0.00784314, 0.0117647, 1)
 id = "HQ"
@@ -30,7 +29,3 @@ material = SubResource("ShaderMaterial_dj43m")
 texture = SubResource("AtlasTexture_vyerd")
 
 [node name="TerrainStats" parent="." instance=ExtResource("4_mu218")]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
