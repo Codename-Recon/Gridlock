@@ -19,8 +19,7 @@ shader_parameter/new_color = Color(0.0056, 0.01, 0.00941333, 1)
 atlas = ExtResource("2_7shbv")
 region = Rect2(128, 16, 16, 16)
 
-[node name="City" type="Area2D"]
-collision_layer = 9
+[node name="City" type="Node2D"]
 script = ExtResource("1_7skrb")
 color = Color(0.0056, 0.01, 0.00941333, 1)
 id = "CITY"
@@ -30,7 +29,3 @@ material = SubResource("ShaderMaterial_gl3f1")
 texture = SubResource("AtlasTexture_f2rcu")
 
 [node name="TerrainStats" parent="." instance=ExtResource("6_ennre")]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)

@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dfbk7wtfn1vh" path="res://assets/musics/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" id="3_vihhq"]
 [ext_resource type="AudioStream" uid="uid://canqp6ndc2u7a" path="res://assets/musics/song18.mp3" id="4_ujg86"]
 [ext_resource type="AudioStream" uid="uid://jb7gbt1oe4d2" path="res://assets/musics/awake10_megaWall.mp3" id="5_g50or"]
+[ext_resource type="Script" path="res://logic/game/cursor.gd" id="8_ibwhq"]
 [ext_resource type="Script" path="res://logic/game/viewport.gd" id="8_rh0i3"]
 [ext_resource type="Script" path="res://logic/game/game.gd" id="9_gl6qd"]
 [ext_resource type="PackedScene" uid="uid://df4e0v877neen" path="res://logic/ui/shop.tscn" id="10_rtev0"]
@@ -59,9 +60,6 @@ func _set_music() -> void:
 	Music.change_music(new_music)
 	_last_music = new_music
 "
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g05kj"]
-size = Vector2(1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4mh3"]
 atlas = ExtResource("14_cwg7q")
@@ -498,11 +496,9 @@ size_2d_override = Vector2i(1600, 900)
 render_target_update_mode = 4
 script = ExtResource("8_rh0i3")
 
-[node name="CursorCollider" type="Area2D" parent="SubViewportContainer/SubViewport"]
+[node name="Cursor" type="Marker2D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/CursorCollider"]
-shape = SubResource("RectangleShape2D_g05kj")
+script = ExtResource("8_ibwhq")
 
 [node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
 zoom = Vector2(3, 3)
@@ -729,8 +725,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 1600.0
-offset_bottom = 140.0
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = -310.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
