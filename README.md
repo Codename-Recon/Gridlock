@@ -1,4 +1,11 @@
 # Codename-Recon
+Codename: Recon is a turn-based strategy game, where players take control of various military units and engage in tactical combat with enemy forces on grid-based maps. The goal is to defeat the enemy's units and capture their headquarters, while managing resources and protecting one's own troops.
+
+The game features a variety of different units, each with its own strengths, weaknesses, and movement ranges. Players must carefully plan their movements and attacks in order to outmaneuver and overwhelm their opponents.
+
+This project is initiated by Mangs, the project leader, and is based on his vision presented in the following video:
+[![image](https://github.com/HunterNN/Codename-Recon/assets/1898454/f2d9fa1c-0bbf-46b5-98b5-dcfd3f0f7877)](https://www.youtube.com/watch?v=UtF-EoE3hUc)
+
 
 ## Code Contribution 💻
 
