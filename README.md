@@ -5,8 +5,11 @@ The game features a variety of different units, each with its own strengths, wea
 
 This project is initiated by Mangs, the project leader, and is based on his vision presented in the following video:
 
-[![image](https://github.com/HunterNN/Codename-Recon/assets/1898454/f2d9fa1c-0bbf-46b5-98b5-dcfd3f0f7877)](https://www.youtube.com/watch?v=UtF-EoE3hUc)
-
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=UtF-EoE3hUc">
+    <img src="https://github.com/HunterNN/Codename-Recon/assets/1898454/f2d9fa1c-0bbf-46b5-98b5-dcfd3f0f7877" alt="Video thumbnail" />
+  </a>
+</p>
 
 ## Code Contribution 💻
 
