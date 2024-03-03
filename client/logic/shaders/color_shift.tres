@@ -46,7 +46,7 @@ void fragment() {
 		vec3 hsb_new = rgb2hsb(new_color.rgb);
 		hsb.x = hsb_new.x;
 		// To darken the darker areas more
-		if(hsb.y > shift_shades_level){
+		if(hsb.y > shift_shades_threshold){
 			hsb.z = hsb.z * shift_shades_factor;
 		}
 		COLOR = vec4(hsb2rgb(hsb), COLOR.a);
