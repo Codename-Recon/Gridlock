@@ -10,6 +10,8 @@ uniform float shift_level_s : hint_range(0, 1);
 uniform float shift_level_b : hint_range(0, 1);
 uniform vec4 old_color : source_color;
 uniform vec4 new_color : source_color;
+uniform float shift_shades_threshold : hint_range(0, 1) = 1.0;
+uniform float shift_shades_factor : hint_range(0, 1) = 1.0;
 
 vec3 rgb2hsb(vec3 c){
     vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
@@ -43,7 +45,10 @@ void fragment() {
 	if (shifting && abs(hsb.x - hsb_old.x) < shift_level_h && abs(hsb.y - hsb_old.y) < shift_level_s && abs(hsb.z - hsb_old.z) < shift_level_b){
 		vec3 hsb_new = rgb2hsb(new_color.rgb);
 		hsb.x = hsb_new.x;
-		hsb.y = hsb_new.z;
+		// To darken the darker areas more
+		if(hsb.y > shift_shades_threshold){
+			hsb.z = hsb.z * shift_shades_factor;
+		}
 		COLOR = vec4(hsb2rgb(hsb), COLOR.a);
 	}
 }
