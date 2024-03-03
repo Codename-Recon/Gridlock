@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1lm50b8vcvxp"]
+[gd_scene load_steps=18 format=3 uid="uid://d1lm50b8vcvxp"]
 
 [ext_resource type="Script" path="res://logic/ui/unit_stats.gd" id="1_hgwin"]
 [ext_resource type="Script" path="res://logic/ui/unit_stats_stars.gd" id="5_xxewy"]
@@ -7,6 +7,10 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_1t4ew"]
 atlas = ExtResource("6_7v8pe")
 region = Rect2(224, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xxxj"]
+atlas = ExtResource("6_7v8pe")
+region = Rect2(208, 160, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xnc4"]
 atlas = ExtResource("6_7v8pe")
@@ -148,6 +152,16 @@ offset_right = 7.0
 offset_bottom = 17.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_1t4ew")
+
+[node name="CarryingIcon" type="TextureRect" parent="Sprite/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -9.0
+offset_top = 1.0
+offset_right = 7.0
+offset_bottom = 17.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_1xxxj")
 
 [node name="AmmoIcon" type="TextureRect" parent="Sprite/Control"]
 unique_name_in_owner = true

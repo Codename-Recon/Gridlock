@@ -28,6 +28,12 @@ signal round_over_changed
 			capturing = value
 			_capture_icon.visible = value
 
+@export var carrying: bool = false:
+	set(value):
+		if is_inside_tree():
+			carrying = value
+			_carrying_icon.visible = value
+
 @export var ammo_low: bool = false:
 	set(value):
 		if is_inside_tree():
@@ -94,6 +100,7 @@ signal round_over_changed
 
 @onready var _health: Label = %Health as Label
 @onready var _capture_icon: TextureRect = %CaptureIcon as TextureRect
+@onready var _carrying_icon: TextureRect = %CarryingIcon as TextureRect
 @onready var _animation_ammo: AnimationPlayer = %AnimationAmmo as AnimationPlayer
 @onready var _animation_fuel: AnimationPlayer = %AnimationFuel as AnimationPlayer
 @onready var _stars: UnitStatsStars = %Stars as UnitStatsStars
@@ -113,6 +120,7 @@ func _ready() -> void:
 	else:
 		_animation_fuel.play("RESET")
 	_capture_icon.visible = capturing
+	_carrying_icon.visible = carrying
 
 
 func get_last_damage_as_float() -> float:

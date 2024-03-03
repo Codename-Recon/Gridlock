@@ -809,6 +809,8 @@ func _do_state_deploying_clicked_left(local: bool = true) -> void:
 		info.text = tr("DEPLOYED")
 		info.color = ProjectSettings.get_setting("global/enter_color")
 		carrying_unit.get_terrain().add_child(info)
+		## disable carrying icon
+		carrying_unit._unit_stats.carrying = false
 		# place unit from cargo
 		carrying_unit.cargo.remove_child(deploying_unit)
 		last_selected_terrain.add_child(deploying_unit)
@@ -876,6 +878,8 @@ func _do_state_action_clicked_action(local: bool = true) -> void:
 			info.text = tr("ENTERED")
 			info.color = ProjectSettings.get_setting("global/enter_color")
 			carrying_unit.get_terrain().add_child(info)
+			## enable carrying icon
+			carrying_unit._unit_stats.carrying = true
 			## removing unit from field and add it to cargo of carrying unit
 			entering_unit.hide()
 			entering_unit.get_terrain().remove_child(entering_unit)
