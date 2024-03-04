@@ -100,8 +100,8 @@ func uncapture() -> void:
 
 
 func get_terrain_by_position(pos: Vector2i) -> Terrain:
-	# check if terrain lookup is generated (dictionary exist and entries aren't null). If not -> generate
-	if not (_terrain_lookup and _terrain_lookup[_terrain_lookup.keys()[0]] and is_instance_valid(_terrain_lookup[_terrain_lookup.keys()[0]])):
+	# check if terrain lookup is generated (dictionary and entries exists). If not -> generate
+	if not (_terrain_lookup and len(_terrain_lookup.keys()) > 0):
 		generate_terrain_lookup()
 	return _terrain_lookup.get(pos)
 
@@ -112,11 +112,6 @@ func generate_terrain_lookup() -> void:
 	for terrain: Terrain in terrains:
 		var pos: Vector2i = terrain.position
 		_terrain_lookup[pos] = terrain
-
-
-func _ready() -> void:
-	if not Engine.is_editor_hint():
-		add_to_group("terrain")
 
 
 func _set_color(set_color: Color) -> void:
@@ -151,3 +146,12 @@ func is_neighbor(terrain: Terrain) -> bool:
 		or terrain.get_left() == self
 		or terrain.get_right() == self
 	)
+
+
+func _ready() -> void:
+	if not Engine.is_editor_hint():
+		add_to_group("terrain")
+
+func _exit_tree() -> void:
+	# as soon one terrain gets removed, lookup can be cleared
+	_terrain_lookup.clear()
