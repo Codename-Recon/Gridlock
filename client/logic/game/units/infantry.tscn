@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://2t61plm4vpda"]
+[gd_scene load_steps=22 format=3 uid="uid://2t61plm4vpda"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_6por7"]
-[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_g2qkq"]
-[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_jvmps"]
+[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_2xwsq"]
+[ext_resource type="Texture2D" uid="uid://2h3jboix0gnp" path="res://assets/images/game/units/infantery.png" id="2_e52xa"]
 [ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="5_xjxi4"]
 [ext_resource type="Script" path="res://logic/game/audio_stream_player_spatial.gd" id="7_3yk1c"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="7_5ps6t"]
@@ -10,19 +10,64 @@
 [ext_resource type="AudioStream" uid="uid://b31ajl2bvd1wj" path="res://assets/sounds/impactPlate_medium_004.ogg" id="14_j8dta"]
 [ext_resource type="AudioStream" uid="uid://by02xaouijj2c" path="res://assets/sounds/hold.ogg" id="15_mv7ka"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pb6k5"]
-resource_local_to_scene = true
-shader = ExtResource("3_g2qkq")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1tir"]
+shader = ExtResource("2_2xwsq")
 shader_parameter/shifting = true
-shader_parameter/shift_level_h = 0.087
-shader_parameter/shift_level_s = 0.215
-shader_parameter/shift_level_b = 1.0
-shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
-shader_parameter/new_color = Color(1, 0, 0, 1)
+shader_parameter/shift_level_h = 0.185
+shader_parameter/shift_level_s = 0.195
+shader_parameter/shift_level_b = 0.255
+shader_parameter/old_color = Color(0.678553, 0.082063, 0.560815, 1)
+shader_parameter/new_color = Color(0.85098, 0, 0, 1)
+shader_parameter/shift_shades_threshold = 1.0
+shader_parameter/shift_shades_factor = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p4bal"]
-atlas = ExtResource("3_jvmps")
-region = Rect2(256, 96, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3mwm"]
+atlas = ExtResource("2_e52xa")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28wct"]
+atlas = ExtResource("2_e52xa")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52765"]
+atlas = ExtResource("2_e52xa")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7m3h"]
+atlas = ExtResource("2_e52xa")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52hbm"]
+atlas = ExtResource("2_e52xa")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n3gnd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3mwm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28wct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52765")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7m3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52hbm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_kgvac"]
 length = 0.001
@@ -153,9 +198,12 @@ script = ExtResource("1_6por7")
 shader_modulate = true
 id = "INFANTRY"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_pb6k5")
-texture = SubResource("AtlasTexture_p4bal")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_d1tir")
+sprite_frames = SubResource("SpriteFrames_n3gnd")
+animation = &"idle"
+frame = 2
+frame_progress = 0.443796
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

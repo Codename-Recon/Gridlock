@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cbc6sawc766k"]
+[gd_scene load_steps=55 format=3 uid="uid://cbc6sawc766k"]
 
 [ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_6xhvo"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_81uaa"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://df4e0v877neen" path="res://logic/ui/shop.tscn" id="10_rtev0"]
 [ext_resource type="PackedScene" uid="uid://dw3qqdstw803h" path="res://logic/ui/decal_layer.tscn" id="11_cenw6"]
 [ext_resource type="PackedScene" uid="uid://chwkab0kw6j3l" path="res://logic/ui/move_arrow.tscn" id="12_lqnrk"]
-[ext_resource type="PackedScene" uid="uid://bculbumef41nx" path="res://logic/ui/capture_particles.tscn" id="13_xtqp8"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="14_cwg7q"]
 [ext_resource type="PackedScene" uid="uid://wq46v3oiq0rg" path="res://logic/ui/floating_info.tscn" id="14_vnmkc"]
 [ext_resource type="Script" path="res://logic/ui/action_panel.gd" id="17_0h3pk"]
@@ -63,7 +62,7 @@ func _set_music() -> void:
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4mh3"]
 atlas = ExtResource("14_cwg7q")
-region = Rect2(112, 48, 16, 16)
+region = Rect2(224, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i7el8"]
 atlas = ExtResource("25_h7n7d")
@@ -506,7 +505,6 @@ script = ExtResource("9_gl6qd")
 _shop_scene = ExtResource("10_rtev0")
 _move_layer = ExtResource("11_cenw6")
 _move_arrow = ExtResource("12_lqnrk")
-_capture_particles = ExtResource("13_xtqp8")
 _floating_info = ExtResource("14_vnmkc")
 
 [node name="SelectionDecal" type="Sprite2D" parent="SubViewportContainer/SubViewport"]

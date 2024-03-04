@@ -68,14 +68,14 @@ import/fbx/enabled=false
 
 [game]
 
-music_volume=-18.0
-sound_volume=-18.0
 graphics_shadow_quality=1
 graphics_anti_aliasing=1
+music_volume=-18.0
+sound_volume=-18.0
 
 [global]
 
-grid_size=Vector2(16, 16)
+grid_size=Vector2(32, 32)
 unit_max_health=100
 tint_time=0.5
 player_colors=PackedColorArray(0, 0.85098, 0, 1, 0.85098, 0, 0, 1, 0.921569, 0, 0.968627, 1)

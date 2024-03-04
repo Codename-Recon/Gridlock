@@ -11,15 +11,15 @@ point_count = 5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyt6h"]
 atlas = ExtResource("2_healk")
-region = Rect2(64, 32, 16, 16)
+region = Rect2(128, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ll0pw"]
 atlas = ExtResource("2_healk")
-region = Rect2(64, 48, 16, 16)
+region = Rect2(192, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8cuj"]
 atlas = ExtResource("2_healk")
-region = Rect2(80, 64, 16, 16)
+region = Rect2(160, 128, 32, 32)
 
 [node name="MoveArrow" type="Path2D"]
 curve = SubResource("Curve2D_k8i82")

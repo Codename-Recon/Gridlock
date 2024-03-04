@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qdwo"]
 atlas = ExtResource("1_x0pga")
-region = Rect2(160, 16, 16, 16)
+region = Rect2(320, 32, 32, 32)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qn7tf"]
 load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b.ctex"

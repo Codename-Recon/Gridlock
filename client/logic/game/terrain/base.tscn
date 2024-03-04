@@ -27,10 +27,12 @@ shader_parameter/shift_level_s = 0.236
 shader_parameter/shift_level_b = 1.0
 shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
 shader_parameter/new_color = Color(0.00784314, 0.0117647, 0.00784314, 1)
+shader_parameter/shift_shades_threshold = 1.0
+shader_parameter/shift_shades_factor = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3c44"]
 atlas = ExtResource("12_ctcoa")
-region = Rect2(176, 16, 16, 16)
+region = Rect2(352, 32, 32, 32)
 
 [node name="Base" type="Node2D"]
 script = ExtResource("1_la253")

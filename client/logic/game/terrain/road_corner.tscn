@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l0obg"]
 atlas = ExtResource("2_hvnfm")
-region = Rect2(48, 112, 16, 16)
+region = Rect2(32, 224, 32, 32)
 
 [node name="RoadCorner" type="Node2D"]
 script = ExtResource("1_t1685")

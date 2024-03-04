@@ -4,7 +4,6 @@ signal round_change_ended
 @export var _shop_scene: PackedScene
 @export var _move_layer: PackedScene
 @export var _move_arrow: PackedScene
-@export var _capture_particles: PackedScene
 @export var _floating_info: PackedScene
 
 @onready var _selection_decal: Sprite2D = $"../SelectionDecal"
@@ -945,9 +944,6 @@ func _do_state_action_clicked_action(local: bool = true) -> void:
 			last_selected_unit.move_curve = _move_arrow_node.curve
 			await last_selected_unit.unit_moved
 			if last_selected_unit.capture():
-				var particles: Node3D = _capture_particles.instantiate()
-				_map_slot.add_child(particles)
-				particles.global_transform = last_selected_unit.global_transform
 				_sound.play("Capturing")
 				_check_ending_condition()
 			last_selected_unit.get_unit_stats().round_over = true

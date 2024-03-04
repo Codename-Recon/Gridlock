@@ -24,3 +24,8 @@ extends Control
 			($"4" as TextureRect).show()
 		else:
 			($"4" as TextureRect).hide()
+			
+		if value > 4:
+			($"5" as TextureRect).show()
+		else:
+			($"5" as TextureRect).hide()
