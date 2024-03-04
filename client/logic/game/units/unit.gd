@@ -16,7 +16,7 @@ signal died
 			shader_modulate = value
 			for i: Node in get_children():
 				if "Sprite2D" in i.name:
-					((i as Sprite2D).material as ShaderMaterial).set_shader_parameter("shifting", value)
+					((i as Node2D).material as ShaderMaterial).set_shader_parameter("shifting", value)
 
 @export_color_no_alpha var color: Color:
 	set(value):
@@ -25,7 +25,7 @@ signal died
 			var color_a: Color = Color(color, 1)
 			for i: Node in get_children():
 				if "Sprite2D" in i.name:
-					((i as Sprite2D).material as ShaderMaterial).set_shader_parameter("new_color", color_a)
+					((i as Node2D).material as ShaderMaterial).set_shader_parameter("new_color", color_a)
 
 @export var player_owned: Player:
 	set(value):
@@ -56,7 +56,7 @@ var _types: GlobalTypes = Types
 
 @onready var _unit_stats: UnitStats = $UnitStats as UnitStats
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer as AnimationPlayer
-@onready var _sprite: Sprite2D = $Sprite2D as Sprite2D
+@onready var _sprite: Node2D = $Sprite2D as Node2D
 @onready var _audio_move: AudioStreamPlayer2D = $AudioMove as AudioStreamPlayer2D
 
 func get_possible_terrains_to_move() -> Array[Terrain]:
