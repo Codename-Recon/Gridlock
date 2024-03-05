@@ -129,6 +129,7 @@ offset_bottom = 255.0
 
 [node name="Health" type="Label" parent="Sprite/Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 offset_left = 5.0
 offset_top = 2.0
@@ -146,6 +147,7 @@ metadata/_edit_use_custom_anchors = false
 
 [node name="CaptureIcon" type="TextureRect" parent="Sprite/Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = -18.0
 offset_top = 2.0

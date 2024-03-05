@@ -51,6 +51,7 @@ signal died
 
 var _possible_terrains_to_move_buffer: Array[Terrain]
 var _possible_terrains_to_move_calculating: bool
+var _last_position: Vector2 = position
 
 var _types: GlobalTypes = Types
 
@@ -119,32 +120,42 @@ func uncapture() -> void:
 	_unit_stats.capturing = false
 	get_terrain().uncapture()
 
+
 func is_capturing() -> bool:
 	return _unit_stats.capturing
+
 
 func get_terrain() -> Terrain:
 	return (get_parent() as Terrain)
 
+
 func is_on_terrain() -> bool:
 	return get_terrain() != null
+
 
 func play_attack() -> void:
 	_animation_player.play("attack")
 
+
 func play_damage() -> void:
 	_animation_player.play("damage")
+
 
 func play_die() -> void:
 	_animation_player.play("die")
 
+
 func play_refill() -> void:
 	_animation_player.play("refill")
+
 
 func look_at_plane_global(global_point_position: Vector2) -> void:
 	pass
 
+
 func look_at_plane_global_tween(global_point_position: Vector2) -> void:
 	pass
+
 
 func get_terrain_on_point(point: Vector2) -> Terrain:
 	var terrains: Array[Node] = get_tree().get_nodes_in_group("terrain")
@@ -158,6 +169,7 @@ func get_terrain_on_point(point: Vector2) -> Terrain:
 		terrain = null
 	return terrain
 
+
 func _ready() -> void:
 	z_index = 1
 	if not Engine.is_editor_hint():
@@ -167,16 +179,33 @@ func _ready() -> void:
 		calculate_possible_terrains_to_move.call_deferred()
 		_sprite.modulate = Color.WHITE
 
+
+func _process(delta: float) -> void:
+	var direction: Vector2 = global_position - _last_position
+	if direction.length_squared() > 0.01:
+		if abs(direction.angle_to(Vector2.UP)) < 0.01:
+			print(direction.angle_to(Vector2.UP))
+			_animation_player.play("moving_up")
+		elif abs(direction.angle_to(Vector2.DOWN)) < 0.01:
+			_animation_player.play("moving_down")
+		elif abs(direction.angle_to(Vector2.LEFT)) < 0.01:
+			_animation_player.play("moving_left")
+		elif abs(direction.angle_to(Vector2.RIGHT)) < 0.01:
+			_animation_player.play("moving_right")
+		_last_position = global_position
+
 func _enter_tree() -> void:
 	# if it's terrain
 	if get_parent().has_method("get_move_on_global_position"):
 		global_position = (get_parent() as Terrain).get_move_on_global_position()
+
 
 func _round_over_changed() -> void:
 	if(get_unit_stats().round_over):
 		_sprite.modulate = ProjectSettings.get_setting("global/round_overlay")
 	else:
 		_sprite.modulate = Color.WHITE
+
 
 func _attack(start: Terrain, terrains: Array, distance_left: int, direction: Vector2, step: int) -> void:
 	if start:
@@ -204,6 +233,7 @@ func _attack(start: Terrain, terrains: Array, distance_left: int, direction: Vec
 				_attack(start.get_left(), terrains, distance_left, Vector2.LEFT, step + 1)
 			if direction == Vector2.RIGHT:
 				_attack(start.get_right(), terrains, distance_left, Vector2.RIGHT, step + 1)
+
 
 func _move(start: Terrain, terrains: Array, movement_left: int, direction: Vector2, step: int, allow_backwards: bool = false) -> void:
 	if start:
@@ -240,6 +270,7 @@ func _move(start: Terrain, terrains: Array, movement_left: int, direction: Vecto
 			if direction != Vector2.LEFT or allow_backwards:
 				_move(start.get_right(), terrains, movement_left, direction, step + 1, allow_backwards)
 
+
 func _move_on_curve() -> void:
 	if not Engine.is_editor_hint():
 		if move_curve:
@@ -255,9 +286,11 @@ func _move_on_curve() -> void:
 			tween.tween_property(follow, "progress_ratio", 1, time)
 			get_unit_stats().fuel -= move_curve.get_point_count() - 1
 			await tween.finished
+			_animation_player.play("RESET")
 			_end_move()
 			path.queue_free()
 			follow.queue_free()
+
 
 func _end_move() -> void:
 	var terrain: Terrain = get_terrain_on_point(global_position)
@@ -270,6 +303,7 @@ func _end_move() -> void:
 	if has_node("AudioMove"):
 		_audio_move.stop()
 	unit_moved.emit()
+
 
 func _set_unit_stars() -> void:
 	if _unit_stats and is_on_terrain():
