@@ -12,42 +12,42 @@ load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yno6q"]
 atlas = SubResource("CompressedTexture2D_qn7tf")
-region = Rect2(160, 16, 16, 16)
+region = Rect2(320, 32, 32, 32)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ei17j"]
 load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20wxs"]
 atlas = SubResource("CompressedTexture2D_ei17j")
-region = Rect2(128, 16, 16, 16)
+region = Rect2(256, 32, 32, 32)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6emhs"]
 load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3lrt"]
 atlas = SubResource("CompressedTexture2D_6emhs")
-region = Rect2(112, 16, 16, 16)
+region = Rect2(192, 32, 32, 32)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cj1oa"]
 load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ep2dg"]
 atlas = SubResource("CompressedTexture2D_cj1oa")
-region = Rect2(96, 16, 16, 16)
+region = Rect2(192, 32, 32, 32)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5ryw7"]
 load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqcaf"]
 atlas = SubResource("CompressedTexture2D_5ryw7")
-region = Rect2(96, 16, 16, 16)
+region = Rect2(192, 32, 32, 32)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uyq2p"]
 load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yqxi"]
 atlas = SubResource("CompressedTexture2D_uyq2p")
-region = Rect2(112, 16, 16, 16)
+region = Rect2(224, 32, 32, 32)
 
 [sub_resource type="Animation" id="Animation_ghwlo"]
 length = 0.001
