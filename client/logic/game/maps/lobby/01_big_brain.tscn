@@ -27,97 +27,96 @@ creator_url = "https://awbw.amarriner.com/prevmaps.php?maps_id=81014"
 [node name="Player2" parent="Players" instance=ExtResource("3_qd30o")]
 
 [node name="Forest" parent="." instance=ExtResource("4_57r1y")]
-position = Vector2(-16, -24)
 
 [node name="Forest4" parent="." instance=ExtResource("4_57r1y")]
-position = Vector2(16, 8)
+position = Vector2(32, 32)
 
 [node name="Forest5" parent="." instance=ExtResource("4_57r1y")]
-position = Vector2(-48, 72)
+position = Vector2(-32, 96)
 
 [node name="Forest2" parent="." instance=ExtResource("4_57r1y")]
-position = Vector2(-48, -56)
+position = Vector2(-32, -32)
 
 [node name="Forest3" parent="." instance=ExtResource("4_57r1y")]
-position = Vector2(16, -120)
+position = Vector2(32, -96)
 
 [node name="Road" parent="." instance=ExtResource("5_ww2f4")]
-position = Vector2(-48, -24)
+position = Vector2(-32, 0)
 
 [node name="Road6" parent="." instance=ExtResource("5_ww2f4")]
-position = Vector2(16, -24)
+position = Vector2(32, 0)
 
 [node name="Road10" parent="." instance=ExtResource("5_ww2f4")]
-position = Vector2(16, 40)
+position = Vector2(32, 64)
 
 [node name="Road7" parent="." instance=ExtResource("5_ww2f4")]
-position = Vector2(48, -24)
+position = Vector2(64, 0)
 
 [node name="Road4" parent="." instance=ExtResource("5_ww2f4")]
-position = Vector2(-48, -88)
+position = Vector2(-32, -64)
 
 [node name="Road2" parent="." instance=ExtResource("5_ww2f4")]
-position = Vector2(-80, -24)
+position = Vector2(-64, 0)
 
 [node name="Road3" parent="." instance=ExtResource("5_ww2f4")]
-position = Vector2(-112, -56)
+position = Vector2(-96, -32)
 rotation = 1.5708
 
 [node name="Road12" parent="." instance=ExtResource("5_ww2f4")]
-position = Vector2(-112, 8)
+position = Vector2(-96, 32)
 rotation = 1.5708
 
 [node name="Road8" parent="." instance=ExtResource("5_ww2f4")]
-position = Vector2(80, -56)
+position = Vector2(96, -32)
 rotation = 1.5708
 
 [node name="Road9" parent="." instance=ExtResource("5_ww2f4")]
-position = Vector2(80, 8)
+position = Vector2(96, 32)
 rotation = 1.5708
 
 [node name="Road5" parent="." instance=ExtResource("5_ww2f4")]
-position = Vector2(-16, -56)
+position = Vector2(0, -32)
 rotation = 1.5708
 
 [node name="Road11" parent="." instance=ExtResource("5_ww2f4")]
-position = Vector2(-16, 8)
+position = Vector2(0, 32)
 rotation = 1.5708
 
 [node name="RoadTCross" parent="." instance=ExtResource("6_8v6qn")]
-position = Vector2(-112, -24)
+position = Vector2(-96, 0)
 
 [node name="RoadTCross2" parent="." instance=ExtResource("6_8v6qn")]
-position = Vector2(80, -24)
+position = Vector2(96, 0)
 rotation = 3.14159
 
 [node name="RoadCorner" parent="." instance=ExtResource("7_c4fog")]
-position = Vector2(-112, -88)
+position = Vector2(-96, -64)
 rotation = -1.5708
 
 [node name="RoadCorner2" parent="." instance=ExtResource("7_c4fog")]
-position = Vector2(80, 40)
+position = Vector2(96, 64)
 rotation = 1.5708
 
 [node name="Base" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_rl5bs")]
-position = Vector2(-80, -56)
+position = Vector2(-64, -32)
 shader_modulate = true
 color = Color(0.85098, 0, 0, 1)
 player_owned = NodePath("../Players/Player2")
 
 [node name="Base3" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_rl5bs")]
-position = Vector2(48, 8)
+position = Vector2(64, 32)
 shader_modulate = true
 color = Color(0, 0.85098, 0, 1)
 player_owned = NodePath("../Players/Player1")
 
 [node name="Base4" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_rl5bs")]
-position = Vector2(16, 72)
+position = Vector2(32, 96)
 shader_modulate = true
 color = Color(0, 0.85098, 0, 1)
 player_owned = NodePath("../Players/Player1")
 
 [node name="Base2" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_rl5bs")]
-position = Vector2(-48, -120)
+position = Vector2(-32, -96)
 shader_modulate = true
 color = Color(0.85098, 0, 0, 1)
 player_owned = NodePath("../Players/Player2")
@@ -127,85 +126,85 @@ color = Color(0.85098, 0, 0, 1)
 player_owned = NodePath("../../Players/Player2")
 
 [node name="QG" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("10_evih2")]
-position = Vector2(-80, -88)
+position = Vector2(-64, -64)
 shader_modulate = true
 color = Color(0.85098, 0, 0, 1)
 player_owned = NodePath("../Players/Player2")
 
 [node name="QG2" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("10_evih2")]
-position = Vector2(48, 40)
+position = Vector2(64, 64)
 shader_modulate = true
 color = Color(0, 0.85098, 0, 1)
 player_owned = NodePath("../Players/Player1")
 
 [node name="MountainLow" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(-16, -88)
+position = Vector2(0, -64)
 
 [node name="MountainLow6" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(-16, 40)
+position = Vector2(0, 64)
 
 [node name="MountainLow2" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(48, -56)
+position = Vector2(64, -32)
 
 [node name="MountainLow7" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(-80, 40)
+position = Vector2(-64, 64)
 
 [node name="MountainLow8" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(-80, 8)
+position = Vector2(-64, 32)
 
 [node name="MountainLow9" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(-80, 72)
+position = Vector2(-64, 96)
 
 [node name="MountainLow11" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(48, 72)
+position = Vector2(64, 96)
 
 [node name="MountainLow12" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(80, 72)
+position = Vector2(96, 96)
 
 [node name="MountainLow10" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(-112, 72)
+position = Vector2(-96, 96)
 
 [node name="MountainLow3" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(48, -88)
+position = Vector2(64, -64)
 
 [node name="MountainLow4" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(48, -120)
+position = Vector2(64, -96)
 
 [node name="MountainLow13" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(-80, -120)
+position = Vector2(-64, -96)
 
 [node name="MountainLow14" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(-112, -120)
+position = Vector2(-96, -96)
 
 [node name="MountainLow5" parent="." instance=ExtResource("11_m5u4q")]
-position = Vector2(80, -120)
+position = Vector2(96, -96)
 
 [node name="City" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("12_3li2b")]
-position = Vector2(-16, -120)
+position = Vector2(0, -96)
 shader_modulate = true
 color = Color(0.85098, 0, 0, 1)
 player_owned = NodePath("../Players/Player2")
 
 [node name="City2" parent="." instance=ExtResource("12_3li2b")]
-position = Vector2(16, -56)
+position = Vector2(32, -32)
 
 [node name="City4" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("12_3li2b")]
-position = Vector2(-16, 72)
+position = Vector2(0, 96)
 shader_modulate = true
 color = Color(0, 0.85098, 0, 1)
 player_owned = NodePath("../Players/Player1")
 
 [node name="City5" parent="." instance=ExtResource("12_3li2b")]
-position = Vector2(-48, 8)
+position = Vector2(-32, 32)
 
 [node name="City3" parent="." instance=ExtResource("12_3li2b")]
-position = Vector2(80, -88)
+position = Vector2(96, -64)
 
 [node name="City6" parent="." instance=ExtResource("12_3li2b")]
-position = Vector2(-112, 40)
+position = Vector2(-96, 64)
 
 [node name="Grass" parent="." instance=ExtResource("13_xfjjn")]
-position = Vector2(16, -88)
+position = Vector2(32, -64)
 
 [node name="Grass2" parent="." instance=ExtResource("13_xfjjn")]
-position = Vector2(-48, 40)
+position = Vector2(-32, 64)
