@@ -212,7 +212,9 @@ script = ExtResource("5_xxewy")
 [node name="1" type="TextureRect" parent="Sprite/Control/Stars"]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.05
 anchor_top = 0.136364
+anchor_right = 0.05
 anchor_bottom = 0.136364
 offset_left = -9.0
 offset_top = -16.0
