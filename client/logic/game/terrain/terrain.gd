@@ -101,7 +101,7 @@ func uncapture() -> void:
 
 func get_terrain_by_position(pos: Vector2i) -> Terrain:
 	# check if terrain lookup is generated (dictionary and entries exists). If not -> generate
-	if not (_terrain_lookup and len(_terrain_lookup.keys()) > 0):
+	if not _terrain_lookup or _terrain_lookup.is_empty():
 		generate_terrain_lookup()
 	return _terrain_lookup.get(pos)
 

@@ -5,27 +5,10 @@ extends Control
 @export var star_number: int = 0:
 	set(value):
 		star_number = value
-		if value > 0:
-			($"1" as TextureRect).show()
-		else:
-			($"1" as TextureRect).hide()
+		for i: int in stars.size():
+			if i + 1 <= value:
+				stars[i].show()
+			else:
+				stars[i].hide()
 
-		if value > 1:
-			($"2" as TextureRect).show()
-		else:
-			($"2" as TextureRect).hide()
-
-		if value > 2:
-			($"3" as TextureRect).show()
-		else:
-			($"3" as TextureRect).hide()
-
-		if value > 3:
-			($"4" as TextureRect).show()
-		else:
-			($"4" as TextureRect).hide()
-			
-		if value > 4:
-			($"5" as TextureRect).show()
-		else:
-			($"5" as TextureRect).hide()
+@export var stars: Array[TextureRect]
