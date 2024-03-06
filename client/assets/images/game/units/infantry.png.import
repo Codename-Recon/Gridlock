@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2h3jboix0gnp"
-path="res://.godot/imported/infantery.png-da7a3561daf18e7585d51f03891d28df.ctex"
+uid="uid://c3nykf8itb81n"
+path="res://.godot/imported/infantry.png-e3f77710eb665a0af87d6796eff69795.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/game/units/infantery.png"
-dest_files=["res://.godot/imported/infantery.png-da7a3561daf18e7585d51f03891d28df.ctex"]
+source_file="res://assets/images/game/units/infantry.png"
+dest_files=["res://.godot/imported/infantry.png-e3f77710eb665a0af87d6796eff69795.ctex"]
 
 [params]
 
