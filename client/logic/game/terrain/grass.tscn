@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ltwi8"]
 atlas = ExtResource("2_t4f1o")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 32, 32)
 
 [node name="Grass" type="Node2D"]
 script = ExtResource("1_dajis")

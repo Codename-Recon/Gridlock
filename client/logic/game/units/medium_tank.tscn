@@ -18,10 +18,12 @@ shader_parameter/shift_level_s = 0.206
 shader_parameter/shift_level_b = 1.0
 shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
 shader_parameter/new_color = Color(1, 0, 0, 1)
+shader_parameter/shift_shades_threshold = 1.0
+shader_parameter/shift_shades_factor = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ptre0"]
 atlas = ExtResource("3_ogaip")
-region = Rect2(16, 64, 16, 16)
+region = Rect2(32, 128, 32, 32)
 
 [sub_resource type="Animation" id="Animation_f6iph"]
 length = 0.001

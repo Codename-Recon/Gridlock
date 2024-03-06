@@ -20,10 +20,12 @@ shader_parameter/shift_level_s = 0.26
 shader_parameter/shift_level_b = 0.805
 shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
 shader_parameter/new_color = Color(1, 0, 0, 1)
+shader_parameter/shift_shades_threshold = 1.0
+shader_parameter/shift_shades_factor = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ebhwr"]
 atlas = ExtResource("3_cwyba")
-region = Rect2(272, 96, 16, 16)
+region = Rect2(544, 192, 32, 32)
 
 [sub_resource type="Animation" id="Animation_42uhv"]
 length = 0.001

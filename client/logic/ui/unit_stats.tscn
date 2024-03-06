@@ -6,19 +6,19 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1t4ew"]
 atlas = ExtResource("6_7v8pe")
-region = Rect2(224, 160, 16, 16)
+region = Rect2(448, 320, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xxxj"]
 atlas = ExtResource("6_7v8pe")
-region = Rect2(208, 160, 16, 16)
+region = Rect2(416, 320, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xnc4"]
 atlas = ExtResource("6_7v8pe")
-region = Rect2(176, 160, 16, 16)
+region = Rect2(352, 320, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4ita"]
 atlas = ExtResource("6_7v8pe")
-region = Rect2(192, 160, 16, 16)
+region = Rect2(384, 320, 32, 32)
 
 [sub_resource type="Animation" id="Animation_o5odx"]
 resource_name = "AmmoBlink"
@@ -98,19 +98,19 @@ _data = {
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kh8bx"]
 atlas = ExtResource("6_7v8pe")
-region = Rect2(240, 160, 16, 16)
+region = Rect2(480, 320, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yxi7s"]
 atlas = ExtResource("6_7v8pe")
-region = Rect2(240, 160, 16, 16)
+region = Rect2(480, 320, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_twima"]
 atlas = ExtResource("6_7v8pe")
-region = Rect2(240, 160, 16, 16)
+region = Rect2(480, 320, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ferym"]
 atlas = ExtResource("6_7v8pe")
-region = Rect2(240, 160, 16, 16)
+region = Rect2(480, 320, 32, 32)
 
 [node name="UnitStats" type="Node2D"]
 script = ExtResource("1_hgwin")
@@ -129,37 +129,41 @@ offset_bottom = 255.0
 
 [node name="Health" type="Label" parent="Sprite/Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
-offset_top = 1.0
-offset_right = 7.0
-offset_bottom = 9.0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 17.0
+offset_bottom = 17.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 16
 text = "10"
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="CaptureIcon" type="TextureRect" parent="Sprite/Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
-offset_left = -9.0
-offset_top = 1.0
-offset_right = 7.0
-offset_bottom = 17.0
+offset_left = -18.0
+offset_top = 2.0
+offset_right = 14.0
+offset_bottom = 34.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_1t4ew")
 
 [node name="CarryingIcon" type="TextureRect" parent="Sprite/Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
-offset_left = -9.0
-offset_top = 1.0
-offset_right = 7.0
-offset_bottom = 17.0
+offset_left = -18.0
+offset_top = 2.0
+offset_right = 14.0
+offset_bottom = 34.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_1xxxj")
 
@@ -167,9 +171,10 @@ texture = SubResource("AtlasTexture_1xxxj")
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_top = -6.0
-offset_right = 16.0
-offset_bottom = 10.0
+offset_left = 2.0
+offset_top = -14.0
+offset_right = 34.0
+offset_bottom = 18.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_0xnc4")
 
@@ -177,10 +182,10 @@ texture = SubResource("AtlasTexture_0xnc4")
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_left = -8.0
-offset_top = -6.0
-offset_right = 8.0
-offset_bottom = 10.0
+offset_left = -18.0
+offset_top = -12.0
+offset_right = 14.0
+offset_bottom = 20.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_h4ita")
 
@@ -196,7 +201,7 @@ libraries = {
 "": SubResource("AnimationLibrary_oimnt")
 }
 
-[node name="Stars" type="Control" parent="Sprite/Control"]
+[node name="Stars" type="Control" parent="Sprite/Control" node_paths=PackedStringArray("stars")]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
@@ -205,38 +210,76 @@ offset_top = -12.0
 offset_right = 10.0
 offset_bottom = 10.0
 script = ExtResource("5_xxewy")
+stars = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5")]
 
 [node name="1" type="TextureRect" parent="Sprite/Control/Stars"]
-layout_mode = 0
-offset_right = 16.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.136364
+anchor_right = 0.05
+anchor_bottom = 0.136364
+offset_left = -9.0
+offset_top = -16.0
+offset_right = 23.0
 offset_bottom = 16.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_kh8bx")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="2" type="TextureRect" parent="Sprite/Control/Stars"]
-layout_mode = 0
-offset_left = 4.0
-offset_right = 20.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.136364
+anchor_bottom = 0.136364
+offset_left = -2.0
+offset_top = -16.0
+offset_right = 30.0
 offset_bottom = 16.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_yxi7s")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="3" type="TextureRect" parent="Sprite/Control/Stars"]
-layout_mode = 0
-offset_left = 8.0
-offset_right = 24.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.136364
+anchor_bottom = 0.136364
+offset_left = 4.0
+offset_top = -16.0
+offset_right = 36.0
 offset_bottom = 16.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_twima")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="4" type="TextureRect" parent="Sprite/Control/Stars"]
-layout_mode = 0
-offset_left = 12.0
-offset_right = 28.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.136364
+anchor_bottom = 0.136364
+offset_left = 10.0
+offset_top = -16.0
+offset_right = 42.0
 offset_bottom = 16.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_ferym")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="5" type="TextureRect" parent="Sprite/Control/Stars"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.136364
+anchor_bottom = 0.136364
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 48.0
+offset_bottom = 16.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_ferym")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true

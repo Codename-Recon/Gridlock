@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pm51n"]
 atlas = ExtResource("2_whsyt")
-region = Rect2(80, 0, 16, 16)
+region = Rect2(160, 0, 32, 32)
 
 [node name="MountainLow" type="Node2D"]
 script = ExtResource("1_0ahmq")

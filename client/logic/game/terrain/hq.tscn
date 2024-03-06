@@ -14,10 +14,12 @@ shader_parameter/shift_level_s = 0.236
 shader_parameter/shift_level_b = 1.0
 shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
 shader_parameter/new_color = Color(0, 0.00784314, 0.0117647, 1)
+shader_parameter/shift_shades_threshold = 1.0
+shader_parameter/shift_shades_factor = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vyerd"]
 atlas = ExtResource("3_bscfi")
-region = Rect2(144, 16, 16, 16)
+region = Rect2(288, 32, 32, 32)
 
 [node name="HQ" type="Node2D"]
 script = ExtResource("1_4uq48")

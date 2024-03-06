@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://crj13jqmktmtn"]
+[gd_scene load_steps=43 format=3 uid="uid://crj13jqmktmtn"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
@@ -7,12 +7,9 @@
 [ext_resource type="Script" path="res://logic/game/viewport.gd" id="4_qshs6"]
 [ext_resource type="Texture2D" uid="uid://dmp3yy3lmavys" path="res://assets/images/game/menu/background.png" id="5_p3s4b"]
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="7_1imcl"]
-[ext_resource type="PackedScene" uid="uid://c0oddna5vf8nd" path="res://logic/game/maps/vs_ai/01_big_brain.tscn" id="15_7gwmg"]
-[ext_resource type="PackedScene" uid="uid://ckd3eep5ebgh6" path="res://logic/game/maps/vs_ai/02_the_flowers.tscn" id="16_arpb2"]
-[ext_resource type="PackedScene" uid="uid://tr1b43h8d24w" path="res://logic/game/maps/hotseat/01_big_brain.tscn" id="16_pp71h"]
-[ext_resource type="PackedScene" uid="uid://c0iswr2xw1ywu" path="res://logic/game/maps/hotseat/02_the_flowers.tscn" id="18_m8pbv"]
-[ext_resource type="PackedScene" uid="uid://cvkntlq7wjkcn" path="res://logic/game/maps/lobby/01_big_brain.tscn" id="19_kr7y1"]
-[ext_resource type="PackedScene" uid="uid://btefxje3orxfq" path="res://logic/game/maps/lobby/02_the_flowers.tscn" id="20_bxw0a"]
+[ext_resource type="PackedScene" uid="uid://bv88xt6eaix8d" path="res://logic/game/maps/vs_ai/01_big_brain.tscn" id="15_7gwmg"]
+[ext_resource type="PackedScene" uid="uid://bajfvcujmh51o" path="res://logic/game/maps/lobby/01_big_brain.tscn" id="17_cdwqf"]
+[ext_resource type="PackedScene" uid="uid://tr1b43h8d24w" path="res://logic/game/maps/hotseat/01_big_brain.tscn" id="19_kr7y1"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="34_rl1iq"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons.gd" id="40_om04v"]
 [ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="41_n387a"]
@@ -658,7 +655,7 @@ offset_top = -344.0
 offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../SingleplayerMenu")
-maps = Array[PackedScene]([ExtResource("15_7gwmg"), ExtResource("16_arpb2")])
+maps = Array[PackedScene]([ExtResource("15_7gwmg")])
 metadata/_edit_layout_mode = 1
 
 [node name="MultiplayerHotSeatMapSelection" parent="." node_paths=PackedStringArray("back_control") instance=ExtResource("46_qlnwy")]
@@ -674,7 +671,7 @@ offset_top = -344.0
 offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../MultiplayerMenu")
-maps = Array[PackedScene]([ExtResource("16_pp71h"), ExtResource("18_m8pbv")])
+maps = Array[PackedScene]([ExtResource("19_kr7y1")])
 metadata/_edit_layout_mode = 1
 
 [node name="MultiplayerLobbyMapSelection" parent="." node_paths=PackedStringArray("back_control", "next_control") instance=ExtResource("46_qlnwy")]
@@ -691,7 +688,7 @@ offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../MPLobbyListMenu")
 next_control = NodePath("../MPLobbyMenu")
-maps = Array[PackedScene]([ExtResource("19_kr7y1"), ExtResource("20_bxw0a")])
+maps = Array[PackedScene]([ExtResource("17_cdwqf")])
 next_button_text_override = "HOST"
 metadata/_edit_layout_mode = 1
 
@@ -787,6 +784,9 @@ Ghost
 jaume
 [indent][i]Engine Developer[/i][/indent]
 
+2-3-Ryan-5
+[indent][i]Engine Developer[/i][/indent]
+
 Darkbladercr
 [indent][i]Lead Backend Developer[/i][/indent]
 
@@ -802,6 +802,9 @@ Gloomreach
 
 Sleepy Tech
 [indent][i]Lead Spriter[/i][/indent]
+
+Zamza
+[indent][i]Spriter[/i][/indent]
 
 [center][b]External[/b][/center]
 

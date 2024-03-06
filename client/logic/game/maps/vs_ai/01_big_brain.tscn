@@ -1,212 +1,212 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0oddna5vf8nd"]
+[gd_scene load_steps=14 format=3 uid="uid://bv88xt6eaix8d"]
 
-[ext_resource type="Script" path="res://logic/game/maps/map.gd" id="1_qw113"]
-[ext_resource type="PackedScene" uid="uid://b71wg52iw0miv" path="res://logic/game/players/player_network_1.tscn" id="2_m6x8t"]
-[ext_resource type="PackedScene" uid="uid://beegvonqcwp4y" path="res://logic/game/players/player_network_2.tscn" id="3_y82ee"]
-[ext_resource type="PackedScene" uid="uid://d0fgjj53xl6xb" path="res://logic/game/terrain/forest.tscn" id="4_gdrx8"]
-[ext_resource type="PackedScene" uid="uid://j2dfnwe4u54k" path="res://logic/game/terrain/road.tscn" id="5_egjk8"]
-[ext_resource type="PackedScene" uid="uid://c1qfl356w5jbq" path="res://logic/game/terrain/road_t_cross.tscn" id="6_8pd3o"]
-[ext_resource type="PackedScene" uid="uid://bxx88dyd0j7el" path="res://logic/game/terrain/road_corner.tscn" id="7_1h5om"]
-[ext_resource type="PackedScene" uid="uid://b4giy6a41fm5c" path="res://logic/game/terrain/base.tscn" id="8_nhks6"]
-[ext_resource type="PackedScene" uid="uid://2t61plm4vpda" path="res://logic/game/units/infantry.tscn" id="9_s735o"]
-[ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/game/terrain/hq.tscn" id="10_xscd6"]
-[ext_resource type="PackedScene" uid="uid://dd0wqod476fk7" path="res://logic/game/terrain/mountain_low.tscn" id="11_xvdlh"]
-[ext_resource type="PackedScene" uid="uid://dpr3trog5kdn4" path="res://logic/game/terrain/city.tscn" id="12_222oa"]
-[ext_resource type="PackedScene" uid="uid://cd7cf0w3wkur5" path="res://logic/game/terrain/grass.tscn" id="13_nrs50"]
+[ext_resource type="Script" path="res://logic/game/maps/map.gd" id="1_iiumt"]
+[ext_resource type="PackedScene" uid="uid://b71wg52iw0miv" path="res://logic/game/players/player_network_1.tscn" id="2_fav1l"]
+[ext_resource type="PackedScene" uid="uid://beegvonqcwp4y" path="res://logic/game/players/player_network_2.tscn" id="3_n4gag"]
+[ext_resource type="PackedScene" uid="uid://d0fgjj53xl6xb" path="res://logic/game/terrain/forest.tscn" id="4_xqhhl"]
+[ext_resource type="PackedScene" uid="uid://j2dfnwe4u54k" path="res://logic/game/terrain/road.tscn" id="5_qu0k1"]
+[ext_resource type="PackedScene" uid="uid://c1qfl356w5jbq" path="res://logic/game/terrain/road_t_cross.tscn" id="6_iodbr"]
+[ext_resource type="PackedScene" uid="uid://bxx88dyd0j7el" path="res://logic/game/terrain/road_corner.tscn" id="7_oy2uc"]
+[ext_resource type="PackedScene" uid="uid://b4giy6a41fm5c" path="res://logic/game/terrain/base.tscn" id="8_5pdtm"]
+[ext_resource type="PackedScene" uid="uid://2t61plm4vpda" path="res://logic/game/units/infantry.tscn" id="9_8svod"]
+[ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/game/terrain/hq.tscn" id="10_gmsd5"]
+[ext_resource type="PackedScene" uid="uid://dd0wqod476fk7" path="res://logic/game/terrain/mountain_low.tscn" id="11_jy4a8"]
+[ext_resource type="PackedScene" uid="uid://dpr3trog5kdn4" path="res://logic/game/terrain/city.tscn" id="12_ia2aq"]
+[ext_resource type="PackedScene" uid="uid://cd7cf0w3wkur5" path="res://logic/game/terrain/grass.tscn" id="13_7qakn"]
 
 [node name="BigBrain" type="Node2D"]
-script = ExtResource("1_qw113")
+script = ExtResource("1_iiumt")
 map_name = "Big Brain"
 creator = "GabrielTheDoggo9078"
 creator_url = "https://awbw.amarriner.com/prevmaps.php?maps_id=81014"
 
 [node name="Players" type="Node" parent="."]
 
-[node name="Player1" parent="Players" instance=ExtResource("2_m6x8t")]
+[node name="Player1" parent="Players" instance=ExtResource("2_fav1l")]
 input_type = 0
 
-[node name="Player2" parent="Players" instance=ExtResource("3_y82ee")]
+[node name="Player2" parent="Players" instance=ExtResource("3_n4gag")]
 input_type = 1
 
-[node name="Forest" parent="." instance=ExtResource("4_gdrx8")]
+[node name="Forest" parent="." instance=ExtResource("4_xqhhl")]
 
-[node name="Forest4" parent="." instance=ExtResource("4_gdrx8")]
-position = Vector2(16, 16)
+[node name="Forest4" parent="." instance=ExtResource("4_xqhhl")]
+position = Vector2(32, 32)
 
-[node name="Forest5" parent="." instance=ExtResource("4_gdrx8")]
-position = Vector2(-16, 48)
+[node name="Forest5" parent="." instance=ExtResource("4_xqhhl")]
+position = Vector2(-32, 96)
 
-[node name="Forest2" parent="." instance=ExtResource("4_gdrx8")]
-position = Vector2(-16, -16)
+[node name="Forest2" parent="." instance=ExtResource("4_xqhhl")]
+position = Vector2(-32, -32)
 
-[node name="Forest3" parent="." instance=ExtResource("4_gdrx8")]
-position = Vector2(16, -48)
+[node name="Forest3" parent="." instance=ExtResource("4_xqhhl")]
+position = Vector2(32, -96)
 
-[node name="Road" parent="." instance=ExtResource("5_egjk8")]
-position = Vector2(-16, 0)
-
-[node name="Road6" parent="." instance=ExtResource("5_egjk8")]
-position = Vector2(16, 0)
-
-[node name="Road10" parent="." instance=ExtResource("5_egjk8")]
-position = Vector2(16, 32)
-
-[node name="Road7" parent="." instance=ExtResource("5_egjk8")]
-position = Vector2(32, 0)
-
-[node name="Road4" parent="." instance=ExtResource("5_egjk8")]
-position = Vector2(-16, -32)
-
-[node name="Road2" parent="." instance=ExtResource("5_egjk8")]
+[node name="Road" parent="." instance=ExtResource("5_qu0k1")]
 position = Vector2(-32, 0)
 
-[node name="Road3" parent="." instance=ExtResource("5_egjk8")]
-position = Vector2(-48, -16)
+[node name="Road6" parent="." instance=ExtResource("5_qu0k1")]
+position = Vector2(32, 0)
+
+[node name="Road10" parent="." instance=ExtResource("5_qu0k1")]
+position = Vector2(32, 64)
+
+[node name="Road7" parent="." instance=ExtResource("5_qu0k1")]
+position = Vector2(64, 0)
+
+[node name="Road4" parent="." instance=ExtResource("5_qu0k1")]
+position = Vector2(-32, -64)
+
+[node name="Road2" parent="." instance=ExtResource("5_qu0k1")]
+position = Vector2(-64, 0)
+
+[node name="Road3" parent="." instance=ExtResource("5_qu0k1")]
+position = Vector2(-96, -32)
 rotation = 1.5708
 
-[node name="Road12" parent="." instance=ExtResource("5_egjk8")]
-position = Vector2(-48, 16)
+[node name="Road12" parent="." instance=ExtResource("5_qu0k1")]
+position = Vector2(-96, 32)
 rotation = 1.5708
 
-[node name="Road8" parent="." instance=ExtResource("5_egjk8")]
-position = Vector2(48, -16)
+[node name="Road8" parent="." instance=ExtResource("5_qu0k1")]
+position = Vector2(96, -32)
 rotation = 1.5708
 
-[node name="Road9" parent="." instance=ExtResource("5_egjk8")]
-position = Vector2(48, 16)
+[node name="Road9" parent="." instance=ExtResource("5_qu0k1")]
+position = Vector2(96, 32)
 rotation = 1.5708
 
-[node name="Road5" parent="." instance=ExtResource("5_egjk8")]
-position = Vector2(0, -16)
+[node name="Road5" parent="." instance=ExtResource("5_qu0k1")]
+position = Vector2(0, -32)
 rotation = 1.5708
 
-[node name="Road11" parent="." instance=ExtResource("5_egjk8")]
-position = Vector2(0, 16)
+[node name="Road11" parent="." instance=ExtResource("5_qu0k1")]
+position = Vector2(0, 32)
 rotation = 1.5708
 
-[node name="RoadTCross" parent="." instance=ExtResource("6_8pd3o")]
-position = Vector2(-48, 0)
+[node name="RoadTCross" parent="." instance=ExtResource("6_iodbr")]
+position = Vector2(-96, 0)
 
-[node name="RoadTCross2" parent="." instance=ExtResource("6_8pd3o")]
-position = Vector2(48, 0)
+[node name="RoadTCross2" parent="." instance=ExtResource("6_iodbr")]
+position = Vector2(96, 0)
 rotation = 3.14159
 
-[node name="RoadCorner" parent="." instance=ExtResource("7_1h5om")]
-position = Vector2(-48, -32)
+[node name="RoadCorner" parent="." instance=ExtResource("7_oy2uc")]
+position = Vector2(-96, -64)
 rotation = -1.5708
 
-[node name="RoadCorner2" parent="." instance=ExtResource("7_1h5om")]
-position = Vector2(48, 32)
+[node name="RoadCorner2" parent="." instance=ExtResource("7_oy2uc")]
+position = Vector2(96, 64)
 rotation = 1.5708
 
-[node name="Base" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_nhks6")]
-position = Vector2(-32, -16)
+[node name="Base" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_5pdtm")]
+position = Vector2(-64, -32)
 shader_modulate = true
 color = Color(0.85098, 0, 0, 1)
 player_owned = NodePath("../Players/Player2")
 
-[node name="Base3" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_nhks6")]
-position = Vector2(32, 16)
+[node name="Base3" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_5pdtm")]
+position = Vector2(64, 32)
 shader_modulate = true
 color = Color(0, 0.85098, 0, 1)
 player_owned = NodePath("../Players/Player1")
 
-[node name="Base4" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_nhks6")]
-position = Vector2(16, 48)
+[node name="Base4" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_5pdtm")]
+position = Vector2(32, 96)
 shader_modulate = true
 color = Color(0, 0.85098, 0, 1)
 player_owned = NodePath("../Players/Player1")
 
-[node name="Base2" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_nhks6")]
-position = Vector2(-16, -48)
+[node name="Base2" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_5pdtm")]
+position = Vector2(-32, -96)
 shader_modulate = true
 color = Color(0.85098, 0, 0, 1)
 player_owned = NodePath("../Players/Player2")
 
-[node name="Infantry" parent="Base2" node_paths=PackedStringArray("player_owned") instance=ExtResource("9_s735o")]
+[node name="Infantry" parent="Base2" node_paths=PackedStringArray("player_owned") instance=ExtResource("9_8svod")]
 color = Color(0.85098, 0, 0, 1)
 player_owned = NodePath("../../Players/Player2")
 
-[node name="QG" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("10_xscd6")]
-position = Vector2(-32, -32)
+[node name="QG" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("10_gmsd5")]
+position = Vector2(-64, -64)
 shader_modulate = true
 color = Color(0.85098, 0, 0, 1)
 player_owned = NodePath("../Players/Player2")
 
-[node name="QG2" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("10_xscd6")]
-position = Vector2(32, 32)
+[node name="QG2" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("10_gmsd5")]
+position = Vector2(64, 64)
 shader_modulate = true
 color = Color(0, 0.85098, 0, 1)
 player_owned = NodePath("../Players/Player1")
 
-[node name="MountainLow" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(0, -32)
+[node name="MountainLow" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(0, -64)
 
-[node name="MountainLow6" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(0, 32)
+[node name="MountainLow6" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(0, 64)
 
-[node name="MountainLow2" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(32, -16)
+[node name="MountainLow2" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(64, -32)
 
-[node name="MountainLow7" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(-32, 32)
+[node name="MountainLow7" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(-64, 64)
 
-[node name="MountainLow8" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(-32, 16)
+[node name="MountainLow8" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(-64, 32)
 
-[node name="MountainLow9" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(-32, 48)
+[node name="MountainLow9" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(-64, 96)
 
-[node name="MountainLow11" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(32, 48)
+[node name="MountainLow11" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(64, 96)
 
-[node name="MountainLow12" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(48, 48)
+[node name="MountainLow12" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(96, 96)
 
-[node name="MountainLow10" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(-48, 48)
+[node name="MountainLow10" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(-96, 96)
 
-[node name="MountainLow3" parent="." instance=ExtResource("11_xvdlh")]
+[node name="MountainLow3" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(64, -64)
+
+[node name="MountainLow4" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(64, -96)
+
+[node name="MountainLow13" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(-64, -96)
+
+[node name="MountainLow14" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(-96, -96)
+
+[node name="MountainLow5" parent="." instance=ExtResource("11_jy4a8")]
+position = Vector2(96, -96)
+
+[node name="City" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("12_ia2aq")]
+position = Vector2(0, -96)
+shader_modulate = true
+color = Color(0.85098, 0, 0, 1)
+player_owned = NodePath("../Players/Player2")
+
+[node name="City2" parent="." instance=ExtResource("12_ia2aq")]
 position = Vector2(32, -32)
 
-[node name="MountainLow4" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(32, -48)
-
-[node name="MountainLow13" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(-32, -48)
-
-[node name="MountainLow14" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(-48, -48)
-
-[node name="MountainLow5" parent="." instance=ExtResource("11_xvdlh")]
-position = Vector2(48, -48)
-
-[node name="City" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("12_222oa")]
-position = Vector2(0, -48)
-shader_modulate = true
-color = Color(0.85098, 0, 0, 1)
-player_owned = NodePath("../Players/Player2")
-
-[node name="City2" parent="." instance=ExtResource("12_222oa")]
-position = Vector2(16, -16)
-
-[node name="City4" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("12_222oa")]
-position = Vector2(0, 48)
+[node name="City4" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("12_ia2aq")]
+position = Vector2(0, 96)
 shader_modulate = true
 color = Color(0, 0.85098, 0, 1)
 player_owned = NodePath("../Players/Player1")
 
-[node name="City5" parent="." instance=ExtResource("12_222oa")]
-position = Vector2(-16, 16)
+[node name="City5" parent="." instance=ExtResource("12_ia2aq")]
+position = Vector2(-32, 32)
 
-[node name="City3" parent="." instance=ExtResource("12_222oa")]
-position = Vector2(48, -32)
+[node name="City3" parent="." instance=ExtResource("12_ia2aq")]
+position = Vector2(96, -64)
 
-[node name="City6" parent="." instance=ExtResource("12_222oa")]
-position = Vector2(-48, 32)
+[node name="City6" parent="." instance=ExtResource("12_ia2aq")]
+position = Vector2(-96, 64)
 
-[node name="Grass" parent="." instance=ExtResource("13_nrs50")]
-position = Vector2(16, -32)
+[node name="Grass" parent="." instance=ExtResource("13_7qakn")]
+position = Vector2(32, -64)
 
-[node name="Grass2" parent="." instance=ExtResource("13_nrs50")]
-position = Vector2(-16, 32)
+[node name="Grass2" parent="." instance=ExtResource("13_7qakn")]
+position = Vector2(-32, 64)
