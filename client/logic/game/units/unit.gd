@@ -10,6 +10,11 @@ signal refill_animation_done
 signal possible_terrains_to_move_calculated
 signal died
 
+enum State{
+	STANDING,
+	MOVING,
+}
+
 @export var shader_modulate: bool = false:
 	set(value):
 		if value:
@@ -52,6 +57,7 @@ signal died
 var _possible_terrains_to_move_buffer: Array[Terrain]
 var _possible_terrains_to_move_calculating: bool
 var _last_position: Vector2 = position
+var _state: State = State.STANDING
 
 var _types: GlobalTypes = Types
 
@@ -183,8 +189,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var direction: Vector2 = global_position - _last_position
 	if direction.length_squared() > 0.01:
+		_state = State.MOVING
 		if abs(direction.angle_to(Vector2.UP)) < 0.01:
-			print(direction.angle_to(Vector2.UP))
 			_animation_player.play("moving_up")
 		elif abs(direction.angle_to(Vector2.DOWN)) < 0.01:
 			_animation_player.play("moving_down")
@@ -193,6 +199,10 @@ func _process(delta: float) -> void:
 		elif abs(direction.angle_to(Vector2.RIGHT)) < 0.01:
 			_animation_player.play("moving_right")
 		_last_position = global_position
+	else:
+		if _state != State.STANDING:
+			_state = State.STANDING
+			_animation_player.play("idle")
 
 func _enter_tree() -> void:
 	# if it's terrain
