@@ -31,3 +31,30 @@ func _on_ui_select_terrain(terrain_set: int, terrain: int) -> void:
 
 func _on_cursor_preview_set_terrain(coords: Vector2i) -> void:
 	tile_map.set_cells_terrain_connect(0, [coords], current_terrain_set, current_terrain, false)
+
+
+func _on_ui_resize_map(new_size: Vector2i)->void:
+	var cells_to_paint:Array[Vector2i] = []
+	var cells_to_drop:Array[Vector2i] = []
+	if map_size.x < new_size.x:
+		for i:int in range(map_size.x, new_size.x):
+			for j:int in new_size.y:
+				cells_to_paint.push_back(Vector2i(i, j))
+	else:
+		for i:int in range(new_size.x, map_size.x):
+			for j:int in new_size.y:
+				cells_to_drop.push_back(Vector2i(i,j))
+				
+
+	if map_size.y < new_size.y:
+		for j:int in range(map_size.y, new_size.y):
+			for i:int in new_size.x:
+				cells_to_paint.push_back(Vector2i(i, j))
+	else:
+		for j:int in range(new_size.y, map_size.y):
+			for i:int in new_size.x:
+				cells_to_drop.push_back(Vector2i(i,j))
+	
+	tile_map.set_cells_terrain_connect(0, cells_to_paint, 0, 0)
+	tile_map.set_cells_terrain_connect(0, cells_to_drop, 0, -1)
+	map_size = new_size

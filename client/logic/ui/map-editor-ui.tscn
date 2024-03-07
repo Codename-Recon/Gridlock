@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://hds34errxgf3"]
+[gd_scene load_steps=3 format=3 uid="uid://hds34errxgf3"]
 
 [ext_resource type="Script" path="res://logic/ui/map-editor-ui.gd" id="1_nwduq"]
+[ext_resource type="PackedScene" uid="uid://cs6bq4m0vtvo4" path="res://levels/resize-popup.tscn" id="2_dogft"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -56,8 +57,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 200.0
-offset_bottom = 100.0
+offset_right = 250.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -77,9 +78,29 @@ text = "Map editor menu"
 layout_mode = 2
 text = "exit"
 
+[node name="Resize" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+text = "Resize"
+
 [node name="CloseMenu" type="Button" parent="MainMenu/VBoxContainer"]
 layout_mode = 2
 text = "Close Menu"
 
+[node name="ResizeMenu" parent="." instance=ExtResource("2_dogft")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 150.0
+offset_bottom = 300.0
+grow_horizontal = 1
+grow_vertical = 1
+
 [connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Resize" to="." method="_on_resize_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/CloseMenu" to="." method="_on_close_menu_pressed"]

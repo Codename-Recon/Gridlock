@@ -2,10 +2,12 @@
 extends Control
 
 signal select_terrain(terrain_set: int, terrain: int)
+signal resize_map(new_size: Vector2i)
 
 @export var tile_set: TileSet
 @onready var main_menu: Panel = $MainMenu
 @onready var terrains_container: HBoxContainer = $Panel/TerrainsContainer
+@onready var resize_menu: Panel = $"ResizeMenu"
 var last_button: Button
 
 
@@ -32,3 +34,7 @@ func _on_close_menu_pressed() -> void:
 
 func _on_menu_pressed() -> void:
 	main_menu.show()
+
+func _on_resize_pressed() -> void:
+	resize_menu.show()
+	main_menu.hide()
