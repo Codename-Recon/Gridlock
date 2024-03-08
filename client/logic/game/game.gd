@@ -1,4 +1,4 @@
-extends Camera2D
+extends Node
 
 signal round_change_ended
 @export var _shop_scene: PackedScene
@@ -7,17 +7,16 @@ signal round_change_ended
 @export var _floating_info: PackedScene
 
 @onready var _selection_decal: Sprite2D = $"../SelectionDecal"
-@onready var _action_panel: ActionPanel = $"../../../Interface/ActionPanel"
-@onready var _input_timer: Timer = $"../InputTimer"
+@onready var _action_panel: ActionPanel = $"../../Interface/ActionPanel"
 @onready var _round_button: Button = %RoundButton
 @onready var _escape_panel: Control = %EscapePanel
-@onready var _map_slot: Node = %MapSlot
 @onready var _cursor: Cursor = %Cursor
 @onready var _round_label: RoundLabel = %RoundLabel
 @onready var _round_rect: Polygon2D = %RoundRect
 @onready var _round_number_label: Label = %RoundNumberLabel
 @onready var _money_label: Label = %MoneyLabel
 @onready var _animation_player: AnimationPlayer = %AnimationPlayer
+@onready var _input: GameInput = $"../GameInput"
 
 var state: GameConst.State:
 	set(value):
@@ -54,11 +53,6 @@ var _move_arrow_node: MoveArrow
 var map: Map
 var player_turns: Array[Player]
 var turn_round: int = 0
-var target_camera_zoom: Vector2
-var camera_move_speed: float
-var camera_zoom_speed: float
-var camera_max_zoom: float
-var camera_min_zoom: float
 var own_player_id: int
 
 var _state_event_id: int = 0
@@ -66,7 +60,6 @@ var _action_panel_just_released: bool = false
 var _shop_panel_just_released: bool = false
 var _map_loaded: bool = false
 var _fsm_blocked: bool = false
-var _input_blocked: bool = false
 var _last_state: GameConst.State
 var _last_event: GameConst.Event
 var _random_luck: Array[int]	# luck number between 0 and 9
@@ -77,6 +70,7 @@ var _multiplayer: GlobalMultiplayer = Multiplayer
 var _messages: GlobalMessages = Messages
 var _global: GlobalGlobal = Global
 var _types: GlobalTypes = Types
+
 
 func _ready() -> void:
 	if _multiplayer.client_role == _multiplayer.ClientRole.NONE:
@@ -91,18 +85,12 @@ func _ready() -> void:
 	_move_arrow_node = _move_arrow.instantiate()
 	_move_arrow_node.hide()
 	get_parent().call_deferred("add_child", _move_arrow_node)
-	target_camera_zoom = zoom
-	
-	camera_move_speed = ProjectSettings.get_setting("global/camera_move_speed")
-	camera_zoom_speed = ProjectSettings.get_setting("global/camera_zoom_speed")
-	camera_max_zoom = ProjectSettings.get_setting("global/camera_max_zoom")
-	camera_min_zoom = ProjectSettings.get_setting("global/camera_min_zoom")
 	
 	_round_button.disabled = true
 
+
 func _process(delta: float) -> void:
 	if _map_loaded:
-		_handle_camera_input(delta)
 		if not _fsm_blocked:
 			_fsm_blocked = true
 			match(input):
@@ -113,26 +101,20 @@ func _process(delta: float) -> void:
 				GameConst.InputType.NETWORK:
 					await _process_network(delta)
 			_fsm_blocked = false
-		
+
+
 func _process_human(delta: float) -> void:
 	if _selection_decal:
-		if not _input_blocked and not _escape_panel.visible:
-			if Input.is_action_just_released("select_first") or _simulated_first_click:
-				_simulated_first_click = false
-				# ignore clicked event when button round was pressed
-				if event != GameConst.Event.CLICKED_END_ROUND:
-					last_mouse_terrain = null 	# to force terrain interface update 
-					var temp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
-					if temp_terrain.get_terrain_by_position(_cursor.get_tile_position()):
-						last_selected_terrain = temp_terrain.get_terrain_by_position(_cursor.get_tile_position())
-						event = GameConst.Event.CLICKED_LEFT
-						_input_blocked = true
-						_input_timer.start()
+		if _input.is_just_first or _simulated_first_click:
+			_simulated_first_click = false
+			last_mouse_terrain = null 	# to force terrain interface update 
+			var temp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
+			if temp_terrain.get_terrain_by_position(_cursor.get_tile_position()):
+				last_selected_terrain = temp_terrain.get_terrain_by_position(_cursor.get_tile_position())
+				event = GameConst.Event.CLICKED_LEFT
 
-			if Input.is_action_just_released("select_second"):
-				event = GameConst.Event.CLICKED_RIGHT
-				_input_blocked = true
-				_input_timer.start()
+		if _input.is_just_second:
+			event = GameConst.Event.CLICKED_RIGHT
 			
 		if _action_panel_just_released:
 			event = GameConst.Event.CLICKED_ACTION
@@ -228,7 +210,8 @@ func _process_human(delta: float) -> void:
 			_round_button.disabled = true
 			await _do_state_ending()
 	event = GameConst.Event.NONE
-	
+
+
 func _process_ai(delta: float) -> void:
 	match(state):
 		GameConst.State.EARNING:
@@ -428,7 +411,8 @@ func _process_ai(delta: float) -> void:
 		GameConst.State.ENDING:
 			await _do_state_ending()
 	event = GameConst.Event.NONE
-	
+
+
 func _process_network(delta: float) -> void:
 	await _parse_network_fsm_round()
 	match(state):
@@ -488,26 +472,6 @@ func _process_network(delta: float) -> void:
 		GameConst.State.ENDING:
 			await _do_state_ending(false)
 
-func _handle_camera_input(delta: float) -> void:
-	if not _escape_panel.visible:
-		if Input.is_action_pressed("move_up"):
-			global_translate(Vector2.UP * delta * camera_move_speed)
-		if Input.is_action_pressed("move_down"):
-			global_translate(Vector2.DOWN * delta * camera_move_speed)
-		if Input.is_action_pressed("move_left"):
-			global_translate(Vector2.LEFT * delta * camera_move_speed * 1.5)
-		if Input.is_action_pressed("move_right"):
-			global_translate(Vector2.RIGHT * delta * camera_move_speed * 1.5)
-		if target_camera_zoom.x > camera_min_zoom and Input.is_action_just_released("zoom_out"):
-			if state != GameConst.State.BUYING:
-				var tween: Tween = create_tween()
-				target_camera_zoom = zoom - delta * camera_zoom_speed * Vector2.ONE
-				tween.tween_property(self, "zoom", target_camera_zoom, 0.1)
-		if target_camera_zoom.x < camera_max_zoom and Input.is_action_just_released("zoom_in"):
-			if state != GameConst.State.BUYING:
-				var tween: Tween = create_tween()
-				target_camera_zoom = zoom + delta * camera_zoom_speed * Vector2.ONE
-				tween.tween_property(self, "zoom", target_camera_zoom, 0.1)
 
 ### States
 # EARNING
@@ -520,6 +484,7 @@ func _do_state_earning(local: bool = true) -> void:
 	# TODO: daylie fuel consumption
 	if local:
 		state = GameConst.State.REPAIRING
+
 
 # REPAIRING
 func _do_state_repairing(local: bool = true) -> void:
@@ -554,6 +519,7 @@ func _do_state_repairing(local: bool = true) -> void:
 	if local:
 		state = GameConst.State.SELECTING
 
+
 # SELECTING
 func _do_state_selecting_clicked_left() -> void:
 	if last_selected_terrain: 
@@ -586,7 +552,8 @@ func _do_state_selecting_clicked_left() -> void:
 			state = GameConst.State.BUYING
 			return
 	state = GameConst.State.SELECTING
-		
+
+
 func _do_state_selecting_clicked_right() -> void:
 	_sound.play("Deselect")
 	_deselect_unit()
@@ -594,6 +561,7 @@ func _do_state_selecting_clicked_right() -> void:
 	_undeploy()
 	_unenter()
 	state = GameConst.State.SELECTING
+
 
 # COMMANDING
 func _do_state_commanding_clicked_left() -> void:
@@ -659,6 +627,7 @@ func _do_state_commanding_clicked_left() -> void:
 	_unenter()
 	_unjoin()
 
+
 func _do_state_commanding_clicked_right() -> void:
 	_sound.play("Deselect")
 	_deselect_unit()
@@ -666,6 +635,7 @@ func _do_state_commanding_clicked_right() -> void:
 	_unenter()
 	_unjoin()
 	state = GameConst.State.SELECTING
+
 
 # ATTACKING
 func _do_state_attacking_clicked_left(local: bool = true) -> void:
@@ -751,10 +721,12 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 	if local:
 		state = GameConst.State.SELECTING
 
+
 func _do_state_attacking_clicked_right() -> void:
 	_sound.play("Deselect")
 	_unattack()
 	state = GameConst.State.SELECTING
+
 
 # REFILLING
 func _do_state_refilling_clicked_left(local: bool = true) -> void:
@@ -787,10 +759,12 @@ func _do_state_refilling_clicked_left(local: bool = true) -> void:
 	if local:
 		state = GameConst.State.SELECTING
 
+
 func _do_state_refilling_clicked_right() -> void:
 	_sound.play("Deselect")
 	_unrefill()
 	state = GameConst.State.SELECTING
+
 
 # DEPLOYING
 func _do_state_deploying_clicked_left(local: bool = true) -> void:
@@ -826,10 +800,12 @@ func _do_state_deploying_clicked_left(local: bool = true) -> void:
 	if local:
 		state = GameConst.State.SELECTING
 
+
 func _do_state_deploying_clicked_right() -> void:
 	_sound.play("Deselect")
 	_undeploy()
 	state = GameConst.State.SELECTING
+
 
 # ACTION
 func _do_state_action_clicked_action(local: bool = true) -> void:
@@ -958,6 +934,7 @@ func _do_state_action_clicked_action(local: bool = true) -> void:
 	_undeploy()
 	_unjoin()
 
+
 func _do_state_action_clicked_right() -> void:
 	_sound.play("Deselect")
 	_deselect_unit()
@@ -968,6 +945,7 @@ func _do_state_action_clicked_right() -> void:
 	_unjoin()
 	state = GameConst.State.SELECTING
 	_action_panel.hide()
+
 
 #BUYING
 func _do_state_bying_clicked_shop(local: bool = true) -> void:
@@ -988,6 +966,7 @@ func _do_state_bying_clicked_shop(local: bool = true) -> void:
 	if local:
 		state = GameConst.State.SELECTING
 	_selection_decal.show()
+
 
 #ENDING
 func _do_state_ending(local: bool = true) -> void:
@@ -1020,6 +999,7 @@ func _do_state_ending(local: bool = true) -> void:
 	if input != GameConst.InputType.NETWORK:
 		state = GameConst.State.EARNING
 
+
 # updates selecting decal and, if true, moving arrow
 func _update_ui(update__move_arrow: bool = false) -> void:
 	var temp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
@@ -1034,7 +1014,8 @@ func _update_ui(update__move_arrow: bool = false) -> void:
 			else:
 				_move_arrow_node.hide()
 		last_mouse_terrain = terrain
-	
+
+
 # ui input gets only paths inside movable range
 func _update_move_arrow_ui_input(end_terrain: Terrain) -> void:
 	# convert curve in packed vector 3 array since it is better to handle and backed points have wrong points in between
@@ -1058,27 +1039,32 @@ func _update_move_arrow_ui_input(end_terrain: Terrain) -> void:
 			_path_finding_move_arrow(end_terrain, true)
 			_move_arrow_node.create_arrow()
 	_move_arrow_node.show()
-	
+
+
 # none ui gets paths outside of moveable range (eg. finding path to hq)
 func _update__move_arrow_none_ui_input(end_terrain: Terrain) -> void:
 	_path_finding_move_arrow(end_terrain, false)
 	_move_arrow_node.hide()
-	
+
+
 func _path_finding_move_arrow(end_terrain: Terrain, only_in_movable: bool = true) -> void:
 	_move_arrow_node.curve.clear_points()
 	for point: Vector2 in _get_path(last_selected_unit.get_parent() as Terrain, end_terrain, last_selected_unit, only_in_movable):
 		_move_arrow_node.curve.add_point(point)
 
+
 # returns how many fields it's away (ignoring diagonal and "not movable terrains")
 func _get_unit_distance(start: Unit, end: Unit) -> int:
 	return _get_terrain_distance(start.get_terrain(), end.get_terrain())
-	
+
+
 # returns how many fields it's away (ignoring diagonal and "not movable terrains")
 func _get_terrain_distance(start: Terrain, end: Terrain) -> int:
 	var distance: Vector2 = end.global_position - start.global_position
 	distance /= ProjectSettings.get_setting("global/grid_size")
 	var value: float = abs(distance.x) + abs(distance.y)
 	return round(value)
+
 
 func _is_path_possible(current_path: PackedVector2Array, additional_terrain: Terrain, unit: Unit) -> bool:
 	if not additional_terrain:
@@ -1110,6 +1096,7 @@ func _is_path_possible(current_path: PackedVector2Array, additional_terrain: Ter
 	if cost > _types.units[unit.id]["mp"]:
 		return false
 	return true
+
 
 # if check_moveable is false the path finding returns paths outside of moveable range 
 func _get_path(start: Terrain, end: Terrain, unit: Unit, check_moveable: bool = true) -> PackedVector2Array:
@@ -1149,16 +1136,18 @@ func _get_path(start: Terrain, end: Terrain, unit: Unit, check_moveable: bool = 
 		if terrain.get_right() in points:
 			var p2: int = points[terrain.get_right()]
 			astar.connect_points(p1, p2)
-			
+	
 	var start_point: int = points[start]
 	var end_point: int = points[end]
 	var result: PackedVector2Array = astar.get_point_path(start_point, end_point)
 	return result
 
+
 func _get_random_luck() -> int:
 	var number: int = _random_luck.pop_front()
 	_random_luck.append(number)
 	return number
+
 
 func _deselect_unit() -> void:
 	moveable_terrains = []
@@ -1168,28 +1157,32 @@ func _deselect_unit() -> void:
 		i.queue_free()
 		
 	_move_arrow_node.hide()
-	
+
+
 func _unattack() -> void:
 	attackable_terrains = []
 	var areas: Array[Sprite2D] = _get_group_decal("attack_area")
 	for i: Sprite2D in areas:
 		(i.get_parent() as Terrain).layer = null
 		i.queue_free()
-		
+
+
 func _unrefill() -> void:
 	refill_terrains = []
 	var areas: Array[Sprite2D] = _get_group_decal("refill_area")
 	for i: Sprite2D in areas:
 		(i.get_parent() as Terrain).layer = null
 		i.queue_free()
-		
+
+
 func _unenter() -> void:
 	enter_terrains = []
 	var areas: Array[Sprite2D] = _get_group_decal("enter_area")
 	for i: Sprite2D in areas:
 		(i.get_parent() as Terrain).layer = null
 		i.queue_free()
-		
+
+
 func _undeploy() -> void:
 	deploy_terrains = []
 	var areas: Array[Sprite2D] = _get_group_decal("deploy_area")
@@ -1197,12 +1190,14 @@ func _undeploy() -> void:
 		(i.get_parent() as Terrain).layer = null
 		i.queue_free()
 
+
 func _unjoin() -> void:
 	join_terrains = []
 	var areas: Array[Sprite2D] = _get_group_decal("join_area")
 	for i: Sprite2D in areas:
 		(i.get_parent() as Terrain).layer = null
 		i.queue_free()
+
 
 func _create_and_set_move_area(unit: Unit, visibility: bool = true) -> void:
 	moveable_terrains = await unit.get_possible_terrains_to_move()
@@ -1215,7 +1210,8 @@ func _create_and_set_move_area(unit: Unit, visibility: bool = true) -> void:
 		_create_and_set_enter_area(unit, i)
 		_create_and_set_attack_area(unit, i)
 		_create_and_set_join_area(unit, i)
-			
+
+
 func _create_and_set_attack_area(unit: Unit, target_terrain: Terrain, visibility: bool = true, check_move_and_attack: bool = true) -> void:
 	# if unit moved and is not allowed to attack
 	if check_move_and_attack:
@@ -1232,6 +1228,7 @@ func _create_and_set_attack_area(unit: Unit, target_terrain: Terrain, visibility
 				i.layer = layer
 			attackable_terrains.append(i)
 
+
 func _create_and_set_refill_area(unit: Unit, target_terrain: Terrain, visibility: bool = true) -> void:
 	if not _types.units[unit.id]["can_supply"]:
 		return
@@ -1244,7 +1241,8 @@ func _create_and_set_refill_area(unit: Unit, target_terrain: Terrain, visibility
 				layer.add_to_group("refill_area")
 				i.layer = layer
 			refill_terrains.append(i)
-			
+
+
 # find terrains which contains carrying vehicles to join
 func _create_and_set_enter_area(unit: Unit, target_terrain: Terrain, visibility: bool = true) -> void:
 	enter_terrains = []
@@ -1260,7 +1258,8 @@ func _create_and_set_enter_area(unit: Unit, target_terrain: Terrain, visibility:
 					layer.add_to_group("enter_area")
 					i.layer = layer
 				enter_terrains.append(i)
-				
+
+
 func _create_and_set_deploy_area(unit: Unit, target_terrain: Terrain, visibility: bool = true) -> void:
 	deploy_terrains = []
 	if not _types.units[unit.id]["can_carry"] or unit.cargo.get_child_count() == 0:
@@ -1276,6 +1275,7 @@ func _create_and_set_deploy_area(unit: Unit, target_terrain: Terrain, visibility
 						layer.add_to_group("deploy_area")
 						i.add_child(layer)
 					deploy_terrains.append(i)
+
 
 func _create_and_set_join_area(unit: Unit, target_terrain: Terrain, visibility: bool = true) -> void:
 	join_terrains = []
@@ -1293,6 +1293,7 @@ func _create_and_set_join_area(unit: Unit, target_terrain: Terrain, visibility: 
 					i.layer = layer
 				join_terrains.append(i)
 
+
 func _add_money_on_current_player(value: int, sound: bool = false) -> void:
 	var last_money: int = player_turns[0].money
 	player_turns[0].money += value
@@ -1302,24 +1303,25 @@ func _add_money_on_current_player(value: int, sound: bool = false) -> void:
 		_sound.play("Coin")
 	await tween.finished
 
+
 func _on_panel_action_selected() -> void:
 	_sound.play("Click")
 	last_selected_action = _action_panel.action_pressed
 	_action_panel_just_released = true
-	
+
+
 func _on_panel_shop_selected(unit_scene: PackedScene) -> void:
 	_sound.play("Click")
 	last_bought_unit = unit_scene
 	_round_button.disabled = false
 	_shop_panel_just_released = true
-	
+
+
 func _on_round_button_pressed() -> void:
 	_sound.play("Click")
 	_round_button.disabled = true
 	event = GameConst.Event.CLICKED_END_ROUND
 
-func _on_input_timer_timeout() -> void:
-	_input_blocked = false
 
 func _on_game_map_loaded() -> void:
 	map = %MapSlot.get_child(0)
@@ -1337,11 +1339,13 @@ func _on_game_map_loaded() -> void:
 	var player: Player = player_turns.pop_front()
 	player_turns.append(player)
 	_map_loaded = true
-		
+
+
 func _on_presence_changed() -> void:
 	if len(_multiplayer.presences) < 2:
 		_multiplayer.nakama_disconnect_from_match()
 		_messages.spawn(tr("MESSAGE_TITLE_PLAYER_LEFT"), tr("MESSAGE_TEXT_PLAYER_LEFT"), true)
+
 
 # Workaround for casting Array Type
 func _get_group_terrain() -> Array[Terrain]:
@@ -1350,7 +1354,8 @@ func _get_group_terrain() -> Array[Terrain]:
 	for i: Terrain in group:
 		terrains.append(i)
 	return terrains
-	
+
+
 # Workaround for casting Array Type
 func _get_group_decal(group_name: String) -> Array[Sprite2D]:
 	var group: Array[Node] = get_tree().get_nodes_in_group(group_name)
@@ -1358,21 +1363,16 @@ func _get_group_decal(group_name: String) -> Array[Sprite2D]:
 	for i: Sprite2D in group:
 		decals.append(i)
 	return decals
-	
+
+
 func _get_group_unit() -> Array[Unit]:
 	var group: Array[Node] = get_tree().get_nodes_in_group("unit")
 	var units: Array[Unit] = []
 	for i: Unit in group:
 		units.append(i)
 	return units
-	
-func _get_unit_position_on_screen() -> Dictionary:
-	var units: Array[Unit] = _get_group_unit()
-	var positions: Dictionary = {}
-	for unit: Unit in units:
-		positions[unit] = to_local(unit.global_position)
-	return positions
-	
+
+
 # returns Vector: x = -1 when no damage can be done (e.g. no possible weapons), y represents weapon type (primary -> 0, secondary -> 1)
 func _calculate_damage(attacking_unit: Unit, defending_unit: Unit, random_luck: bool = true) -> Vector2:
 	var base_damage: int = 0
@@ -1406,22 +1406,26 @@ func _calculate_damage(attacking_unit: Unit, defending_unit: Unit, random_luck: 
 	var total_damage: int = int(attacking_unit.get_unit_stats().health * attack_factor * defense_factor)
 	return Vector2(total_damage, weapon_type)
 
+
 func _calculate_all_unit_possible_move_terrain() -> void:
 	var units: Array[Unit] = _get_group_unit()
 	for unit: Unit in units:
 		if unit.player_owned == player_turns[0]:
 			unit.calculate_possible_terrains_to_move()
-		
+
+
 func _set_money_label(value: int) -> void:
 	_money_label.text = str(value)
-	
+
+
 func _get_free_own_bases() -> Array[Terrain]:
 	var bases: Array[Terrain] = []
 	for terrain: Terrain in _get_group_terrain():
 		if "Base" in terrain.name and terrain.player_owned == player_turns[0] and not terrain.has_unit():
 			bases.append(terrain)
 	return bases
-	
+
+
 # This function filters all terrains which are not movable. It is meant for AI calculation, since the player input is already filtered by the UI.
 func _ai_create_and_filter_move_curve(target_terrain: Terrain) -> void:
 	_update__move_arrow_none_ui_input(target_terrain)
@@ -1441,19 +1445,22 @@ func _ai_create_and_filter_move_curve(target_terrain: Terrain) -> void:
 			curve.remove_point(i)
 		else:
 			break
-	
+
+
 func _ai_sort_attackable_terrain_most_valuable(attacking_unit: Unit) -> void:
 	attackable_terrains.sort_custom(func(a: Terrain, b: Terrain) -> bool:
 		var value_a: Vector2 = _calculate_damage(attacking_unit, a.get_unit()) * _types.units[a.get_unit().id]["cost"]
 		var value_b: Vector2 = _calculate_damage(attacking_unit, b.get_unit()) * _types.units[b.get_unit().id]["cost"]
 		return value_a > value_b)
-	
+
+
 func _ai_sort_moveable_terrain_nearest(unit: Unit) -> void:
 	moveable_terrains.sort_custom(func(a: Terrain, b: Terrain) -> bool:
 		var value_a: int = _get_terrain_distance(unit.get_terrain(), a)
 		var value_b: int = _get_terrain_distance(unit.get_terrain(), b)
 		return value_a < value_b)
-	
+
+
 func _check_ending_condition() -> void:
 	for player: Player in player_turns:
 		var has_qg: bool = false
@@ -1470,6 +1477,7 @@ func _check_ending_condition() -> void:
 			if _multiplayer.client_role != _multiplayer.ClientRole.NONE:
 				_multiplayer.nakama_presence_changed.disconnect(_on_presence_changed)
 
+
 func _set_network_player_stats() -> void:
 	if player_turns[0].input_type == GameConst.InputType.NETWORK:
 		if _multiplayer.client_role == _multiplayer.ClientRole.HOST:
@@ -1479,6 +1487,7 @@ func _set_network_player_stats() -> void:
 		if _multiplayer.client_role == _multiplayer.ClientRole.CLIENT:
 			player_turns[1].input_type = GameConst.InputType.HUMAN
 			own_player_id = player_turns[1].player_number
+
 
 func _stringify_network_fsm_round() -> String:
 	var data: Dictionary = {}
@@ -1504,13 +1513,15 @@ func _stringify_network_fsm_round() -> String:
 		# shop unit can be null when shop gets closed
 		data['network_bought_unit'] = null
 	return JSON.stringify(data)
-	
+
+
 func _remove_network_own_fsm_round() -> void:
 	var new_list: Array[String] = _multiplayer.network_fsm_round_queue.filter(func(x: String) -> bool: return JSON.parse_string(x)['player_id'] != own_player_id)
 	_multiplayer.network_fsm_round_queue = new_list
 	new_list = _multiplayer.network_fsm_round_queue.filter(func(x: String) -> bool: return JSON.parse_string(x)['player_id'] != own_player_id)
 	_multiplayer.network_fsm_round_queue = new_list
-	
+
+
 func _parse_network_fsm_round() -> void:
 	# when broadcasting nakama states, the sender will receive it too
 	_remove_network_own_fsm_round()
