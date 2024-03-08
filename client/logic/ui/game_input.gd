@@ -4,6 +4,10 @@ extends Camera2D
 signal input_first
 signal input_second
 signal input_escape
+signal selection_changed(terrain: Terrain)
+
+@onready var cursor: Cursor = $Cursor
+@onready var selection: Selection = $Selection
 
 var is_just_first: bool = false:
 	get:
@@ -20,7 +24,15 @@ var is_just_escape: bool = false:
 		var return_value: bool = is_just_escape
 		is_just_escape = false
 		return return_value
-var input_enabled: bool = true
+var input_enabled: bool = true:
+	set(value):
+		input_enabled = value
+		if value:
+			cursor.show()
+			selection.show()
+		else:
+			cursor.hide()
+			selection.hide()
 var zoom_enabled: bool = true
 var camera_movement_enabled: bool = true
 var button_enabled: bool = true
@@ -30,8 +42,6 @@ var _camera_move_speed: float
 var _camera_zoom_speed: float
 var _camera_max_zoom: float
 var _camera_min_zoom: float
-
-@onready var _input_timer: Timer = $InputTimer
 
 func _ready() -> void:
 	_target_camera_zoom = zoom
@@ -78,3 +88,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			is_just_second = true
 		if event.is_action_pressed("escape"):
 			is_just_escape = true
+
+
+func _on_selection_changed(terrain: Terrain) -> void:
+	selection_changed.emit(terrain)

@@ -6,11 +6,8 @@ signal round_change_ended
 @export var _move_arrow: PackedScene
 @export var _floating_info: PackedScene
 
-@onready var _selection_decal: Sprite2D = $"../SelectionDecal"
 @onready var _action_panel: ActionPanel = $"../../Interface/ActionPanel"
 @onready var _round_button: Button = %RoundButton
-@onready var _escape_panel: Control = %EscapePanel
-@onready var _cursor: Cursor = %Cursor
 @onready var _round_label: RoundLabel = %RoundLabel
 @onready var _round_rect: Polygon2D = %RoundRect
 @onready var _round_number_label: Label = %RoundNumberLabel
@@ -104,25 +101,24 @@ func _process(delta: float) -> void:
 
 
 func _process_human(delta: float) -> void:
-	if _selection_decal:
-		if _input.is_just_first or _simulated_first_click:
-			_simulated_first_click = false
-			last_mouse_terrain = null 	# to force terrain interface update 
-			var temp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
-			if temp_terrain.get_terrain_by_position(_cursor.get_tile_position()):
-				last_selected_terrain = temp_terrain.get_terrain_by_position(_cursor.get_tile_position())
-				event = GameConst.Event.CLICKED_LEFT
+	if _input.is_just_first or _simulated_first_click:
+		_simulated_first_click = false
+		last_mouse_terrain = null 	# to force terrain interface update 
+		var temp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
+		if temp_terrain.get_terrain_by_position(_input.cursor.get_tile_position()):
+			last_selected_terrain = temp_terrain.get_terrain_by_position(_input.cursor.get_tile_position())
+			event = GameConst.Event.CLICKED_LEFT
 
-		if _input.is_just_second:
-			event = GameConst.Event.CLICKED_RIGHT
-			
-		if _action_panel_just_released:
-			event = GameConst.Event.CLICKED_ACTION
-			_action_panel_just_released = false
-			
-		if _shop_panel_just_released:
-			event = GameConst.Event.CLICKED_SHOP
-			_shop_panel_just_released = false
+	if _input.is_just_second:
+		event = GameConst.Event.CLICKED_RIGHT
+		
+	if _action_panel_just_released:
+		event = GameConst.Event.CLICKED_ACTION
+		_action_panel_just_released = false
+		
+	if _shop_panel_just_released:
+		event = GameConst.Event.CLICKED_SHOP
+		_shop_panel_just_released = false
 
 	if _multiplayer.client_role != _multiplayer.ClientRole.NONE:
 		_remove_network_own_fsm_round()
@@ -136,7 +132,7 @@ func _process_human(delta: float) -> void:
 		GameConst.State.EARNING:
 			await _do_state_earning()
 		GameConst.State.REPAIRING:
-			_selection_decal.show()
+			_input.input_enabled = true
 			await _do_state_repairing()
 		GameConst.State.SELECTING:
 			match(event):
@@ -147,7 +143,6 @@ func _process_human(delta: float) -> void:
 				GameConst.Event.CLICKED_END_ROUND:
 					state = GameConst.State.ENDING
 				GameConst.Event.NONE:
-					_update_ui()
 					_round_button.disabled = false
 		GameConst.State.COMMANDING:
 			match(event):
@@ -156,7 +151,7 @@ func _process_human(delta: float) -> void:
 				GameConst.Event.CLICKED_RIGHT:
 					_do_state_commanding_clicked_right()
 				GameConst.Event.NONE:
-					_update_ui(true)
+					_update_move_arrow_ui_input()
 					_round_button.disabled = true
 		GameConst.State.ACTION:
 			match(event):
@@ -173,7 +168,6 @@ func _process_human(delta: float) -> void:
 				GameConst.Event.CLICKED_RIGHT:
 					_do_state_attacking_clicked_right()
 				GameConst.Event.NONE:
-					_update_ui()
 					_round_button.disabled = true
 		GameConst.State.REFILLING:
 			match(event):
@@ -182,7 +176,6 @@ func _process_human(delta: float) -> void:
 				GameConst.Event.CLICKED_RIGHT:
 					_do_state_refilling_clicked_right()
 				GameConst.Event.NONE:
-					_update_ui()
 					_round_button.disabled = true
 		GameConst.State.DEPLOYING:
 			match(event):
@@ -191,7 +184,6 @@ func _process_human(delta: float) -> void:
 				GameConst.Event.CLICKED_RIGHT:
 					_do_state_deploying_clicked_right()
 				GameConst.Event.NONE:
-					_update_ui()
 					_round_button.disabled = true
 		GameConst.State.BUYING:
 			match(event):
@@ -437,14 +429,14 @@ func _process_network(delta: float) -> void:
 		GameConst.State.ACTION:
 			match(event):
 				GameConst.Event.CLICKED_ACTION:
-					_update__move_arrow_none_ui_input(last_action_terrain)
+					_update_move_arrow_none_ui_input(last_action_terrain)
 					await _do_state_action_clicked_action(false)
 				GameConst.Event.CLICKED_RIGHT:
 					pass
 		GameConst.State.ATTACKING:
 			match(event):
 				GameConst.Event.CLICKED_LEFT:
-					_update__move_arrow_none_ui_input(last_action_terrain) # needed for direct attack
+					_update_move_arrow_none_ui_input(last_action_terrain) # needed for direct attack
 					_create_and_set_attack_area(last_selected_unit, last_action_terrain, false) # needed for direct attack
 					await _do_state_attacking_clicked_left(false)
 				GameConst.Event.CLICKED_RIGHT:
@@ -595,7 +587,7 @@ func _do_state_commanding_clicked_left() -> void:
 				_action_panel.set_buttons(actions)
 				_action_panel.position = get_viewport().get_mouse_position()
 				_action_panel.show()
-				_selection_decal.hide()
+				_input.input_enabled = false
 				state = GameConst.State.ACTION
 				# to prevent changing terrain while selecting action (by clicking on terrain instead of panel)
 				last_action_terrain = last_selected_terrain
@@ -641,7 +633,7 @@ func _do_state_commanding_clicked_right() -> void:
 func _do_state_attacking_clicked_left(local: bool = true) -> void:
 	_deselect_unit()
 	_unenter()
-	_selection_decal.hide()
+	_input.input_enabled = false
 	if last_selected_terrain in attackable_terrains:
 		_unattack()
 		_sound.play("Click2")
@@ -716,7 +708,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 			defending_unit.look_at_plane_global_tween(defending_transform * Vector2.UP)
 	else:
 		_sound.play("Deselect")
-	_selection_decal.show()
+	_input.input_enabled = true
 	_unattack()
 	if local:
 		state = GameConst.State.SELECTING
@@ -730,7 +722,7 @@ func _do_state_attacking_clicked_right() -> void:
 
 # REFILLING
 func _do_state_refilling_clicked_left(local: bool = true) -> void:
-	_selection_decal.hide()
+	_input.input_enabled = false
 	if last_selected_terrain in refill_terrains:
 		_unrefill()
 		_sound.play("Click2")
@@ -754,7 +746,7 @@ func _do_state_refilling_clicked_left(local: bool = true) -> void:
 		donor_unit.get_unit_stats().round_over = true
 	else:
 		_sound.play("Deselect")
-	_selection_decal.show()
+	_input.input_enabled = true
 	_unrefill()
 	if local:
 		state = GameConst.State.SELECTING
@@ -768,7 +760,7 @@ func _do_state_refilling_clicked_right() -> void:
 
 # DEPLOYING
 func _do_state_deploying_clicked_left(local: bool = true) -> void:
-	_selection_decal.hide()
+	_input.input_enabled = false
 	if last_selected_terrain in deploy_terrains:
 		_undeploy()
 		_sound.play("Click2")
@@ -795,7 +787,7 @@ func _do_state_deploying_clicked_left(local: bool = true) -> void:
 		_calculate_all_unit_possible_move_terrain()
 	else:
 		_sound.play("Deselect")
-	_selection_decal.show()
+	_input.input_enabled = true	
 	_undeploy()
 	if local:
 		state = GameConst.State.SELECTING
@@ -809,7 +801,7 @@ func _do_state_deploying_clicked_right() -> void:
 
 # ACTION
 func _do_state_action_clicked_action(local: bool = true) -> void:
-	_selection_decal.show()
+	_input.input_enabled = true
 	# cancle capturing when moving away
 	if last_selected_unit.is_capturing() and _move_arrow_node.curve.point_count > 1:
 		last_selected_unit.uncapture()
@@ -965,12 +957,12 @@ func _do_state_bying_clicked_shop(local: bool = true) -> void:
 		_sound.play("Deselect")
 	if local:
 		state = GameConst.State.SELECTING
-	_selection_decal.show()
+	_input.input_enabled = true
 
 
 #ENDING
 func _do_state_ending(local: bool = true) -> void:
-	_selection_decal.hide()
+	_input.input_enabled = false
 	var player: Player = player_turns.pop_front()
 	player_turns.append(player)
 	_deselect_unit()
@@ -1000,24 +992,9 @@ func _do_state_ending(local: bool = true) -> void:
 		state = GameConst.State.EARNING
 
 
-# updates selecting decal and, if true, moving arrow
-func _update_ui(update__move_arrow: bool = false) -> void:
-	var temp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
-	if temp_terrain.get_terrain_by_position(_cursor.get_tile_position()):
-		var terrain: Terrain =  temp_terrain.get_terrain_by_position(_cursor.get_tile_position())
-		# only update when mouse terrain has changed
-		if terrain and last_mouse_terrain != terrain:
-			var tween: Tween = create_tween()
-			tween.tween_property(_selection_decal, "position", terrain.position, 0.05)
-			if update__move_arrow:
-				_update_move_arrow_ui_input(terrain)
-			else:
-				_move_arrow_node.hide()
-		last_mouse_terrain = terrain
-
-
 # ui input gets only paths inside movable range
-func _update_move_arrow_ui_input(end_terrain: Terrain) -> void:
+func _update_move_arrow_ui_input() -> void:
+	var end_terrain: Terrain = last_mouse_terrain
 	# convert curve in packed vector 3 array since it is better to handle and backed points have wrong points in between
 	var curve: PackedVector2Array = []
 	for i: int in _move_arrow_node.curve.point_count:
@@ -1042,7 +1019,7 @@ func _update_move_arrow_ui_input(end_terrain: Terrain) -> void:
 
 
 # none ui gets paths outside of moveable range (eg. finding path to hq)
-func _update__move_arrow_none_ui_input(end_terrain: Terrain) -> void:
+func _update_move_arrow_none_ui_input(end_terrain: Terrain) -> void:
 	_path_finding_move_arrow(end_terrain, false)
 	_move_arrow_node.hide()
 
@@ -1347,6 +1324,10 @@ func _on_presence_changed() -> void:
 		_messages.spawn(tr("MESSAGE_TITLE_PLAYER_LEFT"), tr("MESSAGE_TEXT_PLAYER_LEFT"), true)
 
 
+func _on_game_input_selection_changed(terrain: Terrain) -> void:
+	last_mouse_terrain = terrain
+
+
 # Workaround for casting Array Type
 func _get_group_terrain() -> Array[Terrain]:
 	var group: Array[Node] = get_tree().get_nodes_in_group("terrain")
@@ -1428,7 +1409,7 @@ func _get_free_own_bases() -> Array[Terrain]:
 
 # This function filters all terrains which are not movable. It is meant for AI calculation, since the player input is already filtered by the UI.
 func _ai_create_and_filter_move_curve(target_terrain: Terrain) -> void:
-	_update__move_arrow_none_ui_input(target_terrain)
+	_update_move_arrow_none_ui_input(target_terrain)
 	var unit: Unit = last_selected_unit
 	var curve: Curve2D = _move_arrow_node.curve
 	# remove all terrains reverse until it's in moveable terrain

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cbc6sawc766k"]
+[gd_scene load_steps=53 format=3 uid="uid://cbc6sawc766k"]
 
 [ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_6xhvo"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_81uaa"]
@@ -6,14 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://dfbk7wtfn1vh" path="res://assets/musics/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" id="3_vihhq"]
 [ext_resource type="AudioStream" uid="uid://canqp6ndc2u7a" path="res://assets/musics/song18.mp3" id="4_ujg86"]
 [ext_resource type="AudioStream" uid="uid://jb7gbt1oe4d2" path="res://assets/musics/awake10_megaWall.mp3" id="5_g50or"]
-[ext_resource type="Script" path="res://logic/game/cursor.gd" id="8_ibwhq"]
 [ext_resource type="Script" path="res://logic/game/viewport.gd" id="8_rh0i3"]
+[ext_resource type="PackedScene" uid="uid://dj1137ma426k8" path="res://logic/ui/game_input.tscn" id="8_sdp7e"]
 [ext_resource type="Script" path="res://logic/game/game.gd" id="9_gl6qd"]
-[ext_resource type="Script" path="res://logic/game/input.gd" id="9_v3xap"]
 [ext_resource type="PackedScene" uid="uid://df4e0v877neen" path="res://logic/ui/shop.tscn" id="10_rtev0"]
 [ext_resource type="PackedScene" uid="uid://dw3qqdstw803h" path="res://logic/ui/decal_layer.tscn" id="11_cenw6"]
 [ext_resource type="PackedScene" uid="uid://chwkab0kw6j3l" path="res://logic/ui/move_arrow.tscn" id="12_lqnrk"]
-[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="14_cwg7q"]
 [ext_resource type="PackedScene" uid="uid://wq46v3oiq0rg" path="res://logic/ui/floating_info.tscn" id="14_vnmkc"]
 [ext_resource type="Script" path="res://logic/ui/action_panel.gd" id="17_0h3pk"]
 [ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="24_w3m5b"]
@@ -60,10 +58,6 @@ func _set_music() -> void:
 	Music.change_music(new_music)
 	_last_music = new_music
 "
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t4mh3"]
-atlas = ExtResource("14_cwg7q")
-region = Rect2(224, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i7el8"]
 atlas = ExtResource("25_h7n7d")
@@ -497,21 +491,7 @@ size_2d_override = Vector2i(1600, 900)
 render_target_update_mode = 4
 script = ExtResource("8_rh0i3")
 
-[node name="Cursor" type="Marker2D" parent="SubViewportContainer/SubViewport"]
-unique_name_in_owner = true
-script = ExtResource("8_ibwhq")
-
-[node name="GameInput" type="Camera2D" parent="SubViewportContainer/SubViewport"]
-zoom = Vector2(3, 3)
-script = ExtResource("9_v3xap")
-
-[node name="SelectionDecal" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
-modulate = Color(1, 1, 1, 0.690196)
-z_index = 1
-position = Vector2(0, 2)
-rotation = 1.5708
-scale = Vector2(1, 1.02)
-texture = SubResource("AtlasTexture_t4mh3")
+[node name="GameInput" parent="SubViewportContainer/SubViewport" instance=ExtResource("8_sdp7e")]
 
 [node name="MapSlot" type="Node" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
@@ -556,6 +536,7 @@ anchor_bottom = 1.0
 offset_top = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 alignment = 1
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
@@ -699,6 +680,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_layout_mode = 1
 
@@ -883,6 +866,7 @@ volume_db = -10.0
 script = ExtResource("27_2jj2m")
 
 [connection signal="map_loaded" from="." to="SubViewportContainer/SubViewport/GameLogic" method="_on_game_map_loaded"]
+[connection signal="selection_changed" from="SubViewportContainer/SubViewport/GameInput" to="SubViewportContainer/SubViewport/GameLogic" method="_on_game_input_selection_changed"]
 [connection signal="action_selected" from="SubViewportContainer/Interface/ActionPanel" to="SubViewportContainer/SubViewport/GameLogic" method="_on_panel_action_selected"]
 [connection signal="resized" from="SubViewportContainer/Interface/ActionPanel/VBoxContainer" to="SubViewportContainer/Interface/ActionPanel" method="_on_v_box_container_resized"]
 [connection signal="pressed" from="SubViewportContainer/Interface/RoundButton" to="SubViewportContainer/SubViewport/GameLogic" method="_on_round_button_pressed"]
