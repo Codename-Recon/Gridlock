@@ -54,6 +54,7 @@ func enable_all() -> void:
 	button_enabled = true
 	selection_movement_enabled = true
 
+
 func _ready() -> void:
 	_target_camera_zoom = zoom
 	_camera_move_speed = ProjectSettings.get_setting("global/camera_move_speed")
