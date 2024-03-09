@@ -595,7 +595,6 @@ func _do_state_commanding_clicked_left() -> void:
 		# do direct attack (direct clicking on attackable unit)
 		elif last_selected_terrain in attackable_terrains and _types.units[last_selected_unit.id]["can_move_and_attack"]:
 			if _move_arrow_node.curve.point_count > 0:
-				await get_tree().create_timer(0.1).timeout
 				var end_curve_terrain: Terrain = last_selected_unit.get_terrain_on_point(_move_arrow_node.curve.get_point_position(_move_arrow_node.curve.point_count - 1))
 				last_action_terrain = end_curve_terrain
 				if last_selected_terrain and last_selected_terrain.is_neighbor(end_curve_terrain):
