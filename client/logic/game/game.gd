@@ -132,7 +132,7 @@ func _process_human(delta: float) -> void:
 		GameConst.State.EARNING:
 			await _do_state_earning()
 		GameConst.State.REPAIRING:
-			_input.input_enabled = true
+			_input.enable_all()
 			await _do_state_repairing()
 		GameConst.State.SELECTING:
 			match(event):
@@ -587,7 +587,7 @@ func _do_state_commanding_clicked_left() -> void:
 				_action_panel.set_buttons(actions)
 				_action_panel.position = get_viewport().get_mouse_position()
 				_action_panel.show()
-				_input.input_enabled = false
+				_input.selection_movement_enabled = false
 				state = GameConst.State.ACTION
 				# to prevent changing terrain while selecting action (by clicking on terrain instead of panel)
 				last_action_terrain = last_selected_terrain
@@ -707,7 +707,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 			defending_unit.look_at_plane_global_tween(defending_transform * Vector2.UP)
 	else:
 		_sound.play("Deselect")
-	_input.input_enabled = true
+	_input.enable_all()
 	_unattack()
 	if local:
 		state = GameConst.State.SELECTING
@@ -745,7 +745,7 @@ func _do_state_refilling_clicked_left(local: bool = true) -> void:
 		donor_unit.get_unit_stats().round_over = true
 	else:
 		_sound.play("Deselect")
-	_input.input_enabled = true
+	_input.enable_all()
 	_unrefill()
 	if local:
 		state = GameConst.State.SELECTING
@@ -786,7 +786,7 @@ func _do_state_deploying_clicked_left(local: bool = true) -> void:
 		_calculate_all_unit_possible_move_terrain()
 	else:
 		_sound.play("Deselect")
-	_input.input_enabled = true	
+	_input.enable_all()
 	_undeploy()
 	if local:
 		state = GameConst.State.SELECTING
@@ -800,7 +800,7 @@ func _do_state_deploying_clicked_right() -> void:
 
 # ACTION
 func _do_state_action_clicked_action(local: bool = true) -> void:
-	_input.input_enabled = true
+	_input.enable_all()
 	# cancle capturing when moving away
 	if last_selected_unit.is_capturing() and _move_arrow_node.curve.point_count > 1:
 		last_selected_unit.uncapture()
@@ -936,6 +936,7 @@ func _do_state_action_clicked_right() -> void:
 	_unjoin()
 	state = GameConst.State.SELECTING
 	_action_panel.hide()
+	_input.enable_all()
 
 
 #BUYING
@@ -956,7 +957,7 @@ func _do_state_bying_clicked_shop(local: bool = true) -> void:
 		_sound.play("Deselect")
 	if local:
 		state = GameConst.State.SELECTING
-	_input.input_enabled = true
+	_input.enable_all()
 
 
 #ENDING

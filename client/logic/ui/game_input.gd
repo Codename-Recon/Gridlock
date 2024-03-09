@@ -36,12 +36,23 @@ var input_enabled: bool = true:
 var zoom_enabled: bool = true
 var camera_movement_enabled: bool = true
 var button_enabled: bool = true
+var selection_movement_enabled: bool = true:
+	set(value):
+		selection_movement_enabled = value
+		selection.movement_enabled = value
 
 var _target_camera_zoom: Vector2
 var _camera_move_speed: float
 var _camera_zoom_speed: float
 var _camera_max_zoom: float
 var _camera_min_zoom: float
+
+func enable_all() -> void:
+	input_enabled = true
+	zoom_enabled = true
+	camera_movement_enabled = true
+	button_enabled = true
+	selection_movement_enabled = true
 
 func _ready() -> void:
 	_target_camera_zoom = zoom
