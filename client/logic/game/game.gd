@@ -459,8 +459,6 @@ func _process_network(delta: float) -> void:
 					await _do_state_bying_clicked_shop(false)
 				GameConst.Event.CLICKED_RIGHT:
 					pass
-		GameConst.State.NETWORK_WAITING:
-			pass
 		GameConst.State.ENDING:
 			await _do_state_ending(false)
 

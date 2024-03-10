@@ -13,10 +13,12 @@ region = Rect2(224, 96, 32, 32)
 zoom = Vector2(3, 3)
 script = ExtResource("1_a6i7y")
 
-[node name="Cursor" type="Marker2D" parent="."]
+[node name="Decouple" type="Node" parent="."]
+
+[node name="Cursor" type="Marker2D" parent="Decouple"]
 script = ExtResource("2_eu2tc")
 
-[node name="Selection" type="Sprite2D" parent="."]
+[node name="Selection" type="Sprite2D" parent="Decouple"]
 modulate = Color(1, 1, 1, 0.690196)
 z_index = 1
 position = Vector2(0, 2)
@@ -25,4 +27,4 @@ scale = Vector2(1, 1.02)
 texture = SubResource("AtlasTexture_t4mh3")
 script = ExtResource("4_g5hwt")
 
-[connection signal="selection_changed" from="Selection" to="." method="_on_selection_changed"]
+[connection signal="selection_changed" from="Decouple/Selection" to="." method="_on_selection_changed"]

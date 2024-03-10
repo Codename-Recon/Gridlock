@@ -6,8 +6,8 @@ signal input_second
 signal input_escape
 signal selection_changed(terrain: Terrain)
 
-@onready var cursor: Cursor = $Cursor
-@onready var selection: Selection = $Selection
+@onready var cursor: Cursor = $Decouple/Cursor
+@onready var selection: Selection = $Decouple/Selection
 
 var is_just_first: bool = false:
 	get:
