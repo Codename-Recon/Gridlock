@@ -70,8 +70,8 @@ import/fbx/enabled=false
 
 graphics_shadow_quality=1
 graphics_anti_aliasing=1
-music_volume=-18.0
-sound_volume=-18.0
+music_volume=-70.0
+sound_volume=-25.0
 
 [global]
 
@@ -96,7 +96,7 @@ shop_rotation_speed=0.5
 shop_element_vspace=20
 camera_max_zoom=3
 camera_move_speed=200.0
-camera_zoom_speed=30.0
+camera_zoom_speed=0.2
 camera_min_zoom=1
 buy_money_duration=0.3
 sound_min_value=-70.0

@@ -17,6 +17,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 448.0
 offset_bottom = 576.0
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_gpmly")
 shop_element_scene = ExtResource("4_lsf8q")
 

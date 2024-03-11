@@ -3,16 +3,14 @@ extends Control
 
 signal element_selected
 
-@export_category("External")
-@export var units: Array[PackedScene]
-
 @export_category("Internal")
 @export var shop_element_scene: PackedScene
 
-
-func _ready() -> void:
+## Creates the shop elements with the color of the current player.
+func create_shop_elements(units: Array[PackedScene], player: Player) -> void:
 	for unit: PackedScene in units:
 		var element: ShopElement = shop_element_scene.instantiate()
+		element.unit_color = player.color
 		element.unit_scene = unit
 		element.unit_selected.connect(_on_element_clicked)
 		%VBoxContainer.add_child(element)

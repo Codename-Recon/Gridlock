@@ -5,6 +5,8 @@ signal unit_selected
 
 @export var unit_scene: PackedScene
 
+var unit_color: Color
+
 var _unit: Unit
 var _types: GlobalTypes = Types
 
@@ -12,6 +14,7 @@ func _ready() -> void:
 	super()
 	($SelectOverlay as ColorRect).hide()
 	_unit = (unit_scene.instantiate() as Unit)
+	_unit.color = unit_color
 	_unit.get_unit_stats().hide()
 
 	(%Title as Label).text = tr(str(_types.units[_unit.id]["name"]))

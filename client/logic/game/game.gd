@@ -528,8 +528,8 @@ func _do_state_selecting_clicked_left() -> void:
 				return
 		elif last_selected_terrain.shop_units.size() > 0 and last_selected_terrain.player_owned == player_turns[0]:
 			last_shop = _shop_scene.instantiate()
-			last_shop.units = last_selected_terrain.shop_units
 			last_shop.element_selected.connect(_on_panel_shop_selected)
+			last_shop.create_shop_elements(last_selected_terrain.shop_units, player_turns[0])
 			%ShopPlace.add_child(last_shop)
 			_round_button.disabled = true
 			last_shop.show()
