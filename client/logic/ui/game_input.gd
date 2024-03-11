@@ -79,15 +79,6 @@ func _handle_camera_input(delta: float) -> void:
 			global_translate(Vector2.LEFT * delta * _camera_move_speed * 1.5)
 		if Input.is_action_pressed("move_right"):
 			global_translate(Vector2.RIGHT * delta * _camera_move_speed * 1.5)
-	if zoom_enabled:
-		if _target_camera_zoom.x > _camera_min_zoom and Input.is_action_just_released("zoom_out"):
-			var tween: Tween = create_tween()
-			_target_camera_zoom = zoom - delta * _camera_zoom_speed * Vector2.ONE
-			tween.tween_property(self, "zoom", _target_camera_zoom, 0.1)
-		if _target_camera_zoom.x < _camera_max_zoom and Input.is_action_just_released("zoom_in"):
-			var tween: Tween = create_tween()
-			_target_camera_zoom = zoom + delta * _camera_zoom_speed * Vector2.ONE
-			tween.tween_property(self, "zoom", _target_camera_zoom, 0.1)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -100,7 +91,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			is_just_second = true
 		if event.is_action_pressed("escape"):
 			is_just_escape = true
-
+	if zoom_enabled:
+		if event.is_action_pressed("zoom_out") and _target_camera_zoom.x > _camera_min_zoom:
+			var tween: Tween = create_tween()
+			_target_camera_zoom = zoom - _camera_zoom_speed * Vector2.ONE
+			tween.tween_property(self, "zoom", _target_camera_zoom, 0.1)
+		if event.is_action_pressed("zoom_in") and _target_camera_zoom.x < _camera_max_zoom:
+			var tween: Tween = create_tween()
+			_target_camera_zoom = zoom + _camera_zoom_speed * Vector2.ONE
+			tween.tween_property(self, "zoom", _target_camera_zoom, 0.1)
 
 func _on_selection_changed(terrain: Terrain) -> void:
 	selection_changed.emit(terrain)
