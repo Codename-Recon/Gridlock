@@ -1,11 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://cbc6sawc766k"]
+[gd_scene load_steps=50 format=3 uid="uid://cbc6sawc766k"]
 
 [ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_6xhvo"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_81uaa"]
-[ext_resource type="AudioStream" uid="uid://d3v2kbjeq8aiy" path="res://assets/musics/Juhani Junkala [Chiptune Adventures] 1. Stage 1.ogg" id="2_bwdut"]
-[ext_resource type="AudioStream" uid="uid://dfbk7wtfn1vh" path="res://assets/musics/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" id="3_vihhq"]
-[ext_resource type="AudioStream" uid="uid://canqp6ndc2u7a" path="res://assets/musics/song18.mp3" id="4_ujg86"]
-[ext_resource type="AudioStream" uid="uid://jb7gbt1oe4d2" path="res://assets/musics/awake10_megaWall.mp3" id="5_g50or"]
+[ext_resource type="AudioStream" uid="uid://6ki6akqwsk8e" path="res://assets/musics/Immaculate_Command__Georges_DeMorgans_Theme_Codename_RECON.mp3" id="2_mnjkf"]
 [ext_resource type="Script" path="res://logic/game/viewport.gd" id="8_rh0i3"]
 [ext_resource type="PackedScene" uid="uid://dj1137ma426k8" path="res://logic/ui/game_input.tscn" id="8_sdp7e"]
 [ext_resource type="Script" path="res://logic/game/game.gd" id="9_gl6qd"]
@@ -467,7 +464,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("1_81uaa")
 script = SubResource("GDScript_aos13")
-musics = Array[AudioStream]([ExtResource("2_bwdut"), ExtResource("3_vihhq"), ExtResource("4_ujg86"), ExtResource("5_g50or")])
+musics = Array[AudioStream]([ExtResource("2_mnjkf")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_6xhvo")
@@ -701,8 +698,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 1600.0
-offset_bottom = 140.0
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = -310.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
