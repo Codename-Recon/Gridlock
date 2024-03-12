@@ -1,11 +1,11 @@
 extends Panel
 
-@onready var horizontal_control :HSlider= $VBoxContainer/Horizontal
-@onready var vertical_control :HSlider= $VBoxContainer/Vertical
-@onready var horizontal_label :Label= $VBoxContainer/HorizontalSize
-@onready var vertical_label :Label= $VBoxContainer/VerticalSize
+@onready var horizontal_control: HSlider = $VBoxContainer/Horizontal
+@onready var vertical_control: HSlider = $VBoxContainer/Vertical
+@onready var horizontal_label: Label = $VBoxContainer/HorizontalSize
+@onready var vertical_label: Label = $VBoxContainer/VerticalSize
 
-var new_size:Vector2i= Vector2i(20, 20)
+var new_size: Vector2i = Vector2i(20, 20)
 
 
 func _on_accept_pressed() -> void:
