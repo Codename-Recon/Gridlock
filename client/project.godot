@@ -70,8 +70,8 @@ import/fbx/enabled=false
 
 graphics_shadow_quality=1
 graphics_anti_aliasing=1
-music_volume=-70.0
 sound_volume=-25.0
+music_volume=-25.0
 
 [global]
 

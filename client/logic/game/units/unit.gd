@@ -188,7 +188,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var direction: Vector2 = global_position - _last_position
-	if direction.length_squared() > 0.01:
+	if direction.length_squared() > 0.001:
 		_state = State.MOVING
 		if abs(direction.angle_to(Vector2.UP)) < 0.01:
 			_animation_player.play("moving_up")
