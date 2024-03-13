@@ -4,6 +4,7 @@
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xx2n"]
 texture = ExtResource("1_8pxpe")
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 1
@@ -734,6 +735,7 @@ texture = ExtResource("1_8pxpe")
 17:10/0 = 0
 
 [resource]
+tile_size = Vector2i(32, 32)
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "road"
 terrain_set_0/terrain_0/color = Color(0.388235, 0.388235, 0.388235, 1)
