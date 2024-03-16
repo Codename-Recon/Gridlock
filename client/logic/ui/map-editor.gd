@@ -20,7 +20,7 @@ func _on_menu_button_down() -> void:
 	for i: int in range(map_size.x):
 		for j: int in range(map_size.y):
 			all_cells.append(Vector2i(i, j))
-	tile_map.set_cells_terrain_connect(0, all_cells, 0, 1)
+	_place_terrain(all_cells, 0, 1)
 
 
 func _on_ui_select_terrain(terrain_set: int, terrain: int) -> void:
@@ -60,9 +60,23 @@ func _on_ui_resize_map(new_size: Vector2i) -> void:
 
 ## Places tile and creates terrain node
 func _place_terrain(cells: Array[Vector2i], terrain_set: int, terrain: int) -> void:
-	tile_map.set_cells_terrain_connect(0, cells, terrain_set, terrain)
+	tile_map.set_cells_terrain_connect(0, cells, terrain_set, terrain, false)
+	tile_map.update_internals()
+	for cell: Vector2i in cells:
+		var texture: Texture2D = _get_texture_of_cell(0, cell)
+		map.create_terrain("", "", cell * tile_map.tile_set.tile_size, texture)
 
 
 ## Removes tile and terrain node
 func _remove_terrain(cells: Array[Vector2i]) -> void:
 	tile_map.set_cells_terrain_connect(0, cells, 0, -1)
+
+
+func _get_texture_of_cell(layer: int, cell: Vector2i) -> Texture2D:
+	var atlas_coords: Vector2i = tile_map.get_cell_atlas_coords(layer, cell)
+	var source: TileSetAtlasSource = tile_map.tile_set.get_source(0)
+	var rect: Rect2i = source.get_tile_texture_region(atlas_coords, 0)
+	var atlas: AtlasTexture = AtlasTexture.new()
+	atlas.set_atlas(source.texture)
+	atlas.region = rect
+	return atlas

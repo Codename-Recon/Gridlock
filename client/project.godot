@@ -194,6 +194,8 @@ locale/test="en"
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
 shadows/directional_shadow/size=1024
 shadows/directional_shadow/size.mobile=512
 shadows/directional_shadow/soft_shadow_filter_quality=0

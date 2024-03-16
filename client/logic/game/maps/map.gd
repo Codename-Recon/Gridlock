@@ -19,18 +19,26 @@ var _terrain_path: String = "res://logic/game/terrain/"
 var _predefined_terrains: Dictionary
 
 
-func create_terrain(id: String, tile_id: String, position: Vector2i) -> void:
+func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, texture: Texture2D) -> void:
 	# Check if predefined terrain exist. If not -> create terrain
 	var terrain: Terrain
 	if tile_id in _predefined_terrains:
 		terrain = _predefined_terrains[tile_id]
 		terrain = terrain.duplicate()
 	else:
+		if not texture:
+			push_error("Can not create terrain %s without texture " % id)
+			return
 		terrain = Terrain.new()
 		terrain.id = id
 		terrain.tile_id = id
-	terrain.position = position
+		var sprite: Sprite2D = Sprite2D.new()
+		sprite.name = "Sprite2D"
+		terrain.add_child(sprite)
+		terrain.sprite = sprite
+		terrain.sprite.texture = texture
 	add_child(terrain)
+	terrain.position = terrain_position
 
 
 func _ready() -> void:
@@ -44,10 +52,10 @@ func _ready() -> void:
 			continue
 		var terrain: Terrain = (load(_terrain_path + file_name) as PackedScene).instantiate()
 		_predefined_terrains[terrain.tile_id] = terrain
-	# TODO workaround for adding nodes to exported typed array
-	if not Engine.is_editor_hint():
-		for player: Player in $Players.get_children():
-			players.append(player)
+	# TODO Rework player as a resource
+	#if not Engine.is_editor_hint():
+		#for player: Player in $Players.get_children():
+			#players.append(player)
 
 func _test_for_duplicates() -> void:
 	var found_duplicates: bool = false
