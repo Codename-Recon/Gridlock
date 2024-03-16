@@ -1,4 +1,4 @@
-@icon("res://assets/images/icons/car-outline.svg")
+@icon("res://assets/images/icons/nodes/car-outline.svg")
 @tool
 class_name Unit
 extends Node2D

@@ -1,4 +1,4 @@
-@icon("res://assets/images/icons/layers-outline.svg")
+@icon("res://assets/images/icons/nodes/layers-outline.svg")
 @tool
 class_name Map
 extends Node2D
@@ -15,8 +15,35 @@ const DUPLICATE_TEST_SIZE: int = 4
 		_test_for_duplicates()
 @export_multiline var duplicate_result: String = ""
 
+var _terrain_path: String = "res://logic/game/terrain/"
+var _predefined_terrains: Dictionary
+
+
+func create_terrain(id: String, tile_id: String, position: Vector2i) -> void:
+	# Check if predefined terrain exist. If not -> create terrain
+	var terrain: Terrain
+	if tile_id in _predefined_terrains:
+		terrain = _predefined_terrains[tile_id]
+		terrain = terrain.duplicate()
+	else:
+		terrain = Terrain.new()
+		terrain.id = id
+		terrain.tile_id = id
+	terrain.position = position
+	add_child(terrain)
+
 
 func _ready() -> void:
+	# Load predefined terrains
+	_predefined_terrains = {}
+	var dir: DirAccess = DirAccess.open(_terrain_path)
+	if not dir:
+		push_error("Can not open directory: " + _terrain_path)
+	for file_name: String in dir.get_files():
+		if not ".tscn" in file_name:
+			continue
+		var terrain: Terrain = (load(_terrain_path + file_name) as PackedScene).instantiate()
+		_predefined_terrains[terrain.tile_id] = terrain
 	# TODO workaround for adding nodes to exported typed array
 	if not Engine.is_editor_hint():
 		for player: Player in $Players.get_children():

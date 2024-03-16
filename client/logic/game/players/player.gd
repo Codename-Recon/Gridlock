@@ -1,4 +1,4 @@
-@icon("res://assets/images/icons/person-outline.svg")
+@icon("res://assets/images/icons/nodes/person-outline.svg")
 @tool
 class_name Player
 extends Node

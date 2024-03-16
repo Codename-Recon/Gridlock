@@ -1,15 +1,14 @@
-@icon("res://assets/images/icons/flag-outline.svg")
+@icon("res://assets/images/icons/nodes/flag-outline.svg")
 @tool
 class_name Terrain
 extends Node2D
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $Sprite2D
 
 @export var shader_modulate: bool = false:
 	set(value):
 		if value && has_node("./Sprite2D"):
 			shader_modulate = value
-			var sprite: Sprite2D = $Sprite2D as Sprite2D
 			if sprite && sprite.material:
 				(sprite.material as ShaderMaterial).set_shader_parameter("shifting", value)
 
@@ -45,9 +44,11 @@ extends Node2D
 
 @export var id: String
 
+@export var tile_id: String
+
 @export var shop_units: Array[PackedScene]
 
-# layer variable for color layer, handled that only one layer can be set (new layer overwrites old one)
+## layer variable for color layer, handled that only one layer can be set (new layer overwrites old one)
 @export var layer: Sprite2D:
 	set(value):
 		if value:
@@ -60,6 +61,8 @@ extends Node2D
 				value.global_rotation = 0
 
 static var _terrain_lookup: Dictionary
+
+var _shader_resource: ShaderMaterial = load("res://logic/shaders/color_shift.tres") as ShaderMaterial
 
 
 func get_move_on_global_position() -> Vector2:
@@ -82,7 +85,7 @@ func get_unit() -> Unit:
 	return null
 
 
-# captures terrain. gives true back on success.
+## captures terrain. gives true back on success.
 func capture(capture_force: int, player_of_unit: Player) -> bool:
 	var stats: TerrainStats = $TerrainStats
 	stats.capture_health -= capture_force
@@ -149,8 +152,11 @@ func is_neighbor(terrain: Terrain) -> bool:
 
 
 func _ready() -> void:
+	if not sprite.material:
+		sprite.material = _shader_resource
 	if not Engine.is_editor_hint():
 		add_to_group("terrain")
+
 
 func _exit_tree() -> void:
 	# as soon one terrain gets removed, lookup can be cleared

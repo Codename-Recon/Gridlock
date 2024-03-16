@@ -1,11 +1,10 @@
-@tool
 extends Node2D
 
 @export var map_size: Vector2i = Vector2i(30, 30)
 @export var camera: Camera2D
+@export var map: Map
 
 @onready var tile_map: TileMap = $TileMap
-@onready var cursor: Node2D = $CursorPreview
 
 var current_terrain_set: int
 var current_terrain: int
@@ -54,6 +53,16 @@ func _on_ui_resize_map(new_size: Vector2i) -> void:
 			for i: int in map_size.x:
 				cells_to_drop.push_back(Vector2i(i, j))
 
-	tile_map.set_cells_terrain_connect(0, cells_to_paint, 0, 1)
-	tile_map.set_cells_terrain_connect(0, cells_to_drop, 0, -1)
+	_place_terrain(cells_to_paint, 0, 1)
+	_remove_terrain(cells_to_drop)
 	map_size = new_size
+
+
+## Places tile and creates terrain node
+func _place_terrain(cells: Array[Vector2i], terrain_set: int, terrain: int) -> void:
+	tile_map.set_cells_terrain_connect(0, cells, terrain_set, terrain)
+
+
+## Removes tile and terrain node
+func _remove_terrain(cells: Array[Vector2i]) -> void:
+	tile_map.set_cells_terrain_connect(0, cells, 0, -1)
