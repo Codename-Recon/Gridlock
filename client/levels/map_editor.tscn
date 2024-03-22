@@ -37,5 +37,6 @@ script = ExtResource("5_b0ipg")
 [node name="UI" parent="CanvasLayer" instance=ExtResource("5_63t8i")]
 tile_set = ExtResource("2_44dmf")
 
+[connection signal="selection_changed" from="GameInput" to="MapEditor" method="_on_game_input_selection_changed"]
 [connection signal="resize_map" from="CanvasLayer/UI" to="MapEditor" method="_on_ui_resize_map"]
 [connection signal="select_terrain" from="CanvasLayer/UI" to="MapEditor" method="_on_ui_select_terrain"]

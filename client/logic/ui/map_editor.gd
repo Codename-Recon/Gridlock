@@ -83,3 +83,11 @@ func _remove_terrain(cells: Array[Vector2i]) -> void:
 	tile_map.set_cells_terrain_connect(0, cells, 0, -1)
 	for cell: Vector2i in cells:
 		map.remove_terrain(cell * tile_map.tile_set.tile_size)
+
+
+func _on_game_input_selection_changed(terrain: Terrain, drag: bool) -> void:
+	var cell: Vector2i = terrain.global_position
+	cell = cell / tile_map.tile_set.tile_size
+	if drag:
+		_remove_terrain([cell])
+		_place_terrain([cell], current_terrain_set, current_terrain)
