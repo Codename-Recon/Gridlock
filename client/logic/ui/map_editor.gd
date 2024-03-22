@@ -1,4 +1,7 @@
+class_name MapEditor
 extends Node2D
+
+const TILES: TileSet = preload("res://assets/resources/game/tiles.tres")
 
 @export var map_size: Vector2i = Vector2i(30, 30)
 @export var camera: Camera2D
@@ -8,6 +11,21 @@ extends Node2D
 
 var current_terrain_set: int
 var current_terrain: int
+
+
+static func get_texture_with_atlas_coords(atlas_coords: Vector2i) -> Texture2D:
+	var source: TileSetAtlasSource = TILES.get_source(0)
+	var rect: Rect2i = source.get_tile_texture_region(atlas_coords, 0)
+	var atlas: AtlasTexture = AtlasTexture.new()
+	atlas.set_atlas(source.texture)
+	atlas.region = rect
+	return atlas
+	
+	
+static func get_id_with_altlas_coords(atlas_coords: Vector2i) -> Array[String]:
+	var source: TileSetAtlasSource = TILES.get_source(0)
+	var data: TileData = source.get_tile_data(atlas_coords, 0)
+	return [data.get_custom_data("id"), data.get_custom_data("tile_id")]
 
 
 func _ready() -> void:
@@ -55,8 +73,9 @@ func _place_terrain(cells: Array[Vector2i], terrain_set: int, terrain: int) -> v
 	tile_map.update_internals()
 	for cell: Vector2i in cells:
 		var atlas_coords: Vector2i = tile_map.get_cell_atlas_coords(0, cell)
-		var texture: Texture2D = Map.get_texture_with_atlas_coords(0, atlas_coords)
-		map.create_terrain("", "", cell * tile_map.tile_set.tile_size, texture)
+		var texture: Texture2D = get_texture_with_atlas_coords(atlas_coords)
+		var id: Array[String] = get_id_with_altlas_coords(atlas_coords)
+		map.create_terrain(id[0], id[1], cell * tile_map.tile_set.tile_size, texture)
 
 
 ## Removes tile and terrain node
