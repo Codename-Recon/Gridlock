@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cs6bq4m0vtvo4"]
 
-[ext_resource type="Script" path="res://logic/ui/map-editor-resize-popup.gd" id="1_kyk4b"]
+[ext_resource type="Script" path="res://logic/ui/map_editor_resize_popup.gd" id="1_kyk4b"]
 
 [node name="ResizePopup" type="Panel"]
 anchors_preset = 8

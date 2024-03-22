@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://lsu858yvaswd"]
 
 [ext_resource type="PackedScene" uid="uid://dj1137ma426k8" path="res://logic/ui/game_input.tscn" id="1_4rtpd"]
-[ext_resource type="Script" path="res://logic/ui/map-editor.gd" id="1_j3yxc"]
+[ext_resource type="Script" path="res://logic/ui/map_editor.gd" id="1_j3yxc"]
 [ext_resource type="TileSet" uid="uid://b6taw5w4s7s5i" path="res://assets/resources/game/tiles.tres" id="2_44dmf"]
-[ext_resource type="PackedScene" uid="uid://hds34errxgf3" path="res://logic/ui/map-editor-ui.tscn" id="5_63t8i"]
+[ext_resource type="PackedScene" uid="uid://hds34errxgf3" path="res://logic/ui/map_editor_ui.tscn" id="5_63t8i"]
 [ext_resource type="Script" path="res://logic/game/maps/map.gd" id="5_b0ipg"]
 
 [node name="Control" type="Control"]

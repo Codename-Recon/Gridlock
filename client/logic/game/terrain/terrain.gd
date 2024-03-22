@@ -154,6 +154,9 @@ func is_neighbor(terrain: Terrain) -> bool:
 func _ready() -> void:
 	if not sprite.material:
 		sprite.material = _shader_resource
+
+
+func _enter_tree() -> void:
 	if not Engine.is_editor_hint():
 		add_to_group("terrain")
 
@@ -161,3 +164,4 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	# as soon one terrain gets removed, lookup can be cleared
 	_terrain_lookup.clear()
+	remove_from_group("terrain")

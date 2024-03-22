@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://hds34errxgf3"]
 
-[ext_resource type="Script" path="res://logic/ui/map-editor-ui.gd" id="1_nwduq"]
-[ext_resource type="PackedScene" uid="uid://cs6bq4m0vtvo4" path="res://logic/ui/map-editor-resize-popup.tscn" id="2_w1ogj"]
+[ext_resource type="Script" path="res://logic/ui/map_editor_ui.gd" id="1_nwduq"]
+[ext_resource type="PackedScene" uid="uid://cs6bq4m0vtvo4" path="res://logic/ui/map_editor_resize_popup.tscn" id="2_w1ogj"]
 
 [node name="UI" type="Control"]
 layout_mode = 3

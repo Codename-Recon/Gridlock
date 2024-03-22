@@ -3,8 +3,8 @@
 class_name Map
 extends Node2D
 
+const TILES: TileSet = preload("res://assets/resources/game/tiles.tres")
 const DUPLICATE_TEST_SIZE: int = 4
-
 @export var map_name: String
 @export var creator: String
 @export var creator_url: String
@@ -18,6 +18,15 @@ const DUPLICATE_TEST_SIZE: int = 4
 var _terrain_path: String = "res://logic/game/terrain/"
 var _predefined_terrains: Dictionary
 
+
+static func get_texture_with_atlas_coords(layer: int, atlas_coords: Vector2i) -> Texture2D:
+	var source: TileSetAtlasSource = TILES.get_source(0)
+	var rect: Rect2i = source.get_tile_texture_region(atlas_coords, 0)
+	var atlas: AtlasTexture = AtlasTexture.new()
+	atlas.set_atlas(source.texture)
+	atlas.region = rect
+	return atlas
+	
 
 func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, texture: Texture2D) -> void:
 	# Check if predefined terrain exist. If not -> create terrain
@@ -39,6 +48,13 @@ func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, tex
 		terrain.sprite.texture = texture
 	add_child(terrain)
 	terrain.position = terrain_position
+
+
+func remove_terrain(terrain_position: Vector2i) -> void:
+	var tmp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
+	var terrain: Terrain = tmp_terrain.get_terrain_by_position(terrain_position)
+	if terrain:
+		terrain.queue_free()
 
 
 func _ready() -> void:

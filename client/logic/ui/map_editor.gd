@@ -11,11 +11,11 @@ var current_terrain: int
 
 
 func _ready() -> void:
-	_on_menu_button_down()
+	_init_map()
 	camera.position = to_global(tile_map.map_to_local(map_size / 2))
 
 
-func _on_menu_button_down() -> void:
+func _init_map() -> void:
 	var all_cells: Array[Vector2i] = []
 	for i: int in range(map_size.x):
 		for j: int in range(map_size.y):
@@ -35,26 +35,17 @@ func _on_cursor_preview_set_terrain(coords: Vector2i) -> void:
 func _on_ui_resize_map(new_size: Vector2i) -> void:
 	var cells_to_paint: Array[Vector2i] = []
 	var cells_to_drop: Array[Vector2i] = []
-	if map_size.x < new_size.x:
-		for i: int in range(map_size.x - 1, new_size.x):
-			for j: int in new_size.y:
-				cells_to_paint.push_back(Vector2i(i, j))
-	else:
-		for i: int in range(new_size.x - 1, map_size.x):
-			for j: int in new_size.y:
-				cells_to_drop.push_back(Vector2i(i, j))
-
-	if map_size.y < new_size.y:
-		for j: int in range(map_size.y, new_size.y):
-			for i: int in new_size.x:
-				cells_to_paint.push_back(Vector2i(i, j))
-	else:
-		for j: int in range(new_size.y, map_size.y):
-			for i: int in map_size.x:
-				cells_to_drop.push_back(Vector2i(i, j))
-
-	_place_terrain(cells_to_paint, 0, 1)
+	
+	for i: int in map_size.x:
+		for j: int in map_size.y:
+			cells_to_drop.append(Vector2i(i, j))
 	_remove_terrain(cells_to_drop)
+	
+	for i: int in new_size.x:
+		for j: int in new_size.y:
+			cells_to_paint.append(Vector2i(i, j))
+	_place_terrain(cells_to_paint, 0, 1)
+	
 	map_size = new_size
 
 
@@ -63,20 +54,13 @@ func _place_terrain(cells: Array[Vector2i], terrain_set: int, terrain: int) -> v
 	tile_map.set_cells_terrain_connect(0, cells, terrain_set, terrain, false)
 	tile_map.update_internals()
 	for cell: Vector2i in cells:
-		var texture: Texture2D = _get_texture_of_cell(0, cell)
+		var atlas_coords: Vector2i = tile_map.get_cell_atlas_coords(0, cell)
+		var texture: Texture2D = Map.get_texture_with_atlas_coords(0, atlas_coords)
 		map.create_terrain("", "", cell * tile_map.tile_set.tile_size, texture)
 
 
 ## Removes tile and terrain node
 func _remove_terrain(cells: Array[Vector2i]) -> void:
 	tile_map.set_cells_terrain_connect(0, cells, 0, -1)
-
-
-func _get_texture_of_cell(layer: int, cell: Vector2i) -> Texture2D:
-	var atlas_coords: Vector2i = tile_map.get_cell_atlas_coords(layer, cell)
-	var source: TileSetAtlasSource = tile_map.tile_set.get_source(0)
-	var rect: Rect2i = source.get_tile_texture_region(atlas_coords, 0)
-	var atlas: AtlasTexture = AtlasTexture.new()
-	atlas.set_atlas(source.texture)
-	atlas.region = rect
-	return atlas
+	for cell: Vector2i in cells:
+		map.remove_terrain(cell * tile_map.tile_set.tile_size)
