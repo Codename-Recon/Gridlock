@@ -5,7 +5,11 @@ signal selection_changed(terrain: Terrain)
 
 var movement_enabled: bool = true
 var last_mouse_position: Vector2i
-var last_terrain: Terrain
+var last_terrain: Terrain:
+	get:
+		var temp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
+		return  temp_terrain.get_terrain_by_position(_cursor.get_tile_position())
+		
 
 @onready var _cursor: Cursor = $"../Cursor"
 
@@ -22,4 +26,3 @@ func _process(delta: float) -> void:
 				tween.tween_property(self, "position", terrain.position, 0.05)
 				selection_changed.emit(terrain)
 				last_mouse_position = _cursor.get_tile_position()
-				last_terrain = terrain
