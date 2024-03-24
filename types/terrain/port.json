@@ -1,6 +1,6 @@
 {
   "name": "PORT",
-  "description": "Ports are a property for building and maintaining sea units.",
+  "description": "PORT_DESCRIPTION",
   "type": 10,
   "defense": 3,
   "health": 0,

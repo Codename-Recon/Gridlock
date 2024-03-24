@@ -1,6 +1,6 @@
 {
   "name": "PLAIN",
-  "description": "Plains give a small amount of terrain cover and are easily traversed.",
+  "description": "PLAIN_DESCRIPTION",
   "type": 0,
   "defense": 1,
   "health": 0,

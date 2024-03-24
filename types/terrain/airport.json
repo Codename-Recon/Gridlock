@@ -1,6 +1,6 @@
 {
   "name": "AIRPORT",
-  "description": "An airport is a property that is used to build and maintain air units.",
+  "description": "AIRPORT_DESCRIPTION",
   "type": 9,
   "defense": 3,
   "health": 0,

@@ -1,6 +1,6 @@
 {
-  "name": "SHOAL",
-  "description": "Shoals provide an area for Landers and Black Boats to load and drop off units to battle.",
+  "name": "BEACH",
+  "description": "Beaches provide an area for Landers and Black Boats to load and drop off units to battle.",
   "type": 6,
   "defense": 0,
   "health": 0,

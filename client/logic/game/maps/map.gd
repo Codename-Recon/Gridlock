@@ -5,7 +5,6 @@ extends Node2D
 
 const DUPLICATE_TEST_SIZE: int = 4
 
-@onready var players_node: Node = $Players
 
 @export var map_name: String
 @export var creator: String
@@ -17,6 +16,7 @@ const DUPLICATE_TEST_SIZE: int = 4
 		_test_for_duplicates()
 @export_multiline var duplicate_result: String = ""
 
+var _players_node: Node
 var _terrain_path: String = "res://logic/game/terrain/"
 var _predefined_terrains: Dictionary
 
@@ -62,13 +62,14 @@ func _ready() -> void:
 		var terrain: Terrain = (load(_terrain_path + file_name) as PackedScene).instantiate()
 		_predefined_terrains[terrain.tile_id] = terrain
 	if not Engine.is_editor_hint():
-		if players_node:
-			for player: Player in players_node.get_children():
+		if has_node("Players"):
+			_players_node = get_node("Players")
+			for player: Player in _players_node.get_children():
 				players.append(player)
 		else:
-			players_node = Node.new()
-			players_node.name = "Players"
-			add_child(players_node)
+			_players_node = Node.new()
+			_players_node.name = "Players"
+			add_child(_players_node)
 
 
 func _test_for_duplicates() -> void:

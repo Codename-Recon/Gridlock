@@ -4,15 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://b71wg52iw0miv" path="res://logic/game/players/player_network_1.tscn" id="2_hns13"]
 [ext_resource type="PackedScene" uid="uid://beegvonqcwp4y" path="res://logic/game/players/player_network_2.tscn" id="3_g6i62"]
 [ext_resource type="PackedScene" uid="uid://j2dfnwe4u54k" path="res://logic/game/terrain/road.tscn" id="4_4yfa2"]
-[ext_resource type="PackedScene" uid="uid://d0fgjj53xl6xb" path="res://logic/game/terrain/forest.tscn" id="5_6rase"]
+[ext_resource type="PackedScene" uid="uid://d0fgjj53xl6xb" path="res://logic/game/terrain/wood.tscn" id="5_6rase"]
 [ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/game/terrain/hq.tscn" id="6_ro67w"]
 [ext_resource type="PackedScene" uid="uid://c1qfl356w5jbq" path="res://logic/game/terrain/road_t_cross.tscn" id="6_tvxhd"]
 [ext_resource type="PackedScene" uid="uid://b4giy6a41fm5c" path="res://logic/game/terrain/base.tscn" id="7_sqtmj"]
 [ext_resource type="PackedScene" uid="uid://bxx88dyd0j7el" path="res://logic/game/terrain/road_corner.tscn" id="7_t38kf"]
 [ext_resource type="PackedScene" uid="uid://dd0wqod476fk7" path="res://logic/game/terrain/mountain_low.tscn" id="8_mnpfe"]
-[ext_resource type="PackedScene" uid="uid://cd7cf0w3wkur5" path="res://logic/game/terrain/grass.tscn" id="9_1m6dc"]
 [ext_resource type="PackedScene" uid="uid://2t61plm4vpda" path="res://logic/game/units/infantry.tscn" id="9_8dof3"]
 [ext_resource type="PackedScene" uid="uid://dpr3trog5kdn4" path="res://logic/game/terrain/city.tscn" id="11_vmq13"]
+[ext_resource type="PackedScene" uid="uid://cd7cf0w3wkur5" path="res://logic/game/terrain/plain.tscn" id="13_4gphn"]
 
 [node name="BigBrain" type="Node2D"]
 script = ExtResource("1_lcdug")
@@ -205,8 +205,8 @@ position = Vector2(96, -64)
 [node name="City6" parent="." instance=ExtResource("11_vmq13")]
 position = Vector2(-96, 64)
 
-[node name="Grass" parent="." instance=ExtResource("9_1m6dc")]
+[node name="Grass" parent="." instance=ExtResource("13_4gphn")]
 position = Vector2(32, -64)
 
-[node name="Grass2" parent="." instance=ExtResource("9_1m6dc")]
+[node name="Grass2" parent="." instance=ExtResource("13_4gphn")]
 position = Vector2(-32, 64)

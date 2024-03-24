@@ -1,6 +1,6 @@
 {
   "name": "WOOD",
-  "description": "Woods are more difficult to traverse than plains, but offer better terrain cover and serve as a hiding spot in Fog of War.",
+  "description": "WOOD_DESCRIPTION",
   "type": 2,
   "defense": 2,
   "health": 0,

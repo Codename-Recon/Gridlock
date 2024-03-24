@@ -1,6 +1,6 @@
 {
   "name": "BASE",
-  "description": "Bases are a property for building and maintaining ground units.",
+  "description": "BASE_DESCRIPTION",
   "type": 8,
   "defense": 3,
   "health": 0,

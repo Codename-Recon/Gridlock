@@ -1,6 +1,6 @@
 {
   "name": "ROAD",
-  "description": "Roads provide no defensive cover, but allow unimpeded movement for all ground units.",
+  "description": "ROAD_DESCRIPTION",
   "type": 4,
   "defense": 0,
   "health": 0,

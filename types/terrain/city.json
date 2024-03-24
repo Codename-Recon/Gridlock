@@ -1,6 +1,6 @@
 {
   "name": "CITY",
-  "description": "Cities are a property essential to any battle and provide many advantages when captured, such as repairs and income.",
+  "description": "CITY_DESCRIPTION",
   "type": 7,
   "defense": 3,
   "health": 0,

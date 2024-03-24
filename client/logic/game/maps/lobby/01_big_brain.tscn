@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://logic/game/maps/map.gd" id="1_j5hqv"]
 [ext_resource type="PackedScene" uid="uid://b71wg52iw0miv" path="res://logic/game/players/player_network_1.tscn" id="2_ocgr0"]
 [ext_resource type="PackedScene" uid="uid://beegvonqcwp4y" path="res://logic/game/players/player_network_2.tscn" id="3_qd30o"]
-[ext_resource type="PackedScene" uid="uid://d0fgjj53xl6xb" path="res://logic/game/terrain/forest.tscn" id="4_57r1y"]
+[ext_resource type="PackedScene" uid="uid://d0fgjj53xl6xb" path="res://logic/game/terrain/wood.tscn" id="4_57r1y"]
 [ext_resource type="PackedScene" uid="uid://j2dfnwe4u54k" path="res://logic/game/terrain/road.tscn" id="5_ww2f4"]
 [ext_resource type="PackedScene" uid="uid://c1qfl356w5jbq" path="res://logic/game/terrain/road_t_cross.tscn" id="6_8v6qn"]
 [ext_resource type="PackedScene" uid="uid://bxx88dyd0j7el" path="res://logic/game/terrain/road_corner.tscn" id="7_c4fog"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/game/terrain/hq.tscn" id="10_evih2"]
 [ext_resource type="PackedScene" uid="uid://dd0wqod476fk7" path="res://logic/game/terrain/mountain_low.tscn" id="11_m5u4q"]
 [ext_resource type="PackedScene" uid="uid://dpr3trog5kdn4" path="res://logic/game/terrain/city.tscn" id="12_3li2b"]
-[ext_resource type="PackedScene" uid="uid://cd7cf0w3wkur5" path="res://logic/game/terrain/grass.tscn" id="13_xfjjn"]
+[ext_resource type="PackedScene" uid="uid://cd7cf0w3wkur5" path="res://logic/game/terrain/plain.tscn" id="13_xfjjn"]
 
 [node name="BigBrain" type="Node2D"]
 script = ExtResource("1_j5hqv")

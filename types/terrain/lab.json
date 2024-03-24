@@ -1,6 +1,6 @@
 {
   "name": "LAB",
-  "description": "Laboratories act as research centers and can unlock restricted units.",
+  "description": "LAB_DESCRIPTION",
   "type": 15,
   "defense": 3,
   "health": 0,

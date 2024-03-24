@@ -1,6 +1,6 @@
 {
   "name": "BRIDGE",
-  "description": "Bridges allow ground units to cross rivers and seas unhindered.",
+  "description": "BRIDGE_DESCRIPTION",
   "type": 5,
   "defense": 0,
   "health": 0,

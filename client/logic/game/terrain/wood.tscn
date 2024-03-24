@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0fgjj53xl6xb"]
+
+[ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_6do1s"]
+[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="2_21hsi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6vuw"]
+atlas = ExtResource("2_21hsi")
+region = Rect2(128, 192, 32, 32)
+
+[node name="Wood" type="Node2D"]
+script = ExtResource("1_6do1s")
+id = "WOOD"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_k6vuw")

@@ -1,6 +1,6 @@
 {
   "name": "MOUNTAIN",
-  "description": "Montains provide a large amount of defence, but can only be traversed by infantry and air units. They also increase the vision range of any soldier unit on them by 3.",
+  "description": "MOUNTAIN_DESCRIPTION",
   "type": 1,
   "defense": 4,
   "health": 0,

@@ -130,7 +130,7 @@ _data = {
 z_index = 1
 script = ExtResource("1_8nu1x")
 shader_modulate = true
-id = "MD_TANK"
+id = "MEDIUM_TANK"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_xgryc")
