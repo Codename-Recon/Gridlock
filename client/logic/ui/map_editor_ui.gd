@@ -29,11 +29,14 @@ func on_terrain_selected(button: Button, terrain_idx: int) -> void :
 	last_button = button
 	last_button.disabled = true
 
+
 func _on_close_menu_pressed() -> void:
 	main_menu.hide()
 
+
 func _on_menu_pressed() -> void:
 	main_menu.show()
+
 
 func _on_resize_pressed() -> void:
 	resize_menu.show()

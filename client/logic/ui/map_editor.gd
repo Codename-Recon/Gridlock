@@ -9,9 +9,9 @@ const TILES: TileSet = preload("res://assets/resources/game/tiles.tres")
 
 @onready var tile_map: TileMap = $TileMap
 
-var current_terrain_set: int
-var current_terrain: int
-
+var _terrain_id_lookup: Dictionary = {}
+var _current_terrain_set: int
+var _current_terrain: int
 var _tile_buffer: Dictionary = {}
 
 
@@ -30,7 +30,20 @@ static func get_id_with_altlas_coords(atlas_coords: Vector2i) -> Array[String]:
 	return [data.get_custom_data("id"), data.get_custom_data("tile_id")]
 
 
+func get_id_with_tile_coords(tile_coords: Vector2i) -> Array[String]:
+	var data: TileData = tile_map.get_cell_tile_data(0, tile_coords)
+	return [data.get_custom_data("id"), data.get_custom_data("tile_id")]
+		
+
+func has_id_with_tile_coords(tile_coords: Vector2i) -> bool:
+	var data: TileData = tile_map.get_cell_tile_data(0, tile_coords)
+	return data != null
+
+
 func _ready() -> void:
+	for i: int in TILES.get_terrains_count(0):
+		var name: String = TILES.get_terrain_name(0, i)
+		_terrain_id_lookup[name] = i
 	_init_map()
 	camera.position = to_global(tile_map.map_to_local(map_size / 2))
 
@@ -43,12 +56,12 @@ func _init_map() -> void:
 
 
 func _on_ui_select_terrain(terrain_set: int, terrain: int) -> void:
-	current_terrain_set = terrain_set
-	current_terrain = terrain
+	_current_terrain_set = terrain_set
+	_current_terrain = terrain
 
 
 func _on_cursor_preview_set_terrain(coords: Vector2i) -> void:
-	tile_map.set_cells_terrain_connect(0, [coords], current_terrain_set, current_terrain, false)
+	tile_map.set_cells_terrain_connect(0, [coords], _current_terrain_set, _current_terrain, false)
 
 
 func _on_ui_resize_map(new_size: Vector2i) -> void:
@@ -65,14 +78,14 @@ func _on_ui_resize_map(new_size: Vector2i) -> void:
 
 ## Places tile and creates terrain node
 func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
-	_tile_buffer = _create_tile_buffer()
 	tile_map.set_cells_terrain_connect(0, [cell], terrain_set, terrain, false)
-	tile_map.update_internals()
 	var atlas_coords: Vector2i = tile_map.get_cell_atlas_coords(0, cell)
 	var texture: Texture2D = get_texture_with_atlas_coords(atlas_coords)
 	var id: Array[String] = get_id_with_altlas_coords(atlas_coords)
 	map.create_terrain(id[0], id[1], cell * tile_map.tile_set.tile_size, texture)
-	# Change terrains which got changed by autotiling
+	## Change terrains which got changed by auto tiling
+	tile_map.fix_invalid_tiles()
+	tile_map.update_internals()
 	for changed_cell: Vector2i in _find_difference_with_main_tile_buffer():
 		if changed_cell == cell:
 			continue
@@ -81,6 +94,7 @@ func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 		texture = get_texture_with_atlas_coords(atlas_coords)
 		id = get_id_with_altlas_coords(atlas_coords)
 		map.create_terrain(id[0], id[1], changed_cell * tile_map.tile_set.tile_size, texture)
+	_tile_buffer = _create_tile_buffer()
 
 
 ## Removes tile and terrain node
@@ -93,7 +107,7 @@ func _on_game_input_dragging(terrain: Terrain) -> void:
 	var cell: Vector2i = terrain.global_position
 	cell = cell / tile_map.tile_set.tile_size
 	_remove_terrain(cell)
-	_place_terrain(cell, current_terrain_set, current_terrain)
+	_place_terrain(cell, _current_terrain_set, _current_terrain)
 
 
 func _create_tile_buffer() -> Dictionary:
