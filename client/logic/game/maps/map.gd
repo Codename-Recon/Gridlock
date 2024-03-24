@@ -4,6 +4,9 @@ class_name Map
 extends Node2D
 
 const DUPLICATE_TEST_SIZE: int = 4
+
+@onready var players_node: Node = $Players
+
 @export var map_name: String
 @export var creator: String
 @export var creator_url: String
@@ -58,10 +61,15 @@ func _ready() -> void:
 			continue
 		var terrain: Terrain = (load(_terrain_path + file_name) as PackedScene).instantiate()
 		_predefined_terrains[terrain.tile_id] = terrain
-	# TODO Rework player as a resource
-	#if not Engine.is_editor_hint():
-		#for player: Player in $Players.get_children():
-			#players.append(player)
+	if not Engine.is_editor_hint():
+		if players_node:
+			for player: Player in players_node.get_children():
+				players.append(player)
+		else:
+			players_node = Node.new()
+			players_node.name = "Players"
+			add_child(players_node)
+
 
 func _test_for_duplicates() -> void:
 	var found_duplicates: bool = false

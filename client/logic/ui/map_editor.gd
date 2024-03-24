@@ -84,7 +84,6 @@ func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 	var id: Array[String] = get_id_with_altlas_coords(atlas_coords)
 	map.create_terrain(id[0], id[1], cell * tile_map.tile_set.tile_size, texture)
 	## Change terrains which got changed by auto tiling
-	tile_map.fix_invalid_tiles()
 	tile_map.update_internals()
 	for changed_cell: Vector2i in _find_difference_with_main_tile_buffer():
 		if changed_cell == cell:
