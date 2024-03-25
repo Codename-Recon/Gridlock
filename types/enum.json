@@ -62,6 +62,7 @@
         "PORT",
         "HQ",
         "PIPE",
+        "PIPE_WEAK",
         "SILO",
         "COM_TOWER",
         "LAB"

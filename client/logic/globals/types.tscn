@@ -6,7 +6,7 @@
 script = ExtResource("1_qj7ej")
 movement_types = ["FOOT", "BAZOOKA", "TREADS", "WHEELS", "AIR", "SEA", "LANDER", "PIPERUNNER"]
 unit_types = ["ANTI_AIR", "APC", "ARTILLERY", "BCOPTER", "BATTLESHIP", "BLACKBOAT", "BLACKBOMB", "BOMBER", "CARRIER", "CRUISER", "FIGHTER", "INFANTRY", "LANDER", "MEDIUM_TANK", "MECH", "MEGA_TANK", "MISSILE", "NEOTANK", "PIPERUNNER", "RECON", "ROCKET", "STEALTH", "SUB", "TCOPTER", "TANK"]
-terrain_types = ["PLAIN", "MOUNTAIN", "WOOD", "RIVER", "ROAD", "BRIDGE", "SEA", "BEACH", "CITY", "BASE", "AIRPORT", "PORT", "HQ", "PIPE", "SILO", "COM_TOWER", "LAB"]
+terrain_types = ["PLAIN", "MOUNTAIN", "WOOD", "RIVER", "ROAD", "BRIDGE", "SEA", "BEACH", "CITY", "BASE", "AIRPORT", "PORT", "HQ", "PIPE", "PIPE_WEAK", "SILO", "COM_TOWER", "LAB"]
 terrain_sprite_types = ["PLAIN", "MOUNTAIN", "WOOD", "HRIVER", "VRIVER", "CRIVER", "ESRIVER", "SWRIVER", "WNRIVER", "NERIVER", "ESWRIVER", "SWNRIVER", "WNERIVER", "NESRIVER", "HROAD", "VROAD", "CROAD", "ESROAD", "SWROAD", "WNROAD", "NEROAD", "ESWROAD", "SWNROAD", "WNEROAD", "NESROAD", "HBRIDGE", "VBRIDGE", "SEA", "HSHOAL", "HSHOALN", "VSHOAL", "VSHOALE", "REEF", "VPIPE", "HPIPE", "NEPIPE", "ESPIPE", "SWPIPE", "WNPIPE", "NPIPE_END", "EPIPE_END", "SPIPE_END", "WPIPE_END", "HPIPE_SEAM", "VPIPE_SEAM", "HPIPE_RUBBLE", "VPIPE_RUBBLE", "CITY", "BASE", "AIRPORT", "PORT", "HQ", "PIPE", "SILO", "SILO_EMPTY", "COM_TOWER", "LAB"]
 weapon_types = ["Artillery Cannon", "Bazooka", "Light Tank Cannon", "Machine Gun", "Medium Tank Cannon", "Rockets", "Tank Machine Gun", "Vulcan Cannon"]
 weather_types = ["CLEAR", "RAIN", "SNOW"]
@@ -783,6 +783,18 @@ terrains = {
 "owner": 0.0,
 "type": 12.0
 },
+"PIPE_WEAK": {
+"ammo": 0.0,
+"can_capture": false,
+"capture_value": 0.0,
+"defense": 0.0,
+"description": "PIPE_WEAK_DESCRIPTION",
+"funds": 0.0,
+"health": 100.0,
+"name": "PIPE_WEAK",
+"owner": 0.0,
+"type": 12.0
+},
 "PLAIN": {
 "ammo": 0.0,
 "can_capture": false,
@@ -1199,6 +1211,38 @@ movements = {
 "SEA": 0.0,
 "TREADS": 0.0,
 "WHEELS": 0.0
+}
+},
+"PIPE_WEAK": {
+"CLEAR": {
+"AIR": 1.0,
+"BAZOOKA": 1.0,
+"FOOT": 1.0,
+"LANDER": 0.0,
+"PIPERUNNER": 0.0,
+"SEA": 0.0,
+"TREADS": 1.0,
+"WHEELS": 1.0
+},
+"RAIN": {
+"AIR": 1.0,
+"BAZOOKA": 1.0,
+"FOOT": 1.0,
+"LANDER": 0.0,
+"PIPERUNNER": 0.0,
+"SEA": 0.0,
+"TREADS": 1.0,
+"WHEELS": 1.0
+},
+"SNOW": {
+"AIR": 2.0,
+"BAZOOKA": 1.0,
+"FOOT": 1.0,
+"LANDER": 0.0,
+"PIPERUNNER": 0.0,
+"SEA": 0.0,
+"TREADS": 1.0,
+"WHEELS": 1.0
 }
 },
 "PLAIN": {
