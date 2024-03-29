@@ -1,8 +1,8 @@
 {
-  "name": "BEACH",
-  "description": "BEACH_DESCRIPTION",
+  "name": "PIPE_BROKEN",
+  "description": "PIPE_BROKEN_DESCRIPTION",
   "defense": 0,
-  "health": 0,
+  "health": 100,
   "can_capture": false,
   "capture_value": 0,
   "owner": 0,

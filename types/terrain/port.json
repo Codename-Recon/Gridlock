@@ -1,7 +1,6 @@
 {
   "name": "PORT",
   "description": "PORT_DESCRIPTION",
-  "type": 10,
   "defense": 3,
   "health": 0,
   "can_capture": true,

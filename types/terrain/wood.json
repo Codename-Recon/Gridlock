@@ -1,12 +1,11 @@
 {
   "name": "WOOD",
   "description": "WOOD_DESCRIPTION",
-  "type": 2,
   "defense": 2,
   "health": 0,
   "can_capture": false,
   "capture_value": 0,
   "owner": 0,
   "funds": 0,
-  "ammo": 1
+  "ammo": 0
 }

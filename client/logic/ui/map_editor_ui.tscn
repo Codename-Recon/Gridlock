@@ -89,6 +89,7 @@ layout_mode = 2
 text = "Close Menu"
 
 [node name="ResizeMenu" parent="." instance=ExtResource("2_w1ogj")]
+visible = false
 layout_mode = 1
 mouse_force_pass_scroll_events = false
 

@@ -19,6 +19,9 @@ mouse_filter = 2
 position = Vector2(496, 496)
 zoom = Vector2(1, 1)
 
+[node name="Map" type="Node2D" parent="."]
+script = ExtResource("5_b0ipg")
+
 [node name="MapEditor" type="Node2D" parent="." node_paths=PackedStringArray("camera", "map")]
 script = ExtResource("1_j3yxc")
 camera = NodePath("../GameInput")
@@ -28,9 +31,6 @@ map = NodePath("../Map")
 visible = false
 tile_set = ExtResource("2_44dmf")
 format = 2
-
-[node name="Map" type="Node2D" parent="."]
-script = ExtResource("5_b0ipg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

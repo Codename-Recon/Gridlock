@@ -1,7 +1,6 @@
 {
   "name": "MOUNTAIN",
   "description": "MOUNTAIN_DESCRIPTION",
-  "type": 1,
   "defense": 4,
   "health": 0,
   "can_capture": false,

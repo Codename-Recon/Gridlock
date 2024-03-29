@@ -1,7 +1,6 @@
 {
   "name": "AIRPORT",
   "description": "AIRPORT_DESCRIPTION",
-  "type": 9,
   "defense": 3,
   "health": 0,
   "can_capture": true,

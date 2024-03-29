@@ -33,13 +33,14 @@ func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, tex
 			return
 		terrain = Terrain.new()
 		terrain.id = id
-		terrain.tile_id = id
+		terrain.tile_id = tile_id
 		var sprite: Sprite2D = Sprite2D.new()
 		sprite.name = "Sprite2D"
 		terrain.add_child(sprite)
 		terrain.sprite = sprite
 		terrain.sprite.texture = texture
 	add_child(terrain)
+	terrain.name = id
 	terrain.position = terrain_position
 
 

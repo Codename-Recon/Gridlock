@@ -1,7 +1,6 @@
 {
   "name": "COM_TOWER",
   "description": "COM_TOWER_DESCRIPTION",
-  "type": 14,
   "defense": 3,
   "health": 0,
   "can_capture": true,

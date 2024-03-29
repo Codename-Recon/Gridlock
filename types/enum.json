@@ -63,6 +63,7 @@
         "HQ",
         "PIPE",
         "PIPE_WEAK",
+        "PIPE_BROKEN",
         "SILO",
         "COM_TOWER",
         "LAB"

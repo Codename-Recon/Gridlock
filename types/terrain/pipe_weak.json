@@ -1,7 +1,6 @@
 {
   "name": "PIPE_WEAK",
   "description": "PIPE_WEAK_DESCRIPTION",
-  "type": 12,
   "defense": 0,
   "health": 100,
   "can_capture": false,

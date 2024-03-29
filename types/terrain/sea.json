@@ -1,7 +1,6 @@
 {
   "name": "SEA",
   "description": "SEA_DESCRIPTION",
-  "type": 5,
   "defense": 0,
   "health": 0,
   "can_capture": false,

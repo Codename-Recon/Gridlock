@@ -1,7 +1,6 @@
 {
   "name": "PLAIN",
   "description": "PLAIN_DESCRIPTION",
-  "type": 0,
   "defense": 1,
   "health": 0,
   "can_capture": false,

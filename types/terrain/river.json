@@ -1,7 +1,6 @@
 {
   "name": "RIVER",
   "description": "RIVER_DESCRIPTION",
-  "type": 3,
   "defense": 0,
   "health": 0,
   "can_capture": false,

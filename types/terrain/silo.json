@@ -1,7 +1,6 @@
 {
   "name": "SILO",
   "description": "SILO_DESCRIPTION",
-  "type": 13,
   "defense": 3,
   "health": 0,
   "can_capture": false,

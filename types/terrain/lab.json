@@ -1,7 +1,6 @@
 {
   "name": "LAB",
   "description": "LAB_DESCRIPTION",
-  "type": 15,
   "defense": 3,
   "health": 0,
   "can_capture": true,

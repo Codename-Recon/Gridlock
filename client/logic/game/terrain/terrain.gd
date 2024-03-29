@@ -118,8 +118,8 @@ func generate_terrain_lookup() -> void:
 
 
 func _set_color(set_color: Color) -> void:
-	var sprite: Sprite2D = $Sprite2D as Sprite2D
-	(sprite.material as ShaderMaterial).set_shader_parameter("new_color", set_color)
+	var _sprite: Sprite2D = $Sprite2D as Sprite2D
+	(_sprite.material as ShaderMaterial).set_shader_parameter("new_color", set_color)
 
 
 func get_up() -> Terrain:

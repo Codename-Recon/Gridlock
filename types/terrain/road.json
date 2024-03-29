@@ -1,7 +1,6 @@
 {
   "name": "ROAD",
   "description": "ROAD_DESCRIPTION",
-  "type": 4,
   "defense": 0,
   "health": 0,
   "can_capture": false,

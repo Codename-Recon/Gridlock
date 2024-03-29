@@ -6,7 +6,7 @@
 script = ExtResource("1_qj7ej")
 movement_types = ["FOOT", "BAZOOKA", "TREADS", "WHEELS", "AIR", "SEA", "LANDER", "PIPERUNNER"]
 unit_types = ["ANTI_AIR", "APC", "ARTILLERY", "BCOPTER", "BATTLESHIP", "BLACKBOAT", "BLACKBOMB", "BOMBER", "CARRIER", "CRUISER", "FIGHTER", "INFANTRY", "LANDER", "MEDIUM_TANK", "MECH", "MEGA_TANK", "MISSILE", "NEOTANK", "PIPERUNNER", "RECON", "ROCKET", "STEALTH", "SUB", "TCOPTER", "TANK"]
-terrain_types = ["PLAIN", "MOUNTAIN", "WOOD", "RIVER", "ROAD", "BRIDGE", "SEA", "BEACH", "CITY", "BASE", "AIRPORT", "PORT", "HQ", "PIPE", "PIPE_WEAK", "SILO", "COM_TOWER", "LAB"]
+terrain_types = ["PLAIN", "MOUNTAIN", "WOOD", "RIVER", "ROAD", "BRIDGE", "SEA", "BEACH", "CITY", "BASE", "AIRPORT", "PORT", "HQ", "PIPE", "PIPE_WEAK", "PIPE_BROKEN", "SILO", "COM_TOWER", "LAB"]
 terrain_sprite_types = ["PLAIN", "MOUNTAIN", "WOOD", "HRIVER", "VRIVER", "CRIVER", "ESRIVER", "SWRIVER", "WNRIVER", "NERIVER", "ESWRIVER", "SWNRIVER", "WNERIVER", "NESRIVER", "HROAD", "VROAD", "CROAD", "ESROAD", "SWROAD", "WNROAD", "NEROAD", "ESWROAD", "SWNROAD", "WNEROAD", "NESROAD", "HBRIDGE", "VBRIDGE", "SEA", "HSHOAL", "HSHOALN", "VSHOAL", "VSHOALE", "REEF", "VPIPE", "HPIPE", "NEPIPE", "ESPIPE", "SWPIPE", "WNPIPE", "NPIPE_END", "EPIPE_END", "SPIPE_END", "WPIPE_END", "HPIPE_SEAM", "VPIPE_SEAM", "HPIPE_RUBBLE", "VPIPE_RUBBLE", "CITY", "BASE", "AIRPORT", "PORT", "HQ", "PIPE", "SILO", "SILO_EMPTY", "COM_TOWER", "LAB"]
 weapon_types = ["Artillery Cannon", "Bazooka", "Light Tank Cannon", "Machine Gun", "Medium Tank Cannon", "Rockets", "Tank Machine Gun", "Vulcan Cannon"]
 weather_types = ["CLEAR", "RAIN", "SNOW"]
@@ -672,8 +672,7 @@ terrains = {
 "funds": 1000.0,
 "health": 0.0,
 "name": "AIRPORT",
-"owner": 0.0,
-"type": 9.0
+"owner": 0.0
 },
 "BASE": {
 "ammo": 0.0,
@@ -684,20 +683,18 @@ terrains = {
 "funds": 1000.0,
 "health": 0.0,
 "name": "BASE",
-"owner": 0.0,
-"type": 8.0
+"owner": 0.0
 },
 "BEACH": {
 "ammo": 0.0,
 "can_capture": false,
 "capture_value": 0.0,
 "defense": 0.0,
-"description": "Beaches provide an area for Landers and Black Boats to load and drop off units to battle.",
+"description": "BEACH_DESCRIPTION",
 "funds": 0.0,
 "health": 0.0,
 "name": "BEACH",
-"owner": 0.0,
-"type": 6.0
+"owner": 0.0
 },
 "BRIDGE": {
 "ammo": 0.0,
@@ -708,8 +705,7 @@ terrains = {
 "funds": 0.0,
 "health": 0.0,
 "name": "BRIDGE",
-"owner": 0.0,
-"type": 5.0
+"owner": 0.0
 },
 "CITY": {
 "ammo": 0.0,
@@ -720,8 +716,7 @@ terrains = {
 "funds": 1000.0,
 "health": 0.0,
 "name": "CITY",
-"owner": 0.0,
-"type": 7.0
+"owner": 0.0
 },
 "COM_TOWER": {
 "ammo": 0.0,
@@ -732,8 +727,7 @@ terrains = {
 "funds": 1000.0,
 "health": 0.0,
 "name": "COM_TOWER",
-"owner": 0.0,
-"type": 14.0
+"owner": 0.0
 },
 "HQ": {
 "ammo": 0.0,
@@ -744,8 +738,7 @@ terrains = {
 "funds": 1000.0,
 "health": 0.0,
 "name": "HQ",
-"owner": 0.0,
-"type": 11.0
+"owner": 0.0
 },
 "LAB": {
 "ammo": 0.0,
@@ -756,8 +749,7 @@ terrains = {
 "funds": 1000.0,
 "health": 0.0,
 "name": "LAB",
-"owner": 0.0,
-"type": 15.0
+"owner": 0.0
 },
 "MOUNTAIN": {
 "ammo": 0.0,
@@ -768,8 +760,7 @@ terrains = {
 "funds": 0.0,
 "health": 0.0,
 "name": "MOUNTAIN",
-"owner": 0.0,
-"type": 1.0
+"owner": 0.0
 },
 "PIPE": {
 "ammo": 0.0,
@@ -780,8 +771,18 @@ terrains = {
 "funds": 0.0,
 "health": 100.0,
 "name": "PIPE",
-"owner": 0.0,
-"type": 12.0
+"owner": 0.0
+},
+"PIPE_BROKEN": {
+"ammo": 0.0,
+"can_capture": false,
+"capture_value": 0.0,
+"defense": 0.0,
+"description": "PIPE_BROKEN_DESCRIPTION",
+"funds": 0.0,
+"health": 100.0,
+"name": "PIPE_BROKEN",
+"owner": 0.0
 },
 "PIPE_WEAK": {
 "ammo": 0.0,
@@ -792,8 +793,7 @@ terrains = {
 "funds": 0.0,
 "health": 100.0,
 "name": "PIPE_WEAK",
-"owner": 0.0,
-"type": 12.0
+"owner": 0.0
 },
 "PLAIN": {
 "ammo": 0.0,
@@ -804,8 +804,7 @@ terrains = {
 "funds": 0.0,
 "health": 0.0,
 "name": "PLAIN",
-"owner": 0.0,
-"type": 0.0
+"owner": 0.0
 },
 "PORT": {
 "ammo": 0.0,
@@ -816,8 +815,7 @@ terrains = {
 "funds": 1000.0,
 "health": 0.0,
 "name": "PORT",
-"owner": 0.0,
-"type": 10.0
+"owner": 0.0
 },
 "REEF": {
 "ammo": 0.0,
@@ -828,8 +826,7 @@ terrains = {
 "funds": 0.0,
 "health": 0.0,
 "name": "REEF",
-"owner": 0.0,
-"type": 16.0
+"owner": 0.0
 },
 "RIVER": {
 "ammo": 0.0,
@@ -840,8 +837,7 @@ terrains = {
 "funds": 0.0,
 "health": 0.0,
 "name": "RIVER",
-"owner": 0.0,
-"type": 3.0
+"owner": 0.0
 },
 "ROAD": {
 "ammo": 0.0,
@@ -852,8 +848,7 @@ terrains = {
 "funds": 0.0,
 "health": 0.0,
 "name": "ROAD",
-"owner": 0.0,
-"type": 4.0
+"owner": 0.0
 },
 "SEA": {
 "ammo": 0.0,
@@ -864,8 +859,7 @@ terrains = {
 "funds": 0.0,
 "health": 0.0,
 "name": "SEA",
-"owner": 0.0,
-"type": 5.0
+"owner": 0.0
 },
 "SILO": {
 "ammo": 1.0,
@@ -876,11 +870,10 @@ terrains = {
 "funds": 0.0,
 "health": 0.0,
 "name": "SILO",
-"owner": 0.0,
-"type": 13.0
+"owner": 0.0
 },
 "WOOD": {
-"ammo": 1.0,
+"ammo": 0.0,
 "can_capture": false,
 "capture_value": 0.0,
 "defense": 2.0,
@@ -888,8 +881,7 @@ terrains = {
 "funds": 0.0,
 "health": 0.0,
 "name": "WOOD",
-"owner": 0.0,
-"type": 2.0
+"owner": 0.0
 }
 }
 movements = {
@@ -1213,7 +1205,7 @@ movements = {
 "WHEELS": 0.0
 }
 },
-"PIPE_WEAK": {
+"PIPE_BROKEN": {
 "CLEAR": {
 "AIR": 1.0,
 "BAZOOKA": 1.0,
@@ -1243,6 +1235,38 @@ movements = {
 "SEA": 0.0,
 "TREADS": 1.0,
 "WHEELS": 1.0
+}
+},
+"PIPE_WEAK": {
+"CLEAR": {
+"AIR": 0.0,
+"BAZOOKA": 0.0,
+"FOOT": 0.0,
+"LANDER": 0.0,
+"PIPERUNNER": 1.0,
+"SEA": 0.0,
+"TREADS": 0.0,
+"WHEELS": 0.0
+},
+"RAIN": {
+"AIR": 0.0,
+"BAZOOKA": 0.0,
+"FOOT": 0.0,
+"LANDER": 0.0,
+"PIPERUNNER": 1.0,
+"SEA": 0.0,
+"TREADS": 0.0,
+"WHEELS": 0.0
+},
+"SNOW": {
+"AIR": 0.0,
+"BAZOOKA": 0.0,
+"FOOT": 0.0,
+"LANDER": 0.0,
+"PIPERUNNER": 1.0,
+"SEA": 0.0,
+"TREADS": 0.0,
+"WHEELS": 0.0
 }
 },
 "PLAIN": {

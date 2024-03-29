@@ -1,7 +1,6 @@
 {
   "name": "REEF",
   "description": "REEF_DESCRIPTION",
-  "type": 16,
   "defense": 1,
   "health": 0,
   "can_capture": false,

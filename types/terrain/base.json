@@ -1,7 +1,6 @@
 {
   "name": "BASE",
   "description": "BASE_DESCRIPTION",
-  "type": 8,
   "defense": 3,
   "health": 0,
   "can_capture": true,

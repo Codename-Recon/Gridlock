@@ -42,14 +42,13 @@ func has_id_with_tile_coords(tile_coords: Vector2i) -> bool:
 
 func _ready() -> void:
 	for i: int in TILES.get_terrains_count(0):
-		var name: String = TILES.get_terrain_name(0, i)
-		_terrain_id_lookup[name] = i
+		var tile_name: String = TILES.get_terrain_name(0, i)
+		_terrain_id_lookup[tile_name] = i
 	_init_map()
 	camera.position = to_global(tile_map.map_to_local(map_size / 2))
 
 
 func _init_map() -> void:
-	var all_cells: Array[Vector2i] = []
 	for i: int in range(map_size.x):
 		for j: int in range(map_size.y):
 			_place_terrain(Vector2i(i, j), 0, 1)
@@ -83,7 +82,7 @@ func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 	var texture: Texture2D = get_texture_with_atlas_coords(atlas_coords)
 	var id: Array[String] = get_id_with_altlas_coords(atlas_coords)
 	map.create_terrain(id[0], id[1], cell * tile_map.tile_set.tile_size, texture)
-	## Change terrains which got changed by auto tiling
+	# Change terrains which got changed by auto tiling
 	tile_map.update_internals()
 	for changed_cell: Vector2i in _find_difference_with_main_tile_buffer():
 		if changed_cell == cell:
@@ -97,15 +96,16 @@ func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 
 
 ## Removes tile and terrain node
-func _remove_terrain(cell: Vector2i) -> void:
-	tile_map.set_cells_terrain_connect(0, [cell], 0, -1)
+func _remove_terrain(cell: Vector2i, remove_tile: bool = true) -> void:
+	if remove_tile:
+		tile_map.set_cells_terrain_connect(0, [cell], 0, -1)
 	map.remove_terrain(cell * tile_map.tile_set.tile_size)
 
 
 func _on_game_input_dragging(terrain: Terrain) -> void:
 	var cell: Vector2i = terrain.global_position
 	cell = cell / tile_map.tile_set.tile_size
-	_remove_terrain(cell)
+	_remove_terrain(cell, false)  # Don't remove tile, since it can mess up autotiling
 	_place_terrain(cell, _current_terrain_set, _current_terrain)
 
 
