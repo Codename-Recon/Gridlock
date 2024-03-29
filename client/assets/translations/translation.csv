@@ -34,6 +34,12 @@ MENU,Menu,Menü,menu
 EXIT_TO_MENU,Exit to Menu,Beenden,quitter au menu
 CONTINUE,Continue,Weiter,continuer
 MAP_EDITOR,Map Editor,,
+RESIZE,Resize,,
+SAVE,Save,Speichern,
+LOAD,Load,Laden,
+ACCEPT,Accept,,
+CANCEL,Cancel,,
+,,,
 ,,,
 LOW,Low,Niedrig,bas
 MEDIUM,Medium,Mittel,moyen

@@ -3,7 +3,7 @@ extends Node2D
 
 const TILES: TileSet = preload("res://assets/resources/game/tiles.tres")
 
-@export var map_size: Vector2i = Vector2i(10, 10)
+@export var map_size: Vector2i = Vector2i(20, 20)
 @export var camera: Camera2D
 @export var map: Map
 
@@ -24,16 +24,23 @@ static func get_texture_with_atlas_coords(atlas_coords: Vector2i) -> Texture2D:
 	return atlas
 	
 	
-static func get_id_with_altlas_coords(atlas_coords: Vector2i) -> Array[String]:
+static func get_texture_with_tile_id(tile_id: String) -> Texture2D:
+	if tile_id == "":
+		return null
+	var source: TileSetAtlasSource = TILES.get_source(0)
+	for i: int in source.get_tiles_count():
+		var pos: Vector2i = source.get_tile_id(i)
+		var current_tile_id: String = source.get_tile_data(pos, 0).get_custom_data("tile_id")
+		if current_tile_id == tile_id:
+			return get_texture_with_atlas_coords(pos)
+	return null
+	
+	
+static func get_data_with_altlas_coords(atlas_coords: Vector2i) -> Array[String]:
 	var source: TileSetAtlasSource = TILES.get_source(0)
 	var data: TileData = source.get_tile_data(atlas_coords, 0)
-	return [data.get_custom_data("id"), data.get_custom_data("tile_id")]
+	return [data.get_custom_data("id"), data.get_custom_data("tile_id"), data.get_custom_data("ground_tile_id")]
 
-
-func get_id_with_tile_coords(tile_coords: Vector2i) -> Array[String]:
-	var data: TileData = tile_map.get_cell_tile_data(0, tile_coords)
-	return [data.get_custom_data("id"), data.get_custom_data("tile_id")]
-		
 
 func has_id_with_tile_coords(tile_coords: Vector2i) -> bool:
 	var data: TileData = tile_map.get_cell_tile_data(0, tile_coords)
@@ -80,8 +87,10 @@ func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 	tile_map.set_cells_terrain_connect(0, [cell], terrain_set, terrain, false)
 	var atlas_coords: Vector2i = tile_map.get_cell_atlas_coords(0, cell)
 	var texture: Texture2D = get_texture_with_atlas_coords(atlas_coords)
-	var id: Array[String] = get_id_with_altlas_coords(atlas_coords)
-	map.create_terrain(id[0], id[1], cell * tile_map.tile_set.tile_size, texture)
+	var data: Array[String] = get_data_with_altlas_coords(atlas_coords)
+	var ground_tile_id: String = data[2]
+	var ground_texture: Texture2D = get_texture_with_tile_id(ground_tile_id)
+	map.create_terrain(data[0], data[1], cell * tile_map.tile_set.tile_size, texture, ground_texture)
 	# Change terrains which got changed by auto tiling
 	tile_map.update_internals()
 	for changed_cell: Vector2i in _find_difference_with_main_tile_buffer():
@@ -90,8 +99,10 @@ func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 		map.remove_terrain(changed_cell * tile_map.tile_set.tile_size)
 		atlas_coords = tile_map.get_cell_atlas_coords(0, changed_cell)
 		texture = get_texture_with_atlas_coords(atlas_coords)
-		id = get_id_with_altlas_coords(atlas_coords)
-		map.create_terrain(id[0], id[1], changed_cell * tile_map.tile_set.tile_size, texture)
+		data = get_data_with_altlas_coords(atlas_coords)
+		ground_tile_id = data[2]
+		ground_texture = get_texture_with_tile_id(ground_tile_id)
+		map.create_terrain(data[0], data[1], changed_cell * tile_map.tile_set.tile_size, texture, ground_texture)
 	_tile_buffer = _create_tile_buffer()
 
 

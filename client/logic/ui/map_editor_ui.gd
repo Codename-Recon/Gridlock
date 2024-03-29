@@ -5,9 +5,13 @@ signal select_terrain(terrain_set: int, terrain: int)
 signal resize_map(new_size: Vector2i)
 
 @export var tile_set: TileSet
-@onready var main_menu: Panel = $MainMenu
+@export var game_input: GameInput
+
+@onready var main_menu: Control = $MainMenu
 @onready var terrains_container: HBoxContainer = $Panel/TerrainsContainer
-@onready var resize_menu: Panel = $"ResizeMenu"
+@onready var resize_menu: Control = $ResizeMenu
+@onready var gray_background: ColorRect = $GrayBackground
+
 var last_button: Button
 
 
@@ -30,14 +34,30 @@ func on_terrain_selected(button: Button, terrain_idx: int) -> void :
 	last_button.disabled = true
 
 
-func _on_close_menu_pressed() -> void:
+func _on_exit_pressed() -> void:
+	get_tree().change_scene_to_file("res://levels/menu.tscn")
+
+
+func _on_game_input_input_escape() -> void:
+	gray_background.visible = !gray_background.visible
+	main_menu.visible = gray_background.visible
+	# Block input while menu is shown
+	game_input.selection_enabled = !main_menu.visible
+	game_input.selection_movement_enabled = !main_menu.visible
+	resize_menu.hide()
+
+
+func _on_close_pressed() -> void:
+	gray_background.hide()
 	main_menu.hide()
+	resize_menu.hide()
+	game_input.selection_enabled = true
+	game_input.selection_movement_enabled = true
 
 
-func _on_menu_pressed() -> void:
-	main_menu.show()
-
-
-func _on_resize_pressed() -> void:
-	resize_menu.show()
+func _on_resize_map(new_size: Vector2i) -> void:
+	gray_background.hide()
 	main_menu.hide()
+	resize_menu.hide()
+	game_input.selection_enabled = true
+	game_input.selection_movement_enabled = true

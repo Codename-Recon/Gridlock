@@ -21,7 +21,7 @@ var _terrain_path: String = "res://logic/game/terrain/"
 var _predefined_terrains: Dictionary
 
 
-func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, texture: Texture2D) -> void:
+func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, texture: Texture2D, ground_tile_texture: Texture2D) -> void:
 	# Check if predefined terrain exist. If not -> create terrain
 	var terrain: Terrain
 	if tile_id in _predefined_terrains:
@@ -34,6 +34,11 @@ func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, tex
 		terrain = Terrain.new()
 		terrain.id = id
 		terrain.tile_id = tile_id
+		if ground_tile_texture:
+			var ground_sprite: Sprite2D = Sprite2D.new()
+			ground_sprite.name = "Ground"
+			terrain.add_child(ground_sprite)
+			ground_sprite.texture = ground_tile_texture
 		var sprite: Sprite2D = Sprite2D.new()
 		sprite.name = "Sprite2D"
 		terrain.add_child(sprite)

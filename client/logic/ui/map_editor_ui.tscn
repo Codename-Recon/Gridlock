@@ -1,7 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://hds34errxgf3"]
+[gd_scene load_steps=16 format=3 uid="uid://hds34errxgf3"]
 
 [ext_resource type="Script" path="res://logic/ui/map_editor_ui.gd" id="1_nwduq"]
-[ext_resource type="PackedScene" uid="uid://cs6bq4m0vtvo4" path="res://logic/ui/map_editor_resize_popup.tscn" id="2_w1ogj"]
+[ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="2_qg74o"]
+[ext_resource type="Script" path="res://logic/ui/game_buttons.gd" id="3_tilmt"]
+[ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="3_wxx8d"]
+[ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="5_3pv8h"]
+[ext_resource type="Script" path="res://logic/ui/map_editor_resize_menu.gd" id="6_41mtq"]
+[ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="7_2x4d3"]
+
+[sub_resource type="GDScript" id="GDScript_dh5nv"]
+script/source = "extends ColorRect
+
+func _ready() -> void:
+	hide()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0wol"]
+atlas = ExtResource("3_wxx8d")
+region = Rect2(448, 224, 32, 32)
+margin = Rect2(8, 0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0aoq"]
+atlas = ExtResource("5_3pv8h")
+region = Rect2(150, 450, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhnip"]
+atlas = ExtResource("5_3pv8h")
+region = Rect2(150, 300, 50, 50)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dni2g"]
+load_path = "res://.godot/imported/sheet_white1x.png-d237bd7956ee8dc396efd927abb3c19c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lvce"]
+atlas = SubResource("CompressedTexture2D_dni2g")
+region = Rect2(400, 100, 50, 50)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bcjon"]
+load_path = "res://.godot/imported/sheet_white1x.png-d237bd7956ee8dc396efd927abb3c19c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66ra6"]
+atlas = SubResource("CompressedTexture2D_bcjon")
+region = Rect2(0, 450, 50, 50)
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -13,19 +52,13 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_nwduq")
 
-[node name="Menu" type="Button" parent="."]
-layout_mode = 1
-offset_right = 10.0
-offset_bottom = 15.0
-text = "Menu"
-
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -100.0
+offset_top = -45.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_force_pass_scroll_events = false
@@ -38,61 +71,211 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Panel/TerrainsContainer"]
+[node name="Example1" type="Button" parent="Panel/TerrainsContainer"]
 layout_mode = 2
-text = "Sea"
+text = "Example 1"
 
-[node name="Plane" type="Button" parent="Panel/TerrainsContainer"]
+[node name="Example2" type="Button" parent="Panel/TerrainsContainer"]
 layout_mode = 2
-text = "Plane"
+text = "Example 2"
 
-[node name="Button3" type="Button" parent="Panel/TerrainsContainer"]
+[node name="Example3" type="Button" parent="Panel/TerrainsContainer"]
 layout_mode = 2
-text = "Road"
+text = "Example 3"
 
-[node name="MainMenu" type="Panel" parent="."]
+[node name="GrayBackground" type="ColorRect" parent="."]
 visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 250.0
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_force_pass_scroll_events = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 0.423529)
+script = SubResource("GDScript_dh5nv")
 
-[node name="Label" type="Label" parent="MainMenu/VBoxContainer"]
-layout_mode = 2
-text = "Map editor menu"
-
-[node name="Exit" type="Button" parent="MainMenu/VBoxContainer"]
-layout_mode = 2
-text = "exit"
-
-[node name="Resize" type="Button" parent="MainMenu/VBoxContainer"]
-layout_mode = 2
-text = "Resize"
-
-[node name="CloseMenu" type="Button" parent="MainMenu/VBoxContainer"]
-layout_mode = 2
-text = "Close Menu"
-
-[node name="ResizeMenu" parent="." instance=ExtResource("2_w1ogj")]
-visible = false
+[node name="MainMenu" parent="." instance=ExtResource("2_qg74o")]
 layout_mode = 1
-mouse_force_pass_scroll_events = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 647.0
+offset_top = 237.0
+offset_right = -661.0
+offset_bottom = -238.0
+grow_horizontal = 2
+grow_vertical = 2
+title = "MAP_EDITOR"
 
-[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/Resize" to="." method="_on_resize_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/CloseMenu" to="." method="_on_close_menu_pressed"]
+[node name="Resize" type="Button" parent="MainMenu" node_paths=PackedStringArray("next_menu")]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 65.0
+grow_horizontal = 2
+text = "RESIZE"
+icon = SubResource("AtlasTexture_v0wol")
+script = ExtResource("7_2x4d3")
+next_menu = NodePath("../../ResizeMenu")
+
+[node name="Save" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 72.0
+offset_bottom = 137.0
+grow_horizontal = 2
+text = "SAVE"
+icon = SubResource("AtlasTexture_b0aoq")
+script = ExtResource("3_tilmt")
+
+[node name="Load" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 144.0
+offset_bottom = 209.0
+grow_horizontal = 2
+text = "LOAD"
+icon = SubResource("AtlasTexture_vhnip")
+script = ExtResource("3_tilmt")
+
+[node name="Exit" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 216.0
+offset_bottom = 281.0
+grow_horizontal = 2
+text = "EXIT_TO_MENU"
+icon = SubResource("AtlasTexture_3lvce")
+script = ExtResource("3_tilmt")
+
+[node name="Close" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "CONTINUE"
+icon = SubResource("AtlasTexture_66ra6")
+script = ExtResource("3_tilmt")
+
+[node name="ResizeMenu" parent="." instance=ExtResource("2_qg74o")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 647.0
+offset_top = 237.0
+offset_right = -661.0
+offset_bottom = -238.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_41mtq")
+title = "RESIZE"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResizeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -194.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "Resize map"
+horizontal_alignment = 1
+
+[node name="LabelHorizontal" type="Label" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "HORIZONTAL"
+
+[node name="Horizontal" type="HSlider" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+min_value = 10.0
+max_value = 50.0
+value = 20.0
+
+[node name="HorizontalSize" type="Label" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "20"
+horizontal_alignment = 1
+
+[node name="LabelVertical" type="Label" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "VERTICAL"
+
+[node name="Vertical" type="HSlider" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+min_value = 10.0
+max_value = 50.0
+value = 20.0
+
+[node name="VerticalSize" type="Label" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "20"
+horizontal_alignment = 1
+
+[node name="Accept" type="Button" parent="ResizeMenu"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -137.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "ACCEPT"
+script = ExtResource("3_tilmt")
+
+[node name="Cancel" type="Button" parent="ResizeMenu" node_paths=PackedStringArray("next_menu")]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "CANCEL"
+script = ExtResource("7_2x4d3")
+next_menu = NodePath("../../MainMenu")
+
+[connection signal="resize_map" from="." to="." method="_on_resize_map"]
+[connection signal="pressed" from="MainMenu/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MainMenu/Close" to="." method="_on_close_pressed"]
+[connection signal="value_changed" from="ResizeMenu/VBoxContainer/Horizontal" to="ResizeMenu" method="_on_horizontal_value_changed"]
+[connection signal="value_changed" from="ResizeMenu/VBoxContainer/Vertical" to="ResizeMenu" method="_on_vertical_value_changed"]
+[connection signal="pressed" from="ResizeMenu/Accept" to="ResizeMenu" method="_on_accept_pressed"]

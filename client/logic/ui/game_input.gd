@@ -37,6 +37,7 @@ var input_enabled: bool = true:
 var zoom_enabled: bool = true
 var camera_movement_enabled: bool = true
 var button_enabled: bool = true
+var selection_enabled: bool = true
 var selection_movement_enabled: bool = true:
 	set(value):
 		selection_movement_enabled = value
@@ -88,15 +89,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not input_enabled:
 		return
 	if button_enabled:
-		if event.is_action_pressed("select_first"):
-			is_just_first = true
-			input_first.emit(selection.last_terrain)
-			input_dragging.emit(selection.last_terrain)
-		if event.is_action_pressed("select_second"):
-			is_just_second = true
-			input_second.emit(selection.last_terrain)
+		if selection_enabled:
+			if event.is_action_pressed("select_first"):
+				is_just_first = true
+				input_first.emit(selection.last_terrain)
+				input_dragging.emit(selection.last_terrain)
+			if event.is_action_pressed("select_second"):
+				is_just_second = true
+				input_second.emit(selection.last_terrain)
 		if event.is_action_pressed("escape"):
 			is_just_escape = true
+			input_escape.emit()
 	if zoom_enabled:
 		if event.is_action_pressed("zoom_out") and _target_camera_zoom.x > _camera_min_zoom:
 			var tween: Tween = create_tween()
