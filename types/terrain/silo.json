@@ -7,5 +7,6 @@
   "capture_value": 0,
   "owner": 0,
   "funds": 0,
-  "ammo": 1
+  "ammo": 1,
+  "shop_units": [] 
 }

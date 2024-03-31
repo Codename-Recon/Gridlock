@@ -138,7 +138,7 @@ _data = {
 z_index = 1
 script = ExtResource("1_tnteo")
 shader_modulate = true
-id = "TCOPTER"
+id = "T-COPTER"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ltewp")

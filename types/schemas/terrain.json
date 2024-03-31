@@ -43,6 +43,10 @@
       "type": "integer",
       "description": "Primarily used for missile silos",
       "minimum": 0
+    },
+    "shop_units": {
+      "type": "array",
+      "description": "Array with units that can be bought with this property"
     }
   },
   "required": [
@@ -54,6 +58,7 @@
     "can_capture",
     "capture_value",
     "owner",
-    "ammo"
+    "ammo",
+    "shop_units"
   ]
 }

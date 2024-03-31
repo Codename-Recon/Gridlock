@@ -293,18 +293,18 @@ func _process_ai(delta: float) -> void:
 					if not unit_for_action_found:
 						ai_phase += 1
 				3:
-					# try to position direct units (pushing to enemy qg)
+					# try to position direct units (pushing to enemy hq)
 					var unit_for_action_found: bool = false
 					for unit: Unit in _get_group_unit():
 						if unit.player_owned == player_turns[0] and _types.units[unit.id]["max_range"] == 1 and not unit.get_unit_stats().round_over:
-							# get enemy qg
+							# get enemy hq
 							_create_and_set_move_area(unit, false)
-							var qg: Terrain
+							var hq: Terrain
 							for terrain: Terrain in _get_group_terrain():
-								if "QG" in terrain.name and terrain.player_owned != player_turns[0]:
-									qg = terrain
-							if qg:
-								last_action_terrain = qg
+								if "HQ" in terrain.name and terrain.player_owned != player_turns[0]:
+									hq = terrain
+							if hq:
+								last_action_terrain = hq
 								last_selected_unit = unit
 								last_selected_action = GameConst.Actions.MOVE
 								state = GameConst.State.COMMANDING
@@ -335,18 +335,18 @@ func _process_ai(delta: float) -> void:
 					if not unit_for_action_found:
 						ai_phase += 1
 				5:
-					# try to position range units (pushing to enemy qg)
+					# try to position range units (pushing to enemy hq)
 					var unit_for_action_found: bool = false
 					for unit: Unit in _get_group_unit():
 						if unit.player_owned == player_turns[0] and _types.units[unit.id]["max_range"] > 1 and not unit.get_unit_stats().round_over:
-							# get enemy qg
+							# get enemy hq
 							_create_and_set_move_area(unit, false)
-							var qg: Terrain
+							var hq: Terrain
 							for terrain: Terrain in _get_group_terrain():
-								if "QG" in terrain.name and terrain.player_owned != player_turns[0]:
-									qg = terrain
-							if qg:
-								last_action_terrain = qg
+								if "HQ" in terrain.name and terrain.player_owned != player_turns[0]:
+									hq = terrain
+							if hq:
+								last_action_terrain = hq
 								last_selected_unit = unit
 								last_selected_action = GameConst.Actions.MOVE
 								state = GameConst.State.COMMANDING
@@ -1420,7 +1420,7 @@ func _ai_create_and_filter_move_curve(target_terrain: Terrain) -> void:
 	# remove all terrains reverse until there is no unit on it or the terrain is not a HQ and unit is not infantery
 	for i: int in range(curve.point_count - 1, 0, -1):
 		var current_terrain: Terrain = unit.get_terrain_on_point(curve.get_point_position(i))
-		if current_terrain.has_unit() or (not "Infantry" in unit.name and "QG" in current_terrain.name):
+		if current_terrain.has_unit() or (not "Infantry" in unit.name and "HQ" in current_terrain.name):
 			curve.remove_point(i)
 		else:
 			break
@@ -1442,12 +1442,12 @@ func _ai_sort_moveable_terrain_nearest(unit: Unit) -> void:
 
 func _check_ending_condition() -> void:
 	for player: Player in player_turns:
-		var has_qg: bool = false
+		var has_hq: bool = false
 		for terrain: Terrain in _get_group_terrain():
-			if "QG" in terrain.name and terrain.player_owned == player:
-				has_qg = true
+			if "HQ" in terrain.name and terrain.player_owned == player:
+				has_hq = true
 				break
-		if not has_qg:
+		if not has_hq:
 			player_turns.erase(player)
 			_global.last_player_won_name = str(player_turns[0].player_number)
 			_global.last_player_won_color = player_turns[0].color
