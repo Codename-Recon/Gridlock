@@ -83,8 +83,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -82.0
-offset_bottom = -40.0
+offset_top = -122.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
 tab_count = 2
@@ -99,18 +99,21 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -5.0
-offset_bottom = 40.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_force_pass_scroll_events = false
 
-[node name="TerrainContainer" type="HBoxContainer" parent="TabBar/TerrainPanel"]
+[node name="TerrainContainer" type="GridContainer" parent="TabBar/TerrainPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
+columns = 13
 
 [node name="Example1" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
 layout_mode = 2
@@ -131,18 +134,20 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -5.0
-offset_bottom = 40.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_force_pass_scroll_events = false
 
-[node name="UnitContainer" type="HBoxContainer" parent="TabBar/UnitPanel"]
+[node name="UnitContainer" type="GridContainer" parent="TabBar/UnitPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+columns = 13
 
 [node name="Example1" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
 layout_mode = 2

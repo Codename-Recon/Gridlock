@@ -10,8 +10,8 @@ signal map_resized(new_size: Vector2i)
 @export var map: Map
 
 @onready var main_menu: Control = $MainMenu
-@onready var terrain_container: HBoxContainer = $TabBar/TerrainPanel/TerrainContainer
-@onready var unit_container: HBoxContainer = $TabBar/UnitPanel/UnitContainer
+@onready var terrain_container: GridContainer = $TabBar/TerrainPanel/TerrainContainer
+@onready var unit_container: GridContainer = $TabBar/UnitPanel/UnitContainer
 @onready var resize_menu: Control = $ResizeMenu
 @onready var gray_background: ColorRect = $GrayBackground
 
