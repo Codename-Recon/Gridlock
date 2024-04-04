@@ -57,7 +57,8 @@ func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, tex
 	
 	
 ## Creating a unit on a specific terrain. If a unit is already on that terrain, it will be replaced with the new unit.
-func create_unit(id: String, terrain_position: Vector2i) -> void:
+## The return value indicates whether the unit can be placed at that specific location.
+func create_unit(id: String, terrain_position: Vector2i) -> bool:
 	var tmp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
 	var terrain: Terrain = tmp_terrain.get_terrain_by_position(terrain_position)
 	if terrain:
@@ -65,7 +66,15 @@ func create_unit(id: String, terrain_position: Vector2i) -> void:
 			terrain.get_unit().queue_free()
 		var unit_packed_scene: PackedScene = _predefined_units_packed_scenes[id]
 		var unit: Unit = unit_packed_scene.instantiate()
+		var movement_type: String = _types.units[unit.id]["movement_type"]
+		var movement_value: int = _types.movements[terrain.id]["CLEAR"][movement_type]
+		# If unit is not allowed to be placed here
+		if movement_value == 0:
+			unit.queue_free()
+			return false
 		terrain.add_child(unit)
+		return true
+	return false
 
 
 func remove_terrain(terrain_position: Vector2i) -> void:

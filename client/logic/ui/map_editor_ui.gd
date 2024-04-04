@@ -15,7 +15,7 @@ signal map_resized(new_size: Vector2i)
 @onready var resize_menu: Control = $ResizeMenu
 @onready var gray_background: ColorRect = $GrayBackground
 
-var last_button: Button
+var _last_button: Button
 
 
 func _ready() -> void:
@@ -40,18 +40,18 @@ func _ready() -> void:
 
 func _on_terrain_selected(button: Button, terrain_idx: int) -> void :
 	terrain_selected.emit(0, terrain_idx)
-	if last_button:
-		last_button.disabled = false
-	last_button = button
-	last_button.disabled = true
+	if _last_button:
+		_last_button.disabled = false
+	_last_button = button
+	_last_button.disabled = true
 	
 	
 func _on_unit_selected(button: Button, unit_id: String, unit_scene: PackedScene) -> void :
 	unit_selected.emit(unit_id, unit_scene)
-	if last_button:
-		last_button.disabled = false
-	last_button = button
-	last_button.disabled = true
+	if _last_button:
+		_last_button.disabled = false
+	_last_button = button
+	_last_button.disabled = true
 
 
 func _on_exit_pressed() -> void:

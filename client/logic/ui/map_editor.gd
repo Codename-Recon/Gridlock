@@ -121,9 +121,10 @@ func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 		map.create_terrain(data[0], data[1], changed_cell * tile_map.tile_set.tile_size, texture, ground_texture)
 	_tile_buffer = _create_tile_buffer()
 
-
-func _place_unit(unit_id: String, terrain_position: Vector2i) -> void:
-	map.create_unit(unit_id, terrain_position)
+## Places a Unit in the map editor mode. 
+## The return value indicates whether the unit can be placed at that specific location.
+func _place_unit(unit_id: String, terrain_position: Vector2i) -> bool:
+	return map.create_unit(unit_id, terrain_position)
 
 
 ## Removes tile and terrain node
@@ -141,8 +142,10 @@ func _on_game_input_dragging(terrain: Terrain) -> void:
 			_remove_terrain(cell, false)  # Don't remove tile, since it can mess up autotiling
 			_place_terrain(cell, _current_terrain_set, _current_terrain)
 		Mode.UNIT:
-			_place_unit(_current_unit_id, terrain.global_position)
-	_sound.play("Drop")
+			if _place_unit(_current_unit_id, terrain.global_position):
+				_sound.play("Drop2")
+			else:
+				_sound.play("Deselect")
 
 
 func _create_tile_buffer() -> Dictionary:
