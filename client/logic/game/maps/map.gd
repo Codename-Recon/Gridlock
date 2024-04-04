@@ -115,7 +115,9 @@ func _load_predefined_terrains(path: String) -> Dictionary:
 	if not dir:
 		push_error("Can not open directory: " + path)
 	for file_name: String in dir.get_files():
-		if not ".tscn" in file_name:
+		if file_name.ends_with(".tscn.remap"):
+			file_name = file_name.trim_suffix(".remap")
+		if not file_name.ends_with(".tscn"):
 			continue
 		var terrain: Terrain = (load(path + file_name) as PackedScene).instantiate()
 		_predefines[terrain.tile_id] = terrain
@@ -128,7 +130,9 @@ func _load_predefined_units_packed_scenes(path: String) -> Dictionary:
 	if not dir:
 		push_error("Can not open directory: " + path)
 	for file_name: String in dir.get_files():
-		if not ".tscn" in file_name:
+		if file_name.ends_with(".tscn.remap"):
+			file_name = file_name.trim_suffix(".remap")
+		if not file_name.ends_with(".tscn"):
 			continue
 		var unit_packed_scene: PackedScene = (load(path + file_name) as PackedScene)
 		var unit: Unit = unit_packed_scene.instantiate()
