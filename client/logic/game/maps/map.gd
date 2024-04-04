@@ -5,7 +5,6 @@ extends Node2D
 
 const DUPLICATE_TEST_SIZE: int = 4
 
-
 @export var map_name: String
 @export var creator: String
 @export var creator_url: String
@@ -16,12 +15,12 @@ const DUPLICATE_TEST_SIZE: int = 4
 		_test_for_duplicates()
 @export_multiline var duplicate_result: String = ""
 
-var _type: GlobalTypes = Types
+var _types: GlobalTypes = Types
 var _players_node: Node
 var _terrain_path: String = "res://logic/game/terrain/"
 var _unit_path: String = "res://logic/game/units/"
 var _predefined_terrains: Dictionary
-var _predefined_units_packedscenes: Dictionary
+var _predefined_units_packed_scenes: Dictionary
 
 
 func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, texture: Texture2D, ground_tile_texture: Texture2D) -> void:
@@ -50,11 +49,23 @@ func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, tex
 		terrain.move_child(ground_sprite, 0)
 		ground_sprite.texture = ground_tile_texture
 	# Add shop units
-	for unit_id: String in _type.terrains[id]["shop_units"]:
-		terrain.shop_units.append(_predefined_units_packedscenes[unit_id])
+	for unit_id: String in _types.terrains[id]["shop_units"]:
+		terrain.shop_units.append(_predefined_units_packed_scenes[unit_id])
 	add_child(terrain)
 	terrain.name = id
 	terrain.position = terrain_position
+	
+	
+## Creating a unit on a specific terrain. If a unit is already on that terrain, it will be replaced with the new unit.
+func create_unit(id: String, terrain_position: Vector2i) -> void:
+	var tmp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
+	var terrain: Terrain = tmp_terrain.get_terrain_by_position(terrain_position)
+	if terrain:
+		if terrain.has_unit():
+			terrain.get_unit().queue_free()
+		var unit_packed_scene: PackedScene = _predefined_units_packed_scenes[id]
+		var unit: Unit = unit_packed_scene.instantiate()
+		terrain.add_child(unit)
 
 
 func remove_terrain(terrain_position: Vector2i) -> void:
@@ -64,9 +75,20 @@ func remove_terrain(terrain_position: Vector2i) -> void:
 		terrain.queue_free()
 
 
+func remove_unit(position: Vector2i) -> void:
+	var tmp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
+	var terrain: Terrain = tmp_terrain.get_terrain_by_position(position)
+	if terrain and terrain.has_unit():
+		terrain.get_unit().queue_free()
+		
+		
+func get_predefined_units_packed_scenes() -> Dictionary:
+	return _predefined_units_packed_scenes
+
+
 func _ready() -> void:
 	_predefined_terrains = _load_predefined_terrains(_terrain_path)
-	_predefined_units_packedscenes = _load_predefined_units_packedscenes(_unit_path)
+	_predefined_units_packed_scenes = _load_predefined_units_packed_scenes(_unit_path)
 	if not Engine.is_editor_hint():
 		if has_node("Players"):
 			_players_node = get_node("Players")
@@ -91,7 +113,7 @@ func _load_predefined_terrains(path: String) -> Dictionary:
 	return _predefines
 	
 	
-func _load_predefined_units_packedscenes(path: String) -> Dictionary:
+func _load_predefined_units_packed_scenes(path: String) -> Dictionary:
 	var _predefines: Dictionary = {}
 	var dir: DirAccess = DirAccess.open(path)
 	if not dir:
@@ -99,9 +121,9 @@ func _load_predefined_units_packedscenes(path: String) -> Dictionary:
 	for file_name: String in dir.get_files():
 		if not ".tscn" in file_name:
 			continue
-		var unit_packedscene: PackedScene = (load(path + file_name) as PackedScene)
-		var unit: Unit = unit_packedscene.instantiate()
-		_predefines[unit.id] = unit_packedscene
+		var unit_packed_scene: PackedScene = (load(path + file_name) as PackedScene)
+		var unit: Unit = unit_packed_scene.instantiate()
+		_predefines[unit.id] = unit_packed_scene
 	return _predefines
 
 

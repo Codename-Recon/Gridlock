@@ -9,7 +9,7 @@ var new_size: Vector2i = Vector2i(20, 20)
 
 
 func _on_accept_pressed() -> void:
-	owner.emit_signal("resize_map", new_size)
+	owner.emit_signal("map_resized", new_size)
 
 
 func _on_cancel_pressed() -> void:

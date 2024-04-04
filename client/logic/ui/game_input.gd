@@ -69,8 +69,6 @@ func _process(delta: float) -> void:
 	if not input_enabled:
 		return
 	_handle_camera_input(delta)
-	#if _can_drag_emit and Input.is_action_pressed("select_first"):
-		
 
 
 func _handle_camera_input(delta: float) -> void:
@@ -92,11 +90,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		if selection_enabled:
 			if event.is_action_pressed("select_first"):
 				is_just_first = true
-				input_first.emit(selection.last_terrain)
-				input_dragging.emit(selection.last_terrain)
+				input_first.emit(await selection.last_terrain)
+				input_dragging.emit(await selection.last_terrain)
 			if event.is_action_pressed("select_second"):
 				is_just_second = true
-				input_second.emit(selection.last_terrain)
+				input_second.emit(await selection.last_terrain)
 		if event.is_action_pressed("escape"):
 			is_just_escape = true
 			input_escape.emit()

@@ -39,7 +39,10 @@ SAVE,Save,Speichern,
 LOAD,Load,Laden,
 ACCEPT,Accept,,
 CANCEL,Cancel,,
-,,,
+TERRAIN,Terrain,,
+UNIT,Unit,,
+TERRAINS,Terrains,,
+UNITS,Units,,
 ,,,
 LOW,Low,Niedrig,bas
 MEDIUM,Medium,Mittel,moyen

@@ -34,11 +34,13 @@ format = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MapEditorUI" parent="CanvasLayer" node_paths=PackedStringArray("game_input") instance=ExtResource("5_63t8i")]
+[node name="MapEditorUI" parent="CanvasLayer" node_paths=PackedStringArray("game_input", "map") instance=ExtResource("5_63t8i")]
 tile_set = ExtResource("2_44dmf")
 game_input = NodePath("../../GameInput")
+map = NodePath("../../Map")
 
 [connection signal="input_dragging" from="GameInput" to="MapEditor" method="_on_game_input_dragging"]
 [connection signal="input_escape" from="GameInput" to="CanvasLayer/MapEditorUI" method="_on_game_input_input_escape"]
-[connection signal="resize_map" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_ui_resize_map"]
-[connection signal="select_terrain" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_ui_select_terrain"]
+[connection signal="map_resized" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_ui_map_resized"]
+[connection signal="terrain_selected" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_ui_terrain_selected"]
+[connection signal="unit_selected" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_ui_unit_selected"]
