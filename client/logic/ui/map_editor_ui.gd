@@ -3,6 +3,8 @@ extends Control
 
 signal terrain_selected(terrain_set: int, terrain: int)
 signal unit_selected(unit_id: String, unit_scene: PackedScene)
+signal edit_selected()
+signal remove_selected()
 signal map_resized(new_size: Vector2i)
 
 @export var tile_set: TileSet
@@ -14,6 +16,9 @@ signal map_resized(new_size: Vector2i)
 @onready var unit_container: GridContainer = $TabBar/UnitPanel/UnitContainer
 @onready var resize_menu: Control = $ResizeMenu
 @onready var gray_background: ColorRect = $GrayBackground
+@onready var edit: GameButton = $Edit
+@onready var remove: GameButton = $Remove
+
 
 var _last_button: Button
 
@@ -38,20 +43,21 @@ func _ready() -> void:
 			unit_container.add_child(button)
 
 
-func _on_terrain_selected(button: Button, terrain_idx: int) -> void :
-	terrain_selected.emit(0, terrain_idx)
+func _change_activation_of_buttons(active_button: Button) -> void:
 	if _last_button:
 		_last_button.disabled = false
-	_last_button = button
+	_last_button = active_button
 	_last_button.disabled = true
+
+
+func _on_terrain_selected(button: Button, terrain_idx: int) -> void :
+	terrain_selected.emit(0, terrain_idx)
+	_change_activation_of_buttons(button)
 	
 	
 func _on_unit_selected(button: Button, unit_id: String, unit_scene: PackedScene) -> void :
 	unit_selected.emit(unit_id, unit_scene)
-	if _last_button:
-		_last_button.disabled = false
-	_last_button = button
-	_last_button.disabled = true
+	_change_activation_of_buttons(button)
 
 
 func _on_exit_pressed() -> void:
@@ -81,3 +87,13 @@ func _on_map_resized(new_size: Vector2i) -> void:
 	resize_menu.hide()
 	game_input.selection_enabled = true
 	game_input.selection_movement_enabled = true
+
+
+func _on_edit_pressed() -> void:
+	edit_selected.emit()
+	_change_activation_of_buttons(edit)
+
+
+func _on_remove_pressed() -> void:
+	remove_selected.emit()
+	_change_activation_of_buttons(remove)

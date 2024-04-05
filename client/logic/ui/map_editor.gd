@@ -3,7 +3,9 @@ extends Node2D
 
 enum Mode{
 	TERRAIN,
-	UNIT
+	UNIT,
+	REMOVE,
+	EDIT
 }
 
 const TILES: TileSet = preload("res://assets/resources/game/tiles.tres")
@@ -146,6 +148,11 @@ func _on_game_input_dragging(terrain: Terrain) -> void:
 				_sound.play("Drop2")
 			else:
 				_sound.play("Deselect")
+		Mode.EDIT:
+			pass
+		Mode.REMOVE:
+			map.remove_unit(terrain.global_position)
+			_sound.play("Drop2")
 
 
 func _create_tile_buffer() -> Dictionary:
@@ -168,3 +175,11 @@ func _find_difference_with_main_tile_buffer() -> Dictionary:
 		else:
 			return_buffer[key] = buffer[key]
 	return return_buffer
+
+
+func _on_map_editor_ui_remove_selected() -> void:
+	_mode = Mode.REMOVE
+
+
+func _on_map_editor_ui_edit_selected() -> void:
+	_mode = Mode.EDIT
