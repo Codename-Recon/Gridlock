@@ -218,7 +218,7 @@ func _process_ai(delta: float) -> void:
 					# try capture nearest buildings
 					var unit_for_action_found: bool = false
 					for unit: Unit in _get_group_unit():
-						if "Infantry" in unit.name and unit.player_owned == player_turns[0] and not unit.get_unit_stats().round_over:
+						if "Infantry" in unit.name and unit.player_owned == player_turns[0] and not unit.stats.round_over:
 							last_selected_unit = unit
 							_create_and_set_move_area(unit, false)
 							unit_for_action_found = false
@@ -255,7 +255,7 @@ func _process_ai(delta: float) -> void:
 					# try to attack with range units
 					for unit: Unit in _get_group_unit():
 						_unattack()
-						if _types.units[unit.id]["max_range"] > 1 and unit.player_owned == player_turns[0] and not unit.get_unit_stats().round_over:
+						if _types.units[unit.id]["max_range"] > 1 and unit.player_owned == player_turns[0] and not unit.stats.round_over:
 							_unattack()
 							_create_and_set_attack_area(unit, unit.get_terrain(), false)
 							if len(attackable_terrains) > 0:
@@ -271,7 +271,7 @@ func _process_ai(delta: float) -> void:
 					# try to attack with direct units
 					var unit_for_action_found: bool = false
 					for unit: Unit in _get_group_unit():
-						if unit.player_owned == player_turns[0] and not unit.get_unit_stats().round_over:
+						if unit.player_owned == player_turns[0] and not unit.stats.round_over:
 							_create_and_set_move_area(unit, false)
 							_ai_sort_moveable_terrain_nearest(unit)
 							for terrain: Terrain in moveable_terrains:
@@ -296,7 +296,7 @@ func _process_ai(delta: float) -> void:
 					# try to position direct units (pushing to enemy hq)
 					var unit_for_action_found: bool = false
 					for unit: Unit in _get_group_unit():
-						if unit.player_owned == player_turns[0] and _types.units[unit.id]["max_range"] == 1 and not unit.get_unit_stats().round_over:
+						if unit.player_owned == player_turns[0] and _types.units[unit.id]["max_range"] == 1 and not unit.stats.round_over:
 							# get enemy hq
 							_create_and_set_move_area(unit, false)
 							var hq: Terrain
@@ -316,7 +316,7 @@ func _process_ai(delta: float) -> void:
 					# try to position range units on strategic good places
 					var unit_for_action_found: bool = false
 					for unit: Unit in _get_group_unit():
-						if unit.player_owned == player_turns[0] and _types.units[unit.id]["max_range"] > 1 and not unit.get_unit_stats().round_over:
+						if unit.player_owned == player_turns[0] and _types.units[unit.id]["max_range"] > 1 and not unit.stats.round_over:
 							_create_and_set_move_area(unit, false)
 							_ai_sort_moveable_terrain_nearest(unit)
 							for terrain: Terrain in moveable_terrains:
@@ -338,7 +338,7 @@ func _process_ai(delta: float) -> void:
 					# try to position range units (pushing to enemy hq)
 					var unit_for_action_found: bool = false
 					for unit: Unit in _get_group_unit():
-						if unit.player_owned == player_turns[0] and _types.units[unit.id]["max_range"] > 1 and not unit.get_unit_stats().round_over:
+						if unit.player_owned == player_turns[0] and _types.units[unit.id]["max_range"] > 1 and not unit.stats.round_over:
 							# get enemy hq
 							_create_and_set_move_area(unit, false)
 							var hq: Terrain
@@ -483,9 +483,9 @@ func _do_state_repairing(local: bool = true) -> void:
 		if unit.is_on_terrain() and unit.player_owned == player_turns[0] and terrain.player_owned == player_turns[0] \
 				and _types.terrains[terrain.id]["can_capture"]:
 			# repair
-			if unit.get_unit_stats().is_unit_damaged():
+			if unit.stats.is_unit_damaged():
 				var unit_max_health: int = ProjectSettings.get_setting("global/unit_max_health")
-				var damage_to_repair: int = unit_max_health - unit.get_unit_stats().health
+				var damage_to_repair: int = unit_max_health - unit.stats.health
 				var max_repair_points: int = ProjectSettings.get_setting("global/terrain_repair_health_points")
 				var repair_points: int = max_repair_points if damage_to_repair > max_repair_points else damage_to_repair
 				var cost_to_repair: int = _types.units[unit.id]["cost"] * repair_points / unit_max_health
@@ -494,12 +494,12 @@ func _do_state_repairing(local: bool = true) -> void:
 					_add_money_on_current_player(-cost_to_repair)
 					# create floating repair info
 					var info_repair: FloatingInfo = _floating_info.instantiate()
-					info_repair.text = str(abs(unit.get_unit_stats().get_last_damage_as_float()))
+					info_repair.text = str(abs(unit.stats.get_last_damage_as_float()))
 					info_repair.color = ProjectSettings.get_setting("global/refill_color")
 					unit.get_terrain().add_child(info_repair)
 					await info_repair.finished
 			# refill
-			if unit.get_unit_stats().can_be_refilled():
+			if unit.stats.can_be_refilled():
 				var info_refill: FloatingInfo = _floating_info.instantiate()
 				info_refill.text = tr("REFILLED")
 				info_refill.color = ProjectSettings.get_setting("global/refill_color")
@@ -515,7 +515,7 @@ func _do_state_selecting_clicked_left() -> void:
 	if last_selected_terrain: 
 		if last_selected_terrain.has_unit():
 			var unit: Unit = last_selected_terrain.get_unit()
-			if unit.player_owned == player_turns[0] and not unit.get_unit_stats().round_over:
+			if unit.player_owned == player_turns[0] and not unit.stats.round_over:
 				_sound.play("Click2")
 				_deselect_unit()
 				_deselect_unit()
@@ -652,17 +652,17 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 		await attacking_unit.attack_animation_done
 		var damage: Vector2 = Vector2.ZERO
 		damage = _calculate_damage(attacking_unit, defending_unit)
-		defending_unit.get_unit_stats().health -= int(damage.x)
+		defending_unit.stats.health -= int(damage.x)
 		# create floating damage info
 		var info: FloatingInfo = _floating_info.instantiate()
-		info.text = str(defending_unit.get_unit_stats().get_last_damage_as_float())
+		info.text = str(defending_unit.stats.get_last_damage_as_float())
 		info.color = ProjectSettings.get_setting("global/attack_color")
 		defending_unit.get_terrain().add_child(info)
 		# take one ammo if it was primary weapon
-		if attacking_unit.get_unit_stats().ammo > 0 and damage.y == 0:
-			attacking_unit.get_unit_stats().ammo -= 1
+		if attacking_unit.stats.ammo > 0 and damage.y == 0:
+			attacking_unit.stats.ammo -= 1
 		# defending unit turn
-		if defending_unit.get_unit_stats().health > 0:
+		if defending_unit.stats.health > 0:
 			# check if unit is next to it and defending unit can attack something next to it
 			if distance <= 1 and _types.units[defending_unit.id]["min_range"] < 2:
 				damage = _calculate_damage(defending_unit, attacking_unit)
@@ -671,16 +671,16 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 					await get_tree().create_timer(0.2).timeout
 					defending_unit.play_attack()
 					await defending_unit.attack_animation_done
-					attacking_unit.get_unit_stats().health -= int(damage.x)
+					attacking_unit.stats.health -= int(damage.x)
 					# create floating damage info
 					info = _floating_info.instantiate()
-					info.text = str(attacking_unit.get_unit_stats().get_last_damage_as_float())
+					info.text = str(attacking_unit.stats.get_last_damage_as_float())
 					info.color = ProjectSettings.get_setting("global/attack_color")
 					attacking_unit.get_terrain().add_child(info)
 					# take one ammo if it was primary weapon
-					if defending_unit.get_unit_stats().ammo > 0 and damage.y == 0:
-						defending_unit.get_unit_stats().ammo -= 1
-					if attacking_unit.get_unit_stats().health <= 0:
+					if defending_unit.stats.ammo > 0 and damage.y == 0:
+						defending_unit.stats.ammo -= 1
+					if attacking_unit.stats.health <= 0:
 						# since attacking_unit gets freed, last_selected_unit (which is attacking unit) should be null (specially for networking)
 						last_selected_unit = null
 						attacking_unit.play_die()
@@ -700,7 +700,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 		defending_unit.damage_animated.disconnect(attacking_unit.play_damage)
 		if attacking_unit.is_inside_tree():
 			attacking_unit.look_at_plane_global_tween(attacking_transform * Vector2.UP)
-			attacking_unit.get_unit_stats().round_over = true
+			attacking_unit.stats.round_over = true
 		if defending_unit.is_inside_tree():
 			defending_unit.look_at_plane_global_tween(defending_transform * Vector2.UP)
 	else:
@@ -740,7 +740,7 @@ func _do_state_refilling_clicked_left(local: bool = true) -> void:
 		await donor_unit.refill_animation_done
 		if donor_unit.is_inside_tree():
 			donor_unit.look_at_plane_global_tween(donor_unit_transform * Vector2.UP)
-		donor_unit.get_unit_stats().round_over = true
+		donor_unit.stats.round_over = true
 	else:
 		_sound.play("Deselect")
 	_input.enable_all()
@@ -772,14 +772,14 @@ func _do_state_deploying_clicked_left(local: bool = true) -> void:
 		info.color = ProjectSettings.get_setting("global/enter_color")
 		carrying_unit.get_terrain().add_child(info)
 		## disable carrying icon
-		carrying_unit._unit_stats.carrying = false
+		carrying_unit.stats.carrying = false
 		# place unit from cargo
 		carrying_unit.cargo.remove_child(deploying_unit)
 		last_selected_terrain.add_child(deploying_unit)
 		deploying_unit.global_position = last_selected_terrain.get_move_on_global_position()
 		deploying_unit.show()
-		carrying_unit.get_unit_stats().round_over = true
-		deploying_unit.get_unit_stats().round_over = true
+		carrying_unit.stats.round_over = true
+		deploying_unit.stats.round_over = true
 		_sound.play("Entering")
 		_calculate_all_unit_possible_move_terrain()
 	else:
@@ -812,7 +812,7 @@ func _do_state_action_clicked_action(local: bool = true) -> void:
 			_unjoin()
 			last_selected_unit.move_curve = _move_arrow_node.curve
 			await last_selected_unit.unit_moved
-			last_selected_unit.get_unit_stats().round_over = true
+			last_selected_unit.stats.round_over = true
 		GameConst.Actions.ATTACK:
 			await get_tree().create_timer(0.1).timeout
 			if local:
@@ -843,7 +843,7 @@ func _do_state_action_clicked_action(local: bool = true) -> void:
 			info.color = ProjectSettings.get_setting("global/enter_color")
 			carrying_unit.get_terrain().add_child(info)
 			## enable carrying icon
-			carrying_unit._unit_stats.carrying = true
+			carrying_unit.stats.carrying = true
 			## removing unit from field and add it to cargo of carrying unit
 			entering_unit.hide()
 			entering_unit.get_terrain().remove_child(entering_unit)
@@ -868,14 +868,14 @@ func _do_state_action_clicked_action(local: bool = true) -> void:
 			target_unit.get_terrain().add_child(info)
 			## join unit together
 			var max_health: int = ProjectSettings.get_setting("global/unit_max_health")
-			var over_health: int = target_unit.get_unit_stats().health + source_unit.get_unit_stats().health - max_health
+			var over_health: int = target_unit.stats.health + source_unit.stats.health - max_health
 			var over_money: int = _types.units[source_unit.id]["cost"] / max_health * over_health
-			target_unit.get_unit_stats().health += source_unit.get_unit_stats().health
-			target_unit.get_unit_stats().ammo += source_unit.get_unit_stats().ammo
-			target_unit.get_unit_stats().fuel += source_unit.get_unit_stats().fuel
+			target_unit.stats.health += source_unit.stats.health
+			target_unit.stats.ammo += source_unit.stats.ammo
+			target_unit.stats.fuel += source_unit.stats.fuel
 			source_unit.queue_free()
 			_sound.play("Fusion")
-			target_unit.get_unit_stats().round_over = true
+			target_unit.stats.round_over = true
 			await _add_money_on_current_player(over_money, true)
 		GameConst.Actions.DEPLOY:
 			if local:
@@ -911,7 +911,7 @@ func _do_state_action_clicked_action(local: bool = true) -> void:
 			if last_selected_unit.capture():
 				_sound.play("Capturing")
 				_check_ending_condition()
-			last_selected_unit.get_unit_stats().round_over = true
+			last_selected_unit.stats.round_over = true
 	# to prevent selecting a unit after action is pressed
 	await get_tree().create_timer(0.1).timeout
 	if local:
@@ -947,7 +947,7 @@ func _do_state_bying_clicked_shop(local: bool = true) -> void:
 		if cost <= player_turns[0].money:
 			unit.player_owned = player_turns[0]
 			last_selected_terrain.add_child(unit)
-			unit.get_unit_stats().round_over = true
+			unit.stats.round_over = true
 			await _add_money_on_current_player(-cost)
 		else:
 			_sound.play("Deselect")
@@ -980,7 +980,7 @@ func _do_state_ending(local: bool = true) -> void:
 	_money_label.add_theme_color_override("font_color", player_turns[0].color)
 	_animation_player.play("round_change")
 	for unit: Unit in _get_group_unit():
-		unit.get_unit_stats().round_over = false
+		unit.stats.round_over = false
 	_calculate_all_unit_possible_move_terrain()
 	await round_change_ended
 	# changing to input type (human, ai or network)
@@ -1260,7 +1260,7 @@ func _create_and_set_join_area(unit: Unit, target_terrain: Terrain, visibility: 
 			var target_unit: Unit = i.get_unit()
 			var max_health: int = ProjectSettings.get_setting("global/unit_max_health")
 			if target_unit.id == unit.id \
-			and (target_unit.get_unit_stats().health < max_health or unit.get_unit_stats().health < max_health):
+			and (target_unit.stats.health < max_health or unit.stats.health < max_health):
 				if visibility:
 					var layer: DecalLayer = _move_layer.instantiate() as Sprite2D
 					layer.type = DecalLayer.Type.JOIN
@@ -1359,7 +1359,7 @@ func _calculate_damage(attacking_unit: Unit, defending_unit: Unit, random_luck: 
 	var primary_damage: int = _types.primary_damage[attacking_unit.id][defending_unit.id]
 	var secondary_damage: int = _types.secondary_damage[attacking_unit.id][defending_unit.id]
 	# when attacking unit has enough ammo for primary weapon
-	if (attacking_unit.get_unit_stats().ammo > 0 or attacking_unit.get_unit_stats().ammo == -1) \
+	if (attacking_unit.stats.ammo > 0 or attacking_unit.stats.ammo == -1) \
 			# and defending unit "accepts" primary weapon
 			and primary_damage > 0:
 		base_damage = primary_damage
@@ -1381,8 +1381,8 @@ func _calculate_damage(attacking_unit: Unit, defending_unit: Unit, random_luck: 
 		luck = 5
 		
 	var attack_factor: float = (base_damage + luck) / 100.0
-	var defense_factor: float = (100 - defending_unit.get_unit_stats().star_number * defending_unit.get_unit_stats().health / 10.0) / 100.0
-	var total_damage: int = int(attacking_unit.get_unit_stats().health * attack_factor * defense_factor)
+	var defense_factor: float = (100 - defending_unit.stats.star_number * defending_unit.stats.health / 10.0) / 100.0
+	var total_damage: int = int(attacking_unit.stats.health * attack_factor * defense_factor)
 	return Vector2(total_damage, weapon_type)
 
 

@@ -4,6 +4,7 @@ class_name Map
 extends Node2D
 
 const DUPLICATE_TEST_SIZE: int = 4
+const TERRAIN_STATS: PackedScene = preload("res://logic/ui/terrain_stats.tscn")
 
 @export var map_name: String
 @export var creator: String
@@ -21,6 +22,7 @@ var _terrain_path: String = "res://logic/game/terrain/"
 var _unit_path: String = "res://logic/game/units/"
 var _predefined_terrains: Dictionary
 var _predefined_units_packed_scenes: Dictionary
+
 
 
 func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, texture: Texture2D, ground_tile_texture: Texture2D) -> void:
@@ -51,6 +53,8 @@ func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, tex
 	# Add shop units
 	for unit_id: String in _types.terrains[id]["shop_units"]:
 		terrain.shop_units.append(_predefined_units_packed_scenes[unit_id])
+	# Add terrain stats
+	terrain.add_child(TERRAIN_STATS.instantiate())
 	add_child(terrain)
 	terrain.name = id
 	terrain.position = terrain_position

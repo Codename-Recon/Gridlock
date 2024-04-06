@@ -5,20 +5,18 @@ signal round_over_changed
 @export var health: int = 100:
 	set(value):
 		if is_inside_tree():
-			var rounding_value: int = ProjectSettings.get_setting(
-				"global/unit_health_rounding_value"
-			)
+			var rounding_value: int = ProjectSettings.get_setting("global/unit_health_rounding_value")
 			# smaller eg. 5 (4, 3 aso.) will be rounded down to 0. also negative numbers will be 0
 			if value < rounding_value:
 				value = 0
 			# substracting round value so it doesn't show 97 value as 10 health
 			if value < ProjectSettings.get_setting("global/unit_max_health") - rounding_value:
 				var text_value: int = round(value / 10.0) as int
-				_health.text = str(text_value)
-				_health.show()
+				_health_label.text = str(text_value)
+				_health_label.show()
 			else:
 				value = ProjectSettings.get_setting("global/unit_max_health")
-				_health.hide()
+				_health_label.hide()
 			last_damage = health - value
 			health = value
 
@@ -98,7 +96,7 @@ signal round_over_changed
 			round_over = value
 			round_over_changed.emit()
 
-@onready var _health: Label = %Health as Label
+@onready var _health_label: Label = %Health as Label
 @onready var _capture_icon: TextureRect = %CaptureIcon as TextureRect
 @onready var _carrying_icon: TextureRect = %CarryingIcon as TextureRect
 @onready var _animation_ammo: AnimationPlayer = %AnimationAmmo as AnimationPlayer

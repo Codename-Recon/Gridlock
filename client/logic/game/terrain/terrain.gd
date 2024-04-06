@@ -64,6 +64,8 @@ static var _terrain_lookup: Dictionary
 
 var _shader_resource: ShaderMaterial = load("res://logic/shaders/color_shift.tres") as ShaderMaterial
 
+@onready var stats: TerrainStats = $TerrainStats
+
 
 func get_move_on_global_position() -> Vector2:
 	return global_position
@@ -87,7 +89,6 @@ func get_unit() -> Unit:
 
 ## captures terrain. gives true back on success.
 func capture(capture_force: int, player_of_unit: Player) -> bool:
-	var stats: TerrainStats = $TerrainStats
 	stats.capture_health -= capture_force
 	if stats.capture_health <= 0:
 		stats.reset_capture_health()
@@ -98,7 +99,6 @@ func capture(capture_force: int, player_of_unit: Player) -> bool:
 
 
 func uncapture() -> void:
-	var stats: TerrainStats = $TerrainStats
 	stats.reset_capture_health()
 
 
