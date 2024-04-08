@@ -11,7 +11,7 @@ enum Mode{
 const TILES: TileSet = preload("res://assets/resources/game/tiles.tres")
 
 @export var map_size: Vector2i = Vector2i(20, 20)
-@export var camera: Camera2D
+@export var game_input: GameInput
 @export var map: Map
 
 @onready var tile_map: TileMap = $TileMap
@@ -63,7 +63,7 @@ func _ready() -> void:
 		var tile_name: String = TILES.get_terrain_name(0, i)
 		_terrain_id_lookup[tile_name] = i
 	_init_map()
-	camera.position = to_global(tile_map.map_to_local(map_size / 2))
+	game_input.position = to_global(tile_map.map_to_local(map_size / 2))
 
 
 func _init_map() -> void:
@@ -98,6 +98,7 @@ func _on_ui_map_resized(new_size: Vector2i) -> void:
 			_place_terrain(Vector2i(i, j), 0, 1)
 	
 	map_size = new_size
+	game_input.selection.reset()
 
 
 ## Places tile and creates terrain node

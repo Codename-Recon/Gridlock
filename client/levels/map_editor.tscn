@@ -22,9 +22,9 @@ zoom = Vector2(1, 1)
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("5_b0ipg")
 
-[node name="MapEditor" type="Node2D" parent="." node_paths=PackedStringArray("camera", "map")]
+[node name="MapEditor" type="Node2D" parent="." node_paths=PackedStringArray("game_input", "map")]
 script = ExtResource("1_j3yxc")
-camera = NodePath("../GameInput")
+game_input = NodePath("../GameInput")
 map = NodePath("../Map")
 
 [node name="TileMap" type="TileMap" parent="MapEditor"]
