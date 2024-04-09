@@ -970,7 +970,7 @@ func _do_state_ending(local: bool = true) -> void:
 	_undeploy()
 	turn_round += 1
 	# TODO: change players not to be packed scenes, so they don't have to be instantiated to get some information (maybe a pool of already instantiated players...)
-	_round_label.player_name = str(player_turns[0].player_number)
+	_round_label.player_name = str(player_turns[0].id)
 	_round_rect.color.r = player_turns[0].color.r
 	_round_rect.color.g = player_turns[0].color.g
 	_round_rect.color.b = player_turns[0].color.b
@@ -1449,7 +1449,7 @@ func _check_ending_condition() -> void:
 				break
 		if not has_hq:
 			player_turns.erase(player)
-			_global.last_player_won_name = str(player_turns[0].player_number)
+			_global.last_player_won_name = str(player_turns[0].id)
 			_global.last_player_won_color = player_turns[0].color
 			_animation_player.play("end_game")
 			# disconnect from presence changes so after the animation the player can leave without activating left player message
@@ -1461,18 +1461,18 @@ func _set_network_player_stats() -> void:
 	if player_turns[0].input_type == GameConst.InputType.NETWORK:
 		if _multiplayer.client_role == _multiplayer.ClientRole.HOST:
 			player_turns[0].input_type = GameConst.InputType.HUMAN
-			own_player_id = player_turns[0].player_number
+			own_player_id = player_turns[0].id
 	if player_turns[1].input_type == GameConst.InputType.NETWORK:
 		if _multiplayer.client_role == _multiplayer.ClientRole.CLIENT:
 			player_turns[1].input_type = GameConst.InputType.HUMAN
-			own_player_id = player_turns[1].player_number
+			own_player_id = player_turns[1].id
 
 
 func _stringify_network_fsm_round() -> String:
 	var data: Dictionary = {}
 	data['type'] = _multiplayer.OpCodes.FSM_ROUND
 	data['player_id'] = own_player_id
-	data['state_event_id'] = player_turns[0].player_number * 10000 + _state_event_id
+	data['state_event_id'] = player_turns[0].id * 10000 + _state_event_id
 	_state_event_id += 1
 	data['network_state'] = state
 	data['network_event'] = event

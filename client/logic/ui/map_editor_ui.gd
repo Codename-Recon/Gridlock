@@ -1,4 +1,3 @@
-@tool
 extends Control
 
 signal terrain_selected(terrain_set: int, terrain: int)
@@ -18,7 +17,11 @@ signal map_resized(new_size: Vector2i)
 @onready var gray_background: ColorRect = $GrayBackground
 @onready var edit: GameButton = $Edit
 @onready var remove: GameButton = $Remove
-
+@onready var map_settings: Panel = $MapSettings
+@onready var name_line: LineEdit = %NameLine
+@onready var author_line: LineEdit = %AuthorLine
+@onready var version_line: LineEdit = %VersionLine
+@onready var player_option_button: OptionButton = %PlayerOptionButton
 
 var _last_button: Button
 
@@ -35,12 +38,29 @@ func _ready() -> void:
 	if map:
 		for child: Node in unit_container.get_children():
 			unit_container.remove_child(child)
-		for unit_key: String in map.get_predefined_units_packed_scenes():
-			var unit_scene: PackedScene = map.get_predefined_units_packed_scenes()[unit_key]
+		for unit_key: String in Map.predefined_units_packed_scenes:
+			var unit_scene: PackedScene = Map.predefined_units_packed_scenes[unit_key]
 			var button: Button = Button.new()
 			button.text = unit_key
 			button.pressed.connect(func() -> void: _on_unit_selected(button, unit_key, unit_scene))
 			unit_container.add_child(button)
+	_generate_player_options()
+			
+
+func _generate_player_options() -> void:
+	for i: int in player_option_button.item_count:
+		player_option_button.remove_item(0)
+	var i: int = 1
+	for color: Color in ProjectSettings.get_setting("game/player_color"):
+		var icon: GradientTexture2D = GradientTexture2D.new()
+		icon.height = 16
+		icon.width = 16
+		icon.gradient = Gradient.new()
+		icon.gradient.remove_point(1)
+		icon.gradient.set_color(0, color)
+		player_option_button.add_icon_item(icon, "Player %s" % i)
+		i += 1
+	
 
 
 func _change_activation_of_buttons(active_button: Button) -> void:
@@ -97,3 +117,11 @@ func _on_edit_pressed() -> void:
 func _on_remove_pressed() -> void:
 	remove_selected.emit()
 	_change_activation_of_buttons(remove)
+
+
+func _on_map_settings_mouse_entered() -> void:
+	game_input.camera_movement_enabled = false
+
+
+func _on_map_settings_mouse_exited() -> void:
+	game_input.camera_movement_enabled = true

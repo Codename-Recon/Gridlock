@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://cpvcoqq0ntna4"]
 
-[ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_4uq48"]
-[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_o2uus"]
-[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_bscfi"]
-[ext_resource type="PackedScene" uid="uid://54war5m37akr" path="res://logic/ui/terrain_stats.tscn" id="4_mu218"]
+[ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_27knf"]
+[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_nceg3"]
+[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_233tq"]
+[ext_resource type="PackedScene" uid="uid://54war5m37akr" path="res://logic/ui/terrain_stats.tscn" id="4_ypvtb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dj43m"]
 resource_local_to_scene = true
-shader = ExtResource("2_o2uus")
+shader = ExtResource("2_nceg3")
 shader_parameter/shifting = true
 shader_parameter/shift_level_h = 0.095
 shader_parameter/shift_level_s = 0.236
@@ -18,16 +18,17 @@ shader_parameter/shift_shades_threshold = 1.0
 shader_parameter/shift_shades_factor = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vyerd"]
-atlas = ExtResource("3_bscfi")
+atlas = ExtResource("3_233tq")
 region = Rect2(288, 32, 32, 32)
 
 [node name="HQ" type="Node2D"]
-script = ExtResource("1_4uq48")
+script = ExtResource("1_27knf")
 color = Color(0, 0.00784314, 0.0117647, 1)
 id = "HQ"
+tile_id = "HQ_1"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_dj43m")
 texture = SubResource("AtlasTexture_vyerd")
 
-[node name="TerrainStats" parent="." instance=ExtResource("4_mu218")]
+[node name="TerrainStats" parent="." instance=ExtResource("4_ypvtb")]

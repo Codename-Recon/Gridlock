@@ -64,6 +64,7 @@ func _ready() -> void:
 		_terrain_id_lookup[tile_name] = i
 	_init_map()
 	game_input.position = to_global(tile_map.map_to_local(map_size / 2))
+	game_input.selection.reset()
 
 
 func _init_map() -> void:

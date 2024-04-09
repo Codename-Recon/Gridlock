@@ -43,6 +43,10 @@ TERRAIN,Terrain,,
 UNIT,Unit,,
 TERRAINS,Terrains,,
 UNITS,Units,,
+MAP_SETTINGS,Map Settings,,
+NAME,Name,,
+AUTHOR,Author,,
+VERSION,Version,,
 ,,,
 LOW,Low,Niedrig,bas
 MEDIUM,Medium,Mittel,moyen

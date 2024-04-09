@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://hds34errxgf3"]
+[gd_scene load_steps=21 format=3 uid="uid://hds34errxgf3"]
 
 [ext_resource type="Script" path="res://logic/ui/map_editor_ui.gd" id="1_nwduq"]
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="2_qg74o"]
@@ -33,6 +33,23 @@ func _change_tab(tab: int) -> void:
 			unit_panel.show()
 "
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_clo85"]
+atlas = ExtResource("3_wxx8d")
+region = Rect2(384, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nfpp"]
+atlas = ExtResource("3_wxx8d")
+region = Rect2(384, 288, 32, 32)
+
+[sub_resource type="Gradient" id="Gradient_4pedv"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oq61q"]
+gradient = SubResource("Gradient_4pedv")
+width = 16
+height = 16
+
 [sub_resource type="GDScript" id="GDScript_dh5nv"]
 script/source = "extends ColorRect
 
@@ -66,14 +83,6 @@ load_path = "res://.godot/imported/sheet_white1x.png-d237bd7956ee8dc396efd927abb
 [sub_resource type="AtlasTexture" id="AtlasTexture_66ra6"]
 atlas = SubResource("CompressedTexture2D_bcjon")
 region = Rect2(0, 450, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_clo85"]
-atlas = ExtResource("3_wxx8d")
-region = Rect2(384, 256, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0nfpp"]
-atlas = ExtResource("3_wxx8d")
-region = Rect2(384, 288, 32, 32)
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -168,6 +177,219 @@ text = "Example 2"
 [node name="Example3" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
 layout_mode = 2
 text = "Example 3"
+
+[node name="Edit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -135.0
+offset_right = -7.0
+offset_bottom = -88.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = SubResource("AtlasTexture_clo85")
+script = ExtResource("3_tilmt")
+
+[node name="Remove" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -135.0
+offset_right = -55.0
+offset_bottom = -88.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = SubResource("AtlasTexture_0nfpp")
+script = ExtResource("3_tilmt")
+
+[node name="MapSettings" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -307.0
+offset_top = -300.0
+offset_bottom = 300.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MapSettings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSpace1" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "MAP_SETTINGS"
+
+[node name="VSpace2" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "NAME"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLine" type="LineEdit" parent="MapSettings/VBoxContainer/HBoxContainer/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/minimum_character_width = 18
+
+[node name="VSpace3" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer2" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "AUTHOR"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AuthorLine" type="LineEdit" parent="MapSettings/VBoxContainer/HBoxContainer2/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/minimum_character_width = 18
+
+[node name="VSpace5" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer4" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer4/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "VERSION"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VersionLine" type="LineEdit" parent="MapSettings/VBoxContainer/HBoxContainer4/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/minimum_character_width = 9
+
+[node name="HSeparator" type="HSeparator" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 14
+
+[node name="VSpace4" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer3" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer3/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "Players"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/HBoxContainer3/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+selected = 0
+popup/item_0/text = "Player 1"
+popup/item_0/icon = SubResource("GradientTexture2D_oq61q")
+popup/item_0/id = 0
+popup/item_1/text = "Player 2"
+popup/item_1/icon = SubResource("GradientTexture2D_oq61q")
+popup/item_1/id = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer3/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 13
+
+[node name="HSeparator2" type="HSeparator" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 14
 
 [node name="GrayBackground" type="ColorRect" parent="."]
 visible = false
@@ -361,44 +583,14 @@ text = "CANCEL"
 script = ExtResource("7_2x4d3")
 next_menu = NodePath("../../MainMenu")
 
-[node name="Edit" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = -130.0
-offset_right = -7.0
-offset_bottom = -88.0
-grow_horizontal = 0
-grow_vertical = 0
-icon = SubResource("AtlasTexture_clo85")
-script = ExtResource("3_tilmt")
-
-[node name="Remove" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -96.0
-offset_top = -130.0
-offset_right = -55.0
-offset_bottom = -88.0
-grow_horizontal = 0
-grow_vertical = 0
-icon = SubResource("AtlasTexture_0nfpp")
-script = ExtResource("3_tilmt")
-
 [connection signal="map_resized" from="." to="." method="_on_map_resized"]
 [connection signal="tab_changed" from="TabBar" to="TabBar" method="_on_tab_changed"]
+[connection signal="pressed" from="Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="Remove" to="." method="_on_remove_pressed"]
+[connection signal="mouse_entered" from="MapSettings" to="." method="_on_map_settings_mouse_entered"]
+[connection signal="mouse_exited" from="MapSettings" to="." method="_on_map_settings_mouse_exited"]
 [connection signal="pressed" from="MainMenu/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="MainMenu/Close" to="." method="_on_close_pressed"]
 [connection signal="value_changed" from="ResizeMenu/VBoxContainer/Horizontal" to="ResizeMenu" method="_on_horizontal_value_changed"]
 [connection signal="value_changed" from="ResizeMenu/VBoxContainer/Vertical" to="ResizeMenu" method="_on_vertical_value_changed"]
 [connection signal="pressed" from="ResizeMenu/Accept" to="ResizeMenu" method="_on_accept_pressed"]
-[connection signal="pressed" from="Edit" to="." method="_on_edit_pressed"]
-[connection signal="pressed" from="Remove" to="." method="_on_remove_pressed"]

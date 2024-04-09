@@ -19,6 +19,7 @@ var last_terrain: Terrain:
 func reset() -> void:
 	if get_tree().has_group("terrain") and get_tree().get_nodes_in_group("terrain").size() > 0:
 		var terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
+		last_mouse_position = Vector2(-1,-1)
 		_move_selection(terrain)
 
 

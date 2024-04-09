@@ -16,20 +16,60 @@ const TERRAIN_STATS: PackedScene = preload("res://logic/ui/terrain_stats.tscn")
 		_test_for_duplicates()
 @export_multiline var duplicate_result: String = ""
 
+static var predefined_terrains: Dictionary:
+	get:
+		if not predefined_terrains:
+			predefined_terrains = _load_predefined_terrains(_terrain_path)
+		return predefined_terrains
+static var predefined_units_packed_scenes: Dictionary:
+	get:
+		if not predefined_units_packed_scenes:
+			predefined_units_packed_scenes = _load_predefined_units_packed_scenes(_unit_path)
+			print()
+		return predefined_units_packed_scenes
+
+static var _terrain_path: String = "res://logic/game/terrain/"
+static var _unit_path: String = "res://logic/game/units/"
+
 var _types: GlobalTypes = Types
 var _players_node: Node
-var _terrain_path: String = "res://logic/game/terrain/"
-var _unit_path: String = "res://logic/game/units/"
-var _predefined_terrains: Dictionary
-var _predefined_units_packed_scenes: Dictionary
 
+static func _load_predefined_terrains(path: String) -> Dictionary:
+	var _predefines: Dictionary = {}
+	var dir: DirAccess = DirAccess.open(path)
+	if not dir:
+		push_error("Can not open directory: " + path)
+	for file_name: String in dir.get_files():
+		if file_name.ends_with(".tscn.remap"):
+			file_name = file_name.trim_suffix(".remap")
+		if not file_name.ends_with(".tscn"):
+			continue
+		var terrain: Terrain = (load(path + file_name) as PackedScene).instantiate()
+		_predefines[terrain.tile_id] = terrain
+	return _predefines
+	
+	
+static func _load_predefined_units_packed_scenes(path: String) -> Dictionary:
+	var _predefines: Dictionary = {}
+	var dir: DirAccess = DirAccess.open(path)
+	if not dir:
+		push_error("Can not open directory: " + path)
+	for file_name: String in dir.get_files():
+		if file_name.ends_with(".tscn.remap"):
+			file_name = file_name.trim_suffix(".remap")
+		if not file_name.ends_with(".tscn"):
+			continue
+		var unit_packed_scene: PackedScene = (load(path + file_name) as PackedScene)
+		var unit: Unit = unit_packed_scene.instantiate()
+		_predefines[unit.id] = unit_packed_scene
+	return _predefines
 
 
 func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, texture: Texture2D, ground_tile_texture: Texture2D) -> void:
 	# Check if predefined terrain exist. If not -> create terrain
 	var terrain: Terrain
-	if tile_id in _predefined_terrains:
-		terrain = _predefined_terrains[tile_id]
+	if tile_id in Map.predefined_terrains:
+		terrain = Map.predefined_terrains[tile_id]
 		terrain = terrain.duplicate()
 	else:
 		if not texture:
@@ -50,9 +90,6 @@ func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, tex
 		terrain.add_child(ground_sprite)
 		terrain.move_child(ground_sprite, 0)
 		ground_sprite.texture = ground_tile_texture
-	# Add shop units
-	for unit_id: String in _types.terrains[id]["shop_units"]:
-		terrain.shop_units.append(_predefined_units_packed_scenes[unit_id])
 	# Add terrain stats
 	terrain.add_child(TERRAIN_STATS.instantiate())
 	add_child(terrain)
@@ -68,7 +105,7 @@ func create_unit(id: String, terrain_position: Vector2i) -> bool:
 	if terrain:
 		if terrain.has_unit():
 			terrain.get_unit().queue_free()
-		var unit_packed_scene: PackedScene = _predefined_units_packed_scenes[id]
+		var unit_packed_scene: PackedScene = Map.predefined_units_packed_scenes[id]
 		var unit: Unit = unit_packed_scene.instantiate()
 		var movement_type: String = _types.units[unit.id]["movement_type"]
 		var movement_value: int = _types.movements[terrain.id]["CLEAR"][movement_type]
@@ -93,15 +130,9 @@ func remove_unit(position: Vector2i) -> void:
 	var terrain: Terrain = tmp_terrain.get_terrain_by_position(position)
 	if terrain and terrain.has_unit():
 		terrain.get_unit().queue_free()
-		
-		
-func get_predefined_units_packed_scenes() -> Dictionary:
-	return _predefined_units_packed_scenes
-
-
+	
+	
 func _ready() -> void:
-	_predefined_terrains = _load_predefined_terrains(_terrain_path)
-	_predefined_units_packed_scenes = _load_predefined_units_packed_scenes(_unit_path)
 	if not Engine.is_editor_hint():
 		if has_node("Players"):
 			_players_node = get_node("Players")
@@ -111,37 +142,6 @@ func _ready() -> void:
 			_players_node = Node.new()
 			_players_node.name = "Players"
 			add_child(_players_node)
-
-
-func _load_predefined_terrains(path: String) -> Dictionary:
-	var _predefines: Dictionary = {}
-	var dir: DirAccess = DirAccess.open(path)
-	if not dir:
-		push_error("Can not open directory: " + path)
-	for file_name: String in dir.get_files():
-		if file_name.ends_with(".tscn.remap"):
-			file_name = file_name.trim_suffix(".remap")
-		if not file_name.ends_with(".tscn"):
-			continue
-		var terrain: Terrain = (load(path + file_name) as PackedScene).instantiate()
-		_predefines[terrain.tile_id] = terrain
-	return _predefines
-	
-	
-func _load_predefined_units_packed_scenes(path: String) -> Dictionary:
-	var _predefines: Dictionary = {}
-	var dir: DirAccess = DirAccess.open(path)
-	if not dir:
-		push_error("Can not open directory: " + path)
-	for file_name: String in dir.get_files():
-		if file_name.ends_with(".tscn.remap"):
-			file_name = file_name.trim_suffix(".remap")
-		if not file_name.ends_with(".tscn"):
-			continue
-		var unit_packed_scene: PackedScene = (load(path + file_name) as PackedScene)
-		var unit: Unit = unit_packed_scene.instantiate()
-		_predefines[unit.id] = unit_packed_scene
-	return _predefines
 
 
 func _test_for_duplicates() -> void:

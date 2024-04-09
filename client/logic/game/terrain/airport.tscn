@@ -1,0 +1,39 @@
+[gd_scene load_steps=12 format=3 uid="uid://ckbcolkv2llq4"]
+
+[ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_cyosq"]
+[ext_resource type="PackedScene" uid="uid://bafomjysyy417" path="res://logic/game/units/bomber.tscn" id="2_vbwq7"]
+[ext_resource type="PackedScene" uid="uid://qh5mkjxm2ijf" path="res://logic/game/units/fighter.tscn" id="3_36xwd"]
+[ext_resource type="PackedScene" uid="uid://cgtc8f3r801em" path="res://logic/game/units/stealth.tscn" id="4_vcj8o"]
+[ext_resource type="PackedScene" uid="uid://3h53g6pnsmnl" path="res://logic/game/units/bcopter.tscn" id="5_m31bv"]
+[ext_resource type="PackedScene" uid="uid://bb8xa7cmjsq6m" path="res://logic/game/units/tcopter.tscn" id="6_74y3m"]
+[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="7_anrko"]
+[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="8_83ju7"]
+[ext_resource type="PackedScene" uid="uid://54war5m37akr" path="res://logic/ui/terrain_stats.tscn" id="9_n6gjt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_36tbs"]
+shader = ExtResource("7_anrko")
+shader_parameter/shifting = true
+shader_parameter/shift_level_h = 0.095
+shader_parameter/shift_level_s = 0.236
+shader_parameter/shift_level_b = 1.0
+shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
+shader_parameter/new_color = Color(0, 0.85098, 0, 1)
+shader_parameter/shift_shades_threshold = 1.0
+shader_parameter/shift_shades_factor = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htb23"]
+atlas = ExtResource("8_83ju7")
+region = Rect2(480, 32, 32, 32)
+
+[node name="Airport" type="Node2D"]
+script = ExtResource("1_cyosq")
+color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+id = "AIRPORT"
+tile_id = "AIRPORT_1"
+shop_units = Array[PackedScene]([ExtResource("2_vbwq7"), ExtResource("3_36xwd"), ExtResource("4_vcj8o"), ExtResource("5_m31bv"), ExtResource("6_74y3m")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_36tbs")
+texture = SubResource("AtlasTexture_htb23")
+
+[node name="TerrainStats" parent="." instance=ExtResource("9_n6gjt")]

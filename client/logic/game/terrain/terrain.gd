@@ -63,6 +63,7 @@ extends Node2D
 static var _terrain_lookup: Dictionary
 
 var _shader_resource: ShaderMaterial = load("res://logic/shaders/color_shift.tres") as ShaderMaterial
+var _types: GlobalTypes = Types
 
 @onready var stats: TerrainStats = $TerrainStats
 
@@ -117,11 +118,6 @@ func generate_terrain_lookup() -> void:
 		_terrain_lookup[pos] = terrain
 
 
-func _set_color(set_color: Color) -> void:
-	var _sprite: Sprite2D = $Sprite2D as Sprite2D
-	(_sprite.material as ShaderMaterial).set_shader_parameter("new_color", set_color)
-
-
 func get_up() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.UP * ProjectSettings.get_setting("global/grid_size").y)
 	return get_terrain_by_position(pos)
@@ -154,6 +150,22 @@ func is_neighbor(terrain: Terrain) -> bool:
 func _ready() -> void:
 	if not sprite.material:
 		sprite.material = _shader_resource
+	# Add shop units
+	shop_units.clear()
+	for unit_id: String in _types.terrains[id]["shop_units"]:
+		shop_units.append(Map.predefined_units_packed_scenes[unit_id])
+	shop_units.sort_custom(_sort_by_unit_price)
+
+
+func _sort_by_unit_price(a: PackedScene, b: PackedScene) -> bool:
+	var a_scene: Unit = a.instantiate()
+	var b_scene: Unit = b.instantiate()
+	return _types.units[a_scene.id]["cost"] < _types.units[b_scene.id]["cost"]
+	
+
+func _set_color(set_color: Color) -> void:
+	var _sprite: Sprite2D = $Sprite2D as Sprite2D
+	(_sprite.material as ShaderMaterial).set_shader_parameter("new_color", set_color)
 
 
 func _enter_tree() -> void:

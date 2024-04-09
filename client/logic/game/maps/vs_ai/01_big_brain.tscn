@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bv88xt6eaix8d"]
+[gd_scene load_steps=26 format=3 uid="uid://bv88xt6eaix8d"]
 
 [ext_resource type="Script" path="res://logic/game/maps/map.gd" id="1_iiumt"]
 [ext_resource type="PackedScene" uid="uid://b71wg52iw0miv" path="res://logic/game/players/player_network_1.tscn" id="2_fav1l"]
@@ -7,12 +7,24 @@
 [ext_resource type="PackedScene" uid="uid://j2dfnwe4u54k" path="res://logic/game/terrain/old/road.tscn" id="5_qu0k1"]
 [ext_resource type="PackedScene" uid="uid://c1qfl356w5jbq" path="res://logic/game/terrain/old/road_t_cross.tscn" id="6_iodbr"]
 [ext_resource type="PackedScene" uid="uid://bxx88dyd0j7el" path="res://logic/game/terrain/old/road_corner.tscn" id="7_oy2uc"]
-[ext_resource type="PackedScene" uid="uid://b4giy6a41fm5c" path="res://logic/game/terrain/old/base.tscn" id="8_5pdtm"]
+[ext_resource type="PackedScene" uid="uid://b4giy6a41fm5c" path="res://logic/game/terrain/base.tscn" id="8_vlj1b"]
 [ext_resource type="PackedScene" uid="uid://2t61plm4vpda" path="res://logic/game/units/infantry.tscn" id="9_8svod"]
-[ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/game/terrain/old/hq.tscn" id="10_gmsd5"]
+[ext_resource type="PackedScene" uid="uid://4464jjyowffi" path="res://logic/game/units/antiair.tscn" id="9_nk0lv"]
+[ext_resource type="PackedScene" uid="uid://c4iai7oi81hmi" path="res://logic/game/units/apc.tscn" id="10_bqgga"]
+[ext_resource type="PackedScene" uid="uid://jgjbc5qgpnh5" path="res://logic/game/units/artillery.tscn" id="11_a0dna"]
 [ext_resource type="PackedScene" uid="uid://dd0wqod476fk7" path="res://logic/game/terrain/old/mountain_low.tscn" id="11_jy4a8"]
-[ext_resource type="PackedScene" uid="uid://dpr3trog5kdn4" path="res://logic/game/terrain/old/city.tscn" id="12_ia2aq"]
 [ext_resource type="PackedScene" uid="uid://cd7cf0w3wkur5" path="res://logic/game/terrain/old/plain.tscn" id="13_7qakn"]
+[ext_resource type="PackedScene" uid="uid://dfki27p05gtry" path="res://logic/game/units/medium_tank.tscn" id="13_mtl2f"]
+[ext_resource type="PackedScene" uid="uid://d1vtobfji2rgv" path="res://logic/game/units/mech.tscn" id="14_5almr"]
+[ext_resource type="PackedScene" uid="uid://cdvbe6lf1u2w4" path="res://logic/game/units/mega_tank.tscn" id="15_3jpb5"]
+[ext_resource type="PackedScene" uid="uid://bss23v6r204mv" path="res://logic/game/units/missile.tscn" id="16_2vhdx"]
+[ext_resource type="PackedScene" uid="uid://bhm7dlbtp7crw" path="res://logic/game/units/neo_tank.tscn" id="17_kqclq"]
+[ext_resource type="PackedScene" uid="uid://bn78onj8y8e6r" path="res://logic/game/units/piperunner.tscn" id="18_3u7cl"]
+[ext_resource type="PackedScene" uid="uid://cxq4g3bvxh5p3" path="res://logic/game/units/recon.tscn" id="19_ro2pi"]
+[ext_resource type="PackedScene" uid="uid://ch51qqxsd8xsq" path="res://logic/game/units/rocket.tscn" id="20_wslj5"]
+[ext_resource type="PackedScene" uid="uid://dcy7mn6xmucyw" path="res://logic/game/units/tank.tscn" id="21_qyo8p"]
+[ext_resource type="PackedScene" uid="uid://cpvcoqq0ntna4" path="res://logic/game/terrain/hq.tscn" id="22_rek20"]
+[ext_resource type="PackedScene" uid="uid://dpr3trog5kdn4" path="res://logic/game/terrain/city.tscn" id="24_2vj8d"]
 
 [node name="BigBrain" type="Node2D"]
 script = ExtResource("1_iiumt")
@@ -23,9 +35,11 @@ creator_url = "https://awbw.amarriner.com/prevmaps.php?maps_id=81014"
 [node name="Players" type="Node" parent="."]
 
 [node name="Player1" parent="Players" instance=ExtResource("2_fav1l")]
+id = 1
 input_type = 0
 
 [node name="Player2" parent="Players" instance=ExtResource("3_n4gag")]
+id = 2
 input_type = 1
 
 [node name="Forest" parent="." instance=ExtResource("4_xqhhl")]
@@ -99,44 +113,48 @@ rotation = -1.5708
 position = Vector2(96, 64)
 rotation = 1.5708
 
-[node name="Base" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_5pdtm")]
+[node name="Base" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_vlj1b")]
 position = Vector2(-64, -32)
 shader_modulate = true
-color = Color(0.85098, 0, 0, 1)
+color = Color(0.910109, 0.282353, 0.251087, 1)
 player_owned = NodePath("../Players/Player2")
+shop_units = Array[PackedScene]([ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p")])
 
-[node name="Base3" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_5pdtm")]
+[node name="Base3" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_vlj1b")]
 position = Vector2(64, 32)
 shader_modulate = true
-color = Color(0, 0.85098, 0, 1)
+color = Color(0.470588, 0.784314, 0.407843, 1)
 player_owned = NodePath("../Players/Player1")
+shop_units = Array[PackedScene]([ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p")])
 
-[node name="Base4" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_5pdtm")]
+[node name="Base4" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_vlj1b")]
 position = Vector2(32, 96)
 shader_modulate = true
-color = Color(0, 0.85098, 0, 1)
+color = Color(0.470588, 0.784314, 0.407843, 1)
 player_owned = NodePath("../Players/Player1")
+shop_units = Array[PackedScene]([ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p")])
 
-[node name="Base2" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_5pdtm")]
+[node name="Base2" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("8_vlj1b")]
 position = Vector2(-32, -96)
 shader_modulate = true
-color = Color(0.85098, 0, 0, 1)
+color = Color(0.910109, 0.282353, 0.251087, 1)
 player_owned = NodePath("../Players/Player2")
+shop_units = Array[PackedScene]([ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p"), ExtResource("9_nk0lv"), ExtResource("10_bqgga"), ExtResource("11_a0dna"), ExtResource("9_8svod"), ExtResource("13_mtl2f"), ExtResource("14_5almr"), ExtResource("15_3jpb5"), ExtResource("16_2vhdx"), ExtResource("17_kqclq"), ExtResource("18_3u7cl"), ExtResource("19_ro2pi"), ExtResource("20_wslj5"), ExtResource("21_qyo8p")])
 
 [node name="Infantry" parent="Base2" node_paths=PackedStringArray("player_owned") instance=ExtResource("9_8svod")]
-color = Color(0.85098, 0, 0, 1)
+color = Color(0.910109, 0.282353, 0.251087, 1)
 player_owned = NodePath("../../Players/Player2")
 
-[node name="QG" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("10_gmsd5")]
+[node name="QG" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("22_rek20")]
 position = Vector2(-64, -64)
 shader_modulate = true
-color = Color(0.85098, 0, 0, 1)
+color = Color(0.910109, 0.282353, 0.251087, 1)
 player_owned = NodePath("../Players/Player2")
 
-[node name="QG2" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("10_gmsd5")]
+[node name="QG2" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("22_rek20")]
 position = Vector2(64, 64)
 shader_modulate = true
-color = Color(0, 0.85098, 0, 1)
+color = Color(0.470588, 0.784314, 0.407843, 1)
 player_owned = NodePath("../Players/Player1")
 
 [node name="MountainLow" parent="." instance=ExtResource("11_jy4a8")]
@@ -181,28 +199,28 @@ position = Vector2(-96, -96)
 [node name="MountainLow5" parent="." instance=ExtResource("11_jy4a8")]
 position = Vector2(96, -96)
 
-[node name="City" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("12_ia2aq")]
+[node name="City" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("24_2vj8d")]
 position = Vector2(0, -96)
 shader_modulate = true
-color = Color(0.85098, 0, 0, 1)
+color = Color(0.910109, 0.282353, 0.251087, 1)
 player_owned = NodePath("../Players/Player2")
 
-[node name="City2" parent="." instance=ExtResource("12_ia2aq")]
+[node name="City2" parent="." instance=ExtResource("24_2vj8d")]
 position = Vector2(32, -32)
 
-[node name="City4" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("12_ia2aq")]
+[node name="City4" parent="." node_paths=PackedStringArray("player_owned") instance=ExtResource("24_2vj8d")]
 position = Vector2(0, 96)
 shader_modulate = true
-color = Color(0, 0.85098, 0, 1)
+color = Color(0.470588, 0.784314, 0.407843, 1)
 player_owned = NodePath("../Players/Player1")
 
-[node name="City5" parent="." instance=ExtResource("12_ia2aq")]
+[node name="City5" parent="." instance=ExtResource("24_2vj8d")]
 position = Vector2(-32, 32)
 
-[node name="City3" parent="." instance=ExtResource("12_ia2aq")]
+[node name="City3" parent="." instance=ExtResource("24_2vj8d")]
 position = Vector2(96, -64)
 
-[node name="City6" parent="." instance=ExtResource("12_ia2aq")]
+[node name="City6" parent="." instance=ExtResource("24_2vj8d")]
 position = Vector2(-96, 64)
 
 [node name="Grass" parent="." instance=ExtResource("13_7qakn")]
