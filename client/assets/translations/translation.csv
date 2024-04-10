@@ -1,5 +1,5 @@
 keys,en,de,fr
-REFILLED,refilled,aufgefüllt,rempli
+REFILLED,Refilled,aufgefüllt,rempli
 ENTERED,Entered,eingestiegen,entré
 DEPLOYED,Deployed,abgesetzt,abandonné
 JOINED,Joined,fusioniert,fusionné
@@ -44,9 +44,21 @@ UNIT,Unit,,
 TERRAINS,Terrains,,
 UNITS,Units,,
 MAP_SETTINGS,Map Settings,,
+PLAYER_SETTINGS,Player Settings,,
+TERRAIN_SETTINGS,Terrain Settings,,
+UNIT_SETTINGS,Unit Settings,,
 NAME,Name,,
 AUTHOR,Author,,
 VERSION,Version,,
+PLAYERS,Players,,
+PLAYER,Player,Spieler,joueur
+OWNER,Owner,,
+TURN,Turn,Runde,tour
+WON,Won,Gewinnt,gagne
+SELECTED,Selected,,
+HEALTH,Health,,
+FUEL,Fuel,,
+AMMO,Ammo,,
 ,,,
 LOW,Low,Niedrig,bas
 MEDIUM,Medium,Mittel,moyen
@@ -70,10 +82,6 @@ CAPTURE,Capture,Einnehmen,prendre
 BUY,Buy,Kaufen,acheter
 SELECT,Select,Auswählen,sélectionner
 NEXT_ROUND,Next Round,Nächste Runde,tour suivant
-,,,
-PLAYER,Player,Spieler,joueur
-TURN,Turn,Runde,tour
-WON,Won,Gewinnt,gagne
 ,,,
 MESSAGE_TITLE_PLAYER_LEFT,Player left,Spieler verlassen,quitter le joueur
 MESSAGE_TEXT_PLAYER_LEFT,Your opponent left the game. You will be brought back to the menu.,Dein Gegner hat das Spiel verlassen. Du wirst zum Menü zurückgebracht.,Votre adversaire a quitté la partie. Vous serez ramené au menu.

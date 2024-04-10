@@ -20,8 +20,9 @@ signal map_resized(new_size: Vector2i)
 @onready var map_settings: Panel = $MapSettings
 @onready var name_line: LineEdit = %NameLine
 @onready var author_line: LineEdit = %AuthorLine
-@onready var version_line: LineEdit = %VersionLine
 @onready var player_option_button: OptionButton = %PlayerOptionButton
+@onready var terrain_owner_option_button: OptionButton = %TerrainOwnerOptionButton
+@onready var unit_owner_option_button: OptionButton = %UnitOwnerOptionButton
 
 var _last_button: Button
 
@@ -44,12 +45,14 @@ func _ready() -> void:
 			button.text = unit_key
 			button.pressed.connect(func() -> void: _on_unit_selected(button, unit_key, unit_scene))
 			unit_container.add_child(button)
-	_generate_player_options()
-			
+	_generate_player_options(player_option_button)
+	_generate_player_options(terrain_owner_option_button)
+	_generate_player_options(unit_owner_option_button)
 
-func _generate_player_options() -> void:
-	for i: int in player_option_button.item_count:
-		player_option_button.remove_item(0)
+
+func _generate_player_options(option: OptionButton) -> void:
+	for i: int in option.item_count:
+		option.remove_item(0)
 	var i: int = 1
 	for color: Color in ProjectSettings.get_setting("game/player_color"):
 		var icon: GradientTexture2D = GradientTexture2D.new()
@@ -58,7 +61,7 @@ func _generate_player_options() -> void:
 		icon.gradient = Gradient.new()
 		icon.gradient.remove_point(1)
 		icon.gradient.set_color(0, color)
-		player_option_button.add_icon_item(icon, "Player %s" % i)
+		option.add_icon_item(icon, "%s %s" % [tr("PLAYER"), i])
 		i += 1
 	
 

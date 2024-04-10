@@ -3,9 +3,9 @@ extends Camera2D
 
 signal input_first(terrain: Terrain)
 signal input_second(terrain: Terrain)
+signal input_dragging(terrain: Terrain)
 signal input_escape
 signal selection_changed(terrain: Terrain)
-signal input_dragging(terrain: Terrain)
 
 @onready var cursor: Cursor = $Decouple/Cursor
 @onready var selection: Selection = $Decouple/Selection
@@ -87,7 +87,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not input_enabled:
 		return
 	if button_enabled:
-		if selection_enabled:
+		if selection_enabled and selection.is_mouse_still_inside():
 			if event.is_action_pressed("select_first"):
 				is_just_first = true
 				input_first.emit(await selection.last_terrain)
@@ -111,5 +111,5 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_selection_changed(terrain: Terrain) -> void:
 	selection_changed.emit(terrain)
-	if button_enabled and Input.is_action_pressed("select_first"):
+	if button_enabled and Input.is_action_pressed("select_first") and selection.is_mouse_still_inside():
 		input_dragging.emit(terrain)

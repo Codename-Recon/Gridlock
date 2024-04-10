@@ -30,7 +30,7 @@ script = ExtResource("1_cyosq")
 color = Color(0.0196078, 0.0196078, 0.0196078, 1)
 id = "AIRPORT"
 tile_id = "AIRPORT_1"
-shop_units = Array[PackedScene]([ExtResource("2_vbwq7"), ExtResource("3_36xwd"), ExtResource("4_vcj8o"), ExtResource("5_m31bv"), ExtResource("6_74y3m")])
+shop_units = Array[PackedScene]([ExtResource("6_74y3m"), ExtResource("5_m31bv"), ExtResource("3_36xwd"), ExtResource("2_vbwq7"), ExtResource("4_vcj8o")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_36tbs")

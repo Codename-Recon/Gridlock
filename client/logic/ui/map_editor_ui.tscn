@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://hds34errxgf3"]
+[gd_scene load_steps=25 format=3 uid="uid://hds34errxgf3"]
 
 [ext_resource type="Script" path="res://logic/ui/map_editor_ui.gd" id="1_nwduq"]
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="2_qg74o"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons.gd" id="3_tilmt"]
 [ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="3_wxx8d"]
+[ext_resource type="Texture2D" uid="uid://ddv1x4jcoikmt" path="res://assets/images/game/terrain.png" id="4_gllda"]
+[ext_resource type="Texture2D" uid="uid://c3nykf8itb81n" path="res://assets/images/game/units/infantry.png" id="4_xecee"]
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="5_3pv8h"]
 [ext_resource type="Script" path="res://logic/ui/map_editor_resize_menu.gd" id="6_41mtq"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="7_2x4d3"]
@@ -49,6 +51,14 @@ colors = PackedColorArray(1, 0, 0, 1)
 gradient = SubResource("Gradient_4pedv")
 width = 16
 height = 16
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxf5g"]
+atlas = ExtResource("4_gllda")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vf0p"]
+atlas = ExtResource("4_xecee")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="GDScript" id="GDScript_dh5nv"]
 script/source = "extends ColorRect
@@ -218,7 +228,7 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -307.0
-offset_top = -300.0
+offset_top = -367.0
 offset_bottom = 300.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -308,41 +318,24 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_constants/minimum_character_width = 18
 
-[node name="VSpace5" type="MarginContainer" parent="MapSettings/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 5
-
-[node name="HBoxContainer4" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
-layout_mode = 2
-split_offset = -40
-dragger_visibility = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 15
-
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer4/MarginContainer"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 24
-text = "VERSION"
-
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VersionLine" type="LineEdit" parent="MapSettings/VBoxContainer/HBoxContainer4/HFlowContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-mouse_filter = 1
-theme_override_constants/minimum_character_width = 9
-
 [node name="HSeparator" type="HSeparator" parent="MapSettings/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_constants/separation = 14
+
+[node name="VSpace7" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="CenterContainer3" type="CenterContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/CenterContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "PLAYER_SETTINGS"
 
 [node name="VSpace4" type="MarginContainer" parent="MapSettings/VBoxContainer"]
 layout_mode = 2
@@ -363,7 +356,7 @@ layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
-text = "Players"
+text = "PLAYERS"
 
 [node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
@@ -386,10 +379,319 @@ popup/item_1/id = 1
 layout_mode = 2
 theme_override_constants/margin_right = 13
 
-[node name="HSeparator2" type="HSeparator" parent="MapSettings/VBoxContainer"]
+[node name="VSpace6" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer5" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer5/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "MONEY"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoneySpin" type="SpinBox" parent="MapSettings/VBoxContainer/HBoxContainer5/HFlowContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 1
+max_value = 1e+09
+alignment = 2
+
+[node name="HSeparator3" type="HSeparator" parent="MapSettings/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_constants/separation = 14
+
+[node name="VSpace5" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="CenterContainer2" type="CenterContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "TERRAIN_SETTINGS"
+
+[node name="VSpace8" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer4" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer4/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "SELECTED"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TerrainTextureRect" type="TextureRect" parent="MapSettings/VBoxContainer/HBoxContainer4/HFlowContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_xxf5g")
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer4/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 13
+
+[node name="VSpace9" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer6" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer6/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "OWNER"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TerrainOwnerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/HBoxContainer6/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+selected = 0
+popup/item_0/text = "Player 1"
+popup/item_0/icon = SubResource("GradientTexture2D_oq61q")
+popup/item_0/id = 0
+popup/item_1/text = "Player 2"
+popup/item_1/icon = SubResource("GradientTexture2D_oq61q")
+popup/item_1/id = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer6/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 13
+
+[node name="HSeparator4" type="HSeparator" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 14
+
+[node name="VSpace10" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="CenterContainer4" type="CenterContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/CenterContainer4"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "UNIT_SETTINGS"
+
+[node name="VSpace11" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer7" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer7/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "SELECTED"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnitTextureRect" type="TextureRect" parent="MapSettings/VBoxContainer/HBoxContainer7/HFlowContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3vf0p")
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer7/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 13
+
+[node name="VSpace12" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer8" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer8/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "OWNER"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnitOwnerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/HBoxContainer8/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+selected = 0
+popup/item_0/text = "Player 1"
+popup/item_0/icon = SubResource("GradientTexture2D_oq61q")
+popup/item_0/id = 0
+popup/item_1/text = "Player 2"
+popup/item_1/icon = SubResource("GradientTexture2D_oq61q")
+popup/item_1/id = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer8/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 13
+
+[node name="VSpace13" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer9" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer9/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "HEALTH"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnitHealthSpin" type="SpinBox" parent="MapSettings/VBoxContainer/HBoxContainer9/HFlowContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 1
+alignment = 2
+
+[node name="VSpace14" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer10" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer10/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "FUEL"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnitFuelSpin" type="SpinBox" parent="MapSettings/VBoxContainer/HBoxContainer10/HFlowContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 1
+max_value = 1000.0
+alignment = 2
+
+[node name="VSpace15" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer11" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+layout_mode = 2
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer11/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "AMMO"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnitFuelSpin" type="SpinBox" parent="MapSettings/VBoxContainer/HBoxContainer11/HFlowContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 1
+alignment = 2
 
 [node name="GrayBackground" type="ColorRect" parent="."]
 visible = false

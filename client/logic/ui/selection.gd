@@ -16,6 +16,10 @@ var last_terrain: Terrain:
 @onready var _current_move_tween: Tween
 
 
+func is_mouse_still_inside() -> bool:
+	return last_mouse_position == _cursor.get_tile_position()
+
+
 func reset() -> void:
 	if get_tree().has_group("terrain") and get_tree().get_nodes_in_group("terrain").size() > 0:
 		var terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
@@ -38,5 +42,5 @@ func _move_selection(terrain: Terrain) -> void:
 	if terrain and last_mouse_position != _cursor.get_tile_position():
 		_current_move_tween = create_tween()
 		_current_move_tween.tween_property(self, "position", terrain.position, 0.05)
-		selection_changed.emit(terrain)
 		last_mouse_position = _cursor.get_tile_position()
+		selection_changed.emit(terrain)
