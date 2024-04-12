@@ -76,7 +76,6 @@ func has_player(player_id: int) -> bool:
 func has_terrain_or_unit_owned_by_player(player_id: int) -> bool:
 	if not has_player(player_id):
 		return false
-	var player: Player = get_player(player_id)
 	for c: Node in get_children():
 		if c is Terrain:
 			var terrain: Terrain = c
@@ -113,6 +112,7 @@ func remove_player(player_id: int) -> void:
 	player.queue_free()
 
 
+## Creats a terrain and updates the players
 func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, texture: Texture2D, ground_tile_texture: Texture2D, player_id: int) -> void:
 	# Check if predefined terrain exist. If not -> create terrain
 	var terrain: Terrain
@@ -141,21 +141,22 @@ func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, tex
 	# Add terrain stats
 	terrain.add_child(TERRAIN_STATS.instantiate())
 	# Add player
-	var player: Player = create_or_get_player(player_id)
-	terrain.player_owned = player
+	if _types.terrains[id]["can_capture"]:
+		var player: Player = create_or_get_player(player_id)
+		terrain.player_owned = player
 	add_child(terrain)
 	terrain.name = id
 	terrain.position = terrain_position
 	
 	
-## Creating a unit on a specific terrain. If a unit is already on that terrain, it will be replaced with the new unit.
+## Creats a unit on a specific terrain and updates the players. If a unit is already on that terrain, it will be replaced with the new unit.
 ## The return value indicates whether the unit can be placed at that specific location.
 func create_unit(id: String, terrain_position: Vector2i, player_id: int) -> bool:
 	var tmp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
 	var terrain: Terrain = tmp_terrain.get_terrain_by_position(terrain_position)
 	if terrain:
 		if terrain.has_unit():
-			terrain.get_unit().queue_free()
+			remove_unit(terrain.position)
 		var unit_packed_scene: PackedScene = Map.predefined_units_packed_scenes[id]
 		var unit: Unit = unit_packed_scene.instantiate()
 		var movement_type: String = _types.units[unit.id]["movement_type"]
@@ -172,6 +173,7 @@ func create_unit(id: String, terrain_position: Vector2i, player_id: int) -> bool
 	return false
 
 
+## Removes a terrain and updates the players
 func remove_terrain(terrain_position: Vector2i) -> void:
 	var tmp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
 	var terrain: Terrain = tmp_terrain.get_terrain_by_position(terrain_position)
@@ -184,9 +186,10 @@ func remove_terrain(terrain_position: Vector2i) -> void:
 			remove_player(player.id)
 
 
-func remove_unit(position: Vector2i) -> void:
+## Removes a unit and updates the players
+func remove_unit(unit_position: Vector2i) -> void:
 	var tmp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
-	var terrain: Terrain = tmp_terrain.get_terrain_by_position(position)
+	var terrain: Terrain = tmp_terrain.get_terrain_by_position(unit_position)
 	if terrain and terrain.has_unit():
 		# Remove terrain and also remove player if no other entities are owned by it
 		var unit: Unit = terrain.get_unit()

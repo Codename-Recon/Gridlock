@@ -6,6 +6,7 @@ signal edit_selected()
 signal remove_selected()
 signal map_resized(new_size: Vector2i)
 signal map_settings_player_id_changed(player_id: int)
+signal selected
 
 @export var tile_set: TileSet
 @export var game_input: GameInput
@@ -62,6 +63,27 @@ func _ready() -> void:
 	map_editor.tile_edit_selected.connect(_on_tile_edit_selected)
 	terrain_settings_control.hide()
 	unit_settings_control.hide()
+	_connect_text_boxes_for_focus()
+
+
+func _connect_text_boxes_for_focus() -> void:
+	# Go through ALL children
+	var waiting: Array[Node] = get_children()
+	while not waiting.is_empty():
+		var node: Node = waiting.pop_back()
+		waiting.append_array(node.get_children())
+		if node is LineEdit:
+			var line_edit: LineEdit = node
+			line_edit.focus_entered.connect(_on_line_focus_entered)
+			line_edit.focus_exited.connect(_on_line_focus_exited)
+			selected.connect(func() -> void: line_edit.release_focus())
+			continue
+		if node is SpinBox:
+			var spin_box: SpinBox = node
+			spin_box.get_line_edit().focus_entered.connect(_on_line_focus_entered)
+			spin_box.get_line_edit().focus_exited.connect(_on_line_focus_exited)
+			selected.connect(func() -> void: spin_box.get_line_edit().release_focus())
+			continue
 
 
 func _generate_player_options(option: OptionButton) -> void:
@@ -144,14 +166,6 @@ func _on_remove_pressed() -> void:
 	_change_activation_of_buttons(remove)
 
 
-func _on_map_settings_mouse_entered() -> void:
-	game_input.camera_movement_enabled = false
-
-
-func _on_map_settings_mouse_exited() -> void:
-	game_input.camera_movement_enabled = true
-
-
 func _on_tile_edit_selected(terrain: Terrain, unit: Unit) -> void:
 	_last_terrain_edited = terrain
 	_last_unit_edited = unit
@@ -170,3 +184,17 @@ func _on_tile_edit_selected(terrain: Terrain, unit: Unit) -> void:
 
 func _on_player_option_button_item_selected(index: int) -> void:
 	map_settings_player_id_changed.emit(index)
+
+
+func _on_line_focus_entered() -> void:
+	game_input.camera_movement_enabled = false
+
+
+func _on_line_focus_exited() -> void:
+	game_input.camera_movement_enabled = true
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if map_settings.visible:
+		if event is InputEventMouseButton and event.is_action("select_first"):
+			selected.emit()
