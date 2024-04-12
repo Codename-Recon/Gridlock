@@ -155,6 +155,7 @@ func _on_game_input_dragging(terrain: Terrain) -> void:
 			else:
 				_sound.play("Deselect")
 		Mode.EDIT:
+			_sound.play("Drop2")
 			tile_edit_selected.emit(terrain, terrain.get_unit())
 		Mode.REMOVE:
 			map.remove_unit(terrain.global_position)

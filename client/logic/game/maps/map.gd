@@ -82,7 +82,7 @@ func has_terrain_or_unit_owned_by_player(player_id: int) -> bool:
 			if terrain.player_owned and terrain.player_owned.id == player_id:
 				return true
 			if terrain.has_unit():
-				if terrain.get_unit().player_owned.id == player_id:
+				if terrain.get_unit().player_owned and terrain.get_unit().player_owned.id == player_id:
 					return true
 	return false
 
@@ -109,6 +109,7 @@ func remove_player(player_id: int) -> void:
 	if not has_player(player_id):
 		return
 	var player: Player = get_player(player_id)
+	players.remove_child(player)
 	player.queue_free()
 
 
@@ -173,11 +174,27 @@ func create_unit(id: String, terrain_position: Vector2i, player_id: int) -> bool
 	return false
 
 
+func change_terrain_owner(terrain: Terrain, player_id: int) -> void:
+	var old_player: Player = terrain.player_owned
+	terrain.player_owned = create_or_get_player(player_id)
+	if old_player and not has_terrain_or_unit_owned_by_player(old_player.id):
+		remove_player(old_player.id)
+
+
+func change_unit_owner(unit: Unit, player_id: int) -> void:
+	var old_player: Player = unit.player_owned
+	unit.player_owned = create_or_get_player(player_id)
+	if old_player and not has_terrain_or_unit_owned_by_player(old_player.id):
+		remove_player(old_player.id)
+
+
 ## Removes a terrain and updates the players
 func remove_terrain(terrain_position: Vector2i) -> void:
 	var tmp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
 	var terrain: Terrain = tmp_terrain.get_terrain_by_position(terrain_position)
 	if terrain:
+		if terrain.has_unit():
+			remove_unit(terrain.position)
 		# Remove terrain and also remove player if no other entities are owned by it
 		var player: Player = terrain.player_owned
 		remove_child(terrain)
@@ -191,7 +208,7 @@ func remove_unit(unit_position: Vector2i) -> void:
 	var tmp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
 	var terrain: Terrain = tmp_terrain.get_terrain_by_position(unit_position)
 	if terrain and terrain.has_unit():
-		# Remove terrain and also remove player if no other entities are owned by it
+		# Remove unit and also remove player if no other entities are owned by it
 		var unit: Unit = terrain.get_unit()
 		var player: Player = unit.player_owned
 		terrain.remove_child(unit)

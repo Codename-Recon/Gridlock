@@ -427,7 +427,8 @@ offset_right = 307.0
 offset_bottom = 112.0
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer5" type="HSplitContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
+[node name="HBoxContainerMoney" type="HSplitContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
+unique_name_in_owner = true
 layout_mode = 2
 offset_top = 116.0
 offset_right = 307.0
@@ -435,23 +436,24 @@ offset_bottom = 139.0
 split_offset = -40
 dragger_visibility = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer5"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainerMoney"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer5/MarginContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainerMoney/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "MONEY"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer5"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainerMoney"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MoneySpin" type="SpinBox" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer5/HFlowContainer"]
+[node name="MoneySpin" type="SpinBox" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainerMoney/HFlowContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 1
@@ -733,10 +735,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="UnitHealthSpin" type="SpinBox" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer9/HFlowContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 1
 alignment = 2
+update_on_text_changed = true
 
 [node name="VSpace14" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
@@ -770,11 +774,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="UnitFuelSpin" type="SpinBox" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer10/HFlowContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 1
 max_value = 1000.0
 alignment = 2
+update_on_text_changed = true
 
 [node name="VSpace15" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
@@ -807,11 +813,13 @@ text = "AMMO"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UnitFuelSpin" type="SpinBox" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11/HFlowContainer"]
+[node name="UnitAmmoSpin" type="SpinBox" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11/HFlowContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 1
 alignment = 2
+update_on_text_changed = true
 
 [node name="GrayBackground" type="ColorRect" parent="."]
 visible = false
@@ -1005,10 +1013,17 @@ text = "CANCEL"
 script = ExtResource("7_2x4d3")
 next_menu = NodePath("../../MainMenu")
 
+[connection signal="map_resized" from="." to="." method="_on_map_resized"]
 [connection signal="tab_changed" from="TabBar" to="TabBar" method="_on_tab_changed"]
 [connection signal="pressed" from="Edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="Remove" to="." method="_on_remove_pressed"]
 [connection signal="item_selected" from="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3/HFlowContainer/PlayerOptionButton" to="." method="_on_player_option_button_item_selected"]
+[connection signal="value_changed" from="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainerMoney/HFlowContainer/MoneySpin" to="." method="_on_money_spin_value_changed"]
+[connection signal="item_selected" from="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner/HFlowContainer/TerrainOwnerOptionButton" to="." method="_on_terrain_owner_option_button_item_selected"]
+[connection signal="item_selected" from="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8/HFlowContainer/UnitOwnerOptionButton" to="." method="_on_unit_owner_option_button_item_selected"]
+[connection signal="value_changed" from="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer9/HFlowContainer/UnitHealthSpin" to="." method="_on_unit_health_spin_value_changed"]
+[connection signal="value_changed" from="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer10/HFlowContainer/UnitFuelSpin" to="." method="_on_unit_fuel_spin_value_changed"]
+[connection signal="value_changed" from="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11/HFlowContainer/UnitAmmoSpin" to="." method="_on_unit_ammo_spin_value_changed"]
 [connection signal="pressed" from="MainMenu/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="MainMenu/Close" to="." method="_on_close_pressed"]
 [connection signal="value_changed" from="ResizeMenu/VBoxContainer/Horizontal" to="ResizeMenu" method="_on_horizontal_value_changed"]

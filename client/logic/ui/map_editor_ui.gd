@@ -31,6 +31,11 @@ signal selected
 @onready var terrain_texture_rect: TextureRect = %TerrainTextureRect
 @onready var unit_texture_rect: TextureRect = %UnitTextureRect
 @onready var h_box_container_terrain_owner: HSplitContainer = %HBoxContainerTerrainOwner
+@onready var h_box_container_money: HSplitContainer = %HBoxContainerMoney
+@onready var money_spin: SpinBox = %MoneySpin
+@onready var unit_health_spin: SpinBox = %UnitHealthSpin
+@onready var unit_fuel_spin: SpinBox = %UnitFuelSpin
+@onready var unit_ammo_spin: SpinBox = %UnitAmmoSpin
 
 
 var _last_button: Button
@@ -60,10 +65,11 @@ func _ready() -> void:
 	_generate_player_options(player_option_button)
 	_generate_player_options(terrain_owner_option_button)
 	_generate_player_options(unit_owner_option_button)
-	map_editor.tile_edit_selected.connect(_on_tile_edit_selected)
+	map_editor.tile_edit_selected.connect(_on_tile_edit_selected, CONNECT_DEFERRED) # Deferred, to prevent value overwrite when switching between units because of focus release
 	terrain_settings_control.hide()
 	unit_settings_control.hide()
 	_connect_text_boxes_for_focus()
+	_update_money_container()
 
 
 func _connect_text_boxes_for_focus() -> void:
@@ -107,7 +113,6 @@ func _generate_player_options(option: OptionButton) -> void:
 		icon.gradient.set_color(0, color)
 		option.add_icon_item(icon, "%s %s" % [tr("PLAYER"), i])
 		i += 1
-	
 
 
 func _change_activation_of_buttons(active_button: Button) -> void:
@@ -115,6 +120,14 @@ func _change_activation_of_buttons(active_button: Button) -> void:
 		_last_button.disabled = false
 	_last_button = active_button
 	_last_button.disabled = true
+
+
+func _update_money_container() -> void:
+	if map.has_player(player_option_button.selected):
+		h_box_container_money.show()
+		money_spin.value = map.get_player(player_option_button.selected).money
+	else:
+		h_box_container_money.hide()
 
 
 func _on_terrain_selected(button: Button, terrain_idx: int) -> void :
@@ -167,23 +180,39 @@ func _on_remove_pressed() -> void:
 
 
 func _on_tile_edit_selected(terrain: Terrain, unit: Unit) -> void:
+	#await get_tree().create_timer(0.01).timeout
 	_last_terrain_edited = terrain
 	_last_unit_edited = unit
 	if _last_terrain_edited:
 		terrain_settings_control.show()
 		terrain_texture_rect.texture = _last_terrain_edited.sprite.texture
-		h_box_container_terrain_owner.visible = _types.terrains[terrain.id]["can_capture"]
+		if _types.terrains[terrain.id]["can_capture"]:
+			h_box_container_terrain_owner.show()
+			var player_id: int = 0
+			if terrain.player_owned:
+				player_id = terrain.player_owned.id
+			terrain_owner_option_button.select(player_id)
+		else:
+			h_box_container_terrain_owner.hide()
 	else:
 		terrain_settings_control.hide()
 	if _last_unit_edited:
 		unit_settings_control.show()
 		unit_texture_rect.texture = _last_unit_edited.get_texture()
+		var player_id: int = 0
+		if unit.player_owned:
+			player_id = unit.player_owned.id
+		unit_owner_option_button.select(player_id)
+		unit_health_spin.value = unit.stats.health
+		unit_fuel_spin.value = unit.stats.fuel
+		unit_ammo_spin.value = unit.stats.ammo
 	else:
 		unit_settings_control.hide()
 
 
 func _on_player_option_button_item_selected(index: int) -> void:
 	map_settings_player_id_changed.emit(index)
+	_update_money_container()
 
 
 func _on_line_focus_entered() -> void:
@@ -198,3 +227,27 @@ func _unhandled_input(event: InputEvent) -> void:
 	if map_settings.visible:
 		if event is InputEventMouseButton and event.is_action("select_first"):
 			selected.emit()
+			_update_money_container()
+
+func _on_money_spin_value_changed(value: float) -> void:
+	map.get_player(player_option_button.selected).money = value
+
+
+func _on_terrain_owner_option_button_item_selected(index: int) -> void:
+	map.change_terrain_owner(_last_terrain_edited, index)
+
+
+func _on_unit_owner_option_button_item_selected(index: int) -> void:
+	map.change_unit_owner(_last_unit_edited, index)
+
+
+func _on_unit_health_spin_value_changed(value: float) -> void:
+	_last_unit_edited.stats.health = value
+
+
+func _on_unit_fuel_spin_value_changed(value: float) -> void:
+	_last_unit_edited.stats.fuel = value
+
+
+func _on_unit_ammo_spin_value_changed(value: float) -> void:
+	_last_unit_edited.stats.ammo = value
