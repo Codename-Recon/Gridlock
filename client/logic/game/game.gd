@@ -1301,7 +1301,7 @@ func _on_round_button_pressed() -> void:
 func _on_game_map_loaded() -> void:
 	map = %MapSlot.get_child(0)
 	# get player list
-	for p: Player in map.players:
+	for p: Player in map.players.get_children():
 		player_turns.append(p)
 	# set network players, so one network player is human
 	_set_network_player_stats()

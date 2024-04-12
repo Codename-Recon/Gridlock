@@ -37,10 +37,9 @@ extends Node2D
 
 @export var player_owned: Player:
 	set(value):
-		if value:
+		if _types.terrains[id]["can_capture"]:
 			player_owned = value
-			self.shader_modulate = true
-			self.color = value.color
+			_update_color()
 
 @export var id: String
 
@@ -155,6 +154,7 @@ func _ready() -> void:
 	for unit_id: String in _types.terrains[id]["shop_units"]:
 		shop_units.append(Map.predefined_units_packed_scenes[unit_id])
 	shop_units.sort_custom(_sort_by_unit_price)
+	_update_color()
 
 
 func _sort_by_unit_price(a: PackedScene, b: PackedScene) -> bool:
@@ -177,3 +177,14 @@ func _exit_tree() -> void:
 	# as soon one terrain gets removed, lookup can be cleared
 	_terrain_lookup.clear()
 	remove_from_group("terrain")
+
+
+func _update_color() -> void:
+	if _types.terrains[id]["can_capture"]:
+		if player_owned:
+			shader_modulate = true
+			color = player_owned.color
+		else:
+			shader_modulate = true
+			var neutral_color: Color = ProjectSettings.get_setting("game/neutral_color")
+			color = neutral_color

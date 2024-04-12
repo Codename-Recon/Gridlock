@@ -35,9 +35,7 @@ enum State{
 @export var player_owned: Player:
 	set(value):
 		player_owned = value
-		if value:
-			self.shader_modulate = true
-			self.color = value.color
+		_update_color()
 
 @export var id: String
 
@@ -62,9 +60,19 @@ var _state: State = State.STANDING
 var _types: GlobalTypes = Types
 
 @onready var stats: UnitStats = $UnitStats
+@onready var sprite: Node2D = $Sprite2D
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
-@onready var _sprite: Node2D = $Sprite2D
 @onready var _audio_move: AudioStreamPlayer2D = $AudioMove
+
+func get_texture() -> Texture:
+	if sprite is AnimatedSprite2D:
+		var animation_sprite: AnimatedSprite2D = sprite
+		return animation_sprite.sprite_frames.get_frame_texture("default", 0)
+	if sprite is Sprite2D:
+		var sprite2d: Sprite2D = sprite
+		return sprite2d.texture
+	return null
+
 
 func get_possible_terrains_to_move() -> Array[Terrain]:
 	if _possible_terrains_to_move_calculating:
@@ -185,7 +193,8 @@ func _ready() -> void:
 		add_to_group("unit")
 		_set_unit_stars()
 		calculate_possible_terrains_to_move.call_deferred()
-		_sprite.modulate = Color.WHITE
+		sprite.modulate = Color.WHITE
+		_update_color()
 
 
 func _process(delta: float) -> void:
@@ -214,9 +223,9 @@ func _enter_tree() -> void:
 
 func _round_over_changed() -> void:
 	if(stats.round_over):
-		_sprite.modulate = ProjectSettings.get_setting("global/round_overlay")
+		sprite.modulate = ProjectSettings.get_setting("global/round_overlay")
 	else:
-		_sprite.modulate = Color.WHITE
+		sprite.modulate = Color.WHITE
 
 
 func _attack(start: Terrain, terrains: Array, distance_left: int, direction: Vector2, step: int) -> void:
@@ -320,3 +329,13 @@ func _end_move() -> void:
 func _set_unit_stars() -> void:
 	if stats and is_on_terrain():
 		stats.star_number = _types.terrains[get_terrain().id]["defense"]
+
+
+func _update_color() -> void:
+	if player_owned:
+		shader_modulate = true
+		color = player_owned.color
+	else:
+		shader_modulate = true
+		var neutral_color: Color = ProjectSettings.get_setting("game/neutral_color")
+		color = neutral_color

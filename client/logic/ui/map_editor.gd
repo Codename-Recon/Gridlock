@@ -1,6 +1,8 @@
 class_name MapEditor
 extends Node2D
 
+signal tile_edit_selected(terrain: Terrain, unit: Unit)
+
 enum Mode{
 	TERRAIN,
 	UNIT,
@@ -23,6 +25,7 @@ var _current_unit_id: String
 var _current_unit_scene: PackedScene
 var _current_terrain_set: int
 var _current_terrain: int
+var _current_player_id: int = 0
 var _tile_buffer: Dictionary = {}
 
 
@@ -73,35 +76,6 @@ func _init_map() -> void:
 			_place_terrain(Vector2i(i, j), 0, 1)
 
 
-func _on_ui_terrain_selected(terrain_set: int, terrain: int) -> void:
-	_mode = Mode.TERRAIN
-	_current_terrain_set = terrain_set
-	_current_terrain = terrain
-
-
-func _on_ui_unit_selected(unit_id: String, unit_scene: PackedScene) -> void:
-	_mode = Mode.UNIT
-	_current_unit_id = unit_id
-	_current_unit_scene = unit_scene
-
-
-func _on_cursor_preview_set_terrain(coords: Vector2i) -> void:
-	tile_map.set_cells_terrain_connect(0, [coords], _current_terrain_set, _current_terrain, false)
-
-
-func _on_ui_map_resized(new_size: Vector2i) -> void:
-	for i: int in map_size.x:
-		for j: int in map_size.y:
-			_remove_terrain(Vector2i(i, j))
-	
-	for i: int in new_size.x:
-		for j: int in new_size.y:
-			_place_terrain(Vector2i(i, j), 0, 1)
-	
-	map_size = new_size
-	game_input.selection.reset()
-
-
 ## Places tile and creates terrain node
 func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 	tile_map.set_cells_terrain_connect(0, [cell], terrain_set, terrain, false)
@@ -110,7 +84,7 @@ func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 	var data: Array[String] = get_data_with_altlas_coords(atlas_coords)
 	var ground_tile_id: String = data[2]
 	var ground_texture: Texture2D = get_texture_with_tile_id(ground_tile_id)
-	map.create_terrain(data[0], data[1], cell * tile_map.tile_set.tile_size, texture, ground_texture)
+	map.create_terrain(data[0], data[1], cell * tile_map.tile_set.tile_size, texture, ground_texture, _current_player_id)
 	# Change terrains which got changed by auto tiling
 	tile_map.update_internals()
 	for changed_cell: Vector2i in _find_difference_with_main_tile_buffer():
@@ -122,13 +96,13 @@ func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 		data = get_data_with_altlas_coords(atlas_coords)
 		ground_tile_id = data[2]
 		ground_texture = get_texture_with_tile_id(ground_tile_id)
-		map.create_terrain(data[0], data[1], changed_cell * tile_map.tile_set.tile_size, texture, ground_texture)
+		map.create_terrain(data[0], data[1], changed_cell * tile_map.tile_set.tile_size, texture, ground_texture, _current_player_id)
 	_tile_buffer = _create_tile_buffer()
 
 ## Places a Unit in the map editor mode. 
 ## The return value indicates whether the unit can be placed at that specific location.
 func _place_unit(unit_id: String, terrain_position: Vector2i) -> bool:
-	return map.create_unit(unit_id, terrain_position)
+	return map.create_unit(unit_id, terrain_position, _current_player_id)
 
 
 ## Removes tile and terrain node
@@ -136,25 +110,6 @@ func _remove_terrain(cell: Vector2i, remove_tile: bool = true) -> void:
 	if remove_tile:
 		tile_map.set_cells_terrain_connect(0, [cell], 0, -1)
 	map.remove_terrain(cell * tile_map.tile_set.tile_size)
-
-
-func _on_game_input_dragging(terrain: Terrain) -> void:
-	match _mode:
-		Mode.TERRAIN:
-			var cell: Vector2i = terrain.global_position
-			cell = cell / tile_map.tile_set.tile_size
-			_remove_terrain(cell, false)  # Don't remove tile, since it can mess up autotiling
-			_place_terrain(cell, _current_terrain_set, _current_terrain)
-		Mode.UNIT:
-			if _place_unit(_current_unit_id, terrain.global_position):
-				_sound.play("Drop2")
-			else:
-				_sound.play("Deselect")
-		Mode.EDIT:
-			pass
-		Mode.REMOVE:
-			map.remove_unit(terrain.global_position)
-			_sound.play("Drop2")
 
 
 func _create_tile_buffer() -> Dictionary:
@@ -185,3 +140,55 @@ func _on_map_editor_ui_remove_selected() -> void:
 
 func _on_map_editor_ui_edit_selected() -> void:
 	_mode = Mode.EDIT
+
+
+func _on_game_input_dragging(terrain: Terrain) -> void:
+	match _mode:
+		Mode.TERRAIN:
+			var cell: Vector2i = terrain.global_position
+			cell = cell / tile_map.tile_set.tile_size
+			_remove_terrain(cell, false)  # Don't remove tile, since it can mess up autotiling
+			_place_terrain(cell, _current_terrain_set, _current_terrain)
+		Mode.UNIT:
+			if _place_unit(_current_unit_id, terrain.global_position):
+				_sound.play("Drop2")
+			else:
+				_sound.play("Deselect")
+		Mode.EDIT:
+			tile_edit_selected.emit(terrain, terrain.get_unit())
+		Mode.REMOVE:
+			map.remove_unit(terrain.global_position)
+			_sound.play("Drop2")
+
+
+func _on_ui_map_resized(new_size: Vector2i) -> void:
+	for i: int in map_size.x:
+		for j: int in map_size.y:
+			_remove_terrain(Vector2i(i, j))
+	
+	for i: int in new_size.x:
+		for j: int in new_size.y:
+			_place_terrain(Vector2i(i, j), 0, 1)
+	
+	map_size = new_size
+	game_input.selection.reset()
+
+
+func _on_ui_terrain_selected(terrain_set: int, terrain: int) -> void:
+	_mode = Mode.TERRAIN
+	_current_terrain_set = terrain_set
+	_current_terrain = terrain
+
+
+func _on_ui_unit_selected(unit_id: String, unit_scene: PackedScene) -> void:
+	_mode = Mode.UNIT
+	_current_unit_id = unit_id
+	_current_unit_scene = unit_scene
+
+
+func _on_cursor_preview_set_terrain(coords: Vector2i) -> void:
+	tile_map.set_cells_terrain_connect(0, [coords], _current_terrain_set, _current_terrain, false)
+
+
+func _on_map_editor_ui_map_settings_player_id_changed(player_id: int) -> void:
+	_current_player_id = player_id

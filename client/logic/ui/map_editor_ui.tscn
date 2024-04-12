@@ -228,7 +228,7 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -307.0
-offset_top = -367.0
+offset_top = -400.0
 offset_bottom = 300.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -242,127 +242,168 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VSpace1" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="MapSettingsControl" type="Control" parent="MapSettings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
+
+[node name="VSpace1" type="MarginContainer" parent="MapSettings/VBoxContainer/MapSettingsControl"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 307.0
+offset_bottom = 9.0
 theme_override_constants/margin_top = 5
 
-[node name="CenterContainer" type="CenterContainer" parent="MapSettings/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MapSettings/VBoxContainer/MapSettingsControl"]
 layout_mode = 2
+offset_top = 13.0
+offset_right = 307.0
+offset_bottom = 35.0
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/CenterContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/MapSettingsControl/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "MAP_SETTINGS"
 
-[node name="VSpace2" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace2" type="MarginContainer" parent="MapSettings/VBoxContainer/MapSettingsControl"]
 layout_mode = 2
+offset_top = 39.0
+offset_right = 307.0
+offset_bottom = 44.0
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+[node name="HBoxContainer" type="HSplitContainer" parent="MapSettings/VBoxContainer/MapSettingsControl"]
 layout_mode = 2
+offset_top = 48.0
+offset_right = 307.0
+offset_bottom = 71.0
 split_offset = -40
 dragger_visibility = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "NAME"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NameLine" type="LineEdit" parent="MapSettings/VBoxContainer/HBoxContainer/HFlowContainer"]
+[node name="NameLine" type="LineEdit" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer/HFlowContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
 theme_override_constants/minimum_character_width = 18
 
-[node name="VSpace3" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace3" type="MarginContainer" parent="MapSettings/VBoxContainer/MapSettingsControl"]
 layout_mode = 2
+offset_top = 75.0
+offset_right = 307.0
+offset_bottom = 80.0
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer2" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+[node name="HBoxContainer2" type="HSplitContainer" parent="MapSettings/VBoxContainer/MapSettingsControl"]
 layout_mode = 2
+offset_top = 84.0
+offset_right = 307.0
+offset_bottom = 107.0
 split_offset = -40
 dragger_visibility = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer2/MarginContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer2/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "AUTHOR"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer2"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AuthorLine" type="LineEdit" parent="MapSettings/VBoxContainer/HBoxContainer2/HFlowContainer"]
+[node name="AuthorLine" type="LineEdit" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer2/HFlowContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
 theme_override_constants/minimum_character_width = 18
 
-[node name="HSeparator" type="HSeparator" parent="MapSettings/VBoxContainer"]
+[node name="PlayerSettingsControl" type="Control" parent="MapSettings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 307.0
+offset_bottom = 18.0
 mouse_filter = 1
 theme_override_constants/separation = 14
 
-[node name="VSpace7" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace7" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
 layout_mode = 2
+offset_top = 22.0
+offset_right = 307.0
+offset_bottom = 27.0
 theme_override_constants/margin_top = 5
 
-[node name="CenterContainer3" type="CenterContainer" parent="MapSettings/VBoxContainer"]
+[node name="CenterContainer3" type="CenterContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
 layout_mode = 2
+offset_top = 31.0
+offset_right = 307.0
+offset_bottom = 53.0
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/CenterContainer3"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/PlayerSettingsControl/CenterContainer3"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "PLAYER_SETTINGS"
 
-[node name="VSpace4" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace4" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
 layout_mode = 2
+offset_top = 57.0
+offset_right = 307.0
+offset_bottom = 62.0
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer3" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+[node name="HBoxContainer3" type="HSplitContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
 layout_mode = 2
+offset_top = 66.0
+offset_right = 307.0
+offset_bottom = 103.0
 split_offset = -40
 dragger_visibility = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer3"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer3/MarginContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "PLAYERS"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer3"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlayerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/HBoxContainer3/HFlowContainer"]
+[node name="PlayerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3/HFlowContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -375,120 +416,154 @@ popup/item_1/text = "Player 2"
 popup/item_1/icon = SubResource("GradientTexture2D_oq61q")
 popup/item_1/id = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer3/HFlowContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3/HFlowContainer"]
 layout_mode = 2
 theme_override_constants/margin_right = 13
 
-[node name="VSpace6" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace6" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
 layout_mode = 2
+offset_top = 107.0
+offset_right = 307.0
+offset_bottom = 112.0
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer5" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+[node name="HBoxContainer5" type="HSplitContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
 layout_mode = 2
+offset_top = 116.0
+offset_right = 307.0
+offset_bottom = 139.0
 split_offset = -40
 dragger_visibility = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer5"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer5"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer5/MarginContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer5/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "MONEY"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer5"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer5"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MoneySpin" type="SpinBox" parent="MapSettings/VBoxContainer/HBoxContainer5/HFlowContainer"]
+[node name="MoneySpin" type="SpinBox" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer5/HFlowContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 1
 max_value = 1e+09
 alignment = 2
 
-[node name="HSeparator3" type="HSeparator" parent="MapSettings/VBoxContainer"]
+[node name="TerrainSettingsControl" type="Control" parent="MapSettings/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 307.0
+offset_bottom = 18.0
 mouse_filter = 1
 theme_override_constants/separation = 14
 
-[node name="VSpace5" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace5" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
 layout_mode = 2
+offset_top = 22.0
+offset_right = 307.0
+offset_bottom = 27.0
 theme_override_constants/margin_top = 5
 
-[node name="CenterContainer2" type="CenterContainer" parent="MapSettings/VBoxContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
 layout_mode = 2
+offset_top = 31.0
+offset_right = 307.0
+offset_bottom = 53.0
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/CenterContainer2"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/TerrainSettingsControl/CenterContainer2"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "TERRAIN_SETTINGS"
 
-[node name="VSpace8" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace8" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
 layout_mode = 2
+offset_top = 57.0
+offset_right = 307.0
+offset_bottom = 62.0
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer4" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+[node name="HBoxContainer4" type="HSplitContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
 layout_mode = 2
+offset_top = 66.0
+offset_right = 307.0
+offset_bottom = 98.0
 split_offset = -40
 dragger_visibility = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer4"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer4/MarginContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainer4/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "SELECTED"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer4"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TerrainTextureRect" type="TextureRect" parent="MapSettings/VBoxContainer/HBoxContainer4/HFlowContainer"]
+[node name="TerrainTextureRect" type="TextureRect" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainer4/HFlowContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_xxf5g")
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer4/HFlowContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainer4/HFlowContainer"]
 layout_mode = 2
 theme_override_constants/margin_right = 13
 
-[node name="VSpace9" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace9" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
 layout_mode = 2
+offset_top = 102.0
+offset_right = 307.0
+offset_bottom = 107.0
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer6" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+[node name="HBoxContainerTerrainOwner" type="HSplitContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
+unique_name_in_owner = true
 layout_mode = 2
+offset_top = 111.0
+offset_right = 307.0
+offset_bottom = 148.0
 split_offset = -40
 dragger_visibility = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer6"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer6/MarginContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "OWNER"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer6"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TerrainOwnerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/HBoxContainer6/HFlowContainer"]
+[node name="TerrainOwnerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner/HFlowContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -501,88 +576,115 @@ popup/item_1/text = "Player 2"
 popup/item_1/icon = SubResource("GradientTexture2D_oq61q")
 popup/item_1/id = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer6/HFlowContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner/HFlowContainer"]
 layout_mode = 2
 theme_override_constants/margin_right = 13
 
-[node name="HSeparator4" type="HSeparator" parent="MapSettings/VBoxContainer"]
+[node name="UnitSettingsControl" type="Control" parent="MapSettings/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 257.785)
 layout_mode = 2
+
+[node name="HSeparator4" type="HSeparator" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 307.0
+offset_bottom = 18.0
 mouse_filter = 1
 theme_override_constants/separation = 14
 
-[node name="VSpace10" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace10" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
+offset_top = 22.0
+offset_right = 307.0
+offset_bottom = 27.0
 theme_override_constants/margin_top = 5
 
-[node name="CenterContainer4" type="CenterContainer" parent="MapSettings/VBoxContainer"]
+[node name="CenterContainer4" type="CenterContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
+offset_top = 31.0
+offset_right = 307.0
+offset_bottom = 53.0
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/CenterContainer4"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/UnitSettingsControl/CenterContainer4"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "UNIT_SETTINGS"
 
-[node name="VSpace11" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace11" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
+offset_top = 57.0
+offset_right = 307.0
+offset_bottom = 62.0
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer7" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+[node name="HBoxContainer7" type="HSplitContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
+offset_top = 66.0
+offset_right = 307.0
+offset_bottom = 98.0
 split_offset = -40
 dragger_visibility = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer7"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer7"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer7/MarginContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer7/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "SELECTED"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer7"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer7"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UnitTextureRect" type="TextureRect" parent="MapSettings/VBoxContainer/HBoxContainer7/HFlowContainer"]
+[node name="UnitTextureRect" type="TextureRect" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer7/HFlowContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_3vf0p")
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer7/HFlowContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer7/HFlowContainer"]
 layout_mode = 2
 theme_override_constants/margin_right = 13
 
-[node name="VSpace12" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace12" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
+offset_top = 102.0
+offset_right = 307.0
+offset_bottom = 107.0
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer8" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+[node name="HBoxContainer8" type="HSplitContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
+offset_top = 111.0
+offset_right = 307.0
+offset_bottom = 148.0
 split_offset = -40
 dragger_visibility = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer8"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer8/MarginContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "OWNER"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer8"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UnitOwnerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/HBoxContainer8/HFlowContainer"]
+[node name="UnitOwnerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8/HFlowContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -595,99 +697,117 @@ popup/item_1/text = "Player 2"
 popup/item_1/icon = SubResource("GradientTexture2D_oq61q")
 popup/item_1/id = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer8/HFlowContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8/HFlowContainer"]
 layout_mode = 2
 theme_override_constants/margin_right = 13
 
-[node name="VSpace13" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace13" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
+offset_top = 152.0
+offset_right = 307.0
+offset_bottom = 157.0
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer9" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+[node name="HBoxContainer9" type="HSplitContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
+offset_top = 161.0
+offset_right = 307.0
+offset_bottom = 184.0
 split_offset = -40
 dragger_visibility = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer9"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer9"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer9/MarginContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer9/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "HEALTH"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer9"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer9"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UnitHealthSpin" type="SpinBox" parent="MapSettings/VBoxContainer/HBoxContainer9/HFlowContainer"]
+[node name="UnitHealthSpin" type="SpinBox" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer9/HFlowContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 1
 alignment = 2
 
-[node name="VSpace14" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace14" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
+offset_top = 188.0
+offset_right = 307.0
+offset_bottom = 193.0
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer10" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+[node name="HBoxContainer10" type="HSplitContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
+offset_top = 197.0
+offset_right = 307.0
+offset_bottom = 220.0
 split_offset = -40
 dragger_visibility = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer10"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer10"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer10/MarginContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer10/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "FUEL"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer10"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer10"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UnitFuelSpin" type="SpinBox" parent="MapSettings/VBoxContainer/HBoxContainer10/HFlowContainer"]
+[node name="UnitFuelSpin" type="SpinBox" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer10/HFlowContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 1
 max_value = 1000.0
 alignment = 2
 
-[node name="VSpace15" type="MarginContainer" parent="MapSettings/VBoxContainer"]
+[node name="VSpace15" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
+offset_top = 224.0
+offset_right = 307.0
+offset_bottom = 229.0
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer11" type="HSplitContainer" parent="MapSettings/VBoxContainer"]
+[node name="HBoxContainer11" type="HSplitContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
 layout_mode = 2
+offset_top = 233.0
+offset_right = 307.0
+offset_bottom = 256.0
 split_offset = -40
 dragger_visibility = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/HBoxContainer11"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 
-[node name="Label" type="Label" parent="MapSettings/VBoxContainer/HBoxContainer11/MarginContainer"]
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "AMMO"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/HBoxContainer11"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UnitFuelSpin" type="SpinBox" parent="MapSettings/VBoxContainer/HBoxContainer11/HFlowContainer"]
+[node name="UnitFuelSpin" type="SpinBox" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11/HFlowContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 1
@@ -885,12 +1005,12 @@ text = "CANCEL"
 script = ExtResource("7_2x4d3")
 next_menu = NodePath("../../MainMenu")
 
-[connection signal="map_resized" from="." to="." method="_on_map_resized"]
 [connection signal="tab_changed" from="TabBar" to="TabBar" method="_on_tab_changed"]
 [connection signal="pressed" from="Edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="Remove" to="." method="_on_remove_pressed"]
 [connection signal="mouse_entered" from="MapSettings" to="." method="_on_map_settings_mouse_entered"]
 [connection signal="mouse_exited" from="MapSettings" to="." method="_on_map_settings_mouse_exited"]
+[connection signal="item_selected" from="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3/HFlowContainer/PlayerOptionButton" to="." method="_on_player_option_button_item_selected"]
 [connection signal="pressed" from="MainMenu/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="MainMenu/Close" to="." method="_on_close_pressed"]
 [connection signal="value_changed" from="ResizeMenu/VBoxContainer/Horizontal" to="ResizeMenu" method="_on_horizontal_value_changed"]
