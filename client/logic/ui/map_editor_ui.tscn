@@ -15,6 +15,7 @@ script/source = "extends TabBar
 
 @onready var terrain_panel: Panel = $TerrainPanel
 @onready var unit_panel: Panel = $UnitPanel
+@onready var tile_panel: Panel = $TilePanel
 
 
 func _ready() -> void:
@@ -30,9 +31,15 @@ func _change_tab(tab: int) -> void:
 		0: 
 			terrain_panel.show()
 			unit_panel.hide()
+			tile_panel.hide()
 		1:
 			terrain_panel.hide()
 			unit_panel.show()
+			tile_panel.hide()
+		2:
+			terrain_panel.hide()
+			unit_panel.hide()
+			tile_panel.show()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_clo85"]
@@ -114,9 +121,10 @@ offset_top = -122.0
 offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
-tab_count = 2
+tab_count = 3
 tab_0/title = "TERRAINS"
 tab_1/title = "UNITS"
+tab_2/title = "TILES"
 script = SubResource("GDScript_wl2be")
 
 [node name="TerrainPanel" type="Panel" parent="TabBar"]
@@ -132,6 +140,7 @@ grow_vertical = 0
 mouse_force_pass_scroll_events = false
 
 [node name="TerrainContainer" type="GridContainer" parent="TabBar/TerrainPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -167,6 +176,7 @@ grow_vertical = 0
 mouse_force_pass_scroll_events = false
 
 [node name="UnitContainer" type="GridContainer" parent="TabBar/UnitPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -187,6 +197,32 @@ text = "Example 2"
 [node name="Example3" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
 layout_mode = 2
 text = "Example 3"
+
+[node name="TilePanel" type="Panel" parent="TabBar"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_force_pass_scroll_events = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabBar/TilePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TileContainer" type="FlowContainer" parent="TabBar/TilePanel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Edit" type="Button" parent="."]
 layout_mode = 1

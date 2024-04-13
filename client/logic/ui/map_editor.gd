@@ -6,6 +6,7 @@ signal tile_edit_selected(terrain: Terrain, unit: Unit)
 enum Mode{
 	TERRAIN,
 	UNIT,
+	TILE,
 	REMOVE,
 	EDIT
 }
@@ -25,6 +26,7 @@ var _current_unit_id: String
 var _current_unit_scene: PackedScene
 var _current_terrain_set: int
 var _current_terrain: int
+var _current_tile_atlas_id: Vector2i
 var _current_player_id: int = 0
 var _tile_buffer: Dictionary = {}
 
@@ -79,6 +81,21 @@ func _init_map() -> void:
 ## Places tile and creates terrain node
 func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 	tile_map.set_cells_terrain_connect(0, [cell], terrain_set, terrain, false)
+	_create_terrain_on_map(cell)
+
+
+## Places a Unit in the map editor mode. 
+## The return value indicates whether the unit can be placed at that specific location.
+func _place_unit(unit_id: String, terrain_position: Vector2i) -> bool:
+	return map.create_unit(unit_id, terrain_position, _current_player_id)
+
+
+func _place_tile(cell: Vector2i, tile_atlas_coords: Vector2i) -> void:
+	tile_map.set_cell(0, cell, 0, tile_atlas_coords)
+	_create_terrain_on_map(cell)
+
+
+func _create_terrain_on_map(cell: Vector2i) -> void:
 	var atlas_coords: Vector2i = tile_map.get_cell_atlas_coords(0, cell)
 	var texture: Texture2D = get_texture_with_atlas_coords(atlas_coords)
 	var data: Array[String] = get_data_with_altlas_coords(atlas_coords)
@@ -98,11 +115,6 @@ func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 		ground_texture = get_texture_with_tile_id(ground_tile_id)
 		map.create_terrain(data[0], data[1], changed_cell * tile_map.tile_set.tile_size, texture, ground_texture, _current_player_id)
 	_tile_buffer = _create_tile_buffer()
-
-## Places a Unit in the map editor mode. 
-## The return value indicates whether the unit can be placed at that specific location.
-func _place_unit(unit_id: String, terrain_position: Vector2i) -> bool:
-	return map.create_unit(unit_id, terrain_position, _current_player_id)
 
 
 ## Removes tile and terrain node
@@ -143,10 +155,10 @@ func _on_map_editor_ui_edit_selected() -> void:
 
 
 func _on_game_input_dragging(terrain: Terrain) -> void:
+	var cell: Vector2i = terrain.global_position
+	cell = cell / tile_map.tile_set.tile_size
 	match _mode:
 		Mode.TERRAIN:
-			var cell: Vector2i = terrain.global_position
-			cell = cell / tile_map.tile_set.tile_size
 			_remove_terrain(cell, false)  # Don't remove tile, since it can mess up autotiling
 			_place_terrain(cell, _current_terrain_set, _current_terrain)
 		Mode.UNIT:
@@ -154,6 +166,9 @@ func _on_game_input_dragging(terrain: Terrain) -> void:
 				_sound.play("Drop2")
 			else:
 				_sound.play("Deselect")
+		Mode.TILE:
+			_remove_terrain(cell, false)  # Don't remove tile, since it can mess up autotiling
+			_place_tile(cell, _current_tile_atlas_id)
 		Mode.EDIT:
 			_sound.play("Drop2")
 			tile_edit_selected.emit(terrain, terrain.get_unit())
@@ -186,6 +201,10 @@ func _on_ui_unit_selected(unit_id: String, unit_scene: PackedScene) -> void:
 	_current_unit_id = unit_id
 	_current_unit_scene = unit_scene
 
+
+func _on_ui_tile_selected(atlas_id: Vector2i) -> void:
+	_mode = Mode.TILE
+	_current_tile_atlas_id = atlas_id
 
 func _on_cursor_preview_set_terrain(coords: Vector2i) -> void:
 	tile_map.set_cells_terrain_connect(0, [coords], _current_terrain_set, _current_terrain, false)

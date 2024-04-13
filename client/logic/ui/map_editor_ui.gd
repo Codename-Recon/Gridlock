@@ -2,6 +2,7 @@ extends Control
 
 signal terrain_selected(terrain_set: int, terrain: int)
 signal unit_selected(unit_id: String, unit_scene: PackedScene)
+signal tile_selected(atlas_id: Vector2i)
 signal edit_selected()
 signal remove_selected()
 signal map_resized(new_size: Vector2i)
@@ -14,8 +15,9 @@ signal selected
 @export var map_editor: MapEditor
 
 @onready var main_menu: Control = $MainMenu
-@onready var terrain_container: GridContainer = $TabBar/TerrainPanel/TerrainContainer
-@onready var unit_container: GridContainer = $TabBar/UnitPanel/UnitContainer
+@onready var terrain_container: GridContainer = %TerrainContainer
+@onready var unit_container: GridContainer = %UnitContainer
+@onready var tile_container: FlowContainer = %TileContainer
 @onready var resize_menu: Control = $ResizeMenu
 @onready var gray_background: ColorRect = $GrayBackground
 @onready var edit: GameButton = $Edit
@@ -46,6 +48,7 @@ var _types: GlobalTypes = Types
 
 func _ready() -> void:
 	if tile_set:
+		# Set terrain tab
 		for child: Node in terrain_container.get_children():
 			terrain_container.remove_child(child)
 		for terrain_idx: int in range(tile_set.get_terrains_count(0)):
@@ -53,7 +56,19 @@ func _ready() -> void:
 			button.text = tile_set.get_terrain_name(0, terrain_idx)
 			button.pressed.connect(func() -> void: _on_terrain_selected(button, terrain_idx))
 			terrain_container.add_child(button)
+		# Set tile tab
+		for child: Node in tile_container.get_children():
+			tile_container.remove_child(child)
+		var source: TileSetAtlasSource = tile_set.get_source(0)
+		for i: int in source.get_tiles_count():
+			var atlas_coords: Vector2i = source.get_tile_id(i)
+			var atlas: Texture2D = map_editor.get_texture_with_atlas_coords(atlas_coords)
+			var button: Button = Button.new()
+			button.icon = atlas
+			button.pressed.connect(func() -> void: _on_tile_selected(button, atlas_coords))
+			tile_container.add_child(button)
 	if map:
+		# Set unit tab
 		for child: Node in unit_container.get_children():
 			unit_container.remove_child(child)
 		for unit_key: String in Map.predefined_units_packed_scenes:
@@ -137,6 +152,11 @@ func _on_terrain_selected(button: Button, terrain_idx: int) -> void :
 	
 func _on_unit_selected(button: Button, unit_id: String, unit_scene: PackedScene) -> void :
 	unit_selected.emit(unit_id, unit_scene)
+	_change_activation_of_buttons(button)
+
+
+func _on_tile_selected(button: Button, atlas_id: Vector2i) -> void:
+	tile_selected.emit(atlas_id)
 	_change_activation_of_buttons(button)
 
 

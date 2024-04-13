@@ -47,4 +47,5 @@ map_editor = NodePath("../../MapEditor")
 [connection signal="map_settings_player_id_changed" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_map_editor_ui_map_settings_player_id_changed"]
 [connection signal="remove_selected" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_map_editor_ui_remove_selected"]
 [connection signal="terrain_selected" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_ui_terrain_selected"]
+[connection signal="tile_selected" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_ui_tile_selected"]
 [connection signal="unit_selected" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_ui_unit_selected"]
