@@ -9,6 +9,7 @@ const TERRAIN_STATS: PackedScene = preload("res://logic/ui/terrain_stats.tscn")
 @export var map_name: String
 @export var author: String
 @export var source: String
+@export var round: int = 0 # TODO: Implement this variable in the game instead of the local one in game script
 @export_multiline var duplicate_result: String = ""
 
 var players: Node
@@ -159,8 +160,8 @@ func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, tex
 	
 	
 ## Creats a unit on a specific terrain and updates the players. If a unit is already on that terrain, it will be replaced with the new unit.
-## The return value indicates whether the unit can be placed at that specific location.
-func create_unit(id: String, terrain_position: Vector2i, player_id: int) -> bool:
+## The return value is the unit iself. It also indicates whether the unit can be placed at that specific location (null when not possible).
+func create_unit(id: String, terrain_position: Vector2i, player_id: int) -> Unit:
 	var tmp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
 	var terrain: Terrain = tmp_terrain.get_terrain_by_position(terrain_position)
 	if terrain:
@@ -173,13 +174,13 @@ func create_unit(id: String, terrain_position: Vector2i, player_id: int) -> bool
 		# If unit is not allowed to be placed here
 		if movement_value == 0:
 			unit.queue_free()
-			return false
+			return null
 		# Add player
 		var player: Player = create_or_get_player(player_id)
 		unit.player_owned = player
 		terrain.add_child(unit)
-		return true
-	return false
+		return unit
+	return null
 
 
 func change_terrain_owner(terrain: Terrain, player_id: int) -> void:
@@ -234,3 +235,10 @@ func _ready() -> void:
 			players = _players_node
 		else:
 			players = get_node("Players")
+
+
+func _init() -> void:
+	_players_node = Node.new()
+	_players_node.name = "Players"
+	add_child(_players_node)
+	players = _players_node

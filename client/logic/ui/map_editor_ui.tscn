@@ -1049,6 +1049,18 @@ text = "CANCEL"
 script = ExtResource("7_2x4d3")
 next_menu = NodePath("../../MainMenu")
 
+[node name="LoadFileDialog" type="FileDialog" parent="."]
+title = "LOAD"
+initial_position = 1
+size = Vector2i(450, 334)
+ok_button_text = "LOAD"
+cancel_button_text = "CANCEL"
+file_mode = 0
+access = 1
+root_subfolder = "maps"
+filters = PackedStringArray("*.crm")
+use_native_dialog = true
+
 [connection signal="map_resized" from="." to="." method="_on_map_resized"]
 [connection signal="tab_changed" from="TabBar" to="TabBar" method="_on_tab_changed"]
 [connection signal="pressed" from="Edit" to="." method="_on_edit_pressed"]
@@ -1063,8 +1075,11 @@ next_menu = NodePath("../../MainMenu")
 [connection signal="value_changed" from="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer10/HFlowContainer/UnitFuelSpin" to="." method="_on_unit_fuel_spin_value_changed"]
 [connection signal="value_changed" from="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11/HFlowContainer/UnitAmmoSpin" to="." method="_on_unit_ammo_spin_value_changed"]
 [connection signal="pressed" from="MainMenu/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="MainMenu/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="MainMenu/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="MainMenu/Close" to="." method="_on_close_pressed"]
 [connection signal="value_changed" from="ResizeMenu/VBoxContainer/Horizontal" to="ResizeMenu" method="_on_horizontal_value_changed"]
 [connection signal="value_changed" from="ResizeMenu/VBoxContainer/Vertical" to="ResizeMenu" method="_on_vertical_value_changed"]
 [connection signal="pressed" from="ResizeMenu/Accept" to="ResizeMenu" method="_on_accept_pressed"]
+[connection signal="canceled" from="LoadFileDialog" to="." method="_on_load_file_dialog_canceled"]
+[connection signal="file_selected" from="LoadFileDialog" to="." method="_on_load_file_dialog_file_selected"]

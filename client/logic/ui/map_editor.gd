@@ -88,7 +88,10 @@ func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 ## Places a Unit in the map editor mode. 
 ## The return value indicates whether the unit can be placed at that specific location.
 func _place_unit(unit_id: String, terrain_position: Vector2i) -> bool:
-	return map.create_unit(unit_id, terrain_position, _current_player_id)
+	if map.create_unit(unit_id, terrain_position, _current_player_id):
+		return true
+	else:
+		return false
 
 
 func _place_tile(cell: Vector2i, tile_atlas_coords: Vector2i) -> void:

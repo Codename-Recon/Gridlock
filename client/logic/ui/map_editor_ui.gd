@@ -1,3 +1,4 @@
+class_name MapEditorUI
 extends Control
 
 signal terrain_selected(terrain_set: int, terrain: int)
@@ -9,6 +10,7 @@ signal map_resized(new_size: Vector2i)
 signal map_settings_player_id_changed(player_id: int)
 signal selected
 signal save_selected
+signal load_selected(file_path: String)
 
 @export var tile_set: TileSet
 @export var game_input: GameInput
@@ -39,6 +41,7 @@ signal save_selected
 @onready var unit_health_spin: SpinBox = %UnitHealthSpin
 @onready var unit_fuel_spin: SpinBox = %UnitFuelSpin
 @onready var unit_ammo_spin: SpinBox = %UnitAmmoSpin
+@onready var load_file_dialog: FileDialog = $LoadFileDialog
 
 
 var _last_button: Button
@@ -284,3 +287,24 @@ func _on_author_line_text_changed(new_text: String) -> void:
 func _on_save_pressed() -> void:
 	_close_menu()
 	save_selected.emit()
+
+
+func _on_load_pressed() -> void:
+	_close_menu()
+	game_input.camera_movement_enabled = false
+	game_input.button_enabled = false
+	game_input.selection_enabled = false
+	load_file_dialog.show()
+
+
+func _on_load_file_dialog_canceled() -> void:
+	game_input.camera_movement_enabled = true
+	game_input.button_enabled = true
+	game_input.selection_enabled = true
+
+
+func _on_load_file_dialog_file_selected(path: String) -> void:
+	game_input.camera_movement_enabled = true
+	game_input.button_enabled = true
+	game_input.selection_enabled = true
+	load_selected.emit(path)

@@ -1,10 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://lsu858yvaswd"]
+[gd_scene load_steps=7 format=3 uid="uid://lsu858yvaswd"]
 
 [ext_resource type="PackedScene" uid="uid://dj1137ma426k8" path="res://logic/ui/game_input.tscn" id="1_4rtpd"]
 [ext_resource type="Script" path="res://logic/ui/map_editor.gd" id="1_j3yxc"]
 [ext_resource type="TileSet" uid="uid://b6taw5w4s7s5i" path="res://assets/resources/game/tiles.tres" id="2_44dmf"]
 [ext_resource type="PackedScene" uid="uid://hds34errxgf3" path="res://logic/ui/map_editor_ui.tscn" id="5_63t8i"]
 [ext_resource type="Script" path="res://logic/game/maps/map.gd" id="5_b0ipg"]
+
+[sub_resource type="GDScript" id="GDScript_ofqvf"]
+script/source = "extends Control
+
+@onready var map_editor: MapEditor = $MapEditor
+@onready var map_editor_ui: MapEditorUI = $CanvasLayer/MapEditorUI
+
+func _on_map_editor_ui_load_selected(file_path: String) -> void:
+	var json_map: String = MapFile.load_from_file(file_path)
+	var new_map: Map = MapFile.deserialize(json_map)
+	var old_map: Map = map_editor.map
+	remove_child(old_map)
+	add_child(new_map)
+	map_editor.map = new_map
+	map_editor_ui.map = new_map
+	old_map.queue_free()
+"
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -14,6 +31,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = SubResource("GDScript_ofqvf")
 
 [node name="GameInput" parent="." instance=ExtResource("1_4rtpd")]
 position = Vector2(496, 496)
@@ -43,6 +61,7 @@ map_editor = NodePath("../../MapEditor")
 [connection signal="input_dragging" from="GameInput" to="MapEditor" method="_on_game_input_dragging"]
 [connection signal="input_escape" from="GameInput" to="CanvasLayer/MapEditorUI" method="_on_game_input_input_escape"]
 [connection signal="edit_selected" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_map_editor_ui_edit_selected"]
+[connection signal="load_selected" from="CanvasLayer/MapEditorUI" to="." method="_on_map_editor_ui_load_selected"]
 [connection signal="map_resized" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_ui_map_resized"]
 [connection signal="map_settings_player_id_changed" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_map_editor_ui_map_settings_player_id_changed"]
 [connection signal="remove_selected" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_map_editor_ui_remove_selected"]
