@@ -26,7 +26,7 @@ shader_parameter/shift_level_h = 0.095
 shader_parameter/shift_level_s = 0.236
 shader_parameter/shift_level_b = 1.0
 shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
-shader_parameter/new_color = Color(0.00784314, 0.0117647, 0.00784314, 1)
+shader_parameter/new_color = Color(0.705882, 0.705882, 0.705882, 1)
 shader_parameter/shift_shades_threshold = 1.0
 shader_parameter/shift_shades_factor = 1.0
 
@@ -36,7 +36,8 @@ region = Rect2(352, 32, 32, 32)
 
 [node name="Base" type="Node2D"]
 script = ExtResource("1_0oaqi")
-color = Color(0.00784314, 0.0117647, 0.00784314, 1)
+shader_modulate = true
+color = Color(0.705882, 0.705882, 0.705882, 1)
 id = "BASE"
 tile_id = "BASE_1"
 shop_units = Array[PackedScene]([ExtResource("2_ugwn5"), ExtResource("3_3b5u4"), ExtResource("4_0ggdr"), ExtResource("5_xvo74"), ExtResource("6_57402"), ExtResource("7_0duq7"), ExtResource("8_gmh13"), ExtResource("9_l4cvk"), ExtResource("10_x5naq"), ExtResource("11_hohqx"), ExtResource("12_46ymp"), ExtResource("13_hiuf2"), ExtResource("14_542lw")])
