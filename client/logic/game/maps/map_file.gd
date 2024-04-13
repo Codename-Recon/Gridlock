@@ -36,17 +36,16 @@ static func serialize(map: Map) -> String:
 	for player: Player in map.players.get_children():
 		player_array.append({"id": player.id, "money": player.money})
 	dic["players"] = player_array
-	dic["round"] = map.round
+	dic["round"] = map.game_round
 	
 	# Create terrain array
 	var _map_size: Vector2i = map.map_size
 	var terrain_array: Array[Array] = []
-	var tmp_terrain: Terrain = map.get_tree().get_nodes_in_group("terrain")[0]
 	for x: int in _map_size.x:
 		var terrain_column: Array[Dictionary] = []
 		for y: int in _map_size.y:
 			var pos: Vector2i = Vector2i(x, y) * ProjectSettings.get_setting("global/grid_size")
-			var terrain: Terrain = tmp_terrain.get_terrain_by_position(pos)
+			var terrain: Terrain = map.get_terrain_by_position(pos)
 			terrain_column.append(_serialize_terrain(terrain))
 		terrain_array.append(terrain_column)
 	dic["terrain"] = terrain_array
@@ -105,6 +104,7 @@ static func deserialize(json_map: String) -> Map:
 	map.map_name = dic["name"]
 	map.author = dic["author"]
 	map.source = dic["source"]
+	map.game_round = dic["round"]
 	for player_dic: Dictionary in dic["players"]:
 		var player: Player = Player.new()
 		player.id = player_dic["id"]
@@ -125,14 +125,15 @@ static func deserialize(json_map: String) -> Map:
 			if td.get("unit") != null:
 				var ud: Dictionary = td["unit"]
 				var unit_id: String = ud["id"]
-				var unit_healt: int = ud["health"]
+				var unit_health: int = ud["health"]
 				var unit_fuel: int = ud["fuel"]
 				var unit_ammo: int = ud["ammo"]
 				var unit_owner: int = ud["owner"]
 				var unit_capturing: bool = ud["capturing"]
 				var unit_hidden: bool = ud["hidden"]
 				var unit: Unit = map.create_unit(unit_id, pos, unit_owner)
-				unit.stats.health = unit_healt
+				unit.stats = unit.get_node("UnitStats")
+				unit.stats.health = unit_health
 				unit.stats.fuel = unit_fuel
 				unit.stats.ammo = unit_ammo
 				unit.stats.capturing = ud["capturing"]

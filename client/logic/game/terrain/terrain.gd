@@ -42,9 +42,7 @@ extends Node2D
 			_update_color()
 
 @export var id: String
-
 @export var tile_id: String
-
 @export var shop_units: Array[PackedScene]
 
 ## layer variable for color layer, handled that only one layer can be set (new layer overwrites old one)
@@ -59,11 +57,10 @@ extends Node2D
 				add_child(value)
 				value.global_rotation = 0
 
-static var _terrain_lookup: Dictionary
-
-var _shader_resource: ShaderMaterial = load("res://logic/shaders/color_shift.tres") as ShaderMaterial
+var _shader_resource: Shader = preload("res://logic/shaders/color_shift.tres")
 var _types: GlobalTypes = Types
 
+@onready var map: Map = get_parent()
 @onready var stats: TerrainStats = $TerrainStats
 
 
@@ -102,39 +99,24 @@ func uncapture() -> void:
 	stats.reset_capture_health()
 
 
-func get_terrain_by_position(pos: Vector2i) -> Terrain:
-	# check if terrain lookup is generated (dictionary and entries exists). If not -> generate
-	if not _terrain_lookup or _terrain_lookup.is_empty():
-		generate_terrain_lookup()
-	return _terrain_lookup.get(pos)
-
-
-func generate_terrain_lookup() -> void:
-	var terrains: Array[Node] = get_tree().get_nodes_in_group("terrain")
-	_terrain_lookup = {}
-	for terrain: Terrain in terrains:
-		var pos: Vector2i = terrain.position
-		_terrain_lookup[pos] = terrain
-
-
 func get_up() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.UP * ProjectSettings.get_setting("global/grid_size").y)
-	return get_terrain_by_position(pos)
+	return map.get_terrain_by_position(pos)
 
 
 func get_down() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.DOWN * ProjectSettings.get_setting("global/grid_size").y)
-	return get_terrain_by_position(pos)
+	return map.get_terrain_by_position(pos)
 
 
 func get_left() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.LEFT * ProjectSettings.get_setting("global/grid_size").y)
-	return get_terrain_by_position(pos)
+	return map.get_terrain_by_position(pos)
 
 
 func get_right() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.RIGHT * ProjectSettings.get_setting("global/grid_size").y)
-	return get_terrain_by_position(pos)
+	return map.get_terrain_by_position(pos)
 
 
 func is_neighbor(terrain: Terrain) -> bool:
@@ -148,7 +130,9 @@ func is_neighbor(terrain: Terrain) -> bool:
 
 func _ready() -> void:
 	if not sprite.material:
-		sprite.material = _shader_resource
+		var material: ShaderMaterial = ShaderMaterial.new()
+		material.shader = _shader_resource
+		sprite.material = material
 	# Add shop units
 	shop_units.clear()
 	for unit_id: String in _types.terrains[id]["shop_units"]:
@@ -174,8 +158,6 @@ func _enter_tree() -> void:
 
 
 func _exit_tree() -> void:
-	# as soon one terrain gets removed, lookup can be cleared
-	_terrain_lookup.clear()
 	remove_from_group("terrain")
 
 

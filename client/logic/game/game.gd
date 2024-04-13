@@ -104,9 +104,8 @@ func _process_human(delta: float) -> void:
 	if _input.is_just_first or _simulated_first_click:
 		_simulated_first_click = false
 		last_mouse_terrain = null 	# to force terrain interface update 
-		var temp_terrain: Terrain = get_tree().get_nodes_in_group("terrain")[0]
-		if temp_terrain.get_terrain_by_position(_input.cursor.get_tile_position()):
-			last_selected_terrain = temp_terrain.get_terrain_by_position(_input.cursor.get_tile_position())
+		if map.get_terrain_by_position(_input.cursor.get_tile_position()):
+			last_selected_terrain = map.get_terrain_by_position(_input.cursor.get_tile_position())
 			event = GameConst.Event.CLICKED_LEFT
 
 	if _input.is_just_second:

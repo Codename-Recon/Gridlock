@@ -1050,10 +1050,10 @@ script = ExtResource("7_2x4d3")
 next_menu = NodePath("../../MainMenu")
 
 [node name="LoadFileDialog" type="FileDialog" parent="."]
-title = "LOAD"
+title = "Open a File"
 initial_position = 1
 size = Vector2i(450, 334)
-ok_button_text = "LOAD"
+ok_button_text = "Open"
 cancel_button_text = "CANCEL"
 file_mode = 0
 access = 1

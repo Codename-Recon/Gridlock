@@ -19,6 +19,8 @@ const TILES: TileSet = preload("res://assets/resources/game/tiles.tres")
 
 @onready var tile_map: TileMap = $TileMap
 
+static var _tile_lookup: Dictionary = {} # tile_id: String -> tile_idx: int
+
 var _sound: GlobalSound = Sound
 var _messages: GlobalMessages = Messages
 var _terrain_id_lookup: Dictionary = {}
@@ -45,11 +47,16 @@ static func get_texture_with_tile_id(tile_id: String) -> Texture2D:
 	if tile_id == "":
 		return null
 	var source: TileSetAtlasSource = TILES.get_source(0)
-	for i: int in source.get_tiles_count():
-		var pos: Vector2i = source.get_tile_id(i)
-		var current_tile_id: String = source.get_tile_data(pos, 0).get_custom_data("tile_id")
-		if current_tile_id == tile_id:
-			return get_texture_with_atlas_coords(pos)
+	# Create tile lookup to boost performance
+	if _tile_lookup.is_empty():
+		for i: int in source.get_tiles_count():
+			var pos: Vector2i = source.get_tile_id(i)
+			var current_tile_id: String = source.get_tile_data(pos, 0).get_custom_data("tile_id")
+			_tile_lookup[current_tile_id] = i
+	if _tile_lookup.has(tile_id):
+		var idx: int = _tile_lookup[tile_id]
+		var pos: Vector2i = source.get_tile_id(idx)
+		return get_texture_with_atlas_coords(pos)
 	return null
 	
 	
