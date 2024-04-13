@@ -25,6 +25,8 @@ signal round_over_changed
 		if is_inside_tree():
 			capturing = value
 			_capture_icon.visible = value
+			
+@export var map_hidden: bool = false
 
 @export var carrying: bool = false:
 	set(value):

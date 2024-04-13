@@ -7,15 +7,23 @@ const DUPLICATE_TEST_SIZE: int = 4
 const TERRAIN_STATS: PackedScene = preload("res://logic/ui/terrain_stats.tscn")
 
 @export var map_name: String
-@export var creator: String
-@export var creator_url: String
-@export_group("Tool")
-@export var test_duplicates: bool:
-	set(value):
-		_test_for_duplicates()
+@export var author: String
+@export var source: String
 @export_multiline var duplicate_result: String = ""
 
 var players: Node
+var map_size: Vector2i:
+	get:
+		var max_x: int = 0
+		var max_y: int = 0
+		for n: Node in get_children():
+			if n is Terrain:
+				var terrain: Terrain = n
+				if max_x < terrain.position.x:
+					max_x = terrain.position.x
+				if max_y < terrain.position.y:
+					max_y = terrain.position.y
+		return Vector2i(max_x, max_y) / ProjectSettings.get_setting("global/grid_size")
 
 static var predefined_terrains_packed_scenes: Dictionary:
 	get:
@@ -215,8 +223,8 @@ func remove_unit(unit_position: Vector2i) -> void:
 		unit.queue_free()
 		if player and not has_terrain_or_unit_owned_by_player(player.id):
 			remove_player(player.id)
-	
-	
+
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		if not has_node("Players"):
@@ -226,19 +234,3 @@ func _ready() -> void:
 			players = _players_node
 		else:
 			players = get_node("Players")
-
-
-func _test_for_duplicates() -> void:
-	var found_duplicates: bool = false
-	duplicate_result = ""
-	for child: Node in get_children():
-		if is_instance_of(child, Terrain):
-			var terrain: Terrain = child as Terrain
-			var result: Array[Node] = get_children().filter(func(x: Node) -> bool: 
-				var length_squared: float = ((x as Terrain).global_position - terrain.global_position).length_squared()
-				return x != terrain and is_instance_of(x, Terrain)	and length_squared < DUPLICATE_TEST_SIZE)
-			for r: Terrain in result:
-				duplicate_result += str(r) + "\n"
-				found_duplicates = true
-	if not found_duplicates:
-		duplicate_result = "No duplicates found (%s)" % Time.get_datetime_string_from_system()

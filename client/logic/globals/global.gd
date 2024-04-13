@@ -5,6 +5,8 @@ signal settings_changed
 
 const CONFIG_SECTION: String = "game"
 const RENDERING_SECTION: String = "rendering"
+const MAP_FOLDER_PATH: String = "res://logic/game/maps/"
+const MAP_CUSTOM_FOLDER_PATH: String = "user://maps/"
 
 @export var selected_map: PackedScene
 
@@ -25,3 +27,9 @@ func save_config(key: String, value: Variant, section: String = CONFIG_SECTION) 
 
 func _ready() -> void:
 	config.load("user://config.cfg")
+	_create_missing_folders()
+
+
+func _create_missing_folders() -> void:
+	if not DirAccess.dir_exists_absolute(MAP_CUSTOM_FOLDER_PATH):
+		DirAccess.make_dir_recursive_absolute(MAP_CUSTOM_FOLDER_PATH)

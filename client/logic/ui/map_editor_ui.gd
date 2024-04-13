@@ -8,6 +8,7 @@ signal remove_selected()
 signal map_resized(new_size: Vector2i)
 signal map_settings_player_id_changed(player_id: int)
 signal selected
+signal save_selected
 
 @export var tile_set: TileSet
 @export var game_input: GameInput
@@ -137,6 +138,13 @@ func _change_activation_of_buttons(active_button: Button) -> void:
 	_last_button.disabled = true
 
 
+func _close_menu() -> void:
+	gray_background.hide()
+	main_menu.hide()
+	resize_menu.hide()
+	game_input.selection_enabled = true
+	game_input.selection_movement_enabled = true
+
 func _update_money_container() -> void:
 	if map.has_player(player_option_button.selected):
 		h_box_container_money.show()
@@ -174,19 +182,11 @@ func _on_game_input_input_escape() -> void:
 
 
 func _on_close_pressed() -> void:
-	gray_background.hide()
-	main_menu.hide()
-	resize_menu.hide()
-	game_input.selection_enabled = true
-	game_input.selection_movement_enabled = true
+	_close_menu()
 
 
 func _on_map_resized(new_size: Vector2i) -> void:
-	gray_background.hide()
-	main_menu.hide()
-	resize_menu.hide()
-	game_input.selection_enabled = true
-	game_input.selection_movement_enabled = true
+	_close_menu()
 
 
 func _on_edit_pressed() -> void:
@@ -271,3 +271,16 @@ func _on_unit_fuel_spin_value_changed(value: float) -> void:
 
 func _on_unit_ammo_spin_value_changed(value: float) -> void:
 	_last_unit_edited.stats.ammo = value
+
+
+func _on_name_line_text_changed(new_text: String) -> void:
+	map.map_name = new_text
+
+
+func _on_author_line_text_changed(new_text: String) -> void:
+	map.author = new_text
+
+
+func _on_save_pressed() -> void:
+	_close_menu()
+	save_selected.emit()

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Codename: Recon"
+config/version="<VERSION>"
 run/main_scene="res://levels/menu.tscn"
 config/use_custom_user_dir=true
 config/project_settings_override="user://config.cfg"
@@ -77,7 +78,7 @@ neutral_color=Color(0.705882, 0.705882, 0.705882, 1)
 
 [global]
 
-grid_size=Vector2(32, 32)
+grid_size=Vector2i(32, 32)
 unit_max_health=100
 tint_time=0.5
 attack_color=Color(1, 0.416667, 0, 1)

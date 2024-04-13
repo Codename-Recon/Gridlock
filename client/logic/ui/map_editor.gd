@@ -20,6 +20,7 @@ const TILES: TileSet = preload("res://assets/resources/game/tiles.tres")
 @onready var tile_map: TileMap = $TileMap
 
 var _sound: GlobalSound = Sound
+var _messages: GlobalMessages = Messages
 var _terrain_id_lookup: Dictionary = {}
 var _mode: Mode = Mode.TERRAIN
 var _current_unit_id: String
@@ -212,3 +213,11 @@ func _on_cursor_preview_set_terrain(coords: Vector2i) -> void:
 
 func _on_map_editor_ui_map_settings_player_id_changed(player_id: int) -> void:
 	_current_player_id = player_id
+
+
+func _on_map_editor_ui_save_selected() -> void:
+	if map.map_name.is_empty():
+		_messages.spawn(tr("MESSAGE_TITLE_MAP_EDITOR_SAVE_NO_NAME"), tr("MESSAGE_TEXT_MAP_EDITOR_SAVE_NO_NAME"))
+		return
+	var json_map: String = MapFile.serialize(map)
+	MapFile.save_to_file(json_map, map.map_name)

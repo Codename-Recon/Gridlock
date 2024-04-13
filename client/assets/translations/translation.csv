@@ -89,7 +89,8 @@ MESSAGE_TITLE_PLAYER_LEFT,Player left,Spieler verlassen,quitter le joueur
 MESSAGE_TEXT_PLAYER_LEFT,Your opponent left the game. You will be brought back to the menu.,Dein Gegner hat das Spiel verlassen. Du wirst zum Menü zurückgebracht.,Votre adversaire a quitté la partie. Vous serez ramené au menu.
 MESSAGE_TITLE_LOBBY_CONNECTION_PROBLEM,Connection Problem,Verbindungsproblem,Problème de connection
 MESSAGE_TEXT_LOBBY_CONNECTION_PROBLEM,Cannot connect to the lobby server.,Es kann keine Verbindung zum Lobby-Server hergestellt werden.,Impossible de se connecter au serveur du lobby.
-,,,
+MESSAGE_TITLE_MAP_EDITOR_SAVE_NO_NAME,Missing Map Name,,
+MESSAGE_TEXT_MAP_EDITOR_SAVE_NO_NAME,Please provide a map name.,,
 ,,,
 ANTI_AIR,Anti-Air,,
 ANTI_AIR_DESCRIPTION,"Anti-Airs are strong at fighting Air units, but are also strong at combating foot soldiers and light vehicles.",,
