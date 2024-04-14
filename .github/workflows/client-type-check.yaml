@@ -33,7 +33,7 @@ jobs:
         run: |
           cd client
           set +e
-          godot --project . --headless --quit-after 100 -e 2>/dev/null
+          godot --project . --headless --quit-after 200 -e 2>/dev/null
           godot --project . --headless --quit 2>&1 | grep SCRIPT -A 1 > ./test_err
           COUNT=$(wc -l test_err)
           if [ "$COUNT" != "0 test_err" ]; then 
