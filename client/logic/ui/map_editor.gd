@@ -71,6 +71,22 @@ func has_id_with_tile_coords(tile_coords: Vector2i) -> bool:
 	return data != null
 
 
+func create_tile_map_by_map(new_map: Map) -> void:
+	tile_map.clear()
+	var map_site: Vector2i = map.map_size
+	var source: TileSetAtlasSource = TILES.get_source(0)
+	for x: int in map_site.x:
+		for y: int in map_site.y:
+			var cell: Vector2i = Vector2i(x, y)
+			var pos: Vector2i = cell * ProjectSettings.get_setting("global/grid_size")
+			var terrain: Terrain = map.get_terrain_by_position(pos)
+			var idx: int = _tile_lookup[terrain.tile_id]
+			var atlas_pos: Vector2i = source.get_tile_id(idx)
+			tile_map.set_cell(0, cell, 0, atlas_pos)
+	_tile_buffer = _create_tile_buffer()
+	map = new_map
+
+
 func _ready() -> void:
 	for i: int in TILES.get_terrains_count(0):
 		var tile_name: String = TILES.get_terrain_name(0, i)

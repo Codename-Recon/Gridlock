@@ -52,6 +52,8 @@ var _types: GlobalTypes = Types
 func reload_map_data() -> void:
 	name_line.text = map.map_name
 	author_line.text = map.author
+	terrain_settings_control.hide()
+	unit_settings_control.hide()
 	_update_money_container()
 
 
@@ -296,20 +298,26 @@ func _on_save_pressed() -> void:
 
 func _on_load_pressed() -> void:
 	_close_menu()
-	game_input.camera_movement_enabled = false
-	game_input.button_enabled = false
-	game_input.selection_enabled = false
+	_disable_input()
 	load_file_dialog.show()
 
 
 func _on_load_file_dialog_canceled() -> void:
-	game_input.camera_movement_enabled = true
-	game_input.button_enabled = true
-	game_input.selection_enabled = true
+	_enable_input()
 
 
 func _on_load_file_dialog_file_selected(path: String) -> void:
+	_enable_input.call_deferred()
+	load_selected.emit(path)
+
+
+func _enable_input() -> void:
 	game_input.camera_movement_enabled = true
 	game_input.button_enabled = true
 	game_input.selection_enabled = true
-	load_selected.emit(path)
+	
+
+func _disable_input() -> void:
+	game_input.camera_movement_enabled = false
+	game_input.button_enabled = false
+	game_input.selection_enabled = false
