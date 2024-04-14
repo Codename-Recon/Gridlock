@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://crj13jqmktmtn"]
+[gd_scene load_steps=44 format=3 uid="uid://crj13jqmktmtn"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
@@ -8,9 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dmp3yy3lmavys" path="res://assets/images/game/menu/background.png" id="5_p3s4b"]
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="7_1imcl"]
 [ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="9_ekkjc"]
-[ext_resource type="PackedScene" uid="uid://bv88xt6eaix8d" path="res://logic/game/maps/vs_ai/01_big_brain.tscn" id="15_7gwmg"]
-[ext_resource type="PackedScene" uid="uid://bajfvcujmh51o" path="res://logic/game/maps/lobby/01_big_brain.tscn" id="17_cdwqf"]
-[ext_resource type="PackedScene" uid="uid://tr1b43h8d24w" path="res://logic/game/maps/hotseat/01_big_brain.tscn" id="19_kr7y1"]
+[ext_resource type="PackedScene" uid="uid://b6kyqmss2ywu" path="res://logic/ui/map_selection_element.tscn" id="16_yagnk"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="34_rl1iq"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons.gd" id="40_om04v"]
 [ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="41_n387a"]
@@ -682,7 +680,7 @@ offset_top = -344.0
 offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../SingleplayerMenu")
-maps = Array[PackedScene]([ExtResource("15_7gwmg")])
+map_select_element_scene = ExtResource("16_yagnk")
 metadata/_edit_layout_mode = 1
 
 [node name="MultiplayerHotSeatMapSelection" parent="." node_paths=PackedStringArray("back_control") instance=ExtResource("46_qlnwy")]
@@ -698,7 +696,7 @@ offset_top = -344.0
 offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../MultiplayerMenu")
-maps = Array[PackedScene]([ExtResource("19_kr7y1")])
+map_select_element_scene = ExtResource("16_yagnk")
 metadata/_edit_layout_mode = 1
 
 [node name="MultiplayerLobbyMapSelection" parent="." node_paths=PackedStringArray("back_control", "next_control") instance=ExtResource("46_qlnwy")]
@@ -715,7 +713,7 @@ offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../MPLobbyListMenu")
 next_control = NodePath("../MPLobbyMenu")
-maps = Array[PackedScene]([ExtResource("17_cdwqf")])
+map_select_element_scene = ExtResource("16_yagnk")
 next_button_text_override = "HOST"
 metadata/_edit_layout_mode = 1
 

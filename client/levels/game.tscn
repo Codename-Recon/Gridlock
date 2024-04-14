@@ -42,7 +42,8 @@ func end_game() -> void:
 func _ready() -> void:
 	Music.music_finished.connect(_on_music_finished)
 	_set_music()
-	%MapSlot.add_child(_global.selected_map.instantiate())
+	var map: Map = MapFile.deserialize(_global.selected_map_json)
+	%MapSlot.add_child(map)
 	map_loaded.emit()
 
 func _on_music_finished() -> void:
@@ -701,8 +702,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 1600.0
-offset_bottom = 140.0
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = -310.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)

@@ -1,19 +1,18 @@
 class_name MapSelectableElement
 extends SelectableElement
 
-signal map_selected
+signal map_selected(map_json: String)
 
-@export var map_scene: PackedScene
-
-var _map: Map
+@export var map_json: String
 
 
 func _ready() -> void:
 	super()
 	($SelectOverlay as Control).hide()
-	_map = map_scene.instantiate()
-	(%Title as Label).text = _map.map_name
+	var map: Map = MapFile.deserialize(map_json)
+	(%Title as Label).text = map.map_name
+	map.queue_free()
 
 
 func _on_selected() -> void:
-	map_selected.emit(map_scene)
+	map_selected.emit(map_json)

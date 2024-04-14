@@ -1034,7 +1034,7 @@ func _get_unit_distance(start: Unit, end: Unit) -> int:
 
 # returns how many fields it's away (ignoring diagonal and "not movable terrains")
 func _get_terrain_distance(start: Terrain, end: Terrain) -> int:
-	var distance: Vector2 = end.global_position - start.global_position
+	var distance: Vector2i = end.global_position - start.global_position
 	distance /= ProjectSettings.get_setting("global/grid_size")
 	var value: float = abs(distance.x) + abs(distance.y)
 	return round(value)

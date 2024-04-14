@@ -73,7 +73,7 @@ graphics_shadow_quality=1
 graphics_anti_aliasing=1
 sound_volume=-25.0
 music_volume=-25.0
-player_color=PackedColorArray(0.470588, 0.784314, 0.407843, 1, 0.910109, 0.282353, 0.251087, 1, 0.470436, 0.43917, 0.878843, 1, 0.878431, 0.847059, 0.313726, 1, 0.470436, 0.470436, 0.564721, 1, 0.564721, 0.313619, 0.219333, 1, 0.839277, 0.729351, 0.678553, 1, 0.525643, 0.00390631, 0.690272, 1)
+player_color=PackedColorArray(0.470588, 0.784314, 0.407843, 1, 0.909804, 0.282353, 0.25098, 1, 0.470588, 0.439216, 0.878431, 1, 0.878431, 0.847059, 0.313726, 1, 0.470436, 0.470436, 0.564721, 1, 0.564721, 0.313619, 0.219333, 1, 0.839277, 0.729351, 0.678553, 1, 0.525643, 0.00390631, 0.690272, 1)
 neutral_color=Color(0.705882, 0.705882, 0.705882, 1)
 
 [global]
@@ -107,8 +107,6 @@ fast_animation_time=0.3
 network/lobby_server="46.101.138.49"
 network/lobby_port=7350
 network/lobby_key="pMywin8T8IGN9NYyn3180CTco1birqE1VEU"
-network/debug_accounts=false
-network/debug_accounts.debug=false
 round_overlay=Color(0.384314, 0.384314, 0.384314, 1)
 unit_move_tween_time=0.8
 

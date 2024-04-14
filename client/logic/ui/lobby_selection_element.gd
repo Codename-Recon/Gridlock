@@ -5,7 +5,6 @@ signal lobby_selected
 
 @export var title: String
 @export var map_name: String
-@export var map_path: String
 @export var match_id: String
 
 

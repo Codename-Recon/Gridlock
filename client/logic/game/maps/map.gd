@@ -241,6 +241,7 @@ func _ready() -> void:
 			players = _players_node
 		else:
 			players = get_node("Players")
+		_sort_players()
 
 
 func _init() -> void:
@@ -248,3 +249,13 @@ func _init() -> void:
 	_players_node.name = "Players"
 	add_child(_players_node)
 	players = _players_node
+
+
+func _sort_players() -> void:
+	var player_array: Array[Player] = []
+	for player: Player in players.get_children():
+		player_array.append(player)
+		players.remove_child(player)
+	player_array.sort_custom(func(a: Player, b: Player) -> bool: return a.id < b.id)
+	for player: Player in player_array:
+		players.add_child(player)

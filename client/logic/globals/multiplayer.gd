@@ -105,16 +105,17 @@ func nakama_check_and_refresh_session() -> void:
 
 
 func nakama_create_match() -> String:
-	if not _global.selected_map:
+	if not _global.selected_map_json:
 		printerr("Error while creating multiplayer match: No map selected")
 		return ""
 	var nick_name: String = await nakama_get_username()
-	var map: Map = _global.selected_map.instantiate()
+	var map_json: String = _global.selected_map_json
+	var map: Map = MapFile.deserialize(map_json)
 	var map_name: String = map.map_name
+	map.queue_free()
 	var data: Dictionary = {
 		match_name = "%s" % nick_name,
 		map_name = map_name,
-		map_path = _global.selected_map.resource_path
 	}
 	nakama_match = await nakama_client.rpc_async(
 		nakama_session, "create_match_rpc", JSON.stringify(data)

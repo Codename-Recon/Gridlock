@@ -52,7 +52,6 @@ func _list_lobbies() -> void:
 			var lobby_element: LobbySelectableElement = lobby_element_scene.instantiate()
 			lobby_element.title = labels["match_name"]
 			lobby_element.map_name = labels["map_name"]
-			lobby_element.map_path = labels["map_path"]
 			lobby_element.match_id = m.match_id
 			lobby_element.lobby_selected.connect(_on_lobby_element_selected)
 			lobby_list_container.add_child(lobby_element)
@@ -88,7 +87,7 @@ func _on_button_refresh_pressed() -> void:
 
 
 func _on_lobby_element_selected(element: LobbySelectableElement) -> void:
-	_global.selected_map = load(element.map_path)
+	_global.selected_map_json = _global.maps[element.map_name]
 	_multiplayer.nakama_join_match(element.match_id)
 	hide()
 	_multiplayer.client_role = _multiplayer.ClientRole.CLIENT

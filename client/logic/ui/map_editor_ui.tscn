@@ -988,7 +988,7 @@ text = "HORIZONTAL"
 
 [node name="Horizontal" type="HSlider" parent="ResizeMenu/VBoxContainer"]
 layout_mode = 2
-min_value = 10.0
+min_value = 5.0
 max_value = 50.0
 value = 20.0
 
@@ -1009,7 +1009,7 @@ text = "VERTICAL"
 
 [node name="Vertical" type="HSlider" parent="ResizeMenu/VBoxContainer"]
 layout_mode = 2
-min_value = 10.0
+min_value = 5.0
 max_value = 50.0
 value = 20.0
 
