@@ -697,6 +697,7 @@ offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../MultiplayerMenu")
 map_select_element_scene = ExtResource("16_yagnk")
+game_mode = 1
 metadata/_edit_layout_mode = 1
 
 [node name="MultiplayerLobbyMapSelection" parent="." node_paths=PackedStringArray("back_control", "next_control") instance=ExtResource("46_qlnwy")]
@@ -715,6 +716,7 @@ back_control = NodePath("../MPLobbyListMenu")
 next_control = NodePath("../MPLobbyMenu")
 map_select_element_scene = ExtResource("16_yagnk")
 next_button_text_override = "HOST"
+game_mode = 2
 metadata/_edit_layout_mode = 1
 
 [node name="Credits" type="Control" parent="." node_paths=PackedStringArray("back_control")]

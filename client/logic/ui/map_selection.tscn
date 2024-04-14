@@ -10,6 +10,7 @@ script/source = "extends Control
 @export var next_control: Control
 @export var map_select_element_scene: PackedScene
 @export var next_button_text_override: String
+@export var game_mode: GameConst.GameMode
 
 @onready var _button_next: Button = %ButtonNext
 
@@ -56,6 +57,7 @@ func _on_element_clicked(map_json: String) -> void:
 	last_instantiated_map = MapFile.deserialize(map_json)
 	%SpawnSpot.add_child(last_instantiated_map)
 	_global.selected_map_json = map_json
+	_global.game_mode = game_mode
 	_button_next.disabled = false
 
 func _on_visibility_changed() -> void:
@@ -203,6 +205,6 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="Menu/ButtonBack" to="." method="_on_button_back_pressed"]

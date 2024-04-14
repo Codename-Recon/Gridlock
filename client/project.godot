@@ -109,6 +109,7 @@ network/lobby_port=7350
 network/lobby_key="pMywin8T8IGN9NYyn3180CTco1birqE1VEU"
 round_overlay=Color(0.384314, 0.384314, 0.384314, 1)
 unit_move_tween_time=0.8
+network/debug_accounts=false
 
 [gui]
 

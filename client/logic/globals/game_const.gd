@@ -48,3 +48,9 @@ enum AiDifficulty {
 	MEDIUM,
 	HARD,
 }
+
+enum GameMode {
+	SINGLE,
+	HOTSEAT,
+	NETWORK
+}

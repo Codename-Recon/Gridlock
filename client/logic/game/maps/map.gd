@@ -13,6 +13,8 @@ const TERRAIN_STATS: PackedScene = preload("res://logic/ui/terrain_stats.tscn")
 @export_multiline var duplicate_result: String = ""
 
 var players: Node
+var terrains: Array[Terrain]
+var units: Array[Unit]
 var map_size: Vector2i:
 	get:
 		var max_x: int = 0
@@ -42,6 +44,7 @@ static var _terrain_path: String = "res://logic/game/terrain/"
 static var _unit_path: String = "res://logic/game/units/"
 
 var _types: GlobalTypes = Types
+var _global: GlobalGlobal = Global
 var _players_node: Node
 var _terrain_lookup: Dictionary
 
@@ -242,7 +245,7 @@ func _ready() -> void:
 		else:
 			players = get_node("Players")
 		_sort_players()
-
+		_global.last_loaded_map = self
 
 func _init() -> void:
 	_players_node = Node.new()

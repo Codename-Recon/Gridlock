@@ -60,7 +60,6 @@ extends Node2D
 var _shader_resource: Shader = preload("res://logic/shaders/color_shift.tres")
 var _types: GlobalTypes = Types
 
-@onready var map: Map = get_parent()
 @onready var stats: TerrainStats = $TerrainStats
 
 
@@ -69,17 +68,15 @@ func get_move_on_global_position() -> Vector2:
 
 
 func has_unit() -> bool:
-	for i: Node2D in get_children():
-		# using workaround for checking if class is a unit, since "is" is causing cyclic reference
-		if i.has_method("get_possible_terrains_to_move"):
+	for i: Node in get_children():
+		if i is Unit:
 			return true
 	return false
 
 
 func get_unit() -> Unit:
-	for i: Node2D in get_children():
-		# using workaround for checking if class is a unit, since "is" is causing cyclic reference
-		if i.has_method("get_possible_terrains_to_move"):
+	for i: Node in get_children():
+		if i is Unit:
 			return i as Unit
 	return null
 
@@ -101,22 +98,22 @@ func uncapture() -> void:
 
 func get_up() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.UP * ProjectSettings.get_setting("global/grid_size").y)
-	return map.get_terrain_by_position(pos)
+	return get_map().get_terrain_by_position(pos)
 
 
 func get_down() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.DOWN * ProjectSettings.get_setting("global/grid_size").y)
-	return map.get_terrain_by_position(pos)
+	return get_map().get_terrain_by_position(pos)
 
 
 func get_left() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.LEFT * ProjectSettings.get_setting("global/grid_size").y)
-	return map.get_terrain_by_position(pos)
+	return get_map().get_terrain_by_position(pos)
 
 
 func get_right() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.RIGHT * ProjectSettings.get_setting("global/grid_size").y)
-	return map.get_terrain_by_position(pos)
+	return get_map().get_terrain_by_position(pos)
 
 
 func is_neighbor(terrain: Terrain) -> bool:
@@ -126,6 +123,17 @@ func is_neighbor(terrain: Terrain) -> bool:
 		or terrain.get_left() == self
 		or terrain.get_right() == self
 	)
+
+
+func get_map() -> Map:
+	if get_parent() is Map:
+		var map: Map = get_parent()
+		return map
+	return null
+
+
+func is_on_map() -> bool:
+	return get_map() != null
 
 
 func _ready() -> void:
@@ -155,11 +163,14 @@ func _set_color(set_color: Color) -> void:
 func _enter_tree() -> void:
 	if not Engine.is_editor_hint():
 		add_to_group("terrain")
+		if is_on_map():
+			get_map().terrains.append(self)
 
 
 func _exit_tree() -> void:
 	remove_from_group("terrain")
-
+	if is_on_map():
+		get_map().terrains.erase(self)
 
 func _update_color() -> void:
 	if _types.terrains[id]["can_capture"]:

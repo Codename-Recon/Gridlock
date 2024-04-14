@@ -9,6 +9,8 @@ const MAP_FOLDER_PATH: String = "res://logic/game/maps/"
 const MAP_CUSTOM_FOLDER_PATH: String = "user://maps/"
 
 @export var selected_map_json: String
+var game_mode: GameConst.GameMode
+var last_loaded_map: Map
 
 var last_player_won_name: String = "X"
 var last_player_won_color: Color = Color.GREEN

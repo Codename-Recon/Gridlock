@@ -58,6 +58,7 @@ var _last_position: Vector2 = position
 var _state: State = State.STANDING
 
 var _types: GlobalTypes = Types
+var _global: GlobalGlobal = Global
 
 @onready var stats: UnitStats = $UnitStats
 @onready var sprite: Node2D = $Sprite2D
@@ -149,6 +150,19 @@ func is_on_terrain() -> bool:
 	return get_terrain() != null
 
 
+func get_map() -> Map:
+	if not is_on_terrain():
+		return null
+	if not get_terrain().get_parent() is Map:
+		return null
+	var map: Map = get_terrain().get_parent()
+	return map
+
+
+func is_on_map() -> bool:
+	return get_map() != null
+
+
 func play_attack() -> void:
 	_animation_player.play("attack")
 
@@ -171,19 +185,6 @@ func look_at_plane_global(global_point_position: Vector2) -> void:
 
 func look_at_plane_global_tween(global_point_position: Vector2) -> void:
 	pass
-
-
-func get_terrain_on_point(point: Vector2) -> Terrain:
-	var terrains: Array[Node] = get_tree().get_nodes_in_group("terrain")
-	terrains = terrains.filter(func(t: Terrain) -> bool: 
-		var pos: Vector2 = t.global_position
-		return round(pos.x) == round(point.x) and round(pos.y) == round(point.y))
-	var terrain: Terrain
-	if len(terrains) > 0:
-		terrain = terrains[0]
-	else:
-		terrain = null
-	return terrain
 
 
 func _ready() -> void:
@@ -216,9 +217,15 @@ func _process(delta: float) -> void:
 			_animation_player.play("idle")
 
 func _enter_tree() -> void:
-	# if it's terrain
-	if get_parent().has_method("get_move_on_global_position"):
+	if is_on_map():
+		get_map().units.append(self)
+	if is_on_terrain():
 		global_position = (get_parent() as Terrain).get_move_on_global_position()
+
+
+func _exit_tree() -> void:
+	if is_on_map():
+		get_map().units.erase(self)
 
 
 func _round_over_changed() -> void:
@@ -314,7 +321,7 @@ func _move_on_curve() -> void:
 
 
 func _end_move() -> void:
-	var terrain: Terrain = get_terrain_on_point(global_position)
+	var terrain: Terrain = _global.last_loaded_map.get_terrain_by_position(global_position)
 	var tmp_transform: Transform3D = global_transform
 	reparent(terrain)
 	global_transform = tmp_transform
