@@ -21,6 +21,7 @@ func _on_map_editor_ui_load_selected(file_path: String) -> void:
 	map_editor.map = new_map
 	map_editor_ui.map = new_map
 	old_map.queue_free()
+	map_editor_ui.reload_map_data()
 "
 
 [node name="Control" type="Control"]

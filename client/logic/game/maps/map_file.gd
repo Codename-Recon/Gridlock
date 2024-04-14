@@ -3,7 +3,7 @@ extends Node
 
 const MAP_VERSION: String = "1.0.0"
 const MAP_SOURCE: String = "Codename: Recon Map Editor"
-const MAP_GROUND_TILE_ID: String = "PLANE_1"
+const MAP_GROUND_TILE_ID: String = "PLAIN_1"
 
 static var _global: GlobalGlobal = Global
 
@@ -50,7 +50,7 @@ static func serialize(map: Map) -> String:
 		terrain_array.append(terrain_column)
 	dic["terrain"] = terrain_array
 	
-	return JSON.stringify(dic)
+	return JSON.stringify(dic, "\t")
 
 
 static func _serialize_unit(unit: Unit) -> Dictionary:

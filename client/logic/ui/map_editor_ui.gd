@@ -49,6 +49,11 @@ var _last_terrain_edited: Terrain
 var _last_unit_edited: Unit
 var _types: GlobalTypes = Types
 
+func reload_map_data() -> void:
+	name_line.text = map.map_name
+	author_line.text = map.author
+	_update_money_container()
+
 
 func _ready() -> void:
 	if tile_set:

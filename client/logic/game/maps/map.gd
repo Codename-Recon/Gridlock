@@ -24,7 +24,7 @@ var map_size: Vector2i:
 					max_x = terrain.position.x
 				if max_y < terrain.position.y:
 					max_y = terrain.position.y
-		return Vector2i(max_x, max_y) / ProjectSettings.get_setting("global/grid_size")
+		return Vector2i(max_x, max_y) / ProjectSettings.get_setting("global/grid_size") + Vector2i.ONE
 
 static var predefined_terrains_packed_scenes: Dictionary:
 	get:
@@ -211,6 +211,8 @@ func remove_terrain(terrain_position: Vector2i) -> void:
 			remove_unit(terrain.position)
 		# Remove terrain and also remove player if no other entities are owned by it
 		var player: Player = terrain.player_owned
+		var terrain_pos: Vector2i = terrain.position
+		_terrain_lookup.erase(terrain_pos)
 		remove_child(terrain)
 		terrain.queue_free()
 		if player and not has_terrain_or_unit_owned_by_player(player.id):
