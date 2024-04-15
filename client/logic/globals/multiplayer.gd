@@ -168,6 +168,7 @@ func _on_nakama_received_match_presence(new_presences: NakamaRTAPI.MatchPresence
 func _on_nakama_received_match_state(match_state: NakamaRTAPI.MatchData) -> void:
 	if match_state.op_code == OpCodes.MATCH_START:
 		random_seed = JSON.parse_string(match_state.data)["seed"]
+		_global.game_mode = GameConst.GameMode.NETWORK
 		match_started.emit()
 	if match_state.op_code == OpCodes.FSM_ROUND:
 		if match_state.data:

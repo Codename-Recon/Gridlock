@@ -44,6 +44,7 @@ func _ready() -> void:
 	_set_music()
 	var map: Map = MapFile.deserialize(_global.selected_map_json)
 	%MapSlot.add_child(map)
+	map.name = \"Map\" # Renaming the map from generic name, so node path keeps consistent over network
 	match _global.game_mode:
 		GameConst.GameMode.SINGLE:
 			for player: Player in map.players.get_children():
