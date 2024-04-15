@@ -13,7 +13,7 @@ shader_parameter/shift_level_h = 0.095
 shader_parameter/shift_level_s = 0.236
 shader_parameter/shift_level_b = 1.0
 shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
-shader_parameter/new_color = Color(0.0056, 0.01, 0.00941333, 1)
+shader_parameter/new_color = Color(0.705882, 0.705882, 0.705882, 1)
 shader_parameter/shift_shades_threshold = 1.0
 shader_parameter/shift_shades_factor = 1.0
 
@@ -23,7 +23,8 @@ region = Rect2(256, 32, 32, 32)
 
 [node name="City" type="Node2D"]
 script = ExtResource("1_d2428")
-color = Color(0.0056, 0.01, 0.00941333, 1)
+shader_modulate = true
+color = Color(0.705882, 0.705882, 0.705882, 1)
 id = "CITY"
 tile_id = "CITY_1"
 

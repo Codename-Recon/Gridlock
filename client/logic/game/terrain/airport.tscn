@@ -1,11 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckbcolkv2llq4"]
+[gd_scene load_steps=7 format=3 uid="uid://ckbcolkv2llq4"]
 
 [ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_cyosq"]
-[ext_resource type="PackedScene" uid="uid://bafomjysyy417" path="res://logic/game/units/bomber.tscn" id="2_vbwq7"]
-[ext_resource type="PackedScene" uid="uid://qh5mkjxm2ijf" path="res://logic/game/units/fighter.tscn" id="3_36xwd"]
-[ext_resource type="PackedScene" uid="uid://cgtc8f3r801em" path="res://logic/game/units/stealth.tscn" id="4_vcj8o"]
-[ext_resource type="PackedScene" uid="uid://3h53g6pnsmnl" path="res://logic/game/units/bcopter.tscn" id="5_m31bv"]
-[ext_resource type="PackedScene" uid="uid://bb8xa7cmjsq6m" path="res://logic/game/units/tcopter.tscn" id="6_74y3m"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="7_anrko"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="8_83ju7"]
 [ext_resource type="PackedScene" uid="uid://54war5m37akr" path="res://logic/ui/terrain_stats.tscn" id="9_n6gjt"]
@@ -32,7 +27,6 @@ shader_modulate = true
 color = Color(0.705882, 0.705882, 0.705882, 1)
 id = "AIRPORT"
 tile_id = "AIRPORT_1"
-shop_units = Array[PackedScene]([ExtResource("6_74y3m"), ExtResource("5_m31bv"), ExtResource("3_36xwd"), ExtResource("2_vbwq7"), ExtResource("4_vcj8o")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_36tbs")
