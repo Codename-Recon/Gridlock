@@ -1,17 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4giy6a41fm5c"]
+[gd_scene load_steps=7 format=3 uid="uid://b4giy6a41fm5c"]
 
 [ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_0oaqi"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_a36y3"]
-[ext_resource type="PackedScene" uid="uid://2t61plm4vpda" path="res://logic/game/units/infantry.tscn" id="2_ugwn5"]
-[ext_resource type="PackedScene" uid="uid://d1vtobfji2rgv" path="res://logic/game/units/mech.tscn" id="3_3b5u4"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_5va3r"]
 [ext_resource type="PackedScene" uid="uid://54war5m37akr" path="res://logic/ui/terrain_stats.tscn" id="4_icmkb"]
-[ext_resource type="PackedScene" uid="uid://c4iai7oi81hmi" path="res://logic/game/units/apc.tscn" id="5_xvo74"]
-[ext_resource type="PackedScene" uid="uid://jgjbc5qgpnh5" path="res://logic/game/units/artillery.tscn" id="6_57402"]
-[ext_resource type="PackedScene" uid="uid://4464jjyowffi" path="res://logic/game/units/antiair.tscn" id="8_gmh13"]
-[ext_resource type="PackedScene" uid="uid://bss23v6r204mv" path="res://logic/game/units/missile.tscn" id="9_l4cvk"]
-[ext_resource type="PackedScene" uid="uid://dfki27p05gtry" path="res://logic/game/units/medium_tank.tscn" id="11_hohqx"]
-[ext_resource type="PackedScene" uid="uid://cdvbe6lf1u2w4" path="res://logic/game/units/mega_tank.tscn" id="14_542lw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nfy18"]
 resource_local_to_scene = true
@@ -31,10 +23,10 @@ region = Rect2(352, 32, 32, 32)
 
 [node name="Base" type="Node2D"]
 script = ExtResource("1_0oaqi")
+shader_modulate = true
 color = Color(0.705882, 0.705882, 0.705882, 1)
 id = "BASE"
 tile_id = "BASE_1"
-shop_units = Array[PackedScene]([ExtResource("8_gmh13"), ExtResource("5_xvo74"), ExtResource("6_57402"), ExtResource("2_ugwn5"), ExtResource("11_hohqx"), ExtResource("3_3b5u4"), ExtResource("14_542lw"), ExtResource("9_l4cvk")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_nfy18")

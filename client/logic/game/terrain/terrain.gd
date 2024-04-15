@@ -43,7 +43,6 @@ extends Node2D
 
 @export var id: String
 @export var tile_id: String
-@export var shop_units: Array[PackedScene]
 
 ## layer variable for color layer, handled that only one layer can be set (new layer overwrites old one)
 @export var layer: Sprite2D:
@@ -56,6 +55,8 @@ extends Node2D
 			if value:
 				add_child(value)
 				value.global_rotation = 0
+
+var shop_units: Array[PackedScene]
 
 var _shader_resource: Shader = preload("res://logic/shaders/color_shift.tres")
 var _types: GlobalTypes = Types
