@@ -173,7 +173,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SubViewportContainer/Interface/RoundAnimation/RoundLabel:position:y")
+tracks/0/path = NodePath("Interface/RoundAnimation/Control/RoundLabel:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -184,7 +184,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SubViewportContainer/Interface/RoundAnimation:modulate")
+tracks/1/path = NodePath("Interface/RoundAnimation:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -196,7 +196,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SubViewportContainer/Interface/RoundAnimation:visible")
+tracks/2/path = NodePath("Interface/RoundAnimation:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -208,7 +208,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SubViewportContainer/Interface/RoundAnimation/RoundLabel:position:x")
+tracks/3/path = NodePath("Interface/RoundAnimation/Control/RoundLabel:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -219,43 +219,43 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SubViewportContainer/Interface/RoundAnimation/RoundRect:modulate")
+tracks/4/path = NodePath("Interface/EndGameAnimation/Polygon2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(-1000, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SubViewportContainer/Interface/EndGameAnimation/Polygon2D:position")
+tracks/5/path = NodePath("Interface/EndGameAnimation/Polygon2D2:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1000, 0)]
+"values": [Vector2(2600, 896)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SubViewportContainer/Interface/EndGameAnimation/Polygon2D2:position")
+tracks/6/path = NodePath("Interface/EndGameAnimation/Polygon2D:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2600, 896)]
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SubViewportContainer/Interface/EndGameAnimation/Polygon2D:visible")
+tracks/7/path = NodePath("Interface/EndGameAnimation/Polygon2D2:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -267,22 +267,10 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SubViewportContainer/Interface/EndGameAnimation/Polygon2D2:visible")
+tracks/8/path = NodePath("Interface/EndGameAnimation:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SubViewportContainer/Interface/EndGameAnimation:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -295,7 +283,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SubViewportContainer/Interface/EndGameAnimation/Polygon2D:position")
+tracks/0/path = NodePath("Interface/EndGameAnimation/Polygon2D:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -307,7 +295,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SubViewportContainer/Interface/EndGameAnimation/Polygon2D2:position")
+tracks/1/path = NodePath("Interface/EndGameAnimation/Polygon2D2:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -319,7 +307,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SubViewportContainer/Interface/EndGameAnimation/Polygon2D:visible")
+tracks/2/path = NodePath("Interface/EndGameAnimation/Polygon2D:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -331,7 +319,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SubViewportContainer/Interface/EndGameAnimation/Polygon2D2:visible")
+tracks/3/path = NodePath("Interface/EndGameAnimation/Polygon2D2:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -357,7 +345,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SubViewportContainer/Interface/EndGameAnimation:visible")
+tracks/5/path = NodePath("Interface/EndGameAnimation:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -374,7 +362,7 @@ step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SubViewportContainer/Interface/RoundAnimation/RoundLabel:position:x")
+tracks/0/path = NodePath("Interface/RoundAnimation/Control/RoundLabel:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -385,18 +373,18 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SubViewportContainer/Interface/RoundAnimation/RoundLabel:position:y")
+tracks/1/path = NodePath("Interface/RoundAnimation/Control/RoundLabel:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(1191.98, -0.25, 0, 0.25, 0, 384.22, 0, -77.3967, 0.15, 270.888, 380, -0.4, 21.4991, 0.505219, 0.338745, 380, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(811.98, -0.25, 0, 0.25, 0, 4.22, 0, -77.3967, 0.15, 270.888, 0, -0.4, 21.4991, 0.505219, 0.338745, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0.15, 0.7, 1.4, 2.5)
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SubViewportContainer/Interface/RoundAnimation:modulate")
+tracks/2/path = NodePath("Interface/RoundAnimation:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -408,7 +396,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SubViewportContainer/Interface/RoundAnimation:visible")
+tracks/3/path = NodePath("Interface/RoundAnimation:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -417,25 +405,13 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/4/type = "value"
+tracks/4/type = "audio"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SubViewportContainer/Interface/RoundAnimation/RoundRect:modulate")
+tracks/4/path = NodePath("AnimationPlayer/AudioStreamPlayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "audio"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AnimationPlayer/AudioStreamPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -443,14 +419,14 @@ tracks/5/keys = {
 }],
 "times": PackedFloat32Array(0.6)
 }
-tracks/5/use_blend = true
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("SubViewportContainer/SubViewport/GameLogic")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/4/use_blend = true
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Interface/SubViewportContainer/SubViewport/GameLogic")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(2.45),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -481,8 +457,23 @@ musics = Array[AudioStream]([ExtResource("2_mnjkf")])
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_6xhvo")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-layout_mode = 0
+[node name="Interface" type="Control" parent="."]
+custom_minimum_size = Vector2(1600, 900)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 1
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Interface"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -491,7 +482,7 @@ stretch = true
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="Interface/SubViewportContainer"]
 disable_3d = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
@@ -503,28 +494,20 @@ size_2d_override = Vector2i(1600, 900)
 render_target_update_mode = 4
 script = ExtResource("8_rh0i3")
 
-[node name="GameInput" parent="SubViewportContainer/SubViewport" instance=ExtResource("8_sdp7e")]
+[node name="GameInput" parent="Interface/SubViewportContainer/SubViewport" instance=ExtResource("8_sdp7e")]
 
-[node name="MapSlot" type="Node" parent="SubViewportContainer/SubViewport"]
+[node name="MapSlot" type="Node" parent="Interface/SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
 
-[node name="GameLogic" type="Node" parent="SubViewportContainer/SubViewport"]
+[node name="GameLogic" type="Node" parent="Interface/SubViewportContainer/SubViewport"]
 script = ExtResource("9_gl6qd")
 _shop_scene = ExtResource("10_rtev0")
 _move_layer = ExtResource("11_cenw6")
 _move_arrow = ExtResource("12_lqnrk")
 _floating_info = ExtResource("14_vnmkc")
 
-[node name="Interface" type="Control" parent="SubViewportContainer"]
-custom_minimum_size = Vector2(1600, 900)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-mouse_filter = 1
-metadata/_edit_layout_mode = 1
-metadata/_edit_use_custom_anchors = false
-
-[node name="ActionPanel" type="Panel" parent="SubViewportContainer/Interface"]
+[node name="ActionPanel" type="Panel" parent="Interface"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 0
 anchor_left = 0.5
@@ -541,7 +524,7 @@ script = ExtResource("17_0h3pk")
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/Interface/ActionPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/ActionPanel"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -553,42 +536,42 @@ alignment = 1
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
-[node name="ButtonMove" type="Button" parent="SubViewportContainer/Interface/ActionPanel/VBoxContainer"]
+[node name="ButtonMove" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
 text = "MOVE"
 icon = SubResource("AtlasTexture_i7el8")
 
-[node name="ButtonAttack" type="Button" parent="SubViewportContainer/Interface/ActionPanel/VBoxContainer"]
+[node name="ButtonAttack" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
 text = "ATTACK"
 icon = SubResource("AtlasTexture_pjx10")
 
-[node name="ButtonEnter" type="Button" parent="SubViewportContainer/Interface/ActionPanel/VBoxContainer"]
+[node name="ButtonEnter" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
 text = "ENTER"
 icon = SubResource("AtlasTexture_0nj7i")
 
-[node name="ButtonDeploy" type="Button" parent="SubViewportContainer/Interface/ActionPanel/VBoxContainer"]
+[node name="ButtonDeploy" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
 text = "DEPLOY"
 icon = SubResource("AtlasTexture_vi472")
 
-[node name="ButtonJoin" type="Button" parent="SubViewportContainer/Interface/ActionPanel/VBoxContainer"]
+[node name="ButtonJoin" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
 text = "JOIN"
 icon = SubResource("AtlasTexture_tinqa")
 
-[node name="ButtonSupply" type="Button" parent="SubViewportContainer/Interface/ActionPanel/VBoxContainer"]
+[node name="ButtonSupply" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
 text = "SUPPLY"
 icon = SubResource("AtlasTexture_u80nd")
 
-[node name="ButtonCapture" type="Button" parent="SubViewportContainer/Interface/ActionPanel/VBoxContainer"]
+[node name="ButtonCapture" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
 text = "CAPTURE"
 icon = SubResource("AtlasTexture_10xuy")
 
-[node name="MoneyPanel" type="Panel" parent="SubViewportContainer/Interface"]
+[node name="MoneyPanel" type="Panel" parent="Interface"]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 8.0
@@ -596,7 +579,7 @@ offset_right = 213.0
 offset_bottom = 54.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2lgku")
 
-[node name="MoneyLabel" type="Label" parent="SubViewportContainer/Interface/MoneyPanel"]
+[node name="MoneyLabel" type="Label" parent="Interface/MoneyPanel"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 58.0
@@ -610,7 +593,7 @@ text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/Interface/MoneyPanel"]
+[node name="TextureRect" type="TextureRect" parent="Interface/MoneyPanel"]
 modulate = Color(0.599893, 0.599893, 0.599893, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -620,7 +603,7 @@ offset_bottom = 71.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_ammf5")
 
-[node name="RoundPanel" type="Panel" parent="SubViewportContainer/Interface"]
+[node name="RoundPanel" type="Panel" parent="Interface"]
 layout_mode = 0
 offset_left = 237.0
 offset_top = 8.0
@@ -628,7 +611,7 @@ offset_right = 362.0
 offset_bottom = 54.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2lgku")
 
-[node name="RoundNumberLabel" type="Label" parent="SubViewportContainer/Interface/RoundPanel"]
+[node name="RoundNumberLabel" type="Label" parent="Interface/RoundPanel"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 58.0
@@ -644,7 +627,7 @@ text = "2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/Interface/RoundPanel"]
+[node name="TextureRect" type="TextureRect" parent="Interface/RoundPanel"]
 modulate = Color(0.599893, 0.599893, 0.599893, 1)
 layout_mode = 0
 offset_left = 10.0
@@ -654,7 +637,7 @@ offset_bottom = 71.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_j0kah")
 
-[node name="RoundButton" type="Button" parent="SubViewportContainer/Interface"]
+[node name="RoundButton" type="Button" parent="Interface"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -675,7 +658,7 @@ text = "NEXT_ROUND"
 icon = SubResource("AtlasTexture_m3thj")
 metadata/_edit_layout_mode = 1
 
-[node name="RoundAnimation" type="Control" parent="SubViewportContainer/Interface"]
+[node name="RoundAnimation" type="Control" parent="Interface"]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -686,7 +669,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/Interface/RoundAnimation"]
+[node name="ColorRect" type="ColorRect" parent="Interface/RoundAnimation"]
 modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 1
 anchors_preset = 15
@@ -697,26 +680,36 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_layout_mode = 1
 
-[node name="RoundRect" type="Polygon2D" parent="SubViewportContainer/Interface/RoundAnimation"]
+[node name="RoundRect" type="ColorRect" parent="Interface/RoundAnimation"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-884.658, 152)
-scale = Vector2(1.98593, 0.683036)
-color = Color(1, 1, 1, 0.45098)
-antialiased = true
-polygon = PackedVector2Array(435.976, 327.948, 378.491, 550.484, 1252.26, 550.484, 1304, 327.948)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -69.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.784314)
 
-[node name="RoundLabel" type="Label" parent="SubViewportContainer/Interface/RoundAnimation"]
-unique_name_in_owner = true
-layout_mode = 0
+[node name="Control" type="CenterContainer" parent="Interface/RoundAnimation"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 1600.0
-offset_bottom = 140.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="RoundLabel" type="Label" parent="Interface/RoundAnimation/Control"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 10
@@ -729,7 +722,7 @@ vertical_alignment = 1
 script = ExtResource("27_lmqwv")
 metadata/_edit_layout_mode = 1
 
-[node name="ShopPlace" type="Control" parent="SubViewportContainer/Interface"]
+[node name="ShopPlace" type="Control" parent="Interface"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -746,27 +739,27 @@ grow_vertical = 2
 mouse_filter = 1
 metadata/_edit_layout_mode = 1
 
-[node name="EndGameAnimation" type="Control" parent="SubViewportContainer/Interface"]
+[node name="EndGameAnimation" type="Control" parent="Interface"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Polygon2D" type="Polygon2D" parent="SubViewportContainer/Interface/EndGameAnimation"]
+[node name="Polygon2D" type="Polygon2D" parent="Interface/EndGameAnimation"]
 visible = false
 position = Vector2(-1000, 0)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-256, -64, -256, 960, 960, 960, 640, -64)
 
-[node name="Polygon2D2" type="Polygon2D" parent="SubViewportContainer/Interface/EndGameAnimation"]
+[node name="Polygon2D2" type="Polygon2D" parent="Interface/EndGameAnimation"]
 visible = false
 position = Vector2(2600, 896)
 rotation = 3.14159
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-256, -64, -256, 960, 960, 960, 640, -64)
 
-[node name="EscapePanel" type="Control" parent="SubViewportContainer/Interface"]
+[node name="EscapePanel" type="Control" parent="Interface"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -777,7 +770,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("26_o1gt5")
 
-[node name="GrayBackground" type="ColorRect" parent="SubViewportContainer/Interface/EscapePanel"]
+[node name="GrayBackground" type="ColorRect" parent="Interface/EscapePanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -786,20 +779,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.423529)
 
-[node name="EscapeMenu" parent="SubViewportContainer/Interface/EscapePanel" instance=ExtResource("26_j0w8f")]
+[node name="EscapeMenu" parent="Interface/EscapePanel" instance=ExtResource("26_j0w8f")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 647.0
-offset_top = 267.0
-offset_right = -661.0
-offset_bottom = -208.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -183.0
+offset_right = 139.0
+offset_bottom = 242.0
 grow_horizontal = 2
 grow_vertical = 2
 title = "MENU"
 
-[node name="OptionButton" type="Button" parent="SubViewportContainer/Interface/EscapePanel/EscapeMenu" node_paths=PackedStringArray("next_menu")]
+[node name="OptionButton" type="Button" parent="Interface/EscapePanel/EscapeMenu" node_paths=PackedStringArray("next_menu")]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -810,7 +805,7 @@ icon = SubResource("AtlasTexture_8ydd1")
 script = ExtResource("29_fbj1t")
 next_menu = NodePath("../../SettingsMenu")
 
-[node name="ExitButton" type="Button" parent="SubViewportContainer/Interface/EscapePanel/EscapeMenu"]
+[node name="ExitButton" type="Button" parent="Interface/EscapePanel/EscapeMenu"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -821,7 +816,7 @@ text = "EXIT_TO_MENU"
 icon = SubResource("AtlasTexture_d4rh4")
 script = ExtResource("29_fbj1t")
 
-[node name="BackButton" type="Button" parent="SubViewportContainer/Interface/EscapePanel/EscapeMenu"]
+[node name="BackButton" type="Button" parent="Interface/EscapePanel/EscapeMenu"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -834,24 +829,26 @@ text = "CONTINUE"
 icon = SubResource("AtlasTexture_8qldl")
 script = ExtResource("29_fbj1t")
 
-[node name="SettingsMenu" parent="SubViewportContainer/Interface/EscapePanel" instance=ExtResource("26_j0w8f")]
+[node name="SettingsMenu" parent="Interface/EscapePanel" instance=ExtResource("26_j0w8f")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 647.0
-offset_top = 267.0
-offset_right = -661.0
-offset_bottom = -208.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -183.0
+offset_right = 139.0
+offset_bottom = 242.0
 grow_horizontal = 2
 grow_vertical = 2
 title = "SETTINGS"
 
-[node name="SettingsContent" parent="SubViewportContainer/Interface/EscapePanel/SettingsMenu" instance=ExtResource("30_umdul")]
+[node name="SettingsContent" parent="Interface/EscapePanel/SettingsMenu" instance=ExtResource("30_umdul")]
 layout_mode = 1
 
-[node name="OptionButton" type="Button" parent="SubViewportContainer/Interface/EscapePanel/SettingsMenu" node_paths=PackedStringArray("next_menu")]
+[node name="OptionButton" type="Button" parent="Interface/EscapePanel/SettingsMenu" node_paths=PackedStringArray("next_menu")]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -875,11 +872,11 @@ libraries = {
 volume_db = -10.0
 script = ExtResource("27_2jj2m")
 
-[connection signal="map_loaded" from="." to="SubViewportContainer/SubViewport/GameLogic" method="_on_game_map_loaded"]
-[connection signal="input_escape" from="SubViewportContainer/SubViewport/GameInput" to="SubViewportContainer/Interface/EscapePanel" method="_on_game_input_input_escape"]
-[connection signal="selection_changed" from="SubViewportContainer/SubViewport/GameInput" to="SubViewportContainer/SubViewport/GameLogic" method="_on_game_input_selection_changed"]
-[connection signal="action_selected" from="SubViewportContainer/Interface/ActionPanel" to="SubViewportContainer/SubViewport/GameLogic" method="_on_panel_action_selected"]
-[connection signal="resized" from="SubViewportContainer/Interface/ActionPanel/VBoxContainer" to="SubViewportContainer/Interface/ActionPanel" method="_on_v_box_container_resized"]
-[connection signal="pressed" from="SubViewportContainer/Interface/RoundButton" to="SubViewportContainer/SubViewport/GameLogic" method="_on_round_button_pressed"]
-[connection signal="pressed" from="SubViewportContainer/Interface/EscapePanel/EscapeMenu/ExitButton" to="SubViewportContainer/Interface/EscapePanel" method="_on_exit_button_pressed"]
-[connection signal="pressed" from="SubViewportContainer/Interface/EscapePanel/EscapeMenu/BackButton" to="SubViewportContainer/Interface/EscapePanel" method="_on_back_button_pressed"]
+[connection signal="map_loaded" from="." to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_game_map_loaded"]
+[connection signal="input_escape" from="Interface/SubViewportContainer/SubViewport/GameInput" to="Interface/EscapePanel" method="_on_game_input_input_escape"]
+[connection signal="selection_changed" from="Interface/SubViewportContainer/SubViewport/GameInput" to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_game_input_selection_changed"]
+[connection signal="action_selected" from="Interface/ActionPanel" to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_panel_action_selected"]
+[connection signal="resized" from="Interface/ActionPanel/VBoxContainer" to="Interface/ActionPanel" method="_on_v_box_container_resized"]
+[connection signal="pressed" from="Interface/RoundButton" to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_round_button_pressed"]
+[connection signal="pressed" from="Interface/EscapePanel/EscapeMenu/ExitButton" to="Interface/EscapePanel" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Interface/EscapePanel/EscapeMenu/BackButton" to="Interface/EscapePanel" method="_on_back_button_pressed"]
