@@ -1,12 +1,12 @@
 {
   "name": "HQ",
-  "description": "The most importnat property on the map; if the HQ is captured the team is defeated and can no longer play.",
-  "type": 11,
+  "description": "HQ_DESCRIPTION",
   "defense": 4,
   "health": 0,
   "can_capture": true,
   "capture_value": 0,
   "owner": 0,
   "funds": 1000,
-  "ammo": 0
+  "ammo": 0,
+  "shop_units": [] 
 }

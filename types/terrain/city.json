@@ -1,12 +1,12 @@
 {
   "name": "CITY",
-  "description": "Cities are a property essential to any battle and provide many advantages when captured, such as repairs and income.",
-  "type": 7,
+  "description": "CITY_DESCRIPTION",
   "defense": 3,
   "health": 0,
   "can_capture": true,
   "capture_value": 0,
   "owner": 0,
   "funds": 1000,
-  "ammo": 0
+  "ammo": 0,
+  "shop_units": [] 
 }

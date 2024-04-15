@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqf0atgg02hdq"]
+[gd_scene load_steps=9 format=3 uid="uid://cqf0atgg02hdq"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="2_6akxv"]
-[ext_resource type="PackedScene" uid="uid://b6kyqmss2ywu" path="res://logic/ui/map_selection_element.tscn" id="3_co8m8"]
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="4_di267"]
 
 [sub_resource type="GDScript" id="GDScript_uc47i"]
@@ -9,9 +8,9 @@ script/source = "extends Control
 
 @export var back_control: Control
 @export var next_control: Control
-@export var maps: Array[PackedScene]
 @export var map_select_element_scene: PackedScene
 @export var next_button_text_override: String
+@export var game_mode: GameConst.GameMode
 
 @onready var _button_next: Button = %ButtonNext
 
@@ -23,13 +22,14 @@ var _global: GlobalGlobal = Global
 func _ready() -> void:
 	if next_button_text_override:
 		_button_next.text = next_button_text_override
-	for map_scene: PackedScene in maps:
+	for map_name: String in _global.maps:
 		var element: MapSelectableElement = map_select_element_scene.instantiate()
-		element.map_scene = map_scene
+		element.map_json = _global.maps[map_name]
 		element.map_selected.connect(_on_element_clicked)
 		%VBoxContainer.add_child(element)
 		_add_v_split()
-		
+
+
 func _add_v_split() -> void:
 	var split: VSplitContainer = VSplitContainer.new()
 	split.custom_minimum_size.y = ProjectSettings.get_setting(\"global/shop_element_vspace\")
@@ -49,14 +49,15 @@ func _on_button_start_pressed() -> void:
 	else:
 		get_tree().change_scene_to_packed(_global.game_scene)
 		
-func _on_element_clicked(map_scene: PackedScene) -> void:
+func _on_element_clicked(map_json: String) -> void:
 	for child: Node in %SpawnSpot.get_children():
 		child.queue_free()
 	if last_instantiated_map:
 		last_instantiated_map.queue_free()
-	last_instantiated_map = map_scene.instantiate()
+	last_instantiated_map = MapFile.deserialize(map_json)
 	%SpawnSpot.add_child(last_instantiated_map)
-	_global.selected_map = map_scene
+	_global.selected_map_json = map_json
+	_global.game_mode = game_mode
 	_button_next.disabled = false
 
 func _on_visibility_changed() -> void:
@@ -102,7 +103,6 @@ offset_bottom = -212.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_uc47i")
-map_select_element_scene = ExtResource("3_co8m8")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -205,6 +205,6 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="Menu/ButtonBack" to="." method="_on_button_back_pressed"]

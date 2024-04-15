@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Codename: Recon"
+config/version="<VERSION>"
 run/main_scene="res://levels/menu.tscn"
 config/use_custom_user_dir=true
 config/project_settings_override="user://config.cfg"
@@ -72,13 +73,14 @@ graphics_shadow_quality=1
 graphics_anti_aliasing=1
 sound_volume=-25.0
 music_volume=-25.0
+player_color=PackedColorArray(0.470588, 0.784314, 0.407843, 1, 0.909804, 0.282353, 0.25098, 1, 0.470588, 0.439216, 0.878431, 1, 0.878431, 0.847059, 0.313726, 1, 0.470436, 0.470436, 0.564721, 1, 0.564721, 0.313619, 0.219333, 1, 0.839277, 0.729351, 0.678553, 1, 0.525643, 0.00390631, 0.690272, 1)
+neutral_color=Color(0.705882, 0.705882, 0.705882, 1)
 
 [global]
 
-grid_size=Vector2(32, 32)
+grid_size=Vector2i(32, 32)
 unit_max_health=100
 tint_time=0.5
-player_colors=PackedColorArray(0, 0.85098, 0, 1, 0.85098, 0, 0, 1, 0.921569, 0, 0.968627, 1)
 attack_color=Color(1, 0.416667, 0, 1)
 move_color=Color(0, 1, 0.988235, 1)
 refill_color=Color(0, 1, 0.384314, 1)
@@ -105,10 +107,9 @@ fast_animation_time=0.3
 network/lobby_server="46.101.138.49"
 network/lobby_port=7350
 network/lobby_key="pMywin8T8IGN9NYyn3180CTco1birqE1VEU"
-network/debug_accounts=false
-network/debug_accounts.debug=false
 round_overlay=Color(0.384314, 0.384314, 0.384314, 1)
 unit_move_tween_time=0.8
+network/debug_accounts=false
 
 [gui]
 
@@ -194,7 +195,5 @@ locale/test="en"
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
-shadows/directional_shadow/size=1024
-shadows/directional_shadow/size.mobile=512
-shadows/directional_shadow/soft_shadow_filter_quality=0
-shadows/positional_shadow/soft_shadow_filter_quality=5
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

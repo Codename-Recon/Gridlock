@@ -1,4 +1,4 @@
-extends Panel
+extends Menu
 
 @onready var horizontal_control: HSlider = $VBoxContainer/Horizontal
 @onready var vertical_control: HSlider = $VBoxContainer/Vertical
@@ -9,9 +9,7 @@ var new_size: Vector2i = Vector2i(20, 20)
 
 
 func _on_accept_pressed() -> void:
-	# This is the code I used in my project, it's expecting to be used with the map-editor-ui
-	owner.emit_signal("resize_map", new_size)
-	hide()
+	owner.emit_signal("map_resized", new_size)
 
 
 func _on_cancel_pressed() -> void:

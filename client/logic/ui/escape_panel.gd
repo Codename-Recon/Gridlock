@@ -10,13 +10,6 @@ func _ready() -> void:
 	hide()
 
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("escape"):
-		visible = !visible
-		escape_menu.show()
-		settings_menu.hide()
-
-
 func _on_exit_button_pressed() -> void:
 	if _multiplayer.client_role != _multiplayer.ClientRole.NONE:
 		_multiplayer.nakama_disconnect_from_match()
@@ -26,3 +19,9 @@ func _on_exit_button_pressed() -> void:
 func _on_back_button_pressed() -> void:
 	visible = !visible
 	escape_menu.show()
+
+
+func _on_game_input_input_escape() -> void:
+	visible = !visible
+	escape_menu.show()
+	settings_menu.hide()

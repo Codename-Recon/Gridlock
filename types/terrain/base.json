@@ -1,12 +1,12 @@
 {
   "name": "BASE",
-  "description": "Bases are a property for building and maintaining ground units.",
-  "type": 8,
+  "description": "BASE_DESCRIPTION",
   "defense": 3,
   "health": 0,
   "can_capture": true,
   "capture_value": 0,
   "owner": 0,
   "funds": 1000,
-  "ammo": 0
+  "ammo": 0,
+  "shop_units": ["ANTI_AIR", "APC", "ARTILLERY", "INFANTRY", "MEDIUM_TANK", "MECH", "MEGA_TANK", "MISSILE", "NEOTANK", "PIPERUNNER", "RECON", "ROCKET", "TANK"] 
 }

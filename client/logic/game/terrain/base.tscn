@@ -1,47 +1,49 @@
 [gd_scene load_steps=20 format=3 uid="uid://b4giy6a41fm5c"]
 
-[ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_la253"]
-[ext_resource type="PackedScene" uid="uid://4464jjyowffi" path="res://logic/game/units/antiair.tscn" id="2_xayqm"]
-[ext_resource type="PackedScene" uid="uid://c4iai7oi81hmi" path="res://logic/game/units/apc.tscn" id="3_0nsrg"]
-[ext_resource type="PackedScene" uid="uid://jgjbc5qgpnh5" path="res://logic/game/units/artillery.tscn" id="4_y66b3"]
-[ext_resource type="PackedScene" uid="uid://2t61plm4vpda" path="res://logic/game/units/infantry.tscn" id="5_sogi7"]
-[ext_resource type="PackedScene" uid="uid://d1vtobfji2rgv" path="res://logic/game/units/mech.tscn" id="6_lrwei"]
-[ext_resource type="PackedScene" uid="uid://54war5m37akr" path="res://logic/ui/terrain_stats.tscn" id="6_oi3i7"]
-[ext_resource type="PackedScene" uid="uid://dfki27p05gtry" path="res://logic/game/units/medium_tank.tscn" id="7_ag8ek"]
-[ext_resource type="PackedScene" uid="uid://cxq4g3bvxh5p3" path="res://logic/game/units/recon.tscn" id="8_lhjua"]
-[ext_resource type="PackedScene" uid="uid://ch51qqxsd8xsq" path="res://logic/game/units/rocket.tscn" id="9_d3ubg"]
-[ext_resource type="PackedScene" uid="uid://dcy7mn6xmucyw" path="res://logic/game/units/tank.tscn" id="10_42f1p"]
-[ext_resource type="PackedScene" uid="uid://bhm7dlbtp7crw" path="res://logic/game/units/neo_tank.tscn" id="11_xg03i"]
-[ext_resource type="PackedScene" uid="uid://cdvbe6lf1u2w4" path="res://logic/game/units/mega_tank.tscn" id="12_0j0hg"]
-[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="12_ctcoa"]
-[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="12_twf8b"]
-[ext_resource type="PackedScene" uid="uid://bss23v6r204mv" path="res://logic/game/units/missile.tscn" id="13_gsija"]
-[ext_resource type="PackedScene" uid="uid://bn78onj8y8e6r" path="res://logic/game/units/piperunner.tscn" id="14_00ju8"]
+[ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_0oaqi"]
+[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_a36y3"]
+[ext_resource type="PackedScene" uid="uid://2t61plm4vpda" path="res://logic/game/units/infantry.tscn" id="2_ugwn5"]
+[ext_resource type="PackedScene" uid="uid://d1vtobfji2rgv" path="res://logic/game/units/mech.tscn" id="3_3b5u4"]
+[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_5va3r"]
+[ext_resource type="PackedScene" uid="uid://cxq4g3bvxh5p3" path="res://logic/game/units/recon.tscn" id="4_0ggdr"]
+[ext_resource type="PackedScene" uid="uid://54war5m37akr" path="res://logic/ui/terrain_stats.tscn" id="4_icmkb"]
+[ext_resource type="PackedScene" uid="uid://c4iai7oi81hmi" path="res://logic/game/units/apc.tscn" id="5_xvo74"]
+[ext_resource type="PackedScene" uid="uid://jgjbc5qgpnh5" path="res://logic/game/units/artillery.tscn" id="6_57402"]
+[ext_resource type="PackedScene" uid="uid://dcy7mn6xmucyw" path="res://logic/game/units/tank.tscn" id="7_0duq7"]
+[ext_resource type="PackedScene" uid="uid://4464jjyowffi" path="res://logic/game/units/antiair.tscn" id="8_gmh13"]
+[ext_resource type="PackedScene" uid="uid://bss23v6r204mv" path="res://logic/game/units/missile.tscn" id="9_l4cvk"]
+[ext_resource type="PackedScene" uid="uid://ch51qqxsd8xsq" path="res://logic/game/units/rocket.tscn" id="10_x5naq"]
+[ext_resource type="PackedScene" uid="uid://dfki27p05gtry" path="res://logic/game/units/medium_tank.tscn" id="11_hohqx"]
+[ext_resource type="PackedScene" uid="uid://bn78onj8y8e6r" path="res://logic/game/units/piperunner.tscn" id="12_46ymp"]
+[ext_resource type="PackedScene" uid="uid://bhm7dlbtp7crw" path="res://logic/game/units/neo_tank.tscn" id="13_hiuf2"]
+[ext_resource type="PackedScene" uid="uid://cdvbe6lf1u2w4" path="res://logic/game/units/mega_tank.tscn" id="14_542lw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nfy18"]
 resource_local_to_scene = true
-shader = ExtResource("12_twf8b")
+shader = ExtResource("2_a36y3")
 shader_parameter/shifting = true
 shader_parameter/shift_level_h = 0.095
 shader_parameter/shift_level_s = 0.236
 shader_parameter/shift_level_b = 1.0
 shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
-shader_parameter/new_color = Color(0.00784314, 0.0117647, 0.00784314, 1)
+shader_parameter/new_color = Color(0.705882, 0.705882, 0.705882, 1)
 shader_parameter/shift_shades_threshold = 1.0
 shader_parameter/shift_shades_factor = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3c44"]
-atlas = ExtResource("12_ctcoa")
+atlas = ExtResource("3_5va3r")
 region = Rect2(352, 32, 32, 32)
 
 [node name="Base" type="Node2D"]
-script = ExtResource("1_la253")
-color = Color(0.00784314, 0.0117647, 0.00784314, 1)
+script = ExtResource("1_0oaqi")
+shader_modulate = true
+color = Color(0.705882, 0.705882, 0.705882, 1)
 id = "BASE"
-shop_units = Array[PackedScene]([ExtResource("5_sogi7"), ExtResource("6_lrwei"), ExtResource("8_lhjua"), ExtResource("3_0nsrg"), ExtResource("4_y66b3"), ExtResource("10_42f1p"), ExtResource("2_xayqm"), ExtResource("9_d3ubg"), ExtResource("7_ag8ek"), ExtResource("11_xg03i"), ExtResource("12_0j0hg"), ExtResource("13_gsija"), ExtResource("14_00ju8")])
+tile_id = "BASE_1"
+shop_units = Array[PackedScene]([ExtResource("2_ugwn5"), ExtResource("3_3b5u4"), ExtResource("4_0ggdr"), ExtResource("5_xvo74"), ExtResource("6_57402"), ExtResource("7_0duq7"), ExtResource("8_gmh13"), ExtResource("9_l4cvk"), ExtResource("10_x5naq"), ExtResource("11_hohqx"), ExtResource("12_46ymp"), ExtResource("13_hiuf2"), ExtResource("14_542lw")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_nfy18")
 texture = SubResource("AtlasTexture_e3c44")
 
-[node name="TerrainStats" parent="." instance=ExtResource("6_oi3i7")]
+[node name="TerrainStats" parent="." instance=ExtResource("4_icmkb")]

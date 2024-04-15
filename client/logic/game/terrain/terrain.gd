@@ -1,15 +1,14 @@
-@icon("res://assets/images/icons/flag-outline.svg")
+@icon("res://assets/images/icons/nodes/flag-outline.svg")
 @tool
 class_name Terrain
 extends Node2D
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $Sprite2D
 
 @export var shader_modulate: bool = false:
 	set(value):
 		if value && has_node("./Sprite2D"):
 			shader_modulate = value
-			var sprite: Sprite2D = $Sprite2D as Sprite2D
 			if sprite && sprite.material:
 				(sprite.material as ShaderMaterial).set_shader_parameter("shifting", value)
 
@@ -38,16 +37,15 @@ extends Node2D
 
 @export var player_owned: Player:
 	set(value):
-		if value:
+		if _types.terrains[id]["can_capture"]:
 			player_owned = value
-			self.shader_modulate = true
-			self.color = value.color
+			_update_color()
 
 @export var id: String
-
+@export var tile_id: String
 @export var shop_units: Array[PackedScene]
 
-# layer variable for color layer, handled that only one layer can be set (new layer overwrites old one)
+## layer variable for color layer, handled that only one layer can be set (new layer overwrites old one)
 @export var layer: Sprite2D:
 	set(value):
 		if value:
@@ -59,7 +57,10 @@ extends Node2D
 				add_child(value)
 				value.global_rotation = 0
 
-static var _terrain_lookup: Dictionary
+var _shader_resource: Shader = preload("res://logic/shaders/color_shift.tres")
+var _types: GlobalTypes = Types
+
+@onready var stats: TerrainStats = $TerrainStats
 
 
 func get_move_on_global_position() -> Vector2:
@@ -67,24 +68,21 @@ func get_move_on_global_position() -> Vector2:
 
 
 func has_unit() -> bool:
-	for i: Node2D in get_children():
-		# using workaround for checking if class is a unit, since "is" is causing cyclic reference
-		if i.has_method("get_possible_terrains_to_move"):
+	for i: Node in get_children():
+		if i is Unit:
 			return true
 	return false
 
 
 func get_unit() -> Unit:
-	for i: Node2D in get_children():
-		# using workaround for checking if class is a unit, since "is" is causing cyclic reference
-		if i.has_method("get_possible_terrains_to_move"):
+	for i: Node in get_children():
+		if i is Unit:
 			return i as Unit
 	return null
 
 
-# captures terrain. gives true back on success.
+## captures terrain. gives true back on success.
 func capture(capture_force: int, player_of_unit: Player) -> bool:
-	var stats: TerrainStats = $TerrainStats
 	stats.capture_health -= capture_force
 	if stats.capture_health <= 0:
 		stats.reset_capture_health()
@@ -95,48 +93,27 @@ func capture(capture_force: int, player_of_unit: Player) -> bool:
 
 
 func uncapture() -> void:
-	var stats: TerrainStats = $TerrainStats
 	stats.reset_capture_health()
-
-
-func get_terrain_by_position(pos: Vector2i) -> Terrain:
-	# check if terrain lookup is generated (dictionary and entries exists). If not -> generate
-	if not _terrain_lookup or _terrain_lookup.is_empty():
-		generate_terrain_lookup()
-	return _terrain_lookup.get(pos)
-
-
-func generate_terrain_lookup() -> void:
-	var terrains: Array[Node] = get_tree().get_nodes_in_group("terrain")
-	_terrain_lookup = {}
-	for terrain: Terrain in terrains:
-		var pos: Vector2i = terrain.position
-		_terrain_lookup[pos] = terrain
-
-
-func _set_color(set_color: Color) -> void:
-	var sprite: Sprite2D = $Sprite2D as Sprite2D
-	(sprite.material as ShaderMaterial).set_shader_parameter("new_color", set_color)
 
 
 func get_up() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.UP * ProjectSettings.get_setting("global/grid_size").y)
-	return get_terrain_by_position(pos)
+	return get_map().get_terrain_by_position(pos)
 
 
 func get_down() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.DOWN * ProjectSettings.get_setting("global/grid_size").y)
-	return get_terrain_by_position(pos)
+	return get_map().get_terrain_by_position(pos)
 
 
 func get_left() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.LEFT * ProjectSettings.get_setting("global/grid_size").y)
-	return get_terrain_by_position(pos)
+	return get_map().get_terrain_by_position(pos)
 
 
 func get_right() -> Terrain:
 	var pos: Vector2i = (global_position + Vector2.RIGHT * ProjectSettings.get_setting("global/grid_size").y)
-	return get_terrain_by_position(pos)
+	return get_map().get_terrain_by_position(pos)
 
 
 func is_neighbor(terrain: Terrain) -> bool:
@@ -148,10 +125,59 @@ func is_neighbor(terrain: Terrain) -> bool:
 	)
 
 
+func get_map() -> Map:
+	if get_parent() is Map:
+		var map: Map = get_parent()
+		return map
+	return null
+
+
+func is_on_map() -> bool:
+	return get_map() != null
+
+
 func _ready() -> void:
+	if not sprite.material:
+		var material: ShaderMaterial = ShaderMaterial.new()
+		material.shader = _shader_resource
+		sprite.material = material
+	# Add shop units
+	shop_units.clear()
+	for unit_id: String in _types.terrains[id]["shop_units"]:
+		shop_units.append(Map.predefined_units_packed_scenes[unit_id])
+	shop_units.sort_custom(_sort_by_unit_price)
+	_update_color()
+
+
+func _sort_by_unit_price(a: PackedScene, b: PackedScene) -> bool:
+	var a_scene: Unit = a.instantiate()
+	var b_scene: Unit = b.instantiate()
+	return _types.units[a_scene.id]["cost"] < _types.units[b_scene.id]["cost"]
+	
+
+func _set_color(set_color: Color) -> void:
+	var _sprite: Sprite2D = $Sprite2D as Sprite2D
+	(_sprite.material as ShaderMaterial).set_shader_parameter("new_color", set_color)
+
+
+func _enter_tree() -> void:
 	if not Engine.is_editor_hint():
 		add_to_group("terrain")
+		if is_on_map():
+			get_map().terrains.append(self)
+
 
 func _exit_tree() -> void:
-	# as soon one terrain gets removed, lookup can be cleared
-	_terrain_lookup.clear()
+	remove_from_group("terrain")
+	if is_on_map():
+		get_map().terrains.erase(self)
+
+func _update_color() -> void:
+	if _types.terrains[id]["can_capture"]:
+		if player_owned:
+			shader_modulate = true
+			color = player_owned.color
+		else:
+			shader_modulate = true
+			var neutral_color: Color = ProjectSettings.get_setting("game/neutral_color")
+			color = neutral_color

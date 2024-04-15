@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://crj13jqmktmtn"]
+[gd_scene load_steps=44 format=3 uid="uid://crj13jqmktmtn"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
@@ -7,9 +7,8 @@
 [ext_resource type="Script" path="res://logic/game/viewport.gd" id="4_qshs6"]
 [ext_resource type="Texture2D" uid="uid://dmp3yy3lmavys" path="res://assets/images/game/menu/background.png" id="5_p3s4b"]
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="7_1imcl"]
-[ext_resource type="PackedScene" uid="uid://bv88xt6eaix8d" path="res://logic/game/maps/vs_ai/01_big_brain.tscn" id="15_7gwmg"]
-[ext_resource type="PackedScene" uid="uid://bajfvcujmh51o" path="res://logic/game/maps/lobby/01_big_brain.tscn" id="17_cdwqf"]
-[ext_resource type="PackedScene" uid="uid://tr1b43h8d24w" path="res://logic/game/maps/hotseat/01_big_brain.tscn" id="19_kr7y1"]
+[ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="9_ekkjc"]
+[ext_resource type="PackedScene" uid="uid://b6kyqmss2ywu" path="res://logic/ui/map_selection_element.tscn" id="16_yagnk"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="34_rl1iq"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons.gd" id="40_om04v"]
 [ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="41_n387a"]
@@ -40,6 +39,21 @@ region = Rect2(150, 50, 50, 50)
 atlas = ExtResource("7_1imcl")
 region = Rect2(500, 200, 50, 50)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8kge"]
+atlas = ExtResource("9_ekkjc")
+region = Rect2(480, 320, 32, 32)
+margin = Rect2(8, 0, 0, 0)
+
+[sub_resource type="GDScript" id="GDScript_ninfr"]
+script/source = "extends GameButton
+
+const MAP_EDITOR: PackedScene = preload(\"res://levels/map_editor.tscn\")
+
+func _pressed() -> void:
+	super._pressed()
+	get_tree().change_scene_to_packed(MAP_EDITOR)
+"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_yv0in"]
 atlas = ExtResource("7_1imcl")
 region = Rect2(50, 300, 50, 50)
@@ -57,7 +71,7 @@ script/source = "extends GameButton
 
 func _pressed() -> void:
 	super._pressed()
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.1).timeout
 	get_tree().quit()
 "
 
@@ -204,13 +218,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="MainMenu" parent="." instance=ExtResource("1_6wj44")]
-visible = false
 layout_mode = 1
-anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.555556
 offset_left = -146.0
 offset_top = -169.0
 offset_right = 146.0
@@ -246,12 +258,25 @@ next_menu = NodePath("../../MultiplayerMenu")
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
-[node name="ButtonSettings" type="Button" parent="MainMenu" node_paths=PackedStringArray("next_menu")]
+[node name="ButtonMapEditor" type="Button" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 144.0
-offset_bottom = 201.0
+offset_bottom = 209.0
+grow_horizontal = 2
+text = "MAP_EDITOR"
+icon = SubResource("AtlasTexture_h8kge")
+script = SubResource("GDScript_ninfr")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ButtonSettings" type="Button" parent="MainMenu" node_paths=PackedStringArray("next_menu")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 216.0
+offset_bottom = 281.0
 grow_horizontal = 2
 text = "SETTINGS"
 icon = SubResource("AtlasTexture_yv0in")
@@ -264,8 +289,8 @@ metadata/_edit_use_custom_anchors = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 216.0
-offset_bottom = 273.0
+offset_top = 288.0
+offset_bottom = 353.0
 grow_horizontal = 2
 text = "CREDITS"
 icon = SubResource("AtlasTexture_wvkem")
@@ -655,7 +680,7 @@ offset_top = -344.0
 offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../SingleplayerMenu")
-maps = Array[PackedScene]([ExtResource("15_7gwmg")])
+map_select_element_scene = ExtResource("16_yagnk")
 metadata/_edit_layout_mode = 1
 
 [node name="MultiplayerHotSeatMapSelection" parent="." node_paths=PackedStringArray("back_control") instance=ExtResource("46_qlnwy")]
@@ -671,7 +696,8 @@ offset_top = -344.0
 offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../MultiplayerMenu")
-maps = Array[PackedScene]([ExtResource("19_kr7y1")])
+map_select_element_scene = ExtResource("16_yagnk")
+game_mode = 1
 metadata/_edit_layout_mode = 1
 
 [node name="MultiplayerLobbyMapSelection" parent="." node_paths=PackedStringArray("back_control", "next_control") instance=ExtResource("46_qlnwy")]
@@ -688,8 +714,9 @@ offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../MPLobbyListMenu")
 next_control = NodePath("../MPLobbyMenu")
-maps = Array[PackedScene]([ExtResource("17_cdwqf")])
+map_select_element_scene = ExtResource("16_yagnk")
 next_button_text_override = "HOST"
+game_mode = 2
 metadata/_edit_layout_mode = 1
 
 [node name="Credits" type="Control" parent="." node_paths=PackedStringArray("back_control")]

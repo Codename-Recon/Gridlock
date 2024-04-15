@@ -1,4 +1,4 @@
-@icon("res://assets/images/icons/paper-plane-outline.svg")
+@icon("res://assets/images/icons/nodes/paper-plane-outline.svg")
 class_name GameConst
 extends Node
 
@@ -47,4 +47,10 @@ enum AiDifficulty {
 	EASY,
 	MEDIUM,
 	HARD,
+}
+
+enum GameMode {
+	SINGLE,
+	HOTSEAT,
+	NETWORK
 }

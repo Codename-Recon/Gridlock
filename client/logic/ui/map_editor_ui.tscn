@@ -1,0 +1,1085 @@
+[gd_scene load_steps=25 format=3 uid="uid://hds34errxgf3"]
+
+[ext_resource type="Script" path="res://logic/ui/map_editor_ui.gd" id="1_nwduq"]
+[ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="2_qg74o"]
+[ext_resource type="Script" path="res://logic/ui/game_buttons.gd" id="3_tilmt"]
+[ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="3_wxx8d"]
+[ext_resource type="Texture2D" uid="uid://ddv1x4jcoikmt" path="res://assets/images/game/terrain.png" id="4_gllda"]
+[ext_resource type="Texture2D" uid="uid://c3nykf8itb81n" path="res://assets/images/game/units/infantry.png" id="4_xecee"]
+[ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="5_3pv8h"]
+[ext_resource type="Script" path="res://logic/ui/map_editor_resize_menu.gd" id="6_41mtq"]
+[ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="7_2x4d3"]
+
+[sub_resource type="GDScript" id="GDScript_wl2be"]
+script/source = "extends TabBar
+
+@onready var terrain_panel: Panel = $TerrainPanel
+@onready var unit_panel: Panel = $UnitPanel
+@onready var tile_panel: Panel = $TilePanel
+
+
+func _ready() -> void:
+	_change_tab(current_tab)
+
+
+func _on_tab_changed(tab: int) -> void:
+	_change_tab(tab)
+
+
+func _change_tab(tab: int) -> void:
+	match tab:
+		0: 
+			terrain_panel.show()
+			unit_panel.hide()
+			tile_panel.hide()
+		1:
+			terrain_panel.hide()
+			unit_panel.show()
+			tile_panel.hide()
+		2:
+			terrain_panel.hide()
+			unit_panel.hide()
+			tile_panel.show()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clo85"]
+atlas = ExtResource("3_wxx8d")
+region = Rect2(384, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nfpp"]
+atlas = ExtResource("3_wxx8d")
+region = Rect2(384, 288, 32, 32)
+
+[sub_resource type="Gradient" id="Gradient_4pedv"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oq61q"]
+gradient = SubResource("Gradient_4pedv")
+width = 16
+height = 16
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxf5g"]
+atlas = ExtResource("4_gllda")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vf0p"]
+atlas = ExtResource("4_xecee")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="GDScript" id="GDScript_dh5nv"]
+script/source = "extends ColorRect
+
+func _ready() -> void:
+	hide()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0wol"]
+atlas = ExtResource("3_wxx8d")
+region = Rect2(448, 224, 32, 32)
+margin = Rect2(8, 0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0aoq"]
+atlas = ExtResource("5_3pv8h")
+region = Rect2(150, 450, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhnip"]
+atlas = ExtResource("5_3pv8h")
+region = Rect2(150, 300, 50, 50)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dni2g"]
+load_path = "res://.godot/imported/sheet_white1x.png-d237bd7956ee8dc396efd927abb3c19c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lvce"]
+atlas = SubResource("CompressedTexture2D_dni2g")
+region = Rect2(400, 100, 50, 50)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bcjon"]
+load_path = "res://.godot/imported/sheet_white1x.png-d237bd7956ee8dc396efd927abb3c19c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66ra6"]
+atlas = SubResource("CompressedTexture2D_bcjon")
+region = Rect2(0, 450, 50, 50)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_nwduq")
+
+[node name="TabBar" type="TabBar" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -122.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+tab_count = 3
+tab_0/title = "TERRAINS"
+tab_1/title = "UNITS"
+tab_2/title = "TILES"
+script = SubResource("GDScript_wl2be")
+
+[node name="TerrainPanel" type="Panel" parent="TabBar"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_force_pass_scroll_events = false
+
+[node name="TerrainContainer" type="GridContainer" parent="TabBar/TerrainPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 13
+
+[node name="Example1" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
+layout_mode = 2
+text = "Example 1"
+
+[node name="Example2" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
+layout_mode = 2
+text = "Example 2"
+
+[node name="Example3" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
+layout_mode = 2
+text = "Example 3"
+
+[node name="UnitPanel" type="Panel" parent="TabBar"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_force_pass_scroll_events = false
+
+[node name="UnitContainer" type="GridContainer" parent="TabBar/UnitPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 13
+
+[node name="Example1" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
+layout_mode = 2
+text = "Example 1"
+
+[node name="Example2" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
+layout_mode = 2
+text = "Example 2"
+
+[node name="Example3" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
+layout_mode = 2
+text = "Example 3"
+
+[node name="TilePanel" type="Panel" parent="TabBar"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_force_pass_scroll_events = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabBar/TilePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TileContainer" type="FlowContainer" parent="TabBar/TilePanel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Edit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -135.0
+offset_right = -7.0
+offset_bottom = -88.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = SubResource("AtlasTexture_clo85")
+script = ExtResource("3_tilmt")
+
+[node name="Remove" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -135.0
+offset_right = -55.0
+offset_bottom = -88.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = SubResource("AtlasTexture_0nfpp")
+script = ExtResource("3_tilmt")
+
+[node name="MapSettings" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -307.0
+offset_top = -400.0
+offset_bottom = 300.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MapSettings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapSettingsControl" type="Control" parent="MapSettings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+
+[node name="VSpace1" type="MarginContainer" parent="MapSettings/VBoxContainer/MapSettingsControl"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 307.0
+offset_bottom = 9.0
+theme_override_constants/margin_top = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="MapSettings/VBoxContainer/MapSettingsControl"]
+layout_mode = 2
+offset_top = 13.0
+offset_right = 307.0
+offset_bottom = 35.0
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/MapSettingsControl/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "MAP_SETTINGS"
+
+[node name="VSpace2" type="MarginContainer" parent="MapSettings/VBoxContainer/MapSettingsControl"]
+layout_mode = 2
+offset_top = 39.0
+offset_right = 307.0
+offset_bottom = 44.0
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer" type="HSplitContainer" parent="MapSettings/VBoxContainer/MapSettingsControl"]
+layout_mode = 2
+offset_top = 48.0
+offset_right = 307.0
+offset_bottom = 71.0
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "NAME"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLine" type="LineEdit" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/minimum_character_width = 18
+
+[node name="VSpace3" type="MarginContainer" parent="MapSettings/VBoxContainer/MapSettingsControl"]
+layout_mode = 2
+offset_top = 75.0
+offset_right = 307.0
+offset_bottom = 80.0
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer2" type="HSplitContainer" parent="MapSettings/VBoxContainer/MapSettingsControl"]
+layout_mode = 2
+offset_top = 84.0
+offset_right = 307.0
+offset_bottom = 107.0
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "AUTHOR"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AuthorLine" type="LineEdit" parent="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer2/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/minimum_character_width = 18
+
+[node name="PlayerSettingsControl" type="Control" parent="MapSettings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 307.0
+offset_bottom = 18.0
+mouse_filter = 1
+theme_override_constants/separation = 14
+
+[node name="VSpace7" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
+layout_mode = 2
+offset_top = 22.0
+offset_right = 307.0
+offset_bottom = 27.0
+theme_override_constants/margin_top = 5
+
+[node name="CenterContainer3" type="CenterContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
+layout_mode = 2
+offset_top = 31.0
+offset_right = 307.0
+offset_bottom = 53.0
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/PlayerSettingsControl/CenterContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "PLAYER_SETTINGS"
+
+[node name="VSpace4" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
+layout_mode = 2
+offset_top = 57.0
+offset_right = 307.0
+offset_bottom = 62.0
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer3" type="HSplitContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
+layout_mode = 2
+offset_top = 66.0
+offset_right = 307.0
+offset_bottom = 103.0
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "PLAYERS"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+selected = 0
+popup/item_0/text = "Player 1"
+popup/item_0/icon = SubResource("GradientTexture2D_oq61q")
+popup/item_0/id = 0
+popup/item_1/text = "Player 2"
+popup/item_1/icon = SubResource("GradientTexture2D_oq61q")
+popup/item_1/id = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 13
+
+[node name="VSpace6" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
+layout_mode = 2
+offset_top = 107.0
+offset_right = 307.0
+offset_bottom = 112.0
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainerMoney" type="HSplitContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 116.0
+offset_right = 307.0
+offset_bottom = 139.0
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainerMoney"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainerMoney/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "MONEY"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainerMoney"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoneySpin" type="SpinBox" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainerMoney/HFlowContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 1
+max_value = 1e+09
+alignment = 2
+
+[node name="TerrainSettingsControl" type="Control" parent="MapSettings/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 307.0
+offset_bottom = 18.0
+mouse_filter = 1
+theme_override_constants/separation = 14
+
+[node name="VSpace5" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
+layout_mode = 2
+offset_top = 22.0
+offset_right = 307.0
+offset_bottom = 27.0
+theme_override_constants/margin_top = 5
+
+[node name="CenterContainer2" type="CenterContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
+layout_mode = 2
+offset_top = 31.0
+offset_right = 307.0
+offset_bottom = 53.0
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/TerrainSettingsControl/CenterContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "TERRAIN_SETTINGS"
+
+[node name="VSpace8" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
+layout_mode = 2
+offset_top = 57.0
+offset_right = 307.0
+offset_bottom = 62.0
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer4" type="HSplitContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
+layout_mode = 2
+offset_top = 66.0
+offset_right = 307.0
+offset_bottom = 98.0
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainer4/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "SELECTED"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TerrainTextureRect" type="TextureRect" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainer4/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_xxf5g")
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainer4/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 13
+
+[node name="VSpace9" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
+layout_mode = 2
+offset_top = 102.0
+offset_right = 307.0
+offset_bottom = 107.0
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainerTerrainOwner" type="HSplitContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 111.0
+offset_right = 307.0
+offset_bottom = 148.0
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "OWNER"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TerrainOwnerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+selected = 0
+popup/item_0/text = "Player 1"
+popup/item_0/icon = SubResource("GradientTexture2D_oq61q")
+popup/item_0/id = 0
+popup/item_1/text = "Player 2"
+popup/item_1/icon = SubResource("GradientTexture2D_oq61q")
+popup/item_1/id = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 13
+
+[node name="UnitSettingsControl" type="Control" parent="MapSettings/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 257.785)
+layout_mode = 2
+
+[node name="HSeparator4" type="HSeparator" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 307.0
+offset_bottom = 18.0
+mouse_filter = 1
+theme_override_constants/separation = 14
+
+[node name="VSpace10" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 22.0
+offset_right = 307.0
+offset_bottom = 27.0
+theme_override_constants/margin_top = 5
+
+[node name="CenterContainer4" type="CenterContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 31.0
+offset_right = 307.0
+offset_bottom = 53.0
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/UnitSettingsControl/CenterContainer4"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "UNIT_SETTINGS"
+
+[node name="VSpace11" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 57.0
+offset_right = 307.0
+offset_bottom = 62.0
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer7" type="HSplitContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 66.0
+offset_right = 307.0
+offset_bottom = 98.0
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer7/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "SELECTED"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnitTextureRect" type="TextureRect" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer7/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_3vf0p")
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer7/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 13
+
+[node name="VSpace12" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 102.0
+offset_right = 307.0
+offset_bottom = 107.0
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer8" type="HSplitContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 111.0
+offset_right = 307.0
+offset_bottom = 148.0
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "OWNER"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnitOwnerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+selected = 0
+popup/item_0/text = "Player 1"
+popup/item_0/icon = SubResource("GradientTexture2D_oq61q")
+popup/item_0/id = 0
+popup/item_1/text = "Player 2"
+popup/item_1/icon = SubResource("GradientTexture2D_oq61q")
+popup/item_1/id = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 13
+
+[node name="VSpace13" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 152.0
+offset_right = 307.0
+offset_bottom = 157.0
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer9" type="HSplitContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 161.0
+offset_right = 307.0
+offset_bottom = 184.0
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer9/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "HEALTH"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnitHealthSpin" type="SpinBox" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer9/HFlowContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 1
+alignment = 2
+update_on_text_changed = true
+
+[node name="VSpace14" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 188.0
+offset_right = 307.0
+offset_bottom = 193.0
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer10" type="HSplitContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 197.0
+offset_right = 307.0
+offset_bottom = 220.0
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer10/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "FUEL"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnitFuelSpin" type="SpinBox" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer10/HFlowContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 1
+max_value = 1000.0
+alignment = 2
+update_on_text_changed = true
+
+[node name="VSpace15" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 224.0
+offset_right = 307.0
+offset_bottom = 229.0
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer11" type="HSplitContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl"]
+layout_mode = 2
+offset_top = 233.0
+offset_right = 307.0
+offset_bottom = 256.0
+split_offset = -40
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "AMMO"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnitAmmoSpin" type="SpinBox" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11/HFlowContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 1
+alignment = 2
+update_on_text_changed = true
+
+[node name="GrayBackground" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.423529)
+script = SubResource("GDScript_dh5nv")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_qg74o")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 647.0
+offset_top = 237.0
+offset_right = -661.0
+offset_bottom = -238.0
+grow_horizontal = 2
+grow_vertical = 2
+title = "MAP_EDITOR"
+
+[node name="Resize" type="Button" parent="MainMenu" node_paths=PackedStringArray("next_menu")]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 65.0
+grow_horizontal = 2
+text = "RESIZE"
+icon = SubResource("AtlasTexture_v0wol")
+script = ExtResource("7_2x4d3")
+next_menu = NodePath("../../ResizeMenu")
+
+[node name="Save" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 72.0
+offset_bottom = 137.0
+grow_horizontal = 2
+text = "SAVE"
+icon = SubResource("AtlasTexture_b0aoq")
+script = ExtResource("3_tilmt")
+
+[node name="Load" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 144.0
+offset_bottom = 209.0
+grow_horizontal = 2
+text = "LOAD"
+icon = SubResource("AtlasTexture_vhnip")
+script = ExtResource("3_tilmt")
+
+[node name="Exit" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 216.0
+offset_bottom = 281.0
+grow_horizontal = 2
+text = "EXIT_TO_MENU"
+icon = SubResource("AtlasTexture_3lvce")
+script = ExtResource("3_tilmt")
+
+[node name="Close" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "CONTINUE"
+icon = SubResource("AtlasTexture_66ra6")
+script = ExtResource("3_tilmt")
+
+[node name="ResizeMenu" parent="." instance=ExtResource("2_qg74o")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 647.0
+offset_top = 237.0
+offset_right = -661.0
+offset_bottom = -238.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_41mtq")
+title = "RESIZE"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResizeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -194.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "Resize map"
+horizontal_alignment = 1
+
+[node name="LabelHorizontal" type="Label" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "HORIZONTAL"
+
+[node name="Horizontal" type="HSlider" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+min_value = 5.0
+max_value = 50.0
+value = 20.0
+
+[node name="HorizontalSize" type="Label" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "20"
+horizontal_alignment = 1
+
+[node name="LabelVertical" type="Label" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "VERTICAL"
+
+[node name="Vertical" type="HSlider" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+min_value = 5.0
+max_value = 50.0
+value = 20.0
+
+[node name="VerticalSize" type="Label" parent="ResizeMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "20"
+horizontal_alignment = 1
+
+[node name="Accept" type="Button" parent="ResizeMenu"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -137.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "ACCEPT"
+script = ExtResource("3_tilmt")
+
+[node name="Cancel" type="Button" parent="ResizeMenu" node_paths=PackedStringArray("next_menu")]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "CANCEL"
+script = ExtResource("7_2x4d3")
+next_menu = NodePath("../../MainMenu")
+
+[node name="LoadFileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+initial_position = 1
+size = Vector2i(450, 334)
+ok_button_text = "Open"
+cancel_button_text = "CANCEL"
+file_mode = 0
+access = 1
+root_subfolder = "maps"
+filters = PackedStringArray("*.crm")
+use_native_dialog = true
+
+[connection signal="map_resized" from="." to="." method="_on_map_resized"]
+[connection signal="tab_changed" from="TabBar" to="TabBar" method="_on_tab_changed"]
+[connection signal="pressed" from="Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="Remove" to="." method="_on_remove_pressed"]
+[connection signal="text_changed" from="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer/HFlowContainer/NameLine" to="." method="_on_name_line_text_changed"]
+[connection signal="text_changed" from="MapSettings/VBoxContainer/MapSettingsControl/HBoxContainer2/HFlowContainer/AuthorLine" to="." method="_on_author_line_text_changed"]
+[connection signal="item_selected" from="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3/HFlowContainer/PlayerOptionButton" to="." method="_on_player_option_button_item_selected"]
+[connection signal="value_changed" from="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainerMoney/HFlowContainer/MoneySpin" to="." method="_on_money_spin_value_changed"]
+[connection signal="item_selected" from="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner/HFlowContainer/TerrainOwnerOptionButton" to="." method="_on_terrain_owner_option_button_item_selected"]
+[connection signal="item_selected" from="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8/HFlowContainer/UnitOwnerOptionButton" to="." method="_on_unit_owner_option_button_item_selected"]
+[connection signal="value_changed" from="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer9/HFlowContainer/UnitHealthSpin" to="." method="_on_unit_health_spin_value_changed"]
+[connection signal="value_changed" from="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer10/HFlowContainer/UnitFuelSpin" to="." method="_on_unit_fuel_spin_value_changed"]
+[connection signal="value_changed" from="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer11/HFlowContainer/UnitAmmoSpin" to="." method="_on_unit_ammo_spin_value_changed"]
+[connection signal="pressed" from="MainMenu/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="MainMenu/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="MainMenu/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MainMenu/Close" to="." method="_on_close_pressed"]
+[connection signal="value_changed" from="ResizeMenu/VBoxContainer/Horizontal" to="ResizeMenu" method="_on_horizontal_value_changed"]
+[connection signal="value_changed" from="ResizeMenu/VBoxContainer/Vertical" to="ResizeMenu" method="_on_vertical_value_changed"]
+[connection signal="pressed" from="ResizeMenu/Accept" to="ResizeMenu" method="_on_accept_pressed"]
+[connection signal="canceled" from="LoadFileDialog" to="." method="_on_load_file_dialog_canceled"]
+[connection signal="file_selected" from="LoadFileDialog" to="." method="_on_load_file_dialog_file_selected"]

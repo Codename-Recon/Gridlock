@@ -1,4 +1,4 @@
-@icon("res://assets/images/icons/car-outline.svg")
+@icon("res://assets/images/icons/nodes/car-outline.svg")
 @tool
 class_name Unit
 extends Node2D
@@ -35,9 +35,7 @@ enum State{
 @export var player_owned: Player:
 	set(value):
 		player_owned = value
-		if value:
-			self.shader_modulate = true
-			self.color = value.color
+		_update_color()
 
 @export var id: String
 
@@ -60,16 +58,28 @@ var _last_position: Vector2 = position
 var _state: State = State.STANDING
 
 var _types: GlobalTypes = Types
+var _global: GlobalGlobal = Global
 
-@onready var _unit_stats: UnitStats = $UnitStats as UnitStats
-@onready var _animation_player: AnimationPlayer = $AnimationPlayer as AnimationPlayer
-@onready var _sprite: Node2D = $Sprite2D as Node2D
-@onready var _audio_move: AudioStreamPlayer2D = $AudioMove as AudioStreamPlayer2D
+@onready var stats: UnitStats = $UnitStats
+@onready var sprite: Node2D = $Sprite2D
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer
+@onready var _audio_move: AudioStreamPlayer2D = $AudioMove
+
+func get_texture() -> Texture:
+	if sprite is AnimatedSprite2D:
+		var animation_sprite: AnimatedSprite2D = sprite
+		return animation_sprite.sprite_frames.get_frame_texture("default", 0)
+	if sprite is Sprite2D:
+		var sprite2d: Sprite2D = sprite
+		return sprite2d.texture
+	return null
+
 
 func get_possible_terrains_to_move() -> Array[Terrain]:
 	if _possible_terrains_to_move_calculating:
 		await possible_terrains_to_move_calculated
 	return _possible_terrains_to_move_buffer
+
 
 func calculate_possible_terrains_to_move() -> void:
 	_possible_terrains_to_move_calculating = true
@@ -77,19 +87,21 @@ func calculate_possible_terrains_to_move() -> void:
 	_possible_terrains_to_move_buffer = []
 	# fuel limits possible movement steps
 	var possible_movement_steps: int
-	if _types.units[id]["mp"] < get_unit_stats().fuel:
+	if _types.units[id]["mp"] < stats.fuel:
 		possible_movement_steps = _types.units[id]["mp"]
 	else:
-		possible_movement_steps = get_unit_stats().fuel
+		possible_movement_steps = stats.fuel
 	_move(parent, _possible_terrains_to_move_buffer, possible_movement_steps, Vector2.ZERO, 0)
 	_possible_terrains_to_move_calculating = false
 	possible_terrains_to_move_calculated.emit()
+
 
 func get_possible_terrains_to_attack_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
 	var terrains: Array[Terrain] = []
 	var max_range: int = _types.units[id]["max_range"]
 	_attack(start_terrain, terrains, max_range, Vector2.ZERO, 0)
 	return terrains
+
 
 func get_neighbors_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
 	var terrains:Array[Terrain] = []
@@ -99,36 +111,35 @@ func get_neighbors_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
 	terrains.append(start_terrain.get_right())
 	return terrains
 
-func get_unit_stats() -> UnitStats:
-	return $UnitStats as UnitStats
 
 func refill() -> void:
 	var sound: GlobalSound = Sound as GlobalSound
 	sound.play("Refill")
-	_unit_stats.fuel = _types.units[id]["fuel"]
-	_unit_stats.ammo = _types.units[id]["ammo"]
+	stats.fuel = _types.units[id]["fuel"]
+	stats.ammo = _types.units[id]["ammo"]
 
 func repair(health: int) -> void:
 	var sound: GlobalSound = Sound as GlobalSound
 	sound.play("Repair")
-	_unit_stats.health += health
+	stats.health += health
+
 
 # capture building on terrain currently standing on. returns true on success
 func capture() -> bool:
-	_unit_stats.capturing = true
-	if get_terrain().capture(_unit_stats.health, player_owned):
-		_unit_stats.capturing = false
+	stats.capturing = true
+	if get_terrain().capture(stats.health, player_owned):
+		stats.capturing = false
 		return true
 	else:
 		return false
 
 func uncapture() -> void:
-	_unit_stats.capturing = false
+	stats.capturing = false
 	get_terrain().uncapture()
 
 
 func is_capturing() -> bool:
-	return _unit_stats.capturing
+	return stats.capturing
 
 
 func get_terrain() -> Terrain:
@@ -137,6 +148,19 @@ func get_terrain() -> Terrain:
 
 func is_on_terrain() -> bool:
 	return get_terrain() != null
+
+
+func get_map() -> Map:
+	if not is_on_terrain():
+		return null
+	if not get_terrain().get_parent() is Map:
+		return null
+	var map: Map = get_terrain().get_parent()
+	return map
+
+
+func is_on_map() -> bool:
+	return get_map() != null
 
 
 func play_attack() -> void:
@@ -163,27 +187,15 @@ func look_at_plane_global_tween(global_point_position: Vector2) -> void:
 	pass
 
 
-func get_terrain_on_point(point: Vector2) -> Terrain:
-	var terrains: Array[Node] = get_tree().get_nodes_in_group("terrain")
-	terrains = terrains.filter(func(t: Terrain) -> bool: 
-		var pos: Vector2 = t.global_position
-		return round(pos.x) == round(point.x) and round(pos.y) == round(point.y))
-	var terrain: Terrain
-	if len(terrains) > 0:
-		terrain = terrains[0]
-	else:
-		terrain = null
-	return terrain
-
-
 func _ready() -> void:
 	z_index = 1
 	if not Engine.is_editor_hint():
-		get_unit_stats().round_over_changed.connect(_round_over_changed)
+		stats.round_over_changed.connect(_round_over_changed)
 		add_to_group("unit")
 		_set_unit_stars()
 		calculate_possible_terrains_to_move.call_deferred()
-		_sprite.modulate = Color.WHITE
+		sprite.modulate = Color.WHITE
+		_update_color()
 
 
 func _process(delta: float) -> void:
@@ -205,16 +217,22 @@ func _process(delta: float) -> void:
 			_animation_player.play("idle")
 
 func _enter_tree() -> void:
-	# if it's terrain
-	if get_parent().has_method("get_move_on_global_position"):
+	if is_on_map():
+		get_map().units.append(self)
+	if is_on_terrain():
 		global_position = (get_parent() as Terrain).get_move_on_global_position()
 
 
+func _exit_tree() -> void:
+	if is_on_map():
+		get_map().units.erase(self)
+
+
 func _round_over_changed() -> void:
-	if(get_unit_stats().round_over):
-		_sprite.modulate = ProjectSettings.get_setting("global/round_overlay")
+	if(stats.round_over):
+		sprite.modulate = ProjectSettings.get_setting("global/round_overlay")
 	else:
-		_sprite.modulate = Color.WHITE
+		sprite.modulate = Color.WHITE
 
 
 func _attack(start: Terrain, terrains: Array, distance_left: int, direction: Vector2, step: int) -> void:
@@ -294,7 +312,7 @@ func _move_on_curve() -> void:
 			var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 			var time: float = ProjectSettings.get_setting("global/unit_move_tween_time") as float
 			tween.tween_property(follow, "progress_ratio", 1, time)
-			get_unit_stats().fuel -= move_curve.get_point_count() - 1
+			stats.fuel -= move_curve.get_point_count() - 1
 			await tween.finished
 			_animation_player.play("RESET")
 			_end_move()
@@ -303,7 +321,7 @@ func _move_on_curve() -> void:
 
 
 func _end_move() -> void:
-	var terrain: Terrain = get_terrain_on_point(global_position)
+	var terrain: Terrain = _global.last_loaded_map.get_terrain_by_position(global_position)
 	var tmp_transform: Transform3D = global_transform
 	reparent(terrain)
 	global_transform = tmp_transform
@@ -316,5 +334,15 @@ func _end_move() -> void:
 
 
 func _set_unit_stars() -> void:
-	if _unit_stats and is_on_terrain():
-		_unit_stats.star_number = _types.terrains[get_terrain().id]["defense"]
+	if stats and is_on_terrain():
+		stats.star_number = _types.terrains[get_terrain().id]["defense"]
+
+
+func _update_color() -> void:
+	if player_owned:
+		shader_modulate = true
+		color = player_owned.color
+	else:
+		shader_modulate = true
+		var neutral_color: Color = ProjectSettings.get_setting("game/neutral_color")
+		color = neutral_color

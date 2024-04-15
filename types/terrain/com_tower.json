@@ -1,12 +1,12 @@
 {
   "name": "COM_TOWER",
-  "description": "A Com Tower (Communication Tower) is a property for enhancing the skills of allied units. Each captured tower increases its allied units' attack strength by 10%.",
-  "type": 14,
+  "description": "COM_TOWER_DESCRIPTION",
   "defense": 3,
   "health": 0,
   "can_capture": true,
   "capture_value": 0,
   "owner": 0,
   "funds": 1000,
-  "ammo": 0
+  "ammo": 0,
+  "shop_units": [] 
 }

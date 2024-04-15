@@ -1,8 +1,9 @@
 class_name GameInput
 extends Camera2D
 
-signal input_first
-signal input_second
+signal input_first(terrain: Terrain)
+signal input_second(terrain: Terrain)
+signal input_dragging(terrain: Terrain)
 signal input_escape
 signal selection_changed(terrain: Terrain)
 
@@ -36,6 +37,7 @@ var input_enabled: bool = true:
 var zoom_enabled: bool = true
 var camera_movement_enabled: bool = true
 var button_enabled: bool = true
+var selection_enabled: bool = true
 var selection_movement_enabled: bool = true:
 	set(value):
 		selection_movement_enabled = value
@@ -85,12 +87,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not input_enabled:
 		return
 	if button_enabled:
-		if event.is_action_pressed("select_first"):
-			is_just_first = true
-		if event.is_action_pressed("select_second"):
-			is_just_second = true
+		if selection_enabled and selection.is_mouse_still_inside():
+			if event.is_action_pressed("select_first"):
+				is_just_first = true
+				input_first.emit(await selection.last_terrain)
+				input_dragging.emit(await selection.last_terrain)
+			if event.is_action_pressed("select_second"):
+				is_just_second = true
+				input_second.emit(await selection.last_terrain)
 		if event.is_action_pressed("escape"):
 			is_just_escape = true
+			input_escape.emit()
 	if zoom_enabled:
 		if event.is_action_pressed("zoom_out") and _target_camera_zoom.x > _camera_min_zoom:
 			var tween: Tween = create_tween()
@@ -101,5 +108,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			_target_camera_zoom = zoom + _camera_zoom_speed * Vector2.ONE
 			tween.tween_property(self, "zoom", _target_camera_zoom, 0.1)
 
+
 func _on_selection_changed(terrain: Terrain) -> void:
 	selection_changed.emit(terrain)
+	if button_enabled and Input.is_action_pressed("select_first") and selection.is_mouse_still_inside():
+		input_dragging.emit(terrain)

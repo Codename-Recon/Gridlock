@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dc3i5x6c2hdef"]
+[gd_scene load_steps=14 format=3 uid="uid://dc3i5x6c2hdef"]
 
 [ext_resource type="Script" path="res://logic/globals/sound.gd" id="1_edwok"]
 [ext_resource type="AudioStream" uid="uid://cceg53cljfnr2" path="res://assets/sounds/toggle_001.ogg" id="2_chb2a"]
@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://ch6eydpi2s03s" path="res://assets/sounds/chipsHandle6.ogg" id="9_fnkdx"]
 [ext_resource type="AudioStream" uid="uid://4ec26uofkvxi" path="res://assets/sounds/scroll_001.ogg" id="10_0e73r"]
 [ext_resource type="AudioStream" uid="uid://c6t87v27x52ul" path="res://assets/sounds/question_003.ogg" id="11_wckng"]
+[ext_resource type="AudioStream" uid="uid://dahdl6hibs76" path="res://assets/sounds/pluck_002.ogg" id="12_mqwvq"]
+[ext_resource type="AudioStream" uid="uid://dh1v8il3jhsek" path="res://assets/sounds/drop_002.ogg" id="12_ubel3"]
 
 [node name="Sound" type="Node"]
 script = ExtResource("1_edwok")
@@ -55,4 +57,14 @@ script = ExtResource("3_midku")
 [node name="Refill" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_wckng")
 volume_db = -20.0
+script = ExtResource("3_midku")
+
+[node name="Drop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_mqwvq")
+volume_db = -5.0
+script = ExtResource("3_midku")
+
+[node name="Drop2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ubel3")
+volume_db = -10.0
 script = ExtResource("3_midku")

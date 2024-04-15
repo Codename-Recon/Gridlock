@@ -23,3 +23,4 @@ runs:
         VERSION=${COMMIT_SHA:0:7}
         echo $VERSION
         sed -i "s|$VERSION_REGEX|$VERSION|g" client/levels/menu.tscn # Replace the literal string '<VERSION>' with the new constant declaration
+        sed -i "s|$VERSION_REGEX|$VERSION|g" client/project.godot # Replace the literal string '<VERSION>' with the new constant declaration
