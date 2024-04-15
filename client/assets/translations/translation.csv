@@ -1,36 +1,36 @@
 keys,en,de,fr
-REFILLED,Refilled,aufgef?llt,rempli
-ENTERED,Entered,eingestiegen,entr?
-DEPLOYED,Deployed,abgesetzt,abandonn?
-JOINED,Joined,fusioniert,fusionn?
+REFILLED,Refilled,aufgefüllt,rempli
+ENTERED,Entered,eingestiegen,entré
+DEPLOYED,Deployed,abgesetzt,abandonné
+JOINED,Joined,fusioniert,fusionné
 ,,,
 TUTORIAL,Tutorial,Tutorial,Didacticiel
 CAMPAIGN,Campaign,Kampagne,campagne
 VS_AI,VS AI,VS KI,contre IA
 VS_PLAYER,VS Player,VS Spieler,contre joueur
 START,Start,Start,commencer
-BACK,Back,Zur?ck,revenir
+BACK,Back,Zurück,revenir
 REFRESH,Refresh,Aktualisieren,actualiser
 MP_JOIN,Join,Beitreten,rejoindre
 MP_KICK,Kick,Rauswerfen,virer
-HOST,Host,Erstellen,h?te
+HOST,Host,Erstellen,hôte
 SINGLEPLAYER,Singleplayer,Einzelspieler,joueur unique
 HOT_SEAT,Hot Seat,Hot Seat,hot seat
-RANKED,Ranked,Rangliste,palmar?s
+RANKED,Ranked,Rangliste,palmarès
 LOBBY,Lobby,Lobby,lobby
-SETTINGS,Settings,Einstellungen,r?glages
-CREDITS,Credits,Credits,cr?dits
+SETTINGS,Settings,Einstellungen,réglages
+CREDITS,Credits,Credits,crédits
 EXIT,Exit,Exit,Sortir
 CLOSE,Close,Schliessen,proche
 GRAPHICS,Graphics,Grafik,graphiques
-ANTI_ALIASING,AntiAliasing,Kantengl?ttung,anti cr?nelage
+ANTI_ALIASING,AntiAliasing,Kantenglättung,anti crénelage
 SHADOWS,Shadows,Schatten,ombre
 AUDIO,Audio,Audio,audio
 MUSIC,Music,Musik,musique
 SOUND,Sound,Ton,son
-MAP_SELECTION,Map Selection,Map-Auswahl,s?lection de la carte
+MAP_SELECTION,Map Selection,Map-Auswahl,sélection de la carte
 USERNAME,Username,Benutzername,Nom d'utilisateur
-MENU,Menu,Men?,menu
+MENU,Menu,Menü,menu
 EXIT_TO_MENU,Exit to Menu,Beenden,quitter au menu
 CONTINUE,Continue,Weiter,continuer
 MAP_EDITOR,Map Editor,,
@@ -67,27 +67,27 @@ MEDIUM,Medium,Mittel,moyen
 HIGH,High,Hoch,haute
 ULTRA,Ultra,Ultra,ultra
 ,,,
-MAIN_MENU,Main,Hauptmen?,menu principal
+MAIN_MENU,Main,Hauptmenü,menu principal
 SINGLEPLAYER_MENU,Singleplayer,Einzelspieler,joueur unique
 MULTIPLAYER_MENU,Multiplayer,Mehrspieler,multijoueur
-SETTING_MENU,Settings,Einstellungen,param?tres
+SETTING_MENU,Settings,Einstellungen,paramètres
 LOGIN_MENU,Login,Anmeldung,connexion
 LOBBY_MENU,Lobby,Lobby,lobby
 ,,,
-MOVE,Move,Bewegen,d?placer
+MOVE,Move,Bewegen,déplacer
 ATTACK,Attack,Angreifen,attaque
 ENTER,Enter,Einsteigen,entrer
-DEPLOY,Deploy,Absetzten,sevr?
+DEPLOY,Deploy,Absetzten,sevré
 JOIN,Join,Fusionieren,fusionner
-SUPPLY,Supply,Auff?llen,remplir
+SUPPLY,Supply,Auffüllen,remplir
 CAPTURE,Capture,Einnehmen,prendre
 BUY,Buy,Kaufen,acheter
-SELECT,Select,Ausw?hlen,s?lectionner
-NEXT_ROUND,Next Round,N?chste Runde,tour suivant
+SELECT,Select,Auswählen,sélectionner
+NEXT_ROUND,Next Round,Nächste Runde,tour suivant
 ,,,
 MESSAGE_TITLE_PLAYER_LEFT,Player left,Spieler verlassen,quitter le joueur
-MESSAGE_TEXT_PLAYER_LEFT,Your opponent left the game. You will be brought back to the menu.,Dein Gegner hat das Spiel verlassen. Du wirst zum Men? zur?ckgebracht.,Votre adversaire a quitt? la partie. Vous serez ramen? au menu.
-MESSAGE_TITLE_LOBBY_CONNECTION_PROBLEM,Connection Problem,Verbindungsproblem,Probl?me de connection
+MESSAGE_TEXT_PLAYER_LEFT,Your opponent left the game. You will be brought back to the menu.,Dein Gegner hat das Spiel verlassen. Du wirst zum Menü zurückgebracht.,Votre adversaire a quitté la partie. Vous serez ramené au menu.
+MESSAGE_TITLE_LOBBY_CONNECTION_PROBLEM,Connection Problem,Verbindungsproblem,Problème de connection
 MESSAGE_TEXT_LOBBY_CONNECTION_PROBLEM,Cannot connect to the lobby server.,Es kann keine Verbindung zum Lobby-Server hergestellt werden.,Impossible de se connecter au serveur du lobby.
 MESSAGE_TITLE_MAP_EDITOR_SAVE_NO_NAME,Missing Map Name,,
 MESSAGE_TEXT_MAP_EDITOR_SAVE_NO_NAME,Please provide a map name.,,
