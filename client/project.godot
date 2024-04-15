@@ -50,7 +50,6 @@ gdscript/warnings/integer_division=0
 window/size/viewport_width=1600
 window/size/viewport_height=900
 window/size/mode=3
-window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://assets/images/theme/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(10, 0)
 window/size/mode.debug=0

@@ -6,10 +6,10 @@ signal round_change_ended
 @export var _move_arrow: PackedScene
 @export var _floating_info: PackedScene
 
-@onready var _action_panel: ActionPanel = $"../../Interface/ActionPanel"
+@onready var _action_panel: ActionPanel = %ActionPanel
 @onready var _round_button: Button = %RoundButton
 @onready var _round_label: RoundLabel = %RoundLabel
-@onready var _round_rect: Polygon2D = %RoundRect
+@onready var _round_rect: ColorRect = %RoundRect
 @onready var _round_number_label: Label = %RoundNumberLabel
 @onready var _money_label: Label = %MoneyLabel
 @onready var _animation_player: AnimationPlayer = %AnimationPlayer

@@ -1,11 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://crj13jqmktmtn"]
+[gd_scene load_steps=43 format=3 uid="uid://crj13jqmktmtn"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
 [ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_s3gg3"]
 [ext_resource type="AudioStream" uid="uid://bochpfaxckbqm" path="res://assets/musics/Cyberpunk Moonlight Sonata v2.mp3" id="2_pyafi"]
-[ext_resource type="Script" path="res://logic/game/viewport.gd" id="4_qshs6"]
-[ext_resource type="Texture2D" uid="uid://dmp3yy3lmavys" path="res://assets/images/game/menu/background.png" id="5_p3s4b"]
+[ext_resource type="Texture2D" uid="uid://bbhva0hqxsspk" path="res://assets/images/game/menu/background.jpg" id="5_e7t5i"]
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="7_1imcl"]
 [ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="9_ekkjc"]
 [ext_resource type="PackedScene" uid="uid://b6kyqmss2ywu" path="res://logic/ui/map_selection_element.tscn" id="16_yagnk"]
@@ -188,34 +187,16 @@ music = ExtResource("2_pyafi")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_s3gg3")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_layout_mode = 1
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-disable_3d = true
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-audio_listener_enable_3d = true
-size = Vector2i(1600, 900)
-render_target_update_mode = 4
-script = ExtResource("4_qshs6")
-
-[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport"]
-
-[node name="Background" type="Sprite2D" parent="SubViewportContainer/SubViewport/Node2D"]
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("5_p3s4b")
-centered = false
-
-[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/Node2D"]
-offset_right = 40.0
-offset_bottom = 40.0
+texture = ExtResource("5_e7t5i")
+expand_mode = 5
+stretch_mode = 6
 
 [node name="MainMenu" parent="." instance=ExtResource("1_6wj44")]
 layout_mode = 1
