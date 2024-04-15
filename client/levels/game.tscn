@@ -781,6 +781,7 @@ color = Color(0, 0, 0, 0.423529)
 
 [node name="EscapeMenu" parent="Interface/EscapePanel" instance=ExtResource("26_j0w8f")]
 layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -831,6 +832,7 @@ script = ExtResource("29_fbj1t")
 [node name="SettingsMenu" parent="Interface/EscapePanel" instance=ExtResource("26_j0w8f")]
 visible = false
 layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
