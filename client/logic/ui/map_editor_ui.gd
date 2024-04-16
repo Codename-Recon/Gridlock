@@ -71,8 +71,12 @@ func _ready() -> void:
 		for child: Node in tile_container.get_children():
 			tile_container.remove_child(child)
 		var source: TileSetAtlasSource = tile_set.get_source(0)
-		for i: int in source.get_tiles_count():
-			var atlas_coords: Vector2i = source.get_tile_id(i)
+		# Sort tiles alphabetical so they are grouped up on the tile view
+		var sorted_tiles: Array = MapEditor.tile_lookup.keys()
+		sorted_tiles.sort_custom(func(a: String, b: String) -> bool: return a.naturalnocasecmp_to(b) < 0)
+		for tile_id: String in sorted_tiles:
+			var idx: int = MapEditor.tile_lookup[tile_id]
+			var atlas_coords: Vector2i = source.get_tile_id(idx)
 			var atlas: Texture2D = map_editor.get_texture_with_atlas_coords(atlas_coords)
 			var button: Button = Button.new()
 			button.icon = atlas
