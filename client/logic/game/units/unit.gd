@@ -211,7 +211,7 @@ func _process(delta: float) -> void:
 		elif abs(direction.angle_to(Vector2.RIGHT)) < 0.01:
 			_animation_player.play("moving_right")
 		_last_position = global_position
-	else:
+	elif not _animation_player.is_playing():
 		if _state != State.STANDING:
 			_state = State.STANDING
 			_animation_player.play("idle")
