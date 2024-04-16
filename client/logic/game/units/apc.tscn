@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://logic/game/audio_stream_player_spatial.gd" id="7_owkmv"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="9_rtjsu"]
 [ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="11_2ueb1"]
-[ext_resource type="AudioStream" uid="uid://cin8b6ejg3oby" path="res://assets/sounds/doorOpen_001.ogg" id="27_bx208"]
+[ext_resource type="AudioStream" uid="uid://cin8b6ejg3oby" path="res://assets/sounds/ui/doorOpen_001.ogg" id="27_bx208"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ugl4"]
 resource_local_to_scene = true

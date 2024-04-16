@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="29_fbj1t"]
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="29_jy0gc"]
 [ext_resource type="PackedScene" uid="uid://c4qct2liggfuy" path="res://logic/ui/settings_content.tscn" id="30_umdul"]
-[ext_resource type="AudioStream" uid="uid://kkificbsstvo" path="res://assets/sounds/confirmation_001.ogg" id="36_v003w"]
+[ext_resource type="AudioStream" uid="uid://kkificbsstvo" path="res://assets/sounds/ui/confirmation_001.ogg" id="36_v003w"]
 
 [sub_resource type="GDScript" id="GDScript_aos13"]
 script/source = "extends Control
