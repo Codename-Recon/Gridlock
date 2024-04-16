@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://lsu858yvaswd"]
+[gd_scene load_steps=8 format=3 uid="uid://lsu858yvaswd"]
 
+[ext_resource type="Texture2D" uid="uid://rtyseghcw68e" path="res://assets/images/game/game/background.jpg" id="1_3fgmx"]
 [ext_resource type="PackedScene" uid="uid://dj1137ma426k8" path="res://logic/ui/game_input.tscn" id="1_4rtpd"]
 [ext_resource type="Script" path="res://logic/ui/map_editor.gd" id="1_j3yxc"]
 [ext_resource type="TileSet" uid="uid://b6taw5w4s7s5i" path="res://assets/resources/game/tiles.tres" id="2_44dmf"]
@@ -34,6 +35,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = SubResource("GDScript_ofqvf")
+
+[node name="CanvasLayerBackground" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayerBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3fgmx")
+expand_mode = 5
+stretch_mode = 6
 
 [node name="GameInput" parent="." instance=ExtResource("1_4rtpd")]
 position = Vector2(496, 496)

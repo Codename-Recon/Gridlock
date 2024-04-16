@@ -1,8 +1,9 @@
-[gd_scene load_steps=50 format=3 uid="uid://cbc6sawc766k"]
+[gd_scene load_steps=51 format=3 uid="uid://cbc6sawc766k"]
 
 [ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_6xhvo"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_81uaa"]
 [ext_resource type="AudioStream" uid="uid://6ki6akqwsk8e" path="res://assets/musics/Immaculate_Command__Georges_DeMorgans_Theme_Codename_RECON.mp3" id="2_mnjkf"]
+[ext_resource type="Texture2D" uid="uid://rtyseghcw68e" path="res://assets/images/game/game/background.jpg" id="4_722ff"]
 [ext_resource type="Script" path="res://logic/game/viewport.gd" id="8_rh0i3"]
 [ext_resource type="PackedScene" uid="uid://dj1137ma426k8" path="res://logic/ui/game_input.tscn" id="8_sdp7e"]
 [ext_resource type="Script" path="res://logic/game/game.gd" id="9_gl6qd"]
@@ -472,6 +473,16 @@ mouse_filter = 1
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
+[node name="TextureRect" type="TextureRect" parent="Interface"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_722ff")
+expand_mode = 5
+stretch_mode = 6
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Interface"]
 layout_mode = 1
 anchors_preset = 15
@@ -485,6 +496,7 @@ metadata/_edit_use_custom_anchors = false
 
 [node name="SubViewport" type="SubViewport" parent="Interface/SubViewportContainer"]
 disable_3d = true
+transparent_bg = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
