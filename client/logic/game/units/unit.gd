@@ -203,18 +203,23 @@ func _process(delta: float) -> void:
 	if direction.length_squared() > 0.001:
 		_state = State.MOVING
 		if abs(direction.angle_to(Vector2.UP)) < 0.01:
-			_animation_player.play("moving_up")
+			if _animation_player.has_animation("moving_up"):
+				_animation_player.play("moving_up")
 		elif abs(direction.angle_to(Vector2.DOWN)) < 0.01:
-			_animation_player.play("moving_down")
+			if _animation_player.has_animation("moving_down"):
+				_animation_player.play("moving_down")
 		elif abs(direction.angle_to(Vector2.LEFT)) < 0.01:
-			_animation_player.play("moving_left")
+			if _animation_player.has_animation("moving_left"):
+				_animation_player.play("moving_left")
 		elif abs(direction.angle_to(Vector2.RIGHT)) < 0.01:
-			_animation_player.play("moving_right")
+			if _animation_player.has_animation("moving_right"):
+				_animation_player.play("moving_right")
 		_last_position = global_position
 	elif not _animation_player.is_playing():
 		if _state != State.STANDING:
 			_state = State.STANDING
-			_animation_player.play("idle")
+			if _animation_player.has_animation("idle"):
+				_animation_player.play("idle")
 
 func _enter_tree() -> void:
 	if is_on_map():
