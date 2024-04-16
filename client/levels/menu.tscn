@@ -29,9 +29,6 @@ func _ready() -> void:
 	($\"MainMenu\" as Control).show()
 	Music.change_music(music)
 	_multiplayer.client_role = _multiplayer.ClientRole.NONE
-	
-	
-func _init() -> void:
 	_global.reload_maps()
 "
 
