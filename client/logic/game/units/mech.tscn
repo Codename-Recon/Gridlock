@@ -359,7 +359,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_dr8md"]
 resource_name = "damage"
-length = 0.6
+length = 1.6
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -390,7 +390,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_dudry"]
 resource_name = "die"
-length = 0.8
+length = 1.8
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -439,7 +439,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_j5wee"]
 resource_name = "idle"
-length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -467,7 +466,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_q2wpr"]
 resource_name = "move_down"
-length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -495,7 +493,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_gsst1"]
 resource_name = "move_left"
-length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -523,7 +520,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_fuk1d"]
 resource_name = "move_right"
-length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -551,7 +547,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_qc48x"]
 resource_name = "move_up"
-length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

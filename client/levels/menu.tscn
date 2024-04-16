@@ -23,11 +23,13 @@ script/source = "extends Control
 @export var music: AudioStream
 
 var _multiplayer: GlobalMultiplayer = Multiplayer
+var _global: GlobalGlobal = Global
 
 func _ready() -> void:
 	($\"MainMenu\" as Control).show()
 	Music.change_music(music)
 	_multiplayer.client_role = _multiplayer.ClientRole.NONE
+	_global.reload_maps()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6p8hk"]

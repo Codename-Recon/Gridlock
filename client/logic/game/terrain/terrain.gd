@@ -139,9 +139,9 @@ func is_on_map() -> bool:
 
 func _ready() -> void:
 	if not sprite.material:
-		var material: ShaderMaterial = ShaderMaterial.new()
-		material.shader = _shader_resource
-		sprite.material = material
+		var shader_material: ShaderMaterial = ShaderMaterial.new()
+		shader_material.shader = _shader_resource
+		sprite.material = shader_material
 	# Add shop units
 	shop_units.clear()
 	for unit_id: String in _types.terrains[id]["shop_units"]:

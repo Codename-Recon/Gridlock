@@ -71,9 +71,13 @@ func _ready() -> void:
 		for child: Node in tile_container.get_children():
 			tile_container.remove_child(child)
 		var source: TileSetAtlasSource = tile_set.get_source(0)
-		for i: int in source.get_tiles_count():
-			var atlas_coords: Vector2i = source.get_tile_id(i)
-			var atlas: Texture2D = map_editor.get_texture_with_atlas_coords(atlas_coords)
+		# Sort tiles alphabetical so they are grouped up on the tile view
+		var sorted_tiles: Array = MapEditor.tile_lookup.keys()
+		sorted_tiles.sort_custom(func(a: String, b: String) -> bool: return a.naturalnocasecmp_to(b) < 0)
+		for tile_id: String in sorted_tiles:
+			var idx: int = MapEditor.tile_lookup[tile_id]
+			var atlas_coords: Vector2i = source.get_tile_id(idx)
+			var atlas: Texture2D = MapEditor.get_texture_with_atlas_coords(atlas_coords)
 			var button: Button = Button.new()
 			button.icon = atlas
 			button.pressed.connect(func() -> void: _on_tile_selected(button, atlas_coords))
@@ -260,7 +264,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_update_money_container()
 
 func _on_money_spin_value_changed(value: float) -> void:
-	map.get_player(player_option_button.selected).money = value
+	map.get_player(player_option_button.selected).money = round(value)
 
 
 func _on_terrain_owner_option_button_item_selected(index: int) -> void:
@@ -272,15 +276,15 @@ func _on_unit_owner_option_button_item_selected(index: int) -> void:
 
 
 func _on_unit_health_spin_value_changed(value: float) -> void:
-	_last_unit_edited.stats.health = value
+	_last_unit_edited.stats.health = round(value)
 
 
 func _on_unit_fuel_spin_value_changed(value: float) -> void:
-	_last_unit_edited.stats.fuel = value
+	_last_unit_edited.stats.fuel = round(value)
 
 
 func _on_unit_ammo_spin_value_changed(value: float) -> void:
-	_last_unit_edited.stats.ammo = value
+	_last_unit_edited.stats.ammo = round(value)
 
 
 func _on_name_line_text_changed(new_text: String) -> void:

@@ -27,11 +27,16 @@ func save_config(key: String, value: Variant, section: String = CONFIG_SECTION) 
 	config.save("user://config.cfg")
 
 
+func reload_maps() -> void:
+	maps.clear()
+	_load_maps(MAP_FOLDER_PATH)
+	_load_maps(MAP_CUSTOM_FOLDER_PATH)
+
+
 func _ready() -> void:
 	config.load("user://config.cfg")
 	_create_missing_folders()
-	_load_maps(MAP_FOLDER_PATH)
-	_load_maps(MAP_CUSTOM_FOLDER_PATH)
+
 
 func _create_missing_folders() -> void:
 	if not DirAccess.dir_exists_absolute(MAP_CUSTOM_FOLDER_PATH):

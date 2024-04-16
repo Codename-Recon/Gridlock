@@ -120,8 +120,8 @@ static func deserialize(json_map: String) -> Map:
 			var ground_tile_id: String = td["ground_tile_id"]
 			var texture: Texture2D = MapEditor.get_texture_with_tile_id(tile_id)
 			var ground_texture: Texture2D = MapEditor.get_texture_with_tile_id(ground_tile_id)
-			var owner: int = td["owner"]
-			map.create_terrain(terrain_id, tile_id, pos, texture, ground_texture, owner)
+			var terrain_owner: int = td["owner"]
+			map.create_terrain(terrain_id, tile_id, pos, texture, ground_texture, terrain_owner)
 			if td.get("unit") != null:
 				var ud: Dictionary = td["unit"]
 				var unit_id: String = ud["id"]
@@ -136,8 +136,8 @@ static func deserialize(json_map: String) -> Map:
 				unit.stats.health = unit_health
 				unit.stats.fuel = unit_fuel
 				unit.stats.ammo = unit_ammo
-				unit.stats.capturing = ud["capturing"]
-				unit.stats.map_hidden = ud["hidden"]
+				unit.stats.capturing = unit_capturing
+				unit.stats.map_hidden = unit_hidden
 				if unit.cargo:
 					var cargo_dic: Array[Dictionary] = ud["cargo"]
 					var cargo: Array[Unit] = []
