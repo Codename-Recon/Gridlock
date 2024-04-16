@@ -23,9 +23,9 @@ var map_size: Vector2i:
 			if n is Terrain:
 				var terrain: Terrain = n
 				if max_x < terrain.position.x:
-					max_x = terrain.position.x
+					max_x = round(terrain.position.x)
 				if max_y < terrain.position.y:
-					max_y = terrain.position.y
+					max_y = round(terrain.position.y)
 		return Vector2i(max_x, max_y) / ProjectSettings.get_setting("global/grid_size") + Vector2i.ONE
 
 static var predefined_terrains_packed_scenes: Dictionary:

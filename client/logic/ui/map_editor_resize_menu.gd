@@ -17,10 +17,10 @@ func _on_cancel_pressed() -> void:
 
 
 func _on_horizontal_value_changed(value: float) -> void:
-	new_size.x = value
-	horizontal_label.text = "%.0f" % value
+	new_size.x = round(value)
+	horizontal_label.text = "%.0f" % round(value)
 
 
 func _on_vertical_value_changed(value: float) -> void:
-	new_size.y = value
-	vertical_label.text = "%.0f" % value
+	new_size.y = round(value)
+	vertical_label.text = "%.0f" % round(value)

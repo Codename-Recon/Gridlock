@@ -126,10 +126,10 @@ func _place_tile(cell: Vector2i, tile_atlas_coords: Vector2i) -> void:
 
 func _create_terrain_on_map(cell: Vector2i) -> void:
 	var atlas_coords: Vector2i = tile_map.get_cell_atlas_coords(0, cell)
-	var texture: Texture2D = get_texture_with_atlas_coords(atlas_coords)
-	var data: Array[String] = get_data_with_altlas_coords(atlas_coords)
+	var texture: Texture2D = MapEditor.get_texture_with_atlas_coords(atlas_coords)
+	var data: Array[String] = MapEditor.get_data_with_altlas_coords(atlas_coords)
 	var ground_tile_id: String = data[2]
-	var ground_texture: Texture2D = get_texture_with_tile_id(ground_tile_id)
+	var ground_texture: Texture2D = MapEditor.get_texture_with_tile_id(ground_tile_id)
 	map.create_terrain(data[0], data[1], cell * tile_map.tile_set.tile_size, texture, ground_texture, _current_player_id)
 	# Change terrains which got changed by auto tiling
 	tile_map.update_internals()
@@ -138,10 +138,10 @@ func _create_terrain_on_map(cell: Vector2i) -> void:
 			continue
 		map.remove_terrain(changed_cell * tile_map.tile_set.tile_size)
 		atlas_coords = tile_map.get_cell_atlas_coords(0, changed_cell)
-		texture = get_texture_with_atlas_coords(atlas_coords)
-		data = get_data_with_altlas_coords(atlas_coords)
+		texture = MapEditor.get_texture_with_atlas_coords(atlas_coords)
+		data = MapEditor.get_data_with_altlas_coords(atlas_coords)
 		ground_tile_id = data[2]
-		ground_texture = get_texture_with_tile_id(ground_tile_id)
+		ground_texture = MapEditor.get_texture_with_tile_id(ground_tile_id)
 		map.create_terrain(data[0], data[1], changed_cell * tile_map.tile_set.tile_size, texture, ground_texture, _current_player_id)
 	_tile_buffer = _create_tile_buffer()
 
