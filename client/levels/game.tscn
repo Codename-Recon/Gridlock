@@ -68,8 +68,9 @@ func _on_music_finished() -> void:
 	
 func _set_music() -> void:
 	var new_music: AudioStream = musics.pick_random()
-	while _last_music == new_music:
-		new_music = musics.pick_random()
+	if musics.size() > 1:
+		while _last_music == new_music:
+			new_music = musics.pick_random()
 	Music.change_music(new_music)
 	_last_music = new_music
 "
