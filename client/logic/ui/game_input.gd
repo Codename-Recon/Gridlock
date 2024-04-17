@@ -87,11 +87,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not input_enabled:
 		return
 	if button_enabled:
-		if selection_enabled and selection.is_mouse_still_inside():
+		if selection_enabled:
 			if event.is_action_pressed("select_first"):
 				is_just_first = true
 				input_first.emit(await selection.last_terrain)
-				input_dragging.emit(await selection.last_terrain)
+				if selection.is_mouse_still_inside():
+					input_dragging.emit(await selection.last_terrain)
 			if event.is_action_pressed("select_second"):
 				is_just_second = true
 				input_second.emit(await selection.last_terrain)

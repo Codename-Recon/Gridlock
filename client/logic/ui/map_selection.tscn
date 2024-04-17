@@ -11,6 +11,7 @@ script/source = "extends Control
 @export var map_select_element_scene: PackedScene
 @export var next_button_text_override: String
 @export var game_mode: GameConst.GameMode
+@onready var camera_2d: Camera2D = %Camera2D
 
 @onready var _button_next: Button = %ButtonNext
 
@@ -56,7 +57,7 @@ func _on_element_clicked(map_json: String) -> void:
 	_global.selected_map_json = map_json
 	_global.game_mode = game_mode
 	_button_next.disabled = false
-
+	camera_2d.position = last_instantiated_map.map_center
 
 func _on_visibility_changed() -> void:
 	if visible:
@@ -136,6 +137,7 @@ size = Vector2i(600, 500)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="Panel/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
 position = Vector2(0, 4)
 scale = Vector2(1, 1e-05)
 

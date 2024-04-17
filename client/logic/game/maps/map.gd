@@ -15,6 +15,12 @@ const TERRAIN_STATS: PackedScene = preload("res://logic/ui/terrain_stats.tscn")
 var players: Node
 var terrains: Array[Terrain]
 var units: Array[Unit]
+var map_center: Vector2:
+	get:
+		var center: Vector2 = map_size - Vector2i.ONE
+		center *= ProjectSettings.get_setting("global/grid_size") as Vector2
+		center /= 2
+		return center
 var map_size: Vector2i:
 	get:
 		var max_x: int = 0

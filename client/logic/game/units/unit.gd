@@ -13,6 +13,10 @@ signal died
 enum State{
 	STANDING,
 	MOVING,
+	ATTACKING,
+	DAMAGING,
+	DYING,
+	REFILLING
 }
 
 @export var shader_modulate: bool = false:
@@ -164,19 +168,31 @@ func is_on_map() -> bool:
 
 
 func play_attack() -> void:
+	_state = State.ATTACKING
 	_animation_player.play("attack")
+	await _animation_player.animation_finished
+	_state = State.STANDING
 
 
 func play_damage() -> void:
+	_state = State.DAMAGING
 	_animation_player.play("damage")
+	await _animation_player.animation_finished
+	_state = State.STANDING
 
 
 func play_die() -> void:
+	_state = State.DYING
 	_animation_player.play("die")
+	await _animation_player.animation_finished
+	_state = State.STANDING
 
 
 func play_refill() -> void:
+	_state = State.REFILLING
 	_animation_player.play("refill")
+	await _animation_player.animation_finished
+	_state = State.STANDING
 
 
 func look_at_plane_global(global_point_position: Vector2) -> void:
@@ -200,21 +216,27 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var direction: Vector2 = global_position - _last_position
-	if direction.length_squared() > 0.001:
-		_state = State.MOVING
-		if abs(direction.angle_to(Vector2.UP)) < 0.01:
-			_animation_player.play("moving_up")
-		elif abs(direction.angle_to(Vector2.DOWN)) < 0.01:
-			_animation_player.play("moving_down")
-		elif abs(direction.angle_to(Vector2.LEFT)) < 0.01:
-			_animation_player.play("moving_left")
-		elif abs(direction.angle_to(Vector2.RIGHT)) < 0.01:
-			_animation_player.play("moving_right")
-		_last_position = global_position
-	else:
-		if _state != State.STANDING:
-			_state = State.STANDING
-			_animation_player.play("idle")
+	if _state == State.MOVING or _state == State.STANDING:
+		if direction.length_squared() > 0.001:
+			_state = State.MOVING
+			if abs(direction.angle_to(Vector2.UP)) < 0.01:
+				if _animation_player.has_animation("moving_up"):
+					_animation_player.play("moving_up")
+			elif abs(direction.angle_to(Vector2.DOWN)) < 0.01:
+				if _animation_player.has_animation("moving_down"):
+					_animation_player.play("moving_down")
+			elif abs(direction.angle_to(Vector2.LEFT)) < 0.01:
+				if _animation_player.has_animation("moving_left"):
+					_animation_player.play("moving_left")
+			elif abs(direction.angle_to(Vector2.RIGHT)) < 0.01:
+				if _animation_player.has_animation("moving_right"):
+					_animation_player.play("moving_right")
+			_last_position = global_position
+		else:
+			if _state != State.STANDING:
+				_state = State.STANDING
+				if _animation_player.has_animation("idle"):
+					_animation_player.play("idle")
 
 func _enter_tree() -> void:
 	if is_on_map():
