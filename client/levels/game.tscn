@@ -31,6 +31,9 @@ signal map_loaded
 
 @export var musics: Array[AudioStream]
 
+@onready var map_slot: Node = %MapSlot
+@onready var game_input: GameInput = %GameInput
+
 var _last_music: AudioStream
 var _global: GlobalGlobal = Global
 var _multiplayer: GlobalMultiplayer = Multiplayer
@@ -44,7 +47,7 @@ func _ready() -> void:
 	Music.music_finished.connect(_on_music_finished)
 	_set_music()
 	var map: Map = MapFile.deserialize(_global.selected_map_json)
-	%MapSlot.add_child(map)
+	map_slot.add_child(map)
 	map.name = \"Map\" # Renaming the map from generic name, so node path keeps consistent over network
 	match _global.game_mode:
 		GameConst.GameMode.SINGLE:
@@ -57,6 +60,7 @@ func _ready() -> void:
 		GameConst.GameMode.NETWORK:
 			for player: Player in map.players.get_children():
 				player.input_type = GameConst.InputType.NETWORK
+	game_input.position = map.map_center
 	map_loaded.emit()
 
 func _on_music_finished() -> void:
@@ -509,6 +513,7 @@ render_target_update_mode = 4
 script = ExtResource("8_rh0i3")
 
 [node name="GameInput" parent="Interface/SubViewportContainer/SubViewport" instance=ExtResource("8_sdp7e")]
+unique_name_in_owner = true
 
 [node name="MapSlot" type="Node" parent="Interface/SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
