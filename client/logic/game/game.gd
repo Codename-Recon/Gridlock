@@ -591,23 +591,24 @@ func _do_state_commanding_clicked_left() -> void:
 				return
 		# do direct attack (direct clicking on attackable unit)
 		elif last_selected_terrain in attackable_terrains and _types.units[last_selected_unit.id]["can_move_and_attack"]:
-			if _move_arrow_node.curve.point_count > 0:
-				var end_curve_terrain: Terrain = map.get_terrain_by_position(_move_arrow_node.curve.get_point_position(_move_arrow_node.curve.point_count - 1))
-				last_action_terrain = end_curve_terrain
-				if last_selected_terrain and last_selected_terrain.is_neighbor(end_curve_terrain):
-					# block direct attack, when path end has a unit, except when it's the unit itself (eg. attacking other unit next to it)
-					if not (end_curve_terrain.has_unit() and end_curve_terrain.get_unit() != last_selected_unit):
-						state = GameConst.State.ATTACKING
-						# to fire left click event
-						_simulated_first_click = true
-						_deselect_unit()
-						_unattack()
-						_unrefill()
-						_unenter()
-						_undeploy()
-						_unjoin()
-						_create_and_set_attack_area(last_selected_unit, last_action_terrain)
-						return
+			if _move_arrow_node.curve.point_count == 0:
+				_move_arrow_node.curve.add_point(last_selected_unit.get_terrain().position)
+			var end_curve_terrain: Terrain = map.get_terrain_by_position(_move_arrow_node.curve.get_point_position(_move_arrow_node.curve.point_count - 1))
+			last_action_terrain = end_curve_terrain
+			if last_selected_terrain and last_selected_terrain.is_neighbor(end_curve_terrain):
+				# block direct attack, when path end has a unit, except when it's the unit itself (eg. attacking other unit next to it)
+				if not (end_curve_terrain.has_unit() and end_curve_terrain.get_unit() != last_selected_unit):
+					state = GameConst.State.ATTACKING
+					# to fire left click event
+					_simulated_first_click = true
+					_deselect_unit()
+					_unattack()
+					_unrefill()
+					_unenter()
+					_undeploy()
+					_unjoin()
+					_create_and_set_attack_area(last_selected_unit, last_action_terrain)
+					return
 	_sound.play("Deselect")
 	state = GameConst.State.SELECTING
 	_deselect_unit()
@@ -992,7 +993,7 @@ func _do_state_ending(local: bool = true) -> void:
 # ui input gets only paths inside movable range
 func _update_move_arrow_ui_input() -> void:
 	var end_terrain: Terrain = last_mouse_terrain
-	# convert curve in packed vector 3 array since it is better to handle and backed points have wrong points in between
+	# convert curve in packed vector 2 array since it is better to handle and backed points have wrong points in between
 	var curve: PackedVector2Array = []
 	for i: int in _move_arrow_node.curve.point_count:
 		curve.append(_move_arrow_node.curve.get_point_position(i))
