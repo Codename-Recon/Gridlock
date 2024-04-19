@@ -53,6 +53,7 @@ enum State{
 				# to prevent emitting moved signal too fast the first move step should be called some time later (deferred). this is importand when moving on the same spot.
 				_move_on_curve.call_deferred()
 
+var cargo: Node
 
 var _possible_terrains_to_move_buffer: Array[Terrain]
 var _possible_terrains_to_move_calculating: bool
@@ -66,7 +67,6 @@ var _global: GlobalGlobal = Global
 @onready var sprite: Node2D = $Sprite2D
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _audio_move: AudioStreamPlayer2D = $AudioMove
-@onready var cargo: Node = $Cargo
 
 
 func get_texture() -> Texture:
@@ -212,6 +212,8 @@ func _ready() -> void:
 		calculate_possible_terrains_to_move.call_deferred()
 		sprite.modulate = Color.WHITE
 		_update_color()
+		if has_node("Cargo"):
+			cargo = $Cargo
 
 
 func _process(delta: float) -> void:
