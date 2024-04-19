@@ -61,7 +61,7 @@ func _ready() -> void:
 		GameConst.GameMode.NETWORK:
 			for player: Player in map.players.get_children():
 				player.input_type = GameConst.InputType.NETWORK
-	game_input.position = map.map_center
+	game_input.global_position = map.map_center
 	map_loaded.emit()
 
 func _on_music_finished() -> void:
