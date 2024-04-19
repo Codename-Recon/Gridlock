@@ -219,7 +219,7 @@ func _process_ai(delta: float) -> void:
 					# try capture nearest buildings
 					var unit_for_action_found: bool = false
 					for unit: Unit in map.units:
-						if "Infantry" in unit.name and unit.player_owned == player_turns[0] and not unit.stats.round_over:
+						if unit.id == "INFANTRY" and unit.player_owned == player_turns[0] and not unit.stats.round_over:
 							last_selected_unit = unit
 							_create_and_set_move_area(unit, false)
 							unit_for_action_found = false
@@ -302,8 +302,9 @@ func _process_ai(delta: float) -> void:
 							_create_and_set_move_area(unit, false)
 							var hq: Terrain
 							for terrain: Terrain in map.terrains:
-								if "HQ" in terrain.name and terrain.player_owned != player_turns[0]:
+								if terrain.id == "HQ" and terrain.player_owned != player_turns[0]:
 									hq = terrain
+									break
 							if hq:
 								last_action_terrain = hq
 								last_selected_unit = unit
@@ -344,8 +345,9 @@ func _process_ai(delta: float) -> void:
 							_create_and_set_move_area(unit, false)
 							var hq: Terrain
 							for terrain: Terrain in map.terrains:
-								if "HQ" in terrain.name and terrain.player_owned != player_turns[0]:
+								if terrain.id == "HQ" and terrain.player_owned != player_turns[0]:
 									hq = terrain
+									break
 							if hq:
 								last_action_terrain = hq
 								last_selected_unit = unit
@@ -364,7 +366,7 @@ func _process_ai(delta: float) -> void:
 							infantry_count += 1
 					if len(bases) > 0 and infantry_count <= len(bases) * 2:
 						last_selected_terrain = bases[0]
-						last_bought_unit = load("res://logic/game/units/infantry.tscn")
+						last_bought_unit = Map.predefined_units_packed_scenes["INFANTRY"]
 						state = GameConst.State.BUYING
 					else:
 						ai_phase += 1
