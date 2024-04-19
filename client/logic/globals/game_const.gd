@@ -54,3 +54,9 @@ enum GameMode {
 	HOTSEAT,
 	NETWORK
 }
+
+enum Weather {
+	CLEAR,
+	RAIN,
+	SNOW
+}
