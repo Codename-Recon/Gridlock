@@ -163,3 +163,5 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
 script = ExtResource("5_lxjfo")
+
+[node name="Cargo" type="Node" parent="."]
