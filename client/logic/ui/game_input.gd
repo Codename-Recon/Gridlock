@@ -7,6 +7,8 @@ signal input_dragging(terrain: Terrain)
 signal input_escape
 signal selection_changed(terrain: Terrain)
 
+const ZOOM_RESOLUTION: int = 128 # should be a base 2 number to prevent texture bleeding
+
 @onready var cursor: Cursor = $Decouple/Cursor
 @onready var selection: Selection = $Decouple/Selection
 
@@ -103,11 +105,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_pressed("zoom_out") and _target_camera_zoom.x > _camera_min_zoom:
 			var tween: Tween = create_tween()
 			_target_camera_zoom = zoom - _camera_zoom_speed * Vector2.ONE
-			tween.tween_property(self, "zoom", _target_camera_zoom, 0.1)
+			tween.tween_property(self, "zoom", round(_target_camera_zoom * ZOOM_RESOLUTION) / ZOOM_RESOLUTION, 0.1)
 		if event.is_action_pressed("zoom_in") and _target_camera_zoom.x < _camera_max_zoom:
 			var tween: Tween = create_tween()
 			_target_camera_zoom = zoom + _camera_zoom_speed * Vector2.ONE
-			tween.tween_property(self, "zoom", _target_camera_zoom, 0.1)
+			tween.tween_property(self, "zoom", round(_target_camera_zoom * ZOOM_RESOLUTION) / ZOOM_RESOLUTION, 0.1)
 
 
 func _on_selection_changed(terrain: Terrain) -> void:
