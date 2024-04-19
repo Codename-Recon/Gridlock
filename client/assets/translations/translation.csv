@@ -61,6 +61,8 @@ HEALTH,Health,,
 FUEL,Fuel,,
 AMMO,Ammo,,
 NEUTRAL,Neutral,,
+BUG_REPORT,Report a bug,,
+DISCUSSIONS,Discussions,,
 ,,,
 LOW,Low,Niedrig,bas
 MEDIUM,Medium,Mittel,moyen

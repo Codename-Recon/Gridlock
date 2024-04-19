@@ -14,6 +14,8 @@ signal round_change_ended
 @onready var _money_label: Label = %MoneyLabel
 @onready var _animation_player: AnimationPlayer = %AnimationPlayer
 @onready var _input: GameInput = $"../GameInput"
+@onready var map_slot: Node = %MapSlot
+
 
 var state: GameConst.State:
 	set(value):
@@ -1299,7 +1301,7 @@ func _on_round_button_pressed() -> void:
 
 
 func _on_game_map_loaded() -> void:
-	map = %MapSlot.get_child(0)
+	map = map_slot.get_child(0)
 	# get player list
 	for p: Player in map.players.get_children():
 		player_turns.append(p)

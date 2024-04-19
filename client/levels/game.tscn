@@ -53,14 +53,15 @@ func _ready() -> void:
 		GameConst.GameMode.SINGLE:
 			for player: Player in map.players.get_children():
 				player.input_type = GameConst.InputType.AI
-			map.get_player(1).input_type = GameConst.InputType.HUMAN
+			var first_player: Player = map.players.get_children()[0]
+			first_player.input_type = GameConst.InputType.HUMAN
 		GameConst.GameMode.HOTSEAT:
 			for player: Player in map.players.get_children():
 				player.input_type = GameConst.InputType.HUMAN
 		GameConst.GameMode.NETWORK:
 			for player: Player in map.players.get_children():
 				player.input_type = GameConst.InputType.NETWORK
-	game_input.position = map.map_center
+	game_input.global_position = map.map_center
 	map_loaded.emit()
 
 func _on_music_finished() -> void:

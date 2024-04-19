@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://crj13jqmktmtn"]
+[gd_scene load_steps=45 format=3 uid="uid://crj13jqmktmtn"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
@@ -173,6 +173,22 @@ script/source = "extends RichTextLabel
 
 func _on_rich_text_label_meta_clicked(meta: Variant) -> void:
 	OS.shell_open(str(meta))
+"
+
+[sub_resource type="GDScript" id="GDScript_d8r78"]
+script/source = "extends GameButton
+
+func _pressed() -> void:
+	super._pressed()
+	OS.shell_open(\"https://github.com/Codename-Recon/Codename-Recon/issues\")
+"
+
+[sub_resource type="GDScript" id="GDScript_yqdy7"]
+script/source = "extends GameButton
+
+func _pressed() -> void:
+	super._pressed()
+	OS.shell_open(\"https://github.com/Codename-Recon/Codename-Recon/discussions\")
 "
 
 [node name="Menu" type="Control"]
@@ -871,6 +887,31 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
 text = "<VERSION>"
 metadata/_edit_layout_mode = 1
+
+[node name="FlowContainer" type="FlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -64.0
+offset_right = 621.0
+offset_bottom = -24.0
+grow_vertical = 0
+
+[node name="BugReportButton" type="Button" parent="FlowContainer"]
+layout_mode = 2
+text = "BUG_REPORT"
+script = SubResource("GDScript_d8r78")
+
+[node name="HSpace" type="MarginContainer" parent="FlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+
+[node name="DiscussionsButton" type="Button" parent="FlowContainer"]
+layout_mode = 2
+text = "DISCUSSIONS"
+script = SubResource("GDScript_yqdy7")
 
 [connection signal="visibility_changed" from="MultiplayerMenu" to="MultiplayerMenu" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="MPLobbyListMenu" to="MPLobbyListMenu" method="_on_visibility_changed"]
