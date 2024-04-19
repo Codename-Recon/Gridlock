@@ -91,6 +91,10 @@ func get_possible_terrains_to_move() -> Array[Terrain]:
 
 
 func calculate_possible_terrains_to_move() -> void:
+	if not is_on_map():
+		_possible_terrains_to_move_buffer = []
+		possible_terrains_to_move_calculated.emit()
+		return
 	_possible_terrains_to_move_calculating = true
 	var terrains: Array[Terrain] = _global.last_loaded_map.terrains
 	terrains = Terrain.filter_terrains(terrains, self)
