@@ -11,6 +11,10 @@ This project is initiated by Mangs, the project leader, and is based on his visi
   </a>
 </p>
 
+## Play
+
+You can play the game directly in your browser or download the desktop version, both available here: [Play](https://hunter99.itch.io/codename-recon)
+
 ## Code Contribution 💻
 
 Thank you for your interest in contributing to our Godot Engine project! We welcome all contributions, be it bug reports, feature requests, or code improvements. To help ensure a smooth contribution experience and maintain consistency across our project, please read through the following guidelines:
