@@ -40,6 +40,7 @@ var zoom_enabled: bool = true
 var camera_movement_enabled: bool = true
 var button_enabled: bool = true
 var selection_enabled: bool = true
+var first_enabled: bool = true
 var selection_movement_enabled: bool = true:
 	set(value):
 		selection_movement_enabled = value
@@ -57,6 +58,7 @@ func enable_all() -> void:
 	camera_movement_enabled = true
 	button_enabled = true
 	selection_movement_enabled = true
+	first_enabled = true
 
 
 func _ready() -> void:
@@ -90,7 +92,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if button_enabled:
 		if selection_enabled:
-			if event.is_action_pressed("select_first"):
+			if first_enabled and event.is_action_pressed("select_first"):
 				is_just_first = true
 				input_first.emit(await selection.last_terrain)
 				if selection.is_mouse_still_inside():
@@ -114,5 +116,5 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_selection_changed(terrain: Terrain) -> void:
 	selection_changed.emit(terrain)
-	if button_enabled and Input.is_action_pressed("select_first") and selection.is_mouse_still_inside():
+	if button_enabled and first_enabled and Input.is_action_pressed("select_first") and selection.is_mouse_still_inside():
 		input_dragging.emit(terrain)

@@ -54,6 +54,11 @@ enum State{
 				_move_on_curve.call_deferred()
 
 var cargo: Node
+var possible_movement_steps: int:
+	get:
+		if _types.units[id]["mp"] < stats.fuel:
+			return _types.units[id]["mp"]
+		return stats.fuel
 
 var _possible_terrains_to_move_buffer: Array[Terrain]
 var _possible_terrains_to_move_calculating: bool
@@ -86,16 +91,33 @@ func get_possible_terrains_to_move() -> Array[Terrain]:
 
 
 func calculate_possible_terrains_to_move() -> void:
+	if not is_on_map():
+		_possible_terrains_to_move_buffer = []
+		possible_terrains_to_move_calculated.emit()
+		return
 	_possible_terrains_to_move_calculating = true
-	var parent: Terrain = get_terrain()
-	_possible_terrains_to_move_buffer = []
-	# fuel limits possible movement steps
-	var possible_movement_steps: int
-	if _types.units[id]["mp"] < stats.fuel:
-		possible_movement_steps = _types.units[id]["mp"]
-	else:
-		possible_movement_steps = stats.fuel
-	_move(parent, _possible_terrains_to_move_buffer, possible_movement_steps, Vector2.ZERO, 0)
+	var terrains: Array[Terrain] = _global.last_loaded_map.terrains
+	terrains = Terrain.filter_terrains(terrains, self)
+	# Sort by distance; First entry is the farthest terrain
+	var sort_farthest: Callable = func(a: Terrain, b: Terrain) -> bool:
+		var value_a: int = a.get_none_diagonal_distance(get_terrain())
+		var value_b: int = b.get_none_diagonal_distance(get_terrain())
+		return value_a > value_b
+	terrains.sort_custom(sort_farthest)
+	var movable_terrains: Array[Terrain] = []
+	while terrains.size() > 0:
+		var terrain: Terrain = terrains[0]
+		terrains.erase(terrain)
+		var path: Array[Terrain] = Terrain.get_astar_path_as_terrains(get_terrain(), terrain, _global.last_loaded_map.terrains, self)
+		var cost: int = -get_terrain().get_movement_cost(self, GameConst.Weather.CLEAR)
+		for t: Terrain in path:
+			cost += t.get_movement_cost(self, GameConst.Weather.CLEAR)
+			if cost > possible_movement_steps:
+				break
+			movable_terrains.append(t)
+			terrains.erase(t)
+		
+	_possible_terrains_to_move_buffer = movable_terrains
 	_possible_terrains_to_move_calculating = false
 	possible_terrains_to_move_calculated.emit()
 
@@ -285,42 +307,6 @@ func _attack(start: Terrain, terrains: Array, distance_left: int, direction: Vec
 				_attack(start.get_left(), terrains, distance_left, Vector2.LEFT, step + 1)
 			if direction == Vector2.RIGHT:
 				_attack(start.get_right(), terrains, distance_left, Vector2.RIGHT, step + 1)
-
-
-func _move(start: Terrain, terrains: Array, movement_left: int, direction: Vector2, step: int, allow_backwards: bool = false) -> void:
-	if start:
-		if step > 0:
-			var movement_cost: int = _types.movements[start.id]["CLEAR"][_types.units[id]["movement_type"]]
-			# movement cost 0 means not possible to use this terrain
-			if movement_cost < 1 or (start.has_unit() and start.get_unit().player_owned != player_owned):
-				return
-			movement_left -= movement_cost
-			if movement_left < 0:
-				return
-		if not start in terrains:
-			terrains.append(start)
-		# block testing "backwards"
-		if step == 0:
-			# if a unit is next to the moving unit, this direction has to be tested backwards too, so the unit can "go around" the blocking unit
-			# TODO: this can be enhanced by checking if the unit is really a blocking unit
-			var up_down_backwards: bool = (start.get_left() and start.get_left().has_unit()) or (start.get_right() and start.get_right().has_unit())
-			var left_right_backwards: bool = (start.get_up() and start.get_up().has_unit()) or (start.get_down() and start.get_down().has_unit())
-			_move(start.get_up(), terrains, movement_left, Vector2.UP, step + 1, up_down_backwards)
-			_move(start.get_down(), terrains, movement_left, Vector2.DOWN, step + 1, up_down_backwards)
-			_move(start.get_left(), terrains, movement_left, Vector2.LEFT, step + 1, left_right_backwards)
-			_move(start.get_right(), terrains, movement_left, Vector2.RIGHT, step + 1, left_right_backwards)
-		else:
-			# only 3 steps are needet to go around a blocking unit
-			if step > 3:
-				allow_backwards = false
-			if direction != Vector2.DOWN or allow_backwards:
-				_move(start.get_up(), terrains, movement_left, direction, step + 1, allow_backwards)
-			if direction != Vector2.UP or allow_backwards:
-				_move(start.get_down(), terrains, movement_left, direction, step + 1, allow_backwards)
-			if direction != Vector2.RIGHT or allow_backwards:
-				_move(start.get_left(), terrains, movement_left, direction, step + 1, allow_backwards)
-			if direction != Vector2.LEFT or allow_backwards:
-				_move(start.get_right(), terrains, movement_left, direction, step + 1, allow_backwards)
 
 
 func _move_on_curve() -> void:

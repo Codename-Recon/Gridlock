@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://by02xaouijj2c" path="res://assets/sounds/hold.ogg" id="10_6ruy5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ratio"]
+resource_local_to_scene = true
 shader = ExtResource("2_nob08")
 shader_parameter/shifting = true
 shader_parameter/shift_level_h = 0.326

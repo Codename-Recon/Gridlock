@@ -64,6 +64,76 @@ var _types: GlobalTypes = Types
 @onready var stats: TerrainStats = $TerrainStats
 
 
+static func filter_terrains(terrains: Array[Terrain], unit: Unit, filter_blocking: bool = true, filter_distance: bool = true) -> Array[Terrain]:
+	var _types: GlobalTypes = Types
+	var calc_distance: Callable = func(start: Terrain, end: Terrain) -> int:
+		var distance: Vector2i = end.global_position - start.global_position
+		distance /= ProjectSettings.get_setting("global/grid_size")
+		var move_value: int = round(abs(distance.x) + abs(distance.y))
+		return move_value
+	if filter_distance:
+		# Removing terrains which are too far
+		terrains = terrains.filter(func(a: Terrain) -> bool: return calc_distance.call(unit.get_terrain(), a) <= unit.possible_movement_steps)
+	if filter_blocking:
+		# Removing terrains which are blocked by units TODO: Team units do not block
+		terrains = terrains.filter(func(a: Terrain) -> bool: return not a.has_unit() or a.get_unit().player_owned == unit.player_owned)
+		# Removing terrains which are blocked by blocking terrains
+		terrains = terrains.filter(func(a: Terrain) -> bool: return a.get_movement_cost(unit, GameConst.Weather.CLEAR) >= 1)
+	return terrains
+
+
+static func get_astar_path(start: Terrain, end: Terrain, terrains: Array[Terrain], unit: Unit, end_can_be_outside: bool = false)  -> PackedVector2Array:
+	var _types: GlobalTypes = Types
+	var astar: AStar2D = AStar2D.new()
+	var filter_distance: bool = !end_can_be_outside
+	terrains = filter_terrains(terrains, unit, true, filter_distance)
+	# add end back in list even when a enemy unit is there (so long distance moves are possible)
+	if not end_can_be_outside:
+		if not end in terrains:
+			return PackedVector2Array()
+		if not end in terrains:
+			terrains.append(end)
+	var index: int = 0
+	var points: Dictionary = {}
+	for i: Terrain in terrains:
+		var weight: int = i.get_movement_cost(unit, GameConst.Weather.CLEAR)
+		if weight >= 0:
+			points[i] = index
+			astar.add_point(index, i.position, weight)
+		index += 1
+	for terrain: Terrain in points.keys():
+		var p1: int = points[terrain]
+		if terrain.get_up() in points:
+			var p2: int = points[terrain.get_up()]
+			astar.connect_points(p1, p2)
+		if terrain.get_down() in points:
+			var p2: int = points[terrain.get_down()]
+			astar.connect_points(p1, p2)
+		if terrain.get_left() in points:
+			var p2: int = points[terrain.get_left()]
+			astar.connect_points(p1, p2)
+		if terrain.get_right() in points:
+			var p2: int = points[terrain.get_right()]
+			astar.connect_points(p1, p2)
+	var start_point: int = points[start]
+	var end_point: int = points[end]
+	var result: PackedVector2Array = astar.get_point_path(start_point, end_point)
+	return result
+	
+	
+static func get_astar_path_as_terrains(start: Terrain, end: Terrain, terrains: Array[Terrain], unit: Unit, end_can_be_outside: bool = false)  -> Array[Terrain]:
+	var _global: GlobalGlobal = Global
+	var result: PackedVector2Array = get_astar_path(start, end, terrains, unit, end_can_be_outside)
+	var result_terrains: Array[Terrain] = []
+	for pos: Vector2 in result:
+		result_terrains.append(_global.last_loaded_map.get_terrain_by_position(pos))
+	return result_terrains
+
+
+func get_movement_cost(unit: Unit, weather: GameConst.Weather) -> int:
+	return _types.movements[id]["CLEAR"][_types.units[unit.id]["movement_type"]]
+
+
 func get_move_on_global_position() -> Vector2:
 	return global_position
 
@@ -80,6 +150,14 @@ func get_unit() -> Unit:
 		if i is Unit:
 			return i as Unit
 	return null
+
+
+# returns how many fields it's away (ignoring diagonal and "not movable terrains")
+func get_none_diagonal_distance(to: Terrain) -> int:
+	var distance: Vector2i = to.global_position - global_position
+	distance /= ProjectSettings.get_setting("global/grid_size")
+	var value: float = abs(distance.x) + abs(distance.y)
+	return round(value)
 
 
 ## captures terrain. gives true back on success.

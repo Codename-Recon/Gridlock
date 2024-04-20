@@ -194,6 +194,7 @@ func _process_human(delta: float) -> void:
 					last_shop.queue_free()
 					_sound.play("Deselect")
 					_round_button.disabled = false
+					_input.enable_all()
 					state = GameConst.State.SELECTING
 				GameConst.Event.CLICKED_SHOP:
 					await _do_state_bying_clicked_shop()
@@ -219,7 +220,7 @@ func _process_ai(delta: float) -> void:
 					# try capture nearest buildings
 					var unit_for_action_found: bool = false
 					for unit: Unit in map.units:
-						if "Infantry" in unit.name and unit.player_owned == player_turns[0] and not unit.stats.round_over:
+						if unit.id == "INFANTRY" and unit.player_owned == player_turns[0] and not unit.stats.round_over:
 							last_selected_unit = unit
 							_create_and_set_move_area(unit, false)
 							unit_for_action_found = false
@@ -240,7 +241,7 @@ func _process_ai(delta: float) -> void:
 								if terrain in _ai_on_way_capture_terrains:
 									continue
 								if _types.terrains[terrain.id]["can_capture"] and terrain.player_owned != player_turns[0] and not terrain.has_unit():
-									terrain_paths.append(_get_path(unit.get_terrain(), terrain, unit))
+									terrain_paths.append(Terrain.get_astar_path(unit.get_terrain(), terrain, map.terrains, unit))
 									path_to_terrain_dict[terrain_paths.back()] = terrain
 							if len(terrain_paths) > 0:
 								terrain_paths.sort_custom(func(a: PackedVector2Array, b: PackedVector2Array) -> bool: return len(a) < len(b))
@@ -302,8 +303,9 @@ func _process_ai(delta: float) -> void:
 							_create_and_set_move_area(unit, false)
 							var hq: Terrain
 							for terrain: Terrain in map.terrains:
-								if "HQ" in terrain.name and terrain.player_owned != player_turns[0]:
+								if terrain.id == "HQ" and terrain.player_owned != player_turns[0]:
 									hq = terrain
+									break
 							if hq:
 								last_action_terrain = hq
 								last_selected_unit = unit
@@ -344,8 +346,9 @@ func _process_ai(delta: float) -> void:
 							_create_and_set_move_area(unit, false)
 							var hq: Terrain
 							for terrain: Terrain in map.terrains:
-								if "HQ" in terrain.name and terrain.player_owned != player_turns[0]:
+								if terrain.id == "HQ" and terrain.player_owned != player_turns[0]:
 									hq = terrain
+									break
 							if hq:
 								last_action_terrain = hq
 								last_selected_unit = unit
@@ -364,7 +367,7 @@ func _process_ai(delta: float) -> void:
 							infantry_count += 1
 					if len(bases) > 0 and infantry_count <= len(bases) * 2:
 						last_selected_terrain = bases[0]
-						last_bought_unit = load("res://logic/game/units/infantry.tscn")
+						last_bought_unit = Map.predefined_units_packed_scenes["INFANTRY"]
 						state = GameConst.State.BUYING
 					else:
 						ai_phase += 1
@@ -540,6 +543,7 @@ func _do_state_selecting_clicked_left() -> void:
 			_unattack()
 			_undeploy()
 			_unenter()
+			_input.first_enabled = false
 			state = GameConst.State.BUYING
 			return
 	state = GameConst.State.SELECTING
@@ -995,11 +999,14 @@ func _do_state_ending(local: bool = true) -> void:
 # ui input gets only paths inside movable range
 func _update_move_arrow_ui_input() -> void:
 	var end_terrain: Terrain = last_mouse_terrain
-	# convert curve in packed vector 2 array since it is better to handle and backed points have wrong points in between
+	# Convert curve in packed vector 2 array since it is better to handle and backed points have wrong points in between
 	var curve: PackedVector2Array = []
 	for i: int in _move_arrow_node.curve.point_count:
 		curve.append(_move_arrow_node.curve.get_point_position(i))
-	# check if the additional terrain would be a possible path. if not, create path by path finding
+	# Only update when a new end terrain is passed
+	if curve.size() > 0 and map.get_terrain_by_position(curve[-1]) == end_terrain:
+		return
+	# Check if the additional terrain would be a possible path. if not, create path by path finding
 	if _is_path_possible(curve, end_terrain, last_selected_unit):
 		_move_arrow_node.curve.add_point(end_terrain.position)
 		_move_arrow_node.create_arrow()
@@ -1026,21 +1033,16 @@ func _update_move_arrow_none_ui_input(end_terrain: Terrain) -> void:
 
 func _path_finding_move_arrow(end_terrain: Terrain, only_in_movable: bool = true) -> void:
 	_move_arrow_node.curve.clear_points()
-	for point: Vector2 in _get_path(last_selected_unit.get_parent() as Terrain, end_terrain, last_selected_unit, only_in_movable):
+	if only_in_movable:
+		if not end_terrain in await last_selected_unit.get_possible_terrains_to_move():
+			return
+	for point: Vector2 in Terrain.get_astar_path(last_selected_unit.get_terrain(), end_terrain, map.terrains, last_selected_unit, !only_in_movable):
 		_move_arrow_node.curve.add_point(point)
 
 
 # returns how many fields it's away (ignoring diagonal and "not movable terrains")
 func _get_unit_distance(start: Unit, end: Unit) -> int:
-	return _get_terrain_distance(start.get_terrain(), end.get_terrain())
-
-
-# returns how many fields it's away (ignoring diagonal and "not movable terrains")
-func _get_terrain_distance(start: Terrain, end: Terrain) -> int:
-	var distance: Vector2i = end.global_position - start.global_position
-	distance /= ProjectSettings.get_setting("global/grid_size")
-	var value: float = abs(distance.x) + abs(distance.y)
-	return round(value)
+	return start.get_terrain().get_none_diagonal_distance(end.get_terrain())
 
 
 func _is_path_possible(current_path: PackedVector2Array, additional_terrain: Terrain, unit: Unit) -> bool:
@@ -1068,56 +1070,11 @@ func _is_path_possible(current_path: PackedVector2Array, additional_terrain: Ter
 		if point == current_path[0]:
 			continue
 		var terrain: Terrain = map.get_terrain_by_position(point)
-		cost += _types.movements[terrain.id]["CLEAR"][_types.units[unit.id]["movement_type"]]
-	cost += _types.movements[additional_terrain.id]["CLEAR"][_types.units[unit.id]["movement_type"]]
-	if cost > _types.units[unit.id]["mp"]:
+		cost += terrain.get_movement_cost(unit, GameConst.Weather.CLEAR)
+	cost += additional_terrain.get_movement_cost(unit, GameConst.Weather.CLEAR)
+	if cost > unit.possible_movement_steps:
 		return false
 	return true
-
-
-# if check_moveable is false the path finding returns paths outside of moveable range 
-func _get_path(start: Terrain, end: Terrain, unit: Unit, check_moveable: bool = true) -> PackedVector2Array:
-	var astar: AStar2D = AStar2D.new()
-	var terrains: Array[Terrain]
-	if check_moveable:
-		terrains = moveable_terrains
-		if not end in terrains:
-			return PackedVector2Array()
-	else:
-		terrains = map.terrains
-		# filter terrains with enemy units on it
-		terrains = terrains.filter(func(a: Terrain) -> bool: return not (a.has_unit() and a.get_unit().player_owned != unit.player_owned))
-		# add end back in list even when a enemy unit is there (so long distance moves are possible)
-		if not end in terrains:
-			terrains.append(end)
-	var index: int = 0
-	var points: Dictionary = {}
-	for i: Terrain in terrains:
-		var terrain: Terrain = i as Terrain
-		var weight: int = _types.movements[terrain.id]["CLEAR"][_types.units[unit.id]["movement_type"]]
-		if weight >= 0:
-			points[terrain] = index
-			astar.add_point(index, terrain.position, weight)
-		index += 1
-	for terrain: Terrain in points.keys():
-		var p1: int = points[terrain]
-		if terrain.get_up() in points:
-			var p2: int = points[terrain.get_up()]
-			astar.connect_points(p1, p2)
-		if terrain.get_down() in points:
-			var p2: int = points[terrain.get_down()]
-			astar.connect_points(p1, p2)
-		if terrain.get_left() in points:
-			var p2: int = points[terrain.get_left()]
-			astar.connect_points(p1, p2)
-		if terrain.get_right() in points:
-			var p2: int = points[terrain.get_right()]
-			astar.connect_points(p1, p2)
-	
-	var start_point: int = points[start]
-	var end_point: int = points[end]
-	var result: PackedVector2Array = astar.get_point_path(start_point, end_point)
-	return result
 
 
 func _get_random_luck() -> int:
@@ -1192,7 +1149,7 @@ func _create_and_set_move_area(unit: Unit, visibility: bool = true) -> void:
 func _create_and_set_attack_area(unit: Unit, target_terrain: Terrain, visibility: bool = true, check_move_and_attack: bool = true) -> void:
 	# if unit moved and is not allowed to attack
 	if check_move_and_attack:
-		if _get_terrain_distance(unit.get_terrain(), target_terrain) > 0:
+		if target_terrain.get_none_diagonal_distance(unit.get_terrain()) > 0:
 			if not _types.units[unit.id]["can_move_and_attack"]:
 				return
 	var terrains: Array[Terrain] = unit.get_possible_terrains_to_attack_from_terrain(target_terrain)
@@ -1420,8 +1377,8 @@ func _ai_sort_attackable_terrain_most_valuable(attacking_unit: Unit) -> void:
 
 func _ai_sort_moveable_terrain_nearest(unit: Unit) -> void:
 	moveable_terrains.sort_custom(func(a: Terrain, b: Terrain) -> bool:
-		var value_a: int = _get_terrain_distance(unit.get_terrain(), a)
-		var value_b: int = _get_terrain_distance(unit.get_terrain(), b)
+		var value_a: int = a.get_none_diagonal_distance(unit.get_terrain())
+		var value_b: int = b.get_none_diagonal_distance(unit.get_terrain())
 		return value_a < value_b)
 
 
