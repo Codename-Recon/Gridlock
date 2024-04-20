@@ -194,6 +194,7 @@ func _process_human(delta: float) -> void:
 					last_shop.queue_free()
 					_sound.play("Deselect")
 					_round_button.disabled = false
+					_input.enable_all()
 					state = GameConst.State.SELECTING
 				GameConst.Event.CLICKED_SHOP:
 					await _do_state_bying_clicked_shop()
@@ -542,6 +543,7 @@ func _do_state_selecting_clicked_left() -> void:
 			_unattack()
 			_undeploy()
 			_unenter()
+			_input.first_enabled = false
 			state = GameConst.State.BUYING
 			return
 	state = GameConst.State.SELECTING
