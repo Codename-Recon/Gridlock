@@ -1,6 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://4464jjyowffi"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_off8n"]
+[ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="3_78q3t"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_di0bv"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="8_g6v6n"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="9_ajg6n"]
@@ -8,23 +9,22 @@
 [ext_resource type="AudioStream" uid="uid://cmcv3vb0bsyq2" path="res://assets/sounds/laserLarge_004.ogg" id="16_e7ryt"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="17_yeb7u"]
 [ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="19_dv3sq"]
-[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="28_htk8k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j5max"]
 resource_local_to_scene = true
 shader = ExtResource("3_di0bv")
 shader_parameter/shifting = true
-shader_parameter/shift_level_h = 0.231
-shader_parameter/shift_level_s = 0.735
-shader_parameter/shift_level_b = 0.435
+shader_parameter/shift_level_h = 0.084
+shader_parameter/shift_level_s = 0.447
+shader_parameter/shift_level_b = 0.315
 shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
 shader_parameter/new_color = Color(0.372549, 0.647059, 0.592157, 1)
 shader_parameter/shift_shades_threshold = 1.0
 shader_parameter/shift_shades_factor = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tpfjj"]
-atlas = ExtResource("28_htk8k")
-region = Rect2(288, 192, 32, 32)
+atlas = ExtResource("3_78q3t")
+region = Rect2(160, 128, 32, 32)
 
 [sub_resource type="Animation" id="Animation_pav5p"]
 length = 0.001
