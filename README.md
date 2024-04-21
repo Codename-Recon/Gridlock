@@ -13,7 +13,8 @@ This project is initiated by Mangs, the project leader, and is based on his visi
 
 ## Play
 
-You can play the game directly in your browser or download the desktop version, both available here: [Play](https://hunter99.itch.io/codename-recon)
+You can play the game directly in your browser: [Play](https://hunter99.itch.io/codename-recon)  
+The native versions of the game (Windows, Mac, Linux) can be found in the release section: [Releases](https://github.com/Codename-Recon/Codename-Recon/releases)
 
 ## Code Contribution 💻
 
