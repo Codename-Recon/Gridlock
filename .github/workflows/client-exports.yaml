@@ -1,15 +1,17 @@
 name: "client exports"
 on:
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
     paths:
       - ".github/workflows/client-exports.yaml"
-      - 'client/**'
+      - ".github/actions/setup-client-for-export/**"
+      - "client/**"
   push:
-    branches: [ "master" ]
+    branches: ["master"]
     paths:
       - ".github/workflows/client-exports.yaml"
-      - 'client/**'
+      - ".github/actions/setup-client-for-export/**"
+      - "client/**"
 
 env:
   GODOT_VERSION: 4.2.2
