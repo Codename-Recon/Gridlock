@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cbc6sawc766k"]
+[gd_scene load_steps=52 format=3 uid="uid://cbc6sawc766k"]
 
 [ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_6xhvo"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_81uaa"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://chwkab0kw6j3l" path="res://logic/ui/move_arrow.tscn" id="12_lqnrk"]
 [ext_resource type="PackedScene" uid="uid://wq46v3oiq0rg" path="res://logic/ui/floating_info.tscn" id="14_vnmkc"]
 [ext_resource type="Script" path="res://logic/ui/action_panel.gd" id="17_0h3pk"]
+[ext_resource type="PackedScene" uid="uid://ku2eath5tgkm" path="res://logic/ui/board_analytic.tscn" id="22_tlt46"]
 [ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="24_w3m5b"]
 [ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="25_h7n7d"]
 [ext_resource type="Texture2D" uid="uid://ivwpfjehvqxs" path="res://assets/images/theme/greenSheet.png" id="25_pugn6"]
@@ -559,36 +560,50 @@ metadata/_edit_use_custom_anchors = false
 
 [node name="ButtonMove" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonCapture")
+focus_neighbor_bottom = NodePath("../ButtonAttack")
 text = "MOVE"
 icon = SubResource("AtlasTexture_i7el8")
 
 [node name="ButtonAttack" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonMove")
+focus_neighbor_bottom = NodePath("../ButtonEnter")
 text = "ATTACK"
 icon = SubResource("AtlasTexture_pjx10")
 
 [node name="ButtonEnter" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonAttack")
+focus_neighbor_bottom = NodePath("../ButtonDeploy")
 text = "ENTER"
 icon = SubResource("AtlasTexture_0nj7i")
 
 [node name="ButtonDeploy" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonEnter")
+focus_neighbor_bottom = NodePath("../ButtonJoin")
 text = "DEPLOY"
 icon = SubResource("AtlasTexture_vi472")
 
 [node name="ButtonJoin" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonDeploy")
+focus_neighbor_bottom = NodePath("../ButtonSupply")
 text = "JOIN"
 icon = SubResource("AtlasTexture_tinqa")
 
 [node name="ButtonSupply" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonJoin")
+focus_neighbor_bottom = NodePath("../ButtonCapture")
 text = "SUPPLY"
 icon = SubResource("AtlasTexture_u80nd")
 
 [node name="ButtonCapture" type="Button" parent="Interface/ActionPanel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonSupply")
+focus_neighbor_bottom = NodePath("../ButtonMove")
 text = "CAPTURE"
 icon = SubResource("AtlasTexture_10xuy")
 
@@ -883,6 +898,9 @@ icon = SubResource("AtlasTexture_kl7jc")
 script = ExtResource("29_fbj1t")
 next_menu = NodePath("../../EscapeMenu")
 
+[node name="BoardAnalytic" parent="Interface" instance=ExtResource("22_tlt46")]
+layout_mode = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
@@ -896,6 +914,7 @@ script = ExtResource("27_2jj2m")
 [connection signal="map_loaded" from="." to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_game_map_loaded"]
 [connection signal="input_escape" from="Interface/SubViewportContainer/SubViewport/GameInput" to="Interface/EscapePanel" method="_on_game_input_input_escape"]
 [connection signal="selection_changed" from="Interface/SubViewportContainer/SubViewport/GameInput" to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_game_input_selection_changed"]
+[connection signal="selection_changed" from="Interface/SubViewportContainer/SubViewport/GameInput" to="Interface/BoardAnalytic" method="_update"]
 [connection signal="action_selected" from="Interface/ActionPanel" to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_panel_action_selected"]
 [connection signal="resized" from="Interface/ActionPanel/VBoxContainer" to="Interface/ActionPanel" method="_on_v_box_container_resized"]
 [connection signal="pressed" from="Interface/RoundButton" to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_round_button_pressed"]

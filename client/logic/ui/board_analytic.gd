@@ -36,14 +36,19 @@ func _update(terrain: Terrain) -> void:
 		captureLabel.visible = true
 		var stats: TerrainStats = terrain.get_node("TerrainStats")
 		captureLabel.text = str(stats.capture_health / 10.0)
+		terrainIcon.material = (terrain.get_node("Sprite2D") as Sprite2D).material
+		#print(terrain.color)
+		#print(terrainIcon.material)
+		(terrainIcon.material as ShaderMaterial).set_shader_parameter("shifting", terrain.color)
 	else:
 		captureIcon.visible = false
 		captureLabel.visible = false
+		terrainIcon.material = null
 	var unit: Unit = terrain.get_unit()
-	if unit != null:
+	if unit:
 		unitName.visible = true
 		unitName.text = unit.id
-		var unitStats: UnitStats = unit._unit_stats
+		var unitStats: UnitStats = unit.stats
 		hpLabel.text = str(unitStats.health / 10.0)
 		if unitStats.ammo > -1:
 			ammoIcon.visible = true
