@@ -1,6 +1,6 @@
 name: Setup the client for exports
-description: | 
-  this will create folders and change the different places where 
+description: |
+  this will create folders and change the different places where
   the version must be inserted
 
 runs:
@@ -9,7 +9,7 @@ runs:
     - name: Setup
       run: |
         mkdir -v -p ~/.local/share/godot/export_templates
-        mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+        mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
       shell: bash
     - name: Replace version string
       env:
@@ -17,10 +17,28 @@ runs:
         COMMIT_SHA: ${{ github.sha }}
       shell: bash
       run: |
+        # Not sure for what is used this.
+        TAG=${GITHUB_REF#refs/tags/}
+        echo "TAG=$TAG" >> $GITHUB_ENV
+
+        # Maybe this can be improved with something like: https://github.com/Dracks/swift-language-study/pull/2/files#diff-5b21991be47c2922383bdc0b6bf00b65af7db51b82d049dd8d6ad03e3d37ac98R52
         if [ ${{ github.event_name }} == 'pull_request' ]; then
           COMMIT_SHA=${{ github.event.pull_request.head.sha }}
         fi
-        VERSION=${COMMIT_SHA:0:7}
-        echo $VERSION
+
+        VERSION=${GITHUB_REF_NAME}
+        # In the case it's not a new tag, we use the commit sha
+        if [ "$GITHUB_REF_TYPE" == 'branch' ]; then
+          VERSION=${COMMIT_SHA:0:7}
+        fi
         sed -i "s|$VERSION_REGEX|$VERSION|g" client/levels/menu.tscn # Replace the literal string '<VERSION>' with the new constant declaration
         sed -i "s|$VERSION_REGEX|$VERSION|g" client/project.godot # Replace the literal string '<VERSION>' with the new constant declaration
+    - name: Pre create/import everything
+      shell: bash
+      run: |
+        mkdir -v -p build/windows
+        mkdir -v -p build/linux
+        mkdir -v -p build/web
+        mkdir -v -p build/mac
+        cd $PROJECT_PATH
+        godot --project . --headless --import -e 2>/dev/null

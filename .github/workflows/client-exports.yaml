@@ -12,7 +12,7 @@ on:
       - 'client/**'
 
 env:
-  GODOT_VERSION: 4.2.1
+  GODOT_VERSION: 4.2.2
   EXPORT_NAME: Codename-Recon
   PROJECT_PATH: client
 
@@ -24,7 +24,7 @@ jobs:
     name: Windows Export
     runs-on: ubuntu-20.04
     container:
-      image: barichello/godot-ci:4.2.1
+      image: barichello/godot-ci:4.2.2
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -33,9 +33,7 @@ jobs:
       - uses: ./.github/actions/setup-client-for-export
       - name: Windows Build
         run: |
-          mkdir -v -p build/windows
           cd $PROJECT_PATH
-          godot --project . --headless --quit-after 200 -e 2>/dev/null
           godot --headless --verbose --export-release "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
@@ -47,7 +45,7 @@ jobs:
     name: Linux Export
     runs-on: ubuntu-20.04
     container:
-      image: barichello/godot-ci:4.2.1
+      image: barichello/godot-ci:4.2.2
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -56,9 +54,7 @@ jobs:
       - uses: ./.github/actions/setup-client-for-export
       - name: Linux Build
         run: |
-          mkdir -v -p build/linux
           cd $PROJECT_PATH
-          godot --project . --headless --quit-after 200 -e 2>/dev/null
           godot --headless --verbose --export-release "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
@@ -70,7 +66,7 @@ jobs:
     name: Web Export
     runs-on: ubuntu-20.04
     container:
-      image: barichello/godot-ci:4.2.1
+      image: barichello/godot-ci:4.2.2
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -79,9 +75,7 @@ jobs:
       - uses: ./.github/actions/setup-client-for-export
       - name: Web Build
         run: |
-          mkdir -v -p build/web
           cd $PROJECT_PATH
-          godot --project . --headless --quit-after 200 -e 2>/dev/null
           godot --headless --verbose --export-release "Web" ../build/web/index.html
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
@@ -102,7 +96,7 @@ jobs:
     name: Mac Export
     runs-on: ubuntu-20.04
     container:
-      image: barichello/godot-ci:4.2.1
+      image: barichello/godot-ci:4.2.2
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -111,9 +105,7 @@ jobs:
       - uses: ./.github/actions/setup-client-for-export
       - name: Mac Build
         run: |
-          mkdir -v -p build/mac
           cd $PROJECT_PATH
-          godot --project . --headless --quit-after 200 -e 2>/dev/null
           godot --headless --verbose --export-release "macOS" ../build/mac/$EXPORT_NAME.zip
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
