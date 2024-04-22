@@ -871,7 +871,7 @@ grow_vertical = 0
 layout_mode = 2
 text = "BUG_REPORT"
 script = ExtResource("19_cd8qn")
-uri = "https://github.com/Codename-Recon/Codename-Recon/issues"
+uri_to_go = "https://github.com/Codename-Recon/Codename-Recon/issues"
 
 [node name="HSpace" type="MarginContainer" parent="FlowContainer"]
 layout_mode = 2
@@ -881,7 +881,7 @@ theme_override_constants/margin_left = 15
 layout_mode = 2
 text = "DISCUSSIONS"
 script = ExtResource("19_cd8qn")
-uri = "https://github.com/Codename-Recon/Codename-Recon/discussions"
+uri_to_go = "https://github.com/Codename-Recon/Codename-Recon/discussions"
 
 [connection signal="visibility_changed" from="MultiplayerMenu" to="MultiplayerMenu" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="MPLobbyListMenu" to="MPLobbyListMenu" method="_on_visibility_changed"]
