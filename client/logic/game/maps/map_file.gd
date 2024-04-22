@@ -7,6 +7,7 @@ const MAP_GROUND_TILE_ID: String = "PLAIN_1"
 
 static var _global: GlobalGlobal = Global
 
+
 static func save_to_file(json_map: String, file_name: String) -> void:
 	var packer: ZIPPacker = ZIPPacker.new()
 	packer.open("%s/%s.crm" % [_global.MAP_CUSTOM_FOLDER_PATH, file_name])
@@ -31,13 +32,13 @@ static func serialize(map: Map) -> String:
 	dic["author"] = map.author
 	dic["source"] = MAP_SOURCE
 	dic["last_edited"] = Time.get_unix_time_from_system()
-	
+
 	var player_array: Array[Dictionary] = []
 	for player: Player in map.players.get_children():
 		player_array.append({"id": player.id, "money": player.money})
 	dic["players"] = player_array
 	dic["round"] = map.game_round
-	
+
 	# Create terrain array
 	var _map_size: Vector2i = map.map_size
 	var terrain_array: Array[Array] = []
@@ -49,7 +50,7 @@ static func serialize(map: Map) -> String:
 			terrain_column.append(_serialize_terrain(terrain))
 		terrain_array.append(terrain_column)
 	dic["terrain"] = terrain_array
-	
+
 	return JSON.stringify(dic, "\t")
 
 
@@ -62,17 +63,17 @@ static func _serialize_unit(unit: Unit) -> Dictionary:
 		"capturing": unit.stats.capturing,
 		"hidden": unit.stats.map_hidden
 	}
-	
+
 	dic["owner"] = 0
 	if unit.player_owned:
 		dic["owner"] = unit.player_owned.id
-		
+
 	var cargo_array: Array[Dictionary] = []
 	if unit.cargo:
 		for u: Unit in unit.cargo.get_children():
 			cargo_array.append(_serialize_unit(u))
 	dic["cargo"] = cargo_array
-	
+
 	return dic
 
 
@@ -86,18 +87,18 @@ static func _serialize_terrain(terrain: Terrain) -> Dictionary:
 		"ground_tile_id": MAP_GROUND_TILE_ID,
 		"reverse_animation": false,
 	}
-	
+
 	dic["unit"] = null
 	if terrain.has_unit():
 		dic["unit"] = _serialize_unit(terrain.get_unit())
-		
+
 	dic["owner"] = 0
 	if terrain.player_owned:
 		dic["owner"] = terrain.player_owned.id
 
 	return dic
-	
-	
+
+
 static func deserialize(json_map: String) -> Map:
 	var dic: Dictionary = JSON.parse_string(json_map)
 	var map: Map = Map.new()

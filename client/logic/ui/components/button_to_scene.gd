@@ -1,6 +1,7 @@
 extends GameButton
 
-@export var scene_to_go : PackedScene
+@export var scene_to_go: PackedScene
+
 
 func _pressed() -> void:
 	super._pressed()

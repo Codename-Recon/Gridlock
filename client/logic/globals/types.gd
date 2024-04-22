@@ -45,25 +45,26 @@ func _generate_types() -> void:
 	terrain_sprite_types = json.data["definitions"]["terrain_sprite"]["enum"]
 	weapon_types = json.data["definitions"]["weapon"]["enum"]
 	weather_types = json.data["definitions"]["weather"]["enum"]
-	
+
 	path = ProjectSettings.globalize_path("res://") + "../types/units/"
 	units = _get_folder_values(path)
-	
+
 	path = ProjectSettings.globalize_path("res://") + "../types/terrain/"
 	terrains = _get_folder_values(path)
-	
+
 	path = ProjectSettings.globalize_path("res://") + "../types/movement/chart.json"
 	movements = _get_movement_values(path, movement_types, terrain_types, weather_types)
-	
+
 	path = ProjectSettings.globalize_path("res://") + "../types/damage/primary.json"
 	primary_damage = _get_damage_values(path, unit_types)
 
 	path = ProjectSettings.globalize_path("res://") + "../types/damage/secondary.json"
 	secondary_damage = _get_damage_values(path, unit_types)
-	
+
 	_replace_movement_index_with_type()
 	_replace_weapon_index_with_types()
 	_replace_carrying_index_with_types()
+
 
 func _get_folder_values(path: String) -> Dictionary:
 	var dic: Dictionary = {}
@@ -82,7 +83,9 @@ func _get_folder_values(path: String) -> Dictionary:
 	return dic
 
 
-func _get_movement_values(path: String, _movement_types: Array, _terrain_types: Array, _weather_types: Array) -> Dictionary:
+func _get_movement_values(
+	path: String, _movement_types: Array, _terrain_types: Array, _weather_types: Array
+) -> Dictionary:
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	if not file:
 		push_error("Can not open file: " + path)
@@ -126,6 +129,7 @@ func _replace_movement_index_with_type() -> void:
 	for unit: String in units:
 		units[unit]["movement_type"] = movement_types[units[unit]["movement_type"]]
 
+
 func _replace_weapon_index_with_types() -> void:
 	for unit: String in units:
 		var weapons: Array = []
@@ -133,6 +137,7 @@ func _replace_weapon_index_with_types() -> void:
 			if index >= 0:
 				weapons.append(weapon_types[index])
 		units[unit]["weapons"] = weapons
+
 
 func _replace_carrying_index_with_types() -> void:
 	for unit: String in units:

@@ -22,6 +22,7 @@ var gameover_scene: PackedScene = load("res://levels/game_over_screen.tscn")
 var config: ConfigFile = ConfigFile.new()
 var maps: Dictionary = {}
 
+
 func save_config(key: String, value: Variant, section: String = CONFIG_SECTION) -> void:
 	config.set_value(section, key, value)
 	config.save("user://config.cfg")
@@ -48,7 +49,9 @@ func _load_maps(dir_path: String) -> void:
 	for file_name: String in folder.get_files():
 		if not file_name.ends_with(".crm"):
 			continue
-		var map_json: String = MapFile.load_from_file("%s/%s" % [folder.get_current_dir(), file_name])
+		var map_json: String = MapFile.load_from_file(
+			"%s/%s" % [folder.get_current_dir(), file_name]
+		)
 		var map: Map = MapFile.deserialize(map_json)
 		maps[map.map_name] = map_json
 		map.queue_free()

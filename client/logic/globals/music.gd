@@ -10,6 +10,7 @@ var player: Array[AudioStreamPlayer]
 var _tween1: Tween
 var _tween2: Tween
 
+
 func _ready() -> void:
 	player = [$Player1, $Player2]
 	var volume: float = ProjectSettings.get_setting("game/music_volume")

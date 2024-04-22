@@ -3,13 +3,7 @@ extends Node2D
 
 signal tile_edit_selected(terrain: Terrain, unit: Unit)
 
-enum Mode{
-	TERRAIN,
-	UNIT,
-	TILE,
-	REMOVE,
-	EDIT
-}
+enum Mode { TERRAIN, UNIT, TILE, REMOVE, EDIT }
 
 const TILES: TileSet = preload("res://assets/resources/game/tiles.tres")
 
@@ -19,13 +13,15 @@ const TILES: TileSet = preload("res://assets/resources/game/tiles.tres")
 
 @onready var tile_map: TileMap = $TileMap
 
-static var tile_lookup: Dictionary = {}: # tile_id: String -> tile_idx: int
+static var tile_lookup: Dictionary = {}:  # tile_id: String -> tile_idx: int
 	get:
 		if tile_lookup.is_empty():
 			var source: TileSetAtlasSource = TILES.get_source(0)
 			for i: int in source.get_tiles_count():
 				var pos: Vector2i = source.get_tile_id(i)
-				var current_tile_id: String = source.get_tile_data(pos, 0).get_custom_data("tile_id")
+				var current_tile_id: String = source.get_tile_data(pos, 0).get_custom_data(
+					"tile_id"
+				)
 				tile_lookup[current_tile_id] = i
 		return tile_lookup
 
@@ -49,8 +45,8 @@ static func get_texture_with_atlas_coords(atlas_coords: Vector2i) -> Texture2D:
 	atlas.set_atlas(source.texture)
 	atlas.region = rect
 	return atlas
-	
-	
+
+
 static func get_texture_with_tile_id(tile_id: String) -> Texture2D:
 	if tile_id == "":
 		return null
@@ -60,12 +56,16 @@ static func get_texture_with_tile_id(tile_id: String) -> Texture2D:
 		var pos: Vector2i = source.get_tile_id(idx)
 		return get_texture_with_atlas_coords(pos)
 	return null
-	
-	
+
+
 static func get_data_with_altlas_coords(atlas_coords: Vector2i) -> Array[String]:
 	var source: TileSetAtlasSource = TILES.get_source(0)
 	var data: TileData = source.get_tile_data(atlas_coords, 0)
-	return [data.get_custom_data("id"), data.get_custom_data("tile_id"), data.get_custom_data("ground_tile_id")]
+	return [
+		data.get_custom_data("id"),
+		data.get_custom_data("tile_id"),
+		data.get_custom_data("ground_tile_id")
+	]
 
 
 func has_id_with_tile_coords(tile_coords: Vector2i) -> bool:
@@ -110,7 +110,7 @@ func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
 	_create_terrain_on_map(cell)
 
 
-## Places a Unit in the map editor mode. 
+## Places a Unit in the map editor mode.
 ## The return value indicates whether the unit can be placed at that specific location.
 func _place_unit(unit_id: String, terrain_position: Vector2i) -> bool:
 	if map.create_unit(unit_id, terrain_position, _current_player_id):
@@ -130,7 +130,14 @@ func _create_terrain_on_map(cell: Vector2i) -> void:
 	var data: Array[String] = MapEditor.get_data_with_altlas_coords(atlas_coords)
 	var ground_tile_id: String = data[2]
 	var ground_texture: Texture2D = MapEditor.get_texture_with_tile_id(ground_tile_id)
-	map.create_terrain(data[0], data[1], cell * tile_map.tile_set.tile_size, texture, ground_texture, _current_player_id)
+	map.create_terrain(
+		data[0],
+		data[1],
+		cell * tile_map.tile_set.tile_size,
+		texture,
+		ground_texture,
+		_current_player_id
+	)
 	# Change terrains which got changed by auto tiling
 	tile_map.update_internals()
 	for changed_cell: Vector2i in _find_difference_with_main_tile_buffer():
@@ -142,7 +149,14 @@ func _create_terrain_on_map(cell: Vector2i) -> void:
 		data = MapEditor.get_data_with_altlas_coords(atlas_coords)
 		ground_tile_id = data[2]
 		ground_texture = MapEditor.get_texture_with_tile_id(ground_tile_id)
-		map.create_terrain(data[0], data[1], changed_cell * tile_map.tile_set.tile_size, texture, ground_texture, _current_player_id)
+		map.create_terrain(
+			data[0],
+			data[1],
+			changed_cell * tile_map.tile_set.tile_size,
+			texture,
+			ground_texture,
+			_current_player_id
+		)
 	_tile_buffer = _create_tile_buffer()
 
 
@@ -210,11 +224,11 @@ func _on_ui_map_resized(new_size: Vector2i) -> void:
 	for i: int in map_size.x:
 		for j: int in map_size.y:
 			_remove_terrain(Vector2i(i, j))
-	
+
 	for i: int in new_size.x:
 		for j: int in new_size.y:
 			_place_terrain(Vector2i(i, j), 0, 1)
-	
+
 	map_size = new_size
 	game_input.selection.reset()
 
@@ -235,6 +249,7 @@ func _on_ui_tile_selected(atlas_id: Vector2i) -> void:
 	_mode = Mode.TILE
 	_current_tile_atlas_id = atlas_id
 
+
 func _on_cursor_preview_set_terrain(coords: Vector2i) -> void:
 	tile_map.set_cells_terrain_connect(0, [coords], _current_terrain_set, _current_terrain, false)
 
@@ -245,7 +260,9 @@ func _on_map_editor_ui_map_settings_player_id_changed(player_id: int) -> void:
 
 func _on_map_editor_ui_save_selected() -> void:
 	if map.map_name.is_empty():
-		_messages.spawn(tr("MESSAGE_TITLE_MAP_EDITOR_SAVE_NO_NAME"), tr("MESSAGE_TEXT_MAP_EDITOR_SAVE_NO_NAME"))
+		_messages.spawn(
+			tr("MESSAGE_TITLE_MAP_EDITOR_SAVE_NO_NAME"), tr("MESSAGE_TEXT_MAP_EDITOR_SAVE_NO_NAME")
+		)
 		return
 	var json_map: String = MapFile.serialize(map)
 	MapFile.save_to_file(json_map, map.map_name)

@@ -64,25 +64,46 @@ var _types: GlobalTypes = Types
 @onready var stats: TerrainStats = $TerrainStats
 
 
-static func filter_terrains(terrains: Array[Terrain], unit: Unit, filter_blocking: bool = true, filter_distance: bool = true) -> Array[Terrain]:
+static func __lambda_calculate_distance(start: Terrain, end: Terrain) -> int:
+	var distance: Vector2i = end.global_position - start.global_position
+	distance /= ProjectSettings.get_setting("global/grid_size")
+	var move_value: int = round(abs(distance.x) + abs(distance.y))
+	return move_value
+
+
+static func filter_terrains(
+	terrains: Array[Terrain], unit: Unit, filter_blocking: bool = true, filter_distance: bool = true
+) -> Array[Terrain]:
 	var _types: GlobalTypes = Types
-	var calc_distance: Callable = func(start: Terrain, end: Terrain) -> int:
-		var distance: Vector2i = end.global_position - start.global_position
-		distance /= ProjectSettings.get_setting("global/grid_size")
-		var move_value: int = round(abs(distance.x) + abs(distance.y))
-		return move_value
+
 	if filter_distance:
 		# Removing terrains which are too far
-		terrains = terrains.filter(func(a: Terrain) -> bool: return calc_distance.call(unit.get_terrain(), a) <= unit.possible_movement_steps)
+		terrains = terrains.filter(
+			func(a: Terrain) -> bool: return (
+				__lambda_calculate_distance(unit.get_terrain(), a) <= unit.possible_movement_steps
+			)
+		)
 	if filter_blocking:
 		# Removing terrains which are blocked by units TODO: Team units do not block
-		terrains = terrains.filter(func(a: Terrain) -> bool: return not a.has_unit() or a.get_unit().player_owned == unit.player_owned)
+		terrains = terrains.filter(
+			func(a: Terrain) -> bool: return (
+				not a.has_unit() or a.get_unit().player_owned == unit.player_owned
+			)
+		)
 		# Removing terrains which are blocked by blocking terrains
-		terrains = terrains.filter(func(a: Terrain) -> bool: return a.get_movement_cost(unit, GameConst.Weather.CLEAR) >= 1)
+		terrains = terrains.filter(
+			func(a: Terrain) -> bool: return a.get_movement_cost(unit, GameConst.Weather.CLEAR) >= 1
+		)
 	return terrains
 
 
-static func get_astar_path(start: Terrain, end: Terrain, terrains: Array[Terrain], unit: Unit, end_can_be_outside: bool = false)  -> PackedVector2Array:
+static func get_astar_path(
+	start: Terrain,
+	end: Terrain,
+	terrains: Array[Terrain],
+	unit: Unit,
+	end_can_be_outside: bool = false
+) -> PackedVector2Array:
 	var _types: GlobalTypes = Types
 	var astar: AStar2D = AStar2D.new()
 	var filter_distance: bool = !end_can_be_outside
@@ -119,9 +140,15 @@ static func get_astar_path(start: Terrain, end: Terrain, terrains: Array[Terrain
 	var end_point: int = points[end]
 	var result: PackedVector2Array = astar.get_point_path(start_point, end_point)
 	return result
-	
-	
-static func get_astar_path_as_terrains(start: Terrain, end: Terrain, terrains: Array[Terrain], unit: Unit, end_can_be_outside: bool = false)  -> Array[Terrain]:
+
+
+static func get_astar_path_as_terrains(
+	start: Terrain,
+	end: Terrain,
+	terrains: Array[Terrain],
+	unit: Unit,
+	end_can_be_outside: bool = false
+) -> Array[Terrain]:
 	var _global: GlobalGlobal = Global
 	var result: PackedVector2Array = get_astar_path(start, end, terrains, unit, end_can_be_outside)
 	var result_terrains: Array[Terrain] = []
@@ -176,22 +203,30 @@ func uncapture() -> void:
 
 
 func get_up() -> Terrain:
-	var pos: Vector2i = (global_position + Vector2.UP * ProjectSettings.get_setting("global/grid_size").y)
+	var pos: Vector2i = (
+		global_position + Vector2.UP * ProjectSettings.get_setting("global/grid_size").y
+	)
 	return get_map().get_terrain_by_position(pos)
 
 
 func get_down() -> Terrain:
-	var pos: Vector2i = (global_position + Vector2.DOWN * ProjectSettings.get_setting("global/grid_size").y)
+	var pos: Vector2i = (
+		global_position + Vector2.DOWN * ProjectSettings.get_setting("global/grid_size").y
+	)
 	return get_map().get_terrain_by_position(pos)
 
 
 func get_left() -> Terrain:
-	var pos: Vector2i = (global_position + Vector2.LEFT * ProjectSettings.get_setting("global/grid_size").y)
+	var pos: Vector2i = (
+		global_position + Vector2.LEFT * ProjectSettings.get_setting("global/grid_size").y
+	)
 	return get_map().get_terrain_by_position(pos)
 
 
 func get_right() -> Terrain:
-	var pos: Vector2i = (global_position + Vector2.RIGHT * ProjectSettings.get_setting("global/grid_size").y)
+	var pos: Vector2i = (
+		global_position + Vector2.RIGHT * ProjectSettings.get_setting("global/grid_size").y
+	)
 	return get_map().get_terrain_by_position(pos)
 
 
@@ -232,7 +267,7 @@ func _sort_by_unit_price(a: PackedScene, b: PackedScene) -> bool:
 	var a_scene: Unit = a.instantiate()
 	var b_scene: Unit = b.instantiate()
 	return _types.units[a_scene.id]["cost"] < _types.units[b_scene.id]["cost"]
-	
+
 
 func _set_color(set_color: Color) -> void:
 	var _sprite: Sprite2D = $Sprite2D as Sprite2D
@@ -250,6 +285,7 @@ func _exit_tree() -> void:
 	remove_from_group("terrain")
 	if is_on_map():
 		get_map().terrains.erase(self)
+
 
 func _update_color() -> void:
 	if _types.terrains[id]["can_capture"]:
