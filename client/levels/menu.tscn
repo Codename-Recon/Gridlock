@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://crj13jqmktmtn"]
+[gd_scene load_steps=44 format=3 uid="uid://crj13jqmktmtn"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bbhva0hqxsspk" path="res://assets/images/game/menu/background.jpg" id="5_e7t5i"]
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="7_1imcl"]
 [ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="9_ekkjc"]
+[ext_resource type="Script" path="res://logic/ui/components/button_to_scene.gd" id="9_jte0r"]
+[ext_resource type="PackedScene" uid="uid://lsu858yvaswd" path="res://levels/map_editor.tscn" id="10_rjvs6"]
 [ext_resource type="PackedScene" uid="uid://b6kyqmss2ywu" path="res://logic/ui/map_selection_element.tscn" id="16_yagnk"]
+[ext_resource type="Script" path="res://logic/ui/components/button_to_uri.gd" id="19_cd8qn"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="34_rl1iq"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons.gd" id="40_om04v"]
 [ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="41_n387a"]
@@ -44,16 +47,6 @@ region = Rect2(500, 200, 50, 50)
 atlas = ExtResource("9_ekkjc")
 region = Rect2(480, 320, 32, 32)
 margin = Rect2(8, 0, 0, 0)
-
-[sub_resource type="GDScript" id="GDScript_ninfr"]
-script/source = "extends GameButton
-
-const MAP_EDITOR: PackedScene = preload(\"res://levels/map_editor.tscn\")
-
-func _pressed() -> void:
-	super._pressed()
-	get_tree().change_scene_to_packed(MAP_EDITOR)
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yv0in"]
 atlas = ExtResource("7_1imcl")
@@ -106,16 +99,6 @@ region = Rect2(350, 0, 50, 50)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdtg4"]
 atlas = ExtResource("7_1imcl")
 region = Rect2(300, 100, 50, 50)
-
-[sub_resource type="GDScript" id="GDScript_squbr"]
-script/source = "extends GameButton
-
-@export var game_scene: PackedScene
-
-func _pressed() -> void:
-	super._pressed()
-	get_tree().change_scene_to_packed(game_scene)
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xajh4"]
 atlas = ExtResource("7_1imcl")
@@ -173,22 +156,6 @@ script/source = "extends RichTextLabel
 
 func _on_rich_text_label_meta_clicked(meta: Variant) -> void:
 	OS.shell_open(str(meta))
-"
-
-[sub_resource type="GDScript" id="GDScript_d8r78"]
-script/source = "extends GameButton
-
-func _pressed() -> void:
-	super._pressed()
-	OS.shell_open(\"https://github.com/Codename-Recon/Codename-Recon/issues\")
-"
-
-[sub_resource type="GDScript" id="GDScript_yqdy7"]
-script/source = "extends GameButton
-
-func _pressed() -> void:
-	super._pressed()
-	OS.shell_open(\"https://github.com/Codename-Recon/Codename-Recon/discussions\")
 "
 
 [node name="Menu" type="Control"]
@@ -266,7 +233,8 @@ offset_bottom = 209.0
 grow_horizontal = 2
 text = "MAP_EDITOR"
 icon = SubResource("AtlasTexture_h8kge")
-script = SubResource("GDScript_ninfr")
+script = ExtResource("9_jte0r")
+scene_to_go = ExtResource("10_rjvs6")
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
@@ -438,7 +406,7 @@ grow_horizontal = 2
 disabled = true
 text = "RANKED"
 icon = SubResource("AtlasTexture_tdtg4")
-script = SubResource("GDScript_squbr")
+script = ExtResource("9_jte0r")
 metadata/_edit_use_custom_anchors = false
 metadata/_edit_layout_mode = 1
 
@@ -902,7 +870,8 @@ grow_vertical = 0
 [node name="BugReportButton" type="Button" parent="FlowContainer"]
 layout_mode = 2
 text = "BUG_REPORT"
-script = SubResource("GDScript_d8r78")
+script = ExtResource("19_cd8qn")
+uri_to_go = "https://github.com/Codename-Recon/Codename-Recon/issues"
 
 [node name="HSpace" type="MarginContainer" parent="FlowContainer"]
 layout_mode = 2
@@ -911,7 +880,8 @@ theme_override_constants/margin_left = 15
 [node name="DiscussionsButton" type="Button" parent="FlowContainer"]
 layout_mode = 2
 text = "DISCUSSIONS"
-script = SubResource("GDScript_yqdy7")
+script = ExtResource("19_cd8qn")
+uri_to_go = "https://github.com/Codename-Recon/Codename-Recon/discussions"
 
 [connection signal="visibility_changed" from="MultiplayerMenu" to="MultiplayerMenu" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="MPLobbyListMenu" to="MPLobbyListMenu" method="_on_visibility_changed"]
