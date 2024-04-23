@@ -6,6 +6,7 @@ signal element_selected
 @export_category("Internal")
 @export var shop_element_scene: PackedScene
 
+
 ## Creates the shop elements with the color of the current player.
 func create_shop_elements(units: Array[PackedScene], player: Player) -> void:
 	for unit: PackedScene in units:

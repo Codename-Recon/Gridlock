@@ -5,7 +5,9 @@ signal round_over_changed
 @export var health: int = 100:
 	set(value):
 		if is_inside_tree():
-			var rounding_value: int = ProjectSettings.get_setting("global/unit_health_rounding_value")
+			var rounding_value: int = ProjectSettings.get_setting(
+				"global/unit_health_rounding_value"
+			)
 			# smaller eg. 5 (4, 3 aso.) will be rounded down to 0. also negative numbers will be 0
 			if value < rounding_value:
 				value = 0
@@ -25,7 +27,7 @@ signal round_over_changed
 		if is_inside_tree():
 			capturing = value
 			_capture_icon.visible = value
-			
+
 @export var map_hidden: bool = false
 
 @export var carrying: bool = false:
@@ -69,8 +71,10 @@ signal round_over_changed
 				var unit: Unit = get_parent() as Unit
 				if ammo > _types.units[unit.id]["ammo"]:
 					ammo = _types.units[unit.id]["ammo"]
-				var ammo_threshold: int = ProjectSettings.get_setting("global/unit_ammo_blink_threshold")
-				if (ammo < (_types.units[unit.id]["ammo"] * ammo_threshold)):
+				var ammo_threshold: int = ProjectSettings.get_setting(
+					"global/unit_ammo_blink_threshold"
+				)
+				if ammo < (_types.units[unit.id]["ammo"] * ammo_threshold):
 					ammo_low = true
 				else:
 					ammo_low = false
@@ -84,8 +88,10 @@ signal round_over_changed
 				var unit: Unit = get_parent() as Unit
 				if fuel > _types.units[unit.id]["fuel"]:
 					fuel = _types.units[unit.id]["fuel"]
-				var fuel_threshold: int = ProjectSettings.get_setting("global/unit_fuel_blink_threshold")
-				if (fuel < (_types.units[unit.id]["fuel"] * fuel_threshold)):
+				var fuel_threshold: int = ProjectSettings.get_setting(
+					"global/unit_fuel_blink_threshold"
+				)
+				if fuel < (_types.units[unit.id]["fuel"] * fuel_threshold):
 					fuel_low = true
 				else:
 					fuel_low = false
@@ -106,6 +112,7 @@ signal round_over_changed
 @onready var _stars: UnitStatsStars = %Stars as UnitStatsStars
 
 var _types: GlobalTypes = Types
+
 
 func _ready() -> void:
 	var unit: Unit = get_parent() as Unit

@@ -10,14 +10,7 @@ signal refill_animation_done
 signal possible_terrains_to_move_calculated
 signal died
 
-enum State{
-	STANDING,
-	MOVING,
-	ATTACKING,
-	DAMAGING,
-	DYING,
-	REFILLING
-}
+enum State { STANDING, MOVING, ATTACKING, DAMAGING, DYING, REFILLING }
 
 @export var shader_modulate: bool = false:
 	set(value):
@@ -25,7 +18,9 @@ enum State{
 			shader_modulate = value
 			for i: Node in get_children():
 				if "Sprite2D" in i.name:
-					((i as Node2D).material as ShaderMaterial).set_shader_parameter("shifting", value)
+					((i as Node2D).material as ShaderMaterial).set_shader_parameter(
+						"shifting", value
+					)
 
 @export_color_no_alpha var color: Color:
 	set(value):
@@ -34,7 +29,9 @@ enum State{
 			var color_a: Color = Color(color, 1)
 			for i: Node in get_children():
 				if "Sprite2D" in i.name:
-					((i as Node2D).material as ShaderMaterial).set_shader_parameter("new_color", color_a)
+					((i as Node2D).material as ShaderMaterial).set_shader_parameter(
+						"new_color", color_a
+					)
 
 @export var player_owned: Player:
 	set(value):
@@ -90,6 +87,12 @@ func get_possible_terrains_to_move() -> Array[Terrain]:
 	return _possible_terrains_to_move_buffer
 
 
+func _lamda_calculate_distance(a: Terrain, b: Terrain) -> bool:
+	var value_a: int = a.get_none_diagonal_distance(get_terrain())
+	var value_b: int = b.get_none_diagonal_distance(get_terrain())
+	return value_a > value_b
+
+
 func calculate_possible_terrains_to_move() -> void:
 	if not is_on_map():
 		_possible_terrains_to_move_buffer = []
@@ -98,17 +101,16 @@ func calculate_possible_terrains_to_move() -> void:
 	_possible_terrains_to_move_calculating = true
 	var terrains: Array[Terrain] = _global.last_loaded_map.terrains
 	terrains = Terrain.filter_terrains(terrains, self)
+
 	# Sort by distance; First entry is the farthest terrain
-	var sort_farthest: Callable = func(a: Terrain, b: Terrain) -> bool:
-		var value_a: int = a.get_none_diagonal_distance(get_terrain())
-		var value_b: int = b.get_none_diagonal_distance(get_terrain())
-		return value_a > value_b
-	terrains.sort_custom(sort_farthest)
+	terrains.sort_custom(_lamda_calculate_distance)
 	var movable_terrains: Array[Terrain] = []
 	while terrains.size() > 0:
 		var terrain: Terrain = terrains[0]
 		terrains.erase(terrain)
-		var path: Array[Terrain] = Terrain.get_astar_path_as_terrains(get_terrain(), terrain, _global.last_loaded_map.terrains, self)
+		var path: Array[Terrain] = Terrain.get_astar_path_as_terrains(
+			get_terrain(), terrain, _global.last_loaded_map.terrains, self
+		)
 		var cost: int = -get_terrain().get_movement_cost(self, GameConst.Weather.CLEAR)
 		for t: Terrain in path:
 			cost += t.get_movement_cost(self, GameConst.Weather.CLEAR)
@@ -116,7 +118,7 @@ func calculate_possible_terrains_to_move() -> void:
 				break
 			movable_terrains.append(t)
 			terrains.erase(t)
-		
+
 	_possible_terrains_to_move_buffer = movable_terrains
 	_possible_terrains_to_move_calculating = false
 	possible_terrains_to_move_calculated.emit()
@@ -130,7 +132,7 @@ func get_possible_terrains_to_attack_from_terrain(start_terrain: Terrain) -> Arr
 
 
 func get_neighbors_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
-	var terrains:Array[Terrain] = []
+	var terrains: Array[Terrain] = []
 	terrains.append(start_terrain.get_up())
 	terrains.append(start_terrain.get_down())
 	terrains.append(start_terrain.get_left())
@@ -143,6 +145,7 @@ func refill() -> void:
 	sound.play("Refill")
 	stats.fuel = _types.units[id]["fuel"]
 	stats.ammo = _types.units[id]["ammo"]
+
 
 func repair(health: int) -> void:
 	var sound: GlobalSound = Sound as GlobalSound
@@ -159,6 +162,7 @@ func capture() -> bool:
 	else:
 		return false
 
+
 func uncapture() -> void:
 	stats.capturing = false
 	get_terrain().uncapture()
@@ -169,7 +173,7 @@ func is_capturing() -> bool:
 
 
 func get_terrain() -> Terrain:
-	return (get_parent() as Terrain)
+	return get_parent() as Terrain
 
 
 func is_on_terrain() -> bool:
@@ -262,6 +266,7 @@ func _process(delta: float) -> void:
 				if _animation_player.has_animation("idle"):
 					_animation_player.play("idle")
 
+
 func _enter_tree() -> void:
 	if is_on_map():
 		get_map().units.append(self)
@@ -275,13 +280,15 @@ func _exit_tree() -> void:
 
 
 func _round_over_changed() -> void:
-	if(stats.round_over):
+	if stats.round_over:
 		sprite.modulate = ProjectSettings.get_setting("global/round_overlay")
 	else:
 		sprite.modulate = Color.WHITE
 
 
-func _attack(start: Terrain, terrains: Array, distance_left: int, direction: Vector2, step: int) -> void:
+func _attack(
+	start: Terrain, terrains: Array, distance_left: int, direction: Vector2, step: int
+) -> void:
 	if start:
 		if step > 0:
 			distance_left -= 1
@@ -319,7 +326,9 @@ func _move_on_curve() -> void:
 			follow.rotates = false
 			path.add_child(follow)
 			reparent(follow)
-			var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+			var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(
+				Tween.EASE_IN_OUT
+			)
 			var time: float = ProjectSettings.get_setting("global/unit_move_tween_time") as float
 			tween.tween_property(follow, "progress_ratio", 1, time)
 			stats.fuel -= move_curve.get_point_count() - 1

@@ -16,10 +16,14 @@ signal round_change_ended
 @onready var _input: GameInput = $"../GameInput"
 @onready var map_slot: Node = %MapSlot
 
-
 var state: GameConst.State:
 	set(value):
-		print_debug("State changed from %s to %s" % [GameConst.State.keys()[state], GameConst.State.keys()[value]])
+		print_debug(
+			(
+				"State changed from %s to %s"
+				% [GameConst.State.keys()[state], GameConst.State.keys()[value]]
+			)
+		)
 		state = value
 
 var event: GameConst.Event = GameConst.Event.NONE:
@@ -27,17 +31,22 @@ var event: GameConst.Event = GameConst.Event.NONE:
 		if value != event:
 			print_debug("Event %s" % GameConst.Event.keys()[value])
 			event = value
-			
+
 var input: GameConst.InputType = GameConst.InputType.HUMAN:
 	set(value):
-		print_debug("Input changed from %s to %s" % [GameConst.InputType.keys()[input], GameConst.InputType.keys()[value]])
+		print_debug(
+			(
+				"Input changed from %s to %s"
+				% [GameConst.InputType.keys()[input], GameConst.InputType.keys()[value]]
+			)
+		)
 		input = value
 
 var ai_phase: int = 0
 
 var last_selected_unit: Unit
-var last_selected_terrain: Terrain				# holding last clicked terrain
-var last_action_terrain: Terrain				# holding terrain for action (so clicking while in action has no effect like in last_selected_terrain)
+var last_selected_terrain: Terrain  # holding last clicked terrain
+var last_action_terrain: Terrain  # holding terrain for action (so clicking while in action has no effect like in last_selected_terrain)
 var last_mouse_terrain: Terrain
 var last_selected_action: GameConst.Actions
 var last_shop: Shop
@@ -61,9 +70,9 @@ var _map_loaded: bool = false
 var _fsm_blocked: bool = false
 var _last_state: GameConst.State
 var _last_event: GameConst.Event
-var _random_luck: Array[int]	# luck number between 0 and 9
+var _random_luck: Array[int]  # luck number between 0 and 9
 var _simulated_first_click: bool = false
-var _ai_on_way_capture_terrains: Array[Terrain] = []	# a way for the ai to remember which far terrains get already captured (so not the hole infantery runs there)
+var _ai_on_way_capture_terrains: Array[Terrain] = []  # a way for the ai to remember which far terrains get already captured (so not the hole infantery runs there)
 var _sound: GlobalSound = Sound
 var _multiplayer: GlobalMultiplayer = Multiplayer
 var _messages: GlobalMessages = Messages
@@ -80,11 +89,11 @@ func _ready() -> void:
 	# generate 100 deterministic "random" luck numbers (between 0 and 9)
 	for i: int in range(100):
 		_random_luck.append(randi_range(0, 9))
-	
+
 	_move_arrow_node = _move_arrow.instantiate()
 	_move_arrow_node.hide()
 	get_parent().call_deferred("add_child", _move_arrow_node)
-	
+
 	_round_button.disabled = true
 
 
@@ -92,7 +101,7 @@ func _process(delta: float) -> void:
 	if _map_loaded:
 		if not _fsm_blocked:
 			_fsm_blocked = true
-			match(input):
+			match input:
 				GameConst.InputType.HUMAN:
 					await _process_human(delta)
 				GameConst.InputType.AI:
@@ -105,18 +114,18 @@ func _process(delta: float) -> void:
 func _process_human(delta: float) -> void:
 	if _input.is_just_first or _simulated_first_click:
 		_simulated_first_click = false
-		last_mouse_terrain = null 	# to force terrain interface update 
+		last_mouse_terrain = null  # to force terrain interface update
 		if map.get_terrain_by_position(_input.cursor.get_tile_position()):
 			last_selected_terrain = map.get_terrain_by_position(_input.cursor.get_tile_position())
 			event = GameConst.Event.CLICKED_LEFT
 
 	if _input.is_just_second:
 		event = GameConst.Event.CLICKED_RIGHT
-		
+
 	if _action_panel_just_released:
 		event = GameConst.Event.CLICKED_ACTION
 		_action_panel_just_released = false
-		
+
 	if _shop_panel_just_released:
 		event = GameConst.Event.CLICKED_SHOP
 		_shop_panel_just_released = false
@@ -127,16 +136,18 @@ func _process_human(delta: float) -> void:
 		if _last_state != state or _last_event != event:
 			_last_state = state
 			_last_event = event
-			_multiplayer.nakama_send_match_state(_multiplayer.OpCodes.FSM_ROUND, _stringify_network_fsm_round())
-	
-	match(state):
+			_multiplayer.nakama_send_match_state(
+				_multiplayer.OpCodes.FSM_ROUND, _stringify_network_fsm_round()
+			)
+
+	match state:
 		GameConst.State.EARNING:
 			await _do_state_earning()
 		GameConst.State.REPAIRING:
 			_input.enable_all()
 			await _do_state_repairing()
 		GameConst.State.SELECTING:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_LEFT:
 					_do_state_selecting_clicked_left()
 				GameConst.Event.CLICKED_RIGHT:
@@ -146,7 +157,7 @@ func _process_human(delta: float) -> void:
 				GameConst.Event.NONE:
 					_round_button.disabled = false
 		GameConst.State.COMMANDING:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_LEFT:
 					_do_state_commanding_clicked_left()
 				GameConst.Event.CLICKED_RIGHT:
@@ -155,7 +166,7 @@ func _process_human(delta: float) -> void:
 					_update_move_arrow_ui_input()
 					_round_button.disabled = true
 		GameConst.State.ACTION:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_ACTION:
 					await _do_state_action_clicked_action()
 				GameConst.Event.CLICKED_RIGHT:
@@ -163,7 +174,7 @@ func _process_human(delta: float) -> void:
 				GameConst.Event.NONE:
 					_round_button.disabled = true
 		GameConst.State.ATTACKING:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_LEFT:
 					await _do_state_attacking_clicked_left()
 				GameConst.Event.CLICKED_RIGHT:
@@ -171,7 +182,7 @@ func _process_human(delta: float) -> void:
 				GameConst.Event.NONE:
 					_round_button.disabled = true
 		GameConst.State.REFILLING:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_LEFT:
 					await _do_state_refilling_clicked_left()
 				GameConst.Event.CLICKED_RIGHT:
@@ -179,7 +190,7 @@ func _process_human(delta: float) -> void:
 				GameConst.Event.NONE:
 					_round_button.disabled = true
 		GameConst.State.DEPLOYING:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_LEFT:
 					await _do_state_deploying_clicked_left()
 				GameConst.Event.CLICKED_RIGHT:
@@ -187,7 +198,7 @@ func _process_human(delta: float) -> void:
 				GameConst.Event.NONE:
 					_round_button.disabled = true
 		GameConst.State.BUYING:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_LEFT:
 					pass
 				GameConst.Event.CLICKED_RIGHT:
@@ -207,7 +218,7 @@ func _process_human(delta: float) -> void:
 
 
 func _process_ai(delta: float) -> void:
-	match(state):
+	match state:
 		GameConst.State.EARNING:
 			await _do_state_earning()
 			ai_phase = 0
@@ -215,17 +226,25 @@ func _process_ai(delta: float) -> void:
 		GameConst.State.REPAIRING:
 			await _do_state_repairing()
 		GameConst.State.SELECTING:
-			match(ai_phase):
+			match ai_phase:
 				0:
 					# try capture nearest buildings
 					var unit_for_action_found: bool = false
 					for unit: Unit in map.units:
-						if unit.id == "INFANTRY" and unit.player_owned == player_turns[0] and not unit.stats.round_over:
+						if (
+							unit.id == "INFANTRY"
+							and unit.player_owned == player_turns[0]
+							and not unit.stats.round_over
+						):
 							last_selected_unit = unit
 							_create_and_set_move_area(unit, false)
 							unit_for_action_found = false
 							for terrain: Terrain in moveable_terrains:
-								if _types.terrains[terrain.id]["can_capture"] and terrain.player_owned != player_turns[0] and (not terrain.has_unit() or terrain.get_unit() == unit):
+								if (
+									_types.terrains[terrain.id]["can_capture"]
+									and terrain.player_owned != player_turns[0]
+									and (not terrain.has_unit() or terrain.get_unit() == unit)
+								):
 									last_action_terrain = terrain
 									last_selected_action = GameConst.Actions.CAPTURE
 									unit_for_action_found = true
@@ -240,11 +259,26 @@ func _process_ai(delta: float) -> void:
 								# only one infantry should go there
 								if terrain in _ai_on_way_capture_terrains:
 									continue
-								if _types.terrains[terrain.id]["can_capture"] and terrain.player_owned != player_turns[0] and not terrain.has_unit():
-									terrain_paths.append(Terrain.get_astar_path(unit.get_terrain(), terrain, map.terrains, unit))
+								if (
+									_types.terrains[terrain.id]["can_capture"]
+									and terrain.player_owned != player_turns[0]
+									and not terrain.has_unit()
+								):
+									terrain_paths.append(
+										Terrain.get_astar_path(
+											unit.get_terrain(), terrain, map.terrains, unit
+										)
+									)
 									path_to_terrain_dict[terrain_paths.back()] = terrain
 							if len(terrain_paths) > 0:
-								terrain_paths.sort_custom(func(a: PackedVector2Array, b: PackedVector2Array) -> bool: return len(a) < len(b))
+								(
+									terrain_paths
+									. sort_custom(
+										func(a: PackedVector2Array, b: PackedVector2Array) -> bool: return (
+											len(a) < len(b)
+										)
+									)
+								)
 								last_action_terrain = path_to_terrain_dict[terrain_paths[0]]
 								last_selected_action = GameConst.Actions.MOVE
 								unit_for_action_found = true
@@ -257,7 +291,11 @@ func _process_ai(delta: float) -> void:
 					# try to attack with range units
 					for unit: Unit in map.units:
 						_unattack()
-						if _types.units[unit.id]["max_range"] > 1 and unit.player_owned == player_turns[0] and not unit.stats.round_over:
+						if (
+							_types.units[unit.id]["max_range"] > 1
+							and unit.player_owned == player_turns[0]
+							and not unit.stats.round_over
+						):
 							_unattack()
 							_create_and_set_attack_area(unit, unit.get_terrain(), false)
 							if len(attackable_terrains) > 0:
@@ -298,7 +336,11 @@ func _process_ai(delta: float) -> void:
 					# try to position direct units (pushing to enemy hq)
 					var unit_for_action_found: bool = false
 					for unit: Unit in map.units:
-						if unit.player_owned == player_turns[0] and _types.units[unit.id]["max_range"] == 1 and not unit.stats.round_over:
+						if (
+							unit.player_owned == player_turns[0]
+							and _types.units[unit.id]["max_range"] == 1
+							and not unit.stats.round_over
+						):
 							# get enemy hq
 							_create_and_set_move_area(unit, false)
 							var hq: Terrain
@@ -319,7 +361,11 @@ func _process_ai(delta: float) -> void:
 					# try to position range units on strategic good places
 					var unit_for_action_found: bool = false
 					for unit: Unit in map.units:
-						if unit.player_owned == player_turns[0] and _types.units[unit.id]["max_range"] > 1 and not unit.stats.round_over:
+						if (
+							unit.player_owned == player_turns[0]
+							and _types.units[unit.id]["max_range"] > 1
+							and not unit.stats.round_over
+						):
 							_create_and_set_move_area(unit, false)
 							_ai_sort_moveable_terrain_nearest(unit)
 							for terrain: Terrain in moveable_terrains:
@@ -341,7 +387,11 @@ func _process_ai(delta: float) -> void:
 					# try to position range units (pushing to enemy hq)
 					var unit_for_action_found: bool = false
 					for unit: Unit in map.units:
-						if unit.player_owned == player_turns[0] and _types.units[unit.id]["max_range"] > 1 and not unit.stats.round_over:
+						if (
+							unit.player_owned == player_turns[0]
+							and _types.units[unit.id]["max_range"] > 1
+							and not unit.stats.round_over
+						):
 							# get enemy hq
 							_create_and_set_move_area(unit, false)
 							var hq: Terrain
@@ -380,7 +430,10 @@ func _process_ai(delta: float) -> void:
 						for i: int in range(len(unit_scenes) - 1, 0, -1):
 							var unit: Unit = unit_scenes[i].instantiate()
 							# enough money and not APC
-							if player_turns[0].money >= _types.units[unit.id]["cost"] and len(_types.units[unit.id]["weapons"]) > 0:
+							if (
+								player_turns[0].money >= _types.units[unit.id]["cost"]
+								and len(_types.units[unit.id]["weapons"]) > 0
+							):
 								last_selected_terrain = bases[0]
 								last_bought_unit = unit_scenes[i]
 								state = GameConst.State.BUYING
@@ -411,13 +464,13 @@ func _process_ai(delta: float) -> void:
 
 func _process_network(delta: float) -> void:
 	await _parse_network_fsm_round()
-	match(state):
+	match state:
 		GameConst.State.EARNING:
 			await _do_state_earning(false)
 		GameConst.State.REPAIRING:
 			await _do_state_repairing(false)
 		GameConst.State.SELECTING:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_LEFT:
 					pass
 				GameConst.Event.CLICKED_RIGHT:
@@ -425,40 +478,40 @@ func _process_network(delta: float) -> void:
 				GameConst.Event.CLICKED_END_ROUND:
 					pass
 		GameConst.State.COMMANDING:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_LEFT:
 					pass
 				GameConst.Event.CLICKED_RIGHT:
 					pass
 		GameConst.State.ACTION:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_ACTION:
 					_update_move_arrow_none_ui_input(last_action_terrain)
 					await _do_state_action_clicked_action(false)
 				GameConst.Event.CLICKED_RIGHT:
 					pass
 		GameConst.State.ATTACKING:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_LEFT:
-					_update_move_arrow_none_ui_input(last_action_terrain) # needed for direct attack
-					_create_and_set_attack_area(last_selected_unit, last_action_terrain, false) # needed for direct attack
+					_update_move_arrow_none_ui_input(last_action_terrain)  # needed for direct attack
+					_create_and_set_attack_area(last_selected_unit, last_action_terrain, false)  # needed for direct attack
 					await _do_state_attacking_clicked_left(false)
 				GameConst.Event.CLICKED_RIGHT:
 					pass
 		GameConst.State.REFILLING:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_LEFT:
 					await _do_state_refilling_clicked_left(false)
 				GameConst.Event.CLICKED_RIGHT:
 					pass
 		GameConst.State.DEPLOYING:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_LEFT:
 					await _do_state_deploying_clicked_left(false)
 				GameConst.Event.CLICKED_RIGHT:
 					pass
 		GameConst.State.BUYING:
-			match(event):
+			match event:
 				GameConst.Event.CLICKED_SHOP:
 					await _do_state_bying_clicked_shop(false)
 				GameConst.Event.CLICKED_RIGHT:
@@ -484,15 +537,25 @@ func _do_state_earning(local: bool = true) -> void:
 func _do_state_repairing(local: bool = true) -> void:
 	for unit: Unit in map.units:
 		var terrain: Terrain = unit.get_terrain()
-		if unit.is_on_terrain() and unit.player_owned == player_turns[0] and terrain.player_owned == player_turns[0] \
-				and _types.terrains[terrain.id]["can_capture"]:
+		if (
+			unit.is_on_terrain()
+			and unit.player_owned == player_turns[0]
+			and terrain.player_owned == player_turns[0]
+			and _types.terrains[terrain.id]["can_capture"]
+		):
 			# repair
 			if unit.stats.is_unit_damaged():
 				var unit_max_health: int = ProjectSettings.get_setting("global/unit_max_health")
 				var damage_to_repair: int = unit_max_health - unit.stats.health
-				var max_repair_points: int = ProjectSettings.get_setting("global/terrain_repair_health_points")
-				var repair_points: int = max_repair_points if damage_to_repair > max_repair_points else damage_to_repair
-				var cost_to_repair: int = _types.units[unit.id]["cost"] * repair_points / unit_max_health
+				var max_repair_points: int = ProjectSettings.get_setting(
+					"global/terrain_repair_health_points"
+				)
+				var repair_points: int = (
+					max_repair_points if damage_to_repair > max_repair_points else damage_to_repair
+				)
+				var cost_to_repair: int = (
+					_types.units[unit.id]["cost"] * repair_points / unit_max_health
+				)
 				if player_turns[0].money >= cost_to_repair:
 					unit.repair(repair_points)
 					_add_money_on_current_player(-cost_to_repair)
@@ -516,7 +579,7 @@ func _do_state_repairing(local: bool = true) -> void:
 
 # SELECTING
 func _do_state_selecting_clicked_left() -> void:
-	if last_selected_terrain: 
+	if last_selected_terrain:
 		if last_selected_terrain.has_unit():
 			var unit: Unit = last_selected_terrain.get_unit()
 			if unit.player_owned == player_turns[0] and not unit.stats.round_over:
@@ -530,7 +593,10 @@ func _do_state_selecting_clicked_left() -> void:
 				state = GameConst.State.COMMANDING
 				_create_and_set_move_area(last_selected_unit)
 				return
-		elif last_selected_terrain.shop_units.size() > 0 and last_selected_terrain.player_owned == player_turns[0]:
+		elif (
+			last_selected_terrain.shop_units.size() > 0
+			and last_selected_terrain.player_owned == player_turns[0]
+		):
 			last_shop = _shop_scene.instantiate()
 			last_shop.element_selected.connect(_on_panel_shop_selected)
 			last_shop.create_shop_elements(last_selected_terrain.shop_units, player_turns[0])
@@ -565,10 +631,16 @@ func _do_state_commanding_clicked_left() -> void:
 		if last_selected_terrain in moveable_terrains:
 			_sound.play("Click2")
 			var actions: Array[GameConst.Actions] = []
-			if not (last_selected_terrain.has_unit() and last_selected_terrain.get_unit() != last_selected_unit):
+			if not (
+				last_selected_terrain.has_unit()
+				and last_selected_terrain.get_unit() != last_selected_unit
+			):
 				actions.append(GameConst.Actions.MOVE)
 				if _types.units[last_selected_unit.id]["can_capture"]:
-					if _types.terrains[last_selected_terrain.id]["can_capture"] and last_selected_terrain.player_owned != player_turns[0]:
+					if (
+						_types.terrains[last_selected_terrain.id]["can_capture"]
+						and last_selected_terrain.player_owned != player_turns[0]
+					):
 						actions.append(GameConst.Actions.CAPTURE)
 				_unattack()
 				_create_and_set_attack_area(last_selected_unit, last_selected_terrain)
@@ -596,14 +668,22 @@ func _do_state_commanding_clicked_left() -> void:
 				last_action_terrain = last_selected_terrain
 				return
 		# do direct attack (direct clicking on attackable unit)
-		elif last_selected_terrain in attackable_terrains and _types.units[last_selected_unit.id]["can_move_and_attack"]:
+		elif (
+			last_selected_terrain in attackable_terrains
+			and _types.units[last_selected_unit.id]["can_move_and_attack"]
+		):
 			if _move_arrow_node.curve.point_count == 0:
 				_move_arrow_node.curve.add_point(last_selected_unit.get_terrain().position)
-			var end_curve_terrain: Terrain = map.get_terrain_by_position(_move_arrow_node.curve.get_point_position(_move_arrow_node.curve.point_count - 1))
+			var end_curve_terrain: Terrain = map.get_terrain_by_position(
+				_move_arrow_node.curve.get_point_position(_move_arrow_node.curve.point_count - 1)
+			)
 			last_action_terrain = end_curve_terrain
 			if last_selected_terrain and last_selected_terrain.is_neighbor(end_curve_terrain):
 				# block direct attack, when path end has a unit, except when it's the unit itself (eg. attacking other unit next to it)
-				if not (end_curve_terrain.has_unit() and end_curve_terrain.get_unit() != last_selected_unit):
+				if not (
+					end_curve_terrain.has_unit()
+					and end_curve_terrain.get_unit() != last_selected_unit
+				):
 					state = GameConst.State.ATTACKING
 					# to fire left click event
 					_simulated_first_click = true
@@ -808,7 +888,7 @@ func _do_state_action_clicked_action(local: bool = true) -> void:
 	# cancle capturing when moving away
 	if last_selected_unit.is_capturing() and _move_arrow_node.curve.point_count > 1:
 		last_selected_unit.uncapture()
-	match(last_selected_action):
+	match last_selected_action:
 		GameConst.Actions.MOVE:
 			_deselect_unit()
 			_unattack()
@@ -1036,7 +1116,13 @@ func _path_finding_move_arrow(end_terrain: Terrain, only_in_movable: bool = true
 	if only_in_movable:
 		if not end_terrain in await last_selected_unit.get_possible_terrains_to_move():
 			return
-	for point: Vector2 in Terrain.get_astar_path(last_selected_unit.get_terrain(), end_terrain, map.terrains, last_selected_unit, !only_in_movable):
+	for point: Vector2 in Terrain.get_astar_path(
+		last_selected_unit.get_terrain(),
+		end_terrain,
+		map.terrains,
+		last_selected_unit,
+		!only_in_movable
+	):
 		_move_arrow_node.curve.add_point(point)
 
 
@@ -1045,7 +1131,9 @@ func _get_unit_distance(start: Unit, end: Unit) -> int:
 	return start.get_terrain().get_none_diagonal_distance(end.get_terrain())
 
 
-func _is_path_possible(current_path: PackedVector2Array, additional_terrain: Terrain, unit: Unit) -> bool:
+func _is_path_possible(
+	current_path: PackedVector2Array, additional_terrain: Terrain, unit: Unit
+) -> bool:
 	if not additional_terrain:
 		return false
 	if not additional_terrain in moveable_terrains:
@@ -1089,7 +1177,7 @@ func _deselect_unit() -> void:
 	for i: Sprite2D in areas:
 		(i.get_parent() as Terrain).layer = null
 		i.queue_free()
-		
+
 	_move_arrow_node.hide()
 
 
@@ -1146,7 +1234,9 @@ func _create_and_set_move_area(unit: Unit, visibility: bool = true) -> void:
 		_create_and_set_join_area(unit, i)
 
 
-func _create_and_set_attack_area(unit: Unit, target_terrain: Terrain, visibility: bool = true, check_move_and_attack: bool = true) -> void:
+func _create_and_set_attack_area(
+	unit: Unit, target_terrain: Terrain, visibility: bool = true, check_move_and_attack: bool = true
+) -> void:
 	# if unit moved and is not allowed to attack
 	if check_move_and_attack:
 		if target_terrain.get_none_diagonal_distance(unit.get_terrain()) > 0:
@@ -1163,12 +1253,19 @@ func _create_and_set_attack_area(unit: Unit, target_terrain: Terrain, visibility
 			attackable_terrains.append(i)
 
 
-func _create_and_set_refill_area(unit: Unit, target_terrain: Terrain, visibility: bool = true) -> void:
+func _create_and_set_refill_area(
+	unit: Unit, target_terrain: Terrain, visibility: bool = true
+) -> void:
 	if not _types.units[unit.id]["can_supply"]:
 		return
 	var terrains: Array[Terrain] = unit.get_neighbors_from_terrain(target_terrain)
 	for i: Terrain in terrains:
-		if i and i.has_unit() and i.get_unit().player_owned == unit.player_owned and i.get_unit() != unit:
+		if (
+			i
+			and i.has_unit()
+			and i.get_unit().player_owned == unit.player_owned
+			and i.get_unit() != unit
+		):
 			if visibility:
 				var layer: DecalLayer = _move_layer.instantiate() as Sprite2D
 				layer.type = DecalLayer.Type.REFILL
@@ -1178,14 +1275,27 @@ func _create_and_set_refill_area(unit: Unit, target_terrain: Terrain, visibility
 
 
 # find terrains which contains carrying vehicles to join
-func _create_and_set_enter_area(unit: Unit, target_terrain: Terrain, visibility: bool = true) -> void:
+func _create_and_set_enter_area(
+	unit: Unit, target_terrain: Terrain, visibility: bool = true
+) -> void:
 	enter_terrains = []
 	var terrains: Array[Terrain] = [target_terrain]
 	for i: Terrain in terrains:
-		if i and i.has_unit() and i.get_unit().player_owned == unit.player_owned and i.get_unit() != unit:
+		if (
+			i
+			and i.has_unit()
+			and i.get_unit().player_owned == unit.player_owned
+			and i.get_unit() != unit
+		):
 			var target_unit: Unit = i.get_unit()
-			if _types.units[target_unit.id]["can_carry"] and unit.id in _types.units[target_unit.id]["carrying_types"] \
-			and target_unit.cargo.get_child_count() < _types.units[target_unit.id]["carrying_size"]:
+			if (
+				_types.units[target_unit.id]["can_carry"]
+				and unit.id in _types.units[target_unit.id]["carrying_types"]
+				and (
+					target_unit.cargo.get_child_count()
+					< _types.units[target_unit.id]["carrying_size"]
+				)
+			):
 				if visibility:
 					var layer: DecalLayer = _move_layer.instantiate() as Sprite2D
 					layer.type = DecalLayer.Type.ENTER
@@ -1194,7 +1304,9 @@ func _create_and_set_enter_area(unit: Unit, target_terrain: Terrain, visibility:
 				enter_terrains.append(i)
 
 
-func _create_and_set_deploy_area(unit: Unit, target_terrain: Terrain, visibility: bool = true) -> void:
+func _create_and_set_deploy_area(
+	unit: Unit, target_terrain: Terrain, visibility: bool = true
+) -> void:
 	deploy_terrains = []
 	if not _types.units[unit.id]["can_carry"] or unit.cargo.get_child_count() == 0:
 		return
@@ -1211,15 +1323,24 @@ func _create_and_set_deploy_area(unit: Unit, target_terrain: Terrain, visibility
 					deploy_terrains.append(i)
 
 
-func _create_and_set_join_area(unit: Unit, target_terrain: Terrain, visibility: bool = true) -> void:
+func _create_and_set_join_area(
+	unit: Unit, target_terrain: Terrain, visibility: bool = true
+) -> void:
 	join_terrains = []
 	var terrains: Array[Terrain] = [target_terrain]
 	for i: Terrain in terrains:
-		if i and i.has_unit() and i.get_unit().player_owned == unit.player_owned and i.get_unit() != unit:
+		if (
+			i
+			and i.has_unit()
+			and i.get_unit().player_owned == unit.player_owned
+			and i.get_unit() != unit
+		):
 			var target_unit: Unit = i.get_unit()
 			var max_health: int = ProjectSettings.get_setting("global/unit_max_health")
-			if target_unit.id == unit.id \
-			and (target_unit.stats.health < max_health or unit.stats.health < max_health):
+			if (
+				target_unit.id == unit.id
+				and (target_unit.stats.health < max_health or unit.stats.health < max_health)
+			):
 				if visibility:
 					var layer: DecalLayer = _move_layer.instantiate() as Sprite2D
 					layer.type = DecalLayer.Type.JOIN
@@ -1232,7 +1353,16 @@ func _add_money_on_current_player(value: int, sound: bool = false) -> void:
 	var last_money: int = player_turns[0].money
 	player_turns[0].money += value
 	var tween: Tween = create_tween()
-	tween.tween_method(_set_money_label, last_money, player_turns[0].money, ProjectSettings.get_setting("global/count_money_duration") as float).set_ease(Tween.EASE_IN_OUT)
+	(
+		tween
+		. tween_method(
+			_set_money_label,
+			last_money,
+			player_turns[0].money,
+			ProjectSettings.get_setting("global/count_money_duration") as float
+		)
+		. set_ease(Tween.EASE_IN_OUT)
+	)
 	if sound:
 		_sound.play("Coin")
 	await tween.finished
@@ -1295,15 +1425,16 @@ func _get_group_decal(group_name: String) -> Array[Sprite2D]:
 
 
 # returns Vector: x = -1 when no damage can be done (e.g. no possible weapons), y represents weapon type (primary -> 0, secondary -> 1)
-func _calculate_damage(attacking_unit: Unit, defending_unit: Unit, random_luck: bool = true) -> Vector2:
+func _calculate_damage(
+	attacking_unit: Unit, defending_unit: Unit, random_luck: bool = true
+) -> Vector2:
 	var base_damage: int = 0
 	var weapon_type: int = -1
 	var primary_damage: int = _types.primary_damage[attacking_unit.id][defending_unit.id]
 	var secondary_damage: int = _types.secondary_damage[attacking_unit.id][defending_unit.id]
 	# when attacking unit has enough ammo for primary weapon
-	if (attacking_unit.stats.ammo > 0 or attacking_unit.stats.ammo == -1) \
-			# and defending unit "accepts" primary weapon
-			and primary_damage > 0:
+	# and defending unit "accepts" primary weapon
+	if (attacking_unit.stats.ammo > 0 or attacking_unit.stats.ammo == -1) and primary_damage > 0:
 		base_damage = primary_damage
 		weapon_type = 0
 	else:
@@ -1314,16 +1445,18 @@ func _calculate_damage(attacking_unit: Unit, defending_unit: Unit, random_luck: 
 		else:
 			# no weapons means no damage possible
 			return Vector2(-1, -1)
-	
+
 	var luck: int = 0
 	if random_luck:
 		# get deterministic "random" number between 0 and 9
 		luck = _get_random_luck()
 	else:
 		luck = 5
-		
+
 	var attack_factor: float = (base_damage + luck) / 100.0
-	var defense_factor: float = (100 - defending_unit.stats.star_number * defending_unit.stats.health / 10.0) / 100.0
+	var defense_factor: float = (
+		(100 - defending_unit.stats.star_number * defending_unit.stats.health / 10.0) / 100.0
+	)
 	var total_damage: int = int(attacking_unit.stats.health * attack_factor * defense_factor)
 	return Vector2(total_damage, weapon_type)
 
@@ -1342,7 +1475,11 @@ func _set_money_label(value: int) -> void:
 func _get_free_own_bases() -> Array[Terrain]:
 	var bases: Array[Terrain] = []
 	for terrain: Terrain in map.terrains:
-		if "BASE" == terrain.id and terrain.player_owned == player_turns[0] and not terrain.has_unit():
+		if (
+			"BASE" == terrain.id
+			and terrain.player_owned == player_turns[0]
+			and not terrain.has_unit()
+		):
 			bases.append(terrain)
 	return bases
 
@@ -1358,28 +1495,47 @@ func _ai_create_and_filter_move_curve(target_terrain: Terrain) -> void:
 		if current_terrain in moveable_terrains:
 			break
 		curve.remove_point(i)
-	
+
 	# remove all terrains reverse until there is no unit on it or the terrain is not a HQ and unit is not infantery
 	for i: int in range(curve.point_count - 1, 0, -1):
 		var current_terrain: Terrain = map.get_terrain_by_position(curve.get_point_position(i))
-		if current_terrain.has_unit() or (not "Infantry" in unit.name and "HQ" in current_terrain.name):
+		if (
+			current_terrain.has_unit()
+			or (not "Infantry" in unit.name and "HQ" in current_terrain.name)
+		):
 			curve.remove_point(i)
 		else:
 			break
 
 
+func _lambda_sort_damage_terrain(attacking_unit: Unit, a: Terrain, b: Terrain) -> bool:
+	var value_a: Vector2 = (
+		_calculate_damage(attacking_unit, a.get_unit()) * _types.units[a.get_unit().id]["cost"]
+	)
+	var value_b: Vector2 = (
+		_calculate_damage(attacking_unit, b.get_unit()) * _types.units[b.get_unit().id]["cost"]
+	)
+	return value_a > value_b
+
+
 func _ai_sort_attackable_terrain_most_valuable(attacking_unit: Unit) -> void:
-	attackable_terrains.sort_custom(func(a: Terrain, b: Terrain) -> bool:
-		var value_a: Vector2 = _calculate_damage(attacking_unit, a.get_unit()) * _types.units[a.get_unit().id]["cost"]
-		var value_b: Vector2 = _calculate_damage(attacking_unit, b.get_unit()) * _types.units[b.get_unit().id]["cost"]
-		return value_a > value_b)
+	attackable_terrains.sort_custom(
+		func(a: Terrain, b: Terrain) -> bool: return _lambda_sort_damage_terrain(
+			attacking_unit, a, b
+		)
+	)
+
+
+func _lambda_sort_distance_Terrain(unit: Unit, a: Terrain, b: Terrain) -> bool:
+	var value_a: int = a.get_none_diagonal_distance(unit.get_terrain())
+	var value_b: int = b.get_none_diagonal_distance(unit.get_terrain())
+	return value_a < value_b
 
 
 func _ai_sort_moveable_terrain_nearest(unit: Unit) -> void:
-	moveable_terrains.sort_custom(func(a: Terrain, b: Terrain) -> bool:
-		var value_a: int = a.get_none_diagonal_distance(unit.get_terrain())
-		var value_b: int = b.get_none_diagonal_distance(unit.get_terrain())
-		return value_a < value_b)
+	moveable_terrains.sort_custom(
+		func(a: Terrain, b: Terrain) -> bool: return _lambda_sort_distance_Terrain(unit, a, b)
+	)
 
 
 func _check_ending_condition() -> void:
@@ -1412,34 +1568,38 @@ func _set_network_player_stats() -> void:
 
 func _stringify_network_fsm_round() -> String:
 	var data: Dictionary = {}
-	data['type'] = _multiplayer.OpCodes.FSM_ROUND
-	data['player_id'] = own_player_id
-	data['state_event_id'] = player_turns[0].id * 10000 + _state_event_id
+	data["type"] = _multiplayer.OpCodes.FSM_ROUND
+	data["player_id"] = own_player_id
+	data["state_event_id"] = player_turns[0].id * 10000 + _state_event_id
 	_state_event_id += 1
-	data['network_state'] = state
-	data['network_event'] = event
+	data["network_state"] = state
+	data["network_event"] = event
 	if last_selected_unit and is_instance_valid(last_selected_unit):
-		data['network_selected_unit'] = last_selected_unit.get_path()
+		data["network_selected_unit"] = last_selected_unit.get_path()
 	if last_selected_terrain:
-		data['network_selected_terrain'] = last_selected_terrain.get_path()
+		data["network_selected_terrain"] = last_selected_terrain.get_path()
 	if last_selected_action:
-		data['network_selected_action'] = last_selected_action
+		data["network_selected_action"] = last_selected_action
 	if last_action_terrain:
-		data['network_action_terrain'] = last_action_terrain.get_path()
+		data["network_action_terrain"] = last_action_terrain.get_path()
 	if last_mouse_terrain:
-		data['network_mouse_terrain'] = last_mouse_terrain.get_path()
+		data["network_mouse_terrain"] = last_mouse_terrain.get_path()
 	if last_bought_unit:
-		data['network_bought_unit'] = last_bought_unit.resource_path
+		data["network_bought_unit"] = last_bought_unit.resource_path
 	else:
 		# shop unit can be null when shop gets closed
-		data['network_bought_unit'] = null
+		data["network_bought_unit"] = null
 	return JSON.stringify(data)
 
 
 func _remove_network_own_fsm_round() -> void:
-	var new_list: Array[String] = _multiplayer.network_fsm_round_queue.filter(func(x: String) -> bool: return JSON.parse_string(x)['player_id'] != own_player_id)
+	var new_list: Array[String] = _multiplayer.network_fsm_round_queue.filter(
+		func(x: String) -> bool: return JSON.parse_string(x)["player_id"] != own_player_id
+	)
 	_multiplayer.network_fsm_round_queue = new_list
-	new_list = _multiplayer.network_fsm_round_queue.filter(func(x: String) -> bool: return JSON.parse_string(x)['player_id'] != own_player_id)
+	new_list = _multiplayer.network_fsm_round_queue.filter(
+		func(x: String) -> bool: return JSON.parse_string(x)["player_id"] != own_player_id
+	)
 	_multiplayer.network_fsm_round_queue = new_list
 
 
@@ -1453,27 +1613,27 @@ func _parse_network_fsm_round() -> void:
 	if len(_multiplayer.network_fsm_round_queue) > 0:
 		var data: String = _multiplayer.network_fsm_round_queue.pop_front()
 		var parsed: Dictionary = JSON.parse_string(data)
-		var _type: int = parsed['type']
-		var _player_id: int = parsed['player_id']
-		state = parsed['network_state']
-		event = parsed['network_event']
-		if parsed.has('network_selected_unit'):
-			var network_selected_unit: NodePath =  parsed['network_selected_unit']
+		var _type: int = parsed["type"]
+		var _player_id: int = parsed["player_id"]
+		state = parsed["network_state"]
+		event = parsed["network_event"]
+		if parsed.has("network_selected_unit"):
+			var network_selected_unit: NodePath = parsed["network_selected_unit"]
 			last_selected_unit = get_node(network_selected_unit)
-		if parsed.has('network_selected_terrain'):
-			var network_selected_terrain: NodePath = parsed['network_selected_terrain']
+		if parsed.has("network_selected_terrain"):
+			var network_selected_terrain: NodePath = parsed["network_selected_terrain"]
 			last_selected_terrain = get_node(network_selected_terrain)
-		if parsed.has('network_selected_action'):
-			last_selected_action = parsed['network_selected_action']
-		if parsed.has('network_action_terrain'):
-			var network_action_terrain: NodePath = parsed['network_action_terrain']
+		if parsed.has("network_selected_action"):
+			last_selected_action = parsed["network_selected_action"]
+		if parsed.has("network_action_terrain"):
+			var network_action_terrain: NodePath = parsed["network_action_terrain"]
 			last_action_terrain = get_node(network_action_terrain)
-		if parsed.has('network_mouse_terrain'):
-			var network_mouse_terrain: NodePath = parsed['network_mouse_terrain']
+		if parsed.has("network_mouse_terrain"):
+			var network_mouse_terrain: NodePath = parsed["network_mouse_terrain"]
 			last_mouse_terrain = get_node(network_mouse_terrain)
-		if parsed.has('network_bought_unit'):
-			if parsed['network_bought_unit']:
-				var network_bought_unit: String = parsed['network_bought_unit']
+		if parsed.has("network_bought_unit"):
+			if parsed["network_bought_unit"]:
+				var network_bought_unit: String = parsed["network_bought_unit"]
 				last_bought_unit = load(network_bought_unit)
 			else:
 				# shop unit can be null when shop gets closed

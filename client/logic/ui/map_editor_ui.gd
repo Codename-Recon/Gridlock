@@ -4,8 +4,8 @@ extends Control
 signal terrain_selected(terrain_set: int, terrain: int)
 signal unit_selected(unit_id: String, unit_scene: PackedScene)
 signal tile_selected(atlas_id: Vector2i)
-signal edit_selected()
-signal remove_selected()
+signal edit_selected
+signal remove_selected
 signal map_resized(new_size: Vector2i)
 signal map_settings_player_id_changed(player_id: int)
 signal selected
@@ -43,11 +43,11 @@ signal load_selected(file_path: String)
 @onready var unit_ammo_spin: SpinBox = %UnitAmmoSpin
 @onready var load_file_dialog: FileDialog = $LoadFileDialog
 
-
 var _last_button: Button
 var _last_terrain_edited: Terrain
 var _last_unit_edited: Unit
 var _types: GlobalTypes = Types
+
 
 func reload_map_data() -> void:
 	name_line.text = map.map_name
@@ -73,7 +73,9 @@ func _ready() -> void:
 		var source: TileSetAtlasSource = tile_set.get_source(0)
 		# Sort tiles alphabetical so they are grouped up on the tile view
 		var sorted_tiles: Array = MapEditor.tile_lookup.keys()
-		sorted_tiles.sort_custom(func(a: String, b: String) -> bool: return a.naturalnocasecmp_to(b) < 0)
+		sorted_tiles.sort_custom(
+			func(a: String, b: String) -> bool: return a.naturalnocasecmp_to(b) < 0
+		)
 		for tile_id: String in sorted_tiles:
 			var idx: int = MapEditor.tile_lookup[tile_id]
 			var atlas_coords: Vector2i = source.get_tile_id(idx)
@@ -95,7 +97,7 @@ func _ready() -> void:
 	_generate_player_options(player_option_button)
 	_generate_player_options(terrain_owner_option_button)
 	_generate_player_options(unit_owner_option_button)
-	map_editor.tile_edit_selected.connect(_on_tile_edit_selected, CONNECT_DEFERRED) # Deferred, to prevent value overwrite when switching between units because of focus release
+	map_editor.tile_edit_selected.connect(_on_tile_edit_selected, CONNECT_DEFERRED)  # Deferred, to prevent value overwrite when switching between units because of focus release
 	terrain_settings_control.hide()
 	unit_settings_control.hide()
 	_connect_text_boxes_for_focus()
@@ -159,6 +161,7 @@ func _close_menu() -> void:
 	game_input.selection_enabled = true
 	game_input.selection_movement_enabled = true
 
+
 func _update_money_container() -> void:
 	if map.has_player(player_option_button.selected):
 		h_box_container_money.show()
@@ -167,12 +170,12 @@ func _update_money_container() -> void:
 		h_box_container_money.hide()
 
 
-func _on_terrain_selected(button: Button, terrain_idx: int) -> void :
+func _on_terrain_selected(button: Button, terrain_idx: int) -> void:
 	terrain_selected.emit(0, terrain_idx)
 	_change_activation_of_buttons(button)
-	
-	
-func _on_unit_selected(button: Button, unit_id: String, unit_scene: PackedScene) -> void :
+
+
+func _on_unit_selected(button: Button, unit_id: String, unit_scene: PackedScene) -> void:
 	unit_selected.emit(unit_id, unit_scene)
 	_change_activation_of_buttons(button)
 
@@ -263,6 +266,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			selected.emit()
 			_update_money_container()
 
+
 func _on_money_spin_value_changed(value: float) -> void:
 	map.get_player(player_option_button.selected).money = round(value)
 
@@ -319,7 +323,7 @@ func _enable_input() -> void:
 	game_input.camera_movement_enabled = true
 	game_input.button_enabled = true
 	game_input.selection_enabled = true
-	
+
 
 func _disable_input() -> void:
 	game_input.camera_movement_enabled = false

@@ -49,14 +49,6 @@ enum AiDifficulty {
 	HARD,
 }
 
-enum GameMode {
-	SINGLE,
-	HOTSEAT,
-	NETWORK
-}
+enum GameMode { SINGLE, HOTSEAT, NETWORK }
 
-enum Weather {
-	CLEAR,
-	RAIN,
-	SNOW
-}
+enum Weather { CLEAR, RAIN, SNOW }

@@ -1,0 +1,21 @@
+name: gdtoolkit
+
+on:
+  pull_request:
+    branches: ["master"]
+    paths:
+      - "gdlintrc"
+      - "client/"
+
+jobs:
+  static-checks:
+    name: "Static checks"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Scony/godot-gdscript-toolkit@master
+
+      - name: GDFormat
+        run: gdformat --check client/logic
+    #- name: gdlint
+    #  run: gdlint client/logic

@@ -173,5 +173,9 @@ func _on_nakama_received_match_state(match_state: NakamaRTAPI.MatchData) -> void
 	if match_state.op_code == OpCodes.FSM_ROUND:
 		if match_state.data:
 			network_fsm_round_queue.append(match_state.data)
-			print_debug(GameConst.State.keys()[JSON.parse_string(match_state.data)["network_state"]])
-			print_debug(GameConst.Event.keys()[JSON.parse_string(match_state.data)["network_event"]])
+			print_debug(
+				GameConst.State.keys()[JSON.parse_string(match_state.data)["network_state"]]
+			)
+			print_debug(
+				GameConst.Event.keys()[JSON.parse_string(match_state.data)["network_event"]]
+			)

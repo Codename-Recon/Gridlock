@@ -9,7 +9,7 @@ const TERRAIN_STATS: PackedScene = preload("res://logic/ui/terrain_stats.tscn")
 @export var map_name: String
 @export var author: String
 @export var source: String
-@export var game_round: int = 0 # TODO: Implement this variable in the game instead of the local one in game script
+@export var game_round: int = 0  # TODO: Implement this variable in the game instead of the local one in game script
 @export_multiline var duplicate_result: String = ""
 
 var players: Node
@@ -32,12 +32,16 @@ var map_size: Vector2i:
 					max_x = round(terrain.position.x)
 				if max_y < terrain.position.y:
 					max_y = round(terrain.position.y)
-		return Vector2i(max_x, max_y) / ProjectSettings.get_setting("global/grid_size") + Vector2i.ONE
+		return (
+			Vector2i(max_x, max_y) / ProjectSettings.get_setting("global/grid_size") + Vector2i.ONE
+		)
 
 static var predefined_terrains_packed_scenes: Dictionary:
 	get:
 		if not predefined_terrains_packed_scenes:
-			predefined_terrains_packed_scenes = _load_predefined_terrains_packed_scenes(_terrain_path)
+			predefined_terrains_packed_scenes = _load_predefined_terrains_packed_scenes(
+				_terrain_path
+			)
 		return predefined_terrains_packed_scenes
 static var predefined_units_packed_scenes: Dictionary:
 	get:
@@ -70,8 +74,8 @@ static func _load_predefined_terrains_packed_scenes(path: String) -> Dictionary:
 		_predefines[terrain.tile_id] = terrain_packed_scene
 		terrain.queue_free()
 	return _predefines
-	
-	
+
+
 static func _load_predefined_units_packed_scenes(path: String) -> Dictionary:
 	var _predefines: Dictionary = {}
 	var dir: DirAccess = DirAccess.open(path)
@@ -82,7 +86,7 @@ static func _load_predefined_units_packed_scenes(path: String) -> Dictionary:
 			file_name = file_name.trim_suffix(".remap")
 		if not file_name.ends_with(".tscn"):
 			continue
-		var unit_packed_scene: PackedScene = (load(path + file_name) as PackedScene)
+		var unit_packed_scene: PackedScene = load(path + file_name) as PackedScene
 		var unit: Unit = unit_packed_scene.instantiate()
 		_predefines[unit.id] = unit_packed_scene
 		unit.queue_free()
@@ -102,7 +106,10 @@ func has_terrain_or_unit_owned_by_player(player_id: int) -> bool:
 			if terrain.player_owned and terrain.player_owned.id == player_id:
 				return true
 			if terrain.has_unit():
-				if terrain.get_unit().player_owned and terrain.get_unit().player_owned.id == player_id:
+				if (
+					terrain.get_unit().player_owned
+					and terrain.get_unit().player_owned.id == player_id
+				):
 					return true
 	return false
 
@@ -138,7 +145,14 @@ func remove_player(player_id: int) -> void:
 
 
 ## Creats a terrain and updates the players
-func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, texture: Texture2D, ground_tile_texture: Texture2D, player_id: int) -> void:
+func create_terrain(
+	id: String,
+	tile_id: String,
+	terrain_position: Vector2i,
+	texture: Texture2D,
+	ground_tile_texture: Texture2D,
+	player_id: int
+) -> void:
 	# Check if predefined terrain exist. If not -> create terrain
 	var terrain: Terrain
 	if tile_id in Map.predefined_terrains_packed_scenes:
@@ -173,8 +187,8 @@ func create_terrain(id: String, tile_id: String, terrain_position: Vector2i, tex
 	terrain.name = id
 	terrain.position = terrain_position
 	_terrain_lookup[terrain_position] = terrain
-	
-	
+
+
 ## Creats a unit on a specific terrain and updates the players. If a unit is already on that terrain, it will be replaced with the new unit.
 ## The return value is the unit iself. It also indicates whether the unit can be placed at that specific location (null when not possible).
 func create_unit(id: String, terrain_position: Vector2i, player_id: int) -> Unit:
@@ -252,6 +266,7 @@ func _ready() -> void:
 			players = get_node("Players")
 		_sort_players()
 		_global.last_loaded_map = self
+
 
 func _init() -> void:
 	_players_node = Node.new()
