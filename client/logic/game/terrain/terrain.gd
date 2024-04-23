@@ -64,7 +64,7 @@ var _types: GlobalTypes = Types
 @onready var stats: TerrainStats = $TerrainStats
 
 
-static func __lambda_calculate_distance(start: Terrain, end: Terrain) -> int:
+static func _lambda_calculate_distance(start: Terrain, end: Terrain) -> int:
 	var distance: Vector2i = end.global_position - start.global_position
 	distance /= ProjectSettings.get_setting("global/grid_size")
 	var move_value: int = round(abs(distance.x) + abs(distance.y))
@@ -80,7 +80,7 @@ static func filter_terrains(
 		# Removing terrains which are too far
 		terrains = terrains.filter(
 			func(a: Terrain) -> bool: return (
-				__lambda_calculate_distance(unit.get_terrain(), a) <= unit.possible_movement_steps
+				_lambda_calculate_distance(unit.get_terrain(), a) <= unit.possible_movement_steps
 			)
 		)
 	if filter_blocking:

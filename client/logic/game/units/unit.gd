@@ -87,7 +87,7 @@ func get_possible_terrains_to_move() -> Array[Terrain]:
 	return _possible_terrains_to_move_buffer
 
 
-func __lamda_calculate_distance(a: Terrain, b: Terrain) -> bool:
+func _lamda_calculate_distance(a: Terrain, b: Terrain) -> bool:
 	var value_a: int = a.get_none_diagonal_distance(get_terrain())
 	var value_b: int = b.get_none_diagonal_distance(get_terrain())
 	return value_a > value_b
@@ -103,7 +103,7 @@ func calculate_possible_terrains_to_move() -> void:
 	terrains = Terrain.filter_terrains(terrains, self)
 
 	# Sort by distance; First entry is the farthest terrain
-	terrains.sort_custom(__lamda_calculate_distance)
+	terrains.sort_custom(_lamda_calculate_distance)
 	var movable_terrains: Array[Terrain] = []
 	while terrains.size() > 0:
 		var terrain: Terrain = terrains[0]

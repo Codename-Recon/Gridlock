@@ -1508,7 +1508,7 @@ func _ai_create_and_filter_move_curve(target_terrain: Terrain) -> void:
 			break
 
 
-func __lambda_sort_damage_terrain(attacking_unit: Unit, a: Terrain, b: Terrain) -> bool:
+func _lambda_sort_damage_terrain(attacking_unit: Unit, a: Terrain, b: Terrain) -> bool:
 	var value_a: Vector2 = (
 		_calculate_damage(attacking_unit, a.get_unit()) * _types.units[a.get_unit().id]["cost"]
 	)
@@ -1520,13 +1520,13 @@ func __lambda_sort_damage_terrain(attacking_unit: Unit, a: Terrain, b: Terrain) 
 
 func _ai_sort_attackable_terrain_most_valuable(attacking_unit: Unit) -> void:
 	attackable_terrains.sort_custom(
-		func(a: Terrain, b: Terrain) -> bool: return __lambda_sort_damage_terrain(
+		func(a: Terrain, b: Terrain) -> bool: return _lambda_sort_damage_terrain(
 			attacking_unit, a, b
 		)
 	)
 
 
-func __lambda_sort_distance_Terrain(unit: Unit, a: Terrain, b: Terrain) -> bool:
+func _lambda_sort_distance_Terrain(unit: Unit, a: Terrain, b: Terrain) -> bool:
 	var value_a: int = a.get_none_diagonal_distance(unit.get_terrain())
 	var value_b: int = b.get_none_diagonal_distance(unit.get_terrain())
 	return value_a < value_b
@@ -1534,7 +1534,7 @@ func __lambda_sort_distance_Terrain(unit: Unit, a: Terrain, b: Terrain) -> bool:
 
 func _ai_sort_moveable_terrain_nearest(unit: Unit) -> void:
 	moveable_terrains.sort_custom(
-		func(a: Terrain, b: Terrain) -> bool: return __lambda_sort_distance_Terrain(unit, a, b)
+		func(a: Terrain, b: Terrain) -> bool: return _lambda_sort_distance_Terrain(unit, a, b)
 	)
 
 
