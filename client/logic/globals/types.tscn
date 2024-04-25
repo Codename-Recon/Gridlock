@@ -14,7 +14,6 @@ units = {
 "ANTI_AIR": {
 "ammo": 9.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": true,
@@ -40,7 +39,6 @@ units = {
 "APC": {
 "ammo": 0.0,
 "can_capture": false,
-"can_carry": true,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": false,
@@ -66,7 +64,6 @@ units = {
 "ARTILLERY": {
 "ammo": 9.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": false,
@@ -92,13 +89,12 @@ units = {
 "B-COPTER": {
 "ammo": 6.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": true,
 "can_repair": false,
 "can_supply": false,
-"carrying_size": 1.0,
+"carrying_size": 0.0,
 "carrying_types": [],
 "cost": 9000.0,
 "description": "B-COPTER_DESCRIPTION",
@@ -118,7 +114,6 @@ units = {
 "BATTLESHIP": {
 "ammo": 9.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": false,
@@ -144,7 +139,6 @@ units = {
 "BLACKBOAT": {
 "ammo": 0.0,
 "can_capture": false,
-"can_carry": true,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": false,
@@ -170,7 +164,6 @@ units = {
 "BLACKBOMB": {
 "ammo": 0.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": false,
@@ -196,7 +189,6 @@ units = {
 "BOMBER": {
 "ammo": 9.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": true,
@@ -222,7 +214,6 @@ units = {
 "CARRIER": {
 "ammo": 9.0,
 "can_capture": false,
-"can_carry": true,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": false,
@@ -248,7 +239,6 @@ units = {
 "CRUISER": {
 "ammo": 9.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": true,
@@ -274,7 +264,6 @@ units = {
 "FIGHTER": {
 "ammo": 9.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": true,
@@ -300,7 +289,6 @@ units = {
 "INFANTRY": {
 "ammo": -1.0,
 "can_capture": true,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": true,
@@ -326,7 +314,6 @@ units = {
 "LANDER": {
 "ammo": 0.0,
 "can_capture": false,
-"can_carry": true,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": false,
@@ -352,7 +339,6 @@ units = {
 "MECH": {
 "ammo": 3.0,
 "can_capture": true,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": true,
@@ -378,7 +364,6 @@ units = {
 "MEDIUM_TANK": {
 "ammo": 8.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": true,
@@ -404,7 +389,6 @@ units = {
 "MEGA_TANK": {
 "ammo": 3.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": true,
@@ -430,7 +414,6 @@ units = {
 "MISSILE": {
 "ammo": 6.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": false,
@@ -456,7 +439,6 @@ units = {
 "NEO_TANK": {
 "ammo": 9.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": true,
@@ -482,7 +464,6 @@ units = {
 "PIPERUNNER": {
 "ammo": 9.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": false,
@@ -508,7 +489,6 @@ units = {
 "RECON": {
 "ammo": -1.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": true,
@@ -534,7 +514,6 @@ units = {
 "ROCKET": {
 "ammo": 6.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": false,
@@ -560,7 +539,6 @@ units = {
 "STEALTH": {
 "ammo": 6.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": true,
 "can_move_and_attack": true,
@@ -586,7 +564,6 @@ units = {
 "SUB": {
 "ammo": 6.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": true,
 "can_hide": false,
 "can_move_and_attack": true,
@@ -612,7 +589,6 @@ units = {
 "T-COPTER": {
 "ammo": 0.0,
 "can_capture": false,
-"can_carry": true,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": false,
@@ -638,7 +614,6 @@ units = {
 "TANK": {
 "ammo": 9.0,
 "can_capture": false,
-"can_carry": false,
 "can_dive": false,
 "can_hide": false,
 "can_move_and_attack": true,

@@ -37,7 +37,6 @@
     "can_move_and_attack": { "type": "boolean" },
     "can_hide": { "type": "boolean" },
     "can_dive": { "type": "boolean" },
-    "can_carry": { "type": "boolean" },
     "carrying_types": {
       "type": "array",
       "items": { "type": "integer", "minimum": 0, "maximum": 23 },
@@ -65,7 +64,6 @@
     "can_move_and_attack",
     "can_hide",
     "can_dive",
-    "can_carry",
     "carrying_types",
     "carrying_size"
   ]

@@ -1289,7 +1289,7 @@ func _create_and_set_enter_area(
 		):
 			var target_unit: Unit = i.get_unit()
 			if (
-				_types.units[target_unit.id]["can_carry"]
+				_types.units[target_unit.id]["carrying_size"] > 0
 				and unit.id in _types.units[target_unit.id]["carrying_types"]
 				and (
 					target_unit.cargo.get_child_count()
@@ -1308,7 +1308,7 @@ func _create_and_set_deploy_area(
 	unit: Unit, target_terrain: Terrain, visibility: bool = true
 ) -> void:
 	deploy_terrains = []
-	if not _types.units[unit.id]["can_carry"] or unit.cargo.get_child_count() == 0:
+	if _types.units[unit.id]["carrying_size"] == 0 or unit.cargo.get_child_count() == 0:
 		return
 	var terrains: Array[Terrain] = unit.get_neighbors_from_terrain(target_terrain)
 	for i: Terrain in terrains:
