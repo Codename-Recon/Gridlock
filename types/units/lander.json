@@ -22,5 +22,5 @@
   "can_dive": false,
   "can_carry": true,
   "carrying_types": [0, 1, 2, 11, 13, 14, 15, 16, 17, 19, 23],
-  "carrying_size": 1
+  "carrying_size": 2
 }
