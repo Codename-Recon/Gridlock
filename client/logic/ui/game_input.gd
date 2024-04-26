@@ -1,10 +1,10 @@
 class_name GameInput
 extends Camera2D
 
-signal input_first(terrain: Terrain)
-signal input_second(terrain: Terrain)
-signal input_dragging(terrain: Terrain)
-signal input_escape
+signal input_first_triggered(terrain: Terrain)
+signal input_second_triggered(terrain: Terrain)
+signal input_dragged(terrain: Terrain)
+signal input_escape_triggered
 signal selection_changed(terrain: Terrain)
 
 const ZOOM_RESOLUTION: int = 128  # should be a base 2 number to prevent texture bleeding
@@ -95,15 +95,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		if selection_enabled:
 			if first_enabled and event.is_action_pressed("select_first"):
 				is_just_first = true
-				input_first.emit(await selection.last_terrain)
+				input_first_triggered.emit(await selection.last_terrain)
 				if selection.is_mouse_still_inside():
-					input_dragging.emit(await selection.last_terrain)
+					input_dragged.emit(await selection.last_terrain)
 			if event.is_action_pressed("select_second"):
 				is_just_second = true
-				input_second.emit(await selection.last_terrain)
+				input_second_triggered.emit(await selection.last_terrain)
 		if event.is_action_pressed("escape"):
 			is_just_escape = true
-			input_escape.emit()
+			input_escape_triggered.emit()
 	if zoom_enabled:
 		if event.is_action_pressed("zoom_out") and _target_camera_zoom.x > _camera_min_zoom:
 			var tween: Tween = create_tween()
@@ -127,4 +127,4 @@ func _on_selection_changed(terrain: Terrain) -> void:
 		and Input.is_action_pressed("select_first")
 		and selection.is_mouse_still_inside()
 	):
-		input_dragging.emit(terrain)
+		input_dragged.emit(terrain)
