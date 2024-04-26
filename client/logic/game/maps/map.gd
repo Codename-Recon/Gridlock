@@ -180,7 +180,7 @@ func create_terrain(
 	# Add terrain stats
 	terrain.add_child(TERRAIN_STATS.instantiate())
 	# Add player
-	if _types.terrains[id]["can_capture"]:
+	if terrain.values.can_capture:
 		var player: Player = create_or_get_player(player_id)
 		terrain.player_owned = player
 	add_child(terrain)
@@ -198,7 +198,7 @@ func create_unit(id: String, terrain_position: Vector2i, player_id: int) -> Unit
 			remove_unit(terrain.position)
 		var unit_packed_scene: PackedScene = Map.predefined_units_packed_scenes[id]
 		var unit: Unit = unit_packed_scene.instantiate()
-		var movement_type: String = _types.units[unit.id]["movement_type"]
+		var movement_type: String = _types.movement_types[unit.values.movement_type]
 		var movement_value: int = _types.movements[terrain.id]["CLEAR"][movement_type]
 		# If unit is not allowed to be placed here
 		if movement_value == 0:

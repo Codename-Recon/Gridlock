@@ -134,14 +134,14 @@
     "weapon": {
       "type": "string",
       "enum": [
-        "Artillery Cannon",
-        "Bazooka",
-        "Light Tank Cannon",
-        "Machine Gun",
-        "Medium Tank Cannon",
-        "Rockets",
-        "Tank Machine Gun",
-        "Vulcan Cannon"
+        "ARTILLERY_CANON",
+        "BAZOOKA",
+        "LIGHT_TANK_CANON",
+        "MACHINE_GUN",
+        "MEDIUM_TANK_CANON",
+        "ROCKETS",
+        "TANK_MACHINE_GUN",
+        "VUCLAN_CANNON"
       ]
     },
     "weather": {

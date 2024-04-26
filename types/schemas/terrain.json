@@ -29,11 +29,6 @@
       "minimum": 0,
       "maximum": 20
     },
-    "owner": {
-      "type": "integer",
-      "description": "0 = neutral, all other numbers coorespond to player number",
-      "minimum": 0
-    },
     "funds": {
       "type": "integer",
       "description": "Funds provided to owner per turn.",

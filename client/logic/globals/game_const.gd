@@ -51,4 +51,29 @@ enum AiDifficulty {
 
 enum GameMode { SINGLE, HOTSEAT, NETWORK }
 
+# TODO: Should be generated
 enum Weather { CLEAR, RAIN, SNOW }
+
+# TODO: Should be generated
+enum MovementType {
+	FOOT,
+	BAZOOKA,
+	TREADS,
+	WHEELS,
+	AIR,
+	SEA,
+	LANDER,
+	PIPERUNNER
+}
+
+# TODO: Should be generated
+enum WeaponType {
+	ARTILLERY_CANON,
+	BAZOOKA,
+	LIGHT_TANK_CANON,
+	MACHINE_GUN,
+	MEDIUM_TANK_CANON,
+	ROCKETS,
+	TANK_MACHINE_GUN,
+	VUCLAN_CANNON
+}

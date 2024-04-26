@@ -69,12 +69,12 @@ signal round_over_changed
 			ammo = value
 			if is_inside_tree():
 				var unit: Unit = get_parent() as Unit
-				if ammo > _types.units[unit.id]["ammo"]:
-					ammo = _types.units[unit.id]["ammo"]
+				if ammo > _parent.values.ammo:
+					ammo = _parent.values.ammo
 				var ammo_threshold: int = ProjectSettings.get_setting(
 					"global/unit_ammo_blink_threshold"
 				)
-				if ammo < (_types.units[unit.id]["ammo"] * ammo_threshold):
+				if ammo < (_parent.values.ammo * ammo_threshold):
 					ammo_low = true
 				else:
 					ammo_low = false
@@ -86,12 +86,12 @@ signal round_over_changed
 			fuel = value
 			if is_inside_tree():
 				var unit: Unit = get_parent() as Unit
-				if fuel > _types.units[unit.id]["fuel"]:
-					fuel = _types.units[unit.id]["fuel"]
+				if fuel > _parent.values.fuel:
+					fuel = _parent.values.fuel
 				var fuel_threshold: int = ProjectSettings.get_setting(
 					"global/unit_fuel_blink_threshold"
 				)
-				if fuel < (_types.units[unit.id]["fuel"] * fuel_threshold):
+				if fuel < (_parent.values.fuel * fuel_threshold):
 					fuel_low = true
 				else:
 					fuel_low = false
@@ -110,14 +110,15 @@ signal round_over_changed
 @onready var _animation_ammo: AnimationPlayer = %AnimationAmmo as AnimationPlayer
 @onready var _animation_fuel: AnimationPlayer = %AnimationFuel as AnimationPlayer
 @onready var _stars: UnitStatsStars = %Stars as UnitStatsStars
+@onready var _parent: Unit = get_parent()
 
 var _types: GlobalTypes = Types
 
 
+
 func _ready() -> void:
-	var unit: Unit = get_parent() as Unit
-	ammo = _types.units[unit.id]["ammo"]
-	fuel = _types.units[unit.id]["fuel"]
+	ammo = _parent.values.ammo
+	fuel = _parent.values.fuel
 	if ammo_low:
 		_animation_ammo.play("AmmoBlink")
 	else:
@@ -139,5 +140,4 @@ func is_unit_damaged() -> bool:
 
 
 func can_be_refilled() -> bool:
-	var unit: Unit = get_parent() as Unit
-	return fuel < _types.units[unit.id]["fuel"] or ammo < _types.units[unit.id]["ammo"]
+	return fuel < _parent.values.fuel or ammo < _parent.values.ammo

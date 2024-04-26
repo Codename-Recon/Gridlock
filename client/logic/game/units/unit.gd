@@ -51,10 +51,43 @@ enum State { STANDING, MOVING, ATTACKING, DAMAGING, DYING, REFILLING }
 				_move_on_curve.call_deferred()
 
 var cargo: Node
+var values: Values:
+	get:
+		if not values:
+			# Load values from types
+			var values_dic: Dictionary = _types.units[id]
+			values_dic["@path"] = "res://logic/game/units/unit.gd"
+			values_dic["@subpath"] = "Values"
+			values = dict_to_inst(values_dic)
+			values.fix()
+		return values
+
+var movement_type: String:
+	get:
+		if not movement_type:
+			movement_type = _types.movement_types[values.movement_type]
+		return movement_type
+
+var carrying_types: Array[String]:
+	get:
+		if not carrying_types:
+			carrying_types = []
+			for type: int in values.carrying_types:
+				carrying_types.append(_types.unit_types[type])
+		return carrying_types
+
+var weapons: Array[String]:
+	get:
+		if not weapons:
+			weapons = []
+			for weapon: int in values.weapons:
+				weapons.append(_types.weapon_types[weapon])
+		return weapons
+
 var possible_movement_steps: int:
 	get:
-		if _types.units[id]["mp"] < stats.fuel:
-			return _types.units[id]["mp"]
+		if values.mp < stats.fuel:
+			return values.mp
 		return stats.fuel
 
 var _possible_terrains_to_move_buffer: Array[Terrain]
@@ -126,7 +159,7 @@ func calculate_possible_terrains_to_move() -> void:
 
 func get_possible_terrains_to_attack_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
 	var terrains: Array[Terrain] = []
-	var max_range: int = _types.units[id]["max_range"]
+	var max_range: int = values.max_range
 	_attack(start_terrain, terrains, max_range, Vector2.ZERO, 0)
 	return terrains
 
@@ -143,8 +176,8 @@ func get_neighbors_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
 func refill() -> void:
 	var sound: GlobalSound = Sound as GlobalSound
 	sound.play("Refill")
-	stats.fuel = _types.units[id]["fuel"]
-	stats.ammo = _types.units[id]["ammo"]
+	stats.fuel = values.fuel
+	stats.ammo = values.ammo
 
 
 func repair(health: int) -> void:
@@ -229,6 +262,10 @@ func look_at_plane_global_tween(global_point_position: Vector2) -> void:
 	pass
 
 
+func _init() -> void:
+	pass
+
+
 func _ready() -> void:
 	z_index = 1
 	if not Engine.is_editor_hint():
@@ -294,7 +331,7 @@ func _attack(
 			distance_left -= 1
 			if distance_left < 0:
 				return
-		if not start in terrains and distance_left < _types.units[id]["min_range"]:
+		if not start in terrains and distance_left < values.min_range:
 			terrains.append(start)
 		if step == 0:
 			_attack(start.get_up(), terrains, distance_left, Vector2.UP, step + 1)
@@ -365,3 +402,29 @@ func _update_color() -> void:
 		shader_modulate = true
 		var neutral_color: Color = ProjectSettings.get_setting("game/neutral_color")
 		color = neutral_color
+
+
+class Values extends NumberFix:
+	var name: String
+	var description: String
+	var cost: int
+	var health: int
+	var mp: int
+	var movement_type: int
+	var fuel: int
+	var turn_fuel: int
+	var hidden_turn_fuel: int
+	var vision: int
+	var ammo: int
+	var weapons: Array[int]
+	var min_range: int
+	var max_range: int
+	var exp: int
+	var can_supply: bool
+	var can_repair: bool
+	var can_capture: bool
+	var can_move_and_attack: bool
+	var can_hide: bool
+	var can_dive: bool
+	var carrying_types: Array[int]
+	var carrying_size: int

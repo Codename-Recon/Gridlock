@@ -61,10 +61,6 @@ func _generate_types() -> void:
 	path = ProjectSettings.globalize_path("res://") + "../types/damage/secondary.json"
 	secondary_damage = _get_damage_values(path, unit_types)
 
-	_replace_movement_index_with_type()
-	_replace_weapon_index_with_types()
-	_replace_carrying_index_with_types()
-
 
 func _get_folder_values(path: String) -> Dictionary:
 	var dic: Dictionary = {}
