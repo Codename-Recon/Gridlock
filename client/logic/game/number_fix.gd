@@ -8,7 +8,6 @@ func fix() -> void:
 			var value: float = get(name)
 			set(name, int(str(value)))
 		if prop['type'] == TYPE_ARRAY and prop['hint_string'] == "int":
-			print(prop)
 			var name: String = prop['name']
 			var value: Array = get(name)
 			for i: int in value.size():
