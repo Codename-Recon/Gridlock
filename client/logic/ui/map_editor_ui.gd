@@ -223,7 +223,7 @@ func _on_tile_edit_selected(terrain: Terrain, unit: Unit) -> void:
 	if _last_terrain_edited:
 		terrain_settings_control.show()
 		terrain_texture_rect.texture = _last_terrain_edited.sprite.texture
-		if _types.terrains[terrain.id]["can_capture"]:
+		if terrain.values.can_capture:
 			h_box_container_terrain_owner.show()
 			var player_id: int = 0
 			if terrain.player_owned:

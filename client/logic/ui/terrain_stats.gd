@@ -12,8 +12,8 @@ var _types: GlobalTypes = Types
 
 func _ready() -> void:
 	reset_capture_health()
-	health = _types.terrains[_parent.id]["health"]
-	ammo = _types.terrains[_parent.id]["ammo"]
+	health = _parent.values.health
+	ammo = _parent.values.ammo
 
 
 func reset_capture_health() -> void:

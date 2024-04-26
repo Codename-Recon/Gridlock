@@ -17,9 +17,9 @@ func _ready() -> void:
 	_unit = unit_scene.instantiate()
 	_unit.color = unit_color
 
-	(%Title as Label).text = tr(str(_types.units[_unit.id]["name"]))
-	(%Body as Label).text = tr(str(_types.units[_unit.id]["description"]))
-	(%Cost as Label).text = str(_types.units[_unit.id]["cost"])
+	(%Title as Label).text = tr(_unit.id)
+	(%Body as Label).text = tr(_unit.values.description)
+	(%Cost as Label).text = str(_unit.values.cost)
 	%SpawnSpot.add_child(_unit)
 	_unit.stats.hide()
 

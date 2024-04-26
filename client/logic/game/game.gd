@@ -241,7 +241,7 @@ func _process_ai(delta: float) -> void:
 							unit_for_action_found = false
 							for terrain: Terrain in moveable_terrains:
 								if (
-									_types.terrains[terrain.id]["can_capture"]
+									terrain.values.can_capture
 									and terrain.player_owned != player_turns[0]
 									and (not terrain.has_unit() or terrain.get_unit() == unit)
 								):
@@ -260,7 +260,7 @@ func _process_ai(delta: float) -> void:
 								if terrain in _ai_on_way_capture_terrains:
 									continue
 								if (
-									_types.terrains[terrain.id]["can_capture"]
+									terrain.values.can_capture
 									and terrain.player_owned != player_turns[0]
 									and not terrain.has_unit()
 								):
@@ -292,7 +292,7 @@ func _process_ai(delta: float) -> void:
 					for unit: Unit in map.units:
 						_unattack()
 						if (
-							_types.units[unit.id]["max_range"] > 1
+							unit.values.max_range > 1
 							and unit.player_owned == player_turns[0]
 							and not unit.stats.round_over
 						):
@@ -338,7 +338,7 @@ func _process_ai(delta: float) -> void:
 					for unit: Unit in map.units:
 						if (
 							unit.player_owned == player_turns[0]
-							and _types.units[unit.id]["max_range"] == 1
+							and unit.values.max_range == 1
 							and not unit.stats.round_over
 						):
 							# get enemy hq
@@ -363,7 +363,7 @@ func _process_ai(delta: float) -> void:
 					for unit: Unit in map.units:
 						if (
 							unit.player_owned == player_turns[0]
-							and _types.units[unit.id]["max_range"] > 1
+							and unit.values.max_range > 1
 							and not unit.stats.round_over
 						):
 							_create_and_set_move_area(unit, false)
@@ -389,7 +389,7 @@ func _process_ai(delta: float) -> void:
 					for unit: Unit in map.units:
 						if (
 							unit.player_owned == player_turns[0]
-							and _types.units[unit.id]["max_range"] > 1
+							and unit.values.max_range > 1
 							and not unit.stats.round_over
 						):
 							# get enemy hq
@@ -431,8 +431,8 @@ func _process_ai(delta: float) -> void:
 							var unit: Unit = unit_scenes[i].instantiate()
 							# enough money and not APC
 							if (
-								player_turns[0].money >= _types.units[unit.id]["cost"]
-								and len(_types.units[unit.id]["weapons"]) > 0
+								player_turns[0].money >= unit.values.cost
+								and len(unit.weapons) > 0
 							):
 								last_selected_terrain = bases[0]
 								last_bought_unit = unit_scenes[i]
@@ -526,7 +526,7 @@ func _do_state_earning(local: bool = true) -> void:
 	var money_sum: int = 0
 	for terrain: Terrain in map.terrains:
 		if terrain.player_owned == player_turns[0]:
-			money_sum += _types.terrains[terrain.id]["funds"]
+			money_sum += terrain.values.funds
 	await _add_money_on_current_player(money_sum, true)
 	# TODO: daylie fuel consumption
 	if local:
@@ -541,7 +541,7 @@ func _do_state_repairing(local: bool = true) -> void:
 			unit.is_on_terrain()
 			and unit.player_owned == player_turns[0]
 			and terrain.player_owned == player_turns[0]
-			and _types.terrains[terrain.id]["can_capture"]
+			and terrain.values.can_capture
 		):
 			# repair
 			if unit.stats.is_unit_damaged():
@@ -554,7 +554,7 @@ func _do_state_repairing(local: bool = true) -> void:
 					max_repair_points if damage_to_repair > max_repair_points else damage_to_repair
 				)
 				var cost_to_repair: int = (
-					_types.units[unit.id]["cost"] * repair_points / unit_max_health
+					unit.values.cost * repair_points / unit_max_health
 				)
 				if player_turns[0].money >= cost_to_repair:
 					unit.repair(repair_points)
@@ -636,9 +636,9 @@ func _do_state_commanding_clicked_left() -> void:
 				and last_selected_terrain.get_unit() != last_selected_unit
 			):
 				actions.append(GameConst.Actions.MOVE)
-				if _types.units[last_selected_unit.id]["can_capture"]:
+				if last_selected_unit.values.can_capture:
 					if (
-						_types.terrains[last_selected_terrain.id]["can_capture"]
+						last_selected_terrain.values.can_capture
 						and last_selected_terrain.player_owned != player_turns[0]
 					):
 						actions.append(GameConst.Actions.CAPTURE)
@@ -670,7 +670,7 @@ func _do_state_commanding_clicked_left() -> void:
 		# do direct attack (direct clicking on attackable unit)
 		elif (
 			last_selected_terrain in attackable_terrains
-			and _types.units[last_selected_unit.id]["can_move_and_attack"]
+			and last_selected_unit.values.can_move_and_attack
 		):
 			if _move_arrow_node.curve.point_count == 0:
 				_move_arrow_node.curve.add_point(last_selected_unit.get_terrain().position)
@@ -750,7 +750,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 		# defending unit turn
 		if defending_unit.stats.health > 0:
 			# check if unit is next to it and defending unit can attack something next to it
-			if distance <= 1 and _types.units[defending_unit.id]["min_range"] < 2:
+			if distance <= 1 and defending_unit.values.min_range < 2:
 				damage = _calculate_damage(defending_unit, attacking_unit)
 				# check if defending unit can attack with weapon (> 0)
 				if damage.x > 0:
@@ -955,7 +955,7 @@ func _do_state_action_clicked_action(local: bool = true) -> void:
 			## join unit together
 			var max_health: int = ProjectSettings.get_setting("global/unit_max_health")
 			var over_health: int = target_unit.stats.health + source_unit.stats.health - max_health
-			var over_money: int = _types.units[source_unit.id]["cost"] / max_health * over_health
+			var over_money: int = source_unit.values.cost / max_health * over_health
 			target_unit.stats.health += source_unit.stats.health
 			target_unit.stats.ammo += source_unit.stats.ammo
 			target_unit.stats.fuel += source_unit.stats.fuel
@@ -1029,7 +1029,7 @@ func _do_state_bying_clicked_shop(local: bool = true) -> void:
 		last_shop.queue_free()
 	if last_bought_unit:
 		var unit: Unit = last_bought_unit.instantiate()
-		var cost: int = _types.units[unit.id]["cost"]
+		var cost: int = unit.values.cost
 		if cost <= player_turns[0].money:
 			unit.player_owned = player_turns[0]
 			last_selected_terrain.add_child(unit)
@@ -1240,7 +1240,7 @@ func _create_and_set_attack_area(
 	# if unit moved and is not allowed to attack
 	if check_move_and_attack:
 		if target_terrain.get_none_diagonal_distance(unit.get_terrain()) > 0:
-			if not _types.units[unit.id]["can_move_and_attack"]:
+			if not unit.values.can_move_and_attack:
 				return
 	var terrains: Array[Terrain] = unit.get_possible_terrains_to_attack_from_terrain(target_terrain)
 	for i: Terrain in terrains:
@@ -1256,7 +1256,7 @@ func _create_and_set_attack_area(
 func _create_and_set_refill_area(
 	unit: Unit, target_terrain: Terrain, visibility: bool = true
 ) -> void:
-	if not _types.units[unit.id]["can_supply"]:
+	if not unit.values.can_supply:
 		return
 	var terrains: Array[Terrain] = unit.get_neighbors_from_terrain(target_terrain)
 	for i: Terrain in terrains:
@@ -1289,11 +1289,11 @@ func _create_and_set_enter_area(
 		):
 			var target_unit: Unit = i.get_unit()
 			if (
-				_types.units[target_unit.id]["carrying_size"] > 0
-				and unit.id in _types.units[target_unit.id]["carrying_types"]
+				target_unit.values.carrying_size > 0
+				and unit.id in target_unit.carrying_types
 				and (
 					target_unit.cargo.get_child_count()
-					< _types.units[target_unit.id]["carrying_size"]
+					< target_unit.values.carrying_size
 				)
 			):
 				if visibility:
@@ -1308,13 +1308,13 @@ func _create_and_set_deploy_area(
 	unit: Unit, target_terrain: Terrain, visibility: bool = true
 ) -> void:
 	deploy_terrains = []
-	if _types.units[unit.id]["carrying_size"] == 0 or unit.cargo.get_child_count() == 0:
+	if unit.values.carrying_size == 0 or unit.cargo.get_child_count() == 0:
 		return
 	var terrains: Array[Terrain] = unit.get_neighbors_from_terrain(target_terrain)
 	for i: Terrain in terrains:
 		if i and not i.has_unit():
 			for deploy_unit: Unit in unit.cargo.get_children():
-				if _types.movements[i.id]["CLEAR"][_types.units[unit.id]["movement_type"]] >= 0:
+				if _types.movements[i.id]["CLEAR"][unit.movement_type] > 0:
 					if visibility:
 						var layer: DecalLayer = _move_layer.instantiate() as Sprite2D
 						layer.type = DecalLayer.Type.DEPLOY
@@ -1510,10 +1510,10 @@ func _ai_create_and_filter_move_curve(target_terrain: Terrain) -> void:
 
 func _lambda_sort_damage_terrain(attacking_unit: Unit, a: Terrain, b: Terrain) -> bool:
 	var value_a: Vector2 = (
-		_calculate_damage(attacking_unit, a.get_unit()) * _types.units[a.get_unit().id]["cost"]
+		_calculate_damage(attacking_unit, a.get_unit()) * a.get_unit().values.cost
 	)
 	var value_b: Vector2 = (
-		_calculate_damage(attacking_unit, b.get_unit()) * _types.units[b.get_unit().id]["cost"]
+		_calculate_damage(attacking_unit, b.get_unit()) * b.get_unit().values.cost
 	)
 	return value_a > value_b
 

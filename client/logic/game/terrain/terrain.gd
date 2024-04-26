@@ -58,6 +58,17 @@ extends Node2D
 
 var shop_units: Array[PackedScene]
 
+var values: Values:
+	get:
+		if not values:
+			# Load values from types
+			var values_dic: Dictionary = _types.terrains[id]
+			values_dic["@path"] = "res://logic/game/terrain/terrain.gd"
+			values_dic["@subpath"] = "Values"
+			values = dict_to_inst(values_dic)
+			values.fix()
+		return values
+
 var _shader_resource: Shader = preload("res://logic/shaders/color_shift.tres")
 var _types: GlobalTypes = Types
 
@@ -158,7 +169,8 @@ static func get_astar_path_as_terrains(
 
 
 func get_movement_cost(unit: Unit, weather: GameConst.Weather) -> int:
-	return _types.movements[id]["CLEAR"][_types.units[unit.id]["movement_type"]]
+	var movement_type: String = _types.movement_types[unit.values.movement_type]
+	return _types.movements[id]["CLEAR"][movement_type]
 
 
 func get_move_on_global_position() -> Vector2:
@@ -296,3 +308,15 @@ func _update_color() -> void:
 			shader_modulate = true
 			var neutral_color: Color = ProjectSettings.get_setting("game/neutral_color")
 			color = neutral_color
+
+
+class Values extends NumberFix:
+	var name: String
+	var description: String
+	var defense: int
+	var health: int
+	var can_capture: bool
+	var capture_value: int
+	var funds: int
+	var ammo: int
+	var shop_units: Array[String]
