@@ -74,8 +74,8 @@ game_input = NodePath("../../GameInput")
 map = NodePath("../../Map")
 map_editor = NodePath("../../MapEditor")
 
-[connection signal="input_dragging" from="GameInput" to="MapEditor" method="_on_game_input_dragging"]
-[connection signal="input_escape" from="GameInput" to="CanvasLayer/MapEditorUI" method="_on_game_input_input_escape"]
+[connection signal="input_dragged" from="GameInput" to="MapEditor" method="_on_game_input_dragged"]
+[connection signal="input_escape_triggered" from="GameInput" to="CanvasLayer/MapEditorUI" method="_on_game_input_input_escape"]
 [connection signal="edit_selected" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_map_editor_ui_edit_selected"]
 [connection signal="load_selected" from="CanvasLayer/MapEditorUI" to="." method="_on_map_editor_ui_load_selected"]
 [connection signal="map_resized" from="CanvasLayer/MapEditorUI" to="MapEditor" method="_on_ui_map_resized"]

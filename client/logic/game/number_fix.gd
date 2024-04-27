@@ -7,7 +7,7 @@ func fix() -> void:
 			var name: String = prop['name']
 			var value: float = get(name)
 			set(name, int(str(value)))
-		if prop['type'] == TYPE_ARRAY and prop['hint'] == TYPE_PACKED_INT64_ARRAY:
+		if prop['type'] == TYPE_ARRAY and prop['hint_string'] == "int":
 			var name: String = prop['name']
 			var value: Array = get(name)
 			for i: int in value.size():

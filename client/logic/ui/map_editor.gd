@@ -197,7 +197,7 @@ func _on_map_editor_ui_edit_selected() -> void:
 	_mode = Mode.EDIT
 
 
-func _on_game_input_dragging(terrain: Terrain) -> void:
+func _on_game_input_dragged(terrain: Terrain) -> void:
 	var cell: Vector2i = terrain.global_position
 	cell = cell / tile_map.tile_set.tile_size
 	match _mode:

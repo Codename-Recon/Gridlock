@@ -269,7 +269,7 @@ func _ready() -> void:
 		sprite.material = shader_material
 	# Add shop units
 	shop_units.clear()
-	for unit_id: String in _types.terrains[id]["shop_units"]:
+	for unit_id: String in values.shop_units:
 		shop_units.append(Map.predefined_units_packed_scenes[unit_id])
 	shop_units.sort_custom(_sort_by_unit_price)
 	_update_color()
