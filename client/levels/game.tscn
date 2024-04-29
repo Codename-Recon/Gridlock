@@ -1,10 +1,9 @@
-[gd_scene load_steps=51 format=3 uid="uid://cbc6sawc766k"]
+[gd_scene load_steps=49 format=3 uid="uid://cbc6sawc766k"]
 
 [ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_6xhvo"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_81uaa"]
 [ext_resource type="AudioStream" uid="uid://6ki6akqwsk8e" path="res://assets/musics/Immaculate_Command__Georges_DeMorgans_Theme_Codename_RECON.mp3" id="2_mnjkf"]
 [ext_resource type="Texture2D" uid="uid://rtyseghcw68e" path="res://assets/images/game/game/background.jpg" id="4_722ff"]
-[ext_resource type="Script" path="res://logic/game/viewport.gd" id="8_rh0i3"]
 [ext_resource type="PackedScene" uid="uid://dj1137ma426k8" path="res://logic/ui/game_input.tscn" id="8_sdp7e"]
 [ext_resource type="Script" path="res://logic/game/game.gd" id="9_gl6qd"]
 [ext_resource type="PackedScene" uid="uid://df4e0v877neen" path="res://logic/ui/shop.tscn" id="10_rtev0"]
@@ -17,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://ivwpfjehvqxs" path="res://assets/images/theme/greenSheet.png" id="25_pugn6"]
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="26_j0w8f"]
 [ext_resource type="Script" path="res://logic/ui/escape_panel.gd" id="26_o1gt5"]
-[ext_resource type="Script" path="res://logic/game/audio_stream_player.gd" id="27_2jj2m"]
 [ext_resource type="Script" path="res://logic/ui/round_label.gd" id="27_lmqwv"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="29_fbj1t"]
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="29_jy0gc"]
@@ -512,7 +510,6 @@ audio_listener_enable_2d = true
 size = Vector2i(1600, 900)
 size_2d_override = Vector2i(1600, 900)
 render_target_update_mode = 4
-script = ExtResource("8_rh0i3")
 
 [node name="GameInput" parent="Interface/SubViewportContainer/SubViewport" instance=ExtResource("8_sdp7e")]
 unique_name_in_owner = true
@@ -891,7 +888,7 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer"]
 volume_db = -10.0
-script = ExtResource("27_2jj2m")
+bus = &"Sound"
 
 [connection signal="map_loaded" from="." to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_game_map_loaded"]
 [connection signal="input_escape_triggered" from="Interface/SubViewportContainer/SubViewport/GameInput" to="Interface/EscapePanel" method="_on_game_input_input_escape"]

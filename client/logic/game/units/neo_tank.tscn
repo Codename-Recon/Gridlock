@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhm7dlbtp7crw"]
+[gd_scene load_steps=16 format=3 uid="uid://bhm7dlbtp7crw"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_swqdd"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_3msv7"]
 [ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="3_ca28e"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_38uo4"]
-[ext_resource type="Script" path="res://logic/game/audio_stream_player_spatial.gd" id="5_skg1i"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_ssg2d"]
 [ext_resource type="AudioStream" uid="uid://dygiwgkj7il7s" path="res://assets/sounds/spaceEngine_001.ogg" id="7_0akgk"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="8_eeuwr"]
@@ -148,8 +147,8 @@ texture = SubResource("AtlasTexture_lq8ml")
 position = Vector2(0, 1)
 stream = ExtResource("4_38uo4")
 pitch_scale = 1.5
+bus = &"Sound"
 area_mask = 0
-script = ExtResource("5_skg1i")
 
 [node name="UnitStats" parent="." instance=ExtResource("6_ssg2d")]
 ammo = -1
@@ -162,4 +161,4 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("5_skg1i")
+bus = &"Sound"

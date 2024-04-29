@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://ch51qqxsd8xsq"]
+[gd_scene load_steps=17 format=3 uid="uid://ch51qqxsd8xsq"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_bbk6i"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_sqpr6"]
 [ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="3_u78nt"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="8_d27rb"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="9_maxd8"]
-[ext_resource type="Script" path="res://logic/game/audio_stream_player_spatial.gd" id="9_wgwob"]
 [ext_resource type="AudioStream" uid="uid://duns7rb260nxe" path="res://assets/sounds/laserRetro_003.ogg" id="21_inyj6"]
 [ext_resource type="AudioStream" uid="uid://cvo0vbob1j0pi" path="res://assets/sounds/explosionCrunch_004.ogg" id="22_ettb7"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="23_cxtyh"]
@@ -256,8 +255,8 @@ texture = SubResource("AtlasTexture_vpvtg")
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
 stream = ExtResource("8_d27rb")
+bus = &"Sound"
 area_mask = 0
-script = ExtResource("9_wgwob")
 
 [node name="UnitStats" parent="." instance=ExtResource("9_maxd8")]
 ammo = 6
@@ -270,32 +269,32 @@ libraries = {
 
 [node name="AudioStreamPlayer3D1" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("9_wgwob")
+bus = &"Sound"
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("9_wgwob")
+bus = &"Sound"
 
 [node name="AudioStreamPlayer3D3" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("9_wgwob")
+bus = &"Sound"
 
 [node name="AudioStreamPlayer3D4" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("9_wgwob")
+bus = &"Sound"
 
 [node name="FarExplosion1" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("9_wgwob")
+bus = &"Sound"
 
 [node name="FarExplosion2" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("9_wgwob")
+bus = &"Sound"
 
 [node name="FarExplosion3" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("9_wgwob")
+bus = &"Sound"
 
 [node name="FarExplosion4" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("9_wgwob")
+bus = &"Sound"
