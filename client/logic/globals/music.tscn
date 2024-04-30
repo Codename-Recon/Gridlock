@@ -6,9 +6,10 @@
 script = ExtResource("1_d2o02")
 
 [node name="Player1" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [node name="Player2" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
-[connection signal="settings_changed" from="." to="." method="_on_music_settings_changed"]
 [connection signal="finished" from="Player1" to="." method="_on_player_1_finished"]
 [connection signal="finished" from="Player2" to="." method="_on_player_2_finished"]

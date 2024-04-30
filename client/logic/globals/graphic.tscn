@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://devnf1hmmiqum"]
-
-[ext_resource type="Script" path="res://logic/globals/graphic.gd" id="1_qsafo"]
-
-[node name="Graphic" type="Node"]
-script = ExtResource("1_qsafo")

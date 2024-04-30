@@ -1,10 +1,9 @@
-[gd_scene load_steps=54 format=3 uid="uid://2t61plm4vpda"]
+[gd_scene load_steps=53 format=3 uid="uid://2t61plm4vpda"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_6por7"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_2xwsq"]
 [ext_resource type="Texture2D" uid="uid://c3nykf8itb81n" path="res://assets/images/game/units/infantry.png" id="3_bgbw4"]
 [ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="5_xjxi4"]
-[ext_resource type="Script" path="res://logic/game/audio_stream_player_spatial.gd" id="7_3yk1c"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="7_5ps6t"]
 [ext_resource type="AudioStream" uid="uid://bluxi27ugieur" path="res://assets/sounds/laserSmall_001.ogg" id="13_cx85l"]
 [ext_resource type="AudioStream" uid="uid://b31ajl2bvd1wj" path="res://assets/sounds/impactPlate_medium_004.ogg" id="14_j8dta"]
@@ -592,8 +591,8 @@ autoplay = "idle"
 position = Vector2(0, 1)
 stream = ExtResource("5_xjxi4")
 pitch_scale = 1.6
+bus = &"Sound"
 area_mask = 0
-script = ExtResource("7_3yk1c")
 
 [node name="UnitStats" parent="." instance=ExtResource("7_5ps6t")]
 ammo = -1
@@ -606,4 +605,4 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("7_3yk1c")
+bus = &"Sound"

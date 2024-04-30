@@ -26,7 +26,6 @@ run/main_scene.editor="res://levels/menu.tscn"
 
 Sound="*res://logic/globals/sound.tscn"
 Music="*res://logic/globals/music.tscn"
-Graphic="*res://logic/globals/graphic.tscn"
 Global="*res://logic/globals/global.tscn"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 Multiplayer="*res://logic/globals/multiplayer.tscn"
@@ -68,8 +67,6 @@ import/fbx/enabled=false
 
 [game]
 
-graphics_shadow_quality=1
-graphics_anti_aliasing=1
 sound_volume=-25.0
 music_volume=-25.0
 player_color=PackedColorArray(0.470588, 0.784314, 0.407843, 1, 0.909804, 0.282353, 0.25098, 1, 0.470588, 0.439216, 0.878431, 1, 0.878431, 0.847059, 0.313726, 1, 0.470436, 0.470436, 0.564721, 1, 0.564721, 0.313619, 0.219333, 1, 0.839277, 0.729351, 0.678553, 1, 0.525643, 0.00390631, 0.690272, 1)

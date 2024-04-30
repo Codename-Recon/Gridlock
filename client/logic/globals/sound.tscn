@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dc3i5x6c2hdef"]
+[gd_scene load_steps=13 format=3 uid="uid://dc3i5x6c2hdef"]
 
 [ext_resource type="Script" path="res://logic/globals/sound.gd" id="1_edwok"]
 [ext_resource type="AudioStream" uid="uid://bjdu4vjw7ociu" path="res://assets/sounds/ui/glass_005.ogg" id="2_f5rma"]
-[ext_resource type="Script" path="res://logic/game/audio_stream_player.gd" id="3_midku"]
 [ext_resource type="AudioStream" uid="uid://b1fop4jqymq6u" path="res://assets/sounds/ui/select_004.ogg" id="4_67igr"]
 [ext_resource type="AudioStream" uid="uid://uw0s1rrh4hu7" path="res://assets/sounds/ui/back_003.ogg" id="5_evw4i"]
 [ext_resource type="AudioStream" uid="uid://8o01qml05dmj" path="res://assets/sounds/ui/question_004.ogg" id="6_jyxog"]
@@ -20,52 +19,52 @@ script = ExtResource("1_edwok")
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_f5rma")
 volume_db = 15.0
-script = ExtResource("3_midku")
+bus = &"Sound"
 
 [node name="Click2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_67igr")
-script = ExtResource("3_midku")
+bus = &"Sound"
 
 [node name="Deselect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_evw4i")
-script = ExtResource("3_midku")
+bus = &"Sound"
 
 [node name="Capturing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_jyxog")
 volume_db = -10.0
-script = ExtResource("3_midku")
+bus = &"Sound"
 
 [node name="Entering" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_i4ojp")
 volume_db = -10.0
-script = ExtResource("3_midku")
+bus = &"Sound"
 
 [node name="Fusion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_e4wpy")
 volume_db = -10.0
-script = ExtResource("3_midku")
+bus = &"Sound"
 
 [node name="Coin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_fnkdx")
 volume_db = -10.0
-script = ExtResource("3_midku")
+bus = &"Sound"
 
 [node name="Repair" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_0e73r")
 volume_db = -10.0
-script = ExtResource("3_midku")
+bus = &"Sound"
 
 [node name="Refill" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_wckng")
 volume_db = -20.0
-script = ExtResource("3_midku")
+bus = &"Sound"
 
 [node name="Drop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_mqwvq")
 volume_db = -5.0
-script = ExtResource("3_midku")
+bus = &"Sound"
 
 [node name="Drop2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_ubel3")
 volume_db = -10.0
-script = ExtResource("3_midku")
+bus = &"Sound"
