@@ -33,6 +33,8 @@ jobs:
           godot --headless --verbose --export-release "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
           godot --headless --verbose --export-release "Web" ../build/web/index.html
           godot --headless --verbose --export-release "macOS" ../build/mac/$EXPORT_NAME.zip
+          cd ../build/
+          zip -r Web.zip web/
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -75,3 +77,13 @@ jobs:
           asset_path: ./build/mac/${{ env.EXPORT_NAME }}.zip
           asset_name: ${{ env.EXPORT_NAME }}.zip
           asset_content_type: application/zip
+      - name: Upload Release Web
+        id: upload-release-asset-web
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          asset_path: ./build/Web.zip
+          asset_name: Web.zip
+          asset_content_type: application/zip 
