@@ -33,7 +33,7 @@ jobs:
           godot --headless --verbose --export-release "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
           godot --headless --verbose --export-release "Web" ../build/web/index.html
           godot --headless --verbose --export-release "macOS" ../build/mac/$EXPORT_NAME.zip
-          zip -r Web.zip ../build/web/
+          zip -r ../build/Web.zip ../build/web/
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
