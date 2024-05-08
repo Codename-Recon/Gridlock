@@ -114,6 +114,16 @@ func get_texture() -> Texture:
 	return null
 
 
+func get_shader_material() -> ShaderMaterial:
+	if sprite is AnimatedSprite2D:
+		var animation_sprite: AnimatedSprite2D = sprite
+		return animation_sprite.material
+	if sprite is Sprite2D:
+		var sprite2d: Sprite2D = sprite
+		return sprite2d.material
+	return null
+
+
 func get_possible_terrains_to_move() -> Array[Terrain]:
 	if _possible_terrains_to_move_calculating:
 		await possible_terrains_to_move_calculated

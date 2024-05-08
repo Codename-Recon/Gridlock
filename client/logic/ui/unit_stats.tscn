@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://d1lm50b8vcvxp"]
+[gd_scene load_steps=16 format=3 uid="uid://d1lm50b8vcvxp"]
 
 [ext_resource type="Script" path="res://logic/ui/unit_stats.gd" id="1_hgwin"]
+[ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="4_87mqm"]
 [ext_resource type="Script" path="res://logic/ui/unit_stats_stars.gd" id="5_xxewy"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="6_7v8pe"]
 
@@ -97,20 +98,8 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kh8bx"]
-atlas = ExtResource("6_7v8pe")
-region = Rect2(480, 320, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yxi7s"]
-atlas = ExtResource("6_7v8pe")
-region = Rect2(480, 320, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_twima"]
-atlas = ExtResource("6_7v8pe")
-region = Rect2(480, 320, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ferym"]
-atlas = ExtResource("6_7v8pe")
-region = Rect2(480, 320, 32, 32)
+atlas = ExtResource("4_87mqm")
+region = Rect2(448, 288, 32, 32)
 
 [node name="UnitStats" type="Node2D"]
 script = ExtResource("1_hgwin")
@@ -239,7 +228,7 @@ offset_right = 30.0
 offset_bottom = 16.0
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = SubResource("AtlasTexture_yxi7s")
+texture = SubResource("AtlasTexture_kh8bx")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -254,7 +243,7 @@ offset_right = 36.0
 offset_bottom = 16.0
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = SubResource("AtlasTexture_twima")
+texture = SubResource("AtlasTexture_kh8bx")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -269,7 +258,7 @@ offset_right = 42.0
 offset_bottom = 16.0
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = SubResource("AtlasTexture_ferym")
+texture = SubResource("AtlasTexture_kh8bx")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -284,6 +273,6 @@ offset_right = 48.0
 offset_bottom = 16.0
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = SubResource("AtlasTexture_ferym")
+texture = SubResource("AtlasTexture_kh8bx")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true

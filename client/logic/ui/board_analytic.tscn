@@ -1,0 +1,276 @@
+[gd_scene load_steps=10 format=3 uid="uid://t4ebi72k3nqs"]
+
+[ext_resource type="Script" path="res://logic/ui/board_analytic.gd" id="1_884lb"]
+[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="2_gwp83"]
+[ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="3_7o3ug"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxxns"]
+atlas = ExtResource("2_gwp83")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3yxk"]
+atlas = ExtResource("3_7o3ug")
+region = Rect2(448, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5xev"]
+atlas = ExtResource("2_gwp83")
+region = Rect2(448, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aeqd5"]
+atlas = ExtResource("2_gwp83")
+region = Rect2(480, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bgen"]
+atlas = ExtResource("2_gwp83")
+region = Rect2(384, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0xpc"]
+atlas = ExtResource("2_gwp83")
+region = Rect2(352, 320, 32, 32)
+
+[node name="BoardAnalytic" type="GridContainer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -184.0
+offset_right = 306.0
+offset_bottom = -30.0
+grow_vertical = 0
+theme_override_constants/h_separation = 8
+columns = 2
+script = ExtResource("1_884lb")
+
+[node name="Terrain" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "SEA"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Terrain"]
+self_modulate = Color(0, 0, 0, 0.435294)
+show_behind_parent = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 157.0
+grow_horizontal = 2
+
+[node name="TerrainIcon" type="TextureRect" parent="Terrain/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 28.0
+offset_right = 20.0
+offset_bottom = 68.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_dxxns")
+expand_mode = 1
+
+[node name="DefIcon" type="TextureRect" parent="Terrain/Panel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.5
+offset_top = 68.0
+offset_right = 0.5
+offset_bottom = 108.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_p3yxk")
+expand_mode = 1
+
+[node name="DefLabel" type="Label" parent="Terrain/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 0.5
+offset_top = 68.0
+offset_right = 40.5
+offset_bottom = 108.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CapIcon" type="TextureRect" parent="Terrain/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 94.0
+offset_bottom = 134.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_t5xev")
+expand_mode = 1
+
+[node name="CapLabel" type="Label" parent="Terrain/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 94.0
+offset_right = 40.0
+offset_bottom = 134.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Unit" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Infantry"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Unit"]
+self_modulate = Color(0, 0, 0, 0.435294)
+show_behind_parent = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 157.0
+grow_horizontal = 2
+
+[node name="UnitIcon" type="TextureRect" parent="Unit/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 28.0
+offset_right = 20.0
+offset_bottom = 68.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_dxxns")
+expand_mode = 1
+
+[node name="HPIcon" type="TextureRect" parent="Unit/Panel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.5
+offset_top = 68.0
+offset_right = 0.5
+offset_bottom = 108.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_aeqd5")
+expand_mode = 1
+
+[node name="HPLabel" type="Label" parent="Unit/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 0.5
+offset_top = 68.0
+offset_right = 40.5
+offset_bottom = 108.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "9.9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FuelIcon2" type="TextureRect" parent="Unit/Panel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.0
+offset_top = 94.0
+offset_right = 1.0
+offset_bottom = 134.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_6bgen")
+expand_mode = 1
+
+[node name="FuelLabel" type="Label" parent="Unit/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1.0
+offset_top = 94.0
+offset_right = 41.0
+offset_bottom = 134.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AmmoIcon" type="TextureRect" parent="Unit/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.0
+offset_top = 120.0
+offset_right = 1.0
+offset_bottom = 160.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_n0xpc")
+expand_mode = 1
+
+[node name="AmmoLabel" type="Label" parent="Unit/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1.0
+offset_top = 120.0
+offset_right = 41.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1
