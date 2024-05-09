@@ -1314,7 +1314,7 @@ func _create_and_set_deploy_area(
 	for i: Terrain in terrains:
 		if i and not i.has_unit():
 			for deploy_unit: Unit in unit.cargo.get_children():
-				if _types.movements[i.id]["CLEAR"][unit.movement_type] > 0:
+				if _types.movements[i.id]["CLEAR"][deploy_unit.movement_type] > 0:
 					if visibility:
 						var layer: DecalLayer = _move_layer.instantiate() as Sprite2D
 						layer.type = DecalLayer.Type.DEPLOY
