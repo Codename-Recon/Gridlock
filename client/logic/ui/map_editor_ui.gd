@@ -46,7 +46,6 @@ signal load_selected(file_path: String)
 var _last_button: Button
 var _last_terrain_edited: Terrain
 var _last_unit_edited: Unit
-var _types: GlobalTypes = Types
 
 
 func reload_map_data() -> void:

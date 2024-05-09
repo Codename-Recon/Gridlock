@@ -9,9 +9,10 @@ script/source = "extends Control
 @export var music: AudioStream
 @export var menu_scene: PackedScene
 
-@onready var _gpu_particles: GPUParticles2D = $GPUParticles2D
+@onready var _gpu_particles: GPUParticles2D = %GPUParticles2D
 
 var _global: GlobalGlobal = Global
+
 
 func _ready() -> void:
 	Music.change_music(music)
@@ -20,6 +21,7 @@ func _ready() -> void:
 	particle_material.color.g = _global.last_player_won_color.g
 	particle_material.color.b = _global.last_player_won_color.b
 	($Label as Label).text = \"%s %s %s\" %[tr(\"PLAYER\"), _global.last_player_won_name, tr(\"WON\")]
+
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_released(\"select_first\"):
@@ -46,7 +48,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/path = NodePath("ParticleContainer/GPUParticles2D:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -70,7 +72,7 @@ gradient = SubResource("Gradient_c6a3i")
 [sub_resource type="ParticleProcessMaterial" id="ParticlesMaterial_72s4e"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(1, 500, 1)
+emission_box_extents = Vector3(1, 2000, 1)
 angle_min = -61.9
 angle_max = 77.4
 gravity = Vector3(100, 0, 0)
@@ -107,41 +109,32 @@ libraries = {
 }
 autoplay = "game_over"
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(-380, 420)
-amount = 800
-process_material = SubResource("ParticlesMaterial_72s4e")
-texture = ExtResource("1_yktdt")
-lifetime = 10.0
-preprocess = 10.0
-randomness = 0.74
-visibility_rect = Rect2(-100, -100, 2000, 200)
-
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -103.0
-offset_top = 264.0
+offset_top = -186.0
 offset_right = 100.0
-offset_bottom = -626.0
+offset_bottom = -176.0
 grow_horizontal = 2
-grow_vertical = 2
 color = Color(1, 1, 1, 0.54902)
 metadata/_edit_layout_mode = 1
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -103.0
-offset_top = 560.0
+offset_top = 110.0
 offset_right = 100.0
-offset_bottom = -330.0
+offset_bottom = 120.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 color = Color(1, 1, 1, 0.54902)
 metadata/_edit_layout_mode = 1
 
@@ -169,5 +162,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.1)
 metadata/_edit_layout_mode = 1
+
+[node name="ParticleContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ParticleContainer"]
+unique_name_in_owner = true
+position = Vector2(-380, -12)
+amount = 800
+process_material = SubResource("ParticlesMaterial_72s4e")
+texture = ExtResource("1_yktdt")
+lifetime = 10.0
+preprocess = 10.0
+randomness = 0.74
+visibility_rect = Rect2(-100, -100, 2000, 200)

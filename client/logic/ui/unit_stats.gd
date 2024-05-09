@@ -68,7 +68,6 @@ signal round_over_changed
 		if ammo > -1:
 			ammo = value
 			if is_inside_tree():
-				var unit: Unit = get_parent() as Unit
 				if ammo > _parent.values.ammo:
 					ammo = _parent.values.ammo
 				var ammo_threshold: int = ProjectSettings.get_setting(
@@ -85,7 +84,6 @@ signal round_over_changed
 		if fuel > -1:
 			fuel = value
 			if is_inside_tree():
-				var unit: Unit = get_parent() as Unit
 				if fuel > _parent.values.fuel:
 					fuel = _parent.values.fuel
 				var fuel_threshold: int = ProjectSettings.get_setting(
@@ -111,9 +109,6 @@ signal round_over_changed
 @onready var _animation_fuel: AnimationPlayer = %AnimationFuel as AnimationPlayer
 @onready var _stars: UnitStatsStars = %Stars as UnitStatsStars
 @onready var _parent: Unit = get_parent()
-
-var _types: GlobalTypes = Types
-
 
 
 func _ready() -> void:

@@ -8,7 +8,6 @@ signal unit_selected
 var unit_color: Color
 
 var _unit: Unit
-var _types: GlobalTypes = Types
 
 
 func _ready() -> void:

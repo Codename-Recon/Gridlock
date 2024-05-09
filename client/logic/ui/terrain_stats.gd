@@ -7,8 +7,6 @@ extends Node2D
 
 @onready var _parent: Terrain = get_parent()
 
-var _types: GlobalTypes = Types
-
 
 func _ready() -> void:
 	reset_capture_health()
