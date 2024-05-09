@@ -4,6 +4,8 @@
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
+const float gray_threshold = 0.2;
+
 uniform bool shifting;
 uniform float shift_level_h : hint_range(0, 1);
 uniform float shift_level_s : hint_range(0, 1);
@@ -45,7 +47,10 @@ void fragment() {
 	if (shifting && abs(hsb.x - hsb_old.x) < shift_level_h && abs(hsb.y - hsb_old.y) < shift_level_s && abs(hsb.z - hsb_old.z) < shift_level_b){
 		vec3 hsb_new = rgb2hsb(new_color.rgb);
 		hsb.x = hsb_new.x;
-		hsb.y = hsb_new.y;
+		// If the new color falls within the grayish spectrum, also overwrite the saturation
+		if(hsb_new.y < gray_threshold){
+			hsb.y = hsb_new.y;
+		}
 		// To darken the darker areas more
 		if(hsb.y > shift_shades_threshold){
 			hsb.z = hsb.z * shift_shades_factor;
