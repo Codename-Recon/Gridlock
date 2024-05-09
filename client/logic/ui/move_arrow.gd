@@ -9,7 +9,7 @@ extends Path2D
 
 
 func _ready() -> void:
-	pass
+	curve = Curve2D.new()
 
 
 func _on_draw() -> void:
