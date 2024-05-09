@@ -9,7 +9,7 @@ script/source = "extends Control
 @export var music: AudioStream
 @export var menu_scene: PackedScene
 
-@onready var _gpu_particles: GPUParticles2D = $ParticleContainer/GPUParticles2D
+@onready var _gpu_particles: GPUParticles2D = %GPUParticles2D
 
 var _global: GlobalGlobal = Global
 
@@ -176,6 +176,7 @@ offset_bottom = 20.0
 grow_vertical = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ParticleContainer"]
+unique_name_in_owner = true
 position = Vector2(-380, -12)
 amount = 800
 process_material = SubResource("ParticlesMaterial_72s4e")

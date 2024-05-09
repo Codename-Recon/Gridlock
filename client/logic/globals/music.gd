@@ -14,7 +14,6 @@ var _tween2: Tween
 
 func _ready() -> void:
 	player = [$Player1, $Player2]
-	var volume: float = 0
 	# Set music volume with settings value
 	var value: float = ProjectSettings.get_setting("game/music_volume")
 	var idx: int = AudioServer.get_bus_index("Music")

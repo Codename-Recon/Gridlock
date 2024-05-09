@@ -85,7 +85,6 @@ static func _lambda_calculate_distance(start: Terrain, end: Terrain) -> int:
 static func filter_terrains(
 	terrains: Array[Terrain], unit: Unit, filter_blocking: bool = true, filter_distance: bool = true
 ) -> Array[Terrain]:
-	var _types: GlobalTypes = Types
 
 	if filter_distance:
 		# Removing terrains which are too far
@@ -115,7 +114,6 @@ static func get_astar_path(
 	unit: Unit,
 	end_can_be_outside: bool = false
 ) -> PackedVector2Array:
-	var _types: GlobalTypes = Types
 	var astar: AStar2D = AStar2D.new()
 	var filter_distance: bool = !end_can_be_outside
 	terrains = filter_terrains(terrains, unit, true, filter_distance)
