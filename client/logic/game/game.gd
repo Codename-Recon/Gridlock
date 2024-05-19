@@ -731,8 +731,6 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 		var defending_transform: Transform2D = defending_unit.global_transform
 		attacking_unit.damage_animated.connect(defending_unit.play_damage)
 		defending_unit.damage_animated.connect(attacking_unit.play_damage)
-		attacking_unit.look_at_plane_global_tween(defending_unit.get_terrain().global_position)
-		defending_unit.look_at_plane_global_tween(attacking_unit.get_terrain().global_position)
 		var distance: int = _get_unit_distance(attacking_unit, defending_unit)
 		# attacking unit turn
 		attacking_unit.play_attack()
@@ -786,10 +784,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 		attacking_unit.damage_animated.disconnect(defending_unit.play_damage)
 		defending_unit.damage_animated.disconnect(attacking_unit.play_damage)
 		if attacking_unit.is_inside_tree():
-			attacking_unit.look_at_plane_global_tween(attacking_transform * Vector2.UP)
 			attacking_unit.stats.round_over = true
-		if defending_unit.is_inside_tree():
-			defending_unit.look_at_plane_global_tween(defending_transform * Vector2.UP)
 	else:
 		_sound.play("Deselect")
 	_input.enable_all()
@@ -815,7 +810,6 @@ func _do_state_refilling_clicked_left(local: bool = true) -> void:
 		var receiver_unit: Unit = last_selected_terrain.get_unit()
 		await donor_unit.unit_moved
 		var donor_unit_transform: Transform2D = donor_unit.global_transform
-		donor_unit.look_at_plane_global_tween(receiver_unit.get_terrain().global_position)
 		# refilling
 		var info: FloatingInfo = _floating_info.instantiate()
 		info.text = tr("REFILLED")
@@ -825,8 +819,6 @@ func _do_state_refilling_clicked_left(local: bool = true) -> void:
 		receiver_unit.refill()
 		receiver_unit.calculate_possible_terrains_to_move()
 		await donor_unit.refill_animation_done
-		if donor_unit.is_inside_tree():
-			donor_unit.look_at_plane_global_tween(donor_unit_transform * Vector2.UP)
 		donor_unit.stats.round_over = true
 	else:
 		_sound.play("Deselect")

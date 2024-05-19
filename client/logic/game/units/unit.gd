@@ -264,14 +264,6 @@ func play_refill() -> void:
 	_state = State.STANDING
 
 
-func look_at_plane_global(global_point_position: Vector2) -> void:
-	pass
-
-
-func look_at_plane_global_tween(global_point_position: Vector2) -> void:
-	pass
-
-
 func _init() -> void:
 	pass
 
