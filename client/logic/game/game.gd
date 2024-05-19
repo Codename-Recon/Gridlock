@@ -5,6 +5,7 @@ signal round_change_ended
 @export var _move_layer: PackedScene
 @export var _move_arrow: PackedScene
 @export var _floating_info: PackedScene
+@export var _attack_effects: PackedScene
 
 @onready var _action_panel: ActionPanel = %ActionPanel
 @onready var _round_button: Button = %RoundButton
@@ -736,35 +737,35 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 		# attacking unit turn
 		attacking_unit.play_attack()
 		await attacking_unit.attack_animation_done
-		var damage: Vector2 = Vector2.ZERO
-		damage = _calculate_damage(attacking_unit, defending_unit)
-		defending_unit.stats.health -= int(damage.x)
+		var damage_result: DamageResult
+		damage_result = _calculate_damage(attacking_unit, defending_unit)
+		defending_unit.stats.health -= int(damage_result.damage)
 		# create floating damage info
 		var info: FloatingInfo = _floating_info.instantiate()
 		info.text = str(defending_unit.stats.get_last_damage_as_float())
 		info.color = ProjectSettings.get_setting("global/attack_color")
 		defending_unit.get_terrain().add_child(info)
 		# take one ammo if it was primary weapon
-		if attacking_unit.stats.ammo > 0 and damage.y == 0:
+		if attacking_unit.stats.ammo > 0 and damage_result.weapon_category == GameConst.WeaponCategory.PRIMARY:
 			attacking_unit.stats.ammo -= 1
 		# defending unit turn
 		if defending_unit.stats.health > 0:
 			# check if unit is next to it and defending unit can attack something next to it
 			if distance <= 1 and defending_unit.values.min_range < 2:
-				damage = _calculate_damage(defending_unit, attacking_unit)
+				damage_result = _calculate_damage(defending_unit, attacking_unit)
 				# check if defending unit can attack with weapon (> 0)
-				if damage.x > 0:
+				if damage_result.damage > 0:
 					await get_tree().create_timer(0.2).timeout
 					defending_unit.play_attack()
 					await defending_unit.attack_animation_done
-					attacking_unit.stats.health -= int(damage.x)
+					attacking_unit.stats.health -= damage_result.damage
 					# create floating damage info
 					info = _floating_info.instantiate()
 					info.text = str(attacking_unit.stats.get_last_damage_as_float())
 					info.color = ProjectSettings.get_setting("global/attack_color")
 					attacking_unit.get_terrain().add_child(info)
 					# take one ammo if it was primary weapon
-					if defending_unit.stats.ammo > 0 and damage.y == 0:
+					if defending_unit.stats.ammo > 0 and damage_result.weapon_category == GameConst.WeaponCategory.PRIMARY:
 						defending_unit.stats.ammo -= 1
 					if attacking_unit.stats.health <= 0:
 						# since attacking_unit gets freed, last_selected_unit (which is attacking unit) should be null (specially for networking)
@@ -1427,24 +1428,24 @@ func _get_group_decal(group_name: String) -> Array[Sprite2D]:
 # returns Vector: x = -1 when no damage can be done (e.g. no possible weapons), y represents weapon type (primary -> 0, secondary -> 1)
 func _calculate_damage(
 	attacking_unit: Unit, defending_unit: Unit, random_luck: bool = true
-) -> Vector2:
+) -> DamageResult:
 	var base_damage: int = 0
-	var weapon_type: int = -1
+	var weapon_type: GameConst.WeaponCategory = GameConst.WeaponCategory.NONE
 	var primary_damage: int = _types.primary_damage[attacking_unit.id][defending_unit.id]
 	var secondary_damage: int = _types.secondary_damage[attacking_unit.id][defending_unit.id]
 	# when attacking unit has enough ammo for primary weapon
 	# and defending unit "accepts" primary weapon
 	if (attacking_unit.stats.ammo > 0 or attacking_unit.stats.ammo == -1) and primary_damage > 0:
 		base_damage = primary_damage
-		weapon_type = 0
+		weapon_type = GameConst.WeaponCategory.PRIMARY
 	else:
 		# check if defending unit "accepts" secondary weapon
 		if secondary_damage > 0:
 			base_damage = secondary_damage
-			weapon_type = 1
+			weapon_type = GameConst.WeaponCategory.SECONDARY
 		else:
 			# no weapons means no damage possible
-			return Vector2(-1, -1)
+			return DamageResult.new(-1, GameConst.WeaponCategory.NONE)
 
 	var luck: int = 0
 	if random_luck:
@@ -1458,7 +1459,7 @@ func _calculate_damage(
 		(100 - defending_unit.stats.star_number * defending_unit.stats.health / 10.0) / 100.0
 	)
 	var total_damage: int = int(attacking_unit.stats.health * attack_factor * defense_factor)
-	return Vector2(total_damage, weapon_type)
+	return DamageResult.new(total_damage, weapon_type)
 
 
 func _calculate_all_unit_possible_move_terrain() -> void:
@@ -1509,11 +1510,11 @@ func _ai_create_and_filter_move_curve(target_terrain: Terrain) -> void:
 
 
 func _lambda_sort_damage_terrain(attacking_unit: Unit, a: Terrain, b: Terrain) -> bool:
-	var value_a: Vector2 = (
-		_calculate_damage(attacking_unit, a.get_unit()) * a.get_unit().values.cost
+	var value_a: int = (
+		_calculate_damage(attacking_unit, a.get_unit()).damage * a.get_unit().values.cost
 	)
-	var value_b: Vector2 = (
-		_calculate_damage(attacking_unit, b.get_unit()) * b.get_unit().values.cost
+	var value_b: int = (
+		_calculate_damage(attacking_unit, b.get_unit()).damage * b.get_unit().values.cost
 	)
 	return value_a > value_b
 
@@ -1638,3 +1639,13 @@ func _parse_network_fsm_round() -> void:
 			else:
 				# shop unit can be null when shop gets closed
 				last_bought_unit = null
+
+
+class DamageResult:
+	var damage: int
+	var weapon_category: GameConst.WeaponCategory
+	
+	func _init(damage: int, weapon_category: GameConst.WeaponCategory) -> void:
+		self.damage = damage
+		self.weapon_category = weapon_category
+	
