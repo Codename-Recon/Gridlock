@@ -238,14 +238,14 @@ func is_on_map() -> bool:
 
 func play_attack() -> void:
 	_state = State.ATTACKING
-	_animation_player.play("attack")
+	_animation_player.play("attack_primary")
 	await _animation_player.animation_finished
 	_state = State.STANDING
 
 
 func play_damage() -> void:
 	_state = State.DAMAGING
-	_animation_player.play("damage")
+	_animation_player.play("struck")
 	await _animation_player.animation_finished
 	_state = State.STANDING
 

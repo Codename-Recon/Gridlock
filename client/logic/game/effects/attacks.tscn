@@ -1,0 +1,242 @@
+[gd_scene load_steps=27 format=3 uid="uid://c3yxqsd1juu02"]
+
+[ext_resource type="Texture2D" uid="uid://b26ovt5s6grgi" path="res://assets/images/game/effects/explosion.png" id="1_jemi4"]
+[ext_resource type="Texture2D" uid="uid://63aoh82r7j5" path="res://assets/images/game/effects/gunattack.png" id="2_fq1dj"]
+[ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="3_do4qc"]
+[ext_resource type="AudioStream" uid="uid://cvo0vbob1j0pi" path="res://assets/sounds/explosionCrunch_004.ogg" id="4_sm1b3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnvgg"]
+atlas = ExtResource("1_jemi4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3x2i"]
+atlas = ExtResource("1_jemi4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjpf3"]
+atlas = ExtResource("1_jemi4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcdvl"]
+atlas = ExtResource("1_jemi4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq7df"]
+atlas = ExtResource("1_jemi4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjuhi"]
+atlas = ExtResource("1_jemi4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mitej"]
+atlas = ExtResource("1_jemi4")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el2an"]
+atlas = ExtResource("1_jemi4")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouyex"]
+atlas = ExtResource("2_fq1dj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa2m6"]
+atlas = ExtResource("2_fq1dj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi6s4"]
+atlas = ExtResource("2_fq1dj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw0uc"]
+atlas = ExtResource("2_fq1dj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4te0"]
+atlas = ExtResource("2_fq1dj")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gklvx"]
+atlas = ExtResource("2_fq1dj")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi8et"]
+atlas = ExtResource("2_fq1dj")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swwui"]
+atlas = ExtResource("2_fq1dj")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m3a7"]
+atlas = ExtResource("2_fq1dj")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oi4ls"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnvgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3x2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjpf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcdvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tq7df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjuhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mitej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el2an")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouyex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa2m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi6s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw0uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4te0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gklvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi8et")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swwui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7m3a7")
+}],
+"loop": true,
+"name": &"gunattack",
+"speed": 14.0
+}]
+
+[sub_resource type="Animation" id="Animation_56pyw"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_k5cdx"]
+resource_name = "explosion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"explosion"]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_do4qc")
+}, {
+"end_offset": 1.18056,
+"start_offset": 0.213056,
+"stream": ExtResource("4_sm1b3")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0, 0.413056, 19.6)
+}
+tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1rjlf"]
+resource_name = "gunattack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"gunattack"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vitmg"]
+_data = {
+"RESET": SubResource("Animation_56pyw"),
+"explosion": SubResource("Animation_k5cdx"),
+"gunattack": SubResource("Animation_1rjlf")
+}
+
+[node name="attacks" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_oi4ls")
+animation = &"gunattack"
+frame_progress = 0.472741
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vitmg")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"Sound"
