@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cbc6sawc766k"]
+[gd_scene load_steps=50 format=3 uid="uid://cbc6sawc766k"]
 
 [ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_6xhvo"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_81uaa"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://logic/game/game.gd" id="9_gl6qd"]
 [ext_resource type="PackedScene" uid="uid://df4e0v877neen" path="res://logic/ui/shop.tscn" id="10_rtev0"]
 [ext_resource type="PackedScene" uid="uid://dw3qqdstw803h" path="res://logic/ui/decal_layer.tscn" id="11_cenw6"]
-[ext_resource type="PackedScene" uid="uid://c3yxqsd1juu02" path="res://logic/game/effects/attacks.tscn" id="11_ssu3s"]
 [ext_resource type="PackedScene" uid="uid://chwkab0kw6j3l" path="res://logic/ui/move_arrow.tscn" id="12_lqnrk"]
 [ext_resource type="PackedScene" uid="uid://wq46v3oiq0rg" path="res://logic/ui/floating_info.tscn" id="14_vnmkc"]
 [ext_resource type="Script" path="res://logic/ui/action_panel.gd" id="17_0h3pk"]
@@ -525,7 +524,6 @@ _shop_scene = ExtResource("10_rtev0")
 _move_layer = ExtResource("11_cenw6")
 _move_arrow = ExtResource("12_lqnrk")
 _floating_info = ExtResource("14_vnmkc")
-_attack_effects = ExtResource("11_ssu3s")
 
 [node name="ActionPanel" type="Panel" parent="Interface"]
 unique_name_in_owner = true

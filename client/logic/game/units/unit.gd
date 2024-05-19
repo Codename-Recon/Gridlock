@@ -12,6 +12,19 @@ signal died
 
 enum State { STANDING, MOVING, ATTACKING, DAMAGING, DYING, REFILLING }
 
+const WEAPON_TYPE_TRANSLATION: Dictionary = {
+	GameConst.WeaponType.ARTILLERY_CANON: "explosion",
+	GameConst.WeaponType.BAZOOKA : "explosion",
+	GameConst.WeaponType.LIGHT_TANK_CANON : "explosion",
+	GameConst.WeaponType.MACHINE_GUN : "gunattack",
+	GameConst.WeaponType.MEDIUM_TANK_CANON : "explosion",
+	GameConst.WeaponType.ROCKETS : "explosion",
+	GameConst.WeaponType.TANK_MACHINE_GUN : "gunattack",
+	GameConst.WeaponType.VUCLAN_CANNON : "explosion"
+}
+
+const ATTACKS: PackedScene = preload("res://logic/game/effects/attacks.tscn")
+
 @export var shader_modulate: bool = false:
 	set(value):
 		if value:
@@ -89,6 +102,8 @@ var possible_movement_steps: int:
 		if values.mp < stats.fuel:
 			return values.mp
 		return stats.fuel
+
+var last_damage_type: GameConst.WeaponType
 
 var _possible_terrains_to_move_buffer: Array[Terrain]
 var _possible_terrains_to_move_calculating: bool
@@ -246,6 +261,10 @@ func play_attack() -> void:
 func play_damage() -> void:
 	_state = State.DAMAGING
 	_animation_player.play("struck")
+	var effect: Effect = ATTACKS.instantiate()
+	add_child(effect)
+	var animation: String = WEAPON_TYPE_TRANSLATION[last_damage_type]
+	effect.player.play(animation)
 	await _animation_player.animation_finished
 	_state = State.STANDING
 
@@ -406,7 +425,8 @@ func _update_color() -> void:
 		color = neutral_color
 
 
-class Values extends NumberFix:
+class Values:
+	extends NumberFix
 	var name: String
 	var description: String
 	var cost: int

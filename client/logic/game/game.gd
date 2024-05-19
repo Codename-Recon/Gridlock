@@ -5,7 +5,6 @@ signal round_change_ended
 @export var _move_layer: PackedScene
 @export var _move_arrow: PackedScene
 @export var _floating_info: PackedScene
-@export var _attack_effects: PackedScene
 
 @onready var _action_panel: ActionPanel = %ActionPanel
 @onready var _round_button: Button = %RoundButton
@@ -727,16 +726,15 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 		var attacking_unit: Unit = last_selected_unit
 		var defending_unit: Unit = last_selected_terrain.get_unit()
 		await attacking_unit.unit_moved
-		var attacking_transform: Transform2D = attacking_unit.global_transform
-		var defending_transform: Transform2D = defending_unit.global_transform
 		attacking_unit.damage_animated.connect(defending_unit.play_damage)
 		defending_unit.damage_animated.connect(attacking_unit.play_damage)
 		var distance: int = _get_unit_distance(attacking_unit, defending_unit)
 		# attacking unit turn
-		attacking_unit.play_attack()
-		await attacking_unit.attack_animation_done
 		var damage_result: DamageResult
 		damage_result = _calculate_damage(attacking_unit, defending_unit)
+		defending_unit.last_damage_type = damage_result.weapon_type
+		attacking_unit.play_attack()
+		await attacking_unit.attack_animation_done
 		defending_unit.stats.health -= int(damage_result.damage)
 		# create floating damage info
 		var info: FloatingInfo = _floating_info.instantiate()
@@ -754,6 +752,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 				# check if defending unit can attack with weapon (> 0)
 				if damage_result.damage > 0:
 					await get_tree().create_timer(0.2).timeout
+					attacking_unit.last_damage_type = damage_result.weapon_type
 					defending_unit.play_attack()
 					await defending_unit.attack_animation_done
 					attacking_unit.stats.health -= damage_result.damage
@@ -809,7 +808,6 @@ func _do_state_refilling_clicked_left(local: bool = true) -> void:
 		var donor_unit: Unit = last_selected_unit
 		var receiver_unit: Unit = last_selected_terrain.get_unit()
 		await donor_unit.unit_moved
-		var donor_unit_transform: Transform2D = donor_unit.global_transform
 		# refilling
 		var info: FloatingInfo = _floating_info.instantiate()
 		info.text = tr("REFILLED")
@@ -1422,22 +1420,25 @@ func _calculate_damage(
 	attacking_unit: Unit, defending_unit: Unit, random_luck: bool = true
 ) -> DamageResult:
 	var base_damage: int = 0
-	var weapon_type: GameConst.WeaponCategory = GameConst.WeaponCategory.NONE
+	var weapon_type: GameConst.WeaponType
+	var weapon_category: GameConst.WeaponCategory = GameConst.WeaponCategory.NONE
 	var primary_damage: int = _types.primary_damage[attacking_unit.id][defending_unit.id]
 	var secondary_damage: int = _types.secondary_damage[attacking_unit.id][defending_unit.id]
 	# when attacking unit has enough ammo for primary weapon
 	# and defending unit "accepts" primary weapon
 	if (attacking_unit.stats.ammo > 0 or attacking_unit.stats.ammo == -1) and primary_damage > 0:
 		base_damage = primary_damage
-		weapon_type = GameConst.WeaponCategory.PRIMARY
+		weapon_category = GameConst.WeaponCategory.PRIMARY
+		weapon_type = attacking_unit.values.weapons[0] as GameConst.WeaponType
 	else:
 		# check if defending unit "accepts" secondary weapon
 		if secondary_damage > 0:
 			base_damage = secondary_damage
-			weapon_type = GameConst.WeaponCategory.SECONDARY
+			weapon_category = GameConst.WeaponCategory.SECONDARY
+			weapon_type = attacking_unit.values.weapons[1] as GameConst.WeaponType
 		else:
 			# no weapons means no damage possible
-			return DamageResult.new(-1, GameConst.WeaponCategory.NONE)
+			return DamageResult.new(-1, GameConst.WeaponCategory.NONE, GameConst.WeaponType.ARTILLERY_CANON)
 
 	var luck: int = 0
 	if random_luck:
@@ -1451,7 +1452,7 @@ func _calculate_damage(
 		(100 - defending_unit.stats.star_number * defending_unit.stats.health / 10.0) / 100.0
 	)
 	var total_damage: int = int(attacking_unit.stats.health * attack_factor * defense_factor)
-	return DamageResult.new(total_damage, weapon_type)
+	return DamageResult.new(total_damage, weapon_category, weapon_type)
 
 
 func _calculate_all_unit_possible_move_terrain() -> void:
@@ -1636,8 +1637,9 @@ func _parse_network_fsm_round() -> void:
 class DamageResult:
 	var damage: int
 	var weapon_category: GameConst.WeaponCategory
+	var weapon_type: GameConst.WeaponType
 	
-	func _init(damage: int, weapon_category: GameConst.WeaponCategory) -> void:
+	func _init(damage: int, weapon_category: GameConst.WeaponCategory, weapon_type: GameConst.WeaponType) -> void:
 		self.damage = damage
 		self.weapon_category = weapon_category
-	
+		self.weapon_type = weapon_type
