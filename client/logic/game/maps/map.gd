@@ -149,6 +149,7 @@ func create_terrain(
 	id: String,
 	tile_id: String,
 	terrain_position: Vector2i,
+	terrain_z_index: int,
 	texture: Texture2D,
 	ground_tile_texture: Texture2D,
 	player_id: int
@@ -170,6 +171,7 @@ func create_terrain(
 		terrain.add_child(sprite)
 		terrain.sprite = sprite
 		terrain.sprite.texture = texture
+		terrain.sprite.z_index = terrain_z_index
 	# Add ground tile if specified in the tile set
 	if ground_tile_texture:
 		var ground_sprite: Sprite2D = Sprite2D.new()

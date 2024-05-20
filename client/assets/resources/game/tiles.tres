@@ -2535,8 +2535,19 @@ texture_region_size = Vector2i(32, 32)
 2:40/0/terrain_set = 0
 2:40/0/terrain = 9
 2:40/0/custom_data_0 = "WOOD"
-2:40/0/custom_data_1 = "WOOD_1"
+2:40/0/custom_data_1 = "WOOD_2"
 2:40/0/custom_data_2 = "PLAIN_1"
+3:39/size_in_atlas = Vector2i(2, 1)
+3:39/0 = 0
+3:39/0/custom_data_0 = "WOOD"
+3:39/0/custom_data_1 = "WOOD_3"
+3:39/0/custom_data_2 = "PLAIN_1"
+10:40/size_in_atlas = Vector2i(2, 2)
+10:40/0 = 0
+10:40/0/z_index = 1
+10:40/0/custom_data_0 = "WOOD"
+10:40/0/custom_data_1 = "WOOD_1"
+10:40/0/custom_data_2 = "PLAIN_1"
 
 [resource]
 tile_size = Vector2i(32, 32)

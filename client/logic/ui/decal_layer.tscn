@@ -135,6 +135,7 @@ _data = {
 }
 
 [node name="DecalLayer" type="Sprite2D"]
+z_index = 1
 scale = Vector2(0.01, 0.01)
 texture = SubResource("AtlasTexture_4qdwo")
 script = ExtResource("2_2i2mn")

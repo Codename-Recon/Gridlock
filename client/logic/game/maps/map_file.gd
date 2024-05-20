@@ -134,7 +134,8 @@ static func deserialize(json_map: String) -> Map:
 			var ground_tile_id: String = terrain_values.ground_tile_id
 			var texture: Texture2D = MapEditor.get_texture_with_tile_id(tile_id)
 			var ground_texture: Texture2D = MapEditor.get_texture_with_tile_id(ground_tile_id)
-			map.create_terrain(terrain_values.id, tile_id, pos, texture, ground_texture, terrain_values.owner)
+			var terrain_data: MapEditor.TerrainData = MapEditor.get_data_with_tile_id(tile_id)
+			map.create_terrain(terrain_values.id, tile_id, pos, terrain_data.tile_z_index, texture, ground_texture, terrain_values.owner)
 			if terrain_values.unit:
 				var ud: Dictionary = terrain_values.unit
 				ud["@path"] = "res://logic/game/maps/map_file.gd"
