@@ -6,8 +6,8 @@ script/source = "extends HSlider
 var _global: GlobalGlobal = Global
 
 func _ready() -> void:
-	max_value = ProjectSettings.get_setting(\"global/sound_max_value\")
-	min_value = ProjectSettings.get_setting(\"global/sound_min_value\")
+	max_value = ProjectSettings.get_setting(\"global/audio/sound_max_value\")
+	min_value = ProjectSettings.get_setting(\"global/audio/sound_min_value\")
 	value = ProjectSettings.get_setting(\"game/music_volume\")
 
 
@@ -24,8 +24,8 @@ script/source = "extends HSlider
 var _global: GlobalGlobal = Global
 
 func _ready() -> void:
-	max_value = ProjectSettings.get_setting(\"global/sound_max_value\")
-	min_value = ProjectSettings.get_setting(\"global/sound_min_value\")
+	max_value = ProjectSettings.get_setting(\"global/audio/sound_max_value\")
+	min_value = ProjectSettings.get_setting(\"global/audio/sound_min_value\")
 	value = ProjectSettings.get_setting(\"game/sound_volume\")
 
 

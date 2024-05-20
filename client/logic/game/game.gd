@@ -545,10 +545,10 @@ func _do_state_repairing(local: bool = true) -> void:
 		):
 			# repair
 			if unit.stats.is_unit_damaged():
-				var unit_max_health: int = ProjectSettings.get_setting("global/unit_max_health")
+				var unit_max_health: int = ProjectSettings.get_setting("global/unit/max_health")
 				var damage_to_repair: int = unit_max_health - unit.stats.health
 				var max_repair_points: int = ProjectSettings.get_setting(
-					"global/terrain_repair_health_points"
+					"global/terrain/repair_health_points"
 				)
 				var repair_points: int = (
 					max_repair_points if damage_to_repair > max_repair_points else damage_to_repair
@@ -946,7 +946,7 @@ func _do_state_action_clicked_action(local: bool = true) -> void:
 			info.color = ProjectSettings.get_setting("global/refill_color")
 			target_unit.get_terrain().add_child(info)
 			## join unit together
-			var max_health: int = ProjectSettings.get_setting("global/unit_max_health")
+			var max_health: int = ProjectSettings.get_setting("global/unit/max_health")
 			var over_health: int = target_unit.stats.health + source_unit.stats.health - max_health
 			var over_money: int = source_unit.values.cost / max_health * over_health
 			target_unit.stats.health += source_unit.stats.health
@@ -1329,7 +1329,7 @@ func _create_and_set_join_area(
 			and i.get_unit() != unit
 		):
 			var target_unit: Unit = i.get_unit()
-			var max_health: int = ProjectSettings.get_setting("global/unit_max_health")
+			var max_health: int = ProjectSettings.get_setting("global/unit/max_health")
 			if (
 				target_unit.id == unit.id
 				and (target_unit.stats.health < max_health or unit.stats.health < max_health)

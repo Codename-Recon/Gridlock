@@ -29,7 +29,7 @@ func change_music(music: AudioStream) -> void:
 	var front: AudioStreamPlayer = player.pop_front()
 	player.append(front)
 	player[0].stream = music
-	var time: float = ProjectSettings.get_setting("global/music_tween_time")
+	var time: float = ProjectSettings.get_setting("global/audio/music_tween_time")
 	player[0].volume_db = LOWEST_VOLUME
 	player[0].play()
 	_tween1 = create_tween()

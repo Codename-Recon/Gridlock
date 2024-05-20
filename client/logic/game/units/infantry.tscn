@@ -987,8 +987,17 @@ bus = &"Sound"
 area_mask = 0
 
 [node name="UnitStats" parent="." instance=ExtResource("7_5ps6t")]
+health = null
+capturing = null
+map_hidden = null
+carrying = null
+ammo_low = null
+fuel_low = null
+star_number = null
 ammo = -1
 fuel = 99
+last_damage = null
+round_over = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

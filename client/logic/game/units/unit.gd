@@ -397,7 +397,7 @@ func _move_on_curve() -> void:
 			var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(
 				Tween.EASE_IN_OUT
 			)
-			var time: float = ProjectSettings.get_setting("global/unit_move_tween_time") as float
+			var time: float = ProjectSettings.get_setting("global/unit/move_tween_time") as float
 			tween.tween_property(follow, "progress_ratio", 1, time)
 			stats.fuel -= move_curve.get_point_count() - 1
 			await tween.finished

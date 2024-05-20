@@ -29,7 +29,7 @@ extends Node2D
 						_set_color,
 						color_old,
 						color_a,
-						ProjectSettings.get_setting("global/tint_time") as float
+						ProjectSettings.get_setting("global/terrain/tint_time") as float
 					)
 				else:
 					_set_color(color_a)
