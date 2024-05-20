@@ -12,6 +12,19 @@ signal died
 
 enum State { STANDING, MOVING, ATTACKING, DAMAGING, DYING, REFILLING }
 
+const WEAPON_TYPE_TRANSLATION: Dictionary = {
+	GameConst.WeaponType.ARTILLERY_CANON: "explosion",
+	GameConst.WeaponType.BAZOOKA : "explosion",
+	GameConst.WeaponType.LIGHT_TANK_CANON : "explosion",
+	GameConst.WeaponType.MACHINE_GUN : "gunattack",
+	GameConst.WeaponType.MEDIUM_TANK_CANON : "explosion",
+	GameConst.WeaponType.ROCKETS : "explosion",
+	GameConst.WeaponType.TANK_MACHINE_GUN : "gunattack",
+	GameConst.WeaponType.VUCLAN_CANNON : "explosion"
+}
+
+const ATTACKS: PackedScene = preload("res://logic/game/effects/attacks.tscn")
+
 @export var shader_modulate: bool = false:
 	set(value):
 		if value:
@@ -89,6 +102,9 @@ var possible_movement_steps: int:
 		if values.mp < stats.fuel:
 			return values.mp
 		return stats.fuel
+
+var last_damage_type: GameConst.WeaponType
+var last_attack_category: GameConst.WeaponCategory
 
 var _possible_terrains_to_move_buffer: Array[Terrain]
 var _possible_terrains_to_move_calculating: bool
@@ -238,38 +254,45 @@ func is_on_map() -> bool:
 
 func play_attack() -> void:
 	_state = State.ATTACKING
-	_animation_player.play("attack")
+	if last_attack_category == GameConst.WeaponCategory.PRIMARY:
+		_animation_player.play("attack_primary")
+	elif last_attack_category == GameConst.WeaponCategory.SECONDARY:
+		_animation_player.play("attack_secondary")
 	await _animation_player.animation_finished
-	_state = State.STANDING
+	play_idle()
 
 
 func play_damage() -> void:
 	_state = State.DAMAGING
-	_animation_player.play("damage")
+	_animation_player.play("struck")
+	var effect: Effect = ATTACKS.instantiate()
+	add_child(effect)
+	var animation: String = WEAPON_TYPE_TRANSLATION[last_damage_type]
+	effect.player.play(animation)
 	await _animation_player.animation_finished
-	_state = State.STANDING
+	play_idle()
 
 
 func play_die() -> void:
 	_state = State.DYING
 	_animation_player.play("die")
 	await _animation_player.animation_finished
-	_state = State.STANDING
+	play_idle()
 
 
 func play_refill() -> void:
 	_state = State.REFILLING
 	_animation_player.play("refill")
 	await _animation_player.animation_finished
+	play_idle()
+
+
+func play_idle() -> void:
 	_state = State.STANDING
-
-
-func look_at_plane_global(global_point_position: Vector2) -> void:
-	pass
-
-
-func look_at_plane_global_tween(global_point_position: Vector2) -> void:
-	pass
+	if stats.health > ProjectSettings.get_setting("global/unit/injured_threshold"):
+		_animation_player.play("idle")
+	else:
+		_animation_player.play("idle_injured")
 
 
 func _init() -> void:
@@ -309,9 +332,7 @@ func _process(delta: float) -> void:
 			_last_position = global_position
 		else:
 			if _state != State.STANDING:
-				_state = State.STANDING
-				if _animation_player.has_animation("idle"):
-					_animation_player.play("idle")
+				play_idle()
 
 
 func _enter_tree() -> void:
@@ -376,7 +397,7 @@ func _move_on_curve() -> void:
 			var tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(
 				Tween.EASE_IN_OUT
 			)
-			var time: float = ProjectSettings.get_setting("global/unit_move_tween_time") as float
+			var time: float = ProjectSettings.get_setting("global/unit/move_tween_time") as float
 			tween.tween_property(follow, "progress_ratio", 1, time)
 			stats.fuel -= move_curve.get_point_count() - 1
 			await tween.finished
@@ -414,7 +435,8 @@ func _update_color() -> void:
 		color = neutral_color
 
 
-class Values extends NumberFix:
+class Values:
+	extends NumberFix
 	var name: String
 	var description: String
 	var cost: int

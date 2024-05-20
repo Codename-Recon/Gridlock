@@ -77,3 +77,9 @@ enum WeaponType {
 	TANK_MACHINE_GUN,
 	VUCLAN_CANNON
 }
+
+enum WeaponCategory{
+	NONE,
+	PRIMARY,
+	SECONDARY
+}

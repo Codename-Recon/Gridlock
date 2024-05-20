@@ -6,18 +6,18 @@ signal round_over_changed
 	set(value):
 		if is_inside_tree():
 			var rounding_value: int = ProjectSettings.get_setting(
-				"global/unit_health_rounding_value"
+				"global/unit/health_rounding_value"
 			)
 			# smaller eg. 5 (4, 3 aso.) will be rounded down to 0. also negative numbers will be 0
 			if value < rounding_value:
 				value = 0
 			# substracting round value so it doesn't show 97 value as 10 health
-			if value < ProjectSettings.get_setting("global/unit_max_health") - rounding_value:
+			if value < ProjectSettings.get_setting("global/unit/max_health") - rounding_value:
 				var text_value: int = round(value / 10.0) as int
 				_health_label.text = str(text_value)
 				_health_label.show()
 			else:
-				value = ProjectSettings.get_setting("global/unit_max_health")
+				value = ProjectSettings.get_setting("global/unit/max_health")
 				_health_label.hide()
 			last_damage = health - value
 			health = value
@@ -71,7 +71,7 @@ signal round_over_changed
 				if ammo > _parent.values.ammo:
 					ammo = _parent.values.ammo
 				var ammo_threshold: int = ProjectSettings.get_setting(
-					"global/unit_ammo_blink_threshold"
+					"global/unit/ammo_blink_threshold"
 				)
 				if ammo < (_parent.values.ammo * ammo_threshold):
 					ammo_low = true
@@ -87,7 +87,7 @@ signal round_over_changed
 				if fuel > _parent.values.fuel:
 					fuel = _parent.values.fuel
 				var fuel_threshold: int = ProjectSettings.get_setting(
-					"global/unit_fuel_blink_threshold"
+					"global/unit/fuel_blink_threshold"
 				)
 				if fuel < (_parent.values.fuel * fuel_threshold):
 					fuel_low = true
@@ -131,7 +131,7 @@ func get_last_damage_as_float() -> float:
 
 
 func is_unit_damaged() -> bool:
-	return health < ProjectSettings.get_setting("global/unit_max_health")
+	return health < ProjectSettings.get_setting("global/unit/max_health")
 
 
 func can_be_refilled() -> bool:

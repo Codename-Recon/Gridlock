@@ -29,7 +29,7 @@ extends Node2D
 						_set_color,
 						color_old,
 						color_a,
-						ProjectSettings.get_setting("global/tint_time") as float
+						ProjectSettings.get_setting("global/terrain/tint_time") as float
 					)
 				else:
 					_set_color(color_a)
@@ -75,22 +75,21 @@ var _types: GlobalTypes = Types
 @onready var stats: TerrainStats = $TerrainStats
 
 
-static func _lambda_calculate_distance(start: Terrain, end: Terrain) -> int:
-	var distance: Vector2i = end.global_position - start.global_position
-	distance /= ProjectSettings.get_setting("global/grid_size")
-	var move_value: int = round(abs(distance.x) + abs(distance.y))
-	return move_value
-
-
 static func filter_terrains(
 	terrains: Array[Terrain], unit: Unit, filter_blocking: bool = true, filter_distance: bool = true
 ) -> Array[Terrain]:
+
+	var distance_calculation: Callable = func(start: Terrain, end: Terrain) -> int:
+		var distance: Vector2i = end.global_position - start.global_position
+		distance /= ProjectSettings.get_setting("global/grid_size")
+		var move_value: int = round(abs(distance.x) + abs(distance.y))
+		return move_value
 
 	if filter_distance:
 		# Removing terrains which are too far
 		terrains = terrains.filter(
 			func(a: Terrain) -> bool: return (
-				_lambda_calculate_distance(unit.get_terrain(), a) <= unit.possible_movement_steps
+				distance_calculation.call(unit.get_terrain(), a) <= unit.possible_movement_steps
 			)
 		)
 	if filter_blocking:

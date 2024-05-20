@@ -75,37 +75,34 @@ neutral_color=Color(0.705882, 0.705882, 0.705882, 1)
 [global]
 
 grid_size=Vector2i(32, 32)
-unit_max_health=100
-tint_time=0.5
 attack_color=Color(1, 0.416667, 0, 1)
 move_color=Color(0, 1, 0.988235, 1)
 refill_color=Color(0, 1, 0.384314, 1)
 enter_color=Color(1, 0.917647, 0, 1)
-unit_rotate_time=0.2
-unit_health_rounding_value=5
-unit_fuel_blink_threshold=0.3
-unit_ammo_blink_threshold=0.3
-music_tween_time=3.0
 count_money_duration=0.5
 count_money_duration.editor=0.1
-terrain_repair_health_points=20
-terrain_repair_duration=1.0
-shop_rotation_speed=0.5
 shop_element_vspace=20
 camera_max_zoom=3
 camera_move_speed=200.0
 camera_zoom_speed=0.2
 camera_min_zoom=1
-buy_money_duration=0.3
-sound_min_value=-70.0
-sound_max_value=0.0
-fast_animation_time=0.3
+decal_animation_time=0.3
+round_overlay=Color(0.384314, 0.384314, 0.384314, 1)
 network/lobby_server="46.101.138.49"
 network/lobby_port=7350
 network/lobby_key="pMywin8T8IGN9NYyn3180CTco1birqE1VEU"
-round_overlay=Color(0.384314, 0.384314, 0.384314, 1)
-unit_move_tween_time=0.8
 network/debug_accounts=false
+unit/injured_threshold=30
+unit/max_health=100
+unit/health_rounding_value=5
+unit/fuel_blink_threshold=0.3
+unit/ammo_blink_threshold=0.3
+unit/move_tween_time=0.8
+terrain/tint_time=0.5
+terrain/repair_health_points=20
+audio/music_tween_time=3.0
+audio/sound_min_value=-70.0
+audio/sound_max_value=0.0
 
 [gui]
 

@@ -58,14 +58,30 @@ static func get_texture_with_tile_id(tile_id: String) -> Texture2D:
 	return null
 
 
-static func get_data_with_altlas_coords(atlas_coords: Vector2i) -> Array[String]:
+static func get_data_with_altlas_coords(atlas_coords: Vector2i) -> TerrainData:
 	var source: TileSetAtlasSource = TILES.get_source(0)
 	var data: TileData = source.get_tile_data(atlas_coords, 0)
-	return [
-		data.get_custom_data("id"),
-		data.get_custom_data("tile_id"),
-		data.get_custom_data("ground_tile_id")
-	]
+	var terrain_data: TerrainData = TerrainData.new()
+	terrain_data.id = data.get_custom_data("id")
+	terrain_data.tile_id = data.get_custom_data("tile_id")
+	terrain_data.ground_tile_id = data.get_custom_data("ground_tile_id")
+	terrain_data.tile_z_index = data.z_index
+	return terrain_data
+
+
+static func get_data_with_tile_id(tile_id: String) -> TerrainData:
+	var source: TileSetAtlasSource = TILES.get_source(0)
+	if not tile_lookup.has(tile_id):
+		return null
+	var idx: int = tile_lookup[tile_id]
+	var pos: Vector2i = source.get_tile_id(idx)
+	var data: TileData = source.get_tile_data(pos, 0)
+	var terrain_data: TerrainData = TerrainData.new()
+	terrain_data.id = data.get_custom_data("id")
+	terrain_data.tile_id = data.get_custom_data("tile_id")
+	terrain_data.ground_tile_id = data.get_custom_data("ground_tile_id")
+	terrain_data.tile_z_index = data.z_index
+	return terrain_data
 
 
 func has_id_with_tile_coords(tile_coords: Vector2i) -> bool:
@@ -127,13 +143,14 @@ func _place_tile(cell: Vector2i, tile_atlas_coords: Vector2i) -> void:
 func _create_terrain_on_map(cell: Vector2i) -> void:
 	var atlas_coords: Vector2i = tile_map.get_cell_atlas_coords(0, cell)
 	var texture: Texture2D = MapEditor.get_texture_with_atlas_coords(atlas_coords)
-	var data: Array[String] = MapEditor.get_data_with_altlas_coords(atlas_coords)
-	var ground_tile_id: String = data[2]
+	var data: TerrainData = MapEditor.get_data_with_altlas_coords(atlas_coords)
+	var ground_tile_id: String = data.ground_tile_id
 	var ground_texture: Texture2D = MapEditor.get_texture_with_tile_id(ground_tile_id)
 	map.create_terrain(
-		data[0],
-		data[1],
+		data.id,
+		data.tile_id,
 		cell * tile_map.tile_set.tile_size,
+		data.tile_z_index,
 		texture,
 		ground_texture,
 		_current_player_id
@@ -147,12 +164,13 @@ func _create_terrain_on_map(cell: Vector2i) -> void:
 		atlas_coords = tile_map.get_cell_atlas_coords(0, changed_cell)
 		texture = MapEditor.get_texture_with_atlas_coords(atlas_coords)
 		data = MapEditor.get_data_with_altlas_coords(atlas_coords)
-		ground_tile_id = data[2]
+		ground_tile_id = data.ground_tile_id
 		ground_texture = MapEditor.get_texture_with_tile_id(ground_tile_id)
 		map.create_terrain(
-			data[0],
-			data[1],
+			data.id,
+			data.tile_id,
 			changed_cell * tile_map.tile_set.tile_size,
+			data.tile_z_index,
 			texture,
 			ground_texture,
 			_current_player_id
@@ -204,6 +222,7 @@ func _on_game_input_dragged(terrain: Terrain) -> void:
 		Mode.TERRAIN:
 			_remove_terrain(cell, false)  # Don't remove tile, since it can mess up autotiling
 			_place_terrain(cell, _current_terrain_set, _current_terrain)
+			map.sort_terrain_by_position()
 		Mode.UNIT:
 			if _place_unit(_current_unit_id, terrain.global_position):
 				_sound.play("Drop2")
@@ -266,3 +285,10 @@ func _on_map_editor_ui_save_selected() -> void:
 		return
 	var json_map: String = MapFile.serialize(map)
 	MapFile.save_to_file(json_map, map.map_name)
+
+
+class TerrainData:
+	var id: String
+	var tile_id: String
+	var ground_tile_id: String
+	var tile_z_index: int
