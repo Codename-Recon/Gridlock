@@ -733,6 +733,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 		var damage_result: DamageResult
 		damage_result = _calculate_damage(attacking_unit, defending_unit)
 		defending_unit.last_damage_type = damage_result.weapon_type
+		attacking_unit.last_attack_category = damage_result.weapon_category
 		attacking_unit.play_attack()
 		await attacking_unit.attack_animation_done
 		defending_unit.stats.health -= int(damage_result.damage)
@@ -753,6 +754,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 				if damage_result.damage > 0:
 					await get_tree().create_timer(0.2).timeout
 					attacking_unit.last_damage_type = damage_result.weapon_type
+					defending_unit.last_attack_category = damage_result.weapon_category
 					defending_unit.play_attack()
 					await defending_unit.attack_animation_done
 					attacking_unit.stats.health -= damage_result.damage
