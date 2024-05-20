@@ -222,6 +222,7 @@ func _on_game_input_dragged(terrain: Terrain) -> void:
 		Mode.TERRAIN:
 			_remove_terrain(cell, false)  # Don't remove tile, since it can mess up autotiling
 			_place_terrain(cell, _current_terrain_set, _current_terrain)
+			map.sort_terrain_by_position()
 		Mode.UNIT:
 			if _place_unit(_current_unit_id, terrain.global_position):
 				_sound.play("Drop2")

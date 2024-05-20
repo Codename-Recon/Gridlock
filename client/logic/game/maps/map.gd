@@ -257,6 +257,19 @@ func remove_unit(unit_position: Vector2i) -> void:
 			remove_player(player.id)
 
 
+func sort_terrain_by_position() -> void:
+	var x_size: int = map_size.x
+	var sort: Callable = func sort(a: Node, b: Node) -> bool:
+		var terrain_a: Terrain = a
+		var terrain_b: Terrain = b
+		var value_a: int = terrain_a.position.y * x_size + terrain_a.position.x
+		var value_b: int = terrain_b.position.y * x_size + terrain_b.position.x
+		return value_a < value_b
+	var children: Array[Node] = get_children().filter(func(e: Node) -> bool: return e is Terrain)
+	children.sort_custom(sort)
+	for i: int in children.size():
+		move_child(children[i], i)
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		if not has_node("Players"):
