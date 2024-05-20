@@ -977,6 +977,7 @@ material = SubResource("ShaderMaterial_d1tir")
 sprite_frames = SubResource("SpriteFrames_n3gnd")
 animation = &"idle"
 autoplay = "idle"
+flip_h = true
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

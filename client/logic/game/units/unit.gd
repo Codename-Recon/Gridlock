@@ -259,7 +259,7 @@ func play_attack() -> void:
 	elif last_attack_category == GameConst.WeaponCategory.SECONDARY:
 		_animation_player.play("attack_secondary")
 	await _animation_player.animation_finished
-	_state = State.STANDING
+	play_idle()
 
 
 func play_damage() -> void:
@@ -270,21 +270,29 @@ func play_damage() -> void:
 	var animation: String = WEAPON_TYPE_TRANSLATION[last_damage_type]
 	effect.player.play(animation)
 	await _animation_player.animation_finished
-	_state = State.STANDING
+	play_idle()
 
 
 func play_die() -> void:
 	_state = State.DYING
 	_animation_player.play("die")
 	await _animation_player.animation_finished
-	_state = State.STANDING
+	play_idle()
 
 
 func play_refill() -> void:
 	_state = State.REFILLING
 	_animation_player.play("refill")
 	await _animation_player.animation_finished
+	play_idle()
+
+
+func play_idle() -> void:
 	_state = State.STANDING
+	if stats.health > ProjectSettings.get_setting("global/unit/injured_threshold"):
+		_animation_player.play("idle")
+	else:
+		_animation_player.play("idle_injured")
 
 
 func _init() -> void:
@@ -324,9 +332,7 @@ func _process(delta: float) -> void:
 			_last_position = global_position
 		else:
 			if _state != State.STANDING:
-				_state = State.STANDING
-				if _animation_player.has_animation("idle"):
-					_animation_player.play("idle")
+				play_idle()
 
 
 func _enter_tree() -> void:
