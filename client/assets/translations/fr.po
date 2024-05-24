@@ -1,0 +1,529 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-24 18:51+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.12.2\n"
+
+#: levels/game.tscn levels/game_over_screen.tscn logic/ui/map_editor_ui.gd
+#: logic/ui/map_editor_ui.tscn logic/ui/round_label.gd
+msgid "PLAYER"
+msgstr "joueur"
+
+#: levels/game.tscn logic/ui/round_label.gd
+msgid "TURN"
+msgstr "tour"
+
+#: levels/game.tscn
+msgid "MOVE"
+msgstr "déplacer"
+
+#: levels/game.tscn
+msgid "ATTACK"
+msgstr "attaque"
+
+#: levels/game.tscn
+msgid "ENTER"
+msgstr "entrer"
+
+#: levels/game.tscn
+msgid "DEPLOY"
+msgstr "sevré"
+
+#: levels/game.tscn
+msgid "JOIN"
+msgstr "fusionner"
+
+#: levels/game.tscn
+msgid "SUPPLY"
+msgstr "remplir"
+
+#: levels/game.tscn
+msgid "CAPTURE"
+msgstr "prendre"
+
+#: levels/game.tscn logic/ui/floating_info.tscn
+msgid "100"
+msgstr ""
+
+#: levels/game.tscn
+msgid "2\n"
+msgstr ""
+
+#: levels/game.tscn
+msgid "NEXT_ROUND"
+msgstr "tour suivant"
+
+#: levels/game.tscn
+msgid "Player 1 Turn"
+msgstr ""
+
+#: levels/game.tscn levels/menu.tscn
+msgid "SETTINGS"
+msgstr "réglages"
+
+#: levels/game.tscn logic/ui/map_editor_ui.tscn
+msgid "EXIT_TO_MENU"
+msgstr "quitter au menu"
+
+#: levels/game.tscn logic/ui/map_editor_ui.tscn
+msgid "CONTINUE"
+msgstr "continuer"
+
+#: levels/game.tscn levels/menu.tscn logic/ui/map_selection.tscn
+msgid "BACK"
+msgstr "revenir"
+
+#: levels/game_over_screen.tscn
+msgid "WON"
+msgstr "gagne"
+
+#: levels/game_over_screen.tscn
+#, fuzzy
+msgid "PLAYER 1 WINS"
+msgstr "joueur"
+
+#: levels/menu.tscn
+msgid "SINGLEPLAYER"
+msgstr "joueur unique"
+
+#: levels/menu.tscn
+#, fuzzy
+msgid "MULTIPLAYER"
+msgstr "multijoueur"
+
+#: levels/menu.tscn
+msgid "MAP_EDITOR"
+msgstr ""
+
+#: levels/menu.tscn
+msgid "CREDITS"
+msgstr "crédits"
+
+#: levels/menu.tscn
+msgid "EXIT"
+msgstr "Sortir"
+
+#: levels/menu.tscn
+msgid "TUTORIAL"
+msgstr "Didacticiel"
+
+#: levels/menu.tscn
+msgid "CAMPAIGN"
+msgstr "campagne"
+
+#: levels/menu.tscn
+msgid "VS_AI"
+msgstr "contre IA"
+
+#: levels/menu.tscn
+msgid "HOT_SEAT"
+msgstr "hot seat"
+
+#: levels/menu.tscn
+msgid "LOBBY"
+msgstr "lobby"
+
+#: levels/menu.tscn
+msgid "RANKED"
+msgstr "palmarès"
+
+#: levels/menu.tscn
+msgid "REFRESH"
+msgstr "actualiser"
+
+#: levels/menu.tscn
+msgid "HOST"
+msgstr "hôte"
+
+#: levels/menu.tscn
+msgid "USERNAME"
+msgstr "Nom d'utilisateur"
+
+#: levels/menu.tscn logic/ui/map_selection.tscn
+msgid "START"
+msgstr "commencer"
+
+#: levels/menu.tscn
+msgid ""
+"[center][b]Credits[/b][/center]\n"
+"\n"
+"Mangs\n"
+"[indent][i]Project Leader[/i][/indent]\n"
+"\n"
+"Hunter99\n"
+"[indent][i]Lead Programmer[/i][/indent]\n"
+"[indent][i]Lead Engine Developer[/i][/indent]\n"
+"\n"
+"jaume\n"
+"[indent][i]Engine Developer[/i][/indent]\n"
+"\n"
+"2-3-Ryan-5\n"
+"[indent][i]UI Developer[/i][/indent]\n"
+"\n"
+"Ephraim225\n"
+"[indent][i]Lead Level Designer[/i][/indent]\n"
+"\n"
+"Gloomreach\n"
+"[indent][i]Lead Unit Concept Artist[/i][/indent]\n"
+"\n"
+"Zamza\n"
+"[indent][i]Spriter[/i][/indent]\n"
+"\n"
+"Harmless\n"
+"[indent][i]Composer[/i][/indent]\n"
+"\n"
+"\n"
+"[center][b]Former[/b][/center]\n"
+"\n"
+"Ghost\n"
+"[indent][i]Engine Developer[/i][/indent]\n"
+"\n"
+"Darkbladercr\n"
+"[indent][i]Backend Developer[/i][/indent]\n"
+"\n"
+"seerfox\n"
+"[indent][i]CO Art Director[/i][/indent]\n"
+"[indent][i]UI Designer[/i][/indent]\n"
+"\n"
+"Sleepy Tech\n"
+"[indent][i]Spriter[/i][/indent]\n"
+"\n"
+"\n"
+"[center][b]External[/b][/center]\n"
+"\n"
+"[url=https://www.kenney.nl/assets]Kenney Game Assets[/url]\n"
+"[indent][i]2D Art, Sound[/i][/indent]\n"
+"\n"
+"[url=https://opengameart.org/content/menu-music]mrpoly[/url]\n"
+"[indent][i]Music[/i][/indent]\n"
+"\n"
+"[url=https://opengameart.org/content/awake-megawall-10]cynicmusic[/url]\n"
+"[indent][i]Music[/i][/indent]\n"
+"\n"
+"[url=https://opengameart.org/content/cyberpunk-moonlight-sonata]Joth[/url]\n"
+"[indent][i]Music[/i][/indent]\n"
+"\n"
+"[url=https://opengameart.org/content/4-chiptunes-adventure]SubspaceAudio[/"
+"url]\n"
+"[indent][i]Music[/i][/indent]\n"
+"\n"
+"[url=https://akveo.github.io/eva-icons/]Eva Icons[/url]\n"
+"[indent][i]2D Art[/i][/indent]\n"
+"\n"
+"\n"
+"[center][b]Game Engine[/b][/center]\n"
+"\n"
+"[url=https://godotengine.org]Godot Engine[/url]\n"
+"[indent][i][url]https://godotengine.org/license[/url][/i][/indent]\n"
+"\n"
+"[center][img]res://godot_icon.svg[/img][/center]"
+msgstr ""
+
+#: levels/menu.tscn
+msgid "<VERSION>"
+msgstr ""
+
+#: levels/menu.tscn
+msgid "BUG_REPORT"
+msgstr ""
+
+#: levels/menu.tscn
+msgid "DISCUSSIONS"
+msgstr ""
+
+#: logic/ui/board_analytic.tscn
+msgid "SEA"
+msgstr ""
+
+#: logic/ui/board_analytic.tscn
+msgid "4"
+msgstr ""
+
+#: logic/ui/board_analytic.tscn logic/ui/map_editor_ui.tscn
+msgid "20"
+msgstr ""
+
+#: logic/ui/board_analytic.tscn
+msgid "Infantry"
+msgstr ""
+
+#: logic/ui/board_analytic.tscn
+msgid "9.9"
+msgstr ""
+
+#: logic/ui/board_analytic.tscn
+msgid "99"
+msgstr ""
+
+#: logic/ui/board_analytic.tscn
+msgid "8"
+msgstr ""
+
+#: logic/ui/lobby_list.gd
+msgid "MESSAGE_TITLE_LOBBY_CONNECTION_PROBLEM"
+msgstr "Problème de connection"
+
+#: logic/ui/lobby_list.gd
+msgid "MESSAGE_TEXT_LOBBY_CONNECTION_PROBLEM"
+msgstr "Impossible de se connecter au serveur du lobby."
+
+#: logic/ui/lobby_list.gd
+msgid "DEBUG_ACCOUNT"
+msgstr ""
+
+#: logic/ui/lobby_selection_element.tscn
+msgid "Lobby Name"
+msgstr ""
+
+#: logic/ui/lobby_selection_element.tscn
+msgid "MP_JOIN"
+msgstr "rejoindre"
+
+#: logic/ui/lobby_user_element.tscn
+msgid "User Name"
+msgstr ""
+
+#: logic/ui/lobby_user_element.tscn
+msgid "MP_KICK"
+msgstr "virer"
+
+#: logic/ui/map_editor.gd
+msgid "MESSAGE_TITLE_MAP_EDITOR_SAVE_NO_NAME"
+msgstr ""
+
+#: logic/ui/map_editor.gd
+msgid "MESSAGE_TEXT_MAP_EDITOR_SAVE_NO_NAME"
+msgstr ""
+
+#: logic/ui/map_editor_ui.gd logic/ui/map_editor_ui.tscn
+msgid "NEUTRAL"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "Example 1"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "Example 2"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "Example 3"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "MAP_SETTINGS"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "NAME"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "AUTHOR"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "PLAYER_SETTINGS"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "PLAYERS"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "MONEY"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "TERRAIN_SETTINGS"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "SELECTED"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "OWNER"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "UNIT_SETTINGS"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "HEALTH"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "FUEL"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "AMMO"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "RESIZE"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "SAVE"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "LOAD"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "Resize map"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "HORIZONTAL"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "VERTICAL"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "ACCEPT"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "CANCEL"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "Open a File"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "*.crm"
+msgstr ""
+
+#: logic/ui/map_selection_element.tscn
+msgid "Map Name"
+msgstr ""
+
+#: logic/ui/map_selection_element.tscn
+msgid "SELECT"
+msgstr "sélectionner"
+
+#: logic/ui/menu.tscn
+msgid "Main Menu"
+msgstr ""
+
+#: logic/ui/settings_content.tscn
+msgid "AUDIO"
+msgstr "audio"
+
+#: logic/ui/settings_content.tscn
+msgid "MUSIC"
+msgstr "musique"
+
+#: logic/ui/settings_content.tscn
+msgid "SOUND"
+msgstr "son"
+
+#: logic/ui/shop.tscn
+msgid "CLOSE"
+msgstr "proche"
+
+#: logic/ui/shop_element.tscn
+msgid "Anti-Air"
+msgstr ""
+
+#: logic/ui/shop_element.tscn
+msgid ""
+"Stronger, slower, and more expensive than Infantry, Mechanized Infantry "
+"(more commonly referred to as Mechs) trade versatility for much greater cost-"
+"efficiency against a variety of targets.\n"
+msgstr ""
+
+#: logic/ui/shop_element.tscn
+msgid "1000"
+msgstr ""
+
+#: logic/ui/shop_element.tscn
+msgid "BUY"
+msgstr "acheter"
+
+#: logic/ui/unit_stats.tscn
+msgid "10"
+msgstr ""
+
+#~ msgid "keys"
+#~ msgstr "fr"
+
+#~ msgid "REFILLED"
+#~ msgstr "rempli"
+
+#~ msgid "ENTERED"
+#~ msgstr "entré"
+
+#~ msgid "DEPLOYED"
+#~ msgstr "abandonné"
+
+#~ msgid "JOINED"
+#~ msgstr "fusionné"
+
+#~ msgid "VS_PLAYER"
+#~ msgstr "contre joueur"
+
+#~ msgid "GRAPHICS"
+#~ msgstr "graphiques"
+
+#~ msgid "ANTI_ALIASING"
+#~ msgstr "anti crénelage"
+
+#~ msgid "SHADOWS"
+#~ msgstr "ombre"
+
+#~ msgid "MAP_SELECTION"
+#~ msgstr "sélection de la carte"
+
+#~ msgid "MENU"
+#~ msgstr "menu"
+
+#~ msgid "LOW"
+#~ msgstr "bas"
+
+#~ msgid "MEDIUM"
+#~ msgstr "moyen"
+
+#~ msgid "HIGH"
+#~ msgstr "haute"
+
+#~ msgid "ULTRA"
+#~ msgstr "ultra"
+
+#~ msgid "MAIN_MENU"
+#~ msgstr "menu principal"
+
+#~ msgid "SINGLEPLAYER_MENU"
+#~ msgstr "joueur unique"
+
+#~ msgid "SETTING_MENU"
+#~ msgstr "paramètres"
+
+#~ msgid "LOGIN_MENU"
+#~ msgstr "connexion"
+
+#~ msgid "LOBBY_MENU"
+#~ msgstr "lobby"
+
+#~ msgid "MESSAGE_TITLE_PLAYER_LEFT"
+#~ msgstr "quitter le joueur"
+
+#~ msgid "MESSAGE_TEXT_PLAYER_LEFT"
+#~ msgstr "Votre adversaire a quitté la partie. Vous serez ramené au menu."

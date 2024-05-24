@@ -1,0 +1,922 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-24 18:50+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.12.2\n"
+
+#: levels/game.tscn levels/game_over_screen.tscn logic/ui/map_editor_ui.gd
+#: logic/ui/map_editor_ui.tscn logic/ui/round_label.gd
+msgid "PLAYER"
+msgstr "Player"
+
+#: levels/game.tscn logic/ui/round_label.gd
+msgid "TURN"
+msgstr "Turn"
+
+#: levels/game.tscn
+msgid "MOVE"
+msgstr "Move"
+
+#: levels/game.tscn
+msgid "ATTACK"
+msgstr "Attack"
+
+#: levels/game.tscn
+msgid "ENTER"
+msgstr "Enter"
+
+#: levels/game.tscn
+msgid "DEPLOY"
+msgstr "Deploy"
+
+#: levels/game.tscn
+msgid "JOIN"
+msgstr "Join"
+
+#: levels/game.tscn
+msgid "SUPPLY"
+msgstr "Supply"
+
+#: levels/game.tscn
+msgid "CAPTURE"
+msgstr "Capture"
+
+#: levels/game.tscn logic/ui/floating_info.tscn
+msgid "100"
+msgstr ""
+
+#: levels/game.tscn
+msgid "2\n"
+msgstr ""
+
+#: levels/game.tscn
+msgid "NEXT_ROUND"
+msgstr "Next Round"
+
+#: levels/game.tscn
+msgid "Player 1 Turn"
+msgstr ""
+
+#: levels/game.tscn levels/menu.tscn
+msgid "SETTINGS"
+msgstr "Settings"
+
+#: levels/game.tscn logic/ui/map_editor_ui.tscn
+msgid "EXIT_TO_MENU"
+msgstr "Exit to Menu"
+
+#: levels/game.tscn logic/ui/map_editor_ui.tscn
+msgid "CONTINUE"
+msgstr "Continue"
+
+#: levels/game.tscn levels/menu.tscn logic/ui/map_selection.tscn
+msgid "BACK"
+msgstr "Back"
+
+#: levels/game_over_screen.tscn
+msgid "WON"
+msgstr "Won"
+
+#: levels/game_over_screen.tscn
+#, fuzzy
+msgid "PLAYER 1 WINS"
+msgstr "Players"
+
+#: levels/menu.tscn
+msgid "SINGLEPLAYER"
+msgstr "Singleplayer"
+
+#: levels/menu.tscn
+#, fuzzy
+msgid "MULTIPLAYER"
+msgstr "Multiplayer"
+
+#: levels/menu.tscn
+msgid "MAP_EDITOR"
+msgstr "Map Editor"
+
+#: levels/menu.tscn
+msgid "CREDITS"
+msgstr "Credits"
+
+#: levels/menu.tscn
+msgid "EXIT"
+msgstr "Exit"
+
+#: levels/menu.tscn
+msgid "TUTORIAL"
+msgstr "Tutorial"
+
+#: levels/menu.tscn
+msgid "CAMPAIGN"
+msgstr "Campaign"
+
+#: levels/menu.tscn
+msgid "VS_AI"
+msgstr "VS AI"
+
+#: levels/menu.tscn
+msgid "HOT_SEAT"
+msgstr "Hot Seat"
+
+#: levels/menu.tscn
+msgid "LOBBY"
+msgstr "Lobby"
+
+#: levels/menu.tscn
+msgid "RANKED"
+msgstr "Ranked"
+
+#: levels/menu.tscn
+msgid "REFRESH"
+msgstr "Refresh"
+
+#: levels/menu.tscn
+msgid "HOST"
+msgstr "Host"
+
+#: levels/menu.tscn
+msgid "USERNAME"
+msgstr "Username"
+
+#: levels/menu.tscn logic/ui/map_selection.tscn
+msgid "START"
+msgstr "Start"
+
+#: levels/menu.tscn
+msgid ""
+"[center][b]Credits[/b][/center]\n"
+"\n"
+"Mangs\n"
+"[indent][i]Project Leader[/i][/indent]\n"
+"\n"
+"Hunter99\n"
+"[indent][i]Lead Programmer[/i][/indent]\n"
+"[indent][i]Lead Engine Developer[/i][/indent]\n"
+"\n"
+"jaume\n"
+"[indent][i]Engine Developer[/i][/indent]\n"
+"\n"
+"2-3-Ryan-5\n"
+"[indent][i]UI Developer[/i][/indent]\n"
+"\n"
+"Ephraim225\n"
+"[indent][i]Lead Level Designer[/i][/indent]\n"
+"\n"
+"Gloomreach\n"
+"[indent][i]Lead Unit Concept Artist[/i][/indent]\n"
+"\n"
+"Zamza\n"
+"[indent][i]Spriter[/i][/indent]\n"
+"\n"
+"Harmless\n"
+"[indent][i]Composer[/i][/indent]\n"
+"\n"
+"\n"
+"[center][b]Former[/b][/center]\n"
+"\n"
+"Ghost\n"
+"[indent][i]Engine Developer[/i][/indent]\n"
+"\n"
+"Darkbladercr\n"
+"[indent][i]Backend Developer[/i][/indent]\n"
+"\n"
+"seerfox\n"
+"[indent][i]CO Art Director[/i][/indent]\n"
+"[indent][i]UI Designer[/i][/indent]\n"
+"\n"
+"Sleepy Tech\n"
+"[indent][i]Spriter[/i][/indent]\n"
+"\n"
+"\n"
+"[center][b]External[/b][/center]\n"
+"\n"
+"[url=https://www.kenney.nl/assets]Kenney Game Assets[/url]\n"
+"[indent][i]2D Art, Sound[/i][/indent]\n"
+"\n"
+"[url=https://opengameart.org/content/menu-music]mrpoly[/url]\n"
+"[indent][i]Music[/i][/indent]\n"
+"\n"
+"[url=https://opengameart.org/content/awake-megawall-10]cynicmusic[/url]\n"
+"[indent][i]Music[/i][/indent]\n"
+"\n"
+"[url=https://opengameart.org/content/cyberpunk-moonlight-sonata]Joth[/url]\n"
+"[indent][i]Music[/i][/indent]\n"
+"\n"
+"[url=https://opengameart.org/content/4-chiptunes-adventure]SubspaceAudio[/"
+"url]\n"
+"[indent][i]Music[/i][/indent]\n"
+"\n"
+"[url=https://akveo.github.io/eva-icons/]Eva Icons[/url]\n"
+"[indent][i]2D Art[/i][/indent]\n"
+"\n"
+"\n"
+"[center][b]Game Engine[/b][/center]\n"
+"\n"
+"[url=https://godotengine.org]Godot Engine[/url]\n"
+"[indent][i][url]https://godotengine.org/license[/url][/i][/indent]\n"
+"\n"
+"[center][img]res://godot_icon.svg[/img][/center]"
+msgstr ""
+
+#: levels/menu.tscn
+#, fuzzy
+msgid "<VERSION>"
+msgstr "Version"
+
+#: levels/menu.tscn
+msgid "BUG_REPORT"
+msgstr "Report a bug"
+
+#: levels/menu.tscn
+msgid "DISCUSSIONS"
+msgstr "Discussions"
+
+#: logic/ui/board_analytic.tscn
+msgid "SEA"
+msgstr "Sea"
+
+#: logic/ui/board_analytic.tscn
+msgid "4"
+msgstr ""
+
+#: logic/ui/board_analytic.tscn logic/ui/map_editor_ui.tscn
+msgid "20"
+msgstr ""
+
+#: logic/ui/board_analytic.tscn
+msgid "Infantry"
+msgstr ""
+
+#: logic/ui/board_analytic.tscn
+msgid "9.9"
+msgstr ""
+
+#: logic/ui/board_analytic.tscn
+msgid "99"
+msgstr ""
+
+#: logic/ui/board_analytic.tscn
+msgid "8"
+msgstr ""
+
+#: logic/ui/lobby_list.gd
+msgid "MESSAGE_TITLE_LOBBY_CONNECTION_PROBLEM"
+msgstr "Connection Problem"
+
+#: logic/ui/lobby_list.gd
+msgid "MESSAGE_TEXT_LOBBY_CONNECTION_PROBLEM"
+msgstr "Cannot connect to the lobby server."
+
+#: logic/ui/lobby_list.gd
+msgid "DEBUG_ACCOUNT"
+msgstr ""
+
+#: logic/ui/lobby_selection_element.tscn
+msgid "Lobby Name"
+msgstr ""
+
+#: logic/ui/lobby_selection_element.tscn
+msgid "MP_JOIN"
+msgstr "Join"
+
+#: logic/ui/lobby_user_element.tscn
+msgid "User Name"
+msgstr ""
+
+#: logic/ui/lobby_user_element.tscn
+msgid "MP_KICK"
+msgstr "Kick"
+
+#: logic/ui/map_editor.gd
+msgid "MESSAGE_TITLE_MAP_EDITOR_SAVE_NO_NAME"
+msgstr "Missing Map Name"
+
+#: logic/ui/map_editor.gd
+msgid "MESSAGE_TEXT_MAP_EDITOR_SAVE_NO_NAME"
+msgstr "Please provide a map name."
+
+#: logic/ui/map_editor_ui.gd logic/ui/map_editor_ui.tscn
+msgid "NEUTRAL"
+msgstr "Neutral"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "Example 1"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "Example 2"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "Example 3"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "MAP_SETTINGS"
+msgstr "Map Settings"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "NAME"
+msgstr "Name"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "AUTHOR"
+msgstr "Author"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "PLAYER_SETTINGS"
+msgstr "Player Settings"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "PLAYERS"
+msgstr "Players"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "MONEY"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "TERRAIN_SETTINGS"
+msgstr "Terrain Settings"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "SELECTED"
+msgstr "Selected"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "OWNER"
+msgstr "Owner"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "UNIT_SETTINGS"
+msgstr "Unit Settings"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "HEALTH"
+msgstr "Health"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "FUEL"
+msgstr "Fuel"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "AMMO"
+msgstr "Ammo"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "RESIZE"
+msgstr "Resize"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "SAVE"
+msgstr "Save"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "LOAD"
+msgstr "Load"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "Resize map"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "HORIZONTAL"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "VERTICAL"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "ACCEPT"
+msgstr "Accept"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "CANCEL"
+msgstr "Cancel"
+
+#: logic/ui/map_editor_ui.tscn
+msgid "Open a File"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "*.crm"
+msgstr ""
+
+#: logic/ui/map_selection_element.tscn
+msgid "Map Name"
+msgstr ""
+
+#: logic/ui/map_selection_element.tscn
+msgid "SELECT"
+msgstr "Select"
+
+#: logic/ui/menu.tscn
+msgid "Main Menu"
+msgstr ""
+
+#: logic/ui/settings_content.tscn
+msgid "AUDIO"
+msgstr "Audio"
+
+#: logic/ui/settings_content.tscn
+msgid "MUSIC"
+msgstr "Music"
+
+#: logic/ui/settings_content.tscn
+msgid "SOUND"
+msgstr "Sound"
+
+#: logic/ui/shop.tscn
+msgid "CLOSE"
+msgstr "Close"
+
+#: logic/ui/shop_element.tscn
+msgid "Anti-Air"
+msgstr ""
+
+#: logic/ui/shop_element.tscn
+msgid ""
+"Stronger, slower, and more expensive than Infantry, Mechanized Infantry "
+"(more commonly referred to as Mechs) trade versatility for much greater cost-"
+"efficiency against a variety of targets.\n"
+msgstr ""
+
+#: logic/ui/shop_element.tscn
+msgid "1000"
+msgstr ""
+
+#: logic/ui/shop_element.tscn
+msgid "BUY"
+msgstr "Buy"
+
+#: logic/ui/unit_stats.tscn
+msgid "10"
+msgstr ""
+
+
+msgid "REFILLED"
+msgstr "Refilled"
+
+msgid "ENTERED"
+msgstr "Entered"
+
+msgid "DEPLOYED"
+msgstr "Deployed"
+
+msgid "JOINED"
+msgstr "Joined"
+
+msgid "VS_PLAYER"
+msgstr "VS Player"
+
+msgid "GRAPHICS"
+msgstr "Graphics"
+
+msgid "ANTI_ALIASING"
+msgstr "AntiAliasing"
+
+msgid "SHADOWS"
+msgstr "Shadows"
+
+msgid "MAP_SELECTION"
+msgstr "Map Selection"
+
+msgid "MENU"
+msgstr "Menu"
+
+msgid "TERRAIN"
+msgstr "Terrain"
+
+msgid "UNIT"
+msgstr "Unit"
+
+msgid "TERRAINS"
+msgstr "Terrains"
+
+msgid "UNITS"
+msgstr "Units"
+
+msgid "TILES"
+msgstr "Tiles"
+
+msgid "LOW"
+msgstr "Low"
+
+msgid "MEDIUM"
+msgstr "Medium"
+
+msgid "HIGH"
+msgstr "High"
+
+msgid "ULTRA"
+msgstr "Ultra"
+
+msgid "MAIN_MENU"
+msgstr "Main"
+
+msgid "SINGLEPLAYER_MENU"
+msgstr "Singleplayer"
+
+msgid "SETTING_MENU"
+msgstr "Settings"
+
+msgid "LOGIN_MENU"
+msgstr "Login"
+
+msgid "LOBBY_MENU"
+msgstr "Lobby"
+
+msgid "MESSAGE_TITLE_PLAYER_LEFT"
+msgstr "Player left"
+
+msgid "MESSAGE_TEXT_PLAYER_LEFT"
+msgstr "Your opponent left the game. You will be brought back to the menu."
+
+msgid "ANTI_AIR"
+msgstr "Anti-Air"
+
+msgid "ANTI_AIR_DESCRIPTION"
+msgstr ""
+"Anti-Airs are strong at fighting Air units, but are also strong at "
+"combating foot soldiers and light vehicles."
+
+msgid "APC"
+msgstr "APC"
+
+msgid "APC_DESCRIPTION"
+msgstr ""
+"Defenseless on their own, Armored Personnel Carriers (APCs) instead "
+"support an army by transporting Foot Soldiers and refilling Fuel and Ammo "
+"stocks of adjacent units."
+
+msgid "ARTILLERY"
+msgstr "Artillery"
+
+msgid "ARTILLERY_DESCRIPTION"
+msgstr ""
+"Artillery are low-cost indirect vehicles. They serve as the primary "
+"defensive unit projecting power across front-lines."
+
+msgid "BAZOOKA"
+msgstr "Mech"
+
+msgid "BAZOOKA_DESCRIPTION"
+msgstr ""
+"Stronger, slower, and more expensive than Infantry, Mechanized Infantry "
+"(more commonly referred to as Mechs) trade versatility for much greater "
+"cost-efficiency against a variety of targets."
+
+msgid "INFANTRY"
+msgstr "Infantry"
+
+msgid "INFANTRY_DESCRIPTION"
+msgstr ""
+"The cheapest unit available in AWBW, Infantry are nonetheless an "
+"incredibly important unit and should not be overlooked."
+
+msgid "MECH"
+msgstr "Mech"
+
+msgid "MECH_DESCRIPTION"
+msgstr ""
+"Mechs come armed with a Bazooka reserved for engaging land vehicles. In "
+"all other encounters, they rely on their secondary weapon, the machine "
+"gun. Typically, in combat scenarios, Mechs prove highly effective against "
+"vehicular units, both offensively and defensively, often dealing "
+"significant damage."
+
+msgid "MEDIUM_TANK"
+msgstr "Medium Tank"
+
+msgid "MEDIUM_TANK_DESCRIPTION"
+msgstr ""
+"Larger, slower, and considerably more powerful than Tanks, Medium Tanks "
+"(Often abbreviated Md. Tank) are forces to be reckoned with."
+
+msgid "RECON"
+msgstr "Recon"
+
+msgid "RECON_DESCRIPTION"
+msgstr ""
+"Light, fast, and inexpensive, Recons make excellent scouting and "
+"harassment units."
+
+msgid "ROCKET"
+msgstr "Rocket"
+
+msgid "ROCKET_DESCRIPTION"
+msgstr ""
+"The more advanced version of Artillery, Rockets trade higher damage and a "
+"much larger range for lighter armor and a more restrictive movement type."
+
+msgid "TANK"
+msgstr "Light Tank"
+
+msgid "TANK_DESCRIPTION"
+msgstr ""
+"Inexpensive, fast, and able to hold its own against most other land "
+"units, Tanks are a cornerstone unit in any army."
+
+msgid "NEO_TANK"
+msgstr "Neo Tank"
+
+msgid "NEO_TANK_DESCRIPTION"
+msgstr ""
+"Neotanks boast superior power compared to Medium Tanks but fall short of "
+"the might of Megatanks. Armed with a formidable main cannon, they can "
+"engage both land and naval units, as well as target infantry, battle "
+"helicopters, and transport helicopters with their machine gun."
+
+msgid "MEGA_TANK"
+msgstr "Mega Tank"
+
+msgid "MEGA_TANK_DESCRIPTION"
+msgstr ""
+"With formidable weaponry and robust armor, these mobile fortresses pose a "
+"formidable threat."
+
+msgid "MISSILE"
+msgstr "Missile"
+
+msgid "MISSILE_DESCRIPTION"
+msgstr ""
+"Anti-Air Missile Launchers, often referred to simply as Missiles, are "
+"potent indirect combat units specializing in attacking air units from a "
+"distance, capable of causing significant havoc among them."
+
+msgid "PIPERUNNER"
+msgstr "Pipe Runner"
+
+msgid "PIPERUNNER_DESCRIPTION"
+msgstr ""
+"Piperunners are a type of Land Unit with indirect combat capabilities, "
+"restricted to movement along pipelines, pipe seams, and bases."
+
+msgid "B-COPTER"
+msgstr "B-Copter"
+
+msgid "B-COPTER_DESCRIPTION"
+msgstr ""
+"B-Copters are versatile Air Units capable of engaging a diverse range of "
+"targets."
+
+msgid "BLACK_BOMB"
+msgstr "Black Bomb"
+
+msgid "BLACK_BOMB_DESCRIPTION"
+msgstr ""
+"Black Bombs are aerial weapons controlled remotely and constructed at an "
+"airport."
+
+msgid "BOMBER"
+msgstr "Bomber"
+
+msgid "BOMBER_DESCRIPTION"
+msgstr ""
+"Bombers are formidable Air Units known for their immense power, capable "
+"of dealing substantial damage to both Land and Naval Units. However, they "
+"lack the ability to engage other Air Units."
+
+msgid "FIGHTER"
+msgstr "Fighter"
+
+msgid "FIGHTER_DESCRIPTION"
+msgstr ""
+"A squadron of Fighters dominates the skies, dealing significant damage to "
+"other air units. While they boast high mobility and defense among all "
+"units, they are susceptible to anti-aircraft units, including other "
+"fighters."
+
+msgid "STEALTH"
+msgstr "Stealth"
+
+msgid "STEALTH_DESCRIPTION"
+msgstr ""
+"Stealth Fighters, classified as Air Units, possess the capability to "
+"conceal themselves akin to Submarines through the activation of stealth "
+"mode."
+
+msgid "T-COPTER"
+msgstr "T-Copter"
+
+msgid "T-COPTER_DESCRIPTION"
+msgstr ""
+"Transport Helicopters serve as non-combatant units, devoid of offensive "
+"capabilities. Primarily employed for transportation purposes, T-Copters "
+"can ferry one Infantry or Mech unit at a time."
+
+msgid "BATTLESHIP"
+msgstr "Battleship"
+
+msgid "BATTLESHIP_DESCRIPTION"
+msgstr ""
+"Battleships stand as the most potent indirect unit in the game, "
+"distinguished by their ability to engage targets from a distance, a "
+"rarity among naval units."
+
+msgid "BLACK_BOAT"
+msgstr "Black Boat"
+
+msgid "BLACK_BOAT_DESCRIPTION"
+msgstr ""
+"Black Boats serve as Naval Units designed for troop transport, as well as "
+"for supplying and repairing other units."
+
+msgid "CARRIER"
+msgstr "Carrier"
+
+msgid "CARRIER_DESCRIPTION"
+msgstr ""
+"The Carrier is a unique Naval Unit capable of accommodating two air "
+"units, distinguishing it from cruisers. Unlike cruisers, Aircraft "
+"Carriers have the versatility to carry both helicopters and planes."
+
+msgid "CRUISER"
+msgstr "Cruiser"
+
+msgid "CRUISER_DESCRIPTION"
+msgstr ""
+"Cruisers are a type of Naval Unit with the capacity to transport up to "
+"two helicopter units, such as B-Copters and T-Copters. Additionally, they "
+"serve as effective anti-air and anti-submarine units, safeguarding "
+"Battleships and Landers from their primary threats while providing "
+"supplementary firepower when required."
+
+msgid "LANDER"
+msgstr "Lander"
+
+msgid "LANDER_DESCRIPTION"
+msgstr ""
+"Landers are unarmed units without offensive capabilities. Nevertheless, "
+"they are one of the select units capable of transporting other units, "
+"ferrying up to two land units of any type across the sea, with the "
+"ability to load and unload them at shoals and ports."
+
+msgid "SUB"
+msgstr "Sub"
+
+msgid "SUB_DESCRIPTION"
+msgstr ""
+"Submarines pose a threat to Battleships and Landers, yet they are swiftly "
+"countered by Cruisers. They possess the capability to submerge, "
+"concealing themselves from the enemy's sight, and can only be detected if "
+"a unit is positioned adjacent to them."
+
+msgid "AIRPORT"
+msgstr "Airport"
+
+msgid "AIRPORT_DESCRIPTION"
+msgstr ""
+"Airports are an important hub for all air units, being the only tile that "
+"is able to deploy, repair and resupply them, while also providing funds. "
+"Freshly built units may not take actions on the same turn they are "
+"deployed."
+
+msgid "BASE"
+msgstr "Base"
+
+msgid "BASE_DESCRIPTION"
+msgstr ""
+"Bases providing income, repairs and supplies to land units. Crucially, "
+"they are also are where all land units are deployed from, at the cost of "
+"funds. Units are considered 'waited' and cannot take actions on the same "
+"turn they are deployed."
+
+msgid "BRIDGE_DESCRIPTION"
+msgstr "Bridges allow ground units to cross rivers and seas unhindered."
+
+msgid "BEACH"
+msgstr "Beach"
+
+msgid "BEACH_DESCRIPTION"
+msgstr ""
+"Beaches provide an area for Landers and Black Boats to load and drop off "
+"units to battle."
+
+msgid "CITY"
+msgstr "City"
+
+msgid "CITY_DESCRIPTION"
+msgstr ""
+"Cities are the most basic property and the most common one seen. They "
+"provide income every turn and can be used to repair and resupply land "
+"units that stand on them at the start of each turn."
+
+msgid "COM_TOWER"
+msgstr "Com Tower"
+
+msgid "COM_TOWER_DESCRIPTION"
+msgstr ""
+"A Com Tower (Communication Tower) is a property for enhancing the skills "
+"of allied units. Each captured tower increases its allied units' attack "
+"strength by 10%."
+
+msgid "HQ"
+msgstr "Headquarters"
+
+msgid "HQ_DESCRIPTION"
+msgstr "The most importnat property on the map"
+
+msgid "LAB"
+msgstr "Lab"
+
+msgid "LAB_DESCRIPTION"
+msgstr ""
+"Laboratories act as research centers and can unlock restricted units."
+
+msgid "MOUNTAIN"
+msgstr "Mountains"
+
+msgid "MOUNTAIN_DESCRIPTION"
+msgstr ""
+"Montains provide a large amount of defence, but can only be traversed by "
+"infantry and air units. They also increase the vision range of any "
+"soldier unit on them by 3."
+
+msgid "PIPE"
+msgstr "Pipe"
+
+msgid "PIPE_DESCRIPTION"
+msgstr ""
+"Pipelines are nigh-impassable terrain that are used for carrying "
+"materials."
+
+msgid "PIPE_WEAK"
+msgstr "Weak Pipe Spot"
+
+msgid "PIPE_WEAK_DESCRIPTION"
+msgstr "A weak spot, which can be damaged."
+
+msgid "PIPE_BROKEN"
+msgstr "Broken Pipe"
+
+msgid "PIPE_BROKEN_DESCRIPTION"
+msgstr "A broken weak spot of the pipe system."
+
+msgid "PLAIN"
+msgstr "Plains"
+
+msgid "PLAIN_DESCRIPTION"
+msgstr ""
+"Plains give a small amount of terrain cover and are easily traversed."
+
+msgid "PORT"
+msgstr "Port"
+
+msgid "PORT_DESCRIPTION"
+msgstr "Ports are a property for building and maintaining sea units."
+
+msgid "REEF"
+msgstr "Reef"
+
+msgid "REEF_DESCRIPTION"
+msgstr ""
+"Reefs give some defence to sea units and also make excellent hiding "
+"places."
+
+msgid "RIVER"
+msgstr "River"
+
+msgid "RIVER_DESCRIPTION"
+msgstr ""
+"Rivers restrict the movement of ground units and can only be traversed by "
+"Infantry, Mechs and air units."
+
+msgid "ROAD"
+msgstr "Road"
+
+msgid "ROAD_DESCRIPTION"
+msgstr ""
+"Roads provide no defensive cover, but allow unimpeded movement for all "
+"ground units."
+
+msgid "SEA_DESCRIPTION"
+msgstr "Seas make up the majority of the terrain that navies battle on."
+
+msgid "SILO"
+msgstr "Silo"
+
+msgid "SILO_DESCRIPTION"
+msgstr ""
+"Missile silos are activated by an Infantry or Mech unit. The missile they "
+"fire has a 5x5 square diamond shape and does 3HP of damage to any unit "
+"caught in the blast and doesn't distinguish between ally or enemy. Each "
+"silo can only be used once."
+
+msgid "WOOD"
+msgstr "Wood"
+
+msgid "WOOD_DESCRIPTION"
+msgstr ""
+"Woods are more difficult to traverse than plains, but offer better "
+"terrain cover and serve as a hiding spot in Fog of War."
