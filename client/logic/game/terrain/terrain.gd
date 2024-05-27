@@ -116,12 +116,12 @@ static func get_astar_path(
 	var astar: AStar2D = AStar2D.new()
 	var filter_distance: bool = !end_can_be_outside
 	terrains = filter_terrains(terrains, unit, true, filter_distance)
-	# add end back in list even when a enemy unit is there (so long distance moves are possible)
 	if not end_can_be_outside:
 		if not end in terrains:
 			return PackedVector2Array()
-		if not end in terrains:
-			terrains.append(end)
+	# add end back in list even when a enemy unit is there (so long outside moves are possible)
+	if not end in terrains:
+		terrains.append(end)
 	var index: int = 0
 	var points: Dictionary = {}
 	for i: Terrain in terrains:
