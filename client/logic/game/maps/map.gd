@@ -13,7 +13,9 @@ const TERRAIN_STATS: PackedScene = preload("res://logic/ui/terrain_stats.tscn")
 @export_multiline var duplicate_result: String = ""
 
 var players: Node
+## All terrains on the map. Terrains add and remove themself when entering and exiting the tree.
 var terrains: Array[Terrain]
+## All units on the map. Units add and remove themself when entering and exiting the tree.
 var units: Array[Unit]
 var map_center: Vector2:
 	get:
