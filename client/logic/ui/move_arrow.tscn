@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://logic/ui/move_arrow.gd" id="1_cpjlm"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="2_healk"]
 
-[sub_resource type="Curve2D" id="Curve2D_7py57"]
+[sub_resource type="Curve2D" id="Curve2D_t3vmk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyt6h"]
 atlas = ExtResource("2_healk")
@@ -19,7 +19,7 @@ region = Rect2(160, 128, 32, 32)
 
 [node name="MoveArrow" type="Path2D"]
 z_index = 1
-curve = SubResource("Curve2D_7py57")
+curve = SubResource("Curve2D_t3vmk")
 script = ExtResource("1_cpjlm")
 up_arrow = SubResource("AtlasTexture_eyt6h")
 vertical_line = SubResource("AtlasTexture_ll0pw")
