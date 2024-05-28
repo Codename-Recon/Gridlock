@@ -4,23 +4,11 @@ signal round_over_changed
 
 @export var health: int = 100:
 	set(value):
-		if is_inside_tree():
-			var rounding_value: int = ProjectSettings.get_setting(
-				"global/unit/health_rounding_value"
-			)
-			# smaller eg. 5 (4, 3 aso.) will be rounded down to 0. also negative numbers will be 0
-			if value < rounding_value:
-				value = 0
-			# substracting round value so it doesn't show 97 value as 10 health
-			if value < ProjectSettings.get_setting("global/unit/max_health") - rounding_value:
-				var text_value: int = round(value / 10.0) as int
-				_health_label.text = str(text_value)
-				_health_label.show()
-			else:
-				value = ProjectSettings.get_setting("global/unit/max_health")
-				_health_label.hide()
-			last_damage = health - value
-			health = value
+		last_damage = health - value
+		health = value
+		if health > ProjectSettings.get_setting("global/unit/max_health"):
+			health = ProjectSettings.get_setting("global/unit/max_health")
+		_update_health_label()
 
 @export var capturing: bool = false:
 	set(value):
@@ -111,6 +99,18 @@ signal round_over_changed
 @onready var _parent: Unit = get_parent()
 
 
+func get_last_damage_as_float() -> float:
+	return last_damage / 10.0
+
+
+func is_unit_damaged() -> bool:
+	return health < ProjectSettings.get_setting("global/unit/max_health")
+
+
+func can_be_refilled() -> bool:
+	return fuel < _parent.values.fuel or ammo < _parent.values.ammo
+
+
 func _ready() -> void:
 	ammo = _parent.values.ammo
 	fuel = _parent.values.fuel
@@ -124,15 +124,18 @@ func _ready() -> void:
 		_animation_fuel.play("RESET")
 	_capture_icon.visible = capturing
 	_carrying_icon.visible = carrying
+	_update_health_label()
 
 
-func get_last_damage_as_float() -> float:
-	return last_damage / 10.0
-
-
-func is_unit_damaged() -> bool:
-	return health < ProjectSettings.get_setting("global/unit/max_health")
-
-
-func can_be_refilled() -> bool:
-	return fuel < _parent.values.fuel or ammo < _parent.values.ammo
+func _update_health_label() -> void:
+	var max: int = ProjectSettings.get_setting("global/unit/max_health")
+	if health < max and health > 0:
+		# round up value
+		var round_value: int = ProjectSettings.get_setting("global/unit/health_rounding_value")
+		var text_value: int = round((health + round_value) / 10.0) as int
+		if _health_label:
+			_health_label.text = str(text_value)
+			_health_label.show()
+	else:
+		if _health_label:
+			_health_label.hide()

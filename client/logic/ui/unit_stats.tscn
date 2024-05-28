@@ -106,6 +106,7 @@ script = ExtResource("1_hgwin")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.835294)
+z_index = 1
 position = Vector2(0, 1)
 
 [node name="Control" type="Control" parent="Sprite"]
