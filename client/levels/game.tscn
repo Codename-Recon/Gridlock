@@ -1,8 +1,9 @@
-[gd_scene load_steps=50 format=3 uid="uid://cbc6sawc766k"]
+[gd_scene load_steps=51 format=3 uid="uid://cbc6sawc766k"]
 
 [ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_6xhvo"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_81uaa"]
 [ext_resource type="AudioStream" uid="uid://6ki6akqwsk8e" path="res://assets/musics/Immaculate_Command__Georges_DeMorgans_Theme_Codename_RECON.mp3" id="2_mnjkf"]
+[ext_resource type="AudioStream" uid="uid://cop7o1enhpx6k" path="res://assets/musics/Tempestass_Ace_in_the_Hole__Minatus_Leonus_Macros_Theme_UNFINISHED_v0.8.mp3" id="3_ikdhv"]
 [ext_resource type="Texture2D" uid="uid://rtyseghcw68e" path="res://assets/images/game/game/background.jpg" id="4_722ff"]
 [ext_resource type="PackedScene" uid="uid://dj1137ma426k8" path="res://logic/ui/game_input.tscn" id="8_sdp7e"]
 [ext_resource type="Script" path="res://logic/game/game.gd" id="9_gl6qd"]
@@ -459,7 +460,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("1_81uaa")
 script = SubResource("GDScript_aos13")
-musics = Array[AudioStream]([ExtResource("2_mnjkf")])
+musics = Array[AudioStream]([ExtResource("2_mnjkf"), ExtResource("3_ikdhv")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_6xhvo")
