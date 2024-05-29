@@ -317,9 +317,13 @@ func _process_ai(delta: float) -> void:
 							for terrain: Terrain in moveable_terrains:
 								if terrain.has_unit():
 									continue
+								# Ignore capturable HQ's to prevent them being blocked
+								if terrain.id == "HQ" and terrain.player_owned != player_turns[0]:
+									continue
 								_unattack()
 								_create_and_set_attack_area(unit, terrain, false)
 								if len(attackable_terrains) > 0:
+									# find best attacking point
 									_ai_sort_attackable_terrain_most_valuable(unit)
 									last_selected_unit = unit
 									last_selected_terrain = attackable_terrains[0]
@@ -1492,12 +1496,12 @@ func _ai_create_and_filter_move_curve(target_terrain: Terrain) -> void:
 			break
 		curve.remove_point(i)
 
-	# remove all terrains reverse until there is no unit on it or the terrain is not a HQ and unit is not infantery
+	# remove all terrains reverse until there is no unit on it or the terrain is not a self owned HQ (only for non infantry units)
 	for i: int in range(curve.point_count - 1, 0, -1):
-		var current_terrain: Terrain = map.get_terrain_by_position(curve.get_point_position(i))
+		var t: Terrain = map.get_terrain_by_position(curve.get_point_position(i))
 		if (
-			current_terrain.has_unit()
-			or (not "Infantry" in unit.name and "HQ" in current_terrain.name)
+			t.has_unit()
+			or (unit.id != "INFANTRY" and t.id == "HQ" and t.player_owned != player_turns[0])
 		):
 			curve.remove_point(i)
 		else:
