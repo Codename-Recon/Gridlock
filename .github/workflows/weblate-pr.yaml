@@ -1,0 +1,15 @@
+name: Weblate translations automatic P/R
+on:
+  push:
+    branches:
+    - weblate-translations
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: pull-request
+    uses: diillson/auto-pull-request@v1.0.1
+      with:
+        destination_branch: "master"
