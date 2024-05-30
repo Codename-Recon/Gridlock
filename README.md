@@ -35,7 +35,6 @@ Thank you for your interest in contributing to our Godot Engine project! We welc
 ### Submitting Pull Requests 🍔
 
 - Fork the repository and clone your fork locally.
-- There is currently a bug when opening the project for the first time (*missing dependencies*). A workaround can be found [here](https://github.com/Codename-Recon/Codename-Recon/issues/85#issuecomment-2104902287).
 - Commit changes with a descriptive commit message.
 - Ensure pull request and commit titles follow conventional commits:
   - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
