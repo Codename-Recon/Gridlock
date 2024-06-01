@@ -1,0 +1,18 @@
+name: Weblate translations automatic P/R
+on:
+  push:
+    branches:
+    - weblate-translations
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: pull-request
+    uses: diillson/auto-pull-request@v1.0.1
+    with:
+      source_branch: weblate-translations
+      destination_branch: "master"
+      pr_title: "feat(translations): updated translations from weblate"
+      destination_repository: "Codename-Recon/Codename-Recon"
