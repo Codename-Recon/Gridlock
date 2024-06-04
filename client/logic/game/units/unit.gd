@@ -271,7 +271,9 @@ func play_damage(radius: int = 0) -> void:
 	_animation_player.play("struck")
 	var effect: Effect = ATTACKS.instantiate()
 	add_child(effect)
-	var random_position: Vector2 = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * radius
+	var radius_range: int = randi_range(0, radius)
+	var random_position: Vector2 = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	random_position *= radius_range
 	effect.position = random_position
 	var animation: String = WEAPON_TYPE_TRANSLATION[last_damage_type]
 	effect.player.play(animation)
