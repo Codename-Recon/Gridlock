@@ -20,7 +20,7 @@ const WEAPON_TYPE_TRANSLATION: Dictionary = {
 	GameConst.WeaponType.MEDIUM_TANK_CANON : "explosion",
 	GameConst.WeaponType.ROCKETS : "explosion",
 	GameConst.WeaponType.TANK_MACHINE_GUN : "gunattack",
-	GameConst.WeaponType.VUCLAN_CANNON : "explosion"
+	GameConst.WeaponType.VUCLAN_CANNON : "small_explosion"
 }
 
 const ATTACKS: PackedScene = preload("res://logic/game/effects/attacks.tscn")
