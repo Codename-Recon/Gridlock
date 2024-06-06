@@ -564,42 +564,13 @@ tracks/2/keys = {
 resource_name = "attack_secondary"
 length = 2.0
 step = 0.05
-tracks/0/type = "method"
+tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("AudioStreamPlayerPitched")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.65, 0.8, 0.95, 1.1, 1.25, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"values": [{
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"attack_animation_done"],
-"method": &"emit_signal"
-}]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayerPitched")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0933931,
 "start_offset": 0.0,
@@ -623,18 +594,47 @@ tracks/1/keys = {
 }],
 "times": PackedFloat32Array(0.65, 0.8, 0.95, 1.1, 1.25)
 }
-tracks/1/use_blend = true
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [&"attack_second", &"idle"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.65, 0.8, 0.95, 1.1, 1.25, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"attack_animation_done"],
+"method": &"emit_signal"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_dekfu"]

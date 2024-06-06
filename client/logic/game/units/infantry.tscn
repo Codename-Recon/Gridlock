@@ -457,19 +457,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.25, 0.4, 0.55, 0.7, 0.85, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
-"args": [&"damage_animated"],
+"args": [&"damage_animated", 15],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated"],
+"args": [&"damage_animated", 15],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated"],
+"args": [&"damage_animated", 15],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated"],
+"args": [&"damage_animated", 15],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated"],
+"args": [&"damage_animated", 15],
 "method": &"emit_signal"
 }, {
 "args": [&"attack_animation_done"],
