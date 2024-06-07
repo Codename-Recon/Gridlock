@@ -1444,7 +1444,7 @@ func _calculate_damage(
 			weapon_type = attacking_unit.values.weapons[1] as GameConst.WeaponType
 		else:
 			# no weapons means no damage possible
-			return DamageResult.new(-1, GameConst.WeaponCategory.NONE, GameConst.WeaponType.ARTILLERY_CANON)
+			return DamageResult.new(-1, GameConst.WeaponCategory.NONE, GameConst.WeaponType.MACHINE_GUN)
 
 	var luck: int = 0
 	if random_luck:

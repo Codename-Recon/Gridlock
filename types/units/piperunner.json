@@ -10,7 +10,7 @@
   "hidden_turn_fuel": 0,
   "vision": 4,
   "ammo": 9,
-  "weapons": [-1, -1],
+  "weapons": [3],
   "min_range": 2,
   "max_range": 5,
   "exp": 0,

@@ -13,14 +13,14 @@ signal died
 enum State { STANDING, MOVING, ATTACKING, DAMAGING, DYING, REFILLING }
 
 const WEAPON_TYPE_TRANSLATION: Dictionary = {
-	GameConst.WeaponType.ARTILLERY_CANON: "explosion",
-	GameConst.WeaponType.BAZOOKA : "explosion",
-	GameConst.WeaponType.LIGHT_TANK_CANON : "explosion",
-	GameConst.WeaponType.MACHINE_GUN : "gunattack",
-	GameConst.WeaponType.MEDIUM_TANK_CANON : "explosion",
-	GameConst.WeaponType.ROCKETS : "explosion",
-	GameConst.WeaponType.TANK_MACHINE_GUN : "gunattack",
-	GameConst.WeaponType.VUCLAN_CANNON : "small_explosion"
+	GameConst.WeaponType.MACHINE_GUN: "gunattack",
+	GameConst.WeaponType.VULCAN_CANNON: "gunattack",
+	GameConst.WeaponType.MISSILE: "small_explosion",
+	GameConst.WeaponType.ROCKET: "explosion",
+	GameConst.WeaponType.SMALL_CANNON: "small_explosion",
+	GameConst.WeaponType.BIG_CANNON: "explosion",
+	GameConst.WeaponType.TORPEDO: "small_explosion",
+	GameConst.WeaponType.BOMB: "explosion"
 }
 
 const ATTACKS: PackedScene = preload("res://logic/game/effects/attacks.tscn")
@@ -185,8 +185,7 @@ func calculate_possible_terrains_to_move() -> void:
 
 func get_possible_terrains_to_attack_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
 	var terrains: Array[Terrain] = []
-	var max_range: int = values.max_range
-	_attack(start_terrain, terrains, max_range, Vector2.ZERO, 0)
+	_attack(start_terrain, terrains, values.max_range, Vector2.ZERO, 0)
 	return terrains
 
 

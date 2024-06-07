@@ -68,14 +68,14 @@ enum MovementType {
 
 # TODO: Should be generated
 enum WeaponType {
-	ARTILLERY_CANON,
-	BAZOOKA,
-	LIGHT_TANK_CANON,
 	MACHINE_GUN,
-	MEDIUM_TANK_CANON,
-	ROCKETS,
-	TANK_MACHINE_GUN,
-	VUCLAN_CANNON
+	VULCAN_CANNON,
+	MISSILE,
+	ROCKET,
+	SMALL_CANNON,
+	BIG_CANNON,
+	TORPEDO,
+	BOMB
 }
 
 enum WeaponCategory{
