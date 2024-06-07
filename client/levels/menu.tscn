@@ -834,7 +834,10 @@ Sleepy Tech
 [url=https://godotengine.org]Godot Engine[/url]
 [indent][i][url]https://godotengine.org/license[/url][/i][/indent]
 
-[center][img]res://godot_icon.svg[/img][/center]"
+[center][img]res://godot_icon.svg[/img][/center]
+
+
+[url=https://github.com/Codename-Recon/Codename-Recon/blob/master/LICENSE_ASSETS]Asset License[/url]"
 script = SubResource("GDScript_xjdvj")
 
 [node name="Version" type="Label" parent="."]
