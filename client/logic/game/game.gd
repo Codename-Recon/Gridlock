@@ -1239,13 +1239,21 @@ func _create_and_set_attack_area(
 				return
 	var terrains: Array[Terrain] = unit.get_possible_terrains_to_attack_from_terrain(target_terrain)
 	for i: Terrain in terrains:
-		if i and i.has_unit() and i.get_unit().player_owned != unit.player_owned:
-			if visibility:
-				var layer: DecalLayer = _move_layer.instantiate() as Sprite2D
-				layer.type = DecalLayer.Type.ATTACK
-				layer.add_to_group("attack_area")
-				i.layer = layer
-			attackable_terrains.append(i)
+		if not i:
+			continue
+		if not i.has_unit():
+			continue
+		if i.get_unit().player_owned == unit.player_owned:
+			continue
+		# Check if unit can attack target unit
+		if _calculate_damage(unit, i.get_unit(), false).damage < 0:
+			continue
+		attackable_terrains.append(i)
+		if visibility:
+			var layer: DecalLayer = _move_layer.instantiate() as Sprite2D
+			layer.type = DecalLayer.Type.ATTACK
+			layer.add_to_group("attack_area")
+			i.layer = layer
 
 
 func _create_and_set_refill_area(
@@ -1418,8 +1426,8 @@ func _get_group_decal(group_name: String) -> Array[Sprite2D]:
 		decals.append(i)
 	return decals
 
-
-# returns Vector: x = -1 when no damage can be done (e.g. no possible weapons), y represents weapon type (primary -> 0, secondary -> 1)
+## Calculates damage
+## returns DamageResult: damage = -1 when no damage can be done (e.g. no possible weapons), y represents weapon type (primary -> 0, secondary -> 1)
 func _calculate_damage(
 	attacking_unit: Unit, defending_unit: Unit, random_luck: bool = true
 ) -> DamageResult:
