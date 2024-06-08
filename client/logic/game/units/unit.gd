@@ -104,7 +104,6 @@ var possible_movement_steps: int:
 		return stats.fuel
 
 var last_damage_type: GameConst.WeaponType
-var last_attack_category: GameConst.WeaponCategory
 
 var _possible_terrains_to_move_buffer: Array[Terrain]
 var _possible_terrains_to_move_calculating: bool
@@ -251,11 +250,11 @@ func is_on_map() -> bool:
 	return get_map() != null
 
 
-func play_attack() -> void:
+func play_attack(weapon_category: GameConst.WeaponCategory) -> void:
 	_state = State.ATTACKING
-	if last_attack_category == GameConst.WeaponCategory.PRIMARY:
+	if weapon_category == GameConst.WeaponCategory.PRIMARY:
 		_animation_player.play("attack_primary")
-	elif last_attack_category == GameConst.WeaponCategory.SECONDARY:
+	elif weapon_category == GameConst.WeaponCategory.SECONDARY:
 		_animation_player.play("attack_secondary")
 	await _animation_player.animation_finished
 	play_idle()
