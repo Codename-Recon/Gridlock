@@ -593,7 +593,7 @@ id = "PIPERUNNER"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_an62m")
 sprite_frames = SubResource("SpriteFrames_unxag")
-animation = &"attack_primary"
+animation = &"struck"
 autoplay = "idle"
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]

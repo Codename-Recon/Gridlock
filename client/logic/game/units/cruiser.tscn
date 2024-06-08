@@ -548,7 +548,7 @@ id = "CRUISER"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_5crpq")
 sprite_frames = SubResource("SpriteFrames_v7156")
-animation = &"attack_secondary"
+animation = &"struck"
 autoplay = "idle"
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
