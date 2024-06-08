@@ -23,6 +23,7 @@ jobs:
               types
               backend
               client
+              translations
             requireScope: true
             wip: false
             # When using "Squash and merge" on a PR with only one commit, GitHub

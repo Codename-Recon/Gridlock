@@ -15,4 +15,4 @@ jobs:
         source_branch: weblate-translations
         destination_branch: "master"
         pr_title: "feat(translations): updated translations from weblate"
-        destination_repository: "Codename-Recon/Codename-Recon"
+        # destination_repository: "Codename-Recon/Codename-Recon"
