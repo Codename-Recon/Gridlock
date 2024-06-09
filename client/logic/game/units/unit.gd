@@ -97,6 +97,7 @@ var weapons: Array[String]:
 				weapons.append(_types.weapon_types[weapon])
 		return weapons
 
+## Counts for fuel too
 var possible_movement_steps: int:
 	get:
 		if values.mp < stats.fuel:
@@ -158,7 +159,7 @@ func calculate_possible_terrains_to_move() -> void:
 		return
 	_possible_terrains_to_move_calculating = true
 	var terrains: Array[Terrain] = _global.last_loaded_map.terrains
-	terrains = Terrain.filter_terrains(terrains, self)
+	terrains = Terrain.filter_movable_terrains(terrains, self, true, true)
 
 	# Sort by distance; First entry is the farthest terrain
 	terrains.sort_custom(_lamda_calculate_distance)
@@ -183,8 +184,8 @@ func calculate_possible_terrains_to_move() -> void:
 
 
 func get_possible_terrains_to_attack_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
-	var terrains: Array[Terrain] = []
-	_attack(start_terrain, terrains, values.max_range, Vector2.ZERO, 0)
+	var terrains: Array[Terrain] = _global.last_loaded_map.terrains
+	terrains = Terrain.filter_attackable_terrains(terrains, self, start_terrain)
 	return terrains
 
 
@@ -358,36 +359,6 @@ func _round_over_changed() -> void:
 		sprite.modulate = ProjectSettings.get_setting("global/round_overlay")
 	else:
 		sprite.modulate = Color.WHITE
-
-
-func _attack(
-	start: Terrain, terrains: Array, distance_left: int, direction: Vector2, step: int
-) -> void:
-	if start:
-		if step > 0:
-			distance_left -= 1
-			if distance_left < 0:
-				return
-		if not start in terrains and distance_left < values.min_range:
-			terrains.append(start)
-		if step == 0:
-			_attack(start.get_up(), terrains, distance_left, Vector2.UP, step + 1)
-			_attack(start.get_down(), terrains, distance_left, Vector2.DOWN, step + 1)
-			_attack(start.get_left(), terrains, distance_left, Vector2.LEFT, step + 1)
-			_attack(start.get_right(), terrains, distance_left, Vector2.RIGHT, step + 1)
-		else:
-			if direction == Vector2.UP:
-				_attack(start.get_up(), terrains, distance_left, direction, step + 1)
-				_attack(start.get_left(), terrains, distance_left, Vector2.LEFT, step + 1)
-				_attack(start.get_right(), terrains, distance_left, Vector2.RIGHT, step + 1)
-			if direction == Vector2.DOWN:
-				_attack(start.get_down(), terrains, distance_left, direction, step + 1)
-				_attack(start.get_left(), terrains, distance_left, Vector2.LEFT, step + 1)
-				_attack(start.get_right(), terrains, distance_left, Vector2.RIGHT, step + 1)
-			if direction == Vector2.LEFT:
-				_attack(start.get_left(), terrains, distance_left, Vector2.LEFT, step + 1)
-			if direction == Vector2.RIGHT:
-				_attack(start.get_right(), terrains, distance_left, Vector2.RIGHT, step + 1)
 
 
 func _move_on_curve() -> void:
