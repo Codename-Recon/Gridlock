@@ -183,12 +183,6 @@ func calculate_possible_terrains_to_move() -> void:
 	possible_terrains_to_move_calculated.emit()
 
 
-func get_possible_terrains_to_attack_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
-	var terrains: Array[Terrain] = _global.last_loaded_map.terrains
-	terrains = Terrain.filter_attackable_terrains(terrains, self, start_terrain)
-	return terrains
-
-
 func get_neighbors_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
 	var terrains: Array[Terrain] = []
 	terrains.append(start_terrain.get_up())

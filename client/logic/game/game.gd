@@ -1238,7 +1238,8 @@ func _create_and_set_attack_area(
 		if target_terrain.get_none_diagonal_distance(unit.get_terrain()) > 0:
 			if not unit.values.can_move_and_attack:
 				return
-	var possible_terrains: Array[Terrain] = unit.get_possible_terrains_to_attack_from_terrain(target_terrain)
+	var possible_terrains: Array[Terrain] = _global.last_loaded_map.terrains
+	possible_terrains = Terrain.filter_attackable_terrains(possible_terrains, unit, target_terrain)
 	for terrain: Terrain in possible_terrains:
 		if not terrain:
 			continue
