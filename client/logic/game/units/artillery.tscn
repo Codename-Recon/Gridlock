@@ -594,7 +594,7 @@ id = "ARTILLERY"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_507yw")
 sprite_frames = SubResource("SpriteFrames_f1338")
-animation = &"end_turn"
+animation = &"struck"
 autoplay = "idle"
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]

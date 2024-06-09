@@ -525,7 +525,7 @@ id = "BOMBER"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_7bly4")
 sprite_frames = SubResource("SpriteFrames_7bt7y")
-animation = &"attack_secondary"
+animation = &"struck"
 autoplay = "idle"
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]

@@ -256,7 +256,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"attack_second", &"idle"]
+"values": [&"attack_secondary", &"idle"]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -661,7 +661,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"damage", &"idle"]
+"values": [&"struck", &"idle"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u6tp7"]

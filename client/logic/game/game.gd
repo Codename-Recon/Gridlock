@@ -737,8 +737,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 		var damage_result: DamageResult
 		damage_result = _calculate_damage(attacking_unit, defending_unit)
 		defending_unit.last_damage_type = damage_result.weapon_type
-		attacking_unit.last_attack_category = damage_result.weapon_category
-		attacking_unit.play_attack()
+		attacking_unit.play_attack(damage_result.weapon_category)
 		await attacking_unit.attack_animation_done
 		defending_unit.stats.health -= int(damage_result.damage)
 		# create floating damage info
@@ -758,8 +757,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 				if damage_result.damage > 0:
 					await get_tree().create_timer(0.2).timeout
 					attacking_unit.last_damage_type = damage_result.weapon_type
-					defending_unit.last_attack_category = damage_result.weapon_category
-					defending_unit.play_attack()
+					defending_unit.play_attack(damage_result.weapon_category)
 					await defending_unit.attack_animation_done
 					attacking_unit.stats.health -= damage_result.damage
 					# create floating damage info
@@ -1231,6 +1229,7 @@ func _create_and_set_move_area(unit: Unit, visibility: bool = true) -> void:
 		_create_and_set_join_area(unit, i)
 
 
+## [param target_terrain] is where the attacking units starts its attack
 func _create_and_set_attack_area(
 	unit: Unit, target_terrain: Terrain, visibility: bool = true, check_move_and_attack: bool = true
 ) -> void:
@@ -1239,15 +1238,23 @@ func _create_and_set_attack_area(
 		if target_terrain.get_none_diagonal_distance(unit.get_terrain()) > 0:
 			if not unit.values.can_move_and_attack:
 				return
-	var terrains: Array[Terrain] = unit.get_possible_terrains_to_attack_from_terrain(target_terrain)
-	for i: Terrain in terrains:
-		if i and i.has_unit() and i.get_unit().player_owned != unit.player_owned:
-			if visibility:
-				var layer: DecalLayer = _move_layer.instantiate() as Sprite2D
-				layer.type = DecalLayer.Type.ATTACK
-				layer.add_to_group("attack_area")
-				i.layer = layer
-			attackable_terrains.append(i)
+	var attackable_terrains: Array[Terrain] = unit.get_possible_terrains_to_attack_from_terrain(target_terrain)
+	for terrain: Terrain in attackable_terrains:
+		if not terrain:
+			continue
+		if not terrain.has_unit():
+			continue
+		if terrain.get_unit().player_owned == unit.player_owned:
+			continue
+		# Check if unit can attack target unit
+		if _calculate_damage(unit, terrain.get_unit(), false).damage < 0:
+			continue
+		attackable_terrains.append(terrain)
+		if visibility:
+			var layer: DecalLayer = _move_layer.instantiate() as Sprite2D
+			layer.type = DecalLayer.Type.ATTACK
+			layer.add_to_group("attack_area")
+			terrain.layer = layer
 
 
 func _create_and_set_refill_area(
@@ -1420,8 +1427,8 @@ func _get_group_decal(group_name: String) -> Array[Sprite2D]:
 		decals.append(i)
 	return decals
 
-
-# returns Vector: x = -1 when no damage can be done (e.g. no possible weapons), y represents weapon type (primary -> 0, secondary -> 1)
+## Calculates damage
+## returns DamageResult: damage = -1 when no damage can be done (e.g. no possible weapons), y represents weapon type (primary -> 0, secondary -> 1)
 func _calculate_damage(
 	attacking_unit: Unit, defending_unit: Unit, random_luck: bool = true
 ) -> DamageResult:
@@ -1444,7 +1451,7 @@ func _calculate_damage(
 			weapon_type = attacking_unit.values.weapons[1] as GameConst.WeaponType
 		else:
 			# no weapons means no damage possible
-			return DamageResult.new(-1, GameConst.WeaponCategory.NONE, GameConst.WeaponType.ARTILLERY_CANON)
+			return DamageResult.new(-1, GameConst.WeaponCategory.NONE, GameConst.WeaponType.MACHINE_GUN)
 
 	var luck: int = 0
 	if random_luck:

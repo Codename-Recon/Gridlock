@@ -525,7 +525,7 @@ id = "CARRIER"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_acjcs")
 sprite_frames = SubResource("SpriteFrames_ln1fk")
-animation = &"attack_primary"
+animation = &"struck"
 autoplay = "idle"
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]

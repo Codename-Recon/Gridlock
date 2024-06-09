@@ -134,14 +134,14 @@
     "weapon": {
       "type": "string",
       "enum": [
-        "ARTILLERY_CANON",
-        "BAZOOKA",
-        "LIGHT_TANK_CANON",
         "MACHINE_GUN",
-        "MEDIUM_TANK_CANON",
-        "ROCKETS",
-        "TANK_MACHINE_GUN",
-        "VUCLAN_CANNON"
+        "VULCAN_CANNON",
+        "MISSILE",
+        "ROCKET",
+        "SMALL_CANNON",
+        "BIG_CANNON",
+        "TORPEDO",
+        "BOMB"
       ]
     },
     "weather": {

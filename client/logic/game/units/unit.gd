@@ -13,14 +13,14 @@ signal died
 enum State { STANDING, MOVING, ATTACKING, DAMAGING, DYING, REFILLING }
 
 const WEAPON_TYPE_TRANSLATION: Dictionary = {
-	GameConst.WeaponType.ARTILLERY_CANON: "explosion",
-	GameConst.WeaponType.BAZOOKA : "explosion",
-	GameConst.WeaponType.LIGHT_TANK_CANON : "explosion",
-	GameConst.WeaponType.MACHINE_GUN : "gunattack",
-	GameConst.WeaponType.MEDIUM_TANK_CANON : "explosion",
-	GameConst.WeaponType.ROCKETS : "explosion",
-	GameConst.WeaponType.TANK_MACHINE_GUN : "gunattack",
-	GameConst.WeaponType.VUCLAN_CANNON : "small_explosion"
+	GameConst.WeaponType.MACHINE_GUN: "gunattack",
+	GameConst.WeaponType.VULCAN_CANNON: "gunattack",
+	GameConst.WeaponType.MISSILE: "small_explosion",
+	GameConst.WeaponType.ROCKET: "explosion",
+	GameConst.WeaponType.SMALL_CANNON: "small_explosion",
+	GameConst.WeaponType.BIG_CANNON: "explosion",
+	GameConst.WeaponType.TORPEDO: "small_explosion",
+	GameConst.WeaponType.BOMB: "explosion"
 }
 
 const ATTACKS: PackedScene = preload("res://logic/game/effects/attacks.tscn")
@@ -104,7 +104,6 @@ var possible_movement_steps: int:
 		return stats.fuel
 
 var last_damage_type: GameConst.WeaponType
-var last_attack_category: GameConst.WeaponCategory
 
 var _possible_terrains_to_move_buffer: Array[Terrain]
 var _possible_terrains_to_move_calculating: bool
@@ -185,8 +184,7 @@ func calculate_possible_terrains_to_move() -> void:
 
 func get_possible_terrains_to_attack_from_terrain(start_terrain: Terrain) -> Array[Terrain]:
 	var terrains: Array[Terrain] = []
-	var max_range: int = values.max_range
-	_attack(start_terrain, terrains, max_range, Vector2.ZERO, 0)
+	_attack(start_terrain, terrains, values.max_range, Vector2.ZERO, 0)
 	return terrains
 
 
@@ -252,11 +250,11 @@ func is_on_map() -> bool:
 	return get_map() != null
 
 
-func play_attack() -> void:
+func play_attack(weapon_category: GameConst.WeaponCategory) -> void:
 	_state = State.ATTACKING
-	if last_attack_category == GameConst.WeaponCategory.PRIMARY:
+	if weapon_category == GameConst.WeaponCategory.PRIMARY:
 		_animation_player.play("attack_primary")
-	elif last_attack_category == GameConst.WeaponCategory.SECONDARY:
+	elif weapon_category == GameConst.WeaponCategory.SECONDARY:
 		_animation_player.play("attack_secondary")
 	await _animation_player.animation_finished
 	play_idle()

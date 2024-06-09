@@ -541,7 +541,7 @@ id = "B-COPTER"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_5tdho")
 sprite_frames = SubResource("SpriteFrames_vj5vq")
-animation = &"attack_primary"
+animation = &"struck"
 autoplay = "idle"
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
