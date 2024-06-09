@@ -134,14 +134,14 @@
     "weapon": {
       "type": "string",
       "enum": [
-      "MACHINE_GUN",
-      "VULCAN_CANNON",
-      "MISSILE",
-      "ROCKET",
-      "SMALL_CANNON",
-      "BIG_CANNON",
-      "TORPEDO",
-      "BOMB"
+        "MACHINE_GUN",
+        "VULCAN_CANNON",
+        "MISSILE",
+        "ROCKET",
+        "SMALL_CANNON",
+        "BIG_CANNON",
+        "TORPEDO",
+        "BOMB"
       ]
     },
     "weather": {

@@ -1229,6 +1229,7 @@ func _create_and_set_move_area(unit: Unit, visibility: bool = true) -> void:
 		_create_and_set_join_area(unit, i)
 
 
+## [param target_terrain] is where the attacking units starts its attack
 func _create_and_set_attack_area(
 	unit: Unit, target_terrain: Terrain, visibility: bool = true, check_move_and_attack: bool = true
 ) -> void:
@@ -1237,23 +1238,23 @@ func _create_and_set_attack_area(
 		if target_terrain.get_none_diagonal_distance(unit.get_terrain()) > 0:
 			if not unit.values.can_move_and_attack:
 				return
-	var terrains: Array[Terrain] = unit.get_possible_terrains_to_attack_from_terrain(target_terrain)
-	for i: Terrain in terrains:
-		if not i:
+	var attackable_terrains: Array[Terrain] = unit.get_possible_terrains_to_attack_from_terrain(target_terrain)
+	for terrain: Terrain in attackable_terrains:
+		if not terrain:
 			continue
-		if not i.has_unit():
+		if not terrain.has_unit():
 			continue
-		if i.get_unit().player_owned == unit.player_owned:
+		if terrain.get_unit().player_owned == unit.player_owned:
 			continue
 		# Check if unit can attack target unit
-		if _calculate_damage(unit, i.get_unit(), false).damage < 0:
+		if _calculate_damage(unit, terrain.get_unit(), false).damage < 0:
 			continue
-		attackable_terrains.append(i)
+		attackable_terrains.append(terrain)
 		if visibility:
 			var layer: DecalLayer = _move_layer.instantiate() as Sprite2D
 			layer.type = DecalLayer.Type.ATTACK
 			layer.add_to_group("attack_area")
-			i.layer = layer
+			terrain.layer = layer
 
 
 func _create_and_set_refill_area(
