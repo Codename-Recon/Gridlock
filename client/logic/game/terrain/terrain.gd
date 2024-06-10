@@ -75,21 +75,26 @@ var _types: GlobalTypes = Types
 @onready var stats: TerrainStats = $TerrainStats
 
 
-static func filter_terrains(
-	terrains: Array[Terrain], unit: Unit, filter_blocking: bool = true, filter_distance: bool = true
+## Calculates the grid distance between two terrains (not diagonal)
+static func get_distance(start: Terrain, end: Terrain) -> int:
+	var distance: Vector2i = end.global_position - start.global_position
+	distance /= ProjectSettings.get_setting("global/grid_size")
+	var move_value: int = round(abs(distance.x) + abs(distance.y))
+	return move_value
+
+
+static func filter_movable_terrains(
+	terrains: Array[Terrain], 
+	unit: Unit, 
+	filter_blocking: bool, 
+	filter_movement_distance: bool,
 ) -> Array[Terrain]:
 
-	var distance_calculation: Callable = func(start: Terrain, end: Terrain) -> int:
-		var distance: Vector2i = end.global_position - start.global_position
-		distance /= ProjectSettings.get_setting("global/grid_size")
-		var move_value: int = round(abs(distance.x) + abs(distance.y))
-		return move_value
-
-	if filter_distance:
-		# Removing terrains which are too far
+	if filter_movement_distance:
+		# Removing terrains which are too far to move to
 		terrains = terrains.filter(
 			func(a: Terrain) -> bool: return (
-				distance_calculation.call(unit.get_terrain(), a) <= unit.possible_movement_steps
+				get_distance(unit.get_terrain(), a) <= unit.possible_movement_steps
 			)
 		)
 	if filter_blocking:
@@ -106,6 +111,21 @@ static func filter_terrains(
 	return terrains
 
 
+static func filter_attackable_terrains(
+	terrains: Array[Terrain], 
+	unit: Unit, 
+	attack_point: Terrain
+) -> Array[Terrain]:
+	
+	terrains = terrains.filter(
+		func(a: Terrain) -> bool: return (
+			get_distance(attack_point, a) <= unit.values.max_range and 
+			get_distance(attack_point, a) >= unit.values.min_range
+		)
+	)
+	return terrains
+
+
 static func get_astar_path(
 	start: Terrain,
 	end: Terrain,
@@ -115,7 +135,7 @@ static func get_astar_path(
 ) -> PackedVector2Array:
 	var astar: AStar2D = AStar2D.new()
 	var filter_distance: bool = !end_can_be_outside
-	terrains = filter_terrains(terrains, unit, true, filter_distance)
+	terrains = filter_movable_terrains(terrains, unit, true, filter_distance)
 	if not end_can_be_outside:
 		if not end in terrains:
 			return PackedVector2Array()
