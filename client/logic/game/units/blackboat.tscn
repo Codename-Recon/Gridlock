@@ -1,10 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://c644uo6exv0bd"]
+[gd_scene load_steps=25 format=3 uid="uid://c644uo6exv0bd"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_pjr8r"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_wt6hj"]
 [ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="3_vjr5c"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_jqb0m"]
-[ext_resource type="AudioStream" uid="uid://cmcv3vb0bsyq2" path="res://assets/sounds/laserLarge_004.ogg" id="6_eh67q"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_ymycc"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="8_l1200"]
 [ext_resource type="AudioStream" uid="uid://cin8b6ejg3oby" path="res://assets/sounds/ui/doorOpen_001.ogg" id="9_3l2jv"]
@@ -171,146 +170,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [&"idle"]
 }
-
-[sub_resource type="Animation" id="Animation_mup4x"]
-resource_name = "attack_primary"
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack_primary"]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.35, 0.5, 0.65, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"values": [{
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"attack_animation_done"],
-"method": &"emit_signal"
-}]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_eh67q")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_eh67q")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_eh67q")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_eh67q")
-}, {
-"end_offset": 0.493485,
-"start_offset": 0.0,
-"stream": ExtResource("6_eh67q")
-}],
-"times": PackedFloat32Array(0.19, 0.34, 0.5, 0.65, 0.8)
-}
-tracks/2/use_blend = true
-
-[sub_resource type="Animation" id="Animation_lt2nq"]
-resource_name = "attack_secondary"
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack_secondary"]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.35, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"attack_animation_done"],
-"method": &"emit_signal"
-}]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_eh67q")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_eh67q")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_eh67q")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_eh67q")
-}, {
-"end_offset": 0.493485,
-"start_offset": 0.0,
-"stream": ExtResource("6_eh67q")
-}],
-"times": PackedFloat32Array(0.19, 0.34, 0.5, 0.65, 0.8)
-}
-tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ojacl"]
 resource_name = "die"
@@ -600,8 +459,6 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_giuvo"]
 _data = {
 "RESET": SubResource("Animation_5a73q"),
-"attack_primary": SubResource("Animation_mup4x"),
-"attack_secondary": SubResource("Animation_lt2nq"),
 "die": SubResource("Animation_ojacl"),
 "end_turn": SubResource("Animation_jyq2g"),
 "end_turn_injured": SubResource("Animation_fiayb"),

@@ -32,6 +32,15 @@ The files listed in here are released under the [Creative Commons Attribution-Sh
 ### client/assets/images/game/effects/small_explosion.png
 - Zamza
 
+### client/assets/images/game/effects/torpedo.png
+- Zamza
+
+### client/assets/images/game/effects/bomb.png
+- Zamza
+
+### client/assets/images/game/effects/vulcan_cannon.png
+- Zamza
+
 ### client/assets/images/game/game/background.jpg
 - Hunter99
 

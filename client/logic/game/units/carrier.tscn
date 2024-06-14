@@ -1,11 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://6o6hxqa2wlfr"]
+[gd_scene load_steps=25 format=3 uid="uid://6o6hxqa2wlfr"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_ddgg0"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_ubcfm"]
 [ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="3_ieqt4"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_dgpwy"]
+[ext_resource type="AudioStream" uid="uid://duns7rb260nxe" path="res://assets/sounds/laserRetro_003.ogg" id="6_1tksg"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_2im3m"]
-[ext_resource type="AudioStream" uid="uid://dygiwgkj7il7s" path="res://assets/sounds/spaceEngine_001.ogg" id="7_pnoyg"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="8_r2j7g"]
 [ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="9_ui3kd"]
 
@@ -153,6 +153,7 @@ length = 0.001
 
 [sub_resource type="Animation" id="Animation_xn7ri"]
 resource_name = "attack_primary"
+length = 1.5
 step = 0.01
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -161,16 +162,19 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.2, 0.39, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.6, 0.8, 1, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
-"args": [&"damage_animated"],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated"],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated"],
+"args": [&"damage_animated", Vector2(15, 15)],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
 "args": [&"attack_animation_done"],
@@ -185,78 +189,69 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": [{
-"end_offset": 4.01059,
+"end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("7_pnoyg")
+"stream": ExtResource("6_1tksg")
 }],
-"times": PackedFloat32Array(0.01)
+"times": PackedFloat32Array(0.2)
 }
 tracks/1/use_blend = true
-tracks/2/type = "value"
+tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:animation")
+tracks/2/path = NodePath("AudioStreamPlayer2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_1tksg")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/2/use_blend = true
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_1tksg")
+}],
+"times": PackedFloat32Array(0.6)
+}
+tracks/3/use_blend = true
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer4")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_1tksg")
+}],
+"times": PackedFloat32Array(0.8)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_primary"]
-}
-
-[sub_resource type="Animation" id="Animation_3f68g"]
-resource_name = "attack_secondary"
-step = 0.01
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.46, 0.85, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"values": [{
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"attack_animation_done"],
-"method": &"emit_signal"
-}]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 4.00313,
-"start_offset": 0.0,
-"stream": ExtResource("7_pnoyg")
-}],
-"times": PackedFloat32Array(0.01)
-}
-tracks/1/use_blend = true
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack_secondary"]
 }
 
 [sub_resource type="Animation" id="Animation_8v50i"]
@@ -503,7 +498,6 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_23je5"),
 "attack_primary": SubResource("Animation_xn7ri"),
-"attack_secondary": SubResource("Animation_3f68g"),
 "die": SubResource("Animation_8v50i"),
 "end_turn": SubResource("Animation_2lrho"),
 "end_turn_injured": SubResource("Animation_7dgpu"),
@@ -525,7 +519,7 @@ id = "CARRIER"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_acjcs")
 sprite_frames = SubResource("SpriteFrames_ln1fk")
-animation = &"struck"
+animation = &"attack_primary"
 autoplay = "idle"
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
@@ -545,6 +539,18 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
+bus = &"Sound"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
+bus = &"Sound"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
+bus = &"Sound"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
 bus = &"Sound"
 

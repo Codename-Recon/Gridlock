@@ -773,7 +773,7 @@ Hunter99
 [indent][i]Lead Programmer[/i][/indent]
 [indent][i]Lead Engine Developer[/i][/indent]
 
-jaume
+Dracks
 [indent][i]Engine Developer[/i][/indent]
 
 2-3-Ryan-5
@@ -837,7 +837,7 @@ Sleepy Tech
 [center][img]res://godot_icon.svg[/img][/center]
 
 
-[url=https://github.com/Codename-Recon/Codename-Recon/blob/master/LICENSE_ASSETS]Asset License[/url]"
+[url=https://github.com/Codename-Recon/Codename-Recon/blob/master/LICENSE_ASSETS.md]Asset License[/url]"
 script = SubResource("GDScript_xjdvj")
 
 [node name="Version" type="Label" parent="."]
