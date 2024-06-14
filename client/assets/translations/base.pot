@@ -233,6 +233,15 @@ msgid "START"
 msgstr ""
 
 #: levels/menu.tscn
+#: logic/ui/shop.tscn
+msgid "CLOSE"
+msgstr ""
+
+#: levels/menu.tscn
+msgid "OPEN_RELEASE"
+msgstr ""
+
+#: levels/menu.tscn
 msgid ""
 "[center][b]Credits[/b][/center]\n"
 "\n"
@@ -304,7 +313,14 @@ msgid ""
 "[url=https://godotengine.org]Godot Engine[/url]\n"
 "[indent][i][url]https://godotengine.org/license[/url][/i][/indent]\n"
 "\n"
-"[center][img]res://godot_icon.svg[/img][/center]"
+"[center][img]res://godot_icon.svg[/img][/center]\n"
+"\n"
+"\n"
+"[url=https://github.com/Codename-Recon/Codename-Recon/blob/master/LICENSE_ASSETS]Asset License[/url]"
+msgstr ""
+
+#: levels/menu.tscn
+msgid "NEW_VERSION"
 msgstr ""
 
 #: levels/menu.tscn
@@ -515,10 +531,6 @@ msgstr ""
 
 #: logic/ui/settings_content.tscn
 msgid "SOUND"
-msgstr ""
-
-#: logic/ui/shop.tscn
-msgid "CLOSE"
 msgstr ""
 
 #: logic/ui/shop_element.tscn

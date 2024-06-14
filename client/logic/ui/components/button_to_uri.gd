@@ -1,5 +1,7 @@
 extends GameButton
 
+class_name ButtonToUri
+
 @export var uri_to_go: String
 
 
