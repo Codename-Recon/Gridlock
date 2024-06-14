@@ -443,7 +443,7 @@ tracks/2/keys = {
 "values": [&"attack_primary", &"idle"]
 }
 
-[sub_resource type="Animation" id="Animation_bt2ic"]
+[sub_resource type="Animation" id="Animation_mjes7"]
 resource_name = "attack_secondary"
 step = 0.05
 tracks/0/type = "audio"
@@ -873,7 +873,7 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_42uhv"),
 "attack_primary": SubResource("Animation_xvvjn"),
-"attack_secondary": SubResource("Animation_bt2ic"),
+"attack_secondary": SubResource("Animation_mjes7"),
 "die": SubResource("Animation_dudry"),
 "end_turn": SubResource("Animation_5aely"),
 "end_turn_injured": SubResource("Animation_t1kqx"),

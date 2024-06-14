@@ -14,13 +14,13 @@ enum State { STANDING, MOVING, ATTACKING, DAMAGING, DYING, REFILLING }
 
 const WEAPON_TYPE_TRANSLATION: Dictionary = {
 	GameConst.WeaponType.MACHINE_GUN: "gunattack",
-	GameConst.WeaponType.VULCAN_CANNON: "gunattack",
+	GameConst.WeaponType.VULCAN_CANNON: "vulcan_cannon",
 	GameConst.WeaponType.MISSILE: "small_explosion",
 	GameConst.WeaponType.ROCKET: "explosion",
 	GameConst.WeaponType.SMALL_CANNON: "small_explosion",
 	GameConst.WeaponType.BIG_CANNON: "explosion",
-	GameConst.WeaponType.TORPEDO: "small_explosion",
-	GameConst.WeaponType.BOMB: "explosion"
+	GameConst.WeaponType.TORPEDO: "torpedo",
+	GameConst.WeaponType.BOMB: "bomb"
 }
 
 const ATTACKS: PackedScene = preload("res://logic/game/effects/attacks.tscn")

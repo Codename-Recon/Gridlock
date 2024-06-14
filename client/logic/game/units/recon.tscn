@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="3_3m82n"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_3fxni"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_fwm3r"]
-[ext_resource type="AudioStream" uid="uid://cmcv3vb0bsyq2" path="res://assets/sounds/laserLarge_004.ogg" id="6_wb0t8"]
+[ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="6_i4dl7"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="8_ibe12"]
 [ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="9_hhdnf"]
 
@@ -178,47 +178,37 @@ tracks/0/keys = {
 "update": 1,
 "values": [&"attack_primary"]
 }
-tracks/1/type = "audio"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_wb0t8")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_wb0t8")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_wb0t8")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_wb0t8")
-}, {
-"end_offset": 0.493485,
-"start_offset": 0.0,
-"stream": ExtResource("6_wb0t8")
-}],
-"times": PackedFloat32Array(0.19, 0.34, 0.5, 0.65, 0.8)
-}
-tracks/1/use_blend = true
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.35, 0.5, 0.65, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
 "args": [&"damage_animated", 15],
 "method": &"emit_signal"
 }, {
@@ -238,6 +228,65 @@ tracks/2/keys = {
 "method": &"emit_signal"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}],
+"times": PackedFloat32Array(0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_7pm7b"]
 resource_name = "attack_secondary"
@@ -254,66 +303,115 @@ tracks/0/keys = {
 "update": 1,
 "values": [&"attack_secondary"]
 }
-tracks/1/type = "audio"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_wb0t8")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_wb0t8")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_wb0t8")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_wb0t8")
-}, {
-"end_offset": 0.493485,
-"start_offset": 0.0,
-"stream": ExtResource("6_wb0t8")
-}],
-"times": PackedFloat32Array(0.19, 0.34, 0.5, 0.65, 0.8)
-}
-tracks/1/use_blend = true
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.35, 0.5, 0.65, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
-"args": [&"damage_animated"],
+"args": [&"damage_animated", 15],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated"],
+"args": [&"damage_animated", 15],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated"],
+"args": [&"damage_animated", 15],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated"],
+"args": [&"damage_animated", 15],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated"],
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 15],
 "method": &"emit_signal"
 }, {
 "args": [&"attack_animation_done"],
 "method": &"emit_signal"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_i4dl7")
+}],
+"times": PackedFloat32Array(0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_1q7ix"]
 resource_name = "die"

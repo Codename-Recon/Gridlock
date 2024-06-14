@@ -1,11 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://3h53g6pnsmnl"]
+[gd_scene load_steps=27 format=3 uid="uid://3h53g6pnsmnl"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_2xvu7"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_6jxkg"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_qolh6"]
-[ext_resource type="AudioStream" uid="uid://cmcv3vb0bsyq2" path="res://assets/sounds/laserLarge_004.ogg" id="6_gl1om"]
+[ext_resource type="AudioStream" uid="uid://duns7rb260nxe" path="res://assets/sounds/laserRetro_003.ogg" id="6_egiky"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="6_kw3pa"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="7_djgan"]
+[ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="7_l5y7y"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="15_tbysg"]
 [ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="17_tw04x"]
 
@@ -154,54 +155,6 @@ length = 0.001
 [sub_resource type="Animation" id="Animation_4kytb"]
 resource_name = "attack_primary"
 step = 0.01
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.4, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"attack_animation_done"],
-"method": &"emit_signal"
-}]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayerPitched")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.176409,
-"start_offset": 0.0,
-"stream": ExtResource("17_tw04x")
-}],
-"times": PackedFloat32Array(0.4)
-}
-tracks/1/use_blend = true
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"attack_primary", &"idle"]
-}
-
-[sub_resource type="Animation" id="Animation_st6yg"]
-resource_name = "attack_secondary"
-step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -209,10 +162,10 @@ tracks/0/path = NodePath("Sprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"attack_secondary"]
+"values": [&"attack_primary", &"idle"]
 }
 tracks/1/type = "audio"
 tracks/1/imported = false
@@ -224,25 +177,9 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("6_gl1om")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_gl1om")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_gl1om")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_gl1om")
-}, {
-"end_offset": 0.493485,
-"start_offset": 0.0,
-"stream": ExtResource("6_gl1om")
+"stream": ExtResource("6_egiky")
 }],
-"times": PackedFloat32Array(0.19, 0.34, 0.5, 0.65, 0.8)
+"times": PackedFloat32Array(0.1)
 }
 tracks/1/use_blend = true
 tracks/2/type = "method"
@@ -252,28 +189,213 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.35, 0.5, 0.65, 0.8, 1),
+"times": PackedFloat32Array(0.3, 0.4, 0.5, 0.6, 0.7, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", 10],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", 10],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", 10],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", 10],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", 10],
 "method": &"emit_signal"
 }, {
 "args": [&"attack_animation_done"],
 "method": &"emit_signal"
 }]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_egiky")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/3/use_blend = true
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_egiky")
+}],
+"times": PackedFloat32Array(0.3)
+}
+tracks/4/use_blend = true
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer4")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_egiky")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/5/use_blend = true
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer5")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_egiky")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/6/use_blend = true
+
+[sub_resource type="Animation" id="Animation_st6yg"]
+resource_name = "attack_secondary"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack_secondary", &"idle"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [&"damage_animated", 10],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 10],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 10],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 10],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 10],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 10],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 10],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 10],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 10],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 10],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 10],
+"method": &"emit_signal"
+}, {
+"args": [&"damage_animated", 10],
+"method": &"emit_signal"
+}, {
+"args": [&"attack_animation_done"],
+"method": &"emit_signal"
+}]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_l5y7y")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_l5y7y")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_l5y7y")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_l5y7y")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_l5y7y")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_l5y7y")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_l5y7y")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_l5y7y")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_l5y7y")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_l5y7y")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_l5y7y")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_l5y7y")
+}],
+"times": PackedFloat32Array(0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ik8av"]
 resource_name = "die"
@@ -541,7 +663,7 @@ id = "B-COPTER"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_5tdho")
 sprite_frames = SubResource("SpriteFrames_vj5vq")
-animation = &"struck"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
@@ -564,7 +686,18 @@ libraries = {
 position = Vector2(0, 1)
 bus = &"Sound"
 
-[node name="AudioStreamPlayerPitched" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-pitch_scale = 1.5
+bus = &"Sound"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
+bus = &"Sound"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
+bus = &"Sound"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
 bus = &"Sound"
