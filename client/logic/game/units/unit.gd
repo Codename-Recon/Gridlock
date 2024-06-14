@@ -258,15 +258,14 @@ func play_attack(weapon_category: GameConst.WeaponCategory) -> void:
 ## Function for damage animated signal.
 ## [br]
 ## The effect is placed in a randomly position
-## within a distance of [param radius] from the unit.
-func play_damage(radius: int = 0) -> void:
+## within a distance of [param box_radius] from the unit.
+func play_damage(box_radius: Vector2 = Vector2.ZERO) -> void:
 	_state = State.DAMAGING
 	_animation_player.play("struck")
 	var effect: Effect = ATTACKS.instantiate()
 	add_child(effect)
-	var radius_range: int = randi_range(0, radius)
 	var random_position: Vector2 = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	random_position *= radius_range
+	random_position *= box_radius
 	effect.position = random_position
 	var animation: String = WEAPON_TYPE_TRANSLATION[last_damage_type]
 	effect.player.play(animation)

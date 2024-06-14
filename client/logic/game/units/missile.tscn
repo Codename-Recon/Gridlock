@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bss23v6r204mv"]
+[gd_scene load_steps=26 format=3 uid="uid://bss23v6r204mv"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_56dmb"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_jav5n"]
@@ -169,16 +169,16 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.4, 0.6, 0.8, 1, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
-"args": [&"damage_animated", 10],
+"args": [&"damage_animated", Vector2(10, 10)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 10],
+"args": [&"damage_animated", Vector2(10, 10)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 10],
+"args": [&"damage_animated", Vector2(10, 10)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 10],
+"args": [&"damage_animated", Vector2(10, 10)],
 "method": &"emit_signal"
 }, {
 "args": [&"attack_animation_done"],
@@ -256,109 +256,6 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_primary"]
-}
-
-[sub_resource type="Animation" id="Animation_oh0sc"]
-resource_name = "attack_secondary"
-length = 1.5
-step = 0.05
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.4, 0.6, 0.8, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"values": [{
-"args": [&"damage_animated", 10],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 10],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 10],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 10],
-"method": &"emit_signal"
-}, {
-"args": [&"attack_animation_done"],
-"method": &"emit_signal"
-}]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("9_byhei")
-}],
-"times": PackedFloat32Array(0.2)
-}
-tracks/1/use_blend = true
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("9_byhei")
-}],
-"times": PackedFloat32Array(0.41)
-}
-tracks/2/use_blend = true
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer3")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("9_byhei")
-}],
-"times": PackedFloat32Array(0.6)
-}
-tracks/3/use_blend = true
-tracks/4/type = "audio"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AudioStreamPlayer4")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("9_byhei")
-}],
-"times": PackedFloat32Array(0.8)
-}
-tracks/4/use_blend = true
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D:animation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack_secondary"]
 }
 
 [sub_resource type="Animation" id="Animation_u5o4x"]
@@ -605,7 +502,6 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_u1dkg"),
 "attack_primary": SubResource("Animation_uwpc3"),
-"attack_secondary": SubResource("Animation_oh0sc"),
 "die": SubResource("Animation_u5o4x"),
 "end_turn": SubResource("Animation_t24yi"),
 "end_turn_injured": SubResource("Animation_w2e27"),
@@ -627,7 +523,7 @@ id = "MISSILE"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_c22uc")
 sprite_frames = SubResource("SpriteFrames_hl0h7")
-animation = &"attack_secondary"
+animation = &"attack_primary"
 autoplay = "idle"
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]

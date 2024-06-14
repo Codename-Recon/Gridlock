@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://drbavfgimikcp"]
+[gd_scene load_steps=29 format=3 uid="uid://drbavfgimikcp"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_4iw4d"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_74v27"]
@@ -191,19 +191,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.5, 0.6, 0.7, 0.8, 0.9, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
-"args": [&"damage_animated", 10],
+"args": [&"damage_animated", Vector2(10, 10)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 10],
+"args": [&"damage_animated", Vector2(10, 10)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 10],
+"args": [&"damage_animated", Vector2(10, 10)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 10],
+"args": [&"damage_animated", Vector2(10, 10)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 10],
+"args": [&"damage_animated", Vector2(10, 10)],
 "method": &"emit_signal"
 }, {
 "args": [&"attack_animation_done"],
@@ -282,126 +282,6 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0.5)
 }
 tracks/6/use_blend = true
-
-[sub_resource type="Animation" id="Animation_pxc78"]
-resource_name = "attack_secondary"
-step = 0.05
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.1,
-"stream": ExtResource("6_pfsac")
-}],
-"times": PackedFloat32Array(0.1)
-}
-tracks/0/use_blend = true
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"attack_primary", &"idle"]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.1,
-"stream": ExtResource("6_pfsac")
-}],
-"times": PackedFloat32Array(0.2)
-}
-tracks/2/use_blend = true
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer3")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.1,
-"stream": ExtResource("6_pfsac")
-}],
-"times": PackedFloat32Array(0.3)
-}
-tracks/3/use_blend = true
-tracks/4/type = "audio"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AudioStreamPlayer4")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.1,
-"stream": ExtResource("6_pfsac")
-}],
-"times": PackedFloat32Array(0.4)
-}
-tracks/4/use_blend = true
-tracks/5/type = "audio"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AudioStreamPlayer5")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.1,
-"stream": ExtResource("6_pfsac")
-}],
-"times": PackedFloat32Array(0.5)
-}
-tracks/5/use_blend = true
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"values": [{
-"args": [&"damage_animated", 10],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 10],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 10],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 10],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 10],
-"method": &"emit_signal"
-}, {
-"args": [&"attack_animation_done"],
-"method": &"emit_signal"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_wtdrx"]
 resource_name = "die"
@@ -783,7 +663,6 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_w5t0r"),
 "attack_primary": SubResource("Animation_dn3x3"),
-"attack_secondary": SubResource("Animation_pxc78"),
 "die": SubResource("Animation_wtdrx"),
 "end_turn": SubResource("Animation_adoeo"),
 "end_turn_injured": SubResource("Animation_hnw0y"),

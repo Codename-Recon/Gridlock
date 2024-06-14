@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://2t61plm4vpda"]
+[gd_scene load_steps=65 format=3 uid="uid://2t61plm4vpda"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_6por7"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_2xwsq"]
@@ -449,170 +449,45 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
-"args": [&"damage_animated", 15],
-"method": &"emit_signal"
-}, {
-"args": [&"attack_animation_done"],
-"method": &"emit_signal"
-}]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_xjxi4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_xjxi4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_xjxi4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_xjxi4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_xjxi4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_xjxi4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_xjxi4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_xjxi4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_xjxi4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_xjxi4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_xjxi4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_xjxi4")
-}],
-"times": PackedFloat32Array(0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7)
-}
-tracks/2/use_blend = true
-
-[sub_resource type="Animation" id="Animation_8l6fd"]
-resource_name = "attack_secondary"
-step = 0.05
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"values": [{
-"args": [&"damage_animated", 15],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 15],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 15],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 15],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 15],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 15],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 15],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 15],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 15],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 15],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 15],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated", 15],
+"args": [&"damage_animated", Vector2(15, 15)],
 "method": &"emit_signal"
 }, {
 "args": [&"attack_animation_done"],
 "method": &"emit_signal"
 }]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"attack_secondary", &"idle"]
 }
 tracks/2/type = "audio"
 tracks/2/imported = false
@@ -1057,7 +932,6 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_kgvac"),
 "attack_primary": SubResource("Animation_16ct5"),
-"attack_secondary": SubResource("Animation_8l6fd"),
 "die": SubResource("Animation_urhp6"),
 "end_turn": SubResource("Animation_i4gv7"),
 "end_turn_injured": SubResource("Animation_ku3c5"),

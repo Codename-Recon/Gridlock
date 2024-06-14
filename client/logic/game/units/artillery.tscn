@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://jgjbc5qgpnh5"]
+[gd_scene load_steps=26 format=3 uid="uid://jgjbc5qgpnh5"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_wmr7a"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_girpv"]
@@ -216,74 +216,6 @@ tracks/3/keys = {
 "stream": null
 }],
 "times": PackedFloat32Array(0.15, 1)
-}
-tracks/3/use_blend = true
-
-[sub_resource type="Animation" id="Animation_yhsbn"]
-resource_name = "attack_secondary"
-length = 1.2
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack_secondary"]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"attack_animation_done"],
-"method": &"emit_signal"
-}]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.4,
-"start_offset": 0.0,
-"stream": ExtResource("11_o3b0y")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/2/use_blend = true
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FarFallingSound")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("13_jikb0")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": null
-}],
-"times": PackedFloat32Array(0.15, 1.2)
 }
 tracks/3/use_blend = true
 
@@ -531,7 +463,6 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_u1dkg"),
 "attack_primary": SubResource("Animation_uwpc3"),
-"attack_secondary": SubResource("Animation_yhsbn"),
 "die": SubResource("Animation_u5o4x"),
 "end_turn": SubResource("Animation_t24yi"),
 "end_turn_injured": SubResource("Animation_w2e27"),
@@ -554,7 +485,7 @@ id = "ARTILLERY"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_507yw")
 sprite_frames = SubResource("SpriteFrames_f1338")
-animation = &"attack_primary"
+animation = &"attack_secondary"
 autoplay = "idle"
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]

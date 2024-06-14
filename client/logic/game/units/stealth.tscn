@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cgtc8f3r801em"]
+[gd_scene load_steps=25 format=3 uid="uid://cgtc8f3r801em"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_5ox5w"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_4qy5s"]
@@ -203,60 +203,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_primary"]
-}
-
-[sub_resource type="Animation" id="Animation_akckx"]
-resource_name = "attack_secondary"
-step = 0.01
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.46, 0.85, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"values": [{
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"damage_animated"],
-"method": &"emit_signal"
-}, {
-"args": [&"attack_animation_done"],
-"method": &"emit_signal"
-}]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 4.00562,
-"start_offset": 0.0,
-"stream": ExtResource("7_gemp8")
-}],
-"times": PackedFloat32Array(0.01)
-}
-tracks/1/use_blend = true
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack_secondary"]
 }
 
 [sub_resource type="Animation" id="Animation_sxpdu"]
@@ -503,7 +449,6 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_qhwer"),
 "attack_primary": SubResource("Animation_w0yxn"),
-"attack_secondary": SubResource("Animation_akckx"),
 "die": SubResource("Animation_sxpdu"),
 "end_turn": SubResource("Animation_13h4r"),
 "end_turn_injured": SubResource("Animation_ru0dh"),
@@ -525,7 +470,7 @@ id = "STEALTH"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_pywy4")
 sprite_frames = SubResource("SpriteFrames_lgspp")
-animation = &"struck"
+animation = &"attack_primary"
 autoplay = "idle"
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
