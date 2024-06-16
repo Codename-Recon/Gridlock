@@ -13,7 +13,7 @@ signal round_change_ended
 @onready var _round_number_label: Label = %RoundNumberLabel
 @onready var _money_label: Label = %MoneyLabel
 @onready var _animation_player: AnimationPlayer = %AnimationPlayer
-@onready var _input: GameInput = $"../GameInput"
+@onready var _game_input: GameInput = $"../GameInput"
 @onready var map_slot: Node = %MapSlot
 
 var state: GameConst.State:
@@ -112,14 +112,14 @@ func _process(delta: float) -> void:
 
 
 func _process_human(delta: float) -> void:
-	if _input.is_just_first or _simulated_first_click:
+	if _game_input.is_just_first or _simulated_first_click:
 		_simulated_first_click = false
 		last_mouse_terrain = null  # to force terrain interface update
-		if map.get_terrain_by_position(_input.cursor.get_tile_position()):
-			last_selected_terrain = map.get_terrain_by_position(_input.cursor.get_tile_position())
+		if map.get_terrain_by_position(_game_input.cursor.get_tile_position()):
+			last_selected_terrain = map.get_terrain_by_position(_game_input.cursor.get_tile_position())
 			event = GameConst.Event.CLICKED_LEFT
 
-	if _input.is_just_second:
+	if _game_input.is_just_second:
 		event = GameConst.Event.CLICKED_RIGHT
 
 	if _action_panel_just_released:
@@ -144,7 +144,7 @@ func _process_human(delta: float) -> void:
 		GameConst.State.EARNING:
 			await _do_state_earning()
 		GameConst.State.REPAIRING:
-			_input.enable_all()
+			_game_input.enable_all()
 			await _do_state_repairing()
 		GameConst.State.SELECTING:
 			match event:
@@ -205,7 +205,7 @@ func _process_human(delta: float) -> void:
 					last_shop.queue_free()
 					_sound.play("Deselect")
 					_round_button.disabled = false
-					_input.enable_all()
+					_game_input.enable_all()
 					state = GameConst.State.SELECTING
 				GameConst.Event.CLICKED_SHOP:
 					await _do_state_bying_clicked_shop()
@@ -613,7 +613,7 @@ func _do_state_selecting_clicked_left() -> void:
 			_unattack()
 			_undeploy()
 			_unenter()
-			_input.first_enabled = false
+			_game_input.first_enabled = false
 			state = GameConst.State.BUYING
 			return
 	state = GameConst.State.SELECTING
@@ -666,7 +666,7 @@ func _do_state_commanding_clicked_left() -> void:
 				_action_panel.set_buttons(actions)
 				_action_panel.position = get_viewport().get_mouse_position()
 				_action_panel.show()
-				_input.selection_movement_enabled = false
+				_game_input.selection_movement_enabled = false
 				state = GameConst.State.ACTION
 				# to prevent changing terrain while selecting action (by clicking on terrain instead of panel)
 				last_action_terrain = last_selected_terrain
@@ -720,7 +720,7 @@ func _do_state_commanding_clicked_right() -> void:
 func _do_state_attacking_clicked_left(local: bool = true) -> void:
 	_deselect_unit()
 	_unenter()
-	_input.input_enabled = false
+	_game_input.input_enabled = false
 	if last_selected_terrain in attackable_terrains:
 		_unattack()
 		_sound.play("Click2")
@@ -790,7 +790,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 			attacking_unit.stats.round_over = true
 	else:
 		_sound.play("Deselect")
-	_input.enable_all()
+	_game_input.enable_all()
 	_unattack()
 	if local:
 		state = GameConst.State.SELECTING
@@ -804,7 +804,7 @@ func _do_state_attacking_clicked_right() -> void:
 
 # REFILLING
 func _do_state_refilling_clicked_left(local: bool = true) -> void:
-	_input.input_enabled = false
+	_game_input.input_enabled = false
 	if last_selected_terrain in refill_terrains:
 		_unrefill()
 		_sound.play("Click2")
@@ -824,7 +824,7 @@ func _do_state_refilling_clicked_left(local: bool = true) -> void:
 		donor_unit.stats.round_over = true
 	else:
 		_sound.play("Deselect")
-	_input.enable_all()
+	_game_input.enable_all()
 	_unrefill()
 	if local:
 		state = GameConst.State.SELECTING
@@ -838,7 +838,7 @@ func _do_state_refilling_clicked_right() -> void:
 
 # DEPLOYING
 func _do_state_deploying_clicked_left(local: bool = true) -> void:
-	_input.input_enabled = false
+	_game_input.input_enabled = false
 	if last_selected_terrain in deploy_terrains:
 		_undeploy()
 		_sound.play("Click2")
@@ -865,7 +865,7 @@ func _do_state_deploying_clicked_left(local: bool = true) -> void:
 		_calculate_all_unit_possible_move_terrain()
 	else:
 		_sound.play("Deselect")
-	_input.enable_all()
+	_game_input.enable_all()
 	_undeploy()
 	if local:
 		state = GameConst.State.SELECTING
@@ -879,7 +879,7 @@ func _do_state_deploying_clicked_right() -> void:
 
 # ACTION
 func _do_state_action_clicked_action(local: bool = true) -> void:
-	_input.enable_all()
+	_game_input.enable_all()
 	# cancle capturing when moving away
 	if last_selected_unit.is_capturing() and _move_arrow_node.curve.point_count > 1:
 		last_selected_unit.uncapture()
@@ -1015,7 +1015,7 @@ func _do_state_action_clicked_right() -> void:
 	_unjoin()
 	state = GameConst.State.SELECTING
 	_action_panel.hide()
-	_input.enable_all()
+	_game_input.enable_all()
 
 
 #BUYING
@@ -1036,12 +1036,12 @@ func _do_state_bying_clicked_shop(local: bool = true) -> void:
 		_sound.play("Deselect")
 	if local:
 		state = GameConst.State.SELECTING
-	_input.enable_all()
+	_game_input.enable_all()
 
 
 #ENDING
 func _do_state_ending(local: bool = true) -> void:
-	_input.input_enabled = false
+	_game_input.input_enabled = false
 	var player: Player = player_turns.pop_front()
 	player_turns.append(player)
 	_deselect_unit()
@@ -1410,14 +1410,19 @@ func _on_game_map_loaded() -> void:
 	_map_loaded = true
 
 
+func _on_game_input_selection_moved(terrain: Terrain) -> void:
+	last_mouse_terrain = terrain
+	_game_input.set_selection(GameInput.SelectionType.DEFAULT)
+	if state == GameConst.State.COMMANDING:
+		if terrain in attackable_terrains:
+			if last_selected_unit.values.can_move_and_attack:
+				_game_input.set_selection(GameInput.SelectionType.ATTACK)
+
+
 func _on_presence_changed() -> void:
 	if len(_multiplayer.presences) < 2:
 		_multiplayer.nakama_disconnect_from_match()
 		_messages.spawn(tr("MESSAGE_TITLE_PLAYER_LEFT"), tr("MESSAGE_TEXT_PLAYER_LEFT"), true)
-
-
-func _on_game_input_selection_changed(terrain: Terrain) -> void:
-	last_mouse_terrain = terrain
 
 
 # Workaround for casting Array Type
@@ -1427,6 +1432,7 @@ func _get_group_decal(group_name: String) -> Array[Sprite2D]:
 	for i: Sprite2D in group:
 		decals.append(i)
 	return decals
+
 
 ## Calculates damage
 ## returns DamageResult: damage = -1 when no damage can be done (e.g. no possible weapons), y represents weapon type (primary -> 0, secondary -> 1)
@@ -1654,3 +1660,5 @@ class DamageResult:
 		self.damage = damage
 		self.weapon_category = weapon_category
 		self.weapon_type = weapon_type
+
+

@@ -5,7 +5,7 @@ signal input_first_triggered(terrain: Terrain)
 signal input_second_triggered(terrain: Terrain)
 signal input_dragged(terrain: Terrain)
 signal input_escape_triggered
-signal selection_changed(terrain: Terrain)
+signal selection_moved(terrain: Terrain)
 
 enum SelectionType{
 	DEFAULT,
@@ -130,7 +130,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_selection_changed(terrain: Terrain) -> void:
-	selection_changed.emit(terrain)
+	selection_moved.emit(terrain)
 	if (
 		button_enabled
 		and first_enabled
