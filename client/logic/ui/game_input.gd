@@ -7,6 +7,11 @@ signal input_dragged(terrain: Terrain)
 signal input_escape_triggered
 signal selection_changed(terrain: Terrain)
 
+enum SelectionType{
+	DEFAULT,
+	ATTACK
+}
+
 const ZOOM_RESOLUTION: int = 128  # should be a base 2 number to prevent texture bleeding
 
 @onready var cursor: Cursor = $Decouple/Cursor
@@ -62,12 +67,17 @@ func enable_all() -> void:
 	first_enabled = true
 
 
+func set_selection(type: SelectionType) -> void:
+	selection.animation = str(SelectionType.keys()[type]).to_lower()
+
+
 func _ready() -> void:
 	_target_camera_zoom = zoom
 	_camera_move_speed = ProjectSettings.get_setting("global/camera_move_speed")
 	_camera_zoom_speed = ProjectSettings.get_setting("global/camera_zoom_speed")
 	_camera_max_zoom = ProjectSettings.get_setting("global/camera_max_zoom")
 	_camera_min_zoom = ProjectSettings.get_setting("global/camera_min_zoom")
+	set_selection(SelectionType.DEFAULT)
 
 
 func _process(delta: float) -> void:
