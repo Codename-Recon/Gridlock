@@ -760,8 +760,8 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 			# check if unit is next to it and defending unit can attack something next to it
 			if distance <= 1 and defending_unit.values.min_range < 2:
 				damage_result = _calculate_damage(defending_unit, attacking_unit)
-				# check if defending unit can attack with weapon (> 0)
-				if damage_result.damage > 0:
+				# check if defending unit can attack with weapon
+				if damage_result.weapon_category != GameConst.WeaponCategory.NONE:
 					await get_tree().create_timer(0.2).timeout
 					attacking_unit.last_damage_type = damage_result.weapon_type
 					defending_unit.play_attack(damage_result.weapon_category)
