@@ -162,6 +162,7 @@ func _process_human(delta: float) -> void:
 					state = GameConst.State.ENDING
 				GameConst.Event.NONE:
 					_round_button.disabled = false
+					last_selected_unit = null
 		GameConst.State.COMMANDING:
 			match event:
 				GameConst.Event.CLICKED_LEFT:
