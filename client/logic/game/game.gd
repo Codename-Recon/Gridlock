@@ -44,9 +44,9 @@ var input: GameConst.InputType = GameConst.InputType.HUMAN:
 
 var last_selected_unit: Unit:
 	set(value):
-		if last_selected_unit:
+		if last_selected_unit and is_instance_valid(last_selected_unit):
 			last_selected_unit.z_index -= 1
-		if value:
+		if value and is_instance_valid(value):
 			value.z_index += 1
 		last_selected_unit = value
 
