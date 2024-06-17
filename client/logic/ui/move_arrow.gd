@@ -30,7 +30,6 @@ func create_arrow() -> void:
 			if i == 0:
 				# Sets the start point, which should be behind the unit
 				sprite.texture = up_start
-				sprite.z_index = -1
 			else:
 				sprite.texture = vertical_line
 		else:

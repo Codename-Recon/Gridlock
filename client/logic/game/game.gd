@@ -42,9 +42,15 @@ var input: GameConst.InputType = GameConst.InputType.HUMAN:
 		)
 		input = value
 
-var ai_phase: int = 0
+var last_selected_unit: Unit:
+	set(value):
+		if last_selected_unit:
+			last_selected_unit.z_index -= 1
+		if value:
+			value.z_index += 1
+		last_selected_unit = value
 
-var last_selected_unit: Unit
+var ai_phase: int = 0
 var last_selected_terrain: Terrain  # holding last clicked terrain
 var last_action_terrain: Terrain  # holding terrain for action (so clicking while in action has no effect like in last_selected_terrain)
 var last_mouse_terrain: Terrain
