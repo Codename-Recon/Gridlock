@@ -1,13 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://dj1137ma426k8"]
+[gd_scene load_steps=8 format=3 uid="uid://dj1137ma426k8"]
 
 [ext_resource type="Script" path="res://logic/ui/game_input.gd" id="1_a6i7y"]
 [ext_resource type="Script" path="res://logic/game/cursor.gd" id="2_eu2tc"]
 [ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_p4nu0"]
 [ext_resource type="Script" path="res://logic/ui/selection.gd" id="4_g5hwt"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t4mh3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_geu66"]
+atlas = ExtResource("3_p4nu0")
+region = Rect2(352, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mun45"]
 atlas = ExtResource("3_p4nu0")
 region = Rect2(224, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k8it1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geu66")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mun45")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="GameInput" type="Camera2D"]
 zoom = Vector2(3, 3)
@@ -18,13 +41,10 @@ script = ExtResource("1_a6i7y")
 [node name="Cursor" type="Marker2D" parent="Decouple"]
 script = ExtResource("2_eu2tc")
 
-[node name="Selection" type="Sprite2D" parent="Decouple"]
+[node name="Selection" type="AnimatedSprite2D" parent="Decouple"]
 modulate = Color(1, 1, 1, 0.690196)
 z_index = 2
-position = Vector2(0, 2)
-rotation = 1.5708
-scale = Vector2(1, 1.02)
-texture = SubResource("AtlasTexture_t4mh3")
+sprite_frames = SubResource("SpriteFrames_k8it1")
 script = ExtResource("4_g5hwt")
 
 [connection signal="selection_changed" from="Decouple/Selection" to="." method="_on_selection_changed"]

@@ -5,7 +5,12 @@ signal input_first_triggered(terrain: Terrain)
 signal input_second_triggered(terrain: Terrain)
 signal input_dragged(terrain: Terrain)
 signal input_escape_triggered
-signal selection_changed(terrain: Terrain)
+signal selection_moved(terrain: Terrain)
+
+enum SelectionType{
+	DEFAULT,
+	ATTACK
+}
 
 const ZOOM_RESOLUTION: int = 128  # should be a base 2 number to prevent texture bleeding
 
@@ -62,12 +67,17 @@ func enable_all() -> void:
 	first_enabled = true
 
 
+func set_selection(type: SelectionType) -> void:
+	selection.animation = str(SelectionType.keys()[type]).to_lower()
+
+
 func _ready() -> void:
 	_target_camera_zoom = zoom
 	_camera_move_speed = ProjectSettings.get_setting("global/camera_move_speed")
 	_camera_zoom_speed = ProjectSettings.get_setting("global/camera_zoom_speed")
 	_camera_max_zoom = ProjectSettings.get_setting("global/camera_max_zoom")
 	_camera_min_zoom = ProjectSettings.get_setting("global/camera_min_zoom")
+	set_selection(SelectionType.DEFAULT)
 
 
 func _process(delta: float) -> void:
@@ -120,7 +130,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_selection_changed(terrain: Terrain) -> void:
-	selection_changed.emit(terrain)
+	selection_moved.emit(terrain)
 	if (
 		button_enabled
 		and first_enabled

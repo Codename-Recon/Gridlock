@@ -1,5 +1,5 @@
 class_name Selection
-extends Sprite2D
+extends AnimatedSprite2D
 
 signal selection_changed(terrain: Terrain)
 
