@@ -912,6 +912,7 @@ bus = &"Sound"
 [connection signal="map_loaded" from="." to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_game_map_loaded"]
 [connection signal="input_escape_triggered" from="Interface/SubViewportContainer/SubViewport/GameInput" to="Interface/EscapePanel" method="_on_game_input_input_escape"]
 [connection signal="selection_moved" from="Interface/SubViewportContainer/SubViewport/GameInput" to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_game_input_selection_moved"]
+[connection signal="selection_moved" from="Interface/SubViewportContainer/SubViewport/GameInput" to="Interface/BoardAnalytic" method="_update"]
 [connection signal="action_selected" from="Interface/ActionPanel" to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_panel_action_selected"]
 [connection signal="resized" from="Interface/ActionPanel/VBoxContainer" to="Interface/ActionPanel" method="_on_v_box_container_resized"]
 [connection signal="pressed" from="Interface/RoundButton" to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_round_button_pressed"]
