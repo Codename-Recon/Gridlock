@@ -42,9 +42,15 @@ var input: GameConst.InputType = GameConst.InputType.HUMAN:
 		)
 		input = value
 
-var ai_phase: int = 0
+var last_selected_unit: Unit:
+	set(value):
+		if last_selected_unit and is_instance_valid(last_selected_unit):
+			last_selected_unit.z_index -= 1
+		if value and is_instance_valid(value):
+			value.z_index += 1
+		last_selected_unit = value
 
-var last_selected_unit: Unit
+var ai_phase: int = 0
 var last_selected_terrain: Terrain  # holding last clicked terrain
 var last_action_terrain: Terrain  # holding terrain for action (so clicking while in action has no effect like in last_selected_terrain)
 var last_mouse_terrain: Terrain
@@ -156,6 +162,7 @@ func _process_human(delta: float) -> void:
 					state = GameConst.State.ENDING
 				GameConst.Event.NONE:
 					_round_button.disabled = false
+					last_selected_unit = null
 		GameConst.State.COMMANDING:
 			match event:
 				GameConst.Event.CLICKED_LEFT:
@@ -753,8 +760,8 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 			# check if unit is next to it and defending unit can attack something next to it
 			if distance <= 1 and defending_unit.values.min_range < 2:
 				damage_result = _calculate_damage(defending_unit, attacking_unit)
-				# check if defending unit can attack with weapon (> 0)
-				if damage_result.damage > 0:
+				# check if defending unit can attack with weapon
+				if damage_result.weapon_category != GameConst.WeaponCategory.NONE:
 					await get_tree().create_timer(0.2).timeout
 					attacking_unit.last_damage_type = damage_result.weapon_type
 					defending_unit.play_attack(damage_result.weapon_category)
