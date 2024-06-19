@@ -55,3 +55,6 @@ Button/styles/hover = SubResource("StyleBoxTexture_eb41j")
 Button/styles/normal = SubResource("StyleBoxTexture_pd5kp")
 Button/styles/pressed = SubResource("StyleBoxTexture_oujcl")
 Panel/styles/panel = SubResource("StyleBoxTexture_aqb5n")
+RichTextOverWhite/base_type = &"RichTextLabel"
+RichTextOverWhite/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextOverWhite/constants/outline_size = 7
