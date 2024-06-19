@@ -1,53 +1,35 @@
-[gd_scene load_steps=20 format=3 uid="uid://dw3qqdstw803h"]
+[gd_scene load_steps=14 format=3 uid="uid://dw3qqdstw803h"]
 
-[ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="1_x0pga"]
+[ext_resource type="Texture2D" uid="uid://btjl784330o23" path="res://assets/images/game/movement hud.png" id="1_34cre"]
 [ext_resource type="Script" path="res://logic/ui/decal_layer.gd" id="2_2i2mn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qdwo"]
-atlas = ExtResource("1_x0pga")
-region = Rect2(320, 32, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qn7tf"]
-load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b.ctex"
+atlas = ExtResource("1_34cre")
+region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yno6q"]
-atlas = SubResource("CompressedTexture2D_qn7tf")
-region = Rect2(320, 32, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ei17j"]
-load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b.ctex"
+atlas = ExtResource("1_34cre")
+region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20wxs"]
-atlas = SubResource("CompressedTexture2D_ei17j")
-region = Rect2(256, 32, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6emhs"]
-load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b.ctex"
+atlas = ExtResource("1_34cre")
+region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3lrt"]
-atlas = SubResource("CompressedTexture2D_6emhs")
-region = Rect2(192, 32, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cj1oa"]
-load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b.ctex"
+atlas = ExtResource("1_34cre")
+region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ep2dg"]
-atlas = SubResource("CompressedTexture2D_cj1oa")
-region = Rect2(192, 32, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5ryw7"]
-load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b.ctex"
+atlas = ExtResource("1_34cre")
+region = Rect2(128, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqcaf"]
-atlas = SubResource("CompressedTexture2D_5ryw7")
-region = Rect2(192, 32, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uyq2p"]
-load_path = "res://.godot/imported/tilemap2.png-99960ec8131ad9ef52833df087ced96b.ctex"
+atlas = ExtResource("1_34cre")
+region = Rect2(128, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yqxi"]
-atlas = SubResource("CompressedTexture2D_uyq2p")
-region = Rect2(224, 32, 32, 32)
+atlas = ExtResource("1_34cre")
+region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="Animation" id="Animation_ghwlo"]
 length = 0.001
@@ -73,7 +55,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0.470588)]
 }
 
 [sub_resource type="Animation" id="Animation_md25d"]
@@ -117,7 +99,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.509804), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0.470588), Color(1, 1, 1, 0.313726), Color(1, 1, 1, 0.470588)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_slffy"]
@@ -128,6 +110,7 @@ _data = {
 }
 
 [node name="DecalLayer" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0.470588)
 z_index = 1
 scale = Vector2(0.01, 0.01)
 texture = SubResource("AtlasTexture_4qdwo")
