@@ -53,6 +53,10 @@ mouse_cursor/custom_image="res://assets/images/theme/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(10, 0)
 window/size/mode.debug=0
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/markdownlabel/plugin.cfg")
+
 [file_customization]
 
 folder_colors={

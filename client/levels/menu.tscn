@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://crj13jqmktmtn"]
+[gd_scene load_steps=56 format=3 uid="uid://crj13jqmktmtn"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
@@ -10,7 +10,14 @@
 [ext_resource type="Script" path="res://logic/ui/components/button_to_scene.gd" id="9_jte0r"]
 [ext_resource type="PackedScene" uid="uid://lsu858yvaswd" path="res://levels/map_editor.tscn" id="10_rjvs6"]
 [ext_resource type="PackedScene" uid="uid://b6kyqmss2ywu" path="res://logic/ui/map_selection_element.tscn" id="16_yagnk"]
+[ext_resource type="Script" path="res://addons/markdownlabel/markdownlabel.gd" id="19_8a2oa"]
 [ext_resource type="Script" path="res://logic/ui/components/button_to_uri.gd" id="19_cd8qn"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h1_format.gd" id="20_1swx7"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h2_format.gd" id="21_s6hqw"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h3_format.gd" id="22_uykl7"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h4_format.gd" id="23_42f3s"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h5_format.gd" id="24_w2k3p"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h6_format.gd" id="25_4uox6"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="34_rl1iq"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons.gd" id="40_om04v"]
 [ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="41_n387a"]
@@ -127,6 +134,13 @@ func _on_button_back_pressed() -> void:
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		hide()
+		load_credits()
+
+func load_credits() -> void:
+	var markdown_label : MarkdownLabel = $Panel/ScrollContainer/RichTextLabel
+	var file : FileAccess = FileAccess.open(\"res://assets/text/CREDITS.md\", FileAccess.READ)
+	var content : String = file.get_as_text()
+	markdown_label.markdown_text = content
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gn8jt"]
@@ -151,12 +165,65 @@ func _pressed() -> void:
 	super._pressed()
 "
 
-[sub_resource type="GDScript" id="GDScript_xjdvj"]
-script/source = "extends RichTextLabel
+[sub_resource type="Resource" id="Resource_2cerq"]
+resource_local_to_scene = true
+script = ExtResource("20_1swx7")
+font_size = 2.285
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
 
-func _on_rich_text_label_meta_clicked(meta: Variant) -> void:
-	OS.shell_open(str(meta))
-"
+[sub_resource type="Resource" id="Resource_aw342"]
+resource_local_to_scene = true
+script = ExtResource("21_s6hqw")
+font_size = 1.714
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_1x50q"]
+resource_local_to_scene = true
+script = ExtResource("22_uykl7")
+font_size = 1.428
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_i61y7"]
+resource_local_to_scene = true
+script = ExtResource("23_42f3s")
+font_size = 1.142
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_kdmgr"]
+resource_local_to_scene = true
+script = ExtResource("24_w2k3p")
+font_size = 1.0
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_b084c"]
+resource_local_to_scene = true
+script = ExtResource("25_4uox6")
+font_size = 0.857
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -756,107 +823,22 @@ custom_minimum_size = Vector2(455, 500)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 7
+theme_type_variation = &"RichTextOverWhite"
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 42
 theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 32
 theme_override_font_sizes/mono_font_size = 32
 bbcode_enabled = true
-text = "[center][b]Credits[/b][/center]
-
-Mangs
-[indent][i]Project Leader[/i][/indent]
-
-Hunter99
-[indent][i]Lead Programmer[/i][/indent]
-[indent][i]Lead Engine Developer[/i][/indent]
-
-Dracks
-[indent][i]Engine Developer[/i][/indent]
-
-2-3-Ryan-5
-[indent][i]UI Developer[/i][/indent]
-
-Ephraim225
-[indent][i]Lead Level Designer[/i][/indent]
-
-Gloomreach
-[indent][i]Lead Unit Concept Artist[/i][/indent]
-
-Zamza
-[indent][i]Spriter[/i][/indent]
-
-Harmless
-[indent][i]Composer[/i][/indent]
-
-
-[center][b]Former[/b][/center]
-
-Ghost
-[indent][i]Engine Developer[/i][/indent]
-
-Darkbladercr
-[indent][i]Backend Developer[/i][/indent]
-
-seerfox
-[indent][i]CO Art Director[/i][/indent]
-[indent][i]UI Designer[/i][/indent]
-
-Sleepy Tech
-[indent][i]Spriter[/i][/indent]
-
-
-[center][b]External[/b][/center]
-
-[url=https://www.kenney.nl/assets]Kenney Game Assets[/url]
-[indent][i]2D Art, Sound[/i][/indent]
-
-[url=https://opengameart.org/content/menu-music]mrpoly[/url]
-[indent][i]Music[/i][/indent]
-
-[url=https://opengameart.org/content/awake-megawall-10]cynicmusic[/url]
-[indent][i]Music[/i][/indent]
-
-[url=https://opengameart.org/content/cyberpunk-moonlight-sonata]Joth[/url]
-[indent][i]Music[/i][/indent]
-
-[url=https://opengameart.org/content/4-chiptunes-adventure]SubspaceAudio[/url]
-[indent][i]Music[/i][/indent]
-
-[url=https://akveo.github.io/eva-icons/]Eva Icons[/url]
-[indent][i]2D Art[/i][/indent]
-
-
-[center][b]Game Engine[/b][/center]
-
-[url=https://godotengine.org]Godot Engine[/url]
-[indent][i][url]https://godotengine.org/license[/url][/i][/indent]
-
-[center][img]res://godot_icon.svg[/img][/center]
-
-
-[url=https://github.com/Codename-Recon/Codename-Recon/blob/master/LICENSE_ASSETS.md]Asset License[/url]"
-script = SubResource("GDScript_xjdvj")
-
-[node name="Version" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -56.0
-offset_right = -38.0
-offset_bottom = -24.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 32
-text = "<VERSION>"
+text = "CREDITS[i]NOT[/i]LOADED_CORRECTLY"
+script = ExtResource("19_8a2oa")
+markdown_text = "CREDITS_NOT_LOADED_CORRECTLY"
+h1 = SubResource("Resource_2cerq")
+h2 = SubResource("Resource_aw342")
+h3 = SubResource("Resource_1x50q")
+h4 = SubResource("Resource_i61y7")
+h5 = SubResource("Resource_kdmgr")
+h6 = SubResource("Resource_b084c")
 metadata/_edit_layout_mode = 1
 
 [node name="FlowContainer" type="FlowContainer" parent="."]
