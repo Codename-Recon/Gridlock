@@ -6,9 +6,8 @@ signal action_done
 var _reload_to_menu: bool = false
 
 @onready var accept_dialog: AcceptDialog = $AcceptDialog
-@onready var notification: Control = $Notification
-@onready var notifications_list: VBoxContainer = $NotificationsList
-
+@onready var notification: Panel = $Notification
+@onready var notifications_list: VBoxContainer = $CanvasLayer/NotificationsList
 
 
 func spawn(title: String, text: String, reload_to_menu: bool = false) -> void:
@@ -24,12 +23,16 @@ func spawn(title: String, text: String, reload_to_menu: bool = false) -> void:
 	_reload_to_menu = reload_to_menu
 	
 func spawn_window(title: String, content: Node, buttons: Array[Button]) -> void:
-	pass
+	var window: Window = Window.new()
 	
-func spawn_notification(title: String, buttons: Array[Button], timeout: int = 0) -> void:
-	var notice: Control = notification.duplicate()
+func spawn_notification(title: String, buttons: Array[Button], timeout: int = 0) -> NotificationPanel:
+	var notice: NotificationPanel = notification.duplicate()
+	notice.title = title
+	notice.actions = buttons
+	notice.timeout = timeout
 	notice.show()
 	notifications_list.add_child(notice)
+	return notice
 
 
 func _on_accept_dialog_confirmed() -> void:
