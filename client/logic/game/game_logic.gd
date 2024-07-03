@@ -998,9 +998,10 @@ func _do_state_action_clicked_action(local: bool = true) -> void:
 			_unjoin()
 			last_selected_unit.move_curve = _move_arrow_node.curve
 			await last_selected_unit.unit_moved
+			var last_owner: Player = last_selected_unit.get_terrain().player_owned
 			if last_selected_unit.capture():
 				_sound.play("Capturing")
-				await _check_ending_condition_hq()
+				await _check_ending_condition_hq(last_owner)
 			last_selected_unit.stats.round_over = true
 	# to prevent selecting a unit after action is pressed
 	await get_tree().create_timer(0.1).timeout
@@ -1558,15 +1559,14 @@ func _ai_sort_moveable_terrain_nearest(unit: Unit) -> void:
 	)
 
 
-func _check_ending_condition_hq() -> void:
-	for player: Player in player_turns:
-		var has_hq: bool = false
-		for terrain: Terrain in map.terrains:
-			if "HQ" in terrain.name and terrain.player_owned == player:
-				has_hq = true
-				break
-		if not has_hq:
-			await _handle_player_death(player)
+func _check_ending_condition_hq(last_owner: Player) -> void:
+	var has_hq: bool = false
+	for terrain: Terrain in map.terrains:
+		if "HQ" in terrain.name and terrain.player_owned == last_owner:
+			has_hq = true
+			break
+	if not has_hq:
+		await _handle_player_death(last_owner)
 
 
 func _check_ending_condition_units(lost_unit: Unit) -> void:
