@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://6ki6akqwsk8e" path="res://assets/musics/Immaculate_Command__Georges_DeMorgans_Theme_Codename_RECON.mp3" id="2_mnjkf"]
 [ext_resource type="AudioStream" uid="uid://cop7o1enhpx6k" path="res://assets/musics/Tempestass_Ace_in_the_Hole__Minatus_Leonus_Macros_Theme_UNFINISHED_v0.8.mp3" id="3_ikdhv"]
 [ext_resource type="Texture2D" uid="uid://rtyseghcw68e" path="res://assets/images/game/game/background.jpg" id="4_722ff"]
+[ext_resource type="Script" path="res://logic/game/game_logic.gd" id="8_cnrfd"]
 [ext_resource type="PackedScene" uid="uid://dj1137ma426k8" path="res://logic/ui/game_input.tscn" id="8_sdp7e"]
 [ext_resource type="Script" path="res://logic/game/game.gd" id="9_gl6qd"]
 [ext_resource type="PackedScene" uid="uid://df4e0v877neen" path="res://logic/ui/shop.tscn" id="10_rtev0"]
@@ -23,58 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="29_jy0gc"]
 [ext_resource type="PackedScene" uid="uid://c4qct2liggfuy" path="res://logic/ui/settings_content.tscn" id="30_umdul"]
 [ext_resource type="AudioStream" uid="uid://kkificbsstvo" path="res://assets/sounds/ui/confirmation_001.ogg" id="36_v003w"]
-
-[sub_resource type="GDScript" id="GDScript_aos13"]
-script/source = "extends Control
-
-signal map_loaded
-
-@export var musics: Array[AudioStream]
-
-@onready var map_slot: Node = %MapSlot
-@onready var game_input: GameInput = %GameInput
-
-var _last_music: AudioStream
-var _global: GlobalGlobal = Global
-var _multiplayer: GlobalMultiplayer = Multiplayer
-
-func end_game() -> void:
-	get_tree().change_scene_to_packed(_global.gameover_scene)
-	if _multiplayer.client_role != _multiplayer.ClientRole.NONE:
-		_multiplayer.nakama_disconnect_from_match()
-
-func _ready() -> void:
-	Music.music_finished.connect(_on_music_finished)
-	_set_music()
-	var map: Map = MapFile.deserialize(_global.selected_map_json)
-	map_slot.add_child(map)
-	map.name = \"Map\" # Renaming the map from generic name, so node path keeps consistent over network
-	match _global.game_mode:
-		GameConst.GameMode.SINGLE:
-			for player: Player in map.players.get_children():
-				player.input_type = GameConst.InputType.AI
-			var first_player: Player = map.players.get_children()[0]
-			first_player.input_type = GameConst.InputType.HUMAN
-		GameConst.GameMode.HOTSEAT:
-			for player: Player in map.players.get_children():
-				player.input_type = GameConst.InputType.HUMAN
-		GameConst.GameMode.NETWORK:
-			for player: Player in map.players.get_children():
-				player.input_type = GameConst.InputType.NETWORK
-	game_input.global_position = map.map_center
-	map_loaded.emit()
-
-func _on_music_finished() -> void:
-	_set_music()
-	
-func _set_music() -> void:
-	var new_music: AudioStream = musics.pick_random()
-	if musics.size() > 1:
-		while _last_music == new_music:
-			new_music = musics.pick_random()
-	Music.change_music(new_music)
-	_last_music = new_music
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i7el8"]
 atlas = ExtResource("25_h7n7d")
@@ -459,7 +408,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("1_81uaa")
-script = SubResource("GDScript_aos13")
+script = ExtResource("9_gl6qd")
 musics = Array[AudioStream]([ExtResource("2_mnjkf"), ExtResource("3_ikdhv")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -520,7 +469,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="GameLogic" type="Node" parent="Interface/SubViewportContainer/SubViewport"]
-script = ExtResource("9_gl6qd")
+script = ExtResource("8_cnrfd")
 _shop_scene = ExtResource("10_rtev0")
 _move_layer = ExtResource("11_cenw6")
 _move_arrow = ExtResource("12_lqnrk")
