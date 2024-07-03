@@ -1566,14 +1566,7 @@ func _check_ending_condition_hq() -> void:
 				has_hq = true
 				break
 		if not has_hq:
-			player_turns.erase(player)
-			_global.last_player_won_name = str(player_turns[0].id)
-			_global.last_player_won_color = player_turns[0].color
-			_animation_player.play("end_game")
-			await _animation_player.animation_finished
-			# disconnect from presence changes so after the animation the player can leave without activating left player message
-			if _multiplayer.client_role != _multiplayer.ClientRole.NONE:
-				_multiplayer.nakama_presence_changed.disconnect(_on_presence_changed)
+			await _handle_player_death(player)
 
 
 func _check_ending_condition_units(lost_unit: Unit) -> void:
@@ -1583,14 +1576,19 @@ func _check_ending_condition_units(lost_unit: Unit) -> void:
 			has_units = true
 			break
 		if not has_units:
-			player_turns.erase(lost_unit.player_owned)
-			_global.last_player_won_name = str(player_turns[0].id)
-			_global.last_player_won_color = player_turns[0].color
-			_animation_player.play("end_game")
-			await _animation_player.animation_finished
-			# disconnect from presence changes so after the animation the player can leave without activating left player message
-			if _multiplayer.client_role != _multiplayer.ClientRole.NONE:
-				_multiplayer.nakama_presence_changed.disconnect(_on_presence_changed)
+			await _handle_player_death(lost_unit.player_owned)
+
+
+## Handles the death of a player and invokes game over screen when a winner exists
+func _handle_player_death(player: Player) -> void:
+	player_turns.erase(player)
+	_global.last_player_won_name = str(player_turns[0].id)
+	_global.last_player_won_color = player_turns[0].color
+	_animation_player.play("end_game")
+	await _animation_player.animation_finished
+	# disconnect from presence changes so after the animation the player can leave without activating left player message
+	if _multiplayer.client_role != _multiplayer.ClientRole.NONE:
+		_multiplayer.nakama_presence_changed.disconnect(_on_presence_changed)
 
 
 func _set_network_player_stats() -> void:
