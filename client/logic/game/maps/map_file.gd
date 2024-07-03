@@ -1,7 +1,7 @@
 class_name MapFile
 extends Node
 
-const MAP_VERSION: String = "1.0.0"
+const MAP_VERSION: String = "1.0.1"
 const MAP_SOURCE: String = "Codename: Recon Map Editor"
 const MAP_GROUND_TILE_ID: String = "PLAIN_1"
 
@@ -59,6 +59,7 @@ static func _serialize_player(player: Player) -> Dictionary:
 	var player_values: PlayerValues = PlayerValues.new()
 	player_values.id = player.id
 	player_values.money = player.money
+	player_values.team = player.team
 	return inst_to_dict(player_values)
 
 
@@ -121,6 +122,7 @@ static func deserialize(json_map: String) -> Map:
 		var player: Player = Player.new()
 		player.id = player_values.id
 		player.money = player_values.money
+		player.team = player_values.team
 		player.name = "PLAYER %s" % player.id
 		map.players.add_child(player)
 	for x: int in len(map_values.terrain):
@@ -175,6 +177,7 @@ static func _deserialize_cargo(cargo_dic: Dictionary, map: Map) -> Unit:
 class PlayerValues extends NumberFix:
 	var id: int
 	var money: int
+	var team: int
 
 
 class UnitValues extends NumberFix:
