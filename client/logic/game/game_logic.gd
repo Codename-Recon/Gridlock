@@ -780,6 +780,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 						last_selected_unit = null
 						attacking_unit.play_die()
 						await attacking_unit.died
+						await _check_ending_condition_units(attacking_unit)
 						attacking_unit.queue_free()
 						await attacking_unit.tree_exited
 						_calculate_all_unit_possible_move_terrain()
@@ -788,6 +789,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 			await defending_unit.died
 			if defending_unit.is_capturing():
 				defending_unit.uncapture()
+			await _check_ending_condition_units(defending_unit)
 			defending_unit.queue_free()
 			await defending_unit.tree_exited
 			_calculate_all_unit_possible_move_terrain()
@@ -996,9 +998,10 @@ func _do_state_action_clicked_action(local: bool = true) -> void:
 			_unjoin()
 			last_selected_unit.move_curve = _move_arrow_node.curve
 			await last_selected_unit.unit_moved
+			var last_owner: Player = last_selected_unit.get_terrain().player_owned
 			if last_selected_unit.capture():
 				_sound.play("Capturing")
-				_check_ending_condition()
+				await _check_ending_condition_hq(last_owner)
 			last_selected_unit.stats.round_over = true
 	# to prevent selecting a unit after action is pressed
 	await get_tree().create_timer(0.1).timeout
@@ -1556,21 +1559,36 @@ func _ai_sort_moveable_terrain_nearest(unit: Unit) -> void:
 	)
 
 
-func _check_ending_condition() -> void:
-	for player: Player in player_turns:
-		var has_hq: bool = false
-		for terrain: Terrain in map.terrains:
-			if "HQ" in terrain.name and terrain.player_owned == player:
-				has_hq = true
-				break
-		if not has_hq:
-			player_turns.erase(player)
-			_global.last_player_won_name = str(player_turns[0].id)
-			_global.last_player_won_color = player_turns[0].color
-			_animation_player.play("end_game")
-			# disconnect from presence changes so after the animation the player can leave without activating left player message
-			if _multiplayer.client_role != _multiplayer.ClientRole.NONE:
-				_multiplayer.nakama_presence_changed.disconnect(_on_presence_changed)
+func _check_ending_condition_hq(last_owner: Player) -> void:
+	var has_hq: bool = false
+	for terrain: Terrain in map.terrains:
+		if "HQ" in terrain.name and terrain.player_owned == last_owner:
+			has_hq = true
+			break
+	if not has_hq:
+		await _handle_player_death(last_owner)
+
+
+func _check_ending_condition_units(lost_unit: Unit) -> void:
+	var has_units: bool = false
+	for unit: Unit in map.units:
+		if unit != lost_unit and unit.player_owned == lost_unit.player_owned:
+			has_units = true
+			break
+		if not has_units:
+			await _handle_player_death(lost_unit.player_owned)
+
+
+## Handles the death of a player and invokes game over screen when a winner exists
+func _handle_player_death(player: Player) -> void:
+	player_turns.erase(player)
+	_global.last_player_won_name = str(player_turns[0].id)
+	_global.last_player_won_color = player_turns[0].color
+	_animation_player.play("end_game")
+	await _animation_player.animation_finished
+	# disconnect from presence changes so after the animation the player can leave without activating left player message
+	if _multiplayer.client_role != _multiplayer.ClientRole.NONE:
+		_multiplayer.nakama_presence_changed.disconnect(_on_presence_changed)
 
 
 func _set_network_player_stats() -> void:
