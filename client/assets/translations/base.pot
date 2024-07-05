@@ -73,6 +73,7 @@
 # res://logic/game/units/submarine.tscn
 # res://logic/game/units/tank.tscn
 # res://logic/game/units/tcopter.tscn
+# res://logic/ui/new_version_checker.gd
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -233,94 +234,7 @@ msgid "START"
 msgstr ""
 
 #: levels/menu.tscn
-#: logic/ui/shop.tscn
-msgid "CLOSE"
-msgstr ""
-
-#: levels/menu.tscn
-msgid "OPEN_RELEASE"
-msgstr ""
-
-#: levels/menu.tscn
-msgid ""
-"[center][b]Credits[/b][/center]\n"
-"\n"
-"Mangs\n"
-"[indent][i]Project Leader[/i][/indent]\n"
-"\n"
-"Hunter99\n"
-"[indent][i]Lead Programmer[/i][/indent]\n"
-"[indent][i]Lead Engine Developer[/i][/indent]\n"
-"\n"
-"jaume\n"
-"[indent][i]Engine Developer[/i][/indent]\n"
-"\n"
-"2-3-Ryan-5\n"
-"[indent][i]UI Developer[/i][/indent]\n"
-"\n"
-"Ephraim225\n"
-"[indent][i]Lead Level Designer[/i][/indent]\n"
-"\n"
-"Gloomreach\n"
-"[indent][i]Lead Unit Concept Artist[/i][/indent]\n"
-"\n"
-"Zamza\n"
-"[indent][i]Spriter[/i][/indent]\n"
-"\n"
-"Harmless\n"
-"[indent][i]Composer[/i][/indent]\n"
-"\n"
-"\n"
-"[center][b]Former[/b][/center]\n"
-"\n"
-"Ghost\n"
-"[indent][i]Engine Developer[/i][/indent]\n"
-"\n"
-"Darkbladercr\n"
-"[indent][i]Backend Developer[/i][/indent]\n"
-"\n"
-"seerfox\n"
-"[indent][i]CO Art Director[/i][/indent]\n"
-"[indent][i]UI Designer[/i][/indent]\n"
-"\n"
-"Sleepy Tech\n"
-"[indent][i]Spriter[/i][/indent]\n"
-"\n"
-"\n"
-"[center][b]External[/b][/center]\n"
-"\n"
-"[url=https://www.kenney.nl/assets]Kenney Game Assets[/url]\n"
-"[indent][i]2D Art, Sound[/i][/indent]\n"
-"\n"
-"[url=https://opengameart.org/content/menu-music]mrpoly[/url]\n"
-"[indent][i]Music[/i][/indent]\n"
-"\n"
-"[url=https://opengameart.org/content/awake-megawall-10]cynicmusic[/url]\n"
-"[indent][i]Music[/i][/indent]\n"
-"\n"
-"[url=https://opengameart.org/content/cyberpunk-moonlight-sonata]Joth[/url]\n"
-"[indent][i]Music[/i][/indent]\n"
-"\n"
-"[url=https://opengameart.org/content/4-chiptunes-adventure]SubspaceAudio[/url]\n"
-"[indent][i]Music[/i][/indent]\n"
-"\n"
-"[url=https://akveo.github.io/eva-icons/]Eva Icons[/url]\n"
-"[indent][i]2D Art[/i][/indent]\n"
-"\n"
-"\n"
-"[center][b]Game Engine[/b][/center]\n"
-"\n"
-"[url=https://godotengine.org]Godot Engine[/url]\n"
-"[indent][i][url]https://godotengine.org/license[/url][/i][/indent]\n"
-"\n"
-"[center][img]res://godot_icon.svg[/img][/center]\n"
-"\n"
-"\n"
-"[url=https://github.com/Codename-Recon/Codename-Recon/blob/master/LICENSE_ASSETS]Asset License[/url]"
-msgstr ""
-
-#: levels/menu.tscn
-msgid "NEW_VERSION"
+msgid "CREDITS[i]NOT[/i]LOADED_CORRECTLY"
 msgstr ""
 
 #: levels/menu.tscn
@@ -531,6 +445,10 @@ msgstr ""
 
 #: logic/ui/settings_content.tscn
 msgid "SOUND"
+msgstr ""
+
+#: logic/ui/shop.tscn
+msgid "CLOSE"
 msgstr ""
 
 #: logic/ui/shop_element.tscn
@@ -1009,3 +927,24 @@ msgid "WOOD_DESCRIPTION"
 msgstr ""
 "Woods are more difficult to traverse than plains, but offer better "
 "terrain cover and serve as a hiding spot in Fog of War."
+
+
+#: logic/ui/new_version_checker.gd
+msgctxt "Notification title for a new version"
+msgid "VERSION_NOTIFICATION_TITLE"
+msgstr ""
+
+#: logic/ui/new_version_checker.gd
+msgctxt "Open release in the browser, button in notification"
+msgid "VERSION_NOTIFICATION_OPEN"
+msgstr ""
+
+#: logic/ui/new_version_checker.gd
+msgctxt "Open details of the notification"
+msgid "VERSION_NOTIFICATION_MODE_DETAILS"
+msgstr ""
+
+#: logic/ui/new_version_checker.gd
+msgctxt "Open release in the browser"
+msgid "VERSION_WINDOW_OPEN"
+msgstr ""
