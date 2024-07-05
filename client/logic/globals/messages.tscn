@@ -82,13 +82,14 @@ min_size = Vector2i(200, 0)
 dialog_text = "fsaldjglkdfslkgslfgkjsldfjglksjdlk"
 dialog_autowrap = true
 
-[node name="Window" type="Window" parent="."]
+[node name="MarkdownDialog" type="Window" parent="."]
 title = "Version Xyz Available"
-position = Vector2i(0, 36)
+initial_position = 2
 size = Vector2i(300, 300)
+visible = false
 
-[node name="MarkdownLabel" type="RichTextLabel" parent="Window"]
-anchors_preset = 15
+[node name="MarkdownLabel" type="RichTextLabel" parent="MarkdownDialog"]
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = -50.0
@@ -119,20 +120,21 @@ h4 = SubResource("Resource_3uc32")
 h5 = SubResource("Resource_kaotx")
 h6 = SubResource("Resource_r37pj")
 
-[node name="Button" type="Button" parent="Window"]
-anchors_preset = 7
-anchor_left = 0.5
+[node name="HBoxContainer" type="HBoxContainer" parent="MarkdownDialog"]
+anchors_preset = -1
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -29.0
-offset_top = -37.0
-offset_right = 29.0
 grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
+
+[node name="Button" type="Button" parent="MarkdownDialog/HBoxContainer"]
+layout_mode = 2
 text = "open"
 
 [node name="Notification" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(2.08165e-12, 84)
 offset_right = 480.0
 offset_bottom = 84.0
@@ -201,7 +203,7 @@ process_callback = 0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="NotificationsList" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -220.0
@@ -214,5 +216,6 @@ theme_override_constants/separation = 10
 
 [connection signal="canceled" from="AcceptDialog" to="." method="_on_accept_dialog_canceled"]
 [connection signal="confirmed" from="AcceptDialog" to="." method="_on_accept_dialog_confirmed"]
+[connection signal="close_requested" from="MarkdownDialog" to="." method="_on_markdown_dialog_close_requested"]
 [connection signal="pressed" from="Notification/Close" to="Notification" method="_on_close_pressed"]
 [connection signal="timeout" from="Notification/Timer" to="Notification" method="_on_timer_timeout"]

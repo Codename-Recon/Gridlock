@@ -101,10 +101,11 @@ func load_release_data(release_data: Dictionary, version: Version) -> void:
 func open_version_summary(release_data: Dictionary) -> void :
 	var title : String =  release_data.get("tag_name")
 	var markdown_content : String = release_data.get("body", "No description in the last version")
-	var markdown_node: MarkdownLabel = MarkdownLabel.new()
-	markdown_node.markdown_text = markdown_content
-	messages.spawn_window(title, markdown_node, [])
-	
+	var button : ButtonToUri = ButtonToUri.new()
+	button.text = tr("Open release", "Open release in the browser")
+	button.uri_to_go = release_data.get("html_url")
+	messages.spawn_markdown(title, markdown_content, button)
+
 
 func compare_with_current(release_data: Dictionary, current: String) -> void:
 	var curr_ver : Version = Version.new(current)
