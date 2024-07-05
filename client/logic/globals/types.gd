@@ -7,6 +7,7 @@ extends Node
 		force_update = false
 		if Engine.is_editor_hint():
 			_generate_types()
+			_generate_labels()
 
 @export_category("Generated Data")
 @export_group("Types")
@@ -29,6 +30,7 @@ extends Node
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		_generate_types()
+		_generate_labels()
 
 
 func _generate_types() -> void:
@@ -60,6 +62,34 @@ func _generate_types() -> void:
 
 	path = ProjectSettings.globalize_path("res://") + "../types/damage/secondary.json"
 	secondary_damage = _get_damage_values(path, unit_types)
+	
+func add_label_with_name(name: String, text: String) -> void:
+	var label: Label = Label.new()
+	label.name = name
+	label.text = text
+	label.hide()
+	add_child(label)
+	label.owner = self
+	
+	
+func _generate_labels() -> void:
+	for old: Node in get_children():
+		remove_child(old)
+		
+	for unit_key: String in units:
+		var unit: Dictionary = units.get(unit_key)
+		add_label_with_name(unit_key, unit.get('name', '') as String)
+		add_label_with_name("%s_DESCRIPTION" % unit_key, unit.get('description', '') as String)
+	for terrain_key: String in terrains:
+		var terrain: Dictionary = terrains.get(terrain_key)
+		add_label_with_name(terrain_key, terrain.get('name', '') as String)
+		add_label_with_name("%s_DESCRIPTION" % terrain_key, terrain.get('description', '') as String)
+	for movement_key: String in movements:
+		var movement: Dictionary = movements.get(movement_key)
+		add_label_with_name(movement_key, movement.get('name', '') as String)
+		add_label_with_name("%s_DESCRIPTION" % movement_key, movement.get('description', '') as String)
+		#var desc: String = "%_DESCRIPTION" % movement
+		#add_label_with_name(desc, desc)
 
 
 func _get_folder_values(path: String) -> Dictionary:

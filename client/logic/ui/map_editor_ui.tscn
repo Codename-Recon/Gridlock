@@ -154,14 +154,20 @@ columns = 13
 [node name="Example1" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
 layout_mode = 2
 text = "Example 1"
+auto_translate = false
+localize_numeral_system = false
 
 [node name="Example2" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
 layout_mode = 2
 text = "Example 2"
+auto_translate = false
+localize_numeral_system = false
 
 [node name="Example3" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
 layout_mode = 2
 text = "Example 3"
+auto_translate = false
+localize_numeral_system = false
 
 [node name="UnitPanel" type="Panel" parent="TabBar"]
 layout_mode = 1
@@ -189,14 +195,20 @@ columns = 13
 [node name="Example1" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
 layout_mode = 2
 text = "Example 1"
+auto_translate = false
+localize_numeral_system = false
 
 [node name="Example2" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
 layout_mode = 2
 text = "Example 2"
+auto_translate = false
+localize_numeral_system = false
 
 [node name="Example3" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
 layout_mode = 2
 text = "Example 3"
+auto_translate = false
+localize_numeral_system = false
 
 [node name="TilePanel" type="Panel" parent="TabBar"]
 layout_mode = 1
@@ -1001,6 +1013,8 @@ theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "20"
+auto_translate = false
+localize_numeral_system = false
 horizontal_alignment = 1
 
 [node name="LabelVertical" type="Label" parent="ResizeMenu/VBoxContainer"]
@@ -1022,6 +1036,8 @@ theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "20"
+auto_translate = false
+localize_numeral_system = false
 horizontal_alignment = 1
 
 [node name="Accept" type="Button" parent="ResizeMenu"]

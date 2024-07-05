@@ -823,6 +823,8 @@ custom_minimum_size = Vector2(455, 500)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 0
+auto_translate = false
+localize_numeral_system = false
 theme_type_variation = &"RichTextOverWhite"
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 42
@@ -885,6 +887,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
 text = "<VERSION>"
+auto_translate = false
+localize_numeral_system = false
 
 [connection signal="visibility_changed" from="MultiplayerMenu" to="MultiplayerMenu" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="MPLobbyListMenu" to="MPLobbyListMenu" method="_on_visibility_changed"]

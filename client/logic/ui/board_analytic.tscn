@@ -107,6 +107,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "4"
+auto_translate = false
+localize_numeral_system = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -138,6 +140,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "20"
+auto_translate = false
+localize_numeral_system = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -207,6 +211,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "9.9"
+auto_translate = false
+localize_numeral_system = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -239,6 +245,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "99"
+auto_translate = false
+localize_numeral_system = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -272,5 +280,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "8"
+auto_translate = false
+localize_numeral_system = false
 horizontal_alignment = 1
 vertical_alignment = 1
