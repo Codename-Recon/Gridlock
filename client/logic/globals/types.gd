@@ -26,11 +26,16 @@ extends Node
 @export var primary_damage: Dictionary
 @export var secondary_damage: Dictionary
 
+var sanitizer_regex: RegEx
+
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
+		sanitizer_regex =  RegEx.new()
+		sanitizer_regex.compile("[^a-zA-Z0-9_]")
 		_generate_types()
 		_generate_labels()
+		
 
 
 func _generate_types() -> void:
@@ -62,34 +67,32 @@ func _generate_types() -> void:
 
 	path = ProjectSettings.globalize_path("res://") + "../types/damage/secondary.json"
 	secondary_damage = _get_damage_values(path, unit_types)
-	
-func add_label_with_name(name: String, text: String) -> void:
-	var label: Label = Label.new()
-	label.name = name
-	label.text = text
-	label.hide()
-	add_child(label)
-	label.owner = self
-	
-	
+
+func add_text_to_gdscript(file: FileAccess, name: String, text: String, context: String = "") -> void:
+	var sanitized_name : String = sanitizer_regex.sub(name, "_")
+	file.store_string("var _%s: String = tr(\"%s\", \"%s\")\n" %[sanitized_name, text.replace("\"", "\\\""), context.replace("\"", "\\\"")])
+
+
 func _generate_labels() -> void:
-	for old: Node in get_children():
-		remove_child(old)
-		
+	var file_dumper : FileAccess = FileAccess.open("res://assets/translations/dynamic_strings_loader.gd", FileAccess.WRITE)
+	if file_dumper.get_error():
+		print("Error opening dynamic string loader file")
+	
+
 	for unit_key: String in units:
 		var unit: Dictionary = units.get(unit_key)
-		add_label_with_name(unit_key, unit.get('name', '') as String)
-		add_label_with_name("%s_DESCRIPTION" % unit_key, unit.get('description', '') as String)
+		add_text_to_gdscript(file_dumper, unit_key, unit.get('name', '') as String, "Unit name")
+		add_text_to_gdscript(file_dumper, "%s_DESCRIPTION" % unit_key, unit.get('description', '') as String, "Unit name")
 	for terrain_key: String in terrains:
 		var terrain: Dictionary = terrains.get(terrain_key)
-		add_label_with_name(terrain_key, terrain.get('name', '') as String)
-		add_label_with_name("%s_DESCRIPTION" % terrain_key, terrain.get('description', '') as String)
-	for movement_key: String in movements:
-		var movement: Dictionary = movements.get(movement_key)
-		add_label_with_name(movement_key, movement.get('name', '') as String)
-		add_label_with_name("%s_DESCRIPTION" % movement_key, movement.get('description', '') as String)
-		#var desc: String = "%_DESCRIPTION" % movement
-		#add_label_with_name(desc, desc)
+		add_text_to_gdscript(file_dumper, terrain_key, terrain.get('name', '') as String, "Terrain information")
+		add_text_to_gdscript(file_dumper,"%s_DESCRIPTION" % terrain_key, terrain.get('description', '') as String, "Terrain information")
+	for movement_key: String in movement_types:
+		var movement: Dictionary = movements.get(movement_key, {})
+		add_text_to_gdscript(file_dumper, "%s_MOVEMENT" % movement_key, movement_key, "Movement name")
+		add_text_to_gdscript(file_dumper, "%s_DESCRIPTION_MOVEMENT" % movement_key, "%s_DESCRIPTION" % movement_key, "Movement name")
+	file_dumper.close()
+	# Missing some way to tell godot to reload the script
 
 
 func _get_folder_values(path: String) -> Dictionary:
