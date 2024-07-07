@@ -49,8 +49,8 @@
 # res://logic/ui/unit_stats.gd
 # res://logic/ui/unit_stats.tscn
 # res://logic/ui/unit_stats_stars.gd
-# res://logic/globals/types.tscn
 # res://assets/translations/dynamic_strings_loader.gd
+# res://logic/game/game_logic.gd
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -413,17 +413,6 @@ msgctxt "Unit name"
 msgid "APC_DESCRIPTION"
 msgstr ""
 
-msgid "REFILLED"
-msgstr "Refilled"
-
-msgid "ENTERED"
-msgstr "Entered"
-
-msgid "DEPLOYED"
-msgstr "Deployed"
-
-msgid "JOINED"
-msgstr "Joined"
 
 msgid "VS_PLAYER"
 msgstr "VS Player"
@@ -956,4 +945,28 @@ msgstr ""
 #: assets/translations/dynamic_strings_loader.gd
 msgctxt "Movement name"
 msgid "AIR_DESCRIPTION"
+msgstr ""
+
+#: logic/game/game_logic.gd
+msgid "REFILLED"
+msgstr ""
+
+#: logic/game/game_logic.gd
+msgid "DEPLOYED"
+msgstr ""
+
+#: logic/game/game_logic.gd
+msgid "ENTERED"
+msgstr ""
+
+#: logic/game/game_logic.gd
+msgid "JOINED"
+msgstr ""
+
+#: logic/game/game_logic.gd
+msgid "MESSAGE_TITLE_PLAYER_LEFT"
+msgstr ""
+
+#: logic/game/game_logic.gd
+msgid "MESSAGE_TEXT_PLAYER_LEFT"
 msgstr ""
