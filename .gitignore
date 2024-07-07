@@ -7,7 +7,7 @@ export.cfg
 
 # Imported translations (automatically generated from CSV files)
 *.translation
-client/assets/translations/dynamic_strings_loader.gd
+client/assets/translations/dynamic_string_loader.gd
 
 # Mono-specific ignores
 .mono/

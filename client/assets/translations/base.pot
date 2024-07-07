@@ -6,7 +6,6 @@
 # res://logic/ui/action_panel.gd
 # res://logic/ui/board_analytic.gd
 # res://logic/ui/board_analytic.tscn
-# res://logic/ui/capture_particles.tscn
 # res://logic/ui/decal_layer.gd
 # res://logic/ui/decal_layer.tscn
 # res://logic/ui/escape_panel.gd
@@ -16,7 +15,6 @@
 # res://logic/ui/game_buttons_menu_switch.gd
 # res://logic/ui/game_input.gd
 # res://logic/ui/game_input.tscn
-# res://logic/ui/light_settings.gd
 # res://logic/ui/lobby.gd
 # res://logic/ui/lobby_list.gd
 # res://logic/ui/lobby_selection_element.gd
@@ -49,7 +47,7 @@
 # res://logic/ui/unit_stats.gd
 # res://logic/ui/unit_stats.tscn
 # res://logic/ui/unit_stats_stars.gd
-# res://assets/translations/dynamic_strings_loader.gd
+# res://assets/translations/dynamic_string_loader.gd
 # res://logic/game/game_logic.gd
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -222,12 +220,12 @@ msgstr ""
 msgid "SEA"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "SEA"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "SEA"
 msgstr ""
@@ -393,22 +391,22 @@ msgstr ""
 msgid "BUY"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "ANTI_AIR"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "ANTI_AIR_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "APC"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "APC_DESCRIPTION"
 msgstr ""
@@ -425,12 +423,6 @@ msgstr "AntiAliasing"
 
 msgid "SHADOWS"
 msgstr "Shadows"
-
-msgid "MAP_SELECTION"
-msgstr "Map Selection"
-
-msgid "MENU"
-msgstr "Menu"
 
 msgid "TERRAIN"
 msgstr "Terrain"
@@ -452,499 +444,509 @@ msgstr "Low"
 
 msgid "MEDIUM"
 msgstr "Medium"
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "ARTILLERY"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "ARTILLERY_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "B-COPTER"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "B-COPTER_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "BATTLESHIP"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "BATTLESHIP_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "BLACKBOAT"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "BLACK_BOAT_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "BLACKBOMB"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "BLACK_BOMB_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "BOMBER"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "BOMBER_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "CARRIER"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "CARRIER_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "CRUISER"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "CRUISER_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "FIGHTER"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "FIGHTER_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "INFANTRY"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "INFANTRY_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "LANDER"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "LANDER"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "LANDER_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "LANDER_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "MEDIUM_TANK"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "MEDIUM_TANK_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "MECH"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "MECH_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "MEGA_TANK"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "MEGA_TANK_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "MISSILE"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "MISSILE_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "NEO_TANK"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "NEO_TANK_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "PIPERUNNER"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "PIPERUNNER"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "PIPERUNNER_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "PIPERUNNER_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "RECON"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "RECON_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "ROCKET"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "ROCKET_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "STEALTH"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "STEALTH_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "SUB"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "T-COPTER"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "T-COPTER_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "TANK"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "TANK_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "AIRPORT"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "AIRPORT_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "BASE"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "BASE_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "BEACH"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "BEACH_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "BRIDGE"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "BRIDGE_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "CITY"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "CITY_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "COM_TOWER"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "COM_TOWER_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "HQ"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "HQ_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "LAB"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "LAB_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "MOUNTAIN"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "MOUNTAIN_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "PIPE"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "PIPE_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "PIPE_BROKEN"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "PIPE_BROKEN_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "PIPE_WEAK"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "PIPE_WEAK_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "PLAIN"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "PLAIN_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "PORT"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "PORT_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "REEF"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "REEF_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "RIVER"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "RIVER_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "ROAD"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "ROAD_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "SEA_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "SEA_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "SILO"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "SILO_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "WOOD"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Terrain information"
 msgid "WOOD_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "FOOT"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "FOOT_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "BAZOOKA"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "BAZOOKA_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "TREADS"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "TREADS_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "WHEELS"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "WHEELS_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "AIR"
 msgstr ""
 
-#: assets/translations/dynamic_strings_loader.gd
+#: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "AIR_DESCRIPTION"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgctxt "Used as title for map_selection menu"
+msgid "MAP_SELECTION"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgctxt "Used as title for the main menu"
+msgid "MENU"
 msgstr ""
 
 #: logic/game/game_logic.gd
