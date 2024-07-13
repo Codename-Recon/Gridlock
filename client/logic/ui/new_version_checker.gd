@@ -5,7 +5,7 @@ extends Node
 @export var current_version_label: Label
 
 @onready
-var messages: GlobalMessages = $"/root/Messages"
+var messages: GlobalMessages = Messages
 
 class Version:
 	var major: int
