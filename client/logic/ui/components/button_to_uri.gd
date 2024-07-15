@@ -1,6 +1,6 @@
-extends GameButton
-
 class_name ButtonToUri
+
+extends GameButton
 
 @export var uri_to_go: String
 
