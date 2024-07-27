@@ -138,7 +138,7 @@ func _ready() -> void:
 
 func load_credits() -> void:
 	var markdown_label : MarkdownLabel = $Panel/ScrollContainer/RichTextLabel
-	var file : FileAccess = FileAccess.open(\"res://assets/text/CREDITS.md\", FileAccess.READ)
+	var file : FileAccess = FileAccess.open(\"res://assets/text/credits.md\", FileAccess.READ)
 	var content : String = file.get_as_text()
 	markdown_label.markdown_text = content
 "
@@ -883,12 +883,12 @@ offset_right = -38.0
 offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
+auto_translate = false
+localize_numeral_system = false
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
 text = "<VERSION>"
-auto_translate = false
-localize_numeral_system = false
 
 [connection signal="visibility_changed" from="MultiplayerMenu" to="MultiplayerMenu" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="MPLobbyListMenu" to="MPLobbyListMenu" method="_on_visibility_changed"]
