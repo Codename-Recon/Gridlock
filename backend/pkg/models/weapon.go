@@ -1,6 +1,6 @@
 package models
 
-import "github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/weapon"
+import "github.com/Codename-Recon/Gridlock/backend/pkg/enums/weapon"
 
 type WeaponEffectiveness struct {
 	Infantry   weapon.EEffectiveness `json:"infantry" jsonschema:"minimum=-1,maximum=1"`

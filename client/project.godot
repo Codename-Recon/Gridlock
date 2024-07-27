@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Codename: Recon"
+config/name="Gridlock"
 config/version="<VERSION>"
 run/main_scene="res://levels/menu.tscn"
 config/use_custom_user_dir=true

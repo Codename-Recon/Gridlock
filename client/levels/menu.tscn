@@ -858,7 +858,7 @@ grow_vertical = 0
 layout_mode = 2
 text = "BUG_REPORT"
 script = ExtResource("19_cd8qn")
-uri_to_go = "https://github.com/Codename-Recon/Codename-Recon/issues"
+uri_to_go = "https://github.com/Codename-Recon/Gridlock/issues"
 
 [node name="HSpace" type="MarginContainer" parent="FlowContainer"]
 layout_mode = 2
@@ -868,7 +868,7 @@ theme_override_constants/margin_left = 15
 layout_mode = 2
 text = "DISCUSSIONS"
 script = ExtResource("19_cd8qn")
-uri_to_go = "https://github.com/Codename-Recon/Codename-Recon/discussions"
+uri_to_go = "https://hunter99.itch.io/gridlock/community"
 
 [node name="Version" type="Label" parent="."]
 layout_mode = 1

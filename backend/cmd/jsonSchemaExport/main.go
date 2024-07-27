@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Codename-Recon/Codename-Recon/backend/pkg/models"
+	"github.com/Codename-Recon/Gridlock/backend/pkg/models"
 	"github.com/invopop/jsonschema"
 )
 
 const (
-	REPO_BASE string = "github.com/Codename-Recon/Codename-Recon/backend"
+	REPO_BASE string = "github.com/Codename-Recon/Gridlock/backend"
 )
 
 func saveStructToJson(r *jsonschema.Reflector, obj any, filename string) error {

@@ -2,7 +2,7 @@ class_name MapFile
 extends Node
 
 const MAP_VERSION: String = "1.0.1"
-const MAP_SOURCE: String = "Codename: Recon Map Editor"
+const MAP_SOURCE: String = "Gridlock Map Editor"
 const MAP_GROUND_TILE_ID: String = "PLAIN_1"
 
 static var _global: GlobalGlobal = Global

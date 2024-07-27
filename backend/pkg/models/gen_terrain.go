@@ -5,7 +5,7 @@
 package models
 
 import (
-	"github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/terrain"
+	"github.com/Codename-Recon/Gridlock/backend/pkg/enums/terrain"
 )
 
 var Terrains = [terrain.SIZE]Terrain{

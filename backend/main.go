@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/movement"
-	"github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/unit"
-	"github.com/Codename-Recon/Codename-Recon/backend/pkg/models"
+	"github.com/Codename-Recon/Gridlock/backend/pkg/enums/movement"
+	"github.com/Codename-Recon/Gridlock/backend/pkg/enums/unit"
+	"github.com/Codename-Recon/Gridlock/backend/pkg/models"
 )
 
 func main() {

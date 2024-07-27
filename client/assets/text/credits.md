@@ -53,4 +53,4 @@
 ![godot-icon](res://godot_icon.svg)
 
 
-[Asset License](https://github.com/Codename-Recon/Codename-Recon/blob/master/LICENSE_ASSETS.md)
+[Asset License](https://github.com/Codename-Recon/Gridlock/blob/master/LICENSE_ASSETS.md)

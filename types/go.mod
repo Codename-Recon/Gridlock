@@ -1,4 +1,4 @@
-module github.com/Codename-Recon/Codename-Recon/types
+module github.com/Codename-Recon/Gridlock/types
 
 go 1.21.6
 
