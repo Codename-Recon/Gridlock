@@ -1,45 +1,27 @@
 # Credits
 
-### Mangs
-  * Project Leader
+### Lead Programmer
+  * Hunter99
 
-### Hunter99
-  * Lead Programmer
-  * Lead Engine Developer
+### Programmer
+  * Dracks
+  * Hunter99
+  * 2-3-Ryan-5
+  * Darkbladercr
 
-### Dracks
-  * Engine Developer
+### Level Designer
+  * Ephraim225
+  * Hunter99
 
-### 2-3-Ryan-5
-  * UI Developer
+### 2D Art
+  * Zamza
+  * FishyFin
+  * Hunter99
+  * Ghost
+  * seerfox
 
-### Ephraim225
-  * Lead Level Designer
-
-### Gloomreach
-  * Lead Unit Concept Artist
-
-### Zamza
-  * Spriter
-
-### Harmless
-  * Composer
-
-
-## Former
-
-### Ghost
-  * Engine Developer
-
-### Darkbladercr
-  * Backend Developer
-
-### seerfox
-  * CO Art Director
-  * UI Designer
-
-### Sleepy Tech
-  * Spriter
+### Composer
+  * Harmless
 
 
 ## External
