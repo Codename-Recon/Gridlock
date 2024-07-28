@@ -1,4 +1,4 @@
-# Codename-Recon types
+# Gridlock types
 
 This is a shared repo for client and server to use for the definition of different data types.
 

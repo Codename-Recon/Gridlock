@@ -1,4 +1,4 @@
-module github.com/Codename-Recon/Codename-Recon/backend
+module github.com/Codename-Recon/Gridlock/backend
 
 go 1.21.6
 

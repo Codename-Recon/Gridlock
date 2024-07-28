@@ -6,7 +6,7 @@ The game features a variety of different units, each with its own strengths, wea
 ## Play
 
 You can play the game directly in your browser: [Play](https://hunter99.itch.io/codename-recon)  
-The native versions of the game (Windows, Mac, Linux) can be found in the release section: [Releases](https://github.com/Codename-Recon/Codename-Recon/releases)  
+The native versions of the game (Windows, Mac, Linux) can be found in the release section: [Releases](https://github.com/Codename-Recon/Gridlock/releases)
 Network multiplayer (lobby) currently only works in the native version of the game.​
 
 ## Code Contribution 💻

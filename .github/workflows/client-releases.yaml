@@ -7,7 +7,7 @@ on:
 
 env:
   GODOT_VERSION: 4.2.2
-  EXPORT_NAME: Codename-Recon
+  EXPORT_NAME: Gridlock
   PROJECT_PATH: client
 
 permissions:

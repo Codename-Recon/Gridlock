@@ -1,5 +1,5 @@
 {
-  "$id": "https://raw.githubusercontent.com/Codename-Recon/Codename-Recon/master/types/schemas/weapon.json",
+  "$id": "https://raw.githubusercontent.com/Codename-Recon/Gridlock/master/types/schemas/weapon.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Weapon",
   "type": "object",
