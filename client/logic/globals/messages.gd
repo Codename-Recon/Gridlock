@@ -24,18 +24,22 @@ func spawn(title: String, text: String, reload_to_menu: bool = false) -> void:
 		get_viewport().get_visible_rect().size.y / 2.0 - accept_dialog.size.x / 2.0
 	)
 	_reload_to_menu = reload_to_menu
-	
+
+
 func spawn_markdown(title: String, content: String, action: Button) -> void:
 	markdown_dialog.title = title
 	markdown_dialog_label.markdown_text = content
-	
+
 	for button: Node in markdown_dialog_button_container.get_children():
 		button.queue_free()
-	
+
 	markdown_dialog_button_container.add_child(action)
 	markdown_dialog.show()
-	
-func spawn_notification(title: String, buttons: Array[Button], timeout: int = 0) -> NotificationPanel:
+
+
+func spawn_notification(
+	title: String, buttons: Array[Button], timeout: int = 0
+) -> NotificationPanel:
 	var notice: NotificationPanel = notification.duplicate()
 	notice.title = title
 	notice.actions = buttons

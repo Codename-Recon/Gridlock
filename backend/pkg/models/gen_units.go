@@ -5,8 +5,8 @@
 package models
 
 import (
-	"github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/movement"
-	"github.com/Codename-Recon/Codename-Recon/backend/pkg/enums/unit"
+	"github.com/Codename-Recon/Gridlock/backend/pkg/enums/movement"
+	"github.com/Codename-Recon/Gridlock/backend/pkg/enums/unit"
 )
 
 var Units = [unit.SIZE]Unit{

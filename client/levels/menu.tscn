@@ -139,7 +139,7 @@ func _ready() -> void:
 
 func load_credits() -> void:
 	var markdown_label : MarkdownLabel = $Panel/ScrollContainer/RichTextLabel
-	var file : FileAccess = FileAccess.open(\"res://assets/text/CREDITS.md\", FileAccess.READ)
+	var file : FileAccess = FileAccess.open(\"res://assets/text/credits.md\", FileAccess.READ)
 	var content : String = file.get_as_text()
 	markdown_label.markdown_text = content
 "
@@ -824,6 +824,8 @@ custom_minimum_size = Vector2(455, 500)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 0
+auto_translate = false
+localize_numeral_system = false
 theme_type_variation = &"RichTextOverWhite"
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 42
@@ -879,7 +881,7 @@ grow_vertical = 0
 layout_mode = 2
 text = "BUG_REPORT"
 script = ExtResource("19_cd8qn")
-uri_to_go = "https://github.com/Codename-Recon/Codename-Recon/issues"
+uri_to_go = "https://github.com/Codename-Recon/Gridlock/issues"
 
 [node name="HSpace" type="MarginContainer" parent="FlowContainer"]
 layout_mode = 2
@@ -889,7 +891,7 @@ theme_override_constants/margin_left = 15
 layout_mode = 2
 text = "DISCUSSIONS"
 script = ExtResource("19_cd8qn")
-uri_to_go = "https://github.com/Codename-Recon/Codename-Recon/discussions"
+uri_to_go = "https://hunter99.itch.io/gridlock/community"
 
 [connection signal="visibility_changed" from="MultiplayerMenu" to="MultiplayerMenu" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="MPLobbyListMenu" to="MPLobbyListMenu" method="_on_visibility_changed"]

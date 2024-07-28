@@ -8,7 +8,7 @@ import (
 	"runtime"
 	"text/template"
 
-	"github.com/Codename-Recon/Codename-Recon/backend/pkg/models"
+	"github.com/Codename-Recon/Gridlock/backend/pkg/models"
 )
 
 func isLast(index int, size int) bool {
