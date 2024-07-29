@@ -1,6 +1,6 @@
-extends Panel
-
 class_name NotificationPanel
+
+extends Panel
 
 @export var title: String:
 	set(new_text):
