@@ -116,9 +116,6 @@ msgstr "Nom d'utilisateur"
 msgid "START"
 msgstr "commencer"
 
-msgid "<VERSION>"
-msgstr ""
-
 msgid "BUG_REPORT"
 msgstr ""
 
@@ -256,27 +253,21 @@ msgstr "proche"
 msgid "BUY"
 msgstr "acheter"
 
-#, fuzzy
-#| msgid "ANTI_ALIASING"
 msgctxt "Unit name"
 msgid "ANTI_AIR"
-msgstr "anti crénelage"
+msgstr ""
 
-#, fuzzy
-#| msgid "ANTI_ALIASING"
 msgctxt "Unit name"
 msgid "ANTI_AIR_DESCRIPTION"
-msgstr "anti crénelage"
+msgstr ""
 
 msgctxt "Unit name"
 msgid "APC"
 msgstr ""
 
-#, fuzzy
-#| msgid "MAP_SELECTION"
 msgctxt "Unit name"
 msgid "APC_DESCRIPTION"
-msgstr "sélection de la carte"
+msgstr ""
 
 msgctxt "Unit name"
 msgid "ARTILLERY"
@@ -374,11 +365,9 @@ msgctxt "Movement name"
 msgid "LANDER_DESCRIPTION"
 msgstr ""
 
-#, fuzzy
-#| msgid "MEDIUM"
 msgctxt "Unit name"
 msgid "MEDIUM_TANK"
-msgstr "moyen"
+msgstr ""
 
 msgctxt "Unit name"
 msgid "MEDIUM_TANK_DESCRIPTION"
@@ -488,11 +477,9 @@ msgctxt "Terrain information"
 msgid "BASE"
 msgstr ""
 
-#, fuzzy
-#| msgid "MAP_SELECTION"
 msgctxt "Terrain information"
 msgid "BASE_DESCRIPTION"
-msgstr "sélection de la carte"
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "BEACH"
@@ -679,16 +666,16 @@ msgid "AIR_DESCRIPTION"
 msgstr ""
 
 #, fuzzy
-#| msgid "MAP_SELECTION"
+#| msgid "SELECT"
 msgctxt "Used as title for map_selection menu"
 msgid "MAP_SELECTION"
-msgstr "sélection de la carte"
+msgstr "sélectionner"
 
 #, fuzzy
-#| msgid "MENU"
+#| msgid "MAIN_MENU"
 msgctxt "Used as title for the main menu"
 msgid "MENU"
-msgstr "menu"
+msgstr "menu principal"
 
 msgid "REFILLED"
 msgstr "rempli"
@@ -744,9 +731,6 @@ msgstr ""
 
 #~ msgid "ULTRA"
 #~ msgstr "ultra"
-
-#~ msgid "MAIN_MENU"
-#~ msgstr "menu principal"
 
 #~ msgid "SINGLEPLAYER_MENU"
 #~ msgstr "joueur unique"

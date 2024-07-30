@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:51+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2024-07-30 16:17+0000\n"
+"Last-Translator: don't know <stephan.kessler@outlook.com>\n"
+"Language-Team: German <http://weblate.jaumesingla.es/projects/codename-recon/"
+"game-client/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.12.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5.5\n"
 
 msgid "PLAYER"
 msgstr "Spieler"
@@ -116,9 +118,6 @@ msgstr "Benutzername"
 msgid "START"
 msgstr "Start"
 
-msgid "<VERSION>"
-msgstr ""
-
 msgid "BUG_REPORT"
 msgstr ""
 
@@ -221,7 +220,7 @@ msgid "VERTICAL"
 msgstr ""
 
 msgid "ACCEPT"
-msgstr ""
+msgstr "akzeptieren"
 
 msgid "CANCEL"
 msgstr ""
@@ -256,127 +255,101 @@ msgstr "Schliessen"
 msgid "BUY"
 msgstr "Kaufen"
 
-#, fuzzy
-#| msgid "ANTI_ALIASING"
 msgctxt "Unit name"
 msgid "ANTI_AIR"
-msgstr "Kantenglättung"
+msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "ANTI_AIR_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "APC"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "APC_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "ARTILLERY"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "ARTILLERY_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "B-COPTER"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "B-COPTER_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "BATTLESHIP"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "BATTLESHIP_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "BLACKBOAT"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "BLACK_BOAT_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "BLACKBOMB"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "BLACK_BOMB_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "BOMBER"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "BOMBER_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "CARRIER"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "CARRIER_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "CRUISER"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "CRUISER_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "FIGHTER"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "FIGHTER_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "INFANTRY"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "INFANTRY_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "LANDER"
@@ -386,69 +359,53 @@ msgctxt "Movement name"
 msgid "LANDER"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "LANDER_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Movement name"
 msgid "LANDER_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
-#, fuzzy
-#| msgid "MEDIUM"
 msgctxt "Unit name"
 msgid "MEDIUM_TANK"
-msgstr "Mittel"
+msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "MEDIUM_TANK_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "MECH"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "MECH_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "MEGA_TANK"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "MEGA_TANK_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "MISSILE"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "MISSILE_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "NEO_TANK"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "NEO_TANK_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "PIPERUNNER"
@@ -458,47 +415,37 @@ msgctxt "Movement name"
 msgid "PIPERUNNER"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "PIPERUNNER_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Movement name"
 msgid "PIPERUNNER_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "RECON"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "RECON_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "ROCKET"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "ROCKET_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "STEALTH"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "STEALTH_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "SUB"
@@ -508,285 +455,229 @@ msgctxt "Unit name"
 msgid "T-COPTER"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "T-COPTER_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Unit name"
 msgid "TANK"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Unit name"
 msgid "TANK_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "AIRPORT"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "AIRPORT_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "BASE"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "BASE_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "BEACH"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "BEACH_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "BRIDGE"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "BRIDGE_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "CITY"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "CITY_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "COM_TOWER"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "COM_TOWER_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "HQ"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "HQ_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "LAB"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "LAB_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "MOUNTAIN"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "MOUNTAIN_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "PIPE"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "PIPE_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "PIPE_BROKEN"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "PIPE_BROKEN_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "PIPE_WEAK"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "PIPE_WEAK_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "PLAIN"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "PLAIN_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "PORT"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "PORT_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "REEF"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "REEF_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "RIVER"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "RIVER_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "ROAD"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "ROAD_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "SEA_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Movement name"
 msgid "SEA_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "SILO"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "SILO_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Terrain information"
 msgid "WOOD"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "WOOD_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Movement name"
 msgid "FOOT"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Movement name"
 msgid "FOOT_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Movement name"
 msgid "BAZOOKA"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Movement name"
 msgid "BAZOOKA_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Movement name"
 msgid "TREADS"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Movement name"
 msgid "TREADS_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Movement name"
 msgid "WHEELS"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Movement name"
 msgid "WHEELS_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 msgctxt "Movement name"
 msgid "AIR"
 msgstr ""
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Movement name"
 msgid "AIR_DESCRIPTION"
-msgstr " if the HQ is captured the team is defeated and can no longer play."
+msgstr ""
 
 #, fuzzy
-#| msgid "MAP_SELECTION"
+#| msgid "SELECT"
 msgctxt "Used as title for map_selection menu"
 msgid "MAP_SELECTION"
-msgstr "Map-Auswahl"
+msgstr "Auswählen"
 
 #, fuzzy
-#| msgid "MENU"
+#| msgid "MAIN_MENU"
 msgctxt "Used as title for the main menu"
 msgid "MENU"
-msgstr "Menü"
+msgstr "Hauptmenü"
 
 msgid "REFILLED"
 msgstr "aufgefüllt"
@@ -842,9 +733,6 @@ msgstr ""
 
 #~ msgid "ULTRA"
 #~ msgstr "Ultra"
-
-#~ msgid "MAIN_MENU"
-#~ msgstr "Hauptmenü"
 
 #~ msgid "SINGLEPLAYER_MENU"
 #~ msgstr "Einzelspieler"
