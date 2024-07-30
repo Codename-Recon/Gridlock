@@ -14,8 +14,8 @@ extends GridContainer
 
 
 func _ready() -> void:
-	pass # Replace with function body.
-	
+	pass  # Replace with function body.
+
 
 func _update(terrain: Terrain) -> void:
 	if not terrain:

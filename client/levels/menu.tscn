@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://crj13jqmktmtn"]
+[gd_scene load_steps=57 format=3 uid="uid://crj13jqmktmtn"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h4_format.gd" id="23_42f3s"]
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h5_format.gd" id="24_w2k3p"]
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h6_format.gd" id="25_4uox6"]
+[ext_resource type="Script" path="res://logic/ui/new_version_checker.gd" id="25_eht35"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="34_rl1iq"]
 [ext_resource type="Script" path="res://logic/ui/game_buttons.gd" id="40_om04v"]
 [ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="41_n387a"]
@@ -843,6 +844,28 @@ h5 = SubResource("Resource_kdmgr")
 h6 = SubResource("Resource_b084c")
 metadata/_edit_layout_mode = 1
 
+[node name="Version" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -178.0
+offset_top = -56.0
+offset_right = -38.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "<VERSION>"
+
+[node name="VersionChecker" type="Node" parent="Version" node_paths=PackedStringArray("current_version_label")]
+script = ExtResource("25_eht35")
+current_version_label = NodePath("..")
+
 [node name="FlowContainer" type="FlowContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -869,26 +892,6 @@ layout_mode = 2
 text = "DISCUSSIONS"
 script = ExtResource("19_cd8qn")
 uri_to_go = "https://hunter99.itch.io/gridlock/community"
-
-[node name="Version" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -56.0
-offset_right = -38.0
-offset_bottom = -24.0
-grow_horizontal = 0
-grow_vertical = 0
-auto_translate = false
-localize_numeral_system = false
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 32
-text = "<VERSION>"
 
 [connection signal="visibility_changed" from="MultiplayerMenu" to="MultiplayerMenu" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="MPLobbyListMenu" to="MPLobbyListMenu" method="_on_visibility_changed"]

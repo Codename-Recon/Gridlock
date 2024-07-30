@@ -55,31 +55,11 @@ enum GameMode { SINGLE, HOTSEAT, NETWORK }
 enum Weather { CLEAR, RAIN, SNOW }
 
 # TODO: Should be generated
-enum MovementType {
-	FOOT,
-	BAZOOKA,
-	TREADS,
-	WHEELS,
-	AIR,
-	SEA,
-	LANDER,
-	PIPERUNNER
-}
+enum MovementType { FOOT, BAZOOKA, TREADS, WHEELS, AIR, SEA, LANDER, PIPERUNNER }
 
 # TODO: Should be generated
 enum WeaponType {
-	MACHINE_GUN,
-	VULCAN_CANNON,
-	MISSILE,
-	ROCKET,
-	SMALL_CANNON,
-	BIG_CANNON,
-	TORPEDO,
-	BOMB
+	MACHINE_GUN, VULCAN_CANNON, MISSILE, ROCKET, SMALL_CANNON, BIG_CANNON, TORPEDO, BOMB
 }
 
-enum WeaponCategory{
-	NONE,
-	PRIMARY,
-	SECONDARY
-}
+enum WeaponCategory { NONE, PRIMARY, SECONDARY }

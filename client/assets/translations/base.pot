@@ -1,4 +1,4 @@
-# LANGUAGE translation for Codename: Recon for the following files:
+# LANGUAGE translation for Gridlock for the following files:
 # res://levels/game.tscn
 # res://levels/game_over_screen.tscn
 # res://levels/map_editor.tscn
@@ -49,13 +49,14 @@
 # res://logic/ui/unit_stats_stars.gd
 # res://assets/translations/dynamic_string_loader.gd
 # res://logic/game/game_logic.gd
+# res://logic/ui/new_version_checker.gd
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Codename: Recon\n"
+"Project-Id-Version: Gridlock\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
@@ -206,6 +207,10 @@ msgstr ""
 #: levels/menu.tscn
 #: logic/ui/map_selection.tscn
 msgid "START"
+msgstr ""
+
+#: levels/menu.tscn
+msgid "<VERSION>"
 msgstr ""
 
 #: levels/menu.tscn
@@ -411,39 +416,6 @@ msgctxt "Unit name"
 msgid "APC_DESCRIPTION"
 msgstr ""
 
-
-msgid "VS_PLAYER"
-msgstr "VS Player"
-
-msgid "GRAPHICS"
-msgstr "Graphics"
-
-msgid "ANTI_ALIASING"
-msgstr "AntiAliasing"
-
-msgid "SHADOWS"
-msgstr "Shadows"
-
-msgid "TERRAIN"
-msgstr "Terrain"
-
-msgid "UNIT"
-msgstr "Unit"
-
-msgid "TERRAINS"
-msgstr "Terrains"
-
-msgid "UNITS"
-msgstr "Units"
-
-msgid "TILES"
-msgstr "Tiles"
-
-msgid "LOW"
-msgstr "Low"
-
-msgid "MEDIUM"
-msgstr "Medium"
 #: assets/translations/dynamic_string_loader.gd
 msgctxt "Unit name"
 msgid "ARTILLERY"
@@ -971,4 +943,24 @@ msgstr ""
 
 #: logic/game/game_logic.gd
 msgid "MESSAGE_TEXT_PLAYER_LEFT"
+msgstr ""
+
+#: logic/ui/new_version_checker.gd
+msgctxt "Notification title for a new version"
+msgid "VERSION_NOTIFICATION_TITLE"
+msgstr ""
+
+#: logic/ui/new_version_checker.gd
+msgctxt "Open release in the browser, button in notification"
+msgid "VERSION_NOTIFICATION_OPEN"
+msgstr ""
+
+#: logic/ui/new_version_checker.gd
+msgctxt "Open details of the notification"
+msgid "VERSION_NOTIFICATION_MODE_DETAILS"
+msgstr ""
+
+#: logic/ui/new_version_checker.gd
+msgctxt "Open release in the browser"
+msgid "VERSION_WINDOW_OPEN"
 msgstr ""

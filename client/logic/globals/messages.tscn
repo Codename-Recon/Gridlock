@@ -1,15 +1,227 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1m4mfjdmm725"]
+[gd_scene load_steps=20 format=3 uid="uid://b1m4mfjdmm725"]
 
 [ext_resource type="Script" path="res://logic/globals/messages.gd" id="1_jpjst"]
+[ext_resource type="Script" path="res://logic/ui/components/button_to_uri.gd" id="2_l5qut"]
+[ext_resource type="Script" path="res://addons/markdownlabel/markdownlabel.gd" id="2_xrx86"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h1_format.gd" id="3_vdktb"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h2_format.gd" id="4_bx784"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h3_format.gd" id="5_t2v43"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h4_format.gd" id="6_q411e"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h5_format.gd" id="7_o3rat"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h6_format.gd" id="8_ciyeo"]
+[ext_resource type="Script" path="res://logic/globals/notification_panel.gd" id="9_vgyuj"]
+[ext_resource type="Script" path="res://logic/ui/components/button_from_theme.gd" id="11_ybuud"]
+
+[sub_resource type="Resource" id="Resource_4ew64"]
+resource_local_to_scene = true
+script = ExtResource("3_vdktb")
+font_size = 2.285
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_8u4x7"]
+resource_local_to_scene = true
+script = ExtResource("4_bx784")
+font_size = 1.714
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_shqp2"]
+resource_local_to_scene = true
+script = ExtResource("5_t2v43")
+font_size = 1.428
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_3uc32"]
+resource_local_to_scene = true
+script = ExtResource("6_q411e")
+font_size = 1.142
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_kaotx"]
+resource_local_to_scene = true
+script = ExtResource("7_o3rat")
+font_size = 1.0
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_r37pj"]
+resource_local_to_scene = true
+script = ExtResource("8_ciyeo")
+font_size = 0.857
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Image" id="Image_sglb1"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_6f8dw"]
+image = SubResource("Image_sglb1")
 
 [node name="Messages" type="Node"]
 script = ExtResource("1_jpjst")
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
+position = Vector2i(0, 36)
 size = Vector2i(292, 101)
 min_size = Vector2i(200, 0)
 dialog_text = "fsaldjglkdfslkgslfgkjsldfjglksjdlk"
 dialog_autowrap = true
 
+[node name="MarkdownDialog" type="Window" parent="."]
+title = "Version Xyz Available"
+initial_position = 2
+size = Vector2i(300, 300)
+visible = false
+
+[node name="MarkdownLabel" type="RichTextLabel" parent="MarkdownDialog"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=36]New version[/font_size]
+[ul]INFORMATION NOT AVAILABLE
+[/ul]
+"
+script = ExtResource("2_xrx86")
+markdown_text = "# New version
+* INFORMATION NOT AVAILABLE
+"
+h1 = SubResource("Resource_4ew64")
+h2 = SubResource("Resource_8u4x7")
+h3 = SubResource("Resource_shqp2")
+h4 = SubResource("Resource_3uc32")
+h5 = SubResource("Resource_kaotx")
+h6 = SubResource("Resource_r37pj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarkdownDialog"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Button" type="Button" parent="MarkdownDialog/HBoxContainer"]
+layout_mode = 2
+text = "open"
+
+[node name="Notification" type="Panel" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 84)
+offset_right = 480.0
+offset_bottom = 84.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("9_vgyuj")
+
+[node name="Title" type="Label" parent="Notification"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 54.0
+offset_top = 5.0
+offset_right = -54.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLargeOverWhite"
+text = "Notification title"
+horizontal_alignment = 1
+
+[node name="Actions" type="HBoxContainer" parent="Notification"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -49.0
+offset_right = -10.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Button2" type="Button" parent="Notification/Actions"]
+layout_mode = 2
+text = "See details"
+
+[node name="Container" type="Control" parent="Notification/Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonToUri" type="Button" parent="Notification/Actions"]
+layout_mode = 2
+text = "Open In browser"
+script = ExtResource("2_l5qut")
+
+[node name="Close" type="Button" parent="Notification"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 35.0
+grow_horizontal = 0
+theme_type_variation = &"ButtonOverWhite"
+icon = SubResource("ImageTexture_6f8dw")
+flat = true
+script = ExtResource("11_ybuud")
+icon_name = "close"
+theme_type = "Window"
+
+[node name="Timer" type="Timer" parent="Notification"]
+process_callback = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NotificationsList" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -220.0
+offset_top = 10.0
+offset_right = 220.0
+offset_bottom = -10.0
+grow_horizontal = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 10
+
 [connection signal="canceled" from="AcceptDialog" to="." method="_on_accept_dialog_canceled"]
 [connection signal="confirmed" from="AcceptDialog" to="." method="_on_accept_dialog_confirmed"]
+[connection signal="close_requested" from="MarkdownDialog" to="." method="_on_markdown_dialog_close_requested"]
+[connection signal="pressed" from="Notification/Close" to="Notification" method="_on_close_pressed"]
+[connection signal="timeout" from="Notification/Timer" to="Notification" method="_on_timer_timeout"]

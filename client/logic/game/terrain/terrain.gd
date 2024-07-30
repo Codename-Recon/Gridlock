@@ -84,12 +84,11 @@ static func get_distance(start: Terrain, end: Terrain) -> int:
 
 
 static func filter_movable_terrains(
-	terrains: Array[Terrain], 
-	unit: Unit, 
-	filter_blocking: bool, 
+	terrains: Array[Terrain],
+	unit: Unit,
+	filter_blocking: bool,
 	filter_movement_distance: bool,
 ) -> Array[Terrain]:
-
 	if filter_movement_distance:
 		# Removing terrains which are too far to move to
 		terrains = terrains.filter(
@@ -112,15 +111,12 @@ static func filter_movable_terrains(
 
 
 static func filter_attackable_terrains(
-	terrains: Array[Terrain], 
-	unit: Unit, 
-	attack_point: Terrain
+	terrains: Array[Terrain], unit: Unit, attack_point: Terrain
 ) -> Array[Terrain]:
-	
 	terrains = terrains.filter(
 		func(a: Terrain) -> bool: return (
-			get_distance(attack_point, a) <= unit.values.max_range and 
-			get_distance(attack_point, a) >= unit.values.min_range
+			get_distance(attack_point, a) <= unit.values.max_range
+			and get_distance(attack_point, a) >= unit.values.min_range
 		)
 	)
 	return terrains
@@ -327,7 +323,8 @@ func _update_color() -> void:
 			color = neutral_color
 
 
-class Values extends NumberFix:
+class Values:
+	extends NumberFix
 	var name: String
 	var description: String
 	var defense: int

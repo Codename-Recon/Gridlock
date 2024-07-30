@@ -7,10 +7,7 @@ signal input_dragged(terrain: Terrain)
 signal input_escape_triggered
 signal selection_moved(terrain: Terrain)
 
-enum SelectionType{
-	DEFAULT,
-	ATTACK
-}
+enum SelectionType { DEFAULT, ATTACK }
 
 const ZOOM_RESOLUTION: int = 128  # should be a base 2 number to prevent texture bleeding
 
