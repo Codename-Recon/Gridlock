@@ -61,371 +61,695 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: levels/game.tscn
-#: levels/game_over_screen.tscn
-#: logic/ui/map_editor_ui.gd
-#: logic/ui/map_editor_ui.tscn
-#: logic/ui/round_label.gd
 msgid "PLAYER"
 msgstr ""
 
-#: levels/game.tscn
-#: logic/ui/round_label.gd
 msgid "TURN"
 msgstr ""
 
-#: levels/game.tscn
 msgid "MOVE"
 msgstr ""
 
-#: levels/game.tscn
 msgid "ATTACK"
 msgstr ""
 
-#: levels/game.tscn
 msgid "ENTER"
 msgstr ""
 
-#: levels/game.tscn
 msgid "DEPLOY"
 msgstr ""
 
-#: levels/game.tscn
 msgid "JOIN"
 msgstr ""
 
-#: levels/game.tscn
 msgid "SUPPLY"
 msgstr ""
 
-#: levels/game.tscn
 msgid "CAPTURE"
 msgstr ""
 
-#: levels/game.tscn
-#: logic/ui/floating_info.tscn
 msgid "100"
 msgstr ""
 
-#: levels/game.tscn
 msgid "2\n"
 msgstr ""
 
-#: levels/game.tscn
 msgid "NEXT_ROUND"
 msgstr ""
 
-#: levels/game.tscn
 msgid "Player 1 Turn"
 msgstr ""
 
-#: levels/game.tscn
-#: levels/menu.tscn
 msgid "SETTINGS"
 msgstr ""
 
-#: levels/game.tscn
-#: logic/ui/map_editor_ui.tscn
 msgid "EXIT_TO_MENU"
 msgstr ""
 
-#: levels/game.tscn
-#: logic/ui/map_editor_ui.tscn
 msgid "CONTINUE"
 msgstr ""
 
-#: levels/game.tscn
-#: levels/menu.tscn
-#: logic/ui/map_selection.tscn
 msgid "BACK"
 msgstr ""
 
-#: levels/game_over_screen.tscn
 msgid "WON"
 msgstr ""
 
-#: levels/game_over_screen.tscn
 msgid "PLAYER 1 WINS"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "SINGLEPLAYER"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "MULTIPLAYER"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "MAP_EDITOR"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "CREDITS"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "EXIT"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "TUTORIAL"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "CAMPAIGN"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "VS_AI"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "HOT_SEAT"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "LOBBY"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "RANKED"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "REFRESH"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "HOST"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "USERNAME"
 msgstr ""
 
-#: levels/menu.tscn
-#: logic/ui/map_selection.tscn
 msgid "START"
 msgstr ""
 
-#: levels/menu.tscn
-msgid "<VERSION>"
-msgstr ""
-
-#: levels/menu.tscn
 msgid "BUG_REPORT"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "DISCUSSIONS"
 msgstr ""
 
-#: logic/ui/board_analytic.tscn
 msgid "SEA"
 msgstr ""
 
-#: logic/ui/board_analytic.tscn
+msgctxt "Terrain information"
+msgid "SEA"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "SEA"
+msgstr ""
+
 msgid "Infantry"
 msgstr ""
 
-#: logic/ui/lobby_list.gd
 msgid "MESSAGE_TITLE_LOBBY_CONNECTION_PROBLEM"
 msgstr ""
 
-#: logic/ui/lobby_list.gd
 msgid "MESSAGE_TEXT_LOBBY_CONNECTION_PROBLEM"
 msgstr ""
 
-#: logic/ui/lobby_list.gd
 msgid "DEBUG_ACCOUNT"
 msgstr ""
 
-#: logic/ui/lobby_selection_element.tscn
 msgid "MP_JOIN"
 msgstr ""
 
-#: logic/ui/lobby_user_element.tscn
 msgid "MP_KICK"
 msgstr ""
 
-#: logic/ui/map_editor.gd
 msgid "MESSAGE_TITLE_MAP_EDITOR_SAVE_NO_NAME"
 msgstr ""
 
-#: logic/ui/map_editor.gd
 msgid "MESSAGE_TEXT_MAP_EDITOR_SAVE_NO_NAME"
 msgstr ""
 
-#: logic/ui/map_editor_ui.gd
-#: logic/ui/map_editor_ui.tscn
 msgid "NEUTRAL"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "MAP_SETTINGS"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "NAME"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "AUTHOR"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "PLAYER_SETTINGS"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "PLAYERS"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "MONEY"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "TERRAIN_SETTINGS"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "SELECTED"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "OWNER"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "UNIT_SETTINGS"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "HEALTH"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "FUEL"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "AMMO"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "RESIZE"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "SAVE"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "LOAD"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "Resize map"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "HORIZONTAL"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "VERTICAL"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "ACCEPT"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "CANCEL"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "Open a File"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "*.crm"
 msgstr ""
 
-#: logic/ui/map_selection_element.tscn
 msgid "Map Name"
 msgstr ""
 
-#: logic/ui/map_selection_element.tscn
 msgid "SELECT"
 msgstr ""
 
-#: logic/ui/menu.tscn
 msgid "Main Menu"
 msgstr ""
 
-#: logic/ui/settings_content.tscn
 msgid "AUDIO"
 msgstr ""
 
-#: logic/ui/settings_content.tscn
 msgid "MUSIC"
 msgstr ""
 
-#: logic/ui/settings_content.tscn
 msgid "SOUND"
 msgstr ""
 
-#: logic/ui/shop.tscn
 msgid "CLOSE"
 msgstr ""
 
-#: logic/ui/shop_element.tscn
 msgid "BUY"
 msgstr ""
 
-#: logic/game/game_logic.gd
+msgctxt "Unit name"
+msgid "ANTI_AIR"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "ANTI_AIR_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "APC"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "APC_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "ARTILLERY"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "ARTILLERY_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "B-COPTER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "B-COPTER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BATTLESHIP"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BATTLESHIP_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BLACKBOAT"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BLACK_BOAT_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BLACKBOMB"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BLACK_BOMB_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BOMBER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BOMBER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "CARRIER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "CARRIER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "CRUISER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "CRUISER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "FIGHTER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "FIGHTER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "INFANTRY"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "INFANTRY_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "LANDER"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "LANDER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "LANDER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "LANDER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MEDIUM_TANK"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MEDIUM_TANK_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MECH"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MECH_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MEGA_TANK"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MEGA_TANK_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MISSILE"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MISSILE_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "NEO_TANK"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "NEO_TANK_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "PIPERUNNER"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "PIPERUNNER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "PIPERUNNER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "PIPERUNNER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "RECON"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "RECON_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "ROCKET"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "ROCKET_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "STEALTH"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "STEALTH_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "SUB"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "T-COPTER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "T-COPTER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "TANK"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "TANK_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "AIRPORT"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "AIRPORT_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "BASE"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "BASE_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "BEACH"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "BEACH_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "BRIDGE"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "BRIDGE_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "CITY"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "CITY_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "COM_TOWER"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "COM_TOWER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "HQ"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "HQ_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "LAB"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "LAB_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "MOUNTAIN"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "MOUNTAIN_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PIPE"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PIPE_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PIPE_BROKEN"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PIPE_BROKEN_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PIPE_WEAK"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PIPE_WEAK_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PLAIN"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PLAIN_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PORT"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PORT_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "REEF"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "REEF_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "RIVER"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "RIVER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "ROAD"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "ROAD_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "SEA_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "SEA_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "SILO"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "SILO_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "WOOD"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "WOOD_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "FOOT"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "FOOT_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "BAZOOKA"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "BAZOOKA_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "TREADS"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "TREADS_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "WHEELS"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "WHEELS_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "AIR"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "AIR_DESCRIPTION"
+msgstr ""
+
+msgctxt "Used as title for map_selection menu"
+msgid "MAP_SELECTION"
+msgstr ""
+
+msgctxt "Used as title for the main menu"
+msgid "MENU"
+msgstr ""
+
 msgid "REFILLED"
 msgstr ""
 
-#: logic/game/game_logic.gd
 msgid "DEPLOYED"
 msgstr ""
 
-#: logic/game/game_logic.gd
 msgid "ENTERED"
 msgstr ""
 
-#: logic/game/game_logic.gd
 msgid "JOINED"
 msgstr ""
 
-#: logic/game/game_logic.gd
 msgid "MESSAGE_TITLE_PLAYER_LEFT"
 msgstr ""
 
-#: logic/game/game_logic.gd
 msgid "MESSAGE_TEXT_PLAYER_LEFT"
 msgstr ""
 
-#: logic/ui/new_version_checker.gd
 msgctxt "Notification title for a new version"
 msgid "VERSION_NOTIFICATION_TITLE"
 msgstr ""
 
-#: logic/ui/new_version_checker.gd
 msgctxt "Open release in the browser, button in notification"
 msgid "VERSION_NOTIFICATION_OPEN"
 msgstr ""
 
-#: logic/ui/new_version_checker.gd
 msgctxt "Open details of the notification"
 msgid "VERSION_NOTIFICATION_MODE_DETAILS"
 msgstr ""
 
-#: logic/ui/new_version_checker.gd
 msgctxt "Open release in the browser"
 msgid "VERSION_WINDOW_OPEN"
 msgstr ""

@@ -118,15 +118,20 @@ msgstr "Benutzername"
 msgid "START"
 msgstr "Start"
 
-msgid "<VERSION>"
-msgstr ""
-
 msgid "BUG_REPORT"
 msgstr ""
 
 msgid "DISCUSSIONS"
 msgstr ""
 
+msgid "SEA"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "SEA"
+msgstr ""
+
+msgctxt "Movement name"
 msgid "SEA"
 msgstr ""
 
@@ -250,6 +255,430 @@ msgstr "Schliessen"
 msgid "BUY"
 msgstr "Kaufen"
 
+msgctxt "Unit name"
+msgid "ANTI_AIR"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "ANTI_AIR_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "APC"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "APC_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "ARTILLERY"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "ARTILLERY_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "B-COPTER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "B-COPTER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BATTLESHIP"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BATTLESHIP_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BLACKBOAT"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BLACK_BOAT_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BLACKBOMB"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BLACK_BOMB_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BOMBER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "BOMBER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "CARRIER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "CARRIER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "CRUISER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "CRUISER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "FIGHTER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "FIGHTER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "INFANTRY"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "INFANTRY_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "LANDER"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "LANDER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "LANDER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "LANDER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MEDIUM_TANK"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MEDIUM_TANK_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MECH"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MECH_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MEGA_TANK"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MEGA_TANK_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MISSILE"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "MISSILE_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "NEO_TANK"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "NEO_TANK_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "PIPERUNNER"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "PIPERUNNER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "PIPERUNNER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "PIPERUNNER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "RECON"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "RECON_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "ROCKET"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "ROCKET_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "STEALTH"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "STEALTH_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "SUB"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "T-COPTER"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "T-COPTER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "TANK"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "TANK_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "AIRPORT"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "AIRPORT_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "BASE"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "BASE_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "BEACH"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "BEACH_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "BRIDGE"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "BRIDGE_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "CITY"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "CITY_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "COM_TOWER"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "COM_TOWER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "HQ"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "HQ_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "LAB"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "LAB_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "MOUNTAIN"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "MOUNTAIN_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PIPE"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PIPE_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PIPE_BROKEN"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PIPE_BROKEN_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PIPE_WEAK"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PIPE_WEAK_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PLAIN"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PLAIN_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PORT"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "PORT_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "REEF"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "REEF_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "RIVER"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "RIVER_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "ROAD"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "ROAD_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "SEA_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "SEA_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "SILO"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "SILO_DESCRIPTION"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "WOOD"
+msgstr ""
+
+msgctxt "Terrain information"
+msgid "WOOD_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "FOOT"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "FOOT_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "BAZOOKA"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "BAZOOKA_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "TREADS"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "TREADS_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "WHEELS"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "WHEELS_DESCRIPTION"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "AIR"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "AIR_DESCRIPTION"
+msgstr ""
+
+#, fuzzy
+#| msgid "SELECT"
+msgctxt "Used as title for map_selection menu"
+msgid "MAP_SELECTION"
+msgstr "Auswählen"
+
+#, fuzzy
+#| msgid "MAIN_MENU"
+msgctxt "Used as title for the main menu"
+msgid "MENU"
+msgstr "Hauptmenü"
+
 msgid "REFILLED"
 msgstr "aufgefüllt"
 
@@ -304,9 +733,6 @@ msgstr ""
 
 #~ msgid "ULTRA"
 #~ msgstr "Ultra"
-
-#~ msgid "MAIN_MENU"
-#~ msgstr "Hauptmenü"
 
 #~ msgid "SINGLEPLAYER_MENU"
 #~ msgstr "Einzelspieler"
