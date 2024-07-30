@@ -3,6 +3,8 @@ on:
   push:
     branches:
     - weblate-translations
+permissions:
+  pull-requests: write
 
 jobs:
   pull-request:
