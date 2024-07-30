@@ -210,10 +210,6 @@ msgid "START"
 msgstr ""
 
 #: levels/menu.tscn
-msgid "<VERSION>"
-msgstr ""
-
-#: levels/menu.tscn
 msgid "BUG_REPORT"
 msgstr ""
 

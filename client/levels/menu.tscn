@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://crj13jqmktmtn"]
+[gd_scene load_steps=58 format=3 uid="uid://crj13jqmktmtn"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
@@ -225,6 +225,14 @@ is_italic = false
 is_underlined = false
 override_font_color = false
 font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_a62hh"]
+script/source = "@tool
+extends Label
+
+func _ready() -> void:
+	text = NewVersionChecker.current_version
+"
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -857,14 +865,16 @@ offset_right = -38.0
 offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
+auto_translate = false
+localize_numeral_system = false
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
 text = "<VERSION>"
+script = SubResource("GDScript_a62hh")
 
-[node name="VersionChecker" type="Node" parent="Version" node_paths=PackedStringArray("current_version_label")]
+[node name="VersionChecker" type="Node" parent="Version"]
 script = ExtResource("25_eht35")
-current_version_label = NodePath("..")
 
 [node name="FlowContainer" type="FlowContainer" parent="."]
 layout_mode = 1
