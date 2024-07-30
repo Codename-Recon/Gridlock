@@ -922,15 +922,23 @@ msgstr ""
 "terrain cover and serve as a hiding spot in Fog of War."
 
 
+#: logic/ui/new_version_checker.gd
+msgctxt "Notification title for a new version"
 msgid "VERSION_NOTIFICATION_TITLE"
 msgstr "Version {version} available!"
 
 
+#: logic/ui/new_version_checker.gd
+msgctxt "Open release in the browser, button in notification"
 msgid "VERSION_NOTIFICATION_OPEN"
 msgstr "Open"
 
+#: logic/ui/new_version_checker.gd
+msgctxt "Open details of the notification"
 msgid "VERSION_NOTIFICATION_MODE_DETAILS"
 msgstr "More details"
 
+#: logic/ui/new_version_checker.gd
+msgctxt "Open release in the browser"
 msgid "VERSION_WINDOW_OPEN"
 msgstr "Open release"

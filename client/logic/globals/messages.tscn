@@ -154,6 +154,8 @@ offset_top = 5.0
 offset_right = -54.0
 offset_bottom = 31.0
 grow_horizontal = 2
+auto_translate = false
+localize_numeral_system = false
 theme_type_variation = &"HeaderLargeOverWhite"
 text = "Notification title"
 horizontal_alignment = 1
@@ -175,6 +177,8 @@ alignment = 1
 
 [node name="Button2" type="Button" parent="Notification/Actions"]
 layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
 text = "See details"
 
 [node name="Container" type="Control" parent="Notification/Actions"]
@@ -183,6 +187,8 @@ size_flags_horizontal = 3
 
 [node name="ButtonToUri" type="Button" parent="Notification/Actions"]
 layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
 text = "Open In browser"
 script = ExtResource("2_l5qut")
 
@@ -196,6 +202,8 @@ offset_top = 4.0
 offset_right = -4.0
 offset_bottom = 35.0
 grow_horizontal = 0
+auto_translate = false
+localize_numeral_system = false
 theme_type_variation = &"ButtonOverWhite"
 icon = SubResource("ImageTexture_6f8dw")
 flat = true

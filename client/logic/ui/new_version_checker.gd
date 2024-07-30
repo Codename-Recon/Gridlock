@@ -1,10 +1,15 @@
+class_name NewVersionChecker
+
 extends Node
 
 @export var OWNER: String = "Codename-Recon"
-@export var REPO: String = "Codename-Recon"
-@export var current_version_label: Label
+@export var REPO: String = "Gridlock"
 
 @onready var messages: GlobalMessages = Messages
+
+static var current_version: String :
+	get:
+		return ProjectSettings.get_setting("application/config/version")
 
 
 class Version:
@@ -80,7 +85,7 @@ func _on_request_completed(
 	var valid_releases: Array = release_list.filter(_filter_release)
 	if valid_releases.size() > 0:
 		var last_release: Dictionary = valid_releases[0]
-		compare_with_current(last_release, current_version_label.text)
+		compare_with_current(last_release, NewVersionChecker.current_version)
 
 
 func load_release_data(release_data: Dictionary, version: Version) -> void:
