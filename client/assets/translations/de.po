@@ -12,470 +12,818 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 3.12.2\n"
 
-#: levels/game.tscn levels/game_over_screen.tscn logic/ui/map_editor_ui.gd
-#: logic/ui/map_editor_ui.tscn logic/ui/round_label.gd
 msgid "PLAYER"
 msgstr "Spieler"
 
-#: levels/game.tscn logic/ui/round_label.gd
 msgid "TURN"
 msgstr "Runde"
 
-#: levels/game.tscn
 msgid "MOVE"
 msgstr "Bewegen"
 
-#: levels/game.tscn
 msgid "ATTACK"
 msgstr "Angreifen"
 
-#: levels/game.tscn
 msgid "ENTER"
 msgstr "Einsteigen"
 
-#: levels/game.tscn
 msgid "DEPLOY"
 msgstr "Absetzten"
 
-#: levels/game.tscn
 msgid "JOIN"
 msgstr "Fusionieren"
 
-#: levels/game.tscn
 msgid "SUPPLY"
 msgstr "Auffüllen"
 
-#: levels/game.tscn
 msgid "CAPTURE"
 msgstr "Einnehmen"
 
-#: levels/game.tscn logic/ui/floating_info.tscn
 msgid "100"
 msgstr ""
 
-#: levels/game.tscn
 msgid "2\n"
 msgstr ""
 
-#: levels/game.tscn
 msgid "NEXT_ROUND"
 msgstr "Nächste Runde"
 
-#: levels/game.tscn
 msgid "Player 1 Turn"
 msgstr ""
 
-#: levels/game.tscn levels/menu.tscn
 msgid "SETTINGS"
 msgstr "Einstellungen"
 
-#: levels/game.tscn logic/ui/map_editor_ui.tscn
 msgid "EXIT_TO_MENU"
 msgstr "Beenden"
 
-#: levels/game.tscn logic/ui/map_editor_ui.tscn
 msgid "CONTINUE"
 msgstr "Weiter"
 
-#: levels/game.tscn levels/menu.tscn logic/ui/map_selection.tscn
 msgid "BACK"
 msgstr "Zurück"
 
-#: levels/game_over_screen.tscn
 msgid "WON"
 msgstr "Gewinnt"
 
-#: levels/game_over_screen.tscn
 #, fuzzy
 msgid "PLAYER 1 WINS"
 msgstr "Spieler"
 
-#: levels/menu.tscn
 msgid "SINGLEPLAYER"
 msgstr "Einzelspieler"
 
-#: levels/menu.tscn
 #, fuzzy
 msgid "MULTIPLAYER"
 msgstr "Mehrspieler"
 
-#: levels/menu.tscn
 msgid "MAP_EDITOR"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "CREDITS"
 msgstr "Credits"
 
-#: levels/menu.tscn
 msgid "EXIT"
 msgstr "Exit"
 
-#: levels/menu.tscn
 msgid "TUTORIAL"
 msgstr "Tutorial"
 
-#: levels/menu.tscn
 msgid "CAMPAIGN"
 msgstr "Kampagne"
 
-#: levels/menu.tscn
 msgid "VS_AI"
 msgstr "VS KI"
 
-#: levels/menu.tscn
 msgid "HOT_SEAT"
 msgstr "Hot Seat"
 
-#: levels/menu.tscn
 msgid "LOBBY"
 msgstr "Lobby"
 
-#: levels/menu.tscn
 msgid "RANKED"
 msgstr "Rangliste"
 
-#: levels/menu.tscn
 msgid "REFRESH"
 msgstr "Aktualisieren"
 
-#: levels/menu.tscn
 msgid "HOST"
 msgstr "Erstellen"
 
-#: levels/menu.tscn
 msgid "USERNAME"
 msgstr "Benutzername"
 
-#: levels/menu.tscn logic/ui/map_selection.tscn
 msgid "START"
 msgstr "Start"
 
-#: levels/menu.tscn
-msgid ""
-"[center][b]Credits[/b][/center]\n"
-"\n"
-"Mangs\n"
-"[indent][i]Project Leader[/i][/indent]\n"
-"\n"
-"Hunter99\n"
-"[indent][i]Lead Programmer[/i][/indent]\n"
-"[indent][i]Lead Engine Developer[/i][/indent]\n"
-"\n"
-"jaume\n"
-"[indent][i]Engine Developer[/i][/indent]\n"
-"\n"
-"2-3-Ryan-5\n"
-"[indent][i]UI Developer[/i][/indent]\n"
-"\n"
-"Ephraim225\n"
-"[indent][i]Lead Level Designer[/i][/indent]\n"
-"\n"
-"Gloomreach\n"
-"[indent][i]Lead Unit Concept Artist[/i][/indent]\n"
-"\n"
-"Zamza\n"
-"[indent][i]Spriter[/i][/indent]\n"
-"\n"
-"Harmless\n"
-"[indent][i]Composer[/i][/indent]\n"
-"\n"
-"\n"
-"[center][b]Former[/b][/center]\n"
-"\n"
-"Ghost\n"
-"[indent][i]Engine Developer[/i][/indent]\n"
-"\n"
-"Darkbladercr\n"
-"[indent][i]Backend Developer[/i][/indent]\n"
-"\n"
-"seerfox\n"
-"[indent][i]CO Art Director[/i][/indent]\n"
-"[indent][i]UI Designer[/i][/indent]\n"
-"\n"
-"Sleepy Tech\n"
-"[indent][i]Spriter[/i][/indent]\n"
-"\n"
-"\n"
-"[center][b]External[/b][/center]\n"
-"\n"
-"[url=https://www.kenney.nl/assets]Kenney Game Assets[/url]\n"
-"[indent][i]2D Art, Sound[/i][/indent]\n"
-"\n"
-"[url=https://opengameart.org/content/menu-music]mrpoly[/url]\n"
-"[indent][i]Music[/i][/indent]\n"
-"\n"
-"[url=https://opengameart.org/content/awake-megawall-10]cynicmusic[/url]\n"
-"[indent][i]Music[/i][/indent]\n"
-"\n"
-"[url=https://opengameart.org/content/cyberpunk-moonlight-sonata]Joth[/url]\n"
-"[indent][i]Music[/i][/indent]\n"
-"\n"
-"[url=https://opengameart.org/content/4-chiptunes-adventure]SubspaceAudio[/"
-"url]\n"
-"[indent][i]Music[/i][/indent]\n"
-"\n"
-"[url=https://akveo.github.io/eva-icons/]Eva Icons[/url]\n"
-"[indent][i]2D Art[/i][/indent]\n"
-"\n"
-"\n"
-"[center][b]Game Engine[/b][/center]\n"
-"\n"
-"[url=https://godotengine.org]Godot Engine[/url]\n"
-"[indent][i][url]https://godotengine.org/license[/url][/i][/indent]\n"
-"\n"
-"[center][img]res://godot_icon.svg[/img][/center]"
-msgstr ""
-
-#: levels/menu.tscn
 msgid "<VERSION>"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "BUG_REPORT"
 msgstr ""
 
-#: levels/menu.tscn
 msgid "DISCUSSIONS"
 msgstr ""
 
-#: logic/ui/board_analytic.tscn
 msgid "SEA"
 msgstr ""
 
-#: logic/ui/board_analytic.tscn
-msgid "4"
+msgctxt "Terrain information"
+msgid "SEA"
 msgstr ""
 
-#: logic/ui/board_analytic.tscn logic/ui/map_editor_ui.tscn
-msgid "20"
+msgctxt "Movement name"
+msgid "SEA"
 msgstr ""
 
-#: logic/ui/board_analytic.tscn
 msgid "Infantry"
 msgstr ""
 
-#: logic/ui/board_analytic.tscn
-msgid "9.9"
-msgstr ""
-
-#: logic/ui/board_analytic.tscn
-msgid "99"
-msgstr ""
-
-#: logic/ui/board_analytic.tscn
-msgid "8"
-msgstr ""
-
-#: logic/ui/lobby_list.gd
 msgid "MESSAGE_TITLE_LOBBY_CONNECTION_PROBLEM"
 msgstr "Verbindungsproblem"
 
-#: logic/ui/lobby_list.gd
 msgid "MESSAGE_TEXT_LOBBY_CONNECTION_PROBLEM"
 msgstr "Es kann keine Verbindung zum Lobby-Server hergestellt werden."
 
-#: logic/ui/lobby_list.gd
 msgid "DEBUG_ACCOUNT"
 msgstr ""
 
-#: logic/ui/lobby_selection_element.tscn
-msgid "Lobby Name"
-msgstr ""
-
-#: logic/ui/lobby_selection_element.tscn
 msgid "MP_JOIN"
 msgstr "Beitreten"
 
-#: logic/ui/lobby_user_element.tscn
-msgid "User Name"
-msgstr ""
-
-#: logic/ui/lobby_user_element.tscn
 msgid "MP_KICK"
 msgstr "Rauswerfen"
 
-#: logic/ui/map_editor.gd
 msgid "MESSAGE_TITLE_MAP_EDITOR_SAVE_NO_NAME"
 msgstr ""
 
-#: logic/ui/map_editor.gd
 msgid "MESSAGE_TEXT_MAP_EDITOR_SAVE_NO_NAME"
 msgstr ""
 
-#: logic/ui/map_editor_ui.gd logic/ui/map_editor_ui.tscn
 msgid "NEUTRAL"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
-msgid "Example 1"
-msgstr ""
-
-#: logic/ui/map_editor_ui.tscn
-msgid "Example 2"
-msgstr ""
-
-#: logic/ui/map_editor_ui.tscn
-msgid "Example 3"
-msgstr ""
-
-#: logic/ui/map_editor_ui.tscn
 msgid "MAP_SETTINGS"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "NAME"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "AUTHOR"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "PLAYER_SETTINGS"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "PLAYERS"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "MONEY"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "TERRAIN_SETTINGS"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "SELECTED"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "OWNER"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "UNIT_SETTINGS"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "HEALTH"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "FUEL"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "AMMO"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "RESIZE"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "SAVE"
 msgstr "Speichern"
 
-#: logic/ui/map_editor_ui.tscn
 msgid "LOAD"
 msgstr "Laden"
 
-#: logic/ui/map_editor_ui.tscn
 msgid "Resize map"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "HORIZONTAL"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "VERTICAL"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "ACCEPT"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "CANCEL"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "Open a File"
 msgstr ""
 
-#: logic/ui/map_editor_ui.tscn
 msgid "*.crm"
 msgstr ""
 
-#: logic/ui/map_selection_element.tscn
 msgid "Map Name"
 msgstr ""
 
-#: logic/ui/map_selection_element.tscn
 msgid "SELECT"
 msgstr "Auswählen"
 
-#: logic/ui/menu.tscn
 msgid "Main Menu"
 msgstr ""
 
-#: logic/ui/settings_content.tscn
 msgid "AUDIO"
 msgstr "Audio"
 
-#: logic/ui/settings_content.tscn
 msgid "MUSIC"
 msgstr "Musik"
 
-#: logic/ui/settings_content.tscn
 msgid "SOUND"
 msgstr "Ton"
 
-#: logic/ui/shop.tscn
 msgid "CLOSE"
 msgstr "Schliessen"
 
-#: logic/ui/shop_element.tscn
-msgid "Anti-Air"
-msgstr ""
-
-#: logic/ui/shop_element.tscn
-msgid ""
-"Stronger, slower, and more expensive than Infantry, Mechanized Infantry "
-"(more commonly referred to as Mechs) trade versatility for much greater cost-"
-"efficiency against a variety of targets.\n"
-msgstr ""
-
-#: logic/ui/shop_element.tscn
-msgid "1000"
-msgstr ""
-
-#: logic/ui/shop_element.tscn
 msgid "BUY"
 msgstr "Kaufen"
 
-#: logic/ui/unit_stats.tscn
-msgid "10"
+#, fuzzy
+#| msgid "ANTI_ALIASING"
+msgctxt "Unit name"
+msgid "ANTI_AIR"
+msgstr "Kantenglättung"
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "ANTI_AIR_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "APC"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "APC_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "ARTILLERY"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "ARTILLERY_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "B-COPTER"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "B-COPTER_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "BATTLESHIP"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "BATTLESHIP_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "BLACKBOAT"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "BLACK_BOAT_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "BLACKBOMB"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "BLACK_BOMB_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "BOMBER"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "BOMBER_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "CARRIER"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "CARRIER_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "CRUISER"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "CRUISER_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "FIGHTER"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "FIGHTER_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "INFANTRY"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "INFANTRY_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "LANDER"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "LANDER"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "LANDER_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Movement name"
+msgid "LANDER_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+#, fuzzy
+#| msgid "MEDIUM"
+msgctxt "Unit name"
+msgid "MEDIUM_TANK"
+msgstr "Mittel"
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "MEDIUM_TANK_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "MECH"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "MECH_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "MEGA_TANK"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "MEGA_TANK_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "MISSILE"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "MISSILE_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "NEO_TANK"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "NEO_TANK_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "PIPERUNNER"
+msgstr ""
+
+msgctxt "Movement name"
+msgid "PIPERUNNER"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "PIPERUNNER_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Movement name"
+msgid "PIPERUNNER_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "RECON"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "RECON_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "ROCKET"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "ROCKET_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "STEALTH"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "STEALTH_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "SUB"
+msgstr ""
+
+msgctxt "Unit name"
+msgid "T-COPTER"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "T-COPTER_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Unit name"
+msgid "TANK"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Unit name"
+msgid "TANK_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "AIRPORT"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "AIRPORT_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "BASE"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "BASE_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "BEACH"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "BEACH_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "BRIDGE"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "BRIDGE_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "CITY"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "CITY_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "COM_TOWER"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "COM_TOWER_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "HQ"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "HQ_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "LAB"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "LAB_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "MOUNTAIN"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "MOUNTAIN_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "PIPE"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "PIPE_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "PIPE_BROKEN"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "PIPE_BROKEN_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "PIPE_WEAK"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "PIPE_WEAK_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "PLAIN"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "PLAIN_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "PORT"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "PORT_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "REEF"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "REEF_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "RIVER"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "RIVER_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "ROAD"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "ROAD_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "SEA_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Movement name"
+msgid "SEA_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "SILO"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "SILO_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Terrain information"
+msgid "WOOD"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Terrain information"
+msgid "WOOD_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Movement name"
+msgid "FOOT"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Movement name"
+msgid "FOOT_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Movement name"
+msgid "BAZOOKA"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Movement name"
+msgid "BAZOOKA_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Movement name"
+msgid "TREADS"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Movement name"
+msgid "TREADS_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Movement name"
+msgid "WHEELS"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Movement name"
+msgid "WHEELS_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+msgctxt "Movement name"
+msgid "AIR"
+msgstr ""
+
+#, fuzzy
+#| msgid "HQ_DESCRIPTION"
+msgctxt "Movement name"
+msgid "AIR_DESCRIPTION"
+msgstr " if the HQ is captured the team is defeated and can no longer play."
+
+#, fuzzy
+#| msgid "MAP_SELECTION"
+msgctxt "Used as title for map_selection menu"
+msgid "MAP_SELECTION"
+msgstr "Map-Auswahl"
+
+#, fuzzy
+#| msgid "MENU"
+msgctxt "Used as title for the main menu"
+msgid "MENU"
+msgstr "Menü"
+
+msgid "REFILLED"
+msgstr "aufgefüllt"
+
+msgid "DEPLOYED"
+msgstr "abgesetzt"
+
+msgid "ENTERED"
+msgstr "eingestiegen"
+
+msgid "JOINED"
+msgstr "fusioniert"
+
+msgid "MESSAGE_TITLE_PLAYER_LEFT"
+msgstr "Spieler verlassen"
+
+msgid "MESSAGE_TEXT_PLAYER_LEFT"
+msgstr "Dein Gegner hat das Spiel verlassen. Du wirst zum Menü zurückgebracht."
+
+msgctxt "Notification title for a new version"
+msgid "VERSION_NOTIFICATION_TITLE"
+msgstr ""
+
+msgctxt "Open release in the browser, button in notification"
+msgid "VERSION_NOTIFICATION_OPEN"
+msgstr ""
+
+msgctxt "Open details of the notification"
+msgid "VERSION_NOTIFICATION_MODE_DETAILS"
+msgstr ""
+
+msgctxt "Open release in the browser"
+msgid "VERSION_WINDOW_OPEN"
 msgstr ""
 
 #~ msgid "keys"
 #~ msgstr "de"
-
-#~ msgid "REFILLED"
-#~ msgstr "aufgefüllt"
-
-#~ msgid "ENTERED"
-#~ msgstr "eingestiegen"
-
-#~ msgid "DEPLOYED"
-#~ msgstr "abgesetzt"
-
-#~ msgid "JOINED"
-#~ msgstr "fusioniert"
 
 #~ msgid "VS_PLAYER"
 #~ msgstr "VS Spieler"
@@ -483,23 +831,11 @@ msgstr ""
 #~ msgid "GRAPHICS"
 #~ msgstr "Grafik"
 
-#~ msgid "ANTI_ALIASING"
-#~ msgstr "Kantenglättung"
-
 #~ msgid "SHADOWS"
 #~ msgstr "Schatten"
 
-#~ msgid "MAP_SELECTION"
-#~ msgstr "Map-Auswahl"
-
-#~ msgid "MENU"
-#~ msgstr "Menü"
-
 #~ msgid "LOW"
 #~ msgstr "Niedrig"
-
-#~ msgid "MEDIUM"
-#~ msgstr "Mittel"
 
 #~ msgid "HIGH"
 #~ msgstr "Hoch"
@@ -521,13 +857,3 @@ msgstr ""
 
 #~ msgid "LOBBY_MENU"
 #~ msgstr "Lobby"
-
-#~ msgid "MESSAGE_TITLE_PLAYER_LEFT"
-#~ msgstr "Spieler verlassen"
-
-#~ msgid "MESSAGE_TEXT_PLAYER_LEFT"
-#~ msgstr ""
-#~ "Dein Gegner hat das Spiel verlassen. Du wirst zum Menü zurückgebracht."
-
-#~ msgid "HQ_DESCRIPTION"
-#~ msgstr " if the HQ is captured the team is defeated and can no longer play."
