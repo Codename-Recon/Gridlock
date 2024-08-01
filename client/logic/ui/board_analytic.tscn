@@ -154,6 +154,8 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "Infantry"
 horizontal_alignment = 1
+auto_translate = false
+localize_numeral_system = false
 
 [node name="Panel" type="Panel" parent="Unit"]
 self_modulate = Color(0, 0, 0, 0.435294)

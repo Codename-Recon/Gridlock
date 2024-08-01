@@ -559,6 +559,8 @@ theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "100"
+auto_translate = false
+localize_numeral_system = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -593,6 +595,8 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "2
 "
+auto_translate = false
+localize_numeral_system = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -685,6 +689,8 @@ theme_override_constants/shadow_offset_x = 10
 theme_override_constants/shadow_offset_y = 10
 theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 100
+auto_translate = false
+localize_numeral_system = false
 text = "Player 1 Turn"
 horizontal_alignment = 1
 vertical_alignment = 1

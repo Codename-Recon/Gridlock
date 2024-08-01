@@ -28,7 +28,7 @@ func _on_tab_changed(tab: int) -> void:
 
 func _change_tab(tab: int) -> void:
 	match tab:
-		0: 
+		0:
 			terrain_panel.show()
 			unit_panel.hide()
 			tile_panel.hide()
@@ -991,7 +991,7 @@ layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
-text = "Resize map"
+text = "RESIZE_MAP_TITLE"
 horizontal_alignment = 1
 
 [node name="LabelHorizontal" type="Label" parent="ResizeMenu/VBoxContainer"]
@@ -1069,7 +1069,7 @@ script = ExtResource("7_2x4d3")
 next_menu = NodePath("../../MainMenu")
 
 [node name="LoadFileDialog" type="FileDialog" parent="."]
-title = "Open a File"
+title = "OPEN_MAP_TITLE"
 initial_position = 1
 size = Vector2i(450, 334)
 ok_button_text = "Open"
