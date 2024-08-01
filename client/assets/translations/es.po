@@ -56,7 +56,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gridlock\n"
-"PO-Revision-Date: 2024-07-31 17:10+0000\n"
+"PO-Revision-Date: 2024-08-01 12:02+0000\n"
 "Last-Translator: Weblate Admin <jaume.singlavalls@gmail.com>\n"
 "Language-Team: Spanish <http://weblate.jaumesingla.es/projects/"
 "codename-recon/game-client/es/>\n"
@@ -228,6 +228,7 @@ msgstr ""
 msgid "PLAYERS"
 msgstr ""
 
+#, fuzzy
 msgid "MONEY"
 msgstr "Dinero"
 
@@ -264,9 +265,11 @@ msgstr ""
 msgid "Resize map"
 msgstr "Redimensionar mapa"
 
+#, fuzzy
 msgid "HORIZONTAL"
 msgstr "Horizontal"
 
+#, fuzzy
 msgid "VERTICAL"
 msgstr "Vertical"
 
@@ -542,6 +545,7 @@ msgctxt "Terrain information"
 msgid "BEACH_DESCRIPTION"
 msgstr ""
 
+#, fuzzy
 msgctxt "Terrain information"
 msgid "BRIDGE"
 msgstr "Puente"
@@ -681,6 +685,7 @@ msgctxt "Terrain information"
 msgid "WOOD_DESCRIPTION"
 msgstr ""
 
+#, fuzzy
 msgctxt "Movement name"
 msgid "FOOT"
 msgstr "A pie"
@@ -697,6 +702,7 @@ msgctxt "Movement name"
 msgid "BAZOOKA_DESCRIPTION"
 msgstr ""
 
+#, fuzzy
 msgctxt "Movement name"
 msgid "TREADS"
 msgstr "Orugas"
@@ -705,6 +711,7 @@ msgctxt "Movement name"
 msgid "TREADS_DESCRIPTION"
 msgstr ""
 
+#, fuzzy
 msgctxt "Movement name"
 msgid "WHEELS"
 msgstr "Ruedas"
