@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:50+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2024-08-01 12:02+0000\n"
+"Last-Translator: Weblate Admin <jaume.singlavalls@gmail.com>\n"
+"Language-Team: English <http://weblate.jaumesingla.es/projects/"
+"codename-recon/game-client/en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.12.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5.5\n"
 
 msgid "PLAYER"
 msgstr "Player"
@@ -66,14 +68,12 @@ msgstr "Back"
 msgid "WON"
 msgstr "Won"
 
-#, fuzzy
 msgid "PLAYER 1 WINS"
-msgstr "Players"
+msgstr "Player 1 wins"
 
 msgid "SINGLEPLAYER"
 msgstr "Singleplayer"
 
-#, fuzzy
 msgid "MULTIPLAYER"
 msgstr "Multiplayer"
 
@@ -125,14 +125,10 @@ msgstr "Discussions"
 msgid "SEA"
 msgstr "Sea"
 
-#, fuzzy
-#| msgid "SEA"
 msgctxt "Terrain information"
 msgid "SEA"
 msgstr "Sea"
 
-#, fuzzy
-#| msgid "SEA"
 msgctxt "Movement name"
 msgid "SEA"
 msgstr "Sea"
@@ -147,7 +143,7 @@ msgid "MESSAGE_TEXT_LOBBY_CONNECTION_PROBLEM"
 msgstr "Cannot connect to the lobby server."
 
 msgid "DEBUG_ACCOUNT"
-msgstr ""
+msgstr "Debug Account"
 
 msgid "MP_JOIN"
 msgstr "Join"
@@ -180,7 +176,7 @@ msgid "PLAYERS"
 msgstr "Players"
 
 msgid "MONEY"
-msgstr ""
+msgstr "Money"
 
 msgid "TERRAIN_SETTINGS"
 msgstr "Terrain Settings"
@@ -216,10 +212,10 @@ msgid "Resize map"
 msgstr ""
 
 msgid "HORIZONTAL"
-msgstr ""
+msgstr "Horizontal"
 
 msgid "VERTICAL"
-msgstr ""
+msgstr "Vertical"
 
 msgid "ACCEPT"
 msgstr "Accept"
@@ -257,28 +253,20 @@ msgstr "Close"
 msgid "BUY"
 msgstr "Buy"
 
-#, fuzzy
-#| msgid "ANTI_AIR"
 msgctxt "Unit name"
 msgid "ANTI_AIR"
 msgstr "Anti-Air"
 
-#, fuzzy
-#| msgid "ANTI_AIR_DESCRIPTION"
 msgctxt "Unit name"
 msgid "ANTI_AIR_DESCRIPTION"
 msgstr ""
 "Anti-Airs are strong at fighting Air units, but are also strong at combating "
 "foot soldiers and light vehicles."
 
-#, fuzzy
-#| msgid "APC"
 msgctxt "Unit name"
 msgid "APC"
 msgstr "APC"
 
-#, fuzzy
-#| msgid "APC_DESCRIPTION"
 msgctxt "Unit name"
 msgid "APC_DESCRIPTION"
 msgstr ""
@@ -286,42 +274,30 @@ msgstr ""
 "an army by transporting Foot Soldiers and refilling Fuel and Ammo stocks of "
 "adjacent units."
 
-#, fuzzy
-#| msgid "ARTILLERY"
 msgctxt "Unit name"
 msgid "ARTILLERY"
 msgstr "Artillery"
 
-#, fuzzy
-#| msgid "ARTILLERY_DESCRIPTION"
 msgctxt "Unit name"
 msgid "ARTILLERY_DESCRIPTION"
 msgstr ""
 "Artillery are low-cost indirect vehicles. They serve as the primary "
 "defensive unit projecting power across front-lines."
 
-#, fuzzy
-#| msgid "B-COPTER"
 msgctxt "Unit name"
 msgid "B-COPTER"
 msgstr "B-Copter"
 
-#, fuzzy
-#| msgid "B-COPTER_DESCRIPTION"
 msgctxt "Unit name"
 msgid "B-COPTER_DESCRIPTION"
 msgstr ""
 "B-Copters are versatile Air Units capable of engaging a diverse range of "
 "targets."
 
-#, fuzzy
-#| msgid "BATTLESHIP"
 msgctxt "Unit name"
 msgid "BATTLESHIP"
 msgstr "Battleship"
 
-#, fuzzy
-#| msgid "BATTLESHIP_DESCRIPTION"
 msgctxt "Unit name"
 msgid "BATTLESHIP_DESCRIPTION"
 msgstr ""
@@ -329,42 +305,30 @@ msgstr ""
 "distinguished by their ability to engage targets from a distance, a rarity "
 "among naval units."
 
-#, fuzzy
-#| msgid "BLACK_BOAT"
 msgctxt "Unit name"
 msgid "BLACKBOAT"
 msgstr "Black Boat"
 
-#, fuzzy
-#| msgid "BLACK_BOAT_DESCRIPTION"
 msgctxt "Unit name"
 msgid "BLACK_BOAT_DESCRIPTION"
 msgstr ""
 "Black Boats serve as Naval Units designed for troop transport, as well as "
 "for supplying and repairing other units."
 
-#, fuzzy
-#| msgid "BLACK_BOMB"
 msgctxt "Unit name"
 msgid "BLACKBOMB"
 msgstr "Black Bomb"
 
-#, fuzzy
-#| msgid "BLACK_BOMB_DESCRIPTION"
 msgctxt "Unit name"
 msgid "BLACK_BOMB_DESCRIPTION"
 msgstr ""
 "Black Bombs are aerial weapons controlled remotely and constructed at an "
 "airport."
 
-#, fuzzy
-#| msgid "BOMBER"
 msgctxt "Unit name"
 msgid "BOMBER"
 msgstr "Bomber"
 
-#, fuzzy
-#| msgid "BOMBER_DESCRIPTION"
 msgctxt "Unit name"
 msgid "BOMBER_DESCRIPTION"
 msgstr ""
@@ -372,14 +336,10 @@ msgstr ""
 "dealing substantial damage to both Land and Naval Units. However, they lack "
 "the ability to engage other Air Units."
 
-#, fuzzy
-#| msgid "CARRIER"
 msgctxt "Unit name"
 msgid "CARRIER"
 msgstr "Carrier"
 
-#, fuzzy
-#| msgid "CARRIER_DESCRIPTION"
 msgctxt "Unit name"
 msgid "CARRIER_DESCRIPTION"
 msgstr ""
@@ -387,14 +347,10 @@ msgstr ""
 "distinguishing it from cruisers. Unlike cruisers, Aircraft Carriers have the "
 "versatility to carry both helicopters and planes."
 
-#, fuzzy
-#| msgid "CRUISER"
 msgctxt "Unit name"
 msgid "CRUISER"
 msgstr "Cruiser"
 
-#, fuzzy
-#| msgid "CRUISER_DESCRIPTION"
 msgctxt "Unit name"
 msgid "CRUISER_DESCRIPTION"
 msgstr ""
@@ -404,8 +360,6 @@ msgstr ""
 "Landers from their primary threats while providing supplementary firepower "
 "when required."
 
-#, fuzzy
-#| msgid "FIGHTER"
 msgctxt "Unit name"
 msgid "FIGHTER"
 msgstr "Fighter"
@@ -419,34 +373,24 @@ msgstr ""
 "other air units. While they boast high mobility and defense among all units, "
 "they are susceptible to anti-aircraft units, including other fighters."
 
-#, fuzzy
-#| msgid "INFANTRY"
 msgctxt "Unit name"
 msgid "INFANTRY"
 msgstr "Infantry"
 
-#, fuzzy
-#| msgid "INFANTRY_DESCRIPTION"
 msgctxt "Unit name"
 msgid "INFANTRY_DESCRIPTION"
 msgstr ""
-"The cheapest unit available in AWBW, Infantry are nonetheless an incredibly "
-"important unit and should not be overlooked."
+"The cheapest unit available in Gridlock, Infantry are nonetheless an "
+"incredibly important unit and should not be overlooked."
 
-#, fuzzy
-#| msgid "LANDER"
 msgctxt "Unit name"
 msgid "LANDER"
 msgstr "Lander"
 
-#, fuzzy
-#| msgid "LANDER"
 msgctxt "Movement name"
 msgid "LANDER"
 msgstr "Lander"
 
-#, fuzzy
-#| msgid "LANDER_DESCRIPTION"
 msgctxt "Unit name"
 msgid "LANDER_DESCRIPTION"
 msgstr ""
@@ -455,8 +399,6 @@ msgstr ""
 "to two land units of any type across the sea, with the ability to load and "
 "unload them at shoals and ports."
 
-#, fuzzy
-#| msgid "LANDER_DESCRIPTION"
 msgctxt "Movement name"
 msgid "LANDER_DESCRIPTION"
 msgstr ""
@@ -465,28 +407,20 @@ msgstr ""
 "to two land units of any type across the sea, with the ability to load and "
 "unload them at shoals and ports."
 
-#, fuzzy
-#| msgid "MEDIUM_TANK"
 msgctxt "Unit name"
 msgid "MEDIUM_TANK"
 msgstr "Medium Tank"
 
-#, fuzzy
-#| msgid "MEDIUM_TANK_DESCRIPTION"
 msgctxt "Unit name"
 msgid "MEDIUM_TANK_DESCRIPTION"
 msgstr ""
-"Larger, slower, and considerably more powerful than Tanks, Medium Tanks "
-"(Often abbreviated Md. Tank) are forces to be reckoned with."
+"Larger, slower, and considerably more powerful than Tanks, Medium Tanks ("
+"Often abbreviated Md. Tank) are forces to be reckoned with."
 
-#, fuzzy
-#| msgid "MECH"
 msgctxt "Unit name"
 msgid "MECH"
 msgstr "Mech"
 
-#, fuzzy
-#| msgid "MECH_DESCRIPTION"
 msgctxt "Unit name"
 msgid "MECH_DESCRIPTION"
 msgstr ""
@@ -496,28 +430,20 @@ msgstr ""
 "vehicular units, both offensively and defensively, often dealing significant "
 "damage."
 
-#, fuzzy
-#| msgid "MEGA_TANK"
 msgctxt "Unit name"
 msgid "MEGA_TANK"
 msgstr "Mega Tank"
 
-#, fuzzy
-#| msgid "MEGA_TANK_DESCRIPTION"
 msgctxt "Unit name"
 msgid "MEGA_TANK_DESCRIPTION"
 msgstr ""
 "With formidable weaponry and robust armor, these mobile fortresses pose a "
 "formidable threat."
 
-#, fuzzy
-#| msgid "MISSILE"
 msgctxt "Unit name"
 msgid "MISSILE"
 msgstr "Missile"
 
-#, fuzzy
-#| msgid "MISSILE_DESCRIPTION"
 msgctxt "Unit name"
 msgid "MISSILE_DESCRIPTION"
 msgstr ""
@@ -525,14 +451,10 @@ msgstr ""
 "indirect combat units specializing in attacking air units from a distance, "
 "capable of causing significant havoc among them."
 
-#, fuzzy
-#| msgid "NEO_TANK"
 msgctxt "Unit name"
 msgid "NEO_TANK"
 msgstr "Neo Tank"
 
-#, fuzzy
-#| msgid "NEO_TANK_DESCRIPTION"
 msgctxt "Unit name"
 msgid "NEO_TANK_DESCRIPTION"
 msgstr ""
@@ -541,90 +463,64 @@ msgstr ""
 "both land and naval units, as well as target infantry, battle helicopters, "
 "and transport helicopters with their machine gun."
 
-#, fuzzy
-#| msgid "PIPERUNNER"
 msgctxt "Unit name"
 msgid "PIPERUNNER"
 msgstr "Pipe Runner"
 
-#, fuzzy
-#| msgid "PIPERUNNER"
 msgctxt "Movement name"
 msgid "PIPERUNNER"
 msgstr "Pipe Runner"
 
-#, fuzzy
-#| msgid "PIPERUNNER_DESCRIPTION"
 msgctxt "Unit name"
 msgid "PIPERUNNER_DESCRIPTION"
 msgstr ""
 "Piperunners are a type of Land Unit with indirect combat capabilities, "
 "restricted to movement along pipelines, pipe seams, and bases."
 
-#, fuzzy
-#| msgid "PIPERUNNER_DESCRIPTION"
 msgctxt "Movement name"
 msgid "PIPERUNNER_DESCRIPTION"
 msgstr ""
 "Piperunners are a type of Land Unit with indirect combat capabilities, "
 "restricted to movement along pipelines, pipe seams, and bases."
 
-#, fuzzy
-#| msgid "RECON"
 msgctxt "Unit name"
 msgid "RECON"
 msgstr "Recon"
 
-#, fuzzy
-#| msgid "RECON_DESCRIPTION"
 msgctxt "Unit name"
 msgid "RECON_DESCRIPTION"
 msgstr ""
 "Light, fast, and inexpensive, Recons make excellent scouting and harassment "
 "units."
 
-#, fuzzy
-#| msgid "ROCKET"
 msgctxt "Unit name"
 msgid "ROCKET"
 msgstr "Rocket"
 
-#, fuzzy
-#| msgid "ROCKET_DESCRIPTION"
 msgctxt "Unit name"
 msgid "ROCKET_DESCRIPTION"
 msgstr ""
 "The more advanced version of Artillery, Rockets trade higher damage and a "
 "much larger range for lighter armor and a more restrictive movement type."
 
-#, fuzzy
-#| msgid "STEALTH"
 msgctxt "Unit name"
 msgid "STEALTH"
 msgstr "Stealth"
 
-#, fuzzy
-#| msgid "STEALTH_DESCRIPTION"
 msgctxt "Unit name"
 msgid "STEALTH_DESCRIPTION"
 msgstr ""
 "Stealth Fighters, classified as Air Units, possess the capability to conceal "
 "themselves akin to Submarines through the activation of stealth mode."
 
-#, fuzzy
-#| msgid "SUB"
 msgctxt "Unit name"
 msgid "SUB"
 msgstr "Sub"
 
-#, fuzzy
-#| msgid "T-COPTER"
 msgctxt "Unit name"
 msgid "T-COPTER"
 msgstr "T-Copter"
 
-#, fuzzy
-#| msgid "T-COPTER_DESCRIPTION"
 msgctxt "Unit name"
 msgid "T-COPTER_DESCRIPTION"
 msgstr ""
@@ -632,28 +528,20 @@ msgstr ""
 "capabilities. Primarily employed for transportation purposes, T-Copters can "
 "ferry one Infantry or Mech unit at a time."
 
-#, fuzzy
-#| msgid "TANK"
 msgctxt "Unit name"
 msgid "TANK"
 msgstr "Light Tank"
 
-#, fuzzy
-#| msgid "TANK_DESCRIPTION"
 msgctxt "Unit name"
 msgid "TANK_DESCRIPTION"
 msgstr ""
 "Inexpensive, fast, and able to hold its own against most other land units, "
 "Tanks are a cornerstone unit in any army."
 
-#, fuzzy
-#| msgid "AIRPORT"
 msgctxt "Terrain information"
 msgid "AIRPORT"
 msgstr "Airport"
 
-#, fuzzy
-#| msgid "AIRPORT_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "AIRPORT_DESCRIPTION"
 msgstr ""
@@ -661,14 +549,10 @@ msgstr ""
 "able to deploy, repair and resupply them, while also providing funds. "
 "Freshly built units may not take actions on the same turn they are deployed."
 
-#, fuzzy
-#| msgid "BASE"
 msgctxt "Terrain information"
 msgid "BASE"
 msgstr "Base"
 
-#, fuzzy
-#| msgid "BASE_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "BASE_DESCRIPTION"
 msgstr ""
@@ -677,14 +561,10 @@ msgstr ""
 "Units are considered 'waited' and cannot take actions on the same turn they "
 "are deployed."
 
-#, fuzzy
-#| msgid "BEACH"
 msgctxt "Terrain information"
 msgid "BEACH"
 msgstr "Beach"
 
-#, fuzzy
-#| msgid "BEACH_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "BEACH_DESCRIPTION"
 msgstr ""
@@ -693,22 +573,16 @@ msgstr ""
 
 msgctxt "Terrain information"
 msgid "BRIDGE"
-msgstr ""
+msgstr "Bridge"
 
-#, fuzzy
-#| msgid "BRIDGE_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "BRIDGE_DESCRIPTION"
 msgstr "Bridges allow ground units to cross rivers and seas unhindered."
 
-#, fuzzy
-#| msgid "CITY"
 msgctxt "Terrain information"
 msgid "CITY"
 msgstr "City"
 
-#, fuzzy
-#| msgid "CITY_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "CITY_DESCRIPTION"
 msgstr ""
@@ -716,14 +590,10 @@ msgstr ""
 "provide income every turn and can be used to repair and resupply land units "
 "that stand on them at the start of each turn."
 
-#, fuzzy
-#| msgid "COM_TOWER"
 msgctxt "Terrain information"
 msgid "COM_TOWER"
 msgstr "Com Tower"
 
-#, fuzzy
-#| msgid "COM_TOWER_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "COM_TOWER_DESCRIPTION"
 msgstr ""
@@ -731,38 +601,26 @@ msgstr ""
 "allied units. Each captured tower increases its allied units' attack "
 "strength by 10%."
 
-#, fuzzy
-#| msgid "HQ"
 msgctxt "Terrain information"
 msgid "HQ"
 msgstr "Headquarters"
 
-#, fuzzy
-#| msgid "HQ_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "HQ_DESCRIPTION"
-msgstr "The most importnat property on the map"
+msgstr "The most important property on the map"
 
-#, fuzzy
-#| msgid "LAB"
 msgctxt "Terrain information"
 msgid "LAB"
 msgstr "Lab"
 
-#, fuzzy
-#| msgid "LAB_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "LAB_DESCRIPTION"
 msgstr "Laboratories act as research centers and can unlock restricted units."
 
-#, fuzzy
-#| msgid "MOUNTAIN"
 msgctxt "Terrain information"
 msgid "MOUNTAIN"
 msgstr "Mountains"
 
-#, fuzzy
-#| msgid "MOUNTAIN_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "MOUNTAIN_DESCRIPTION"
 msgstr ""
@@ -770,33 +628,23 @@ msgstr ""
 "infantry and air units. They also increase the vision range of any soldier "
 "unit on them by 3."
 
-#, fuzzy
-#| msgid "PIPE"
 msgctxt "Terrain information"
 msgid "PIPE"
 msgstr "Pipe"
 
-#, fuzzy
-#| msgid "PIPE_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "PIPE_DESCRIPTION"
 msgstr ""
 "Pipelines are nigh-impassable terrain that are used for carrying materials."
 
-#, fuzzy
-#| msgid "PIPE_BROKEN"
 msgctxt "Terrain information"
 msgid "PIPE_BROKEN"
 msgstr "Broken Pipe"
 
-#, fuzzy
-#| msgid "PIPE_BROKEN_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "PIPE_BROKEN_DESCRIPTION"
 msgstr "A broken weak spot of the pipe system."
 
-#, fuzzy
-#| msgid "PIPE_WEAK"
 msgctxt "Terrain information"
 msgid "PIPE_WEAK"
 msgstr "Weak Pipe Spot"
@@ -807,91 +655,63 @@ msgctxt "Terrain information"
 msgid "PIPE_WEAK_DESCRIPTION"
 msgstr "A weak spot, which can be damaged."
 
-#, fuzzy
-#| msgid "PLAIN"
 msgctxt "Terrain information"
 msgid "PLAIN"
 msgstr "Plains"
 
-#, fuzzy
-#| msgid "PLAIN_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "PLAIN_DESCRIPTION"
 msgstr "Plains give a small amount of terrain cover and are easily traversed."
 
-#, fuzzy
-#| msgid "PORT"
 msgctxt "Terrain information"
 msgid "PORT"
 msgstr "Port"
 
-#, fuzzy
-#| msgid "PORT_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "PORT_DESCRIPTION"
 msgstr "Ports are a property for building and maintaining sea units."
 
-#, fuzzy
-#| msgid "REEF"
 msgctxt "Terrain information"
 msgid "REEF"
 msgstr "Reef"
 
-#, fuzzy
-#| msgid "REEF_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "REEF_DESCRIPTION"
 msgstr ""
-"Reefs give some defence to sea units and also make excellent hiding places."
+"Reefs give some defense to sea units and also make excellent hiding places."
 
-#, fuzzy
-#| msgid "RIVER"
 msgctxt "Terrain information"
 msgid "RIVER"
 msgstr "River"
 
-#, fuzzy
-#| msgid "RIVER_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "RIVER_DESCRIPTION"
 msgstr ""
 "Rivers restrict the movement of ground units and can only be traversed by "
 "Infantry, Mechs and air units."
 
-#, fuzzy
-#| msgid "ROAD"
 msgctxt "Terrain information"
 msgid "ROAD"
 msgstr "Road"
 
-#, fuzzy
-#| msgid "ROAD_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "ROAD_DESCRIPTION"
 msgstr ""
 "Roads provide no defensive cover, but allow unimpeded movement for all "
 "ground units."
 
-#, fuzzy
-#| msgid "SEA_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "SEA_DESCRIPTION"
 msgstr "Seas make up the majority of the terrain that navies battle on."
 
-#, fuzzy
-#| msgid "SEA_DESCRIPTION"
 msgctxt "Movement name"
 msgid "SEA_DESCRIPTION"
 msgstr "Seas make up the majority of the terrain that navies battle on."
 
-#, fuzzy
-#| msgid "SILO"
 msgctxt "Terrain information"
 msgid "SILO"
 msgstr "Silo"
 
-#, fuzzy
-#| msgid "SILO_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "SILO_DESCRIPTION"
 msgstr ""
@@ -900,8 +720,6 @@ msgstr ""
 "caught in the blast and doesn't distinguish between ally or enemy. Each silo "
 "can only be used once."
 
-#, fuzzy
-#| msgid "WOOD"
 msgctxt "Terrain information"
 msgid "WOOD"
 msgstr "Wood"
@@ -916,13 +734,13 @@ msgstr ""
 
 msgctxt "Movement name"
 msgid "FOOT"
-msgstr ""
+msgstr "Foot"
 
 #, fuzzy
 #| msgid "PORT_DESCRIPTION"
 msgctxt "Movement name"
 msgid "FOOT_DESCRIPTION"
-msgstr "Ports are a property for building and maintaining sea units."
+msgstr "Units on foot"
 
 #, fuzzy
 #| msgid "BAZOOKA"
@@ -930,21 +748,17 @@ msgctxt "Movement name"
 msgid "BAZOOKA"
 msgstr "Mech"
 
-#, fuzzy
-#| msgid "BAZOOKA_DESCRIPTION"
 msgctxt "Movement name"
 msgid "BAZOOKA_DESCRIPTION"
 msgstr ""
-"Stronger, slower, and more expensive than Infantry, Mechanized Infantry "
-"(more commonly referred to as Mechs) trade versatility for much greater cost-"
+"Stronger, slower, and more expensive than Infantry, Mechanized Infantry ("
+"more commonly referred to as Mechs) trade versatility for much greater cost-"
 "efficiency against a variety of targets."
 
 msgctxt "Movement name"
 msgid "TREADS"
-msgstr ""
+msgstr "Treads"
 
-#, fuzzy
-#| msgid "ROAD_DESCRIPTION"
 msgctxt "Movement name"
 msgid "TREADS_DESCRIPTION"
 msgstr ""
@@ -953,23 +767,18 @@ msgstr ""
 
 msgctxt "Movement name"
 msgid "WHEELS"
-msgstr ""
+msgstr "Wheels"
 
 #, fuzzy
 #| msgid "REEF_DESCRIPTION"
 msgctxt "Movement name"
 msgid "WHEELS_DESCRIPTION"
-msgstr ""
-"Reefs give some defence to sea units and also make excellent hiding places."
+msgstr "Units move by wheels"
 
-#, fuzzy
-#| msgid "CARRIER"
 msgctxt "Movement name"
 msgid "AIR"
 msgstr "Carrier"
 
-#, fuzzy
-#| msgid "CARRIER_DESCRIPTION"
 msgctxt "Movement name"
 msgid "AIR_DESCRIPTION"
 msgstr ""
@@ -977,14 +786,10 @@ msgstr ""
 "distinguishing it from cruisers. Unlike cruisers, Aircraft Carriers have the "
 "versatility to carry both helicopters and planes."
 
-#, fuzzy
-#| msgid "MAP_SELECTION"
 msgctxt "Used as title for map_selection menu"
 msgid "MAP_SELECTION"
 msgstr "Map Selection"
 
-#, fuzzy
-#| msgid "MENU"
 msgctxt "Used as title for the main menu"
 msgid "MENU"
 msgstr "Menu"
