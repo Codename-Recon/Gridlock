@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:50+0200\n"
-"PO-Revision-Date: 2024-08-01 12:02+0000\n"
+"PO-Revision-Date: 2024-08-02 16:10+0000\n"
 "Last-Translator: Weblate Admin <jaume.singlavalls@gmail.com>\n"
 "Language-Team: English <http://weblate.jaumesingla.es/projects/"
 "codename-recon/game-client/en/>\n"
@@ -364,8 +364,6 @@ msgctxt "Unit name"
 msgid "FIGHTER"
 msgstr "Fighter"
 
-#, fuzzy
-#| msgid "FIGHTER_DESCRIPTION"
 msgctxt "Unit name"
 msgid "FIGHTER_DESCRIPTION"
 msgstr ""
@@ -649,8 +647,6 @@ msgctxt "Terrain information"
 msgid "PIPE_WEAK"
 msgstr "Weak Pipe Spot"
 
-#, fuzzy
-#| msgid "PIPE_WEAK_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "PIPE_WEAK_DESCRIPTION"
 msgstr "A weak spot, which can be damaged."
@@ -724,8 +720,6 @@ msgctxt "Terrain information"
 msgid "WOOD"
 msgstr "Wood"
 
-#, fuzzy
-#| msgid "WOOD_DESCRIPTION"
 msgctxt "Terrain information"
 msgid "WOOD_DESCRIPTION"
 msgstr ""
@@ -736,8 +730,6 @@ msgctxt "Movement name"
 msgid "FOOT"
 msgstr "Foot"
 
-#, fuzzy
-#| msgid "PORT_DESCRIPTION"
 msgctxt "Movement name"
 msgid "FOOT_DESCRIPTION"
 msgstr "Units on foot"
@@ -769,8 +761,6 @@ msgctxt "Movement name"
 msgid "WHEELS"
 msgstr "Wheels"
 
-#, fuzzy
-#| msgid "REEF_DESCRIPTION"
 msgctxt "Movement name"
 msgid "WHEELS_DESCRIPTION"
 msgstr "Units move by wheels"
