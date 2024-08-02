@@ -92,7 +92,7 @@ camera_zoom_speed=0.2
 camera_min_zoom=1
 decal_animation_time=0.3
 round_overlay=Color(0.384314, 0.384314, 0.384314, 1)
-network/lobby_server="46.101.138.49"
+network/lobby_server="nakama.gridlock.kesr.dev"
 network/lobby_port=7350
 network/lobby_key="pMywin8T8IGN9NYyn3180CTco1birqE1VEU"
 network/debug_accounts=false
@@ -107,7 +107,7 @@ terrain/repair_health_points=20
 audio/music_tween_time=3.0
 audio/sound_min_value=-70.0
 audio/sound_max_value=0.0
-network/https=false
+network/https=true
 
 [gui]
 
