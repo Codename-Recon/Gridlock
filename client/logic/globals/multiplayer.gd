@@ -15,6 +15,9 @@ enum OpCodes {
 	FSM_ROUND,
 }
 
+const CONFIG_FILE_PATH: String = "user://network.cfg"
+const CONFIG_DEVICE_SECTION: String = "device"
+
 var nakama_client: NakamaClient
 var nakama_session: NakamaSession
 var nakama_socket: NakamaSocket
@@ -28,11 +31,30 @@ var presences: Dictionary = {}
 var network_fsm_round_queue: Array[String]
 var random_seed: int
 
+
 var _global: GlobalGlobal = Global
 
 
 func _ready() -> void:
-	pass  # Replace with function body.
+	pass
+
+
+# Wrapper for device id. Stores the id in a file to prevent regenerated ids.
+func get_device_id() -> String:
+	if ProjectSettings.get_setting("global/network/debug_accounts"):
+		return "DEBUG_+_" + str(OS.get_process_id())
+	var network_config: ConfigFile = ConfigFile.new()
+	network_config.load(CONFIG_FILE_PATH)
+	if network_config.has_section_key(CONFIG_DEVICE_SECTION, "device_id"):
+		return network_config.get_value(CONFIG_DEVICE_SECTION, "device_id")
+	var device_id: String
+	if OS.get_name() == "Web":
+		device_id = str(hash(randi()))
+	else:
+		device_id = OS.get_unique_id()
+	network_config.set_value(CONFIG_DEVICE_SECTION, "device_id", device_id)
+	network_config.save(CONFIG_FILE_PATH)
+	return device_id
 
 
 func nakama_login() -> Error:
@@ -46,11 +68,7 @@ func nakama_login() -> Error:
 		var port: int = ProjectSettings.get_setting("global/network/lobby_port")
 		var server_key: String = ProjectSettings.get_setting("global/network/lobby_key")
 		nakama_client = Nakama.create_client(server_key, host, port, scheme)
-		var device_id: String
-		if ProjectSettings.get_setting("global/network/debug_accounts"):
-			device_id = "DEBUG_+_" + str(OS.get_process_id())
-		else:
-			device_id = OS.get_unique_id()
+		var device_id: String = get_device_id()
 		var vars: Dictionary = {
 			"device_os": OS.get_name(),
 			"device_model": OS.get_model_name(),
