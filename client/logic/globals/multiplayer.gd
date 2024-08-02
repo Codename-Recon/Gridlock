@@ -37,7 +37,11 @@ func _ready() -> void:
 
 func nakama_login() -> Error:
 	if not nakama_session or nakama_session.expired:
-		var scheme: String = "http"
+		var scheme: String
+		if ProjectSettings.get_setting("global/network/https"):
+			scheme = "https"
+		else:
+			scheme = "http"
 		var host: String = ProjectSettings.get_setting("global/network/lobby_server")
 		var port: int = ProjectSettings.get_setting("global/network/lobby_port")
 		var server_key: String = ProjectSettings.get_setting("global/network/lobby_key")

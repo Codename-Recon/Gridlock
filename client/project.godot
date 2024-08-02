@@ -107,6 +107,7 @@ terrain/repair_health_points=20
 audio/music_tween_time=3.0
 audio/sound_min_value=-70.0
 audio/sound_max_value=0.0
+network/https=false
 
 [gui]
 
