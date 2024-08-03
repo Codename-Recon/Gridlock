@@ -117,7 +117,6 @@ msgstr ""
 #: levels/game_over_screen.tscn
 #: logic/ui/map_editor_ui.gd
 #: logic/ui/map_editor_ui.tscn
-#: logic/ui/round_label.gd
 msgid "PLAYER"
 msgstr ""
 
@@ -350,7 +349,8 @@ msgid "MAIN_MENU_TITLE"
 msgstr ""
 
 #: logic/ui/round_label.gd
-msgid "TURN"
+msgctxt "Round announcement, showing which player's turn it is."
+msgid "PLAYER_TURN"
 msgstr ""
 
 #: logic/ui/settings_content.tscn
