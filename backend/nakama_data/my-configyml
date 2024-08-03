@@ -9,13 +9,13 @@ logger:
 console:
     port: 7351
     username: "my_user"
-    password: "Erfwi07iyN2c7aKCLbwLaFmzdTuGxSfunb4yZpigupkzJi"
+    password: "REPLACEME"
 
 socket:
   server_key: "pMywin8T8IGN9NYyn3180CTco1birqE1VEU"
 
 session:
-  encryption_key: "Qc1nT1c99CabgdrvtfBLewh0qXUxMF9QmUr"
+  encryption_key: "REPLACEME"
 
 runtime:
-  http_key: "oszFD0Y04aqG73aYzL0suSp1gopc9NjaAxY"
+  http_key: "REPLACEME"

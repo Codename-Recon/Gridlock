@@ -3,6 +3,7 @@ extends Node
 
 signal settings_changed
 
+const CONFIG_FILE_PATH: String = "user://config.cfg"
 const CONFIG_SECTION: String = "game"
 const RENDERING_SECTION: String = "rendering"
 const MAP_FOLDER_PATH: String = "res://logic/game/maps/"
@@ -25,7 +26,7 @@ var maps: Dictionary = {}
 
 func save_config(key: String, value: Variant, section: String = CONFIG_SECTION) -> void:
 	config.set_value(section, key, value)
-	config.save("user://config.cfg")
+	config.save(CONFIG_FILE_PATH)
 
 
 func reload_maps() -> void:
@@ -35,7 +36,7 @@ func reload_maps() -> void:
 
 
 func _ready() -> void:
-	config.load("user://config.cfg")
+	config.load(CONFIG_FILE_PATH)
 	_create_missing_folders()
 
 
