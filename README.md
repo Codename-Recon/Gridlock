@@ -56,3 +56,6 @@ The information you provide will help us get in touch with you.
 - Open communication is key for successful collaboration. Feel free to reach out to us through issues, pull requests, or any other preferred communication channel.
 
 We appreciate your effort in contributing to our project and look forward to working with you!
+
+### [Credits](https://github.com/Codename-Recon/Gridlock/blob/master/client/assets/text/credits.md)
+### [Asset License](https://github.com/Codename-Recon/Gridlock/blob/master/LICENSE_ASSETS.md)

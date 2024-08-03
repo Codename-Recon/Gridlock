@@ -56,10 +56,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gridlock\n"
+"PO-Revision-Date: 2024-08-01 12:02+0000\n"
+"Last-Translator: Weblate Admin <jaume.singlavalls@gmail.com>\n"
+"Language-Team: Spanish <http://weblate.jaumesingla.es/projects/"
+"codename-recon/game-client/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5.5\n"
 
 msgid "PLAYER"
 msgstr ""
@@ -98,7 +104,7 @@ msgid "NEXT_ROUND"
 msgstr ""
 
 msgid "Player 1 Turn"
-msgstr ""
+msgstr "Turno del primer jugador"
 
 msgid "SETTINGS"
 msgstr ""
@@ -181,7 +187,7 @@ msgid "SEA"
 msgstr ""
 
 msgid "Infantry"
-msgstr ""
+msgstr "Infanteria"
 
 msgid "MESSAGE_TITLE_LOBBY_CONNECTION_PROBLEM"
 msgstr ""
@@ -222,8 +228,9 @@ msgstr ""
 msgid "PLAYERS"
 msgstr ""
 
+#, fuzzy
 msgid "MONEY"
-msgstr ""
+msgstr "Dinero"
 
 msgid "TERRAIN_SETTINGS"
 msgstr ""
@@ -256,13 +263,15 @@ msgid "LOAD"
 msgstr ""
 
 msgid "Resize map"
-msgstr ""
+msgstr "Redimensionar mapa"
 
+#, fuzzy
 msgid "HORIZONTAL"
-msgstr ""
+msgstr "Horizontal"
 
+#, fuzzy
 msgid "VERTICAL"
-msgstr ""
+msgstr "Vertical"
 
 msgid "ACCEPT"
 msgstr ""
@@ -271,19 +280,19 @@ msgid "CANCEL"
 msgstr ""
 
 msgid "Open a File"
-msgstr ""
+msgstr "Abrir archivo"
 
 msgid "*.crm"
 msgstr ""
 
 msgid "Map Name"
-msgstr ""
+msgstr "Nombre del mapa"
 
 msgid "SELECT"
 msgstr ""
 
 msgid "Main Menu"
-msgstr ""
+msgstr "Menú principal"
 
 msgid "AUDIO"
 msgstr ""
@@ -536,9 +545,10 @@ msgctxt "Terrain information"
 msgid "BEACH_DESCRIPTION"
 msgstr ""
 
+#, fuzzy
 msgctxt "Terrain information"
 msgid "BRIDGE"
-msgstr ""
+msgstr "Puente"
 
 msgctxt "Terrain information"
 msgid "BRIDGE_DESCRIPTION"
@@ -559,6 +569,9 @@ msgstr ""
 msgctxt "Terrain information"
 msgid "COM_TOWER_DESCRIPTION"
 msgstr ""
+"La torre de comunicaciones es una propiedad que aumenta las abilidades de "
+"las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
+"las unidades aliadas"
 
 msgctxt "Terrain information"
 msgid "HQ"
@@ -672,9 +685,10 @@ msgctxt "Terrain information"
 msgid "WOOD_DESCRIPTION"
 msgstr ""
 
+#, fuzzy
 msgctxt "Movement name"
 msgid "FOOT"
-msgstr ""
+msgstr "A pie"
 
 msgctxt "Movement name"
 msgid "FOOT_DESCRIPTION"
@@ -688,17 +702,19 @@ msgctxt "Movement name"
 msgid "BAZOOKA_DESCRIPTION"
 msgstr ""
 
+#, fuzzy
 msgctxt "Movement name"
 msgid "TREADS"
-msgstr ""
+msgstr "Orugas"
 
 msgctxt "Movement name"
 msgid "TREADS_DESCRIPTION"
 msgstr ""
 
+#, fuzzy
 msgctxt "Movement name"
 msgid "WHEELS"
-msgstr ""
+msgstr "Ruedas"
 
 msgctxt "Movement name"
 msgid "WHEELS_DESCRIPTION"
