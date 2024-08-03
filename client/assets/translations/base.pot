@@ -349,8 +349,7 @@ msgid "MAIN_MENU_TITLE"
 msgstr ""
 
 #: logic/ui/round_label.gd
-msgctxt "Round announcement, showing which player's turn it is."
-msgid "PLAYER_TURN"
+msgid "ANNOUNCEMENT_PLAYER_TURN"
 msgstr ""
 
 #: logic/ui/settings_content.tscn

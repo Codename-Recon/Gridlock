@@ -14,8 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.5.5\n"
 
-msgctxt "Round announcement, showing which player's turn it is."
-msgid "PLAYER_TURN"
+msgid "ANNOUNCEMENT_PLAYER_TURN"
 msgstr "Player {player_name} turn"
 
 msgid "PLAYER"

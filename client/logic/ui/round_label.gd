@@ -5,7 +5,7 @@ extends Label
 	set(value):
 		player_name = value
 		# text = "%s %s %s" % [tr("PLAYER"), str(value), tr("TURN")]
-		text = tr("PLAYER_TURN", "Round announcement, showing which player's turn it is.").format({player_name= value})
+		text = tr("ANNOUNCEMENT_PLAYER_TURN").format({player_name= value})
 
 
 func _ready() -> void:
