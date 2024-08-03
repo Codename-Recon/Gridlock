@@ -5,12 +5,15 @@ signal map_selected(map_json: String)
 
 @export var map_json: String
 
+@onready var title: Label = $Element/Title
+@onready var select_overlay: ColorRect = $SelectOverlay
+
 
 func _ready() -> void:
 	super()
-	($SelectOverlay as Control).hide()
+	select_overlay.hide()
 	var map: Map = MapFile.deserialize(map_json)
-	(%Title as Label).text = map.map_name
+	title.text = map.map_name
 	map.queue_free()
 
 

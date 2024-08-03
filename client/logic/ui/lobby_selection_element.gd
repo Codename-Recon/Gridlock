@@ -7,12 +7,16 @@ signal lobby_selected
 @export var map_name: String
 @export var match_id: String
 
+@onready var title_label: Label = $Element/TitleLabel
+@onready var map_label: Label = $Element/MapLabel
+@onready var select_overlay: ColorRect = $SelectOverlay
+
 
 func _ready() -> void:
 	super()
-	($SelectOverlay as Control).hide()
-	(%TitleLabel as Label).text = title
-	(%MapLabel as Label).text = map_name
+	select_overlay.hide()
+	title_label.text = title
+	map_label.text = map_name
 
 
 func _on_selected() -> void:

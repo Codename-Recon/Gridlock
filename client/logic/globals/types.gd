@@ -74,8 +74,8 @@ func add_text_to_gdscript(
 	var sanitized_name: String = sanitizer_regex.sub(name, "_")
 	file.store_string(
 		(
-			'var _%s: String = tr("%s", "%s")\n'
-			% [sanitized_name, text.replace('"', '\\"'), context.replace('"', '\\"')]
+			'var _%s: String = tr("%s")\n'
+			% [sanitized_name, text.replace('"', '\\"')]
 		)
 	)
 
@@ -92,41 +92,38 @@ func _generate_labels() -> void:
 
 	for unit_key: String in units:
 		var unit: Dictionary = units.get(unit_key)
-		add_text_to_gdscript(file_dumper, unit_key, unit.get("name", "") as String, "Unit name")
+		add_text_to_gdscript(file_dumper, unit_key, unit.get("name", "") as String)
 		add_text_to_gdscript(
 			file_dumper,
 			"%s_DESCRIPTION" % unit_key,
-			unit.get("description", "") as String,
-			"Unit name"
+			unit.get("description", "") as String
 		)
 	for terrain_key: String in terrains:
 		var terrain: Dictionary = terrains.get(terrain_key)
 		add_text_to_gdscript(
-			file_dumper, terrain_key, terrain.get("name", "") as String, "Terrain information"
+			file_dumper, terrain_key, terrain.get("name", "") as String
 		)
 		add_text_to_gdscript(
 			file_dumper,
 			"%s_DESCRIPTION" % terrain_key,
-			terrain.get("description", "") as String,
-			"Terrain information"
+			terrain.get("description", "") as String
 		)
 	for movement_key: String in movement_types:
 		var movement: Dictionary = movements.get(movement_key, {})
 		add_text_to_gdscript(
-			file_dumper, "%s_MOVEMENT" % movement_key, movement_key, "Movement name"
+			file_dumper, "%s_MOVEMENT" % movement_key, movement_key
 		)
 		add_text_to_gdscript(
 			file_dumper,
 			"%s_DESCRIPTION_MOVEMENT" % movement_key,
-			"%s_DESCRIPTION" % movement_key,
-			"Movement name"
+			"%s_DESCRIPTION" % movement_key
 		)
 
 	# Texts used in menus dynamically
 	add_text_to_gdscript(
-		file_dumper, "map_selection", "MAP_SELECTION", "Used as title for map_selection menu"
+		file_dumper, "map_selection", "MAP_SELECTION"
 	)
-	add_text_to_gdscript(file_dumper, "menu", "MENU", "Used as title for the main menu")
+	add_text_to_gdscript(file_dumper, "menu", "MENU")
 	file_dumper.close()
 	# Missing some way to tell godot to reload the script
 
