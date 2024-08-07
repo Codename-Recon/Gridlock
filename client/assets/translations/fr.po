@@ -12,12 +12,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 3.12.2\n"
 
-msgid "PLAYER"
-msgstr "joueur"
-
-msgid "TURN"
-msgstr "tour"
-
 msgid "MOVE"
 msgstr "déplacer"
 
@@ -39,17 +33,8 @@ msgstr "remplir"
 msgid "CAPTURE"
 msgstr "prendre"
 
-msgid "100"
-msgstr ""
-
-msgid "2\n"
-msgstr ""
-
 msgid "NEXT_ROUND"
 msgstr "tour suivant"
-
-msgid "Player 1 Turn"
-msgstr ""
 
 msgid "SETTINGS"
 msgstr "réglages"
@@ -62,6 +47,9 @@ msgstr "continuer"
 
 msgid "BACK"
 msgstr "revenir"
+
+msgid "PLAYER"
+msgstr "joueur"
 
 msgid "WON"
 msgstr "gagne"
@@ -131,9 +119,6 @@ msgstr ""
 
 msgctxt "Movement name"
 msgid "SEA"
-msgstr ""
-
-msgid "Infantry"
 msgstr ""
 
 msgid "MESSAGE_TITLE_LOBBY_CONNECTION_PROBLEM"
@@ -208,7 +193,7 @@ msgstr ""
 msgid "LOAD"
 msgstr ""
 
-msgid "Resize map"
+msgid "RESIZE_MAP_TITLE"
 msgstr ""
 
 msgid "HORIZONTAL"
@@ -223,19 +208,22 @@ msgstr ""
 msgid "CANCEL"
 msgstr ""
 
-msgid "Open a File"
+msgid "OPEN_MAP_TITLE"
 msgstr ""
 
 msgid "*.crm"
 msgstr ""
 
-msgid "Map Name"
+msgid "SELECT_MAP_NAME"
 msgstr ""
 
 msgid "SELECT"
 msgstr "sélectionner"
 
-msgid "Main Menu"
+msgid "MAIN_MENU_TITLE"
+msgstr ""
+
+msgid "ANNOUNCEMENT_PLAYER_TURN"
 msgstr ""
 
 msgid "AUDIO"
@@ -710,6 +698,9 @@ msgstr ""
 msgctxt "Open release in the browser"
 msgid "VERSION_WINDOW_OPEN"
 msgstr ""
+
+#~ msgid "TURN"
+#~ msgstr "tour"
 
 #~ msgid "keys"
 #~ msgstr "fr"
