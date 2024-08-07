@@ -14,6 +14,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.5.5\n"
 
+msgid "ANNOUNCEMENT_PLAYER_TURN"
+msgstr "Player {player_name} turn"
+
 msgid "PLAYER"
 msgstr "Player"
 
@@ -817,6 +820,18 @@ msgstr "More details"
 msgctxt "Open release in the browser"
 msgid "VERSION_WINDOW_OPEN"
 msgstr "Open release"
+
+msgid "RESIZE_MAP_TITLE"
+msgstr "Resize map"
+
+msgid "OPEN_MAP_TITLE"
+msgstr "Open a map file"
+
+msgid "SELECT_MAP_NAME"
+msgstr "Map Name"
+
+msgid "MAIN_MENU_TITLE"
+msgstr "Main Menu"
 
 #, fuzzy
 #~ msgid "<VERSION>"

@@ -124,6 +124,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
+auto_translate = false
+localize_numeral_system = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

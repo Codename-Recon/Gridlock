@@ -62,19 +62,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 
 #: levels/game.tscn
-#: levels/game_over_screen.tscn
-#: logic/ui/map_editor_ui.gd
-#: logic/ui/map_editor_ui.tscn
-#: logic/ui/round_label.gd
-msgid "PLAYER"
-msgstr ""
-
-#: levels/game.tscn
-#: logic/ui/round_label.gd
-msgid "TURN"
-msgstr ""
-
-#: levels/game.tscn
 msgid "MOVE"
 msgstr ""
 
@@ -103,20 +90,7 @@ msgid "CAPTURE"
 msgstr ""
 
 #: levels/game.tscn
-#: logic/ui/floating_info.tscn
-msgid "100"
-msgstr ""
-
-#: levels/game.tscn
-msgid "2\n"
-msgstr ""
-
-#: levels/game.tscn
 msgid "NEXT_ROUND"
-msgstr ""
-
-#: levels/game.tscn
-msgid "Player 1 Turn"
 msgstr ""
 
 #: levels/game.tscn
@@ -138,6 +112,12 @@ msgstr ""
 #: levels/menu.tscn
 #: logic/ui/map_selection.tscn
 msgid "BACK"
+msgstr ""
+
+#: levels/game_over_screen.tscn
+#: logic/ui/map_editor_ui.gd
+#: logic/ui/map_editor_ui.tscn
+msgid "PLAYER"
 msgstr ""
 
 #: levels/game_over_screen.tscn
@@ -229,10 +209,6 @@ msgstr ""
 #: assets/translations/dynamic_string_loader.gd
 msgctxt "Movement name"
 msgid "SEA"
-msgstr ""
-
-#: logic/ui/board_analytic.tscn
-msgid "Infantry"
 msgstr ""
 
 #: logic/ui/lobby_list.gd
@@ -333,7 +309,7 @@ msgid "LOAD"
 msgstr ""
 
 #: logic/ui/map_editor_ui.tscn
-msgid "Resize map"
+msgid "RESIZE_MAP_TITLE"
 msgstr ""
 
 #: logic/ui/map_editor_ui.tscn
@@ -353,7 +329,7 @@ msgid "CANCEL"
 msgstr ""
 
 #: logic/ui/map_editor_ui.tscn
-msgid "Open a File"
+msgid "OPEN_MAP_TITLE"
 msgstr ""
 
 #: logic/ui/map_editor_ui.tscn
@@ -361,7 +337,7 @@ msgid "*.crm"
 msgstr ""
 
 #: logic/ui/map_selection_element.tscn
-msgid "Map Name"
+msgid "SELECT_MAP_NAME"
 msgstr ""
 
 #: logic/ui/map_selection_element.tscn
@@ -369,7 +345,11 @@ msgid "SELECT"
 msgstr ""
 
 #: logic/ui/menu.tscn
-msgid "Main Menu"
+msgid "MAIN_MENU_TITLE"
+msgstr ""
+
+#: logic/ui/round_label.gd
+msgid "ANNOUNCEMENT_PLAYER_TURN"
 msgstr ""
 
 #: logic/ui/settings_content.tscn
