@@ -14,12 +14,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.5.5\n"
 
-msgid "PLAYER"
-msgstr "Spieler"
-
-msgid "TURN"
-msgstr "Runde"
-
 msgid "MOVE"
 msgstr "Bewegen"
 
@@ -41,17 +35,8 @@ msgstr "Auffüllen"
 msgid "CAPTURE"
 msgstr "Einnehmen"
 
-msgid "100"
-msgstr ""
-
-msgid "2\n"
-msgstr ""
-
 msgid "NEXT_ROUND"
 msgstr "Nächste Runde"
-
-msgid "Player 1 Turn"
-msgstr ""
 
 msgid "SETTINGS"
 msgstr "Einstellungen"
@@ -64,6 +49,9 @@ msgstr "Weiter"
 
 msgid "BACK"
 msgstr "Zurück"
+
+msgid "PLAYER"
+msgstr "Spieler"
 
 msgid "WON"
 msgstr "Gewinnt"
@@ -133,9 +121,6 @@ msgstr ""
 
 msgctxt "Movement name"
 msgid "SEA"
-msgstr ""
-
-msgid "Infantry"
 msgstr ""
 
 msgid "MESSAGE_TITLE_LOBBY_CONNECTION_PROBLEM"
@@ -210,7 +195,7 @@ msgstr "Speichern"
 msgid "LOAD"
 msgstr "Laden"
 
-msgid "Resize map"
+msgid "RESIZE_MAP_TITLE"
 msgstr ""
 
 msgid "HORIZONTAL"
@@ -225,19 +210,22 @@ msgstr "akzeptieren"
 msgid "CANCEL"
 msgstr ""
 
-msgid "Open a File"
+msgid "OPEN_MAP_TITLE"
 msgstr ""
 
 msgid "*.crm"
 msgstr ""
 
-msgid "Map Name"
+msgid "SELECT_MAP_NAME"
 msgstr ""
 
 msgid "SELECT"
 msgstr "Auswählen"
 
-msgid "Main Menu"
+msgid "MAIN_MENU_TITLE"
+msgstr ""
+
+msgid "ANNOUNCEMENT_PLAYER_TURN"
 msgstr ""
 
 msgid "AUDIO"
@@ -712,6 +700,9 @@ msgstr ""
 msgctxt "Open release in the browser"
 msgid "VERSION_WINDOW_OPEN"
 msgstr ""
+
+#~ msgid "TURN"
+#~ msgstr "Runde"
 
 #~ msgid "keys"
 #~ msgstr "de"
