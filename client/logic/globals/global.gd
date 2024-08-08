@@ -48,7 +48,7 @@ func _create_missing_folders() -> void:
 func _load_maps(dir_path: String) -> void:
 	var folder: DirAccess = DirAccess.open(dir_path)
 	for file_name: String in folder.get_files():
-		if not file_name.ends_with(".crm"):
+		if not file_name.ends_with(".glm"):
 			continue
 		var map_json: String = MapFile.load_from_file(
 			"%s/%s" % [folder.get_current_dir(), file_name]

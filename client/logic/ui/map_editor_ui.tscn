@@ -153,21 +153,21 @@ columns = 13
 
 [node name="Example1" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
 layout_mode = 2
-text = "Example 1"
 auto_translate = false
 localize_numeral_system = false
+text = "Example 1"
 
 [node name="Example2" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
 layout_mode = 2
-text = "Example 2"
 auto_translate = false
 localize_numeral_system = false
+text = "Example 2"
 
 [node name="Example3" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
 layout_mode = 2
-text = "Example 3"
 auto_translate = false
 localize_numeral_system = false
+text = "Example 3"
 
 [node name="UnitPanel" type="Panel" parent="TabBar"]
 layout_mode = 1
@@ -194,21 +194,21 @@ columns = 13
 
 [node name="Example1" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
 layout_mode = 2
-text = "Example 1"
 auto_translate = false
 localize_numeral_system = false
+text = "Example 1"
 
 [node name="Example2" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
 layout_mode = 2
-text = "Example 2"
 auto_translate = false
 localize_numeral_system = false
+text = "Example 2"
 
 [node name="Example3" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
 layout_mode = 2
-text = "Example 3"
 auto_translate = false
 localize_numeral_system = false
+text = "Example 3"
 
 [node name="TilePanel" type="Panel" parent="TabBar"]
 layout_mode = 1
@@ -1009,12 +1009,12 @@ value = 20.0
 
 [node name="HorizontalSize" type="Label" parent="ResizeMenu/VBoxContainer"]
 layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "20"
-auto_translate = false
-localize_numeral_system = false
 horizontal_alignment = 1
 
 [node name="LabelVertical" type="Label" parent="ResizeMenu/VBoxContainer"]
@@ -1032,12 +1032,12 @@ value = 20.0
 
 [node name="VerticalSize" type="Label" parent="ResizeMenu/VBoxContainer"]
 layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "20"
-auto_translate = false
-localize_numeral_system = false
 horizontal_alignment = 1
 
 [node name="Accept" type="Button" parent="ResizeMenu"]
@@ -1072,12 +1072,12 @@ next_menu = NodePath("../../MainMenu")
 title = "OPEN_MAP_TITLE"
 initial_position = 1
 size = Vector2i(450, 334)
-ok_button_text = "Open"
+ok_button_text = "OPEN"
 cancel_button_text = "CANCEL"
 file_mode = 0
 access = 1
 root_subfolder = "maps"
-filters = PackedStringArray("*.crm")
+filters = PackedStringArray("*.glm")
 use_native_dialog = true
 
 [connection signal="map_resized" from="." to="." method="_on_map_resized"]
