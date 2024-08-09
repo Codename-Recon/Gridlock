@@ -103,11 +103,9 @@ render_target_update_mode = 4
 zoom = Vector2(2, 2)
 
 [node name="SpawnSpot" type="Marker2D" parent="Element/UnitWindow/SubViewportContainer/SubViewport"]
-unique_name_in_owner = true
 position = Vector2(0, 5)
 
 [node name="Title" type="Label" parent="Element"]
-unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
 offset_left = 122.0
@@ -115,20 +113,19 @@ offset_top = 2.0
 offset_right = -143.0
 offset_bottom = 27.0
 grow_horizontal = 2
+auto_translate = false
+localize_numeral_system = false
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "Anti-Air"
-auto_translate = false
-localize_numeral_system = false
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_layout_mode = 1
 
 [node name="Body" type="Label" parent="Element"]
-unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
 offset_left = 122.0
@@ -136,18 +133,17 @@ offset_top = 30.0
 offset_right = -50.0
 offset_bottom = 114.0
 grow_horizontal = 2
+auto_translate = false
+localize_numeral_system = false
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
 text = "Stronger, slower, and more expensive than Infantry, Mechanized Infantry (more commonly referred to as Mechs) trade versatility for much greater cost-efficiency against a variety of targets.
 "
-auto_translate = false
-localize_numeral_system = false
 autowrap_mode = 3
 text_overrun_behavior = 3
 metadata/_edit_layout_mode = 1
 
 [node name="Cost" type="Label" parent="Element"]
-unique_name_in_owner = true
 layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
@@ -156,14 +152,14 @@ offset_top = 2.0
 offset_right = -37.0
 offset_bottom = 27.0
 grow_horizontal = 0
+auto_translate = false
+localize_numeral_system = false
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "1000"
-auto_translate = false
-localize_numeral_system = false
 horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_layout_mode = 1

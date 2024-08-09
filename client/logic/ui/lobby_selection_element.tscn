@@ -89,7 +89,6 @@ texture = SubResource("AtlasTexture_568k2")
 metadata/_edit_layout_mode = 1
 
 [node name="TitleLabel" type="Label" parent="Element"]
-unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,7 +110,6 @@ vertical_alignment = 1
 metadata/_edit_layout_mode = 1
 
 [node name="MapLabel" type="Label" parent="Element"]
-unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
