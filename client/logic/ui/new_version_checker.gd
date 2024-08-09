@@ -90,16 +90,13 @@ func _on_request_completed(
 
 func load_release_data(release_data: Dictionary, version: Version) -> void:
 	var notification_title: String = (
-		tr("VERSION_NOTIFICATION_TITLE", "Notification title for a new version")
-		. format({version = release_data.get("tag_name")})
+		tr("VERSION_NOTIFICATION_TITLE").format({version = release_data.get("tag_name")})
 	)
 	var open: ButtonToUri = ButtonToUri.new()
-	open.text = tr(
-		"VERSION_NOTIFICATION_OPEN", "Open release in the browser, button in notification"
-	)
+	open.text = tr("VERSION_NOTIFICATION_OPEN")
 
 	var details: Button = Button.new()
-	details.text = tr("VERSION_NOTIFICATION_MODE_DETAILS", "Open details of the notification")
+	details.text = tr("VERSION_NOTIFICATION_MODE_DETAILS")
 
 	var notification: NotificationPanel = messages.spawn_notification(
 		notification_title, [open, details], 0
@@ -118,7 +115,7 @@ func open_version_summary(release_data: Dictionary) -> void:
 	var title: String = release_data.get("tag_name")
 	var markdown_content: String = release_data.get("body", "No description in the last version")
 	var button: ButtonToUri = ButtonToUri.new()
-	button.text = tr("VERSION_WINDOW_OPEN", "Open release in the browser")
+	button.text = tr("VERSION_WINDOW_OPEN")
 	button.uri_to_go = release_data.get("html_url")
 	messages.spawn_markdown(title, markdown_content, button)
 
