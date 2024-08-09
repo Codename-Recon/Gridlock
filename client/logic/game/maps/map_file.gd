@@ -10,7 +10,7 @@ static var _global: GlobalGlobal = Global
 
 static func save_to_file(json_map: String, file_name: String) -> void:
 	var packer: ZIPPacker = ZIPPacker.new()
-	packer.open("%s/%s.crm" % [_global.MAP_CUSTOM_FOLDER_PATH, file_name])
+	packer.open("%s/%s.glm" % [_global.MAP_CUSTOM_FOLDER_PATH, file_name])
 	packer.start_file("map.json")
 	packer.write_file(json_map.to_utf8_buffer())
 	packer.close_file()

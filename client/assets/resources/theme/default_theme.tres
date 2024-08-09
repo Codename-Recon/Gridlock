@@ -70,7 +70,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_i6qn0"]
+
 image = SubResource("Image_04n1d")
+
 
 [resource]
 default_font = ExtResource("1_kuoae")
