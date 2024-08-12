@@ -2535,6 +2535,7 @@ texture_region_size = Vector2i(32, 32)
 10:40/0/custom_data_1 = "WOOD_1"
 10:40/0/custom_data_2 = "PLAIN_1"
 2:25/0 = 0
+2:25/0/z_index = 1
 2:25/0/terrain_set = 0
 2:25/0/terrain = 7
 2:25/0/terrains_peering_bit/right_side = 1
