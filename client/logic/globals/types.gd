@@ -69,9 +69,9 @@ func _generate_types() -> void:
 
 
 func add_text_to_gdscript(
-	file: FileAccess, name: String, text: String, context: String = ""
+	file: FileAccess, var_name: String, text: String, context: String = ""
 ) -> void:
-	var sanitized_name: String = sanitizer_regex.sub(name, "_")
+	var sanitized_name: String = sanitizer_regex.sub(var_name, "_")
 	file.store_string(
 		(
 			'var _%s: String = tr("%s")\n'
@@ -109,7 +109,6 @@ func _generate_labels() -> void:
 			terrain.get("description", "") as String
 		)
 	for movement_key: String in movement_types:
-		var movement: Dictionary = movements.get(movement_key, {})
 		add_text_to_gdscript(
 			file_dumper, "%s_MOVEMENT" % movement_key, movement_key
 		)

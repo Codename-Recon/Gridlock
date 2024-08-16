@@ -1,7 +1,7 @@
 class_name UserSelectableElement
 extends SelectableElement
 
-signal user_selected
+signal user_selected(element: UserSelectableElement)
 
 @export var user_name: String
 
@@ -14,4 +14,4 @@ func _ready() -> void:
 
 
 func _on_selected() -> void:
-	pass
+	user_selected.emit(self)

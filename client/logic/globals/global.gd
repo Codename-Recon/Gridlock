@@ -1,8 +1,6 @@
 class_name GlobalGlobal
 extends Node
 
-signal settings_changed
-
 const CONFIG_FILE_PATH: String = "user://config.cfg"
 const CONFIG_SECTION: String = "game"
 const RENDERING_SECTION: String = "rendering"

@@ -128,8 +128,8 @@ func _ready() -> void:
 
 
 func _update_health_label() -> void:
-	var max: int = ProjectSettings.get_setting("global/unit/max_health")
-	if health < max and health > 0:
+	var max_health: int = ProjectSettings.get_setting("global/unit/max_health")
+	if health < max_health and health > 0:
 		# round up value
 		var round_value: int = ProjectSettings.get_setting("global/unit/health_rounding_value")
 		var text_value: int = round((health + round_value) / 10.0) as int
