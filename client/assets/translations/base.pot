@@ -94,6 +94,11 @@ msgid "NEXT_ROUND"
 msgstr ""
 
 #: levels/game.tscn
+#: assets/translations/dynamic_string_loader.gd
+msgid "MENU"
+msgstr ""
+
+#: levels/game.tscn
 #: levels/menu.tscn
 msgid "SETTINGS"
 msgstr ""
@@ -116,7 +121,6 @@ msgstr ""
 
 #: levels/game_over_screen.tscn
 #: logic/ui/map_editor_ui.gd
-#: logic/ui/map_editor_ui.tscn
 msgid "PLAYER"
 msgstr ""
 
@@ -129,6 +133,10 @@ msgid "PLAYER 1 WINS"
 msgstr ""
 
 #: levels/menu.tscn
+msgid "MAIN_MENU"
+msgstr ""
+
+#: levels/menu.tscn
 msgid "SINGLEPLAYER"
 msgstr ""
 
@@ -137,6 +145,7 @@ msgid "MULTIPLAYER"
 msgstr ""
 
 #: levels/menu.tscn
+#: logic/ui/map_editor_ui.tscn
 msgid "MAP_EDITOR"
 msgstr ""
 
@@ -146,6 +155,10 @@ msgstr ""
 
 #: levels/menu.tscn
 msgid "EXIT"
+msgstr ""
+
+#: levels/menu.tscn
+msgid "SINGLEPLAYER_MENU"
 msgstr ""
 
 #: levels/menu.tscn
@@ -173,6 +186,10 @@ msgid "RANKED"
 msgstr ""
 
 #: levels/menu.tscn
+msgid "MULTIPLAYER_MENU"
+msgstr ""
+
+#: levels/menu.tscn
 msgid "REFRESH"
 msgstr ""
 
@@ -185,8 +202,16 @@ msgid "USERNAME"
 msgstr ""
 
 #: levels/menu.tscn
+msgid "LOBBY_MENU"
+msgstr ""
+
+#: levels/menu.tscn
 #: logic/ui/map_selection.tscn
 msgid "START"
+msgstr ""
+
+#: levels/menu.tscn
+msgid "SETTING_MENU"
 msgstr ""
 
 #: levels/menu.tscn
@@ -231,7 +256,6 @@ msgid "MESSAGE_TEXT_MAP_EDITOR_SAVE_NO_NAME"
 msgstr ""
 
 #: logic/ui/map_editor_ui.gd
-#: logic/ui/map_editor_ui.tscn
 msgid "NEUTRAL"
 msgstr ""
 
@@ -253,6 +277,14 @@ msgstr ""
 
 #: logic/ui/map_editor_ui.tscn
 msgid "PLAYERS"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "Player 1"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "Player 2"
 msgstr ""
 
 #: logic/ui/map_editor_ui.tscn
@@ -324,7 +356,16 @@ msgid "OPEN_MAP_TITLE"
 msgstr ""
 
 #: logic/ui/map_editor_ui.tscn
-msgid "*.crm"
+msgid "OPEN"
+msgstr ""
+
+#: logic/ui/map_editor_ui.tscn
+msgid "*.glm"
+msgstr ""
+
+#: logic/ui/map_selection.tscn
+#: assets/translations/dynamic_string_loader.gd
+msgid "MAP_SELECTION"
 msgstr ""
 
 #: logic/ui/map_selection_element.tscn
@@ -755,14 +796,6 @@ msgstr ""
 msgid "AIR_DESCRIPTION"
 msgstr ""
 
-#: assets/translations/dynamic_string_loader.gd
-msgid "MAP_SELECTION"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
-msgid "MENU"
-msgstr ""
-
 #: logic/game/game_logic.gd
 msgid "REFILLED"
 msgstr ""
@@ -788,21 +821,17 @@ msgid "MESSAGE_TEXT_PLAYER_LEFT"
 msgstr ""
 
 #: logic/ui/new_version_checker.gd
-msgctxt "Notification title for a new version"
 msgid "VERSION_NOTIFICATION_TITLE"
 msgstr ""
 
 #: logic/ui/new_version_checker.gd
-msgctxt "Open release in the browser, button in notification"
 msgid "VERSION_NOTIFICATION_OPEN"
 msgstr ""
 
 #: logic/ui/new_version_checker.gd
-msgctxt "Open details of the notification"
 msgid "VERSION_NOTIFICATION_MODE_DETAILS"
 msgstr ""
 
 #: logic/ui/new_version_checker.gd
-msgctxt "Open release in the browser"
 msgid "VERSION_WINDOW_OPEN"
 msgstr ""
