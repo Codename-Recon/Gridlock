@@ -12,7 +12,7 @@ on:
       - 'client/**'
 
 env:
-  GODOT_VERSION: 4.2.2
+  GODOT_VERSION: 4.3
   EXPORT_NAME: Gridlock
   PROJECT_PATH: client
 
@@ -21,7 +21,7 @@ jobs:
     name: Check the types in the project
     runs-on: ubuntu-20.04
     container:
-      image: barichello/godot-ci:4.2.2
+      image: barichello/godot-ci:4.3
 
     steps:
       - name: Checkout
