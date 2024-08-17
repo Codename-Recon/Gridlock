@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:51+0200\n"
-"PO-Revision-Date: 2024-07-30 16:17+0000\n"
-"Last-Translator: don't know <stephan.kessler@outlook.com>\n"
+"PO-Revision-Date: 2024-08-17 13:59+0000\n"
+"Last-Translator: HunterNN <stephan.kessler@outlook.com>\n"
 "Language-Team: German <http://weblate.jaumesingla.es/projects/codename-recon/"
 "game-client/de/>\n"
 "Language: de\n"
@@ -56,19 +56,17 @@ msgstr "Spieler"
 msgid "WON"
 msgstr "Gewinnt"
 
-#, fuzzy
 msgid "PLAYER 1 WINS"
 msgstr "Spieler"
 
 msgid "SINGLEPLAYER"
 msgstr "Einzelspieler"
 
-#, fuzzy
 msgid "MULTIPLAYER"
 msgstr "Mehrspieler"
 
 msgid "MAP_EDITOR"
-msgstr ""
+msgstr "Karten-Editor"
 
 msgid "CREDITS"
 msgstr "Credits"
@@ -107,13 +105,13 @@ msgid "START"
 msgstr "Start"
 
 msgid "BUG_REPORT"
-msgstr ""
+msgstr "Fehler melden"
 
 msgid "DISCUSSIONS"
-msgstr ""
+msgstr "Diskussionen"
 
 msgid "SEA"
-msgstr ""
+msgstr "Meer"
 
 msgid "MESSAGE_TITLE_LOBBY_CONNECTION_PROBLEM"
 msgstr "Verbindungsproblem"
@@ -122,7 +120,7 @@ msgid "MESSAGE_TEXT_LOBBY_CONNECTION_PROBLEM"
 msgstr "Es kann keine Verbindung zum Lobby-Server hergestellt werden."
 
 msgid "DEBUG_ACCOUNT"
-msgstr ""
+msgstr "Fehlerbehebungskonto"
 
 msgid "MP_JOIN"
 msgstr "Beitreten"
@@ -131,55 +129,55 @@ msgid "MP_KICK"
 msgstr "Rauswerfen"
 
 msgid "MESSAGE_TITLE_MAP_EDITOR_SAVE_NO_NAME"
-msgstr ""
+msgstr "Fehlender Kartenname"
 
 msgid "MESSAGE_TEXT_MAP_EDITOR_SAVE_NO_NAME"
-msgstr ""
+msgstr "Bitte gebe einen Kartennamen an."
 
 msgid "NEUTRAL"
-msgstr ""
+msgstr "Neutral"
 
 msgid "MAP_SETTINGS"
-msgstr ""
+msgstr "Karten-Einstellungen"
 
 msgid "NAME"
-msgstr ""
+msgstr "Name"
 
 msgid "AUTHOR"
-msgstr ""
+msgstr "Autor"
 
 msgid "PLAYER_SETTINGS"
-msgstr ""
+msgstr "Spieler-Einstellungen"
 
 msgid "PLAYERS"
-msgstr ""
+msgstr "Spieler"
 
 msgid "MONEY"
-msgstr ""
+msgstr "Geld"
 
 msgid "TERRAIN_SETTINGS"
-msgstr ""
+msgstr "Geländeeinstellungen"
 
 msgid "SELECTED"
-msgstr ""
+msgstr "Ausgewählt"
 
 msgid "OWNER"
-msgstr ""
+msgstr "Besitzer"
 
 msgid "UNIT_SETTINGS"
-msgstr ""
+msgstr "Einheit-Einstellungen"
 
 msgid "HEALTH"
-msgstr ""
+msgstr "Gesundheit"
 
 msgid "FUEL"
-msgstr ""
+msgstr "Treibstoff"
 
 msgid "AMMO"
-msgstr ""
+msgstr "Munition"
 
 msgid "RESIZE"
-msgstr ""
+msgstr "Größe ändern"
 
 msgid "SAVE"
 msgstr "Speichern"
@@ -188,37 +186,37 @@ msgid "LOAD"
 msgstr "Laden"
 
 msgid "RESIZE_MAP_TITLE"
-msgstr ""
+msgstr "Kartengröße ändern"
 
 msgid "HORIZONTAL"
-msgstr ""
+msgstr "Horizontal"
 
 msgid "VERTICAL"
-msgstr ""
+msgstr "Vertikal"
 
 msgid "ACCEPT"
 msgstr "akzeptieren"
 
 msgid "CANCEL"
-msgstr ""
+msgstr "Abbrechen"
 
 msgid "OPEN_MAP_TITLE"
-msgstr ""
+msgstr "Karten-Datei öffnen"
 
 msgid "*.crm"
 msgstr ""
 
 msgid "SELECT_MAP_NAME"
-msgstr ""
+msgstr "Kartenname"
 
 msgid "SELECT"
 msgstr "Auswählen"
 
 msgid "MAIN_MENU_TITLE"
-msgstr ""
+msgstr "Hauptmenü"
 
 msgid "ANNOUNCEMENT_PLAYER_TURN"
-msgstr ""
+msgstr "Spieler {player_name}-Zug"
 
 msgid "AUDIO"
 msgstr "Audio"
@@ -236,310 +234,415 @@ msgid "BUY"
 msgstr "Kaufen"
 
 msgid "ANTI_AIR"
-msgstr ""
+msgstr "Flugabwehr"
 
 msgid "ANTI_AIR_DESCRIPTION"
 msgstr ""
+"Flugabwehr-Einheiten sind zwar stark gegen Luftfahrzeuge, aber auch effektiv "
+"gegen Infanterie und leichte Fahrzeuge."
 
 msgid "APC"
-msgstr ""
+msgstr "APC"
 
-#, fuzzy
-#| msgid "SELECT"
 msgid "APC_DESCRIPTION"
 msgstr "Auswählen"
 
 msgid "ARTILLERY"
-msgstr ""
+msgstr "Artillerie"
 
 msgid "ARTILLERY_DESCRIPTION"
 msgstr ""
+"Artillerie sind kostengünstige Einheiten für den indirekten Kampf. Sie "
+"fungieren als primäre Verteidigungs-Einheit, die ihre Macht über die "
+"Frontlinien projiziert."
 
 msgid "B-COPTER"
-msgstr ""
+msgstr "Kampfhubschrauber"
 
 msgid "B-COPTER_DESCRIPTION"
 msgstr ""
+"Kampfhubschrauber sind vielseitige Luftfahrzeuge, die in der Lage sind, eine "
+"Vielzahl von Zielen anzugreifen."
 
 msgid "BATTLESHIP"
-msgstr ""
+msgstr "Schlachtschiff"
 
 msgid "BATTLESHIP_DESCRIPTION"
 msgstr ""
+"Schlachtschiffe sind die mächtigsten indirekten Einheiten im Spiel und "
+"zeichnen sich durch ihre Fähigkeit aus, Ziele aus der Ferne anzugreifen – "
+"eine Seltenheit unter den Seestreitkräften."
 
 msgid "BLACKBOAT"
-msgstr ""
+msgstr "Reparaturboot"
 
 msgid "BLACK_BOAT_DESCRIPTION"
 msgstr ""
+"Reparaturboote sind Seestreitkräfte, die zum Transport von Truppen sowie zur "
+"Versorgung und Reparatur anderer Einheiten dienen."
 
 msgid "BLACKBOMB"
-msgstr ""
+msgstr "Bomben-Drohne"
 
 msgid "BLACK_BOMB_DESCRIPTION"
 msgstr ""
+"Bomben-Drohnen sind aus der Ferne gesteuerte Flugwaffen, die auf einem "
+"Flughafen hergestellt werden."
 
 msgid "BOMBER"
-msgstr ""
+msgstr "Bomber"
 
 msgid "BOMBER_DESCRIPTION"
 msgstr ""
+"Bomber sind mächtige Luftfahrzeuge, die für ihre enorme Zerstörungskraft "
+"bekannt sind und sowohl Land- als auch Seestreitkräften schwere Schäden "
+"zufügen können. Sie besitzen jedoch keine Fähigkeit, andere Flugzeuge "
+"anzugreifen."
 
 msgid "CARRIER"
-msgstr ""
+msgstr "Flugzeugträger"
 
 msgid "CARRIER_DESCRIPTION"
 msgstr ""
+"Der Flugzeugträger ist eine einzigartige Marineeinheit, die zwei "
+"Luftfahrzeuge aufnehmen kann, was ihn von Kreuzern unterscheidet. Im "
+"Gegensatz zu Kreuzern verfügen Flugzeugträger über die Vielseitigkeit, "
+"sowohl Helikopter als auch Flugzeuge zu tragen."
 
 msgid "CRUISER"
-msgstr ""
+msgstr "Kreuzer"
 
 msgid "CRUISER_DESCRIPTION"
 msgstr ""
+"Kreuzer sind eine Art Seestreitkraft, die bis zu zwei Hubschraubertypen wie "
+"Kampf- und Transporthubschraubern aufnehmen können. Darüber hinaus dienen "
+"sie als effektive Einheiten gegen Flugzeuge und Unterseeboote und schützen "
+"Schlachtschiffe und Landungsboote vor ihren wichtigsten Bedrohungen, während "
+"sie bei Bedarf zusätzliches Feuerkraft bereitstellen."
 
 msgid "FIGHTER"
-msgstr ""
+msgstr "Jagdflugzeug"
 
 msgid "FIGHTER_DESCRIPTION"
 msgstr ""
+"Eine Staffel von Kampfflugzeugen beherrscht den Himmel und fügt anderen "
+"Luftfahrzeugen erhebliche Schäden zu. Obwohl sie unter allen Einheiten über "
+"hohe Beweglichkeit und Verteidigung verfügen, sind sie anfällig für "
+"Flugabwehr-Einheiten, einschließlich anderer Kampfflugzeuge."
 
 msgid "INFANTRY"
-msgstr ""
+msgstr "Infanterie"
 
 msgid "INFANTRY_DESCRIPTION"
 msgstr ""
+"Infanterie sind die günstigsten Einheiten in Gridlock und dennoch "
+"unglaublich wichtig und sollten nicht übersehen werden."
 
 msgid "LANDER"
-msgstr ""
+msgstr "Landungsboot"
 
 msgid "LANDER_DESCRIPTION"
 msgstr ""
+"Landungsboote sind unbewaffnete Einheiten ohne Angriffsoptionen. "
+"Nichtsdestotrotz gehören sie zu den wenigen Einheiten, die andere Einheiten "
+"transportieren können und bringen bis zu zwei Landtruppen jeder Art über das "
+"Meer. Sie können diese an Buchten und Häfen laden und entladen."
 
 msgid "MEDIUM_TANK"
-msgstr ""
+msgstr "Mittlerer Panzer"
 
 msgid "MEDIUM_TANK_DESCRIPTION"
 msgstr ""
+"Größer, langsamer und deutlich stärker als Panzer, sind mittlere Panzer eine "
+"Macht zu fürchten."
 
 msgid "MECH"
-msgstr ""
+msgstr "Mechanisierte Infanterie"
 
 msgid "MECH_DESCRIPTION"
 msgstr ""
+"Mechanisierte Infanterie sind mit Bazookas bewaffnet, die für den Kampf "
+"gegen Landfahrzeuge reserviert sind. In allen anderen Begegnungen verlassen "
+"sie sich auf ihr Sekundärwaffe, das Maschinengewehr. Typischerweise sind "
+"mechanisierte Infanteristen in Gefechtslagen sowohl offensiv als auch "
+"defensiv gegen Fahrzeuge sehr effektiv und verursachen oft erhebliche "
+"Schäden."
 
 msgid "MEGA_TANK"
-msgstr ""
+msgstr "Mega-Panzer"
 
 msgid "MEGA_TANK_DESCRIPTION"
 msgstr ""
+"Mit mächtigen Waffen und robuster Panzerung stellen diese mobilen Festungen "
+"eine ernste Bedrohung dar."
 
 msgid "MISSILE"
-msgstr ""
+msgstr "Flugabwehrraketensystem"
 
 msgid "MISSILE_DESCRIPTION"
 msgstr ""
+"Flugabwehrraketensysteme, sind mächtige Einheiten für den indirekten Kampf, "
+"die sich auf Angriffe auf Luftfahrzeuge aus der Ferne spezialisiert haben "
+"und dabei erhebliche Schäden anrichten können."
 
 msgid "NEO_TANK"
-msgstr ""
+msgstr "Spezialpanzer"
 
 msgid "NEO_TANK_DESCRIPTION"
 msgstr ""
+"Spezialpanzer verfügen über eine überlegenere Leistung im Vergleich zu "
+"mittleren Panzern. Bewaffnet mit einer mächtigen Hauptkanone, können sie "
+"sowohl Land- als auch Seestreitkräfte bekämpfen sowie Infanterie, "
+"Kampfflugzeuge und Transporthelikopter mit ihrem Maschinengewehr anvisieren."
 
 msgid "PIPERUNNER"
-msgstr ""
+msgstr "Mauerläufer"
 
 msgid "PIPERUNNER_DESCRIPTION"
 msgstr ""
+"Mauerläufer sind eine Art Land-Einheit mit indirekten Kampfmitteln, die auf "
+"Bewegung entlang von Wänden und Basen beschränkt sind."
 
 msgid "RECON"
-msgstr ""
+msgstr "Aufklärungseinheit"
 
 msgid "RECON_DESCRIPTION"
 msgstr ""
+"Leicht, schnell und günstig sind Aufklärungseinheiten (Recons) "
+"ausgezeichnete Einheiten für Aufklärung und Belästigung."
 
 msgid "ROCKET"
-msgstr ""
+msgstr "Raketenwerfer"
 
 msgid "ROCKET_DESCRIPTION"
 msgstr ""
+"Raketenwerfer sind die fortgeschrittenere Version der Artillerie und "
+"tauschen höhere Schaden und eine viel größere Reichweite gegen leichteres "
+"Panzerung und einen restriktiveren Bewegungstyp ein."
 
 msgid "STEALTH"
-msgstr ""
+msgstr "Tarnkappenflugzeug"
 
 msgid "STEALTH_DESCRIPTION"
 msgstr ""
+"Tarnkappenflugzeuge, klassifiziert als Luftfahrzeuge, besitzen die "
+"Fähigkeit, sich wie U-Boote durch Aktivierung des Tarnmodus zu verbergen."
 
 msgid "SUB"
-msgstr ""
+msgstr "U-Boot"
 
 msgid "T-COPTER"
-msgstr ""
+msgstr "Transporthelikopter"
 
 msgid "T-COPTER_DESCRIPTION"
 msgstr ""
+"Transporthelikopter dienen als nicht kämpfende Einheiten ohne "
+"Offensivfähigkeiten. Hauptsächlich für den Transport eingesetzt, können "
+"diese jeweils eine Infanterie- oder eine mechanisierte Infanterieeinheit "
+"transportieren."
 
 msgid "TANK"
-msgstr ""
+msgstr "Leichter Panzer"
 
 msgid "TANK_DESCRIPTION"
 msgstr ""
+"Günstig, schnell und in der Lage, sich gegen die meisten anderen Landtruppen "
+"zu behaupten, sind Panzer ein Eckpfeiler jeder Armee."
 
 msgid "AIRPORT"
-msgstr ""
+msgstr "Flughafen"
 
 msgid "AIRPORT_DESCRIPTION"
 msgstr ""
+"Flughafen sind ein wichtiger Knotenpunkt für alle Luftfahrzeuge. Sie sind "
+"der einzige Boden, auf dem diese Einheiten eingesetzt, repariert und "
+"versorgt werden können, während sie gleichzeitig auch finanzielle Ressourcen "
+"bereitstellen. Neu eingesetzte Einheiten dürfen im selben Zug, in dem sie "
+"eingesetzt werden, keine Aktionen ausführen."
 
 msgid "BASE"
-msgstr ""
+msgstr "Basis"
 
-#, fuzzy
-#| msgid "SELECT"
 msgid "BASE_DESCRIPTION"
-msgstr "Auswählen"
+msgstr ""
+"Basen liefern Landtruppen Einkommen, Reparaturen und Nachschub. "
+"Entscheidenderweise sind sie auch der Ort, an dem alle Landtruppen erstellt "
+"werden können. Neu platzierte Einheiten können in derselben Runde keine "
+"Aktionen durchführen, in der sie eingesetzt werden."
 
 msgid "BEACH"
-msgstr ""
+msgstr "Strand"
 
 msgid "BEACH_DESCRIPTION"
 msgstr ""
+"Strände bieten eine Fläche, auf der Landungsboote Einheiten zum Kampf "
+"ausladen und absetzen können."
 
 msgid "BRIDGE"
-msgstr ""
+msgstr "Brücke"
 
 msgid "BRIDGE_DESCRIPTION"
 msgstr ""
+"Brücken ermöglichen es Bodeneinheiten, Flüsse und Meere ungehindert zu "
+"überqueren."
 
 msgid "CITY"
-msgstr ""
+msgstr "Stadt"
 
 msgid "CITY_DESCRIPTION"
 msgstr ""
+"Städte sind die grundlegendsten Gebäude, die man am häufigsten sieht. Sie "
+"liefern jede Runde Einkommen und können zum Reparieren und Nachrüsten von "
+"Landtruppen verwendet werden, die zu Beginn der Runde auf ihnen stehen."
 
 msgid "COM_TOWER"
-msgstr ""
+msgstr "Kommunikationsturm"
 
 msgid "COM_TOWER_DESCRIPTION"
 msgstr ""
+"Ein Com-Turm (Kommunikations-Turm) ist ein Objekt, das die Fähigkeiten "
+"verbündeter Einheiten verbessert. Jeder eroberte Turm erhöht die "
+"Angriffsstärke verbündeter Einheiten um 10 %."
 
 msgid "HQ"
-msgstr ""
+msgstr "Hauptquartier"
 
 msgid "HQ_DESCRIPTION"
-msgstr ""
+msgstr "Das wichtigste Grundstück auf der Karte."
 
 msgid "LAB"
-msgstr ""
+msgstr "Laboratorium"
 
 msgid "LAB_DESCRIPTION"
 msgstr ""
+"Laboratorien dienen als Forschungszentren und können eingeschränkte "
+"Einheiten freischalten."
 
 msgid "MOUNTAIN"
-msgstr ""
+msgstr "Berge"
 
 msgid "MOUNTAIN_DESCRIPTION"
 msgstr ""
+"Berge bieten eine große Menge an Verteidigung, können aber nur von "
+"Infanterie- und Lufttruppen durchquert werden. Sie erhöhen auch die "
+"Sichtweite jeder Soldaten-Einheit auf ihnen um 3."
 
 msgid "PIPE"
-msgstr ""
+msgstr "Mauer"
 
 msgid "PIPE_DESCRIPTION"
-msgstr ""
+msgstr "Mauern sind nahezu unüberwindbares Gelände."
 
 msgid "PIPE_BROKEN"
-msgstr ""
+msgstr "Zerbrochener Mauer"
 
 msgid "PIPE_BROKEN_DESCRIPTION"
-msgstr ""
+msgstr "Eine Schwachstelle im Mauerwerkssystem."
 
 msgid "PIPE_WEAK"
-msgstr ""
+msgstr "Schwachstelle der Mauer"
 
 msgid "PIPE_WEAK_DESCRIPTION"
-msgstr ""
+msgstr "Eine Schwachstelle, die beschädigt werden kann."
 
 msgid "PLAIN"
-msgstr ""
+msgstr "Flachland"
 
 msgid "PLAIN_DESCRIPTION"
 msgstr ""
+"Flachland bietet einen kleinen Grad an Geländedeckung und lässt sich leicht "
+"durchqueren."
 
 msgid "PORT"
-msgstr ""
+msgstr "Hafen"
 
 msgid "PORT_DESCRIPTION"
-msgstr ""
+msgstr "Häfen sind Grundstücke zum Bau und Unterhalt von Seestreitkräften."
 
 msgid "REEF"
-msgstr ""
+msgstr "Riff"
 
 msgid "REEF_DESCRIPTION"
 msgstr ""
+"Riffe bieten Seestreitkräften einige Verteidigung und dienen auch als "
+"hervorragende Versteckplätze."
 
 msgid "RIVER"
-msgstr ""
+msgstr "Fluss"
 
 msgid "RIVER_DESCRIPTION"
 msgstr ""
+"Flüsse behindern die Bewegung von Bodeneinheiten und können nur von "
+"Infanterie, mechanisierter Infanterie und Luftfahrzeugen durchquert werden."
 
 msgid "ROAD"
-msgstr ""
+msgstr "Straße"
 
 msgid "ROAD_DESCRIPTION"
 msgstr ""
+"Straßen bieten keinen defensiven Schutz, ermöglichen aber uneingeschränkte "
+"Bewegung für alle Bodeneinheiten."
 
 msgid "SEA_DESCRIPTION"
 msgstr ""
+"Meere machen den größten Teil des Geländes aus, auf dem Marineeinheiten "
+"kämpfen."
 
 msgid "SILO"
-msgstr ""
+msgstr "Silo"
 
 msgid "SILO_DESCRIPTION"
 msgstr ""
+"Raketenbunker werden von einer Infanterie- oder Mech-Einheit aktiviert. Die "
+"Rakete, die sie abschießen, hat eine 5x5-Quadratform und fügt jeder Einheit, "
+"die in der Explosion getroffen wird, 3 HP Schaden zu, ohne zwischen "
+"Verbündeten und Feind zu unterscheiden. Jeder Bunker kann nur einmal "
+"verwendet werden."
 
 msgid "WOOD"
-msgstr ""
+msgstr "Wald"
 
 msgid "WOOD_DESCRIPTION"
 msgstr ""
+"Wälder sind schwieriger zu durchqueren als Flachland, bieten aber bessere "
+"Geländedeckung und dienen als Versteck im Nebel des Krieges."
 
 msgid "FOOT"
-msgstr ""
+msgstr "Fuss"
 
 msgid "FOOT_DESCRIPTION"
-msgstr ""
+msgstr "Bewegungseigenschaft von Fußtruppen."
 
 msgid "BAZOOKA"
-msgstr ""
+msgstr "Mechanisierte Infanterie"
 
 msgid "BAZOOKA_DESCRIPTION"
 msgstr ""
+"Mechanisierte Infanterie (häufiger als Mechs bezeichnet) sind stärker, "
+"langsamer und teurer als Infanterie. Sie tauschen Vielseitigkeit gegen eine "
+"deutlich höhere Kostenersparnis bei der Bekämpfung verschiedener Ziele ein."
 
 msgid "TREADS"
-msgstr ""
+msgstr "Panzerketten"
 
 msgid "TREADS_DESCRIPTION"
-msgstr ""
+msgstr "Bewegungseigenschaft von Panzern."
 
 msgid "WHEELS"
-msgstr ""
+msgstr "Räder"
 
 msgid "WHEELS_DESCRIPTION"
-msgstr ""
+msgstr "Bewegungseigenschaft von Einheiten mit Rädern."
 
 msgid "AIR"
-msgstr ""
+msgstr "Luft"
 
 msgid "AIR_DESCRIPTION"
-msgstr ""
+msgstr "Bewegungseigenschaft von Luftfahrzeugen."
 
-#, fuzzy
-#| msgid "SELECT"
 msgid "MAP_SELECTION"
 msgstr "Auswählen"
 
-#, fuzzy
-#| msgid "MAIN_MENU"
 msgid "MENU"
 msgstr "Hauptmenü"
 
@@ -563,19 +666,19 @@ msgstr "Dein Gegner hat das Spiel verlassen. Du wirst zum Menü zurückgebracht.
 
 msgctxt "Notification title for a new version"
 msgid "VERSION_NOTIFICATION_TITLE"
-msgstr ""
+msgstr "Version {version} verfügbar!"
 
 msgctxt "Open release in the browser, button in notification"
 msgid "VERSION_NOTIFICATION_OPEN"
-msgstr ""
+msgstr "Öffnen"
 
 msgctxt "Open details of the notification"
 msgid "VERSION_NOTIFICATION_MODE_DETAILS"
-msgstr ""
+msgstr "Weitere Details"
 
 msgctxt "Open release in the browser"
 msgid "VERSION_WINDOW_OPEN"
-msgstr ""
+msgstr "Veröffentlichung öffnen"
 
 #~ msgid "TURN"
 #~ msgstr "Runde"
