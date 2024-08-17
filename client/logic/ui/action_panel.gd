@@ -4,30 +4,25 @@ signal action_selected
 
 var action_pressed: GameConst.Actions = GameConst.Actions.NONE
 
+@onready var v_box_container: VBoxContainer = $VBoxContainer
+@onready var button_move: Button = $VBoxContainer/ButtonMove
+@onready var button_attack: Button = $VBoxContainer/ButtonAttack
+@onready var button_enter: Button = $VBoxContainer/ButtonEnter
+@onready var button_deploy: Button = $VBoxContainer/ButtonDeploy
+@onready var button_join: Button = $VBoxContainer/ButtonJoin
+@onready var button_supply: Button = $VBoxContainer/ButtonSupply
+@onready var button_capture: Button = $VBoxContainer/ButtonCapture
+
 
 func _ready() -> void:
 	hide()
-	($VBoxContainer/ButtonMove as Button).pressed.connect(
-		_button_pressed.bind(GameConst.Actions.MOVE)
-	)
-	($VBoxContainer/ButtonAttack as Button).pressed.connect(
-		_button_pressed.bind(GameConst.Actions.ATTACK)
-	)
-	($VBoxContainer/ButtonEnter as Button).pressed.connect(
-		_button_pressed.bind(GameConst.Actions.ENTER)
-	)
-	($VBoxContainer/ButtonDeploy as Button).pressed.connect(
-		_button_pressed.bind(GameConst.Actions.DEPLOY)
-	)
-	($VBoxContainer/ButtonJoin as Button).pressed.connect(
-		_button_pressed.bind(GameConst.Actions.JOIN)
-	)
-	($VBoxContainer/ButtonSupply as Button).pressed.connect(
-		_button_pressed.bind(GameConst.Actions.REFILL)
-	)
-	($VBoxContainer/ButtonCapture as Button).pressed.connect(
-		_button_pressed.bind(GameConst.Actions.CAPTURE)
-	)
+	button_move.pressed.connect(_button_pressed.bind(GameConst.Actions.MOVE))
+	button_attack.pressed.connect(_button_pressed.bind(GameConst.Actions.ATTACK))
+	button_enter.pressed.connect(_button_pressed.bind(GameConst.Actions.ENTER))
+	button_deploy.pressed.connect(_button_pressed.bind(GameConst.Actions.DEPLOY))
+	button_join.pressed.connect(_button_pressed.bind(GameConst.Actions.JOIN))
+	button_supply.pressed.connect(_button_pressed.bind(GameConst.Actions.REFILL))
+	button_capture.pressed.connect(_button_pressed.bind(GameConst.Actions.CAPTURE))
 
 
 func _process(_delta: float) -> void:
@@ -40,37 +35,37 @@ func _process(_delta: float) -> void:
 
 func set_buttons(actions: Array) -> void:
 	if GameConst.Actions.MOVE in actions:
-		($VBoxContainer/ButtonMove as Button).show()
+		button_move.show()
 	else:
-		($VBoxContainer/ButtonMove as Button).hide()
+		button_move.hide()
 	if GameConst.Actions.ATTACK in actions:
-		($VBoxContainer/ButtonAttack as Button).show()
+		button_attack.show()
 	else:
-		($VBoxContainer/ButtonAttack as Button).hide()
+		button_attack.hide()
 	if GameConst.Actions.ENTER in actions:
-		($VBoxContainer/ButtonEnter as Button).show()
+		button_enter.show()
 	else:
-		($VBoxContainer/ButtonEnter as Button).hide()
+		button_enter.hide()
 	if GameConst.Actions.DEPLOY in actions:
-		($VBoxContainer/ButtonDeploy as Button).show()
+		button_deploy.show()
 	else:
-		($VBoxContainer/ButtonDeploy as Button).hide()
+		button_deploy.hide()
 	if GameConst.Actions.JOIN in actions:
-		($VBoxContainer/ButtonJoin as Button).show()
+		button_join.show()
 	else:
-		($VBoxContainer/ButtonJoin as Button).hide()
+		button_join.hide()
 	if GameConst.Actions.REFILL in actions:
-		($VBoxContainer/ButtonSupply as Button).show()
+		button_supply.show()
 	else:
-		($VBoxContainer/ButtonSupply as Button).hide()
+		button_supply.hide()
 	if GameConst.Actions.CAPTURE in actions:
-		($VBoxContainer/ButtonCapture as Button).show()
+		button_capture.show()
 	else:
-		($VBoxContainer/ButtonCapture as Button).hide()
+		button_capture.hide()
 
 
 func _on_v_box_container_resized() -> void:
-	size = ($VBoxContainer as BoxContainer).size
+	size.y = ($VBoxContainer as BoxContainer).size.y
 
 
 func _button_pressed(action: GameConst.Actions) -> void:
