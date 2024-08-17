@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:50+0200\n"
-"PO-Revision-Date: 2024-08-02 16:10+0000\n"
-"Last-Translator: Weblate Admin <jaume.singlavalls@gmail.com>\n"
-"Language-Team: English <http://weblate.jaumesingla.es/projects/codename-"
-"recon/game-client/en/>\n"
+"PO-Revision-Date: 2024-08-17 11:42+0000\n"
+"Last-Translator: HunterNN <stephan.kessler@outlook.com>\n"
+"Language-Team: English <http://weblate.jaumesingla.es/projects/"
+"codename-recon/game-client/en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -247,9 +247,6 @@ msgstr ""
 "Anti-Airs are strong at fighting Air units, but are also strong at combating "
 "foot soldiers and light vehicles."
 
-#, fuzzy
-#| msgctxt "Unit name"
-#| msgid "APC"
 msgid "APC"
 msgstr "APC"
 
@@ -386,9 +383,6 @@ msgstr ""
 msgid "FIGHTER"
 msgstr "Fighter"
 
-#, fuzzy
-#| msgctxt "Unit name"
-#| msgid "FIGHTER_DESCRIPTION"
 msgid "FIGHTER_DESCRIPTION"
 msgstr ""
 "A squadron of Fighters dominates the skies, dealing significant damage to "
@@ -670,9 +664,6 @@ msgstr ""
 msgid "COM_TOWER"
 msgstr "Com Tower"
 
-#, fuzzy
-#| msgctxt "Terrain information"
-#| msgid "COM_TOWER_DESCRIPTION"
 msgid "COM_TOWER_DESCRIPTION"
 msgstr ""
 "A Com Tower (Communication Tower) is a property for enhancing the skills of "
@@ -737,9 +728,6 @@ msgstr ""
 msgid "PIPE_BROKEN"
 msgstr "Broken Pipe"
 
-#, fuzzy
-#| msgctxt "Terrain information"
-#| msgid "PIPE_BROKEN_DESCRIPTION"
 msgid "PIPE_BROKEN_DESCRIPTION"
 msgstr "A broken weak spot of the pipe system."
 
@@ -749,9 +737,6 @@ msgstr "A broken weak spot of the pipe system."
 msgid "PIPE_WEAK"
 msgstr "Weak Pipe Spot"
 
-#, fuzzy
-#| msgctxt "Terrain information"
-#| msgid "PIPE_WEAK_DESCRIPTION"
 msgid "PIPE_WEAK_DESCRIPTION"
 msgstr "A weak spot, which can be damaged."
 
