@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:51+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2024-08-17 13:59+0000\n"
+"Last-Translator: HunterNN <stephan.kessler@outlook.com>\n"
+"Language-Team: French <http://weblate.jaumesingla.es/projects/codename-recon/"
+"game-client/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.12.2\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.5.5\n"
 
 msgid "MOVE"
 msgstr "déplacer"
@@ -54,14 +56,12 @@ msgstr "joueur"
 msgid "WON"
 msgstr "gagne"
 
-#, fuzzy
 msgid "PLAYER 1 WINS"
 msgstr "joueur"
 
 msgid "SINGLEPLAYER"
 msgstr "joueur unique"
 
-#, fuzzy
 msgid "MULTIPLAYER"
 msgstr "multijoueur"
 
@@ -242,8 +242,6 @@ msgstr ""
 msgid "APC"
 msgstr ""
 
-#, fuzzy
-#| msgid "SELECT"
 msgid "APC_DESCRIPTION"
 msgstr "sélectionner"
 
@@ -391,8 +389,6 @@ msgstr ""
 msgid "BASE"
 msgstr ""
 
-#, fuzzy
-#| msgid "SELECT"
 msgid "BASE_DESCRIPTION"
 msgstr "sélectionner"
 
@@ -531,13 +527,9 @@ msgstr ""
 msgid "AIR_DESCRIPTION"
 msgstr ""
 
-#, fuzzy
-#| msgid "SELECT"
 msgid "MAP_SELECTION"
 msgstr "sélectionner"
 
-#, fuzzy
-#| msgid "MAIN_MENU"
 msgid "MENU"
 msgstr "menu principal"
 
