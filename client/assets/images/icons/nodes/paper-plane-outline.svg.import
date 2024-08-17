@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://byigxa1ocab7x"
 path.s3tc="res://.godot/imported/paper-plane-outline.svg-6586a6a063774526fd747ef225934c8b.s3tc.ctex"
+path.etc2="res://.godot/imported/paper-plane-outline.svg-6586a6a063774526fd747ef225934c8b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/images/icons/nodes/paper-plane-outline.svg"
-dest_files=["res://.godot/imported/paper-plane-outline.svg-6586a6a063774526fd747ef225934c8b.s3tc.ctex"]
+dest_files=["res://.godot/imported/paper-plane-outline.svg-6586a6a063774526fd747ef225934c8b.s3tc.ctex", "res://.godot/imported/paper-plane-outline.svg-6586a6a063774526fd747ef225934c8b.etc2.ctex"]
 
 [params]
 

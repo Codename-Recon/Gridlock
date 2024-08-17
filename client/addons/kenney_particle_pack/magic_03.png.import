@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bl28q3d145bv4"
 path.s3tc="res://.godot/imported/magic_03.png-80512eff8444e33d0c62809d33371a2d.s3tc.ctex"
+path.etc2="res://.godot/imported/magic_03.png-80512eff8444e33d0c62809d33371a2d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/kenney_particle_pack/magic_03.png"
-dest_files=["res://.godot/imported/magic_03.png-80512eff8444e33d0c62809d33371a2d.s3tc.ctex"]
+dest_files=["res://.godot/imported/magic_03.png-80512eff8444e33d0c62809d33371a2d.s3tc.ctex", "res://.godot/imported/magic_03.png-80512eff8444e33d0c62809d33371a2d.etc2.ctex"]
 
 [params]
 
