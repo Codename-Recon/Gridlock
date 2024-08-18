@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:51+0200\n"
-"PO-Revision-Date: 2024-08-17 13:59+0000\n"
+"PO-Revision-Date: 2024-08-18 17:28+0000\n"
 "Last-Translator: HunterNN <stephan.kessler@outlook.com>\n"
 "Language-Team: German <http://weblate.jaumesingla.es/projects/codename-recon/"
 "game-client/de/>\n"
@@ -62,8 +62,6 @@ msgstr "Gewinnt"
 msgid "PLAYER 1 WINS"
 msgstr "Spieler"
 
-#, fuzzy
-#| msgid "MAIN_MENU_TITLE"
 msgid "MAIN_MENU"
 msgstr "Hauptmenü"
 
@@ -94,8 +92,6 @@ msgstr "Kampagne"
 msgid "VS_AI"
 msgstr "VS KI"
 
-#, fuzzy
-#| msgid "MULTIPLAYER"
 msgid "MULTIPLAYER_MENU"
 msgstr "Mehrspieler"
 
@@ -226,7 +222,7 @@ msgid "OPEN_MAP_TITLE"
 msgstr "Karten-Datei öffnen"
 
 msgid "OPEN"
-msgstr ""
+msgstr "Öffnen"
 
 msgid "*.glm"
 msgstr ""
@@ -241,7 +237,7 @@ msgid "SELECT"
 msgstr "Auswählen"
 
 msgid "ANNOUNCEMENT_PLAYER_TURN"
-msgstr "Spieler {player_name}-Zug"
+msgstr "Zug von Spieler {player_name}"
 
 msgid "AUDIO"
 msgstr "Audio"
@@ -683,27 +679,15 @@ msgstr "Spieler verlassen"
 msgid "MESSAGE_TEXT_PLAYER_LEFT"
 msgstr "Dein Gegner hat das Spiel verlassen. Du wirst zum Menü zurückgebracht."
 
-#, fuzzy
-#| msgctxt "Notification title for a new version"
-#| msgid "VERSION_NOTIFICATION_TITLE"
 msgid "VERSION_NOTIFICATION_TITLE"
 msgstr "Version {version} verfügbar!"
 
-#, fuzzy
-#| msgctxt "Open release in the browser, button in notification"
-#| msgid "VERSION_NOTIFICATION_OPEN"
 msgid "VERSION_NOTIFICATION_OPEN"
 msgstr "Öffnen"
 
-#, fuzzy
-#| msgctxt "Open details of the notification"
-#| msgid "VERSION_NOTIFICATION_MODE_DETAILS"
 msgid "VERSION_NOTIFICATION_MORE_DETAILS"
 msgstr "Weitere Details"
 
-#, fuzzy
-#| msgctxt "Open release in the browser"
-#| msgid "VERSION_WINDOW_OPEN"
 msgid "VERSION_WINDOW_OPEN"
 msgstr "Veröffentlichung öffnen"
 
