@@ -444,6 +444,7 @@ offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("44_lyjww")
+title = "MULTIPLAYER_MENU"
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
