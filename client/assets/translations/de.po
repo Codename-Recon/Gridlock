@@ -94,6 +94,11 @@ msgstr "Kampagne"
 msgid "VS_AI"
 msgstr "VS KI"
 
+#, fuzzy
+#| msgid "MULTIPLAYER"
+msgid "MULTIPLAYER_MENU"
+msgstr "Mehrspieler"
+
 msgid "HOT_SEAT"
 msgstr "Hot Seat"
 
@@ -102,11 +107,6 @@ msgstr "Lobby"
 
 msgid "RANKED"
 msgstr "Rangliste"
-
-#, fuzzy
-#| msgid "MULTIPLAYER"
-msgid "MULTIPLAYER_MENU"
-msgstr "Mehrspieler"
 
 msgid "REFRESH"
 msgstr "Aktualisieren"
@@ -174,12 +174,6 @@ msgstr "Spieler-Einstellungen"
 msgid "PLAYERS"
 msgstr "Spieler"
 
-msgid "Player 1"
-msgstr ""
-
-msgid "Player 2"
-msgstr ""
-
 msgid "MONEY"
 msgstr "Geld"
 
@@ -245,9 +239,6 @@ msgstr "Kartenname"
 
 msgid "SELECT"
 msgstr "Auswählen"
-
-msgid "MAIN_MENU_TITLE"
-msgstr "Hauptmenü"
 
 msgid "ANNOUNCEMENT_PLAYER_TURN"
 msgstr "Spieler {player_name}-Zug"
@@ -707,7 +698,7 @@ msgstr "Öffnen"
 #, fuzzy
 #| msgctxt "Open details of the notification"
 #| msgid "VERSION_NOTIFICATION_MODE_DETAILS"
-msgid "VERSION_NOTIFICATION_MODE_DETAILS"
+msgid "VERSION_NOTIFICATION_MORE_DETAILS"
 msgstr "Weitere Details"
 
 #, fuzzy
@@ -715,6 +706,9 @@ msgstr "Weitere Details"
 #| msgid "VERSION_WINDOW_OPEN"
 msgid "VERSION_WINDOW_OPEN"
 msgstr "Veröffentlichung öffnen"
+
+#~ msgid "MAIN_MENU_TITLE"
+#~ msgstr "Hauptmenü"
 
 #~ msgid "TURN"
 #~ msgstr "Runde"

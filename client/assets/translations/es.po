@@ -145,6 +145,9 @@ msgstr ""
 msgid "VS_AI"
 msgstr ""
 
+msgid "MULTIPLAYER_MENU"
+msgstr ""
+
 msgid "HOT_SEAT"
 msgstr ""
 
@@ -152,9 +155,6 @@ msgid "LOBBY"
 msgstr ""
 
 msgid "RANKED"
-msgstr ""
-
-msgid "MULTIPLAYER_MENU"
 msgstr ""
 
 msgid "REFRESH"
@@ -223,16 +223,6 @@ msgstr ""
 msgid "PLAYERS"
 msgstr ""
 
-#, fuzzy
-#| msgid "Player 1 Turn"
-msgid "Player 1"
-msgstr "Turno del primer jugador"
-
-#, fuzzy
-#| msgid "Player 1 Turn"
-msgid "Player 2"
-msgstr "Turno del primer jugador"
-
 msgid "MONEY"
 msgstr "Dinero"
 
@@ -297,9 +287,6 @@ msgid "SELECT_MAP_NAME"
 msgstr ""
 
 msgid "SELECT"
-msgstr ""
-
-msgid "MAIN_MENU_TITLE"
 msgstr ""
 
 msgid "ANNOUNCEMENT_PLAYER_TURN"
@@ -842,11 +829,21 @@ msgstr ""
 msgid "VERSION_NOTIFICATION_OPEN"
 msgstr ""
 
-msgid "VERSION_NOTIFICATION_MODE_DETAILS"
+msgid "VERSION_NOTIFICATION_MORE_DETAILS"
 msgstr ""
 
 msgid "VERSION_WINDOW_OPEN"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Player 1 Turn"
+#~ msgid "Player 1"
+#~ msgstr "Turno del primer jugador"
+
+#, fuzzy
+#~| msgid "Player 1 Turn"
+#~ msgid "Player 2"
+#~ msgstr "Turno del primer jugador"
 
 #~ msgid "Infantry"
 #~ msgstr "Infanteria"

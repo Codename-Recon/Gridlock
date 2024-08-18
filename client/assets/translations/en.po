@@ -5,8 +5,8 @@ msgstr ""
 "POT-Creation-Date: 2024-05-24 18:50+0200\n"
 "PO-Revision-Date: 2024-08-18 17:24+0000\n"
 "Last-Translator: HunterNN <stephan.kessler@outlook.com>\n"
-"Language-Team: English <http://weblate.jaumesingla.es/projects/"
-"codename-recon/game-client/en/>\n"
+"Language-Team: English <http://weblate.jaumesingla.es/projects/codename-"
+"recon/game-client/en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -92,6 +92,9 @@ msgstr "Campaign"
 msgid "VS_AI"
 msgstr "VS AI"
 
+msgid "MULTIPLAYER_MENU"
+msgstr "Multiplayer"
+
 msgid "HOT_SEAT"
 msgstr "Hot Seat"
 
@@ -100,9 +103,6 @@ msgstr "Lobby"
 
 msgid "RANKED"
 msgstr "Ranked"
-
-msgid "MULTIPLAYER_MENU"
-msgstr "Multiplayer"
 
 msgid "REFRESH"
 msgstr "Refresh"
@@ -170,12 +170,6 @@ msgstr "Player Settings"
 msgid "PLAYERS"
 msgstr "Players"
 
-msgid "Player 1"
-msgstr ""
-
-msgid "Player 2"
-msgstr ""
-
 msgid "MONEY"
 msgstr "Money"
 
@@ -241,9 +235,6 @@ msgstr "Map Name"
 
 msgid "SELECT"
 msgstr "Select"
-
-msgid "MAIN_MENU_TITLE"
-msgstr "Main Menu"
 
 msgid "ANNOUNCEMENT_PLAYER_TURN"
 msgstr "Player {player_name} turn"
@@ -681,11 +672,14 @@ msgstr "Open"
 #, fuzzy
 #| msgctxt "Open details of the notification"
 #| msgid "VERSION_NOTIFICATION_MODE_DETAILS"
-msgid "VERSION_NOTIFICATION_MODE_DETAILS"
+msgid "VERSION_NOTIFICATION_MORE_DETAILS"
 msgstr "More details"
 
 msgid "VERSION_WINDOW_OPEN"
 msgstr "Open release"
+
+#~ msgid "MAIN_MENU_TITLE"
+#~ msgstr "Main Menu"
 
 #~ msgctxt "Terrain information"
 #~ msgid "SEA"

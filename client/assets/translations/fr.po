@@ -94,6 +94,11 @@ msgstr "campagne"
 msgid "VS_AI"
 msgstr "contre IA"
 
+#, fuzzy
+#| msgid "MULTIPLAYER"
+msgid "MULTIPLAYER_MENU"
+msgstr "multijoueur"
+
 msgid "HOT_SEAT"
 msgstr "hot seat"
 
@@ -102,11 +107,6 @@ msgstr "lobby"
 
 msgid "RANKED"
 msgstr "palmarès"
-
-#, fuzzy
-#| msgid "MULTIPLAYER"
-msgid "MULTIPLAYER_MENU"
-msgstr "multijoueur"
 
 msgid "REFRESH"
 msgstr "actualiser"
@@ -174,12 +174,6 @@ msgstr ""
 msgid "PLAYERS"
 msgstr ""
 
-msgid "Player 1"
-msgstr ""
-
-msgid "Player 2"
-msgstr ""
-
 msgid "MONEY"
 msgstr ""
 
@@ -245,9 +239,6 @@ msgstr ""
 
 msgid "SELECT"
 msgstr "sélectionner"
-
-msgid "MAIN_MENU_TITLE"
-msgstr ""
 
 msgid "ANNOUNCEMENT_PLAYER_TURN"
 msgstr ""
@@ -585,7 +576,7 @@ msgstr ""
 msgid "VERSION_NOTIFICATION_OPEN"
 msgstr ""
 
-msgid "VERSION_NOTIFICATION_MODE_DETAILS"
+msgid "VERSION_NOTIFICATION_MORE_DETAILS"
 msgstr ""
 
 msgid "VERSION_WINDOW_OPEN"
