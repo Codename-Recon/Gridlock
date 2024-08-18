@@ -249,6 +249,7 @@ music = ExtResource("2_pyafi")
 environment = ExtResource("1_s3gg3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
