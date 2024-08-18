@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:50+0200\n"
-"PO-Revision-Date: 2024-08-17 13:59+0000\n"
+"PO-Revision-Date: 2024-08-18 17:24+0000\n"
 "Last-Translator: HunterNN <stephan.kessler@outlook.com>\n"
-"Language-Team: English <http://weblate.jaumesingla.es/projects/codename-"
-"recon/game-client/en/>\n"
+"Language-Team: English <http://weblate.jaumesingla.es/projects/"
+"codename-recon/game-client/en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,8 +101,6 @@ msgstr "Lobby"
 msgid "RANKED"
 msgstr "Ranked"
 
-#, fuzzy
-#| msgid "MULTIPLAYER"
 msgid "MULTIPLAYER_MENU"
 msgstr "Multiplayer"
 
@@ -230,7 +228,7 @@ msgid "OPEN_MAP_TITLE"
 msgstr "Open a map file"
 
 msgid "OPEN"
-msgstr ""
+msgstr "Open"
 
 msgid "*.glm"
 msgstr ""
@@ -674,15 +672,9 @@ msgstr "Player left"
 msgid "MESSAGE_TEXT_PLAYER_LEFT"
 msgstr "Your opponent left the game. You will be brought back to the menu."
 
-#, fuzzy
-#| msgctxt "Notification title for a new version"
-#| msgid "VERSION_NOTIFICATION_TITLE"
 msgid "VERSION_NOTIFICATION_TITLE"
 msgstr "Version {version} available!"
 
-#, fuzzy
-#| msgctxt "Open release in the browser, button in notification"
-#| msgid "VERSION_NOTIFICATION_OPEN"
 msgid "VERSION_NOTIFICATION_OPEN"
 msgstr "Open"
 
@@ -692,9 +684,6 @@ msgstr "Open"
 msgid "VERSION_NOTIFICATION_MODE_DETAILS"
 msgstr "More details"
 
-#, fuzzy
-#| msgctxt "Open release in the browser"
-#| msgid "VERSION_WINDOW_OPEN"
 msgid "VERSION_WINDOW_OPEN"
 msgstr "Open release"
 
