@@ -38,6 +38,9 @@ msgstr "Einnehmen"
 msgid "NEXT_ROUND"
 msgstr "Nächste Runde"
 
+msgid "MENU"
+msgstr "Hauptmenü"
+
 msgid "SETTINGS"
 msgstr "Einstellungen"
 
@@ -59,6 +62,11 @@ msgstr "Gewinnt"
 msgid "PLAYER 1 WINS"
 msgstr "Spieler"
 
+#, fuzzy
+#| msgid "MAIN_MENU_TITLE"
+msgid "MAIN_MENU"
+msgstr "Hauptmenü"
+
 msgid "SINGLEPLAYER"
 msgstr "Einzelspieler"
 
@@ -73,6 +81,9 @@ msgstr "Credits"
 
 msgid "EXIT"
 msgstr "Exit"
+
+msgid "SINGLEPLAYER_MENU"
+msgstr "Einzelspieler"
 
 msgid "TUTORIAL"
 msgstr "Tutorial"
@@ -92,6 +103,11 @@ msgstr "Lobby"
 msgid "RANKED"
 msgstr "Rangliste"
 
+#, fuzzy
+#| msgid "MULTIPLAYER"
+msgid "MULTIPLAYER_MENU"
+msgstr "Mehrspieler"
+
 msgid "REFRESH"
 msgstr "Aktualisieren"
 
@@ -101,8 +117,14 @@ msgstr "Erstellen"
 msgid "USERNAME"
 msgstr "Benutzername"
 
+msgid "LOBBY_MENU"
+msgstr "Lobby"
+
 msgid "START"
 msgstr "Start"
+
+msgid "SETTING_MENU"
+msgstr "Einstellungen"
 
 msgid "BUG_REPORT"
 msgstr "Fehler melden"
@@ -151,6 +173,12 @@ msgstr "Spieler-Einstellungen"
 
 msgid "PLAYERS"
 msgstr "Spieler"
+
+msgid "Player 1"
+msgstr ""
+
+msgid "Player 2"
+msgstr ""
 
 msgid "MONEY"
 msgstr "Geld"
@@ -203,8 +231,14 @@ msgstr "Abbrechen"
 msgid "OPEN_MAP_TITLE"
 msgstr "Karten-Datei öffnen"
 
-msgid "*.crm"
+msgid "OPEN"
 msgstr ""
+
+msgid "*.glm"
+msgstr ""
+
+msgid "MAP_SELECTION"
+msgstr "Auswählen"
 
 msgid "SELECT_MAP_NAME"
 msgstr "Kartenname"
@@ -640,12 +674,6 @@ msgstr "Luft"
 msgid "AIR_DESCRIPTION"
 msgstr "Bewegungseigenschaft von Luftfahrzeugen."
 
-msgid "MAP_SELECTION"
-msgstr "Auswählen"
-
-msgid "MENU"
-msgstr "Hauptmenü"
-
 msgid "REFILLED"
 msgstr "aufgefüllt"
 
@@ -664,19 +692,27 @@ msgstr "Spieler verlassen"
 msgid "MESSAGE_TEXT_PLAYER_LEFT"
 msgstr "Dein Gegner hat das Spiel verlassen. Du wirst zum Menü zurückgebracht."
 
-msgctxt "Notification title for a new version"
+#, fuzzy
+#| msgctxt "Notification title for a new version"
+#| msgid "VERSION_NOTIFICATION_TITLE"
 msgid "VERSION_NOTIFICATION_TITLE"
 msgstr "Version {version} verfügbar!"
 
-msgctxt "Open release in the browser, button in notification"
+#, fuzzy
+#| msgctxt "Open release in the browser, button in notification"
+#| msgid "VERSION_NOTIFICATION_OPEN"
 msgid "VERSION_NOTIFICATION_OPEN"
 msgstr "Öffnen"
 
-msgctxt "Open details of the notification"
+#, fuzzy
+#| msgctxt "Open details of the notification"
+#| msgid "VERSION_NOTIFICATION_MODE_DETAILS"
 msgid "VERSION_NOTIFICATION_MODE_DETAILS"
 msgstr "Weitere Details"
 
-msgctxt "Open release in the browser"
+#, fuzzy
+#| msgctxt "Open release in the browser"
+#| msgid "VERSION_WINDOW_OPEN"
 msgid "VERSION_WINDOW_OPEN"
 msgstr "Veröffentlichung öffnen"
 
@@ -704,14 +740,5 @@ msgstr "Veröffentlichung öffnen"
 #~ msgid "ULTRA"
 #~ msgstr "Ultra"
 
-#~ msgid "SINGLEPLAYER_MENU"
-#~ msgstr "Einzelspieler"
-
-#~ msgid "SETTING_MENU"
-#~ msgstr "Einstellungen"
-
 #~ msgid "LOGIN_MENU"
 #~ msgstr "Anmeldung"
-
-#~ msgid "LOBBY_MENU"
-#~ msgstr "Lobby"
