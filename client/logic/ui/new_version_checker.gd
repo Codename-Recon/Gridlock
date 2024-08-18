@@ -96,7 +96,7 @@ func load_release_data(release_data: Dictionary, version: Version) -> void:
 	open.text = tr("VERSION_NOTIFICATION_OPEN")
 
 	var details: Button = Button.new()
-	details.text = tr("VERSION_NOTIFICATION_MODE_DETAILS")
+	details.text = tr("VERSION_NOTIFICATION_MORE_DETAILS")
 
 	var notification_panel: NotificationPanel = messages.spawn_notification(
 		notification_title, [open, details], 0

@@ -29,7 +29,6 @@
 # res://logic/ui/map_selection_element.gd
 # res://logic/ui/map_selection_element.tscn
 # res://logic/ui/menu.gd
-# res://logic/ui/menu.tscn
 # res://logic/ui/move_arrow.gd
 # res://logic/ui/move_arrow.tscn
 # res://logic/ui/multiplayer_menu.gd
@@ -174,6 +173,10 @@ msgid "VS_AI"
 msgstr ""
 
 #: levels/menu.tscn
+msgid "MULTIPLAYER_MENU"
+msgstr ""
+
+#: levels/menu.tscn
 msgid "HOT_SEAT"
 msgstr ""
 
@@ -183,10 +186,6 @@ msgstr ""
 
 #: levels/menu.tscn
 msgid "RANKED"
-msgstr ""
-
-#: levels/menu.tscn
-msgid "MULTIPLAYER_MENU"
 msgstr ""
 
 #: levels/menu.tscn
@@ -280,14 +279,6 @@ msgid "PLAYERS"
 msgstr ""
 
 #: logic/ui/map_editor_ui.tscn
-msgid "Player 1"
-msgstr ""
-
-#: logic/ui/map_editor_ui.tscn
-msgid "Player 2"
-msgstr ""
-
-#: logic/ui/map_editor_ui.tscn
 msgid "MONEY"
 msgstr ""
 
@@ -374,10 +365,6 @@ msgstr ""
 
 #: logic/ui/map_selection_element.tscn
 msgid "SELECT"
-msgstr ""
-
-#: logic/ui/menu.tscn
-msgid "MAIN_MENU_TITLE"
 msgstr ""
 
 #: logic/ui/round_label.gd
@@ -829,7 +816,7 @@ msgid "VERSION_NOTIFICATION_OPEN"
 msgstr ""
 
 #: logic/ui/new_version_checker.gd
-msgid "VERSION_NOTIFICATION_MODE_DETAILS"
+msgid "VERSION_NOTIFICATION_MORE_DETAILS"
 msgstr ""
 
 #: logic/ui/new_version_checker.gd
