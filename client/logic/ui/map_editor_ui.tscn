@@ -453,6 +453,7 @@ size_flags_horizontal = 3
 
 [node name="PlayerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/PlayerSettingsControl/HBoxContainer3/HFlowContainer"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
@@ -614,6 +615,7 @@ size_flags_horizontal = 3
 
 [node name="TerrainOwnerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/TerrainSettingsControl/HBoxContainerTerrainOwner/HFlowContainer"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
@@ -734,6 +736,7 @@ size_flags_horizontal = 3
 
 [node name="UnitOwnerOptionButton" type="OptionButton" parent="MapSettings/VBoxContainer/UnitSettingsControl/HBoxContainer8/HFlowContainer"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0

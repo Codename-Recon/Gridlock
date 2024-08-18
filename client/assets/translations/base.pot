@@ -279,14 +279,6 @@ msgid "PLAYERS"
 msgstr ""
 
 #: logic/ui/map_editor_ui.tscn
-msgid "Player 1"
-msgstr ""
-
-#: logic/ui/map_editor_ui.tscn
-msgid "Player 2"
-msgstr ""
-
-#: logic/ui/map_editor_ui.tscn
 msgid "MONEY"
 msgstr ""
 
@@ -824,7 +816,7 @@ msgid "VERSION_NOTIFICATION_OPEN"
 msgstr ""
 
 #: logic/ui/new_version_checker.gd
-msgid "VERSION_NOTIFICATION_MODE_DETAILS"
+msgid "VERSION_NOTIFICATION_MORE_DETAILS"
 msgstr ""
 
 #: logic/ui/new_version_checker.gd
