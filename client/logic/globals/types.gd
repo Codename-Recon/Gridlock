@@ -69,9 +69,9 @@ func _generate_types() -> void:
 
 
 func add_text_to_gdscript(
-	file: FileAccess, var_name: String, text: String, context: String = ""
+	file: FileAccess, string_name: String, text: String, context: String = ""
 ) -> void:
-	var sanitized_name: String = sanitizer_regex.sub(var_name, "_")
+	var sanitized_name: String = sanitizer_regex.sub(string_name, "_")
 	file.store_string(
 		(
 			'var _%s: String = tr("%s")\n'

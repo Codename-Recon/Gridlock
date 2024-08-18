@@ -4,6 +4,8 @@ signal action_selected
 
 var action_pressed: GameConst.Actions = GameConst.Actions.NONE
 
+var _buttons: Dictionary = {}
+
 @onready var v_box_container: VBoxContainer = $VBoxContainer
 @onready var button_move: Button = $VBoxContainer/ButtonMove
 @onready var button_attack: Button = $VBoxContainer/ButtonAttack
@@ -16,13 +18,16 @@ var action_pressed: GameConst.Actions = GameConst.Actions.NONE
 
 func _ready() -> void:
 	hide()
-	button_move.pressed.connect(_button_pressed.bind(GameConst.Actions.MOVE))
-	button_attack.pressed.connect(_button_pressed.bind(GameConst.Actions.ATTACK))
-	button_enter.pressed.connect(_button_pressed.bind(GameConst.Actions.ENTER))
-	button_deploy.pressed.connect(_button_pressed.bind(GameConst.Actions.DEPLOY))
-	button_join.pressed.connect(_button_pressed.bind(GameConst.Actions.JOIN))
-	button_supply.pressed.connect(_button_pressed.bind(GameConst.Actions.REFILL))
-	button_capture.pressed.connect(_button_pressed.bind(GameConst.Actions.CAPTURE))
+	_buttons[GameConst.Actions.MOVE] = button_move
+	_buttons[GameConst.Actions.ATTACK] = button_attack
+	_buttons[GameConst.Actions.ENTER] = button_enter
+	_buttons[GameConst.Actions.DEPLOY] = button_deploy
+	_buttons[GameConst.Actions.JOIN] = button_join
+	_buttons[GameConst.Actions.REFILL] = button_supply
+	_buttons[GameConst.Actions.CAPTURE] = button_capture
+	for action: GameConst.Actions in _buttons:
+		var button: Button = _buttons[action]
+		button.pressed.connect(_button_pressed.bind(action))
 
 
 func _process(_delta: float) -> void:
@@ -33,35 +38,13 @@ func _process(_delta: float) -> void:
 		position.y -= size.y
 
 
-func set_buttons(actions: Array) -> void:
-	if GameConst.Actions.MOVE in actions:
-		button_move.show()
-	else:
-		button_move.hide()
-	if GameConst.Actions.ATTACK in actions:
-		button_attack.show()
-	else:
-		button_attack.hide()
-	if GameConst.Actions.ENTER in actions:
-		button_enter.show()
-	else:
-		button_enter.hide()
-	if GameConst.Actions.DEPLOY in actions:
-		button_deploy.show()
-	else:
-		button_deploy.hide()
-	if GameConst.Actions.JOIN in actions:
-		button_join.show()
-	else:
-		button_join.hide()
-	if GameConst.Actions.REFILL in actions:
-		button_supply.show()
-	else:
-		button_supply.hide()
-	if GameConst.Actions.CAPTURE in actions:
-		button_capture.show()
-	else:
-		button_capture.hide()
+func set_buttons(actions: Array[GameConst.Actions]) -> void:
+	for action: GameConst.Actions in _buttons:
+		var button: Button = _buttons[action]
+		if action in actions: 
+			button.show()
+		else:
+			button.hide()
 
 
 func _on_v_box_container_resized() -> void:
