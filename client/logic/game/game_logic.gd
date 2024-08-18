@@ -1687,9 +1687,8 @@ class DamageResult:
 	var weapon_category: GameConst.WeaponCategory
 	var weapon_type: GameConst.WeaponType
 	
+	@warning_ignore("shadowed_variable")
 	func _init(damage: int, weapon_category: GameConst.WeaponCategory, weapon_type: GameConst.WeaponType) -> void:
 		self.damage = damage
 		self.weapon_category = weapon_category
 		self.weapon_type = weapon_type
-
-

@@ -72,17 +72,6 @@ region = Rect2(352, 0, 32, 32)
 atlas = ExtResource("25_h7n7d")
 region = Rect2(224, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pq50x"]
-atlas = ExtResource("25_pugn6")
-region = Rect2(339, 94, 49, 49)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hukwh"]
-texture = SubResource("AtlasTexture_pq50x")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 10.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kug87"]
 atlas = ExtResource("25_pugn6")
 region = Rect2(288, 194, 49, 49)
@@ -104,6 +93,17 @@ texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq50x"]
+atlas = ExtResource("25_pugn6")
+region = Rect2(339, 94, 49, 49)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hukwh"]
+texture = SubResource("AtlasTexture_pq50x")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 10.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3thj"]
 atlas = ExtResource("29_jy0gc")
@@ -134,9 +134,9 @@ tracks/0/path = NodePath("Interface/RoundAnimation/Control/RoundLabel:position:y
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -169,9 +169,9 @@ tracks/3/path = NodePath("Interface/RoundAnimation/Control/RoundLabel:position:x
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -550,12 +550,12 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2lgku")
 
 [node name="MoneyLabel" type="Label" parent="Interface/MoneyPanel"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 layout_mode = 0
 offset_left = 58.0
 offset_top = 2.0
 offset_right = 198.0
 offset_bottom = 43.0
-auto_translate = false
 localize_numeral_system = false
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
@@ -584,12 +584,12 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2lgku")
 
 [node name="RoundNumberLabel" type="Label" parent="Interface/RoundPanel"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 layout_mode = 0
 offset_left = 58.0
 offset_top = 2.0
 offset_right = 123.0
 offset_bottom = 43.0
-auto_translate = false
 localize_numeral_system = false
 theme_override_colors/font_color = Color(0.235294, 1, 0.360784, 1)
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
@@ -624,9 +624,9 @@ offset_right = -18.0
 offset_bottom = -12.0
 theme_override_colors/font_outline_color = Color(0.709804, 0.439216, 0.321569, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxTexture_hukwh")
 theme_override_styles/hover = SubResource("StyleBoxTexture_rrm6m")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5n5ow")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hukwh")
 text = "NEXT_ROUND"
 icon = SubResource("AtlasTexture_m3thj")
 metadata/_edit_layout_mode = 1
@@ -682,8 +682,8 @@ grow_vertical = 2
 
 [node name="RoundLabel" type="Label" parent="Interface/RoundAnimation/Control"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

@@ -4,10 +4,14 @@ class_name Unit
 extends Node2D
 
 signal unit_moved
+@warning_ignore("unused_signal")
 signal damage_animated(radius: int)
+@warning_ignore("unused_signal")
 signal attack_animation_done
+@warning_ignore("unused_signal")
 signal refill_animation_done
 signal possible_terrains_to_move_calculated
+@warning_ignore("unused_signal")
 signal died
 
 enum State { STANDING, MOVING, ATTACKING, DAMAGING, DYING, REFILLING }
@@ -421,7 +425,7 @@ class Values:
 	var weapons: Array[int]
 	var min_range: int
 	var max_range: int
-	var exp: int
+	var xp: int
 	var can_supply: bool
 	var can_repair: bool
 	var can_capture: bool

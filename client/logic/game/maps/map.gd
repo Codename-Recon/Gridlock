@@ -264,7 +264,9 @@ func sort_terrain_by_position() -> void:
 	var sort: Callable = func sort(a: Node, b: Node) -> bool:
 		var terrain_a: Terrain = a
 		var terrain_b: Terrain = b
+		@warning_ignore("narrowing_conversion")
 		var value_a: int = terrain_a.position.y * x_size + terrain_a.position.x
+		@warning_ignore("narrowing_conversion")
 		var value_b: int = terrain_b.position.y * x_size + terrain_b.position.x
 		return value_a < value_b
 	var children: Array[Node] = get_children().filter(func(e: Node) -> bool: return e is Terrain)

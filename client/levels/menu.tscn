@@ -249,6 +249,7 @@ music = ExtResource("2_pyafi")
 environment = ExtResource("1_s3gg3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -827,19 +828,19 @@ vertical_scroll_mode = 0
 metadata/_edit_layout_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Credits/Panel/ScrollContainer"]
+auto_translate_mode = 2
 clip_contents = false
 custom_minimum_size = Vector2(455, 500)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 0
-auto_translate = false
 localize_numeral_system = false
 theme_type_variation = &"RichTextOverWhite"
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 32
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 42
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
 bbcode_enabled = true
 text = "CREDITS[i]NOT[/i]LOADED_CORRECTLY"
 script = ExtResource("19_8a2oa")
@@ -853,6 +854,7 @@ h6 = SubResource("Resource_b084c")
 metadata/_edit_layout_mode = 1
 
 [node name="Version" type="Label" parent="."]
+auto_translate_mode = 2
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -865,7 +867,6 @@ offset_right = -38.0
 offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
-auto_translate = false
 localize_numeral_system = false
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5

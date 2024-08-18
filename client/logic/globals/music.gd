@@ -1,6 +1,5 @@
 extends Node
 
-signal settings_changed
 signal music_finished
 
 const LOWEST_VOLUME: float = -50.0

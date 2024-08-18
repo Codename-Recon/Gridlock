@@ -89,6 +89,7 @@ texture = SubResource("AtlasTexture_568k2")
 metadata/_edit_layout_mode = 1
 
 [node name="TitleLabel" type="Label" parent="Element"]
+auto_translate_mode = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,7 +98,6 @@ offset_left = 52.0
 offset_right = -224.0
 grow_horizontal = 2
 grow_vertical = 2
-auto_translate = false
 localize_numeral_system = false
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
@@ -110,6 +110,7 @@ vertical_alignment = 1
 metadata/_edit_layout_mode = 1
 
 [node name="MapLabel" type="Label" parent="Element"]
+auto_translate_mode = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,7 +118,6 @@ anchor_bottom = 1.0
 offset_left = 422.0
 grow_horizontal = 2
 grow_vertical = 2
-auto_translate = false
 localize_numeral_system = false
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)

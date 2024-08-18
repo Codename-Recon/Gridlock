@@ -152,20 +152,20 @@ grow_vertical = 2
 columns = 13
 
 [node name="Example1" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
+auto_translate_mode = 2
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 text = "Example 1"
 
 [node name="Example2" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
+auto_translate_mode = 2
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 text = "Example 2"
 
 [node name="Example3" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
+auto_translate_mode = 2
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 text = "Example 3"
 
@@ -193,20 +193,20 @@ grow_vertical = 2
 columns = 13
 
 [node name="Example1" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
+auto_translate_mode = 2
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 text = "Example 1"
 
 [node name="Example2" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
+auto_translate_mode = 2
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 text = "Example 2"
 
 [node name="Example3" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
+auto_translate_mode = 2
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 text = "Example 3"
 
@@ -455,11 +455,10 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "Player 1"
 popup/item_0/icon = SubResource("GradientTexture2D_oq61q")
-popup/item_0/id = 0
 popup/item_1/text = "Player 2"
 popup/item_1/icon = SubResource("GradientTexture2D_oq61q")
 popup/item_1/id = 1
@@ -617,11 +616,10 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "Player 1"
 popup/item_0/icon = SubResource("GradientTexture2D_oq61q")
-popup/item_0/id = 0
 popup/item_1/text = "Player 2"
 popup/item_1/icon = SubResource("GradientTexture2D_oq61q")
 popup/item_1/id = 1
@@ -738,11 +736,10 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "Player 1"
 popup/item_0/icon = SubResource("GradientTexture2D_oq61q")
-popup/item_0/id = 0
 popup/item_1/text = "Player 2"
 popup/item_1/icon = SubResource("GradientTexture2D_oq61q")
 popup/item_1/id = 1
@@ -1008,8 +1005,8 @@ max_value = 50.0
 value = 20.0
 
 [node name="HorizontalSize" type="Label" parent="ResizeMenu/VBoxContainer"]
+auto_translate_mode = 2
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5
@@ -1031,8 +1028,8 @@ max_value = 50.0
 value = 20.0
 
 [node name="VerticalSize" type="Label" parent="ResizeMenu/VBoxContainer"]
+auto_translate_mode = 2
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 theme_override_colors/font_outline_color = Color(0.223529, 0.137255, 0.101961, 1)
 theme_override_constants/outline_size = 5

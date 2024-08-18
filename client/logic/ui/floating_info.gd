@@ -1,5 +1,7 @@
 class_name FloatingInfo
 extends Node2D
+
+@warning_ignore("unused_signal")
 signal finished
 
 @export var text: String:

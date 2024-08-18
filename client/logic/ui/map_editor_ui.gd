@@ -6,6 +6,7 @@ signal unit_selected(unit_id: String, unit_scene: PackedScene)
 signal tile_selected(atlas_id: Vector2i)
 signal edit_selected
 signal remove_selected
+@warning_ignore("unused_signal")
 signal map_resized(new_size: Vector2i)
 signal map_settings_player_id_changed(player_id: int)
 signal selected

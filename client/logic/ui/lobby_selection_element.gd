@@ -1,7 +1,7 @@
 class_name LobbySelectableElement
 extends SelectableElement
 
-signal lobby_selected
+signal lobby_selected(element: LobbySelectableElement)
 
 @export var title: String
 @export var map_name: String

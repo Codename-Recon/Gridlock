@@ -211,4 +211,5 @@ class MapValues extends NumberFix:
 	var source: String
 	var terrain: Array[Array]
 	var players: Array[Dictionary]
+	@warning_ignore("shadowed_global_identifier")
 	var round: int

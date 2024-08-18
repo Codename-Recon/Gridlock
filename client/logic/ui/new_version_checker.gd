@@ -98,16 +98,16 @@ func load_release_data(release_data: Dictionary, version: Version) -> void:
 	var details: Button = Button.new()
 	details.text = tr("VERSION_NOTIFICATION_MODE_DETAILS")
 
-	var notification: NotificationPanel = messages.spawn_notification(
+	var notification_panel: NotificationPanel = messages.spawn_notification(
 		notification_title, [open, details], 0
 	)
 
 	open.uri_to_go = release_data.get("html_url")
 
 	# Not sure about if we should or not close the notification
-	open.pressed.connect(func() -> void: notification.close())
+	open.pressed.connect(func() -> void: notification_panel.close())
 	details.pressed.connect(
-		func() -> void: notification.close() ; open_version_summary(release_data)
+		func() -> void: notification_panel.close() ; open_version_summary(release_data)
 	)
 
 

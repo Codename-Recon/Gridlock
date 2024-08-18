@@ -11,7 +11,7 @@ const TILES: TileSet = preload("res://assets/resources/game/tiles.tres")
 @export var game_input: GameInput
 @export var map: Map
 
-@onready var tile_map: TileMap = $TileMap
+@onready var tile_map: TileMapLayer = $TileMapLayer
 
 static var tile_lookup: Dictionary = {}:  # tile_id: String -> tile_idx: int
 	get:
@@ -85,7 +85,7 @@ static func get_data_with_tile_id(tile_id: String) -> TerrainData:
 
 
 func has_id_with_tile_coords(tile_coords: Vector2i) -> bool:
-	var data: TileData = tile_map.get_cell_tile_data(0, tile_coords)
+	var data: TileData = tile_map.get_cell_tile_data(tile_coords)
 	return data != null
 
 
@@ -100,7 +100,7 @@ func create_tile_map_by_map(new_map: Map) -> void:
 			var terrain: Terrain = map.get_terrain_by_position(pos)
 			var idx: int = tile_lookup[terrain.tile_id]
 			var atlas_pos: Vector2i = source.get_tile_id(idx)
-			tile_map.set_cell(0, cell, 0, atlas_pos)
+			tile_map.set_cell(cell, 0, atlas_pos)
 	_tile_buffer = _create_tile_buffer()
 	map = new_map
 
@@ -122,7 +122,7 @@ func _init_map() -> void:
 
 ## Places tile and creates terrain node
 func _place_terrain(cell: Vector2i, terrain_set: int, terrain: int) -> void:
-	tile_map.set_cells_terrain_connect(0, [cell], terrain_set, terrain, false)
+	tile_map.set_cells_terrain_connect([cell], terrain_set, terrain, false)
 	_create_terrain_on_map(cell)
 
 
@@ -136,12 +136,12 @@ func _place_unit(unit_id: String, terrain_position: Vector2i) -> bool:
 
 
 func _place_tile(cell: Vector2i, tile_atlas_coords: Vector2i) -> void:
-	tile_map.set_cell(0, cell, 0, tile_atlas_coords)
+	tile_map.set_cell(cell, 0, tile_atlas_coords)
 	_create_terrain_on_map(cell)
 
 
 func _create_terrain_on_map(cell: Vector2i) -> void:
-	var atlas_coords: Vector2i = tile_map.get_cell_atlas_coords(0, cell)
+	var atlas_coords: Vector2i = tile_map.get_cell_atlas_coords(cell)
 	var texture: Texture2D = MapEditor.get_texture_with_atlas_coords(atlas_coords)
 	var data: TerrainData = MapEditor.get_data_with_altlas_coords(atlas_coords)
 	var ground_tile_id: String = data.ground_tile_id
@@ -161,7 +161,7 @@ func _create_terrain_on_map(cell: Vector2i) -> void:
 		if changed_cell == cell:
 			continue
 		map.remove_terrain(changed_cell * tile_map.tile_set.tile_size)
-		atlas_coords = tile_map.get_cell_atlas_coords(0, changed_cell)
+		atlas_coords = tile_map.get_cell_atlas_coords(changed_cell)
 		texture = MapEditor.get_texture_with_atlas_coords(atlas_coords)
 		data = MapEditor.get_data_with_altlas_coords(atlas_coords)
 		ground_tile_id = data.ground_tile_id
@@ -181,15 +181,15 @@ func _create_terrain_on_map(cell: Vector2i) -> void:
 ## Removes tile and terrain node
 func _remove_terrain(cell: Vector2i, remove_tile: bool = true) -> void:
 	if remove_tile:
-		tile_map.set_cells_terrain_connect(0, [cell], 0, -1)
+		tile_map.set_cells_terrain_connect([cell], 0, -1)
 	map.remove_terrain(cell * tile_map.tile_set.tile_size)
 
 
 func _create_tile_buffer() -> Dictionary:
 	var buffer: Dictionary = {}
-	var tiles: Array[Vector2i] = tile_map.get_used_cells(0)
+	var tiles: Array[Vector2i] = tile_map.get_used_cells()
 	for tile: Vector2i in tiles:
-		var id: int = hash(tile_map.get_cell_atlas_coords(0, tile))
+		var id: int = hash(tile_map.get_cell_atlas_coords(tile))
 		buffer[tile] = id
 	return buffer
 
@@ -270,7 +270,7 @@ func _on_ui_tile_selected(atlas_id: Vector2i) -> void:
 
 
 func _on_cursor_preview_set_terrain(coords: Vector2i) -> void:
-	tile_map.set_cells_terrain_connect(0, [coords], _current_terrain_set, _current_terrain, false)
+	tile_map.set_cells_terrain_connect([coords], _current_terrain_set, _current_terrain, false)
 
 
 func _on_map_editor_ui_map_settings_player_id_changed(player_id: int) -> void:

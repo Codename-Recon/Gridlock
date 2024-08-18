@@ -61,10 +61,10 @@ script = ExtResource("1_j3yxc")
 game_input = NodePath("../GameInput")
 map = NodePath("../Map")
 
-[node name="TileMap" type="TileMap" parent="MapEditor"]
+[node name="TileMapLayer" type="TileMapLayer" parent="MapEditor"]
 visible = false
+use_parent_material = true
 tile_set = ExtResource("2_44dmf")
-format = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
