@@ -38,6 +38,9 @@ msgstr "prendre"
 msgid "NEXT_ROUND"
 msgstr "tour suivant"
 
+msgid "MENU"
+msgstr "menu principal"
+
 msgid "SETTINGS"
 msgstr "réglages"
 
@@ -59,6 +62,11 @@ msgstr "gagne"
 msgid "PLAYER 1 WINS"
 msgstr "joueur"
 
+#, fuzzy
+#| msgid "LOGIN_MENU"
+msgid "MAIN_MENU"
+msgstr "connexion"
+
 msgid "SINGLEPLAYER"
 msgstr "joueur unique"
 
@@ -74,6 +82,9 @@ msgstr "crédits"
 msgid "EXIT"
 msgstr "Sortir"
 
+msgid "SINGLEPLAYER_MENU"
+msgstr "joueur unique"
+
 msgid "TUTORIAL"
 msgstr "Didacticiel"
 
@@ -82,6 +93,11 @@ msgstr "campagne"
 
 msgid "VS_AI"
 msgstr "contre IA"
+
+#, fuzzy
+#| msgid "MULTIPLAYER"
+msgid "MULTIPLAYER_MENU"
+msgstr "multijoueur"
 
 msgid "HOT_SEAT"
 msgstr "hot seat"
@@ -101,8 +117,14 @@ msgstr "hôte"
 msgid "USERNAME"
 msgstr "Nom d'utilisateur"
 
+msgid "LOBBY_MENU"
+msgstr "lobby"
+
 msgid "START"
 msgstr "commencer"
+
+msgid "SETTING_MENU"
+msgstr "paramètres"
 
 msgid "BUG_REPORT"
 msgstr ""
@@ -203,17 +225,20 @@ msgstr ""
 msgid "OPEN_MAP_TITLE"
 msgstr ""
 
-msgid "*.crm"
+msgid "OPEN"
 msgstr ""
+
+msgid "*.glm"
+msgstr ""
+
+msgid "MAP_SELECTION"
+msgstr "sélectionner"
 
 msgid "SELECT_MAP_NAME"
 msgstr ""
 
 msgid "SELECT"
 msgstr "sélectionner"
-
-msgid "MAIN_MENU_TITLE"
-msgstr ""
 
 msgid "ANNOUNCEMENT_PLAYER_TURN"
 msgstr ""
@@ -527,12 +552,6 @@ msgstr ""
 msgid "AIR_DESCRIPTION"
 msgstr ""
 
-msgid "MAP_SELECTION"
-msgstr "sélectionner"
-
-msgid "MENU"
-msgstr "menu principal"
-
 msgid "REFILLED"
 msgstr "rempli"
 
@@ -551,19 +570,15 @@ msgstr "quitter le joueur"
 msgid "MESSAGE_TEXT_PLAYER_LEFT"
 msgstr "Votre adversaire a quitté la partie. Vous serez ramené au menu."
 
-msgctxt "Notification title for a new version"
 msgid "VERSION_NOTIFICATION_TITLE"
 msgstr ""
 
-msgctxt "Open release in the browser, button in notification"
 msgid "VERSION_NOTIFICATION_OPEN"
 msgstr ""
 
-msgctxt "Open details of the notification"
-msgid "VERSION_NOTIFICATION_MODE_DETAILS"
+msgid "VERSION_NOTIFICATION_MORE_DETAILS"
 msgstr ""
 
-msgctxt "Open release in the browser"
 msgid "VERSION_WINDOW_OPEN"
 msgstr ""
 
@@ -590,15 +605,3 @@ msgstr ""
 
 #~ msgid "ULTRA"
 #~ msgstr "ultra"
-
-#~ msgid "SINGLEPLAYER_MENU"
-#~ msgstr "joueur unique"
-
-#~ msgid "SETTING_MENU"
-#~ msgstr "paramètres"
-
-#~ msgid "LOGIN_MENU"
-#~ msgstr "connexion"
-
-#~ msgid "LOBBY_MENU"
-#~ msgstr "lobby"

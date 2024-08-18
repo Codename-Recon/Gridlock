@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:50+0200\n"
-"PO-Revision-Date: 2024-08-17 13:59+0000\n"
+"PO-Revision-Date: 2024-08-18 17:28+0000\n"
 "Last-Translator: HunterNN <stephan.kessler@outlook.com>\n"
 "Language-Team: English <http://weblate.jaumesingla.es/projects/"
 "codename-recon/game-client/en/>\n"
@@ -38,6 +38,9 @@ msgstr "Capture"
 msgid "NEXT_ROUND"
 msgstr "Next Round"
 
+msgid "MENU"
+msgstr "Menu"
+
 msgid "SETTINGS"
 msgstr "Settings"
 
@@ -59,6 +62,9 @@ msgstr "Won"
 msgid "PLAYER 1 WINS"
 msgstr "Player 1 wins"
 
+msgid "MAIN_MENU"
+msgstr "Main"
+
 msgid "SINGLEPLAYER"
 msgstr "Singleplayer"
 
@@ -74,6 +80,9 @@ msgstr "Credits"
 msgid "EXIT"
 msgstr "Exit"
 
+msgid "SINGLEPLAYER_MENU"
+msgstr "Singleplayer"
+
 msgid "TUTORIAL"
 msgstr "Tutorial"
 
@@ -82,6 +91,9 @@ msgstr "Campaign"
 
 msgid "VS_AI"
 msgstr "VS AI"
+
+msgid "MULTIPLAYER_MENU"
+msgstr "Multiplayer"
 
 msgid "HOT_SEAT"
 msgstr "Hot Seat"
@@ -101,8 +113,14 @@ msgstr "Host"
 msgid "USERNAME"
 msgstr "Username"
 
+msgid "LOBBY_MENU"
+msgstr "Lobby"
+
 msgid "START"
 msgstr "Start"
+
+msgid "SETTING_MENU"
+msgstr "Settings"
 
 msgid "BUG_REPORT"
 msgstr "Report a bug"
@@ -203,17 +221,20 @@ msgstr "Cancel"
 msgid "OPEN_MAP_TITLE"
 msgstr "Open a map file"
 
-msgid "*.crm"
+msgid "OPEN"
+msgstr "Open"
+
+msgid "*.glm"
 msgstr ""
+
+msgid "MAP_SELECTION"
+msgstr "Map Selection"
 
 msgid "SELECT_MAP_NAME"
 msgstr "Map Name"
 
 msgid "SELECT"
 msgstr "Select"
-
-msgid "MAIN_MENU_TITLE"
-msgstr "Main Menu"
 
 msgid "ANNOUNCEMENT_PLAYER_TURN"
 msgstr "Player {player_name} turn"
@@ -352,8 +373,8 @@ msgstr "Medium Tank"
 
 msgid "MEDIUM_TANK_DESCRIPTION"
 msgstr ""
-"Larger, slower, and considerably more powerful than Tanks, Medium Tanks ("
-"Often abbreviated Md. Tank) are forces to be reckoned with."
+"Larger, slower, and considerably more powerful than Tanks, Medium Tanks "
+"(Often abbreviated Md. Tank) are forces to be reckoned with."
 
 msgid "MECH"
 msgstr "Mechanized infantry"
@@ -602,8 +623,8 @@ msgstr "Mechanized infantry"
 
 msgid "BAZOOKA_DESCRIPTION"
 msgstr ""
-"Stronger, slower, and more expensive than Infantry, Mechanized Infantry ("
-"more commonly referred to as Mechs) trade versatility for much greater cost-"
+"Stronger, slower, and more expensive than Infantry, Mechanized Infantry "
+"(more commonly referred to as Mechs) trade versatility for much greater cost-"
 "efficiency against a variety of targets."
 
 msgid "TREADS"
@@ -624,12 +645,6 @@ msgstr "Air"
 msgid "AIR_DESCRIPTION"
 msgstr "Movement property of air units."
 
-msgid "MAP_SELECTION"
-msgstr "Map Selection"
-
-msgid "MENU"
-msgstr "Menu"
-
 msgid "REFILLED"
 msgstr "Refilled"
 
@@ -648,21 +663,20 @@ msgstr "Player left"
 msgid "MESSAGE_TEXT_PLAYER_LEFT"
 msgstr "Your opponent left the game. You will be brought back to the menu."
 
-msgctxt "Notification title for a new version"
 msgid "VERSION_NOTIFICATION_TITLE"
 msgstr "Version {version} available!"
 
-msgctxt "Open release in the browser, button in notification"
 msgid "VERSION_NOTIFICATION_OPEN"
 msgstr "Open"
 
-msgctxt "Open details of the notification"
-msgid "VERSION_NOTIFICATION_MODE_DETAILS"
+msgid "VERSION_NOTIFICATION_MORE_DETAILS"
 msgstr "More details"
 
-msgctxt "Open release in the browser"
 msgid "VERSION_WINDOW_OPEN"
 msgstr "Open release"
+
+#~ msgid "MAIN_MENU_TITLE"
+#~ msgstr "Main Menu"
 
 #~ msgctxt "Terrain information"
 #~ msgid "SEA"
@@ -744,20 +758,8 @@ msgstr "Open release"
 #~ msgid "ULTRA"
 #~ msgstr "Ultra"
 
-#~ msgid "MAIN_MENU"
-#~ msgstr "Main"
-
-#~ msgid "SINGLEPLAYER_MENU"
-#~ msgstr "Singleplayer"
-
-#~ msgid "SETTING_MENU"
-#~ msgstr "Settings"
-
 #~ msgid "LOGIN_MENU"
 #~ msgstr "Login"
-
-#~ msgid "LOBBY_MENU"
-#~ msgstr "Lobby"
 
 #~ msgid "SUB_DESCRIPTION"
 #~ msgstr ""
