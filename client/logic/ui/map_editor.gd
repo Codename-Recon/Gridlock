@@ -42,6 +42,7 @@ static func get_texture_with_atlas_coords(atlas_coords: Vector2i) -> Texture2D:
 	var source: TileSetAtlasSource = TILES.get_source(0)
 	var rect: Rect2i = source.get_tile_texture_region(atlas_coords, 0)
 	var atlas: AtlasTexture = AtlasTexture.new()
+	atlas.filter_clip = true
 	atlas.set_atlas(source.texture)
 	atlas.region = rect
 	return atlas

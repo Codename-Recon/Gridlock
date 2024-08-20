@@ -454,7 +454,6 @@ metadata/_edit_use_custom_anchors = false
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
-snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
