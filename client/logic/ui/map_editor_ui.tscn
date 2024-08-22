@@ -1068,10 +1068,10 @@ script = ExtResource("7_2x4d3")
 next_menu = NodePath("../../MainMenu")
 
 [node name="LoadFileDialog" type="FileDialog" parent="."]
-title = "Open a File"
+title = "OPEN_MAP_TITLE"
 initial_position = 1
 size = Vector2i(450, 334)
-ok_button_text = "Open"
+ok_button_text = "OPEN"
 cancel_button_text = "CANCEL"
 file_mode = 0
 access = 1
