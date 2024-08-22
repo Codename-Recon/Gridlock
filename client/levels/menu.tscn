@@ -51,10 +51,10 @@ region = Rect2(150, 50, 50, 50)
 atlas = ExtResource("7_1imcl")
 region = Rect2(500, 200, 50, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h8kge"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv2nk"]
 atlas = ExtResource("9_ekkjc")
 region = Rect2(480, 320, 32, 32)
-margin = Rect2(8, 0, 0, 0)
+margin = Rect2(8, 0, 8, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yv0in"]
 atlas = ExtResource("7_1imcl")
@@ -310,7 +310,7 @@ offset_top = 144.0
 offset_bottom = 209.0
 grow_horizontal = 2
 text = "MAP_EDITOR"
-icon = SubResource("AtlasTexture_h8kge")
+icon = SubResource("AtlasTexture_nv2nk")
 script = ExtResource("9_jte0r")
 scene_to_go = ExtResource("10_rjvs6")
 metadata/_edit_layout_mode = 1
