@@ -77,7 +77,7 @@ func _ready() -> void:
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0wol"]
 atlas = ExtResource("3_wxx8d")
 region = Rect2(448, 224, 32, 32)
-margin = Rect2(8, 0, 0, 0)
+margin = Rect2(8, 0, 8, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0aoq"]
 atlas = ExtResource("5_3pv8h")
@@ -881,7 +881,6 @@ color = Color(0, 0, 0, 0.423529)
 script = SubResource("GDScript_dh5nv")
 
 [node name="MainMenu" parent="." instance=ExtResource("2_qg74o")]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1069,10 +1068,10 @@ script = ExtResource("7_2x4d3")
 next_menu = NodePath("../../MainMenu")
 
 [node name="LoadFileDialog" type="FileDialog" parent="."]
-title = "OPEN_MAP_TITLE"
+title = "Open a File"
 initial_position = 1
 size = Vector2i(450, 334)
-ok_button_text = "OPEN"
+ok_button_text = "Open"
 cancel_button_text = "CANCEL"
 file_mode = 0
 access = 1
