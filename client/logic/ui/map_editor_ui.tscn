@@ -1074,6 +1074,7 @@ initial_position = 1
 size = Vector2i(450, 334)
 ok_button_text = "OPEN"
 cancel_button_text = "CANCEL"
+mode_overrides_title = false
 file_mode = 0
 access = 1
 root_subfolder = "maps"
