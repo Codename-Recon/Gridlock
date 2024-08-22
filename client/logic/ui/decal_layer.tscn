@@ -111,7 +111,7 @@ _data = {
 
 [node name="DecalLayer" type="Sprite2D"]
 self_modulate = Color(1, 1, 1, 0.470588)
-z_index = 1
+z_index = 2
 scale = Vector2(0.01, 0.01)
 texture = SubResource("AtlasTexture_4qdwo")
 script = ExtResource("2_2i2mn")

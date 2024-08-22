@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://logic/ui/move_arrow.gd" id="1_cpjlm"]
 [ext_resource type="Texture2D" uid="uid://btjl784330o23" path="res://assets/images/game/movement hud.png" id="2_nrwme"]
 
-[sub_resource type="Curve2D" id="Curve2D_448gq"]
+[sub_resource type="Curve2D" id="Curve2D_wufga"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyt6h"]
 atlas = ExtResource("2_nrwme")
@@ -23,8 +23,8 @@ region = Rect2(96, 0, 32, 32)
 
 [node name="MoveArrow" type="Path2D"]
 modulate = Color(1, 1, 1, 0.784314)
-z_index = 1
-curve = SubResource("Curve2D_448gq")
+z_index = 2
+curve = SubResource("Curve2D_wufga")
 script = ExtResource("1_cpjlm")
 up_arrow = SubResource("AtlasTexture_eyt6h")
 vertical_line = SubResource("AtlasTexture_ll0pw")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://bafomjysyy417"]
+[gd_scene load_steps=26 format=3 uid="uid://bafomjysyy417"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_8m6gf"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_54q1w"]
 [ext_resource type="Texture2D" uid="uid://8fm4xxs8xy46" path="res://assets/images/game/units/bomber.png" id="3_ba4om"]
+[ext_resource type="Script" path="res://logic/game/effects/unit_shadow.gd" id="4_rov6o"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_tim38"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_cb23q"]
 [ext_resource type="AudioStream" uid="uid://duns7rb260nxe" path="res://assets/sounds/laserRetro_003.ogg" id="7_xwshm"]
@@ -510,7 +511,7 @@ _data = {
 }
 
 [node name="Bomber" type="Node2D"]
-z_index = 1
+z_index = 2
 script = ExtResource("1_8m6gf")
 shader_modulate = true
 id = "BOMBER"
@@ -518,9 +519,17 @@ id = "BOMBER"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_7bly4")
 sprite_frames = SubResource("SpriteFrames_7bt7y")
-animation = &"struck"
+animation = &"attack_primary"
 autoplay = "idle"
 offset = Vector2(0, -10)
+
+[node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.5)
+z_index = -1
+scale = Vector2(0.65, 0.5135)
+script = ExtResource("4_rov6o")
+shadow_scale = 0.65
+shadow_squish = 0.79
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
