@@ -1079,7 +1079,6 @@ file_mode = 0
 access = 1
 root_subfolder = "maps"
 filters = PackedStringArray("*.glm")
-use_native_dialog = true
 
 [connection signal="map_resized" from="." to="." method="_on_map_resized"]
 [connection signal="tab_changed" from="TabBar" to="TabBar" method="_on_tab_changed"]
