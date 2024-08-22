@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_ed78a"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_1n7rs"]
-[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_lqmhf"]
+[ext_resource type="Texture2D" uid="uid://d0uni3rion77w" path="res://assets/images/game/units/lander.png" id="3_bklb1"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_vywn6"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_38tbm"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="8_ya1om"]
@@ -15,20 +15,20 @@ shader_parameter/shifting = true
 shader_parameter/shift_level_h = 0.326
 shader_parameter/shift_level_s = 0.332
 shader_parameter/shift_level_b = 0.557
-shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
-shader_parameter/new_color = Color(0, 0, 1, 1)
+shader_parameter/old_color = Color(0.678431, 0.0823529, 0.560784, 1)
+shader_parameter/new_color = Color(0.870588, 0, 0, 1)
 shader_parameter/shift_shades_threshold = 1.0
 shader_parameter/shift_shades_factor = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rcbhs"]
-atlas = ExtResource("3_lqmhf")
-region = Rect2(416, 192, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_45bpk"]
+atlas = ExtResource("3_bklb1")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qbeff"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"attack_primary",
@@ -36,7 +36,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"attack_secondary",
@@ -44,7 +44,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"default",
@@ -52,7 +52,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"die",
@@ -60,7 +60,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"end_turn",
@@ -68,7 +68,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"end_turn_injured",
@@ -76,7 +76,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"idle",
@@ -84,7 +84,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"idle_injured",
@@ -92,7 +92,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"moving_down",
@@ -100,7 +100,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"moving_down_start",
@@ -108,7 +108,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"moving_side",
@@ -116,7 +116,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"moving_side_start",
@@ -124,7 +124,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"moving_up",
@@ -132,7 +132,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"moving_up_start",
@@ -140,7 +140,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcbhs")
+"texture": SubResource("AtlasTexture_45bpk")
 }],
 "loop": true,
 "name": &"struck",
@@ -414,8 +414,9 @@ id = "LANDER"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_bo1xy")
 sprite_frames = SubResource("SpriteFrames_qbeff")
-animation = &"attack_secondary"
+animation = &"struck"
 autoplay = "idle"
+offset = Vector2(0, -4)
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
