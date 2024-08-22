@@ -647,7 +647,7 @@ terrains = {
 "funds": 1000.0,
 "health": 0.0,
 "name": "AIRPORT",
-"shop_units": ["BOMBER", "FIGHTER", "STEALTH", "B-COPTER", "T-COPTER"]
+"shop_units": ["BOMBER", "FIGHTER", "B-COPTER", "T-COPTER"]
 },
 "BASE": {
 "ammo": 0.0,
@@ -658,7 +658,7 @@ terrains = {
 "funds": 1000.0,
 "health": 0.0,
 "name": "BASE",
-"shop_units": ["ANTI_AIR", "APC", "ARTILLERY", "INFANTRY", "MEDIUM_TANK", "MECH", "MEGA_TANK", "MISSILE", "NEO_TANK", "PIPERUNNER", "RECON", "ROCKET", "TANK"]
+"shop_units": ["ANTI_AIR", "APC", "ARTILLERY", "INFANTRY", "MEDIUM_TANK", "MECH", "MISSILE", "NEO_TANK", "RECON", "ROCKET", "TANK"]
 },
 "BEACH": {
 "ammo": 0.0,

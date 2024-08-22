@@ -7,5 +7,5 @@
   "capture_value": 0,
   "funds": 1000,
   "ammo": 0,
-  "shop_units": ["BOMBER", "FIGHTER", "STEALTH", "B-COPTER", "T-COPTER"] 
+  "shop_units": ["BOMBER", "FIGHTER", "B-COPTER", "T-COPTER"] 
 }
