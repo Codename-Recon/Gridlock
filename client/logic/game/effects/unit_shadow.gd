@@ -28,12 +28,15 @@ func _enter_tree() -> void:
 	if get_parent() is AnimatedSprite2D:
 		_parent = get_parent()
 		_parent.frame_changed.connect(_on_frame_changed)
+		_parent.draw.connect(_on_draw)
 		texture = _parent.sprite_frames.get_frame_texture(_parent.animation, _parent.frame)
 
 func _exit_tree() -> void:
 	if _parent:
 		_parent.frame_changed.disconnect(_on_frame_changed)
+		_parent.draw.disconnect(_on_draw)
 		texture = null
+		_parent = null
 
 
 func _get_configuration_warnings() -> PackedStringArray:
@@ -45,6 +48,9 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func _on_frame_changed() -> void:
 	texture = _parent.sprite_frames.get_frame_texture(_parent.animation, _parent.frame)
+
+
+func _on_draw() -> void:
 	flip_h = _parent.flip_h
 
 
