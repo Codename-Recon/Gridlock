@@ -49,7 +49,7 @@ func get_device_id() -> String:
 		return network_config.get_value(CONFIG_DEVICE_SECTION, "device_id")
 	var device_id: String
 	if OS.get_name() == "Web":
-		device_id = str(hash(randi()))
+		device_id = str(randi()).sha256_text().left(32)
 	else:
 		device_id = OS.get_unique_id()
 	network_config.set_value(CONFIG_DEVICE_SECTION, "device_id", device_id)
