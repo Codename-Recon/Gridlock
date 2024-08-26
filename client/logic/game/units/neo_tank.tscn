@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_swqdd"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_3msv7"]
-[ext_resource type="Texture2D" uid="uid://cfmrtf5kiwoi5" path="res://assets/images/game/tilemap2.png" id="3_ca28e"]
+[ext_resource type="Texture2D" uid="uid://b3dbvo1qu223d" path="res://assets/images/game/units/wartank.png" id="3_yohgh"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_38uo4"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_ssg2d"]
 [ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="7_f1amc"]
@@ -17,20 +17,20 @@ shader_parameter/shifting = true
 shader_parameter/shift_level_h = 0.326
 shader_parameter/shift_level_s = 0.332
 shader_parameter/shift_level_b = 0.557
-shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
-shader_parameter/new_color = Color(0, 0, 1, 1)
+shader_parameter/old_color = Color(0.678431, 0.0823529, 0.560784, 1)
+shader_parameter/new_color = Color(0.870588, 0, 0, 1)
 shader_parameter/shift_shades_threshold = 1.0
 shader_parameter/shift_shades_factor = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ny2ic"]
-atlas = ExtResource("3_ca28e")
-region = Rect2(96, 128, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x0gd"]
+atlas = ExtResource("3_yohgh")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvcvu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"attack_primary",
@@ -38,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"attack_secondary",
@@ -46,7 +46,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"default",
@@ -54,7 +54,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"die",
@@ -62,7 +62,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"end_turn",
@@ -70,7 +70,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"end_turn_injured",
@@ -78,7 +78,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"idle",
@@ -86,7 +86,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"idle_injured",
@@ -94,7 +94,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"moving_down",
@@ -102,7 +102,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"moving_down_start",
@@ -110,7 +110,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"moving_side",
@@ -118,7 +118,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"moving_side_start",
@@ -126,7 +126,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"moving_up",
@@ -134,7 +134,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"moving_up_start",
@@ -142,7 +142,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny2ic")
+"texture": SubResource("AtlasTexture_2x0gd")
 }],
 "loop": true,
 "name": &"struck",
@@ -746,6 +746,7 @@ material = SubResource("ShaderMaterial_bipbl")
 sprite_frames = SubResource("SpriteFrames_tvcvu")
 animation = &"idle"
 autoplay = "idle"
+offset = Vector2(0, -6)
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

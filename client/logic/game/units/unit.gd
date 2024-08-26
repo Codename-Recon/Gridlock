@@ -304,7 +304,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	z_index = 1
+	z_index = 2
 	if not Engine.is_editor_hint():
 		stats.round_over_changed.connect(_round_over_changed)
 		add_to_group("unit")

@@ -7,5 +7,5 @@
   "capture_value": 0,
   "funds": 1000,
   "ammo": 0,
-  "shop_units": ["ANTI_AIR", "APC", "ARTILLERY", "INFANTRY", "MEDIUM_TANK", "MECH", "MEGA_TANK", "MISSILE", "NEO_TANK", "PIPERUNNER", "RECON", "ROCKET", "TANK"] 
+  "shop_units": ["ANTI_AIR", "APC", "ARTILLERY", "INFANTRY", "MEDIUM_TANK", "MECH", "MISSILE", "NEO_TANK", "RECON", "ROCKET", "TANK"] 
 }
