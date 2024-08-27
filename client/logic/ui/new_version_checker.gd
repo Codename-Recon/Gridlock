@@ -81,6 +81,9 @@ func _filter_release(release: Dictionary) -> bool:
 func _on_request_completed(
 	result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray
 ) -> void:
+	if result > HTTPRequest.Result.RESULT_SUCCESS:
+		print_debug("Version check failed. HTTP request error code: %s" % result)
+		return
 	var release_list: Array = JSON.parse_string(body.get_string_from_utf8())
 	var valid_releases: Array = release_list.filter(_filter_release)
 	if valid_releases.size() > 0:
