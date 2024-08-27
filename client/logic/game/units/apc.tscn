@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://c4iai7oi81hmi"]
+[gd_scene load_steps=26 format=3 uid="uid://c4iai7oi81hmi"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_lwul0"]
 [ext_resource type="Texture2D" uid="uid://7gnsi5gy0qj" path="res://assets/images/game/units/apc.png" id="3_4wyjq"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="3_s26s1"]
+[ext_resource type="Script" path="res://logic/game/effects/unit_shadow.gd" id="4_csysu"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="6_cntky"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="7_mnlhh"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="9_rtjsu"]
@@ -473,7 +474,7 @@ _data = {
 }
 
 [node name="APC" type="Node2D"]
-z_index = 1
+z_index = 2
 script = ExtResource("1_lwul0")
 shader_modulate = true
 id = "APC"
@@ -484,6 +485,25 @@ sprite_frames = SubResource("SpriteFrames_nlewf")
 animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -6)
+
+[node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.3)
+z_index = -1
+scale = Vector2(0.95, 0.6175)
+script = ExtResource("4_csysu")
+shadow_alpha = 0.3
+shadow_scale = 0.95
+shadow_squish = 0.65
+
+[node name="UnitShadow2" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.15)
+z_index = -1
+scale = Vector2(1, 0.76)
+offset = Vector2(0, -12)
+script = ExtResource("4_csysu")
+shadow_alpha = 0.15
+shadow_scale = 1.0
+shadow_squish = 0.76
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://mn03e3n7hatj"]
+[gd_scene load_steps=28 format=3 uid="uid://mn03e3n7hatj"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_c1boh"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_72te5"]
 [ext_resource type="Texture2D" uid="uid://bqp1od05vqvuk" path="res://assets/images/game/units/cruiser.png" id="3_dipif"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_ivbqa"]
+[ext_resource type="Script" path="res://logic/game/effects/unit_shadow.gd" id="4_kadug"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_8nfsx"]
 [ext_resource type="AudioStream" uid="uid://duns7rb260nxe" path="res://assets/sounds/laserRetro_003.ogg" id="6_20in2"]
 [ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="7_feyjo"]
@@ -655,7 +656,7 @@ _data = {
 }
 
 [node name="Cruiser" type="Node2D"]
-z_index = 1
+z_index = 2
 script = ExtResource("1_c1boh")
 shader_modulate = true
 id = "CRUISER"
@@ -666,6 +667,26 @@ sprite_frames = SubResource("SpriteFrames_v7156")
 animation = &"struck"
 autoplay = "idle"
 offset = Vector2(0, -4)
+
+[node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.2)
+z_index = -1
+scale = Vector2(0.98, 0.735)
+offset = Vector2(0, 2)
+script = ExtResource("4_kadug")
+shadow_alpha = 0.2
+shadow_scale = 0.98
+shadow_squish = 0.75
+
+[node name="UnitShadow2" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.15)
+z_index = -1
+scale = Vector2(0.98, 0.7056)
+offset = Vector2(0, -8)
+script = ExtResource("4_kadug")
+shadow_alpha = 0.15
+shadow_scale = 0.98
+shadow_squish = 0.72
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

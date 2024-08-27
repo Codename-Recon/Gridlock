@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://jsjdyys08ujj"]
+[gd_scene load_steps=24 format=3 uid="uid://jsjdyys08ujj"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_ed78a"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_1n7rs"]
 [ext_resource type="Texture2D" uid="uid://d0uni3rion77w" path="res://assets/images/game/units/lander.png" id="3_bklb1"]
+[ext_resource type="Script" path="res://logic/game/effects/unit_shadow.gd" id="4_pckmy"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_vywn6"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_38tbm"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="8_ya1om"]
@@ -406,7 +407,7 @@ _data = {
 }
 
 [node name="Lander" type="Node2D"]
-z_index = 1
+z_index = 2
 script = ExtResource("1_ed78a")
 shader_modulate = true
 id = "LANDER"
@@ -417,6 +418,26 @@ sprite_frames = SubResource("SpriteFrames_qbeff")
 animation = &"struck"
 autoplay = "idle"
 offset = Vector2(0, -4)
+
+[node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.2)
+z_index = -1
+scale = Vector2(0.97, 0.7372)
+offset = Vector2(0, 2)
+script = ExtResource("4_pckmy")
+shadow_alpha = 0.2
+shadow_scale = 0.97
+shadow_squish = 0.76
+
+[node name="UnitShadow2" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.15)
+z_index = -1
+scale = Vector2(0.98, 0.7056)
+offset = Vector2(0, -8)
+script = ExtResource("4_pckmy")
+shadow_alpha = 0.15
+shadow_scale = 0.98
+shadow_squish = 0.72
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

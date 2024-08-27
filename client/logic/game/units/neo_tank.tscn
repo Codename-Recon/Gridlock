@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://bhm7dlbtp7crw"]
+[gd_scene load_steps=32 format=3 uid="uid://bhm7dlbtp7crw"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_swqdd"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_3msv7"]
 [ext_resource type="Texture2D" uid="uid://b3dbvo1qu223d" path="res://assets/images/game/units/wartank.png" id="3_yohgh"]
+[ext_resource type="Script" path="res://logic/game/effects/unit_shadow.gd" id="4_6oh5f"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_38uo4"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_ssg2d"]
 [ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="7_f1amc"]
@@ -736,7 +737,7 @@ _data = {
 }
 
 [node name="NeoTank" type="Node2D"]
-z_index = 1
+z_index = 2
 script = ExtResource("1_swqdd")
 shader_modulate = true
 id = "NEO_TANK"
@@ -747,6 +748,26 @@ sprite_frames = SubResource("SpriteFrames_tvcvu")
 animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -6)
+
+[node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.3)
+z_index = -1
+scale = Vector2(0.98, 0.6174)
+offset = Vector2(0, 1)
+script = ExtResource("4_6oh5f")
+shadow_alpha = 0.3
+shadow_scale = 0.98
+shadow_squish = 0.63
+
+[node name="UnitShadow2" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.15)
+z_index = -1
+scale = Vector2(1, 0.77)
+offset = Vector2(0, -12)
+script = ExtResource("4_6oh5f")
+shadow_alpha = 0.15
+shadow_scale = 1.0
+shadow_squish = 0.77
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

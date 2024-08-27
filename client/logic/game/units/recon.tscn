@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://cxq4g3bvxh5p3"]
+[gd_scene load_steps=26 format=3 uid="uid://cxq4g3bvxh5p3"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_g63cb"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_jdmup"]
 [ext_resource type="Texture2D" uid="uid://chpyyr00uykgc" path="res://assets/images/game/units/recon.png" id="3_b4q30"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_3fxni"]
+[ext_resource type="Script" path="res://logic/game/effects/unit_shadow.gd" id="4_s43j7"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_fwm3r"]
 [ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="6_i4dl7"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="8_ibe12"]
@@ -546,7 +547,7 @@ _data = {
 }
 
 [node name="Recon" type="Node2D"]
-z_index = 1
+z_index = 2
 script = ExtResource("1_g63cb")
 shader_modulate = true
 id = "RECON"
@@ -557,6 +558,26 @@ sprite_frames = SubResource("SpriteFrames_g7v28")
 animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -6)
+
+[node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.3)
+z_index = -1
+scale = Vector2(0.98, 0.6174)
+offset = Vector2(0, 1)
+script = ExtResource("4_s43j7")
+shadow_alpha = 0.3
+shadow_scale = 0.98
+shadow_squish = 0.63
+
+[node name="UnitShadow2" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.15)
+z_index = -1
+scale = Vector2(1, 0.85)
+offset = Vector2(0, -10)
+script = ExtResource("4_s43j7")
+shadow_alpha = 0.15
+shadow_scale = 1.0
+shadow_squish = 0.85
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

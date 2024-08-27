@@ -524,12 +524,14 @@ autoplay = "idle"
 offset = Vector2(0, -10)
 
 [node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
-modulate = Color(0, 0, 0, 0.5)
+modulate = Color(0, 0, 0, 0.1)
 z_index = -1
-scale = Vector2(0.65, 0.5135)
+scale = Vector2(0.72, 0.432)
+offset = Vector2(0, 10)
 script = ExtResource("4_rov6o")
-shadow_scale = 0.65
-shadow_squish = 0.79
+shadow_alpha = 0.1
+shadow_scale = 0.72
+shadow_squish = 0.6
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

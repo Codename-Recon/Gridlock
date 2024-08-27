@@ -1,9 +1,10 @@
-[gd_scene load_steps=67 format=3 uid="uid://d1vtobfji2rgv"]
+[gd_scene load_steps=68 format=3 uid="uid://d1vtobfji2rgv"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_p20bd"]
 [ext_resource type="Texture2D" uid="uid://diyu0eh2v3lnh" path="res://assets/images/game/units/mech.png" id="2_0smfo"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_nob08"]
 [ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="4_jfrjt"]
+[ext_resource type="Script" path="res://logic/game/effects/unit_shadow.gd" id="4_smmuv"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_h5usk"]
 [ext_resource type="AudioStream" uid="uid://duns7rb260nxe" path="res://assets/sounds/laserRetro_003.ogg" id="7_lk0t1"]
 [ext_resource type="AudioStream" uid="uid://b31ajl2bvd1wj" path="res://assets/sounds/impactPlate_medium_004.ogg" id="9_c4b7y"]
@@ -968,7 +969,7 @@ _data = {
 }
 
 [node name="Mech" type="Node2D"]
-z_index = 1
+z_index = 2
 script = ExtResource("1_p20bd")
 shader_modulate = true
 color = Color(1, 0.0941176, 0.129412, 1)
@@ -979,7 +980,20 @@ material = SubResource("ShaderMaterial_ratio")
 sprite_frames = SubResource("SpriteFrames_cet6y")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.467114
 offset = Vector2(0, -6)
+flip_h = true
+
+[node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.2)
+z_index = -1
+scale = Vector2(0.92, 0.598)
+offset = Vector2(0, -2)
+flip_h = true
+script = ExtResource("4_smmuv")
+shadow_alpha = 0.2
+shadow_scale = 0.92
+shadow_squish = 0.65
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

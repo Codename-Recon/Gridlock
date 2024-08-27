@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://bss23v6r204mv"]
+[gd_scene load_steps=26 format=3 uid="uid://bss23v6r204mv"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_56dmb"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_jav5n"]
 [ext_resource type="Texture2D" uid="uid://ddr41ljqbdeem" path="res://assets/images/game/units/missile.png" id="3_cutdv"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_pb2wr"]
+[ext_resource type="Script" path="res://logic/game/effects/unit_shadow.gd" id="4_xjile"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_h3j4b"]
 [ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="8_evkti"]
 [ext_resource type="AudioStream" uid="uid://duns7rb260nxe" path="res://assets/sounds/laserRetro_003.ogg" id="9_byhei"]
@@ -511,7 +512,7 @@ _data = {
 }
 
 [node name="Missile" type="Node2D"]
-z_index = 1
+z_index = 2
 script = ExtResource("1_56dmb")
 shader_modulate = true
 id = "MISSILE"
@@ -522,6 +523,25 @@ sprite_frames = SubResource("SpriteFrames_hl0h7")
 animation = &"struck"
 autoplay = "idle"
 offset = Vector2(0, -6)
+
+[node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.3)
+z_index = -1
+scale = Vector2(0.99, 0.6534)
+script = ExtResource("4_xjile")
+shadow_alpha = 0.3
+shadow_scale = 0.99
+shadow_squish = 0.66
+
+[node name="UnitShadow2" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.15)
+z_index = -1
+scale = Vector2(0.98, 0.7252)
+offset = Vector2(0, -12)
+script = ExtResource("4_xjile")
+shadow_alpha = 0.15
+shadow_scale = 0.98
+shadow_squish = 0.74
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
