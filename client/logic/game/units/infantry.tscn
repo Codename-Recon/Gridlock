@@ -1,8 +1,9 @@
-[gd_scene load_steps=65 format=3 uid="uid://2t61plm4vpda"]
+[gd_scene load_steps=66 format=3 uid="uid://2t61plm4vpda"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_6por7"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_2xwsq"]
 [ext_resource type="Texture2D" uid="uid://c3nykf8itb81n" path="res://assets/images/game/units/infantry.png" id="3_bgbw4"]
+[ext_resource type="Script" path="res://logic/game/effects/unit_shadow.gd" id="4_m12w8"]
 [ext_resource type="AudioStream" uid="uid://d0v7mb55rxo3e" path="res://assets/sounds/footstep_carpet_001.ogg" id="5_xjxi4"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="7_5ps6t"]
 [ext_resource type="AudioStream" uid="uid://b31ajl2bvd1wj" path="res://assets/sounds/impactPlate_medium_004.ogg" id="14_j8dta"]
@@ -949,7 +950,7 @@ _data = {
 }
 
 [node name="Infantry" type="Node2D"]
-z_index = 1
+z_index = 2
 script = ExtResource("1_6por7")
 shader_modulate = true
 color = Color(0.870588, 0, 0, 1)
@@ -961,7 +962,17 @@ sprite_frames = SubResource("SpriteFrames_n3gnd")
 animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -6)
-flip_h = true
+
+[node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.2)
+z_index = -1
+scale = Vector2(0.92, 0.598)
+texture = SubResource("AtlasTexture_6d8mv")
+offset = Vector2(0, -2)
+script = ExtResource("4_m12w8")
+shadow_alpha = 0.2
+shadow_scale = 0.92
+shadow_squish = 0.65
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

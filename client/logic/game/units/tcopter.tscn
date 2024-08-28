@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://bb8xa7cmjsq6m"]
+[gd_scene load_steps=26 format=3 uid="uid://bb8xa7cmjsq6m"]
 
 [ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_tnteo"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_8wi6t"]
 [ext_resource type="Texture2D" uid="uid://d2io7uj2ictdn" path="res://assets/images/game/units/tcopter.png" id="3_axjhx"]
+[ext_resource type="Script" path="res://logic/game/effects/unit_shadow.gd" id="4_djwui"]
 [ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_q5w68"]
 [ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_fe3cm"]
 [ext_resource type="AudioStream" uid="uid://cin8b6ejg3oby" path="res://assets/sounds/ui/doorOpen_001.ogg" id="8_mkl1c"]
@@ -465,7 +466,7 @@ _data = {
 }
 
 [node name="T-Copter" type="Node2D"]
-z_index = 1
+z_index = 2
 script = ExtResource("1_tnteo")
 shader_modulate = true
 id = "T-COPTER"
@@ -476,6 +477,16 @@ sprite_frames = SubResource("SpriteFrames_qfs8t")
 animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -8)
+
+[node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.1)
+z_index = -1
+scale = Vector2(0.63, 0.3276)
+offset = Vector2(0, 12)
+script = ExtResource("4_djwui")
+shadow_alpha = 0.1
+shadow_scale = 0.63
+shadow_squish = 0.52
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
