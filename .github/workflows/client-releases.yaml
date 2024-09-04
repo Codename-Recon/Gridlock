@@ -114,4 +114,4 @@ jobs:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
           ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
           ITCHIO_GAME: ${{ vars.ITCHIO_GAME }}
-        run: butler push ./build/Web.zip $ITCHIO_USERNAME/$ITCHIO_GAME:html --userversion $GITHUB_REF_NAME
+        run: butler push ./build/web/ $ITCHIO_USERNAME/$ITCHIO_GAME:html --userversion $GITHUB_REF_NAME
