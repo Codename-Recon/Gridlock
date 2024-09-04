@@ -981,18 +981,18 @@ sprite_frames = SubResource("SpriteFrames_cet6y")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.467114
-offset = Vector2(0, -6)
+offset = Vector2(0, -2)
 flip_h = true
 
 [node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.2)
 z_index = -1
-scale = Vector2(0.92, 0.598)
-offset = Vector2(0, -2)
+scale = Vector2(0.95, 0.6175)
+offset = Vector2(0, 4)
 flip_h = true
 script = ExtResource("4_smmuv")
 shadow_alpha = 0.2
-shadow_scale = 0.92
+shadow_scale = 0.95
 shadow_squish = 0.65
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]

@@ -488,26 +488,27 @@ material = SubResource("ShaderMaterial_507yw")
 sprite_frames = SubResource("SpriteFrames_f1338")
 animation = &"struck"
 autoplay = "idle"
-offset = Vector2(0, -6)
+offset = Vector2(0, -2)
 
 [node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.3)
 z_index = -1
-scale = Vector2(1, 0.61)
+scale = Vector2(0.95, 0.684)
+offset = Vector2(0, 4)
 script = ExtResource("4_xytrp")
 shadow_alpha = 0.3
-shadow_scale = 1.0
-shadow_squish = 0.61
+shadow_scale = 0.95
+shadow_squish = 0.72
 
 [node name="UnitShadow2" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.15)
 z_index = -1
-scale = Vector2(0.97, 0.6887)
-offset = Vector2(0, -12)
+scale = Vector2(0.96, 0.6912)
+offset = Vector2(0, -6)
 script = ExtResource("4_xytrp")
 shadow_alpha = 0.15
-shadow_scale = 0.97
-shadow_squish = 0.71
+shadow_scale = 0.96
+shadow_squish = 0.72
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

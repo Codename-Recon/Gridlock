@@ -527,22 +527,22 @@ offset = Vector2(0, -4)
 [node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.2)
 z_index = -1
-scale = Vector2(1, 0.72)
+scale = Vector2(0.97, 0.7372)
 offset = Vector2(0, 2)
 script = ExtResource("4_rsuyd")
 shadow_alpha = 0.2
-shadow_scale = 1.0
-shadow_squish = 0.72
+shadow_scale = 0.97
+shadow_squish = 0.76
 
 [node name="UnitShadow2" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.15)
 z_index = -1
-scale = Vector2(0.97, 0.7372)
+scale = Vector2(0.97, 0.6984)
 offset = Vector2(0, -8)
 script = ExtResource("4_rsuyd")
 shadow_alpha = 0.15
 shadow_scale = 0.97
-shadow_squish = 0.76
+shadow_squish = 0.72
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
