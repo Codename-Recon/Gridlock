@@ -90,5 +90,8 @@ jobs:
       - name: Depoly Itch.io Windows
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+          ITCHIO_USERNAME: ${{ env.ITCHIO_USERNAME }}
+          ITCHIO_GAME: ${{ env.ITCHIO_GAME }}
+          GITHUB_REF_NAME: ${{ env.GITHUB_REF_NAME }}
         id: deploay-itch-windows
-        run: butler push directory ${{ env.ITCHIO_USERNAME }}/${{ env.ITCHIO_GAME }}:windows --userversion ${{env.GITHUB_REF_NAME}}
+        run: butler push directory $ITCHIO_USERNAME/$ITCHIO_GAME:windows --userversion $GITHUB_REF_NAME
