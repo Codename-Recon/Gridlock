@@ -747,27 +747,27 @@ material = SubResource("ShaderMaterial_kov4u")
 sprite_frames = SubResource("SpriteFrames_rplne")
 animation = &"idle"
 autoplay = "idle"
-offset = Vector2(0, -6)
+offset = Vector2(0, -2)
 
 [node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.3)
 z_index = -1
-scale = Vector2(0.98, 0.6174)
-offset = Vector2(0, 1)
+scale = Vector2(0.98, 0.7056)
+offset = Vector2(0, 4)
 script = ExtResource("4_wwqai")
 shadow_alpha = 0.3
 shadow_scale = 0.98
-shadow_squish = 0.63
+shadow_squish = 0.72
 
 [node name="UnitShadow2" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.15)
 z_index = -1
-scale = Vector2(1, 0.75)
-offset = Vector2(0, -12)
+scale = Vector2(0.96, 0.7104)
+offset = Vector2(0, -6)
 script = ExtResource("4_wwqai")
 shadow_alpha = 0.15
-shadow_scale = 1.0
-shadow_squish = 0.75
+shadow_scale = 0.96
+shadow_squish = 0.74
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

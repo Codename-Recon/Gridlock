@@ -521,17 +521,17 @@ material = SubResource("ShaderMaterial_7bly4")
 sprite_frames = SubResource("SpriteFrames_7bt7y")
 animation = &"attack_primary"
 autoplay = "idle"
-offset = Vector2(0, -10)
+offset = Vector2(0, -8)
 
 [node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.1)
 z_index = -1
-scale = Vector2(0.72, 0.432)
-offset = Vector2(0, 10)
+scale = Vector2(0.7, 0.385)
+offset = Vector2(0, 18)
 script = ExtResource("4_rov6o")
 shadow_alpha = 0.1
-shadow_scale = 0.72
-shadow_squish = 0.6
+shadow_scale = 0.7
+shadow_squish = 0.55
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

@@ -961,17 +961,16 @@ material = SubResource("ShaderMaterial_d1tir")
 sprite_frames = SubResource("SpriteFrames_n3gnd")
 animation = &"idle"
 autoplay = "idle"
-offset = Vector2(0, -6)
+offset = Vector2(0, -2)
 
 [node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.2)
 z_index = -1
-scale = Vector2(0.92, 0.598)
-texture = SubResource("AtlasTexture_6d8mv")
-offset = Vector2(0, -2)
+scale = Vector2(0.95, 0.6175)
+offset = Vector2(0, 4)
 script = ExtResource("4_m12w8")
 shadow_alpha = 0.2
-shadow_scale = 0.92
+shadow_scale = 0.95
 shadow_squish = 0.65
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
