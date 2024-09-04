@@ -91,4 +91,4 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
         id: deploay-itch-windows
-        run: butler push directory ${{ env.ITCHIO_USERNAME }}/${{ env.ITCHIO_GAME }}:windows --userversion ${{GITHUB_REF_NAME}}
+        run: butler push directory ${{ env.ITCHIO_USERNAME }}/${{ env.ITCHIO_GAME }}:windows --userversion ${{env.GITHUB_REF_NAME}}
