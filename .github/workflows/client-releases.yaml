@@ -88,9 +88,30 @@ jobs:
           asset_name: Web.zip
           asset_content_type: application/zip 
       - name: Depoly Itch.io Windows
+        id: deploay-itch-windows
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
           ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
           ITCHIO_GAME: ${{ vars.ITCHIO_GAME }}
-        id: deploay-itch-windows
         run: butler push ./build/windows/${{ env.EXPORT_NAME }}.exe $ITCHIO_USERNAME/$ITCHIO_GAME:windows --userversion $GITHUB_REF_NAME
+      - name: Depoly Itch.io Linux
+        id: deploay-itch-linux
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+          ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
+          ITCHIO_GAME: ${{ vars.ITCHIO_GAME }}
+        run: butler push ./build/linux/${{ env.EXPORT_NAME }}.x86_64 $ITCHIO_USERNAME/$ITCHIO_GAME:linux --userversion $GITHUB_REF_NAME
+      - name: Depoly Itch.io Mac
+        id: deploay-itch-mac
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+          ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
+          ITCHIO_GAME: ${{ vars.ITCHIO_GAME }}
+        run: butler push ./build/mac/${{ env.EXPORT_NAME }}.zip $ITCHIO_USERNAME/$ITCHIO_GAME:mac --userversion $GITHUB_REF_NAME
+      - name: Depoly Itch.io Web
+        id: deploay-itch-web
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+          ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
+          ITCHIO_GAME: ${{ vars.ITCHIO_GAME }}
+        run: butler push ./build/Web.zip $ITCHIO_USERNAME/$ITCHIO_GAME:html --userversion $GITHUB_REF_NAME
