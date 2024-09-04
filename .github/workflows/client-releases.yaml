@@ -93,4 +93,4 @@ jobs:
           ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
           ITCHIO_GAME: ${{ vars.ITCHIO_GAME }}
         id: deploay-itch-windows
-        run: butler push directory $ITCHIO_USERNAME/$ITCHIO_GAME:windows --userversion $GITHUB_REF_NAME
+        run: butler push ./build/windows/${{ env.EXPORT_NAME }}.exe $ITCHIO_USERNAME/$ITCHIO_GAME:windows --userversion $GITHUB_REF_NAME
