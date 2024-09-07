@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:51+0200\n"
-"PO-Revision-Date: 2024-08-18 17:37+0000\n"
+"PO-Revision-Date: 2024-09-07 18:39+0000\n"
 "Last-Translator: HunterNN <stephan.kessler@outlook.com>\n"
 "Language-Team: German <http://weblate.jaumesingla.es/projects/codename-recon/"
 "game-client/de/>\n"
@@ -294,22 +294,6 @@ msgstr ""
 "zeichnen sich durch ihre Fähigkeit aus, Ziele aus der Ferne anzugreifen – "
 "eine Seltenheit unter den Seestreitkräften."
 
-msgid "BLACKBOAT"
-msgstr "Reparaturboot"
-
-msgid "BLACK_BOAT_DESCRIPTION"
-msgstr ""
-"Reparaturboote sind Seestreitkräfte, die zum Transport von Truppen sowie zur "
-"Versorgung und Reparatur anderer Einheiten dienen."
-
-msgid "BLACKBOMB"
-msgstr "Bomben-Drohne"
-
-msgid "BLACK_BOMB_DESCRIPTION"
-msgstr ""
-"Bomben-Drohnen sind aus der Ferne gesteuerte Flugwaffen, die auf einem "
-"Flughafen hergestellt werden."
-
 msgid "BOMBER"
 msgstr "Bomber"
 
@@ -406,24 +390,6 @@ msgstr ""
 "die sich auf Angriffe auf Luftfahrzeuge aus der Ferne spezialisiert haben "
 "und dabei erhebliche Schäden anrichten können."
 
-msgid "NEO_TANK"
-msgstr "Spezialpanzer"
-
-msgid "NEO_TANK_DESCRIPTION"
-msgstr ""
-"Spezialpanzer verfügen über eine überlegenere Leistung im Vergleich zu "
-"mittleren Panzern. Bewaffnet mit einer mächtigen Hauptkanone, können sie "
-"sowohl Land- als auch Seestreitkräfte bekämpfen sowie Infanterie, "
-"Kampfflugzeuge und Transporthelikopter mit ihrem Maschinengewehr anvisieren."
-
-msgid "PIPERUNNER"
-msgstr "Mauerläufer"
-
-msgid "PIPERUNNER_DESCRIPTION"
-msgstr ""
-"Mauerläufer sind eine Art Land-Einheit mit indirekten Kampfmitteln, die auf "
-"Bewegung entlang von Wänden und Basen beschränkt sind."
-
 msgid "RECON"
 msgstr "Aufklärungseinheit"
 
@@ -441,16 +407,16 @@ msgstr ""
 "tauschen höhere Schaden und eine viel größere Reichweite gegen leichteres "
 "Panzerung und einen restriktiveren Bewegungstyp ein."
 
-msgid "STEALTH"
-msgstr "Tarnkappenflugzeug"
-
-msgid "STEALTH_DESCRIPTION"
-msgstr ""
-"Tarnkappenflugzeuge, klassifiziert als Luftfahrzeuge, besitzen die "
-"Fähigkeit, sich wie U-Boote durch Aktivierung des Tarnmodus zu verbergen."
-
 msgid "SUB"
 msgstr "U-Boot"
+
+msgid "SUPPLY_SHIP"
+msgstr "Versorgungsschiff"
+
+msgid "SUPPLY_SHIP_DESCRIPTION"
+msgstr ""
+"Versorgungsschiffe sind Seestreitkräfte, die zum Transport von Truppen sowie "
+"zur Versorgung und Reparatur anderer Einheiten dienen."
 
 msgid "T-COPTER"
 msgstr "Transporthelikopter"
@@ -469,6 +435,24 @@ msgid "TANK_DESCRIPTION"
 msgstr ""
 "Günstig, schnell und in der Lage, sich gegen die meisten anderen Landtruppen "
 "zu behaupten, sind Panzer ein Eckpfeiler jeder Armee."
+
+msgid "WALLRUNNER"
+msgstr "Mauerläufer"
+
+msgid "WALLRUNNER_DESCRIPTION"
+msgstr ""
+"Mauerläufer sind eine Art Land-Einheit mit indirekten Kampfmitteln, die auf "
+"Bewegung entlang von Wänden und Basen beschränkt sind."
+
+msgid "WAR_TANK"
+msgstr "Kriegspanzer"
+
+msgid "WAR_TANK_DESCRIPTION"
+msgstr ""
+"Kriegspanzer verfügen über eine überlegenere Leistung im Vergleich zu "
+"mittleren Panzern. Bewaffnet mit einer mächtigen Hauptkanone, können sie "
+"sowohl Land- als auch Seestreitkräfte bekämpfen sowie Infanterie, "
+"Kampfflugzeuge und Transporthelikopter mit ihrem Maschinengewehr anvisieren."
 
 msgid "AIRPORT"
 msgstr "Flughafen"
@@ -548,24 +532,6 @@ msgstr ""
 "Infanterie- und Lufttruppen durchquert werden. Sie erhöhen auch die "
 "Sichtweite jeder Soldaten-Einheit auf ihnen um 3."
 
-msgid "PIPE"
-msgstr "Mauer"
-
-msgid "PIPE_DESCRIPTION"
-msgstr "Mauern sind nahezu unüberwindbares Gelände."
-
-msgid "PIPE_BROKEN"
-msgstr "Zerbrochener Mauer"
-
-msgid "PIPE_BROKEN_DESCRIPTION"
-msgstr "Eine Schwachstelle im Mauerwerkssystem."
-
-msgid "PIPE_WEAK"
-msgstr "Schwachstelle der Mauer"
-
-msgid "PIPE_WEAK_DESCRIPTION"
-msgstr "Eine Schwachstelle, die beschädigt werden kann."
-
 msgid "PLAIN"
 msgstr "Flachland"
 
@@ -619,6 +585,24 @@ msgstr ""
 "die in der Explosion getroffen wird, 3 HP Schaden zu, ohne zwischen "
 "Verbündeten und Feind zu unterscheiden. Jeder Bunker kann nur einmal "
 "verwendet werden."
+
+msgid "WALL"
+msgstr "Mauer"
+
+msgid "WALL_DESCRIPTION"
+msgstr "Mauern sind nahezu unüberwindbares Gelände."
+
+msgid "WALL_BROKEN"
+msgstr "Eingestürzte Mauer"
+
+msgid "WALL_BROKEN_DESCRIPTION"
+msgstr "Eine Schwachstelle im Mauerwerkssystem."
+
+msgid "WALL_WEAK"
+msgstr "Schwachstelle der Mauer"
+
+msgid "WALL_WEAK_DESCRIPTION"
+msgstr "Eine Schwachstelle, die beschädigt werden kann."
 
 msgid "WOOD"
 msgstr "Wald"
@@ -690,6 +674,53 @@ msgstr "Weitere Details"
 
 msgid "VERSION_WINDOW_OPEN"
 msgstr "Veröffentlichung öffnen"
+
+#~ msgid "PIPE"
+#~ msgstr "Mauer"
+
+#~ msgid "PIPE_DESCRIPTION"
+#~ msgstr "Mauern sind nahezu unüberwindbares Gelände."
+
+#~ msgid "PIPE_WEAK"
+#~ msgstr "Schwachstelle der Mauer"
+
+#~ msgid "PIPE_WEAK_DESCRIPTION"
+#~ msgstr "Eine Schwachstelle, die beschädigt werden kann."
+
+#~ msgid "BLACKBOAT"
+#~ msgstr "Reparaturboot"
+
+#~ msgid "BLACK_BOAT_DESCRIPTION"
+#~ msgstr ""
+#~ "Reparaturboote sind Seestreitkräfte, die zum Transport von Truppen sowie "
+#~ "zur Versorgung und Reparatur anderer Einheiten dienen."
+
+#~ msgid "BLACKBOMB"
+#~ msgstr "Bomben-Drohne"
+
+#~ msgid "BLACK_BOMB_DESCRIPTION"
+#~ msgstr ""
+#~ "Bomben-Drohnen sind aus der Ferne gesteuerte Flugwaffen, die auf einem "
+#~ "Flughafen hergestellt werden."
+
+#~ msgid "NEO_TANK"
+#~ msgstr "Spezialpanzer"
+
+#~ msgid "NEO_TANK_DESCRIPTION"
+#~ msgstr ""
+#~ "Spezialpanzer verfügen über eine überlegenere Leistung im Vergleich zu "
+#~ "mittleren Panzern. Bewaffnet mit einer mächtigen Hauptkanone, können sie "
+#~ "sowohl Land- als auch Seestreitkräfte bekämpfen sowie Infanterie, "
+#~ "Kampfflugzeuge und Transporthelikopter mit ihrem Maschinengewehr "
+#~ "anvisieren."
+
+#~ msgid "STEALTH"
+#~ msgstr "Tarnkappenflugzeug"
+
+#~ msgid "STEALTH_DESCRIPTION"
+#~ msgstr ""
+#~ "Tarnkappenflugzeuge, klassifiziert als Luftfahrzeuge, besitzen die "
+#~ "Fähigkeit, sich wie U-Boote durch Aktivierung des Tarnmodus zu verbergen."
 
 #~ msgid "MAIN_MENU_TITLE"
 #~ msgstr "Hauptmenü"
