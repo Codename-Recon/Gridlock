@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:51+0200\n"
-"PO-Revision-Date: 2024-08-18 17:37+0000\n"
+"PO-Revision-Date: 2024-09-07 18:39+0000\n"
 "Last-Translator: HunterNN <stephan.kessler@outlook.com>\n"
 "Language-Team: German <http://weblate.jaumesingla.es/projects/codename-recon/"
 "game-client/de/>\n"
@@ -410,15 +410,13 @@ msgstr ""
 msgid "SUB"
 msgstr "U-Boot"
 
-#, fuzzy
-#| msgid "SUPPLY"
 msgid "SUPPLY_SHIP"
-msgstr "Auffüllen"
+msgstr "Versorgungsschiff"
 
-#, fuzzy
-#| msgid "PIPE_DESCRIPTION"
 msgid "SUPPLY_SHIP_DESCRIPTION"
-msgstr "Mauern sind nahezu unüberwindbares Gelände."
+msgstr ""
+"Versorgungsschiffe sind Seestreitkräfte, die zum Transport von Truppen sowie "
+"zur Versorgung und Reparatur anderer Einheiten dienen."
 
 msgid "T-COPTER"
 msgstr "Transporthelikopter"
@@ -438,29 +436,23 @@ msgstr ""
 "Günstig, schnell und in der Lage, sich gegen die meisten anderen Landtruppen "
 "zu behaupten, sind Panzer ein Eckpfeiler jeder Armee."
 
-#, fuzzy
-#| msgid "PIPERUNNER"
 msgid "WALLRUNNER"
 msgstr "Mauerläufer"
 
-#, fuzzy
-#| msgid "PIPERUNNER_DESCRIPTION"
 msgid "WALLRUNNER_DESCRIPTION"
 msgstr ""
 "Mauerläufer sind eine Art Land-Einheit mit indirekten Kampfmitteln, die auf "
 "Bewegung entlang von Wänden und Basen beschränkt sind."
 
-#, fuzzy
-#| msgid "MEGA_TANK"
 msgid "WAR_TANK"
-msgstr "Mega-Panzer"
+msgstr "Kriegspanzer"
 
-#, fuzzy
-#| msgid "TANK_DESCRIPTION"
 msgid "WAR_TANK_DESCRIPTION"
 msgstr ""
-"Günstig, schnell und in der Lage, sich gegen die meisten anderen Landtruppen "
-"zu behaupten, sind Panzer ein Eckpfeiler jeder Armee."
+"Kriegspanzer verfügen über eine überlegenere Leistung im Vergleich zu "
+"mittleren Panzern. Bewaffnet mit einer mächtigen Hauptkanone, können sie "
+"sowohl Land- als auch Seestreitkräfte bekämpfen sowie Infanterie, "
+"Kampfflugzeuge und Transporthelikopter mit ihrem Maschinengewehr anvisieren."
 
 msgid "AIRPORT"
 msgstr "Flughafen"
@@ -595,32 +587,22 @@ msgstr ""
 "verwendet werden."
 
 msgid "WALL"
-msgstr ""
+msgstr "Mauer"
 
-#, fuzzy
-#| msgid "APC_DESCRIPTION"
 msgid "WALL_DESCRIPTION"
-msgstr "Auswählen"
+msgstr "Mauern sind nahezu unüberwindbares Gelände."
 
-#, fuzzy
-#| msgid "PIPE_BROKEN"
 msgid "WALL_BROKEN"
-msgstr "Zerbrochener Mauer"
+msgstr "Eingestürzte Mauer"
 
-#, fuzzy
-#| msgid "PIPE_BROKEN_DESCRIPTION"
 msgid "WALL_BROKEN_DESCRIPTION"
 msgstr "Eine Schwachstelle im Mauerwerkssystem."
 
 msgid "WALL_WEAK"
-msgstr ""
+msgstr "Schwachstelle der Mauer"
 
-#, fuzzy
-#| msgid "TANK_DESCRIPTION"
 msgid "WALL_WEAK_DESCRIPTION"
-msgstr ""
-"Günstig, schnell und in der Lage, sich gegen die meisten anderen Landtruppen "
-"zu behaupten, sind Panzer ein Eckpfeiler jeder Armee."
+msgstr "Eine Schwachstelle, die beschädigt werden kann."
 
 msgid "WOOD"
 msgstr "Wald"
