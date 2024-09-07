@@ -1,7 +1,7 @@
 {
   "name": "BATTLESHIP",
   "description": "BATTLESHIP_DESCRIPTION",
-  "cost": 28000,
+  "cost": 25000,
   "health": 100,
   "mp": 5,
   "movement_type": 5,

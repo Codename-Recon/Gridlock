@@ -1,18 +1,18 @@
 [gd_scene load_steps=26 format=3 uid="uid://c644uo6exv0bd"]
 
-[ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_pjr8r"]
-[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_wt6hj"]
-[ext_resource type="Texture2D" uid="uid://dlw75kck5sv6g" path="res://assets/images/game/units/supplyship.png" id="3_q8ans"]
-[ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="4_jqb0m"]
-[ext_resource type="Script" path="res://logic/game/effects/unit_shadow.gd" id="4_kmgp6"]
-[ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_ymycc"]
-[ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="8_l1200"]
-[ext_resource type="AudioStream" uid="uid://cin8b6ejg3oby" path="res://assets/sounds/ui/doorOpen_001.ogg" id="9_3l2jv"]
-[ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="9_yxbho"]
+[ext_resource type="Script" path="res://logic/game/units/unit.gd" id="1_gdcd4"]
+[ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_21ems"]
+[ext_resource type="Texture2D" uid="uid://dlw75kck5sv6g" path="res://assets/images/game/units/supplyship.png" id="3_ojsii"]
+[ext_resource type="Script" path="res://logic/game/effects/unit_shadow.gd" id="4_r2m6h"]
+[ext_resource type="AudioStream" uid="uid://ddkk0a0735yit" path="res://assets/sounds/engineCircular_000.ogg" id="5_7orhp"]
+[ext_resource type="PackedScene" uid="uid://d1lm50b8vcvxp" path="res://logic/ui/unit_stats.tscn" id="6_563hb"]
+[ext_resource type="AudioStream" uid="uid://dtlymedaqmifr" path="res://assets/sounds/explosionCrunch_000.ogg" id="7_cpekn"]
+[ext_resource type="AudioStream" uid="uid://cin8b6ejg3oby" path="res://assets/sounds/ui/doorOpen_001.ogg" id="8_f8vhx"]
+[ext_resource type="AudioStream" uid="uid://bb1o7srxu1o4v" path="res://assets/sounds/impactMining_004.ogg" id="9_5s3dg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8sbi"]
 resource_local_to_scene = true
-shader = ExtResource("2_wt6hj")
+shader = ExtResource("2_21ems")
 shader_parameter/shifting = true
 shader_parameter/shift_level_h = 0.326
 shader_parameter/shift_level_s = 0.332
@@ -23,7 +23,7 @@ shader_parameter/shift_shades_threshold = 1.0
 shader_parameter/shift_shades_factor = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gmny"]
-atlas = ExtResource("3_q8ans")
+atlas = ExtResource("3_ojsii")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d65mu"]
@@ -185,7 +185,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("9_yxbho")
+"stream": ExtResource("7_cpekn")
 }],
 "times": PackedFloat32Array(0.1)
 }
@@ -394,7 +394,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("9_3l2jv")
+"stream": ExtResource("8_f8vhx")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -439,7 +439,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("8_l1200")
+"stream": ExtResource("9_5s3dg")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -473,11 +473,11 @@ _data = {
 "struck": SubResource("Animation_k8io7")
 }
 
-[node name="Blackboat" type="Node2D"]
+[node name="SupplyShip" type="Node2D"]
 z_index = 2
-script = ExtResource("1_pjr8r")
+script = ExtResource("1_gdcd4")
 shader_modulate = true
-id = "BLACKBOAT"
+id = "SUPPLY_SHIP"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_x8sbi")
@@ -491,7 +491,7 @@ modulate = Color(0, 0, 0, 0.2)
 z_index = -1
 scale = Vector2(0.97, 0.7469)
 offset = Vector2(0, 2)
-script = ExtResource("4_kmgp6")
+script = ExtResource("4_r2m6h")
 shadow_alpha = 0.2
 shadow_scale = 0.97
 shadow_squish = 0.77
@@ -501,19 +501,19 @@ modulate = Color(0, 0, 0, 0.15)
 z_index = -1
 scale = Vector2(0.98, 0.7056)
 offset = Vector2(0, -8)
-script = ExtResource("4_kmgp6")
+script = ExtResource("4_r2m6h")
 shadow_alpha = 0.15
 shadow_scale = 0.98
 shadow_squish = 0.72
 
 [node name="AudioMove" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-stream = ExtResource("4_jqb0m")
+stream = ExtResource("5_7orhp")
 pitch_scale = 1.5
 bus = &"Sound"
 area_mask = 0
 
-[node name="UnitStats" parent="." instance=ExtResource("6_ymycc")]
+[node name="UnitStats" parent="." instance=ExtResource("6_563hb")]
 ammo = -1
 fuel = 80
 

@@ -12,7 +12,7 @@
         "AIR",
         "SEA",
         "LANDER",
-        "PIPERUNNER"
+        "WALLRUNNER"
       ]
     },
     "unit": {
@@ -23,8 +23,7 @@
         "ARTILLERY",
         "B-COPTER",
         "BATTLESHIP",
-        "BLACKBOAT",
-        "BLACKBOMB",
+        "SUPPLY_SHIP",
         "BOMBER",
         "CARRIER",
         "CRUISER",
@@ -35,11 +34,10 @@
         "MECH",
         "MEGA_TANK",
         "MISSILE",
-        "NEO_TANK",
-        "PIPERUNNER",
+        "WAR_TANK",
+        "WALLRUNNER",
         "RECON",
         "ROCKET",
-        "STEALTH",
         "SUB",
         "T-COPTER",
         "TANK"
@@ -61,9 +59,9 @@
         "AIRPORT",
         "PORT",
         "HQ",
-        "PIPE",
-        "PIPE_WEAK",
-        "PIPE_BROKEN",
+        "WALL",
+        "WALL_WEAK",
+        "WALL_BROKEN",
         "SILO",
         "COM_TOWER",
         "LAB"

@@ -1,7 +1,7 @@
 {
-  "name": "BLACKBOAT",
-  "description": "BLACK_BOAT_DESCRIPTION",
-  "cost": 7500,
+  "name": "SUPPLY_SHIP",
+  "description": "SUPPLY_SHIP_DESCRIPTION",
+  "cost": 5000,
   "health": 100,
   "mp": 7,
   "movement_type": 6,

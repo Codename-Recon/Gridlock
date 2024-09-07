@@ -1,7 +1,7 @@
 {
   "name": "APC",
   "description": "APC_DESCRIPTION",
-  "cost": 5000,
+  "cost": 4000,
   "health": 100,
   "mp": 6,
   "movement_type": 2,

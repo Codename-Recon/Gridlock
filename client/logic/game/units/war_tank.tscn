@@ -736,11 +736,11 @@ _data = {
 "struck": SubResource("Animation_i10ps")
 }
 
-[node name="NeoTank" type="Node2D"]
+[node name="WarTank" type="Node2D"]
 z_index = 2
 script = ExtResource("1_swqdd")
 shader_modulate = true
-id = "NEO_TANK"
+id = "WAR_TANK"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_bipbl")
@@ -753,7 +753,6 @@ offset = Vector2(0, -2)
 modulate = Color(0, 0, 0, 0.3)
 z_index = -1
 scale = Vector2(0.98, 0.7056)
-texture = SubResource("AtlasTexture_2x0gd")
 offset = Vector2(0, 4)
 script = ExtResource("4_6oh5f")
 shadow_alpha = 0.3
@@ -764,7 +763,6 @@ shadow_squish = 0.72
 modulate = Color(0, 0, 0, 0.15)
 z_index = -1
 scale = Vector2(0.96, 0.7104)
-texture = SubResource("AtlasTexture_2x0gd")
 offset = Vector2(0, -8)
 script = ExtResource("4_6oh5f")
 shadow_alpha = 0.15

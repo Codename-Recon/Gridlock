@@ -55,7 +55,7 @@ enum GameMode { SINGLE, HOTSEAT, NETWORK }
 enum Weather { CLEAR, RAIN, SNOW }
 
 # TODO: Should be generated
-enum MovementType { FOOT, BAZOOKA, TREADS, WHEELS, AIR, SEA, LANDER, PIPERUNNER }
+enum MovementType { FOOT, BAZOOKA, TREADS, WHEELS, AIR, SEA, LANDER, WALLRUNNER }
 
 # TODO: Should be generated
 enum WeaponType {

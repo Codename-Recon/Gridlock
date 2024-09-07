@@ -432,22 +432,6 @@ msgid "BATTLESHIP_DESCRIPTION"
 msgstr ""
 
 #: assets/translations/dynamic_string_loader.gd
-msgid "BLACKBOAT"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
-msgid "BLACK_BOAT_DESCRIPTION"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
-msgid "BLACKBOMB"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
-msgid "BLACK_BOMB_DESCRIPTION"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
 msgid "BOMBER"
 msgstr ""
 
@@ -528,14 +512,6 @@ msgid "MISSILE_DESCRIPTION"
 msgstr ""
 
 #: assets/translations/dynamic_string_loader.gd
-msgid "NEO_TANK"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
-msgid "NEO_TANK_DESCRIPTION"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
 msgid "PIPERUNNER"
 msgstr ""
 
@@ -560,15 +536,15 @@ msgid "ROCKET_DESCRIPTION"
 msgstr ""
 
 #: assets/translations/dynamic_string_loader.gd
-msgid "STEALTH"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
-msgid "STEALTH_DESCRIPTION"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
 msgid "SUB"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgid "SUPPLY_SHIP"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgid "SUPPLY_SHIP_DESCRIPTION"
 msgstr ""
 
 #: assets/translations/dynamic_string_loader.gd
@@ -585,6 +561,14 @@ msgstr ""
 
 #: assets/translations/dynamic_string_loader.gd
 msgid "TANK_DESCRIPTION"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgid "WAR_TANK"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgid "WAR_TANK_DESCRIPTION"
 msgstr ""
 
 #: assets/translations/dynamic_string_loader.gd

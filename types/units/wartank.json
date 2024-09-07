@@ -1,6 +1,6 @@
 {
-  "name": "NEO_TANK",
-  "description": "NEO_TANK_DESCRIPTION",
+  "name": "WAR_TANK",
+  "description": "WAR_TANK_DESCRIPTION",
   "cost": 22000,
   "health": 100,
   "mp": 6,
