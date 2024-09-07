@@ -348,12 +348,6 @@ msgstr ""
 msgid "MISSILE_DESCRIPTION"
 msgstr ""
 
-msgid "PIPERUNNER"
-msgstr ""
-
-msgid "PIPERUNNER_DESCRIPTION"
-msgstr ""
-
 msgid "RECON"
 msgstr ""
 
@@ -390,6 +384,14 @@ msgstr ""
 
 msgid "TANK_DESCRIPTION"
 msgstr ""
+
+msgid "WALLRUNNER"
+msgstr ""
+
+#, fuzzy
+#| msgid "APC_DESCRIPTION"
+msgid "WALLRUNNER_DESCRIPTION"
+msgstr "sélectionner"
 
 msgid "WAR_TANK"
 msgstr ""
@@ -453,24 +455,6 @@ msgstr ""
 msgid "MOUNTAIN_DESCRIPTION"
 msgstr ""
 
-msgid "PIPE"
-msgstr ""
-
-msgid "PIPE_DESCRIPTION"
-msgstr ""
-
-msgid "PIPE_BROKEN"
-msgstr ""
-
-msgid "PIPE_BROKEN_DESCRIPTION"
-msgstr ""
-
-msgid "PIPE_WEAK"
-msgstr ""
-
-msgid "PIPE_WEAK_DESCRIPTION"
-msgstr ""
-
 msgid "PLAIN"
 msgstr ""
 
@@ -509,6 +493,30 @@ msgstr ""
 
 msgid "SILO_DESCRIPTION"
 msgstr ""
+
+msgid "WALL"
+msgstr ""
+
+#, fuzzy
+#| msgid "APC_DESCRIPTION"
+msgid "WALL_DESCRIPTION"
+msgstr "sélectionner"
+
+msgid "WALL_BROKEN"
+msgstr ""
+
+#, fuzzy
+#| msgid "APC_DESCRIPTION"
+msgid "WALL_BROKEN_DESCRIPTION"
+msgstr "sélectionner"
+
+msgid "WALL_WEAK"
+msgstr ""
+
+#, fuzzy
+#| msgid "APC_DESCRIPTION"
+msgid "WALL_WEAK_DESCRIPTION"
+msgstr "sélectionner"
 
 msgid "WOOD"
 msgstr ""

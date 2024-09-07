@@ -390,14 +390,6 @@ msgstr ""
 "die sich auf Angriffe auf Luftfahrzeuge aus der Ferne spezialisiert haben "
 "und dabei erhebliche Schäden anrichten können."
 
-msgid "PIPERUNNER"
-msgstr "Mauerläufer"
-
-msgid "PIPERUNNER_DESCRIPTION"
-msgstr ""
-"Mauerläufer sind eine Art Land-Einheit mit indirekten Kampfmitteln, die auf "
-"Bewegung entlang von Wänden und Basen beschränkt sind."
-
 msgid "RECON"
 msgstr "Aufklärungseinheit"
 
@@ -445,6 +437,18 @@ msgid "TANK_DESCRIPTION"
 msgstr ""
 "Günstig, schnell und in der Lage, sich gegen die meisten anderen Landtruppen "
 "zu behaupten, sind Panzer ein Eckpfeiler jeder Armee."
+
+#, fuzzy
+#| msgid "PIPERUNNER"
+msgid "WALLRUNNER"
+msgstr "Mauerläufer"
+
+#, fuzzy
+#| msgid "PIPERUNNER_DESCRIPTION"
+msgid "WALLRUNNER_DESCRIPTION"
+msgstr ""
+"Mauerläufer sind eine Art Land-Einheit mit indirekten Kampfmitteln, die auf "
+"Bewegung entlang von Wänden und Basen beschränkt sind."
 
 #, fuzzy
 #| msgid "MEGA_TANK"
@@ -536,24 +540,6 @@ msgstr ""
 "Infanterie- und Lufttruppen durchquert werden. Sie erhöhen auch die "
 "Sichtweite jeder Soldaten-Einheit auf ihnen um 3."
 
-msgid "PIPE"
-msgstr "Mauer"
-
-msgid "PIPE_DESCRIPTION"
-msgstr "Mauern sind nahezu unüberwindbares Gelände."
-
-msgid "PIPE_BROKEN"
-msgstr "Zerbrochener Mauer"
-
-msgid "PIPE_BROKEN_DESCRIPTION"
-msgstr "Eine Schwachstelle im Mauerwerkssystem."
-
-msgid "PIPE_WEAK"
-msgstr "Schwachstelle der Mauer"
-
-msgid "PIPE_WEAK_DESCRIPTION"
-msgstr "Eine Schwachstelle, die beschädigt werden kann."
-
 msgid "PLAIN"
 msgstr "Flachland"
 
@@ -607,6 +593,34 @@ msgstr ""
 "die in der Explosion getroffen wird, 3 HP Schaden zu, ohne zwischen "
 "Verbündeten und Feind zu unterscheiden. Jeder Bunker kann nur einmal "
 "verwendet werden."
+
+msgid "WALL"
+msgstr ""
+
+#, fuzzy
+#| msgid "APC_DESCRIPTION"
+msgid "WALL_DESCRIPTION"
+msgstr "Auswählen"
+
+#, fuzzy
+#| msgid "PIPE_BROKEN"
+msgid "WALL_BROKEN"
+msgstr "Zerbrochener Mauer"
+
+#, fuzzy
+#| msgid "PIPE_BROKEN_DESCRIPTION"
+msgid "WALL_BROKEN_DESCRIPTION"
+msgstr "Eine Schwachstelle im Mauerwerkssystem."
+
+msgid "WALL_WEAK"
+msgstr ""
+
+#, fuzzy
+#| msgid "TANK_DESCRIPTION"
+msgid "WALL_WEAK_DESCRIPTION"
+msgstr ""
+"Günstig, schnell und in der Lage, sich gegen die meisten anderen Landtruppen "
+"zu behaupten, sind Panzer ein Eckpfeiler jeder Armee."
 
 msgid "WOOD"
 msgstr "Wald"
@@ -678,6 +692,18 @@ msgstr "Weitere Details"
 
 msgid "VERSION_WINDOW_OPEN"
 msgstr "Veröffentlichung öffnen"
+
+#~ msgid "PIPE"
+#~ msgstr "Mauer"
+
+#~ msgid "PIPE_DESCRIPTION"
+#~ msgstr "Mauern sind nahezu unüberwindbares Gelände."
+
+#~ msgid "PIPE_WEAK"
+#~ msgstr "Schwachstelle der Mauer"
+
+#~ msgid "PIPE_WEAK_DESCRIPTION"
+#~ msgstr "Eine Schwachstelle, die beschädigt werden kann."
 
 #~ msgid "BLACKBOAT"
 #~ msgstr "Reparaturboot"
