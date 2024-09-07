@@ -355,30 +355,6 @@ msgstr ""
 "las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
 "las unidades aliadas"
 
-msgid "BLACKBOAT"
-msgstr ""
-
-#, fuzzy
-#| msgctxt "Terrain information"
-#| msgid "COM_TOWER_DESCRIPTION"
-msgid "BLACK_BOAT_DESCRIPTION"
-msgstr ""
-"La torre de comunicaciones es una propiedad que aumenta las abilidades de "
-"las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
-"las unidades aliadas"
-
-msgid "BLACKBOMB"
-msgstr ""
-
-#, fuzzy
-#| msgctxt "Terrain information"
-#| msgid "COM_TOWER_DESCRIPTION"
-msgid "BLACK_BOMB_DESCRIPTION"
-msgstr ""
-"La torre de comunicaciones es una propiedad que aumenta las abilidades de "
-"las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
-"las unidades aliadas"
-
 msgid "BOMBER"
 msgstr ""
 
@@ -475,18 +451,6 @@ msgstr ""
 "las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
 "las unidades aliadas"
 
-msgid "NEO_TANK"
-msgstr ""
-
-#, fuzzy
-#| msgctxt "Terrain information"
-#| msgid "COM_TOWER_DESCRIPTION"
-msgid "NEO_TANK_DESCRIPTION"
-msgstr ""
-"La torre de comunicaciones es una propiedad que aumenta las abilidades de "
-"las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
-"las unidades aliadas"
-
 msgid "PIPERUNNER"
 msgstr ""
 
@@ -520,17 +484,20 @@ msgstr ""
 "las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
 "las unidades aliadas"
 
-msgid "STEALTH"
+msgid "SUB"
 msgstr ""
 
-msgid "STEALTH_DESCRIPTION"
+msgid "SUPPLY_SHIP"
+msgstr ""
+
+#, fuzzy
+#| msgctxt "Terrain information"
+#| msgid "COM_TOWER_DESCRIPTION"
+msgid "SUPPLY_SHIP_DESCRIPTION"
 msgstr ""
 "La torre de comunicaciones es una propiedad que aumenta las abilidades de "
 "las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
 "las unidades aliadas"
-
-msgid "SUB"
-msgstr ""
 
 msgid "T-COPTER"
 msgstr ""
@@ -548,6 +515,17 @@ msgid "TANK"
 msgstr ""
 
 msgid "TANK_DESCRIPTION"
+msgstr ""
+"La torre de comunicaciones es una propiedad que aumenta las abilidades de "
+"las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
+"las unidades aliadas"
+
+msgid "WAR_TANK"
+msgstr ""
+
+#, fuzzy
+#| msgid "TANK_DESCRIPTION"
+msgid "WAR_TANK_DESCRIPTION"
 msgstr ""
 "La torre de comunicaciones es una propiedad que aumenta las abilidades de "
 "las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
@@ -834,6 +812,39 @@ msgstr ""
 
 msgid "VERSION_WINDOW_OPEN"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "Terrain information"
+#~| msgid "COM_TOWER_DESCRIPTION"
+#~ msgid "BLACK_BOAT_DESCRIPTION"
+#~ msgstr ""
+#~ "La torre de comunicaciones es una propiedad que aumenta las abilidades de "
+#~ "las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
+#~ "las unidades aliadas"
+
+#, fuzzy
+#~| msgctxt "Terrain information"
+#~| msgid "COM_TOWER_DESCRIPTION"
+#~ msgid "BLACK_BOMB_DESCRIPTION"
+#~ msgstr ""
+#~ "La torre de comunicaciones es una propiedad que aumenta las abilidades de "
+#~ "las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
+#~ "las unidades aliadas"
+
+#, fuzzy
+#~| msgctxt "Terrain information"
+#~| msgid "COM_TOWER_DESCRIPTION"
+#~ msgid "NEO_TANK_DESCRIPTION"
+#~ msgstr ""
+#~ "La torre de comunicaciones es una propiedad que aumenta las abilidades de "
+#~ "las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
+#~ "las unidades aliadas"
+
+#~ msgid "STEALTH_DESCRIPTION"
+#~ msgstr ""
+#~ "La torre de comunicaciones es una propiedad que aumenta las abilidades de "
+#~ "las unidades aliadas. Cada torre capturada incrementa un 10% el ataque de "
+#~ "las unidades aliadas"
 
 #, fuzzy
 #~| msgid "Player 1 Turn"

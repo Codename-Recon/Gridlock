@@ -294,22 +294,6 @@ msgstr ""
 "zeichnen sich durch ihre Fähigkeit aus, Ziele aus der Ferne anzugreifen – "
 "eine Seltenheit unter den Seestreitkräften."
 
-msgid "BLACKBOAT"
-msgstr "Reparaturboot"
-
-msgid "BLACK_BOAT_DESCRIPTION"
-msgstr ""
-"Reparaturboote sind Seestreitkräfte, die zum Transport von Truppen sowie zur "
-"Versorgung und Reparatur anderer Einheiten dienen."
-
-msgid "BLACKBOMB"
-msgstr "Bomben-Drohne"
-
-msgid "BLACK_BOMB_DESCRIPTION"
-msgstr ""
-"Bomben-Drohnen sind aus der Ferne gesteuerte Flugwaffen, die auf einem "
-"Flughafen hergestellt werden."
-
 msgid "BOMBER"
 msgstr "Bomber"
 
@@ -406,16 +390,6 @@ msgstr ""
 "die sich auf Angriffe auf Luftfahrzeuge aus der Ferne spezialisiert haben "
 "und dabei erhebliche Schäden anrichten können."
 
-msgid "NEO_TANK"
-msgstr "Spezialpanzer"
-
-msgid "NEO_TANK_DESCRIPTION"
-msgstr ""
-"Spezialpanzer verfügen über eine überlegenere Leistung im Vergleich zu "
-"mittleren Panzern. Bewaffnet mit einer mächtigen Hauptkanone, können sie "
-"sowohl Land- als auch Seestreitkräfte bekämpfen sowie Infanterie, "
-"Kampfflugzeuge und Transporthelikopter mit ihrem Maschinengewehr anvisieren."
-
 msgid "PIPERUNNER"
 msgstr "Mauerläufer"
 
@@ -441,16 +415,18 @@ msgstr ""
 "tauschen höhere Schaden und eine viel größere Reichweite gegen leichteres "
 "Panzerung und einen restriktiveren Bewegungstyp ein."
 
-msgid "STEALTH"
-msgstr "Tarnkappenflugzeug"
-
-msgid "STEALTH_DESCRIPTION"
-msgstr ""
-"Tarnkappenflugzeuge, klassifiziert als Luftfahrzeuge, besitzen die "
-"Fähigkeit, sich wie U-Boote durch Aktivierung des Tarnmodus zu verbergen."
-
 msgid "SUB"
 msgstr "U-Boot"
+
+#, fuzzy
+#| msgid "SUPPLY"
+msgid "SUPPLY_SHIP"
+msgstr "Auffüllen"
+
+#, fuzzy
+#| msgid "PIPE_DESCRIPTION"
+msgid "SUPPLY_SHIP_DESCRIPTION"
+msgstr "Mauern sind nahezu unüberwindbares Gelände."
 
 msgid "T-COPTER"
 msgstr "Transporthelikopter"
@@ -466,6 +442,18 @@ msgid "TANK"
 msgstr "Leichter Panzer"
 
 msgid "TANK_DESCRIPTION"
+msgstr ""
+"Günstig, schnell und in der Lage, sich gegen die meisten anderen Landtruppen "
+"zu behaupten, sind Panzer ein Eckpfeiler jeder Armee."
+
+#, fuzzy
+#| msgid "MEGA_TANK"
+msgid "WAR_TANK"
+msgstr "Mega-Panzer"
+
+#, fuzzy
+#| msgid "TANK_DESCRIPTION"
+msgid "WAR_TANK_DESCRIPTION"
 msgstr ""
 "Günstig, schnell und in der Lage, sich gegen die meisten anderen Landtruppen "
 "zu behaupten, sind Panzer ein Eckpfeiler jeder Armee."
@@ -690,6 +678,41 @@ msgstr "Weitere Details"
 
 msgid "VERSION_WINDOW_OPEN"
 msgstr "Veröffentlichung öffnen"
+
+#~ msgid "BLACKBOAT"
+#~ msgstr "Reparaturboot"
+
+#~ msgid "BLACK_BOAT_DESCRIPTION"
+#~ msgstr ""
+#~ "Reparaturboote sind Seestreitkräfte, die zum Transport von Truppen sowie "
+#~ "zur Versorgung und Reparatur anderer Einheiten dienen."
+
+#~ msgid "BLACKBOMB"
+#~ msgstr "Bomben-Drohne"
+
+#~ msgid "BLACK_BOMB_DESCRIPTION"
+#~ msgstr ""
+#~ "Bomben-Drohnen sind aus der Ferne gesteuerte Flugwaffen, die auf einem "
+#~ "Flughafen hergestellt werden."
+
+#~ msgid "NEO_TANK"
+#~ msgstr "Spezialpanzer"
+
+#~ msgid "NEO_TANK_DESCRIPTION"
+#~ msgstr ""
+#~ "Spezialpanzer verfügen über eine überlegenere Leistung im Vergleich zu "
+#~ "mittleren Panzern. Bewaffnet mit einer mächtigen Hauptkanone, können sie "
+#~ "sowohl Land- als auch Seestreitkräfte bekämpfen sowie Infanterie, "
+#~ "Kampfflugzeuge und Transporthelikopter mit ihrem Maschinengewehr "
+#~ "anvisieren."
+
+#~ msgid "STEALTH"
+#~ msgstr "Tarnkappenflugzeug"
+
+#~ msgid "STEALTH_DESCRIPTION"
+#~ msgstr ""
+#~ "Tarnkappenflugzeuge, klassifiziert als Luftfahrzeuge, besitzen die "
+#~ "Fähigkeit, sich wie U-Boote durch Aktivierung des Tarnmodus zu verbergen."
 
 #~ msgid "MAIN_MENU_TITLE"
 #~ msgstr "Hauptmenü"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:50+0200\n"
-"PO-Revision-Date: 2024-08-18 17:28+0000\n"
+"PO-Revision-Date: 2024-09-07 18:29+0000\n"
 "Last-Translator: HunterNN <stephan.kessler@outlook.com>\n"
 "Language-Team: English <http://weblate.jaumesingla.es/projects/"
 "codename-recon/game-client/en/>\n"
@@ -296,22 +296,6 @@ msgstr ""
 "distinguished by their ability to engage targets from a distance, a rarity "
 "among naval units."
 
-msgid "BLACKBOAT"
-msgstr "Repair Boat"
-
-msgid "BLACK_BOAT_DESCRIPTION"
-msgstr ""
-"Repair Boats serve as Naval Units designed for troop transport, as well as "
-"for supplying and repairing other units."
-
-msgid "BLACKBOMB"
-msgstr "Bomb Drone"
-
-msgid "BLACK_BOMB_DESCRIPTION"
-msgstr ""
-"Bomb Drones are aerial weapons controlled remotely and constructed at an "
-"airport."
-
 msgid "BOMBER"
 msgstr "Bomber"
 
@@ -404,16 +388,6 @@ msgstr ""
 "indirect combat units specializing in attacking air units from a distance, "
 "capable of causing significant havoc among them."
 
-msgid "NEO_TANK"
-msgstr "Special Tank"
-
-msgid "NEO_TANK_DESCRIPTION"
-msgstr ""
-"Special Tanks boast superior power compared to Medium Tanks. Armed with a "
-"formidable main cannon, they can engage both land and naval units, as well "
-"as target infantry, battle helicopters, and transport helicopters with their "
-"machine gun."
-
 msgid "PIPERUNNER"
 msgstr "Wall Runner"
 
@@ -439,16 +413,16 @@ msgstr ""
 "and a much larger range for lighter armor and a more restrictive movement "
 "type."
 
-msgid "STEALTH"
-msgstr "Stealth Fighter"
-
-msgid "STEALTH_DESCRIPTION"
-msgstr ""
-"Stealth Fighters, classified as Air Units, possess the capability to conceal "
-"themselves akin to Submarines through the activation of stealth mode."
-
 msgid "SUB"
 msgstr "Submarine"
+
+msgid "SUPPLY_SHIP"
+msgstr "Supply Ship"
+
+msgid "SUPPLY_SHIP_DESCRIPTION"
+msgstr ""
+"Supply Ships serve as Naval Units designed for troop transport, as well as "
+"for supplying and repairing other units."
 
 msgid "T-COPTER"
 msgstr "Transport Copter"
@@ -466,6 +440,16 @@ msgid "TANK_DESCRIPTION"
 msgstr ""
 "Inexpensive, fast, and able to hold its own against most other land units, "
 "Tanks are a cornerstone unit in any army."
+
+msgid "WAR_TANK"
+msgstr "War Tank"
+
+msgid "WAR_TANK_DESCRIPTION"
+msgstr ""
+"War Tanks boast superior power compared to Medium Tanks. Armed with a "
+"formidable main cannon, they can engage both land and naval units, as well "
+"as target infantry, battle helicopters, and transport helicopters with their "
+"machine gun."
 
 msgid "AIRPORT"
 msgstr "Airport"
@@ -674,6 +658,41 @@ msgstr "More details"
 
 msgid "VERSION_WINDOW_OPEN"
 msgstr "Open release"
+
+#~ msgid "BLACKBOAT"
+#~ msgstr "Repair Boat"
+
+#~ msgid "BLACK_BOAT_DESCRIPTION"
+#~ msgstr ""
+#~ "Repair Boats serve as Naval Units designed for troop transport, as well "
+#~ "as for supplying and repairing other units."
+
+#~ msgid "BLACKBOMB"
+#~ msgstr "Bomb Drone"
+
+#~ msgid "BLACK_BOMB_DESCRIPTION"
+#~ msgstr ""
+#~ "Bomb Drones are aerial weapons controlled remotely and constructed at an "
+#~ "airport."
+
+#~ msgid "NEO_TANK"
+#~ msgstr "Special Tank"
+
+#~ msgid "NEO_TANK_DESCRIPTION"
+#~ msgstr ""
+#~ "Special Tanks boast superior power compared to Medium Tanks. Armed with a "
+#~ "formidable main cannon, they can engage both land and naval units, as "
+#~ "well as target infantry, battle helicopters, and transport helicopters "
+#~ "with their machine gun."
+
+#~ msgid "STEALTH"
+#~ msgstr "Stealth Fighter"
+
+#~ msgid "STEALTH_DESCRIPTION"
+#~ msgstr ""
+#~ "Stealth Fighters, classified as Air Units, possess the capability to "
+#~ "conceal themselves akin to Submarines through the activation of stealth "
+#~ "mode."
 
 #~ msgid "MAIN_MENU_TITLE"
 #~ msgstr "Main Menu"
