@@ -1,7 +1,7 @@
 {
   "name": "SUB",
   "description": "CRUISER_DESCRIPTION",
-  "cost": 20000,
+  "cost": 15000,
   "health": 100,
   "mp": 5,
   "movement_type": 5,

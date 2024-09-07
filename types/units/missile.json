@@ -1,10 +1,10 @@
 {
   "name": "MISSILE",
   "description": "MISSILE_DESCRIPTION",
-  "cost": 12000,
+  "cost": 10000,
   "health": 100,
-  "mp": 4,
-  "movement_type": 3,
+  "mp": 5,
+  "movement_type": 2,
   "fuel": 50,
   "turn_fuel": 0,
   "hidden_turn_fuel": 0,

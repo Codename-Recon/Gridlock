@@ -1,7 +1,7 @@
 {
   "name": "LANDER",
   "description": "LANDER_DESCRIPTION",
-  "cost": 12000,
+  "cost": 8000,
   "health": 100,
   "mp": 6,
   "movement_type": 6,

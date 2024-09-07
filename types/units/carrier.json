@@ -1,7 +1,7 @@
 {
   "name": "CARRIER",
   "description": "CARRIER_DESCRIPTION",
-  "cost": 30000,
+  "cost": 26000,
   "health": 100,
   "mp": 5,
   "movement_type": 5,
