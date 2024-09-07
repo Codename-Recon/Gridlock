@@ -20,6 +20,6 @@
   "can_move_and_attack": true,
   "can_hide": false,
   "can_dive": false,
-  "carrying_types": [],
-  "carrying_size": 0
+  "carrying_types": [3, 21],
+  "carrying_size": 2
 }
