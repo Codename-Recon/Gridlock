@@ -288,18 +288,6 @@ msgstr ""
 msgid "BATTLESHIP_DESCRIPTION"
 msgstr ""
 
-msgid "BLACKBOAT"
-msgstr ""
-
-msgid "BLACK_BOAT_DESCRIPTION"
-msgstr ""
-
-msgid "BLACKBOMB"
-msgstr ""
-
-msgid "BLACK_BOMB_DESCRIPTION"
-msgstr ""
-
 msgid "BOMBER"
 msgstr ""
 
@@ -360,12 +348,6 @@ msgstr ""
 msgid "MISSILE_DESCRIPTION"
 msgstr ""
 
-msgid "NEO_TANK"
-msgstr ""
-
-msgid "NEO_TANK_DESCRIPTION"
-msgstr ""
-
 msgid "PIPERUNNER"
 msgstr ""
 
@@ -384,14 +366,18 @@ msgstr ""
 msgid "ROCKET_DESCRIPTION"
 msgstr ""
 
-msgid "STEALTH"
-msgstr ""
-
-msgid "STEALTH_DESCRIPTION"
-msgstr ""
-
 msgid "SUB"
 msgstr ""
+
+#, fuzzy
+#| msgid "SUPPLY"
+msgid "SUPPLY_SHIP"
+msgstr "remplir"
+
+#, fuzzy
+#| msgid "APC_DESCRIPTION"
+msgid "SUPPLY_SHIP_DESCRIPTION"
+msgstr "sélectionner"
 
 msgid "T-COPTER"
 msgstr ""
@@ -404,6 +390,14 @@ msgstr ""
 
 msgid "TANK_DESCRIPTION"
 msgstr ""
+
+msgid "WAR_TANK"
+msgstr ""
+
+#, fuzzy
+#| msgid "APC_DESCRIPTION"
+msgid "WAR_TANK_DESCRIPTION"
+msgstr "sélectionner"
 
 msgid "AIRPORT"
 msgstr ""
