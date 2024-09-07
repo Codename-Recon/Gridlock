@@ -1,6 +1,6 @@
 {
-  "name": "PIPERUNNER",
-  "description": "PIPERUNNER_DESCRIPTION",
+  "name": "WALLRUNNER",
+  "description": "WALLRUNNER_DESCRIPTION",
   "cost": 20000,
   "health": 100,
   "mp": 9,

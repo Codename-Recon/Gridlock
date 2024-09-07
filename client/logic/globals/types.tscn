@@ -4,9 +4,9 @@
 
 [node name="Types" type="Node"]
 script = ExtResource("1_qj7ej")
-movement_types = ["FOOT", "BAZOOKA", "TREADS", "WHEELS", "AIR", "SEA", "LANDER", "PIPERUNNER"]
-unit_types = ["ANTI_AIR", "APC", "ARTILLERY", "B-COPTER", "BATTLESHIP", "SUPPLY_SHIP", "BOMBER", "CARRIER", "CRUISER", "FIGHTER", "INFANTRY", "LANDER", "MEDIUM_TANK", "MECH", "MEGA_TANK", "MISSILE", "WAR_TANK", "PIPERUNNER", "RECON", "ROCKET", "SUB", "T-COPTER", "TANK"]
-terrain_types = ["PLAIN", "MOUNTAIN", "WOOD", "RIVER", "ROAD", "BRIDGE", "SEA", "BEACH", "CITY", "BASE", "AIRPORT", "PORT", "HQ", "PIPE", "PIPE_WEAK", "PIPE_BROKEN", "SILO", "COM_TOWER", "LAB"]
+movement_types = ["FOOT", "BAZOOKA", "TREADS", "WHEELS", "AIR", "SEA", "LANDER", "WALLRUNNER"]
+unit_types = ["ANTI_AIR", "APC", "ARTILLERY", "B-COPTER", "BATTLESHIP", "SUPPLY_SHIP", "BOMBER", "CARRIER", "CRUISER", "FIGHTER", "INFANTRY", "LANDER", "MEDIUM_TANK", "MECH", "MEGA_TANK", "MISSILE", "WAR_TANK", "WALLRUNNER", "RECON", "ROCKET", "SUB", "T-COPTER", "TANK"]
+terrain_types = ["PLAIN", "MOUNTAIN", "WOOD", "RIVER", "ROAD", "BRIDGE", "SEA", "BEACH", "CITY", "BASE", "AIRPORT", "PORT", "HQ", "WALL", "WALL_WEAK", "WALL_BROKEN", "SILO", "COM_TOWER", "LAB"]
 terrain_sprite_types = ["PLAIN", "MOUNTAIN", "WOOD", "HRIVER", "VRIVER", "CRIVER", "ESRIVER", "SWRIVER", "WNRIVER", "NERIVER", "ESWRIVER", "SWNRIVER", "WNERIVER", "NESRIVER", "HROAD", "VROAD", "CROAD", "ESROAD", "SWROAD", "WNROAD", "NEROAD", "ESWROAD", "SWNROAD", "WNEROAD", "NESROAD", "HBRIDGE", "VBRIDGE", "SEA", "HSHOAL", "HSHOALN", "VSHOAL", "VSHOALE", "REEF", "VPIPE", "HPIPE", "NEPIPE", "ESPIPE", "SWPIPE", "WNPIPE", "NPIPE_END", "EPIPE_END", "SPIPE_END", "WPIPE_END", "HPIPE_SEAM", "VPIPE_SEAM", "HPIPE_RUBBLE", "VPIPE_RUBBLE", "CITY", "BASE", "AIRPORT", "PORT", "HQ", "PIPE", "SILO", "SILO_EMPTY", "COM_TOWER", "LAB"]
 weapon_types = ["MACHINE_GUN", "VULCAN_CANNON", "MISSILE", "ROCKET", "SMALL_CANNON", "BIG_CANNON", "TORPEDO", "BOMB"]
 weather_types = ["CLEAR", "RAIN", "SNOW"]
@@ -386,31 +386,6 @@ units = {
 "weapons": [2.0],
 "xp": 0.0
 },
-"PIPERUNNER": {
-"ammo": 9.0,
-"can_capture": false,
-"can_dive": false,
-"can_hide": false,
-"can_move_and_attack": false,
-"can_repair": false,
-"can_supply": false,
-"carrying_size": 0.0,
-"carrying_types": [],
-"cost": 20000.0,
-"description": "PIPERUNNER_DESCRIPTION",
-"fuel": 99.0,
-"health": 100.0,
-"hidden_turn_fuel": 0.0,
-"max_range": 5.0,
-"min_range": 2.0,
-"movement_type": 7.0,
-"mp": 9.0,
-"name": "PIPERUNNER",
-"turn_fuel": 0.0,
-"vision": 4.0,
-"weapons": [3.0],
-"xp": 0.0
-},
 "RECON": {
 "ammo": -1.0,
 "can_capture": false,
@@ -561,6 +536,31 @@ units = {
 "vision": 3.0,
 "weapons": [4.0, 0.0]
 },
+"WALLRUNNER": {
+"ammo": 9.0,
+"can_capture": false,
+"can_dive": false,
+"can_hide": false,
+"can_move_and_attack": false,
+"can_repair": false,
+"can_supply": false,
+"carrying_size": 0.0,
+"carrying_types": [],
+"cost": 20000.0,
+"description": "WALLRUNNER_DESCRIPTION",
+"fuel": 99.0,
+"health": 100.0,
+"hidden_turn_fuel": 0.0,
+"max_range": 5.0,
+"min_range": 2.0,
+"movement_type": 7.0,
+"mp": 9.0,
+"name": "WALLRUNNER",
+"turn_fuel": 0.0,
+"vision": 4.0,
+"weapons": [3.0],
+"xp": 0.0
+},
 "WAR_TANK": {
 "ammo": 9.0,
 "can_capture": false,
@@ -687,39 +687,6 @@ terrains = {
 "name": "MOUNTAIN",
 "shop_units": []
 },
-"PIPE": {
-"ammo": 0.0,
-"can_capture": false,
-"capture_value": 0.0,
-"defense": 0.0,
-"description": "PIPE_DESCRIPTION",
-"funds": 0.0,
-"health": 100.0,
-"name": "PIPE",
-"shop_units": []
-},
-"PIPE_BROKEN": {
-"ammo": 0.0,
-"can_capture": false,
-"capture_value": 0.0,
-"defense": 0.0,
-"description": "PIPE_BROKEN_DESCRIPTION",
-"funds": 0.0,
-"health": 100.0,
-"name": "PIPE_BROKEN",
-"shop_units": []
-},
-"PIPE_WEAK": {
-"ammo": 0.0,
-"can_capture": false,
-"capture_value": 0.0,
-"defense": 0.0,
-"description": "PIPE_WEAK_DESCRIPTION",
-"funds": 0.0,
-"health": 100.0,
-"name": "PIPE_WEAK",
-"shop_units": []
-},
 "PLAIN": {
 "ammo": 0.0,
 "can_capture": false,
@@ -797,6 +764,39 @@ terrains = {
 "name": "SILO",
 "shop_units": []
 },
+"WALL": {
+"ammo": 0.0,
+"can_capture": false,
+"capture_value": 0.0,
+"defense": 0.0,
+"description": "WALL_DESCRIPTION",
+"funds": 0.0,
+"health": 100.0,
+"name": "WALL",
+"shop_units": []
+},
+"WALL_BROKEN": {
+"ammo": 0.0,
+"can_capture": false,
+"capture_value": 0.0,
+"defense": 0.0,
+"description": "WALL_BROKEN_DESCRIPTION",
+"funds": 0.0,
+"health": 100.0,
+"name": "WALL_BROKEN",
+"shop_units": []
+},
+"WALL_WEAK": {
+"ammo": 0.0,
+"can_capture": false,
+"capture_value": 0.0,
+"defense": 0.0,
+"description": "WALL_WEAK_DESCRIPTION",
+"funds": 0.0,
+"health": 100.0,
+"name": "WALL_WEAK",
+"shop_units": []
+},
 "WOOD": {
 "ammo": 0.0,
 "can_capture": false,
@@ -816,9 +816,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "RAIN": {
@@ -826,9 +826,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "SNOW": {
@@ -836,9 +836,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 }
 },
@@ -848,9 +848,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 1.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 1.0,
 "WHEELS": 1.0
 },
 "RAIN": {
@@ -858,9 +858,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 1.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 1.0,
 "WHEELS": 1.0
 },
 "SNOW": {
@@ -868,9 +868,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 1.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 1.0,
 "WHEELS": 1.0
 }
 },
@@ -880,9 +880,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 1.0,
-"PIPERUNNER": 0.0,
 "SEA": 2.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "RAIN": {
@@ -890,9 +890,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 1.0,
-"PIPERUNNER": 0.0,
 "SEA": 2.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "SNOW": {
@@ -900,9 +900,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 1.0,
-"PIPERUNNER": 0.0,
 "SEA": 2.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 }
 },
@@ -912,9 +912,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 2.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "RAIN": {
@@ -922,9 +922,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 2.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "SNOW": {
@@ -932,9 +932,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 2.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 }
 },
@@ -944,9 +944,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "RAIN": {
@@ -954,9 +954,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "SNOW": {
@@ -964,9 +964,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 }
 },
@@ -976,9 +976,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "RAIN": {
@@ -986,9 +986,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "SNOW": {
@@ -996,9 +996,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 }
 },
@@ -1008,9 +1008,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "RAIN": {
@@ -1018,9 +1018,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "SNOW": {
@@ -1028,9 +1028,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 }
 },
@@ -1040,9 +1040,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "RAIN": {
@@ -1050,9 +1050,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "SNOW": {
@@ -1060,9 +1060,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 }
 },
@@ -1072,9 +1072,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 2.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 0.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 0.0
 },
 "RAIN": {
@@ -1082,9 +1082,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 2.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 0.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 0.0
 },
 "SNOW": {
@@ -1092,105 +1092,9 @@ movements = {
 "BAZOOKA": 2.0,
 "FOOT": 4.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 0.0,
-"WHEELS": 0.0
-}
-},
-"PIPE": {
-"CLEAR": {
-"AIR": 0.0,
-"BAZOOKA": 0.0,
-"FOOT": 0.0,
-"LANDER": 0.0,
-"PIPERUNNER": 1.0,
-"SEA": 0.0,
-"TREADS": 0.0,
-"WHEELS": 0.0
-},
-"RAIN": {
-"AIR": 0.0,
-"BAZOOKA": 0.0,
-"FOOT": 0.0,
-"LANDER": 0.0,
-"PIPERUNNER": 1.0,
-"SEA": 0.0,
-"TREADS": 0.0,
-"WHEELS": 0.0
-},
-"SNOW": {
-"AIR": 0.0,
-"BAZOOKA": 0.0,
-"FOOT": 0.0,
-"LANDER": 0.0,
-"PIPERUNNER": 1.0,
-"SEA": 0.0,
-"TREADS": 0.0,
-"WHEELS": 0.0
-}
-},
-"PIPE_BROKEN": {
-"CLEAR": {
-"AIR": 1.0,
-"BAZOOKA": 1.0,
-"FOOT": 1.0,
-"LANDER": 0.0,
-"PIPERUNNER": 0.0,
-"SEA": 0.0,
-"TREADS": 1.0,
-"WHEELS": 1.0
-},
-"RAIN": {
-"AIR": 1.0,
-"BAZOOKA": 1.0,
-"FOOT": 1.0,
-"LANDER": 0.0,
-"PIPERUNNER": 0.0,
-"SEA": 0.0,
-"TREADS": 1.0,
-"WHEELS": 1.0
-},
-"SNOW": {
-"AIR": 2.0,
-"BAZOOKA": 1.0,
-"FOOT": 1.0,
-"LANDER": 0.0,
-"PIPERUNNER": 0.0,
-"SEA": 0.0,
-"TREADS": 1.0,
-"WHEELS": 1.0
-}
-},
-"PIPE_WEAK": {
-"CLEAR": {
-"AIR": 0.0,
-"BAZOOKA": 0.0,
-"FOOT": 0.0,
-"LANDER": 0.0,
-"PIPERUNNER": 1.0,
-"SEA": 0.0,
-"TREADS": 0.0,
-"WHEELS": 0.0
-},
-"RAIN": {
-"AIR": 0.0,
-"BAZOOKA": 0.0,
-"FOOT": 0.0,
-"LANDER": 0.0,
-"PIPERUNNER": 1.0,
-"SEA": 0.0,
-"TREADS": 0.0,
-"WHEELS": 0.0
-},
-"SNOW": {
-"AIR": 0.0,
-"BAZOOKA": 0.0,
-"FOOT": 0.0,
-"LANDER": 0.0,
-"PIPERUNNER": 1.0,
-"SEA": 0.0,
-"TREADS": 0.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 0.0
 }
 },
@@ -1200,9 +1104,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 2.0
 },
 "RAIN": {
@@ -1210,9 +1114,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 2.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 3.0
 },
 "SNOW": {
@@ -1220,9 +1124,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 2.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 2.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 3.0
 }
 },
@@ -1232,9 +1136,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 1.0,
-"PIPERUNNER": 0.0,
 "SEA": 1.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "RAIN": {
@@ -1242,9 +1146,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 1.0,
-"PIPERUNNER": 0.0,
 "SEA": 1.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "SNOW": {
@@ -1252,9 +1156,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 2.0,
-"PIPERUNNER": 0.0,
 "SEA": 2.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 }
 },
@@ -1264,9 +1168,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 2.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 0.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 0.0
 },
 "RAIN": {
@@ -1274,9 +1178,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 2.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 0.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 0.0
 },
 "SNOW": {
@@ -1284,9 +1188,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 2.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 0.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 0.0
 }
 },
@@ -1296,9 +1200,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "RAIN": {
@@ -1306,9 +1210,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "SNOW": {
@@ -1316,9 +1220,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 }
 },
@@ -1328,9 +1232,9 @@ movements = {
 "BAZOOKA": 0.0,
 "FOOT": 0.0,
 "LANDER": 1.0,
-"PIPERUNNER": 0.0,
 "SEA": 1.0,
 "TREADS": 0.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 0.0
 },
 "RAIN": {
@@ -1338,9 +1242,9 @@ movements = {
 "BAZOOKA": 0.0,
 "FOOT": 0.0,
 "LANDER": 1.0,
-"PIPERUNNER": 0.0,
 "SEA": 1.0,
 "TREADS": 0.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 0.0
 },
 "SNOW": {
@@ -1348,9 +1252,9 @@ movements = {
 "BAZOOKA": 0.0,
 "FOOT": 0.0,
 "LANDER": 2.0,
-"PIPERUNNER": 0.0,
 "SEA": 2.0,
 "TREADS": 0.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 0.0
 }
 },
@@ -1360,9 +1264,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "RAIN": {
@@ -1370,9 +1274,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
 },
 "SNOW": {
@@ -1380,10 +1284,106 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 1.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 1.0
+}
+},
+"WALL": {
+"CLEAR": {
+"AIR": 0.0,
+"BAZOOKA": 0.0,
+"FOOT": 0.0,
+"LANDER": 0.0,
+"SEA": 0.0,
+"TREADS": 0.0,
+"WALLRUNNER": 1.0,
+"WHEELS": 0.0
+},
+"RAIN": {
+"AIR": 0.0,
+"BAZOOKA": 0.0,
+"FOOT": 0.0,
+"LANDER": 0.0,
+"SEA": 0.0,
+"TREADS": 0.0,
+"WALLRUNNER": 1.0,
+"WHEELS": 0.0
+},
+"SNOW": {
+"AIR": 0.0,
+"BAZOOKA": 0.0,
+"FOOT": 0.0,
+"LANDER": 0.0,
+"SEA": 0.0,
+"TREADS": 0.0,
+"WALLRUNNER": 1.0,
+"WHEELS": 0.0
+}
+},
+"WALL_BROKEN": {
+"CLEAR": {
+"AIR": 1.0,
+"BAZOOKA": 1.0,
+"FOOT": 1.0,
+"LANDER": 0.0,
+"SEA": 0.0,
+"TREADS": 1.0,
+"WALLRUNNER": 0.0,
+"WHEELS": 1.0
+},
+"RAIN": {
+"AIR": 1.0,
+"BAZOOKA": 1.0,
+"FOOT": 1.0,
+"LANDER": 0.0,
+"SEA": 0.0,
+"TREADS": 1.0,
+"WALLRUNNER": 0.0,
+"WHEELS": 1.0
+},
+"SNOW": {
+"AIR": 2.0,
+"BAZOOKA": 1.0,
+"FOOT": 1.0,
+"LANDER": 0.0,
+"SEA": 0.0,
+"TREADS": 1.0,
+"WALLRUNNER": 0.0,
+"WHEELS": 1.0
+}
+},
+"WALL_WEAK": {
+"CLEAR": {
+"AIR": 0.0,
+"BAZOOKA": 0.0,
+"FOOT": 0.0,
+"LANDER": 0.0,
+"SEA": 0.0,
+"TREADS": 0.0,
+"WALLRUNNER": 1.0,
+"WHEELS": 0.0
+},
+"RAIN": {
+"AIR": 0.0,
+"BAZOOKA": 0.0,
+"FOOT": 0.0,
+"LANDER": 0.0,
+"SEA": 0.0,
+"TREADS": 0.0,
+"WALLRUNNER": 1.0,
+"WHEELS": 0.0
+},
+"SNOW": {
+"AIR": 0.0,
+"BAZOOKA": 0.0,
+"FOOT": 0.0,
+"LANDER": 0.0,
+"SEA": 0.0,
+"TREADS": 0.0,
+"WALLRUNNER": 1.0,
+"WHEELS": 0.0
 }
 },
 "WOOD": {
@@ -1392,9 +1392,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 2.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 3.0
 },
 "RAIN": {
@@ -1402,9 +1402,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 1.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 3.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 4.0
 },
 "SNOW": {
@@ -1412,9 +1412,9 @@ movements = {
 "BAZOOKA": 1.0,
 "FOOT": 2.0,
 "LANDER": 0.0,
-"PIPERUNNER": 0.0,
 "SEA": 0.0,
 "TREADS": 2.0,
+"WALLRUNNER": 0.0,
 "WHEELS": 3.0
 }
 }
@@ -1436,13 +1436,13 @@ primary_damage = {
 "MEDIUM_TANK": 10.0,
 "MEGA_TANK": 1.0,
 "MISSILE": 55.0,
-"PIPERUNNER": 25.0,
 "RECON": 57.0,
 "ROCKET": 55.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 120.0,
 "TANK": 25.0,
+"WALLRUNNER": 25.0,
 "WAR_TANK": 5.0
 },
 "APC": {
@@ -1461,13 +1461,13 @@ primary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "ARTILLERY": {
@@ -1486,13 +1486,13 @@ primary_damage = {
 "MEDIUM_TANK": 45.0,
 "MEGA_TANK": 15.0,
 "MISSILE": 80.0,
-"PIPERUNNER": 70.0,
 "RECON": 76.0,
 "ROCKET": 80.0,
 "SUB": 60.0,
 "SUPPLY_SHIP": 55.0,
 "T-COPTER": 0.0,
 "TANK": 70.0,
+"WALLRUNNER": 70.0,
 "WAR_TANK": 40.0
 },
 "B-COPTER": {
@@ -1511,13 +1511,13 @@ primary_damage = {
 "MEDIUM_TANK": 25.0,
 "MEGA_TANK": 10.0,
 "MISSILE": 65.0,
-"PIPERUNNER": 55.0,
 "RECON": 52.0,
 "ROCKET": 65.0,
 "SUB": 25.0,
 "SUPPLY_SHIP": 25.0,
 "T-COPTER": 0.0,
 "TANK": 55.0,
+"WALLRUNNER": 55.0,
 "WAR_TANK": 20.0
 },
 "BATTLESHIP": {
@@ -1536,13 +1536,13 @@ primary_damage = {
 "MEDIUM_TANK": 55.0,
 "MEGA_TANK": 25.0,
 "MISSILE": 90.0,
-"PIPERUNNER": 80.0,
 "RECON": 86.0,
 "ROCKET": 85.0,
 "SUB": 95.0,
 "SUPPLY_SHIP": 95.0,
 "T-COPTER": 0.0,
 "TANK": 80.0,
+"WALLRUNNER": 80.0,
 "WAR_TANK": 50.0
 },
 "BOMBER": {
@@ -1561,13 +1561,13 @@ primary_damage = {
 "MEDIUM_TANK": 95.0,
 "MEGA_TANK": 35.0,
 "MISSILE": 105.0,
-"PIPERUNNER": 105.0,
 "RECON": 105.0,
 "ROCKET": 105.0,
 "SUB": 95.0,
 "SUPPLY_SHIP": 95.0,
 "T-COPTER": 0.0,
 "TANK": 105.0,
+"WALLRUNNER": 105.0,
 "WAR_TANK": 90.0
 },
 "CARRIER": {
@@ -1586,13 +1586,13 @@ primary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 115.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "CRUISER": {
@@ -1611,13 +1611,13 @@ primary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 90.0,
 "SUPPLY_SHIP": 25.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "FIGHTER": {
@@ -1636,13 +1636,13 @@ primary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 100.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "INFANTRY": {
@@ -1661,13 +1661,13 @@ primary_damage = {
 "MEDIUM_TANK": 1.0,
 "MEGA_TANK": 1.0,
 "MISSILE": 26.0,
-"PIPERUNNER": 5.0,
 "RECON": 11.0,
 "ROCKET": 25.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 30.0,
 "TANK": 5.0,
+"WALLRUNNER": 5.0,
 "WAR_TANK": 1.0
 },
 "LANDER": {
@@ -1686,13 +1686,13 @@ primary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "MECH": {
@@ -1711,13 +1711,13 @@ primary_damage = {
 "MEDIUM_TANK": 15.0,
 "MEGA_TANK": 5.0,
 "MISSILE": 85.0,
-"PIPERUNNER": 55.0,
 "RECON": 81.0,
 "ROCKET": 85.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 55.0,
+"WALLRUNNER": 55.0,
 "WAR_TANK": 15.0
 },
 "MEDIUM_TANK": {
@@ -1736,13 +1736,13 @@ primary_damage = {
 "MEDIUM_TANK": 55.0,
 "MEGA_TANK": 25.0,
 "MISSILE": 105.0,
-"PIPERUNNER": 85.0,
 "RECON": 105.0,
 "ROCKET": 105.0,
 "SUB": 10.0,
 "SUPPLY_SHIP": 35.0,
 "T-COPTER": 0.0,
 "TANK": 85.0,
+"WALLRUNNER": 85.0,
 "WAR_TANK": 45.0
 },
 "MEGA_TANK": {
@@ -1761,13 +1761,13 @@ primary_damage = {
 "MEDIUM_TANK": 125.0,
 "MEGA_TANK": 65.0,
 "MISSILE": 195.0,
-"PIPERUNNER": 180.0,
 "RECON": 185.0,
 "ROCKET": 195.0,
 "SUB": 45.0,
 "SUPPLY_SHIP": 105.0,
 "T-COPTER": 0.0,
 "TANK": 180.0,
+"WALLRUNNER": 180.0,
 "WAR_TANK": 115.0
 },
 "MISSILE": {
@@ -1786,39 +1786,14 @@ primary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 120.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
-},
-"PIPERUNNER": {
-"ANTI_AIR": 85.0,
-"APC": 80.0,
-"ARTILLERY": 80.0,
-"B-COPTER": 105.0,
-"BATTLESHIP": 55.0,
-"BOMBER": 75.0,
-"CARRIER": 60.0,
-"CRUISER": 85.0,
-"FIGHTER": 65.0,
-"INFANTRY": 95.0,
-"LANDER": 60.0,
-"MECH": 90.0,
-"MEDIUM_TANK": 55.0,
-"MEGA_TANK": 25.0,
-"MISSILE": 90.0,
-"PIPERUNNER": 80.0,
-"RECON": 86.0,
-"ROCKET": 85.0,
-"SUB": 85.0,
-"SUPPLY_SHIP": 60.0,
-"T-COPTER": 105.0,
-"TANK": 80.0,
-"WAR_TANK": 50.0
 },
 "RECON": {
 "ANTI_AIR": 4.0,
@@ -1836,13 +1811,13 @@ primary_damage = {
 "MEDIUM_TANK": 1.0,
 "MEGA_TANK": 1.0,
 "MISSILE": 29.0,
-"PIPERUNNER": 6.0,
 "RECON": 35.0,
 "ROCKET": 58.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 37.0,
 "TANK": 6.0,
+"WALLRUNNER": 6.0,
 "WAR_TANK": 1.0
 },
 "ROCKET": {
@@ -1861,13 +1836,13 @@ primary_damage = {
 "MEDIUM_TANK": 55.0,
 "MEGA_TANK": 25.0,
 "MISSILE": 90.0,
-"PIPERUNNER": 80.0,
 "RECON": 86.0,
 "ROCKET": 85.0,
 "SUB": 85.0,
 "SUPPLY_SHIP": 60.0,
 "T-COPTER": 0.0,
 "TANK": 80.0,
+"WALLRUNNER": 80.0,
 "WAR_TANK": 50.0
 },
 "SUB": {
@@ -1886,13 +1861,13 @@ primary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 55.0,
 "SUPPLY_SHIP": 95.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "SUPPLY_SHIP": {
@@ -1911,13 +1886,13 @@ primary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "T-COPTER": {
@@ -1936,13 +1911,13 @@ primary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "TANK": {
@@ -1961,14 +1936,39 @@ primary_damage = {
 "MEDIUM_TANK": 15.0,
 "MEGA_TANK": 10.0,
 "MISSILE": 85.0,
-"PIPERUNNER": 55.0,
 "RECON": 81.0,
 "ROCKET": 85.0,
 "SUB": 1.0,
 "SUPPLY_SHIP": 10.0,
 "T-COPTER": 0.0,
 "TANK": 55.0,
+"WALLRUNNER": 55.0,
 "WAR_TANK": 15.0
+},
+"WALLRUNNER": {
+"ANTI_AIR": 85.0,
+"APC": 80.0,
+"ARTILLERY": 80.0,
+"B-COPTER": 105.0,
+"BATTLESHIP": 55.0,
+"BOMBER": 75.0,
+"CARRIER": 60.0,
+"CRUISER": 85.0,
+"FIGHTER": 65.0,
+"INFANTRY": 95.0,
+"LANDER": 60.0,
+"MECH": 90.0,
+"MEDIUM_TANK": 55.0,
+"MEGA_TANK": 25.0,
+"MISSILE": 90.0,
+"RECON": 86.0,
+"ROCKET": 85.0,
+"SUB": 85.0,
+"SUPPLY_SHIP": 60.0,
+"T-COPTER": 105.0,
+"TANK": 80.0,
+"WALLRUNNER": 80.0,
+"WAR_TANK": 50.0
 },
 "WAR_TANK": {
 "ANTI_AIR": 115.0,
@@ -1986,13 +1986,13 @@ primary_damage = {
 "MEDIUM_TANK": 75.0,
 "MEGA_TANK": 35.0,
 "MISSILE": 125.0,
-"PIPERUNNER": 105.0,
 "RECON": 119.0,
 "ROCKET": 125.0,
 "SUB": 15.0,
 "SUPPLY_SHIP": 40.0,
 "T-COPTER": 0.0,
 "TANK": 105.0,
+"WALLRUNNER": 105.0,
 "WAR_TANK": 55.0
 }
 }
@@ -2013,13 +2013,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "APC": {
@@ -2038,13 +2038,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "ARTILLERY": {
@@ -2063,13 +2063,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "B-COPTER": {
@@ -2088,13 +2088,13 @@ secondary_damage = {
 "MEDIUM_TANK": 1.0,
 "MEGA_TANK": 1.0,
 "MISSILE": 35.0,
-"PIPERUNNER": 6.0,
 "RECON": 29.0,
 "ROCKET": 35.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 95.0,
 "TANK": 6.0,
+"WALLRUNNER": 6.0,
 "WAR_TANK": 1.0
 },
 "BATTLESHIP": {
@@ -2113,13 +2113,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "BOMBER": {
@@ -2138,13 +2138,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "CARRIER": {
@@ -2163,13 +2163,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "CRUISER": {
@@ -2188,13 +2188,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 115.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "FIGHTER": {
@@ -2213,13 +2213,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "INFANTRY": {
@@ -2238,13 +2238,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "LANDER": {
@@ -2263,13 +2263,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "MECH": {
@@ -2288,13 +2288,13 @@ secondary_damage = {
 "MEDIUM_TANK": 1.0,
 "MEGA_TANK": 1.0,
 "MISSILE": 35.0,
-"PIPERUNNER": 6.0,
 "RECON": 17.0,
 "ROCKET": 35.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 35.0,
 "TANK": 6.0,
+"WALLRUNNER": 6.0,
 "WAR_TANK": 1.0
 },
 "MEDIUM_TANK": {
@@ -2313,13 +2313,13 @@ secondary_damage = {
 "MEDIUM_TANK": 1.0,
 "MEGA_TANK": 1.0,
 "MISSILE": 35.0,
-"PIPERUNNER": 8.0,
 "RECON": 43.0,
 "ROCKET": 45.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 45.0,
 "TANK": 8.0,
+"WALLRUNNER": 8.0,
 "WAR_TANK": 1.0
 },
 "MEGA_TANK": {
@@ -2338,13 +2338,13 @@ secondary_damage = {
 "MEDIUM_TANK": 1.0,
 "MEGA_TANK": 1.0,
 "MISSILE": 55.0,
-"PIPERUNNER": 10.0,
 "RECON": 62.0,
 "ROCKET": 75.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 55.0,
 "TANK": 10.0,
+"WALLRUNNER": 10.0,
 "WAR_TANK": 1.0
 },
 "MISSILE": {
@@ -2363,38 +2363,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
-"WAR_TANK": 0.0
-},
-"PIPERUNNER": {
-"ANTI_AIR": 0.0,
-"APC": 0.0,
-"ARTILLERY": 0.0,
-"B-COPTER": 0.0,
-"BATTLESHIP": 0.0,
-"BOMBER": 0.0,
-"CARRIER": 0.0,
-"CRUISER": 0.0,
-"FIGHTER": 0.0,
-"INFANTRY": 0.0,
-"LANDER": 0.0,
-"MECH": 0.0,
-"MEDIUM_TANK": 0.0,
-"MEGA_TANK": 0.0,
-"MISSILE": 0.0,
-"PIPERUNNER": 0.0,
-"RECON": 0.0,
-"ROCKET": 0.0,
-"SUB": 0.0,
-"SUPPLY_SHIP": 0.0,
-"T-COPTER": 0.0,
-"TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "RECON": {
@@ -2413,13 +2388,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "ROCKET": {
@@ -2438,13 +2413,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "SUB": {
@@ -2463,13 +2438,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "SUPPLY_SHIP": {
@@ -2488,13 +2463,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "T-COPTER": {
@@ -2513,13 +2488,13 @@ secondary_damage = {
 "MEDIUM_TANK": 0.0,
 "MEGA_TANK": 0.0,
 "MISSILE": 0.0,
-"PIPERUNNER": 0.0,
 "RECON": 0.0,
 "ROCKET": 0.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 0.0,
 "TANK": 0.0,
+"WALLRUNNER": 0.0,
 "WAR_TANK": 0.0
 },
 "TANK": {
@@ -2538,14 +2513,39 @@ secondary_damage = {
 "MEDIUM_TANK": 1.0,
 "MEGA_TANK": 1.0,
 "MISSILE": 30.0,
-"PIPERUNNER": 6.0,
 "RECON": 38.0,
 "ROCKET": 55.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 40.0,
 "TANK": 6.0,
+"WALLRUNNER": 6.0,
 "WAR_TANK": 1.0
+},
+"WALLRUNNER": {
+"ANTI_AIR": 0.0,
+"APC": 0.0,
+"ARTILLERY": 0.0,
+"B-COPTER": 0.0,
+"BATTLESHIP": 0.0,
+"BOMBER": 0.0,
+"CARRIER": 0.0,
+"CRUISER": 0.0,
+"FIGHTER": 0.0,
+"INFANTRY": 0.0,
+"LANDER": 0.0,
+"MECH": 0.0,
+"MEDIUM_TANK": 0.0,
+"MEGA_TANK": 0.0,
+"MISSILE": 0.0,
+"RECON": 0.0,
+"ROCKET": 0.0,
+"SUB": 0.0,
+"SUPPLY_SHIP": 0.0,
+"T-COPTER": 0.0,
+"TANK": 0.0,
+"WALLRUNNER": 0.0,
+"WAR_TANK": 0.0
 },
 "WAR_TANK": {
 "ANTI_AIR": 17.0,
@@ -2563,13 +2563,13 @@ secondary_damage = {
 "MEDIUM_TANK": 1.0,
 "MEGA_TANK": 1.0,
 "MISSILE": 55.0,
-"PIPERUNNER": 10.0,
 "RECON": 62.0,
 "ROCKET": 75.0,
 "SUB": 0.0,
 "SUPPLY_SHIP": 0.0,
 "T-COPTER": 55.0,
 "TANK": 10.0,
+"WALLRUNNER": 10.0,
 "WAR_TANK": 1.0
 }
 }
