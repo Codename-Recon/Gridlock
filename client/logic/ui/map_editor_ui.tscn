@@ -139,7 +139,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_force_pass_scroll_events = false
 
-[node name="TerrainContainer" type="GridContainer" parent="TabBar/TerrainPanel"]
+[node name="TerrainContainer" type="FlowContainer" parent="TabBar/TerrainPanel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -149,7 +149,6 @@ offset_top = 3.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 13
 
 [node name="Example1" type="Button" parent="TabBar/TerrainPanel/TerrainContainer"]
 auto_translate_mode = 2
@@ -181,7 +180,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_force_pass_scroll_events = false
 
-[node name="UnitContainer" type="GridContainer" parent="TabBar/UnitPanel"]
+[node name="UnitContainer" type="FlowContainer" parent="TabBar/UnitPanel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -190,7 +189,6 @@ anchor_bottom = 1.0
 offset_top = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 13
 
 [node name="Example1" type="Button" parent="TabBar/UnitPanel/UnitContainer"]
 auto_translate_mode = 2
