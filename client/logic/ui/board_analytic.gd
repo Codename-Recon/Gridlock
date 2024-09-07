@@ -43,7 +43,7 @@ func _update(terrain: Terrain) -> void:
 		unit_icon.material = unit.get_shader_material()
 		(unit_icon.material as ShaderMaterial).set_shader_parameter("shifting", unit.color)
 		unit_name.visible = true
-		unit_name.text = unit.id
+		unit_name.text = tr(unit.id)
 		var unit_stats: UnitStats = unit.stats
 		hp_label.text = str(unit_stats.health / 10.0)
 		if unit_stats.ammo > -1:
