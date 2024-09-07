@@ -19,8 +19,8 @@ signal load_selected(file_path: String)
 @export var map_editor: MapEditor
 
 @onready var main_menu: Control = $MainMenu
-@onready var terrain_container: GridContainer = %TerrainContainer
-@onready var unit_container: GridContainer = %UnitContainer
+@onready var terrain_container: FlowContainer = %TerrainContainer
+@onready var unit_container: FlowContainer = %UnitContainer
 @onready var tile_container: FlowContainer = %TileContainer
 @onready var resize_menu: Control = $ResizeMenu
 @onready var gray_background: ColorRect = $GrayBackground
