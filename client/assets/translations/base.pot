@@ -512,14 +512,6 @@ msgid "MISSILE_DESCRIPTION"
 msgstr ""
 
 #: assets/translations/dynamic_string_loader.gd
-msgid "PIPERUNNER"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
-msgid "PIPERUNNER_DESCRIPTION"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
 msgid "RECON"
 msgstr ""
 
@@ -561,6 +553,14 @@ msgstr ""
 
 #: assets/translations/dynamic_string_loader.gd
 msgid "TANK_DESCRIPTION"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgid "WALLRUNNER"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgid "WALLRUNNER_DESCRIPTION"
 msgstr ""
 
 #: assets/translations/dynamic_string_loader.gd
@@ -644,30 +644,6 @@ msgid "MOUNTAIN_DESCRIPTION"
 msgstr ""
 
 #: assets/translations/dynamic_string_loader.gd
-msgid "PIPE"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
-msgid "PIPE_DESCRIPTION"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
-msgid "PIPE_BROKEN"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
-msgid "PIPE_BROKEN_DESCRIPTION"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
-msgid "PIPE_WEAK"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
-msgid "PIPE_WEAK_DESCRIPTION"
-msgstr ""
-
-#: assets/translations/dynamic_string_loader.gd
 msgid "PLAIN"
 msgstr ""
 
@@ -717,6 +693,30 @@ msgstr ""
 
 #: assets/translations/dynamic_string_loader.gd
 msgid "SILO_DESCRIPTION"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgid "WALL"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgid "WALL_DESCRIPTION"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgid "WALL_BROKEN"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgid "WALL_BROKEN_DESCRIPTION"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgid "WALL_WEAK"
+msgstr ""
+
+#: assets/translations/dynamic_string_loader.gd
+msgid "WALL_WEAK_DESCRIPTION"
 msgstr ""
 
 #: assets/translations/dynamic_string_loader.gd
