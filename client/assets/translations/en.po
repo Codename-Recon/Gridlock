@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-24 18:50+0200\n"
-"PO-Revision-Date: 2024-09-07 18:29+0000\n"
+"PO-Revision-Date: 2024-09-07 18:39+0000\n"
 "Last-Translator: HunterNN <stephan.kessler@outlook.com>\n"
-"Language-Team: English <http://weblate.jaumesingla.es/projects/codename-"
-"recon/game-client/en/>\n"
+"Language-Team: English <http://weblate.jaumesingla.es/projects/"
+"codename-recon/game-client/en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -433,13 +433,9 @@ msgstr ""
 "Inexpensive, fast, and able to hold its own against most other land units, "
 "Tanks are a cornerstone unit in any army."
 
-#, fuzzy
-#| msgid "PIPERUNNER"
 msgid "WALLRUNNER"
 msgstr "Wall Runner"
 
-#, fuzzy
-#| msgid "PIPERUNNER_DESCRIPTION"
 msgid "WALLRUNNER_DESCRIPTION"
 msgstr ""
 "Wall Runners are a type of Land Unit with indirect combat capabilities, "
@@ -575,37 +571,22 @@ msgstr ""
 "can only be used once."
 
 msgid "WALL"
-msgstr ""
+msgstr "Wall"
 
-#, fuzzy
-#| msgid "APC_DESCRIPTION"
 msgid "WALL_DESCRIPTION"
-msgstr ""
-"Defenseless on their own, Armored Personnel Carriers (APCs) instead support "
-"an army by transporting Foot Soldiers and refilling Fuel and Ammo stocks of "
-"adjacent units."
+msgstr "Walls are nigh-impassable terrain."
 
-#, fuzzy
-#| msgid "PIPE_BROKEN"
 msgid "WALL_BROKEN"
 msgstr "Broken Wall"
 
-#, fuzzy
-#| msgid "PIPE_BROKEN_DESCRIPTION"
 msgid "WALL_BROKEN_DESCRIPTION"
 msgstr "A broken weak spot of the wall system."
 
 msgid "WALL_WEAK"
-msgstr ""
+msgstr "Weak Wall Spot"
 
-#, fuzzy
-#| msgid "WAR_TANK_DESCRIPTION"
 msgid "WALL_WEAK_DESCRIPTION"
-msgstr ""
-"War Tanks boast superior power compared to Medium Tanks. Armed with a "
-"formidable main cannon, they can engage both land and naval units, as well "
-"as target infantry, battle helicopters, and transport helicopters with their "
-"machine gun."
+msgstr "A weak spot, which can be damaged."
 
 msgid "WOOD"
 msgstr "Wood"
