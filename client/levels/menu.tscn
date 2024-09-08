@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://crj13jqmktmtn"]
+[gd_scene load_steps=62 format=3 uid="uid://crj13jqmktmtn"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
@@ -78,16 +78,27 @@ func _pressed() -> void:
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bmpwf"]
-atlas = ExtResource("7_1imcl")
-region = Rect2(300, 400, 50, 50)
+atlas = ExtResource("9_ekkjc")
+region = Rect2(512, 160, 32, 32)
+margin = Rect2(8, 0, 8, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jf242"]
+load_path = "res://.godot/imported/iconsDefault.png-b41188da5afca742fd02b13d62a1ea5e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkpdi"]
+atlas = SubResource("CompressedTexture2D_jf242")
+region = Rect2(288, 96, 32, 32)
+margin = Rect2(8, 0, 8, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vifrl"]
-atlas = ExtResource("7_1imcl")
-region = Rect2(300, 250, 50, 50)
+atlas = ExtResource("9_ekkjc")
+region = Rect2(256, 96, 32, 32)
+margin = Rect2(8, 0, 8, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gq56"]
-atlas = ExtResource("7_1imcl")
-region = Rect2(300, 350, 50, 50)
+atlas = ExtResource("9_ekkjc")
+region = Rect2(0, 0, 32, 31)
+margin = Rect2(8, 0, 8, 0)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1ai7k"]
 load_path = "res://.godot/imported/sheet_white1x.png-d237bd7956ee8dc396efd927abb3c19c.ctex"
@@ -97,16 +108,27 @@ atlas = SubResource("CompressedTexture2D_1ai7k")
 region = Rect2(50, 0, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6ha0"]
-atlas = ExtResource("7_1imcl")
-region = Rect2(350, 300, 50, 50)
+atlas = ExtResource("9_ekkjc")
+region = Rect2(160, 224, 32, 32)
+margin = Rect2(8, 0, 8, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5qvd"]
-atlas = ExtResource("7_1imcl")
-region = Rect2(350, 0, 50, 50)
+atlas = ExtResource("9_ekkjc")
+region = Rect2(128, 224, 32, 32)
+margin = Rect2(8, 0, 8, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_if2ep"]
+load_path = "res://.godot/imported/iconsDefault.png-b41188da5afca742fd02b13d62a1ea5e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtchf"]
+atlas = SubResource("CompressedTexture2D_if2ep")
+region = Rect2(224, 224, 32, 32)
+margin = Rect2(8, 0, 8, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdtg4"]
-atlas = ExtResource("7_1imcl")
-region = Rect2(300, 100, 50, 50)
+atlas = ExtResource("9_ekkjc")
+region = Rect2(32, 224, 32, 32)
+margin = Rect2(8, 0, 8, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xajh4"]
 atlas = ExtResource("7_1imcl")
@@ -384,7 +406,7 @@ anchor_right = 1.0
 offset_bottom = 56.0
 grow_horizontal = 2
 disabled = true
-text = "TUTORIAL"
+text = "BOOTCAMP"
 icon = SubResource("AtlasTexture_bmpwf")
 script = ExtResource("40_om04v")
 
@@ -393,10 +415,23 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 72.0
-offset_bottom = 128.0
+offset_bottom = 130.0
 grow_horizontal = 2
 disabled = true
 text = "CAMPAIGN"
+icon = SubResource("AtlasTexture_xkpdi")
+script = ExtResource("40_om04v")
+metadata/_edit_layout_mode = 1
+
+[node name="ButtonScenarios" type="Button" parent="SingleplayerMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 144.0
+offset_bottom = 202.0
+grow_horizontal = 2
+disabled = true
+text = "SCENARIOS"
 icon = SubResource("AtlasTexture_vifrl")
 script = ExtResource("40_om04v")
 metadata/_edit_layout_mode = 1
@@ -405,8 +440,8 @@ metadata/_edit_layout_mode = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 144.0
-offset_bottom = 198.0
+offset_top = 216.0
+offset_bottom = 281.0
 grow_horizontal = 2
 text = "VS_AI"
 icon = SubResource("AtlasTexture_8gq56")
@@ -475,12 +510,26 @@ next_menu = NodePath("../../MPLobbyListMenu")
 metadata/_edit_use_custom_anchors = false
 metadata/_edit_layout_mode = 1
 
+[node name="ButtonQuickPlay" type="Button" parent="MultiplayerMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 145.0
+offset_bottom = 207.0
+grow_horizontal = 2
+disabled = true
+text = "QUICKPLAY"
+icon = SubResource("AtlasTexture_rtchf")
+script = ExtResource("9_jte0r")
+metadata/_edit_use_custom_anchors = false
+metadata/_edit_layout_mode = 1
+
 [node name="ButtonRanked" type="Button" parent="MultiplayerMenu"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 144.0
-offset_bottom = 206.0
+offset_top = 220.0
+offset_bottom = 282.0
 grow_horizontal = 2
 disabled = true
 text = "RANKED"
