@@ -1,7 +1,7 @@
 class_name MapFile
 extends Node
 
-const MAP_VERSION: String = "1.0.1"
+const MAP_VERSION: String = "1.0.2"
 const MAP_SOURCE: String = "Gridlock Map Editor"
 const MAP_GROUND_TILE_ID: String = "PLAIN_1"
 
@@ -60,6 +60,9 @@ static func _serialize_player(player: Player) -> Dictionary:
 	player_values.id = player.id
 	player_values.money = player.money
 	player_values.team = player.team
+	player_values.co = 0
+	player_values.type = int(player.type)
+	player_values.ai_difficulty = int(player.ai_difficulty)
 	return inst_to_dict(player_values)
 
 
@@ -123,6 +126,8 @@ static func deserialize(json_map: String) -> Map:
 		player.id = player_values.id
 		player.money = player_values.money
 		player.team = player_values.team
+		player.type = player_values.type
+		player.ai_difficulty = player_values.ai_difficulty
 		player.name = "PLAYER %s" % player.id
 		map.players.add_child(player)
 	for x: int in len(map_values.terrain):
@@ -178,6 +183,9 @@ class PlayerValues extends NumberFix:
 	var id: int
 	var money: int
 	var team: int
+	var co: int
+	var type: int
+	var ai_difficulty: int
 
 
 class UnitValues extends NumberFix:

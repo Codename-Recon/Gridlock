@@ -32,12 +32,12 @@ var event: GameConst.Event = GameConst.Event.NONE:
 			print_debug("Event %s" % GameConst.Event.keys()[value])
 			event = value
 
-var input: GameConst.InputType = GameConst.InputType.HUMAN:
+var input: Player.Type = Player.Type.HUMAN:
 	set(value):
 		print_debug(
 			(
 				"Input changed from %s to %s"
-				% [GameConst.InputType.keys()[input], GameConst.InputType.keys()[value]]
+				% [Player.Type.keys()[input], Player.Type.keys()[value]]
 			)
 		)
 		input = value
@@ -108,11 +108,11 @@ func _process(delta: float) -> void:
 		if not _fsm_blocked:
 			_fsm_blocked = true
 			match input:
-				GameConst.InputType.HUMAN:
+				Player.Type.HUMAN:
 					await _process_human(delta)
-				GameConst.InputType.AI:
+				Player.Type.AI:
 					await _process_ai(delta)
-				GameConst.InputType.NETWORK:
+				Player.Type.NETWORK:
 					await _process_network(delta)
 			_fsm_blocked = false
 
@@ -1075,9 +1075,9 @@ func _do_state_ending(local: bool = true) -> void:
 	_calculate_all_unit_possible_move_terrain()
 	await round_change_ended
 	# changing to input type (human, ai or network)
-	input = player_turns[0].input_type
+	input = player_turns[0].type
 	# has to check with input (local doesn't work) since it's still in the network state machine
-	if input != GameConst.InputType.NETWORK:
+	if input != Player.Type.NETWORK:
 		state = GameConst.State.EARNING
 
 
@@ -1410,8 +1410,8 @@ func _on_game_map_loaded() -> void:
 	# set network players, so one network player is human
 	_set_network_player_stats()
 	# at the beginning the state starts with end game (for animation aso.)
-	if player_turns[0].input_type == GameConst.InputType.NETWORK:
-		input = player_turns[0].input_type
+	if player_turns[0].type == Player.Type.NETWORK:
+		input = player_turns[0].type
 	else:
 		state = GameConst.State.ENDING
 	# set first player back so it starts with first player with a turn
@@ -1598,13 +1598,13 @@ func _handle_player_death(player: Player) -> void:
 
 
 func _set_network_player_stats() -> void:
-	if player_turns[0].input_type == GameConst.InputType.NETWORK:
+	if player_turns[0].type == Player.Type.NETWORK:
 		if _multiplayer.client_role == _multiplayer.ClientRole.HOST:
-			player_turns[0].input_type = GameConst.InputType.HUMAN
+			player_turns[0].type = Player.Type.HUMAN
 			own_player_id = player_turns[0].id
-	if player_turns[1].input_type == GameConst.InputType.NETWORK:
+	if player_turns[1].type == Player.Type.NETWORK:
 		if _multiplayer.client_role == _multiplayer.ClientRole.CLIENT:
-			player_turns[1].input_type = GameConst.InputType.HUMAN
+			player_turns[1].type = Player.Type.HUMAN
 			own_player_id = player_turns[1].id
 
 

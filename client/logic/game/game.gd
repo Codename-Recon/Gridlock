@@ -25,15 +25,15 @@ func _ready() -> void:
 	match _global.game_mode:
 		GameConst.GameMode.SINGLE:
 			for player: Player in map.players.get_children():
-				player.input_type = GameConst.InputType.AI
+				player.type = Player.Type.AI
 			var first_player: Player = map.players.get_children()[0]
-			first_player.input_type = GameConst.InputType.HUMAN
+			first_player.type = Player.Type.HUMAN
 		GameConst.GameMode.HOTSEAT:
 			for player: Player in map.players.get_children():
-				player.input_type = GameConst.InputType.HUMAN
+				player.type = Player.Type.HUMAN
 		GameConst.GameMode.NETWORK:
 			for player: Player in map.players.get_children():
-				player.input_type = GameConst.InputType.NETWORK
+				player.type = Player.Type.NETWORK
 	game_input.global_position = map.map_center
 	map_loaded.emit()
 

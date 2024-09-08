@@ -36,19 +36,6 @@ enum Event {
 	CLICKED_END_ROUND,
 }
 
-enum InputType {
-	HUMAN,
-	AI,
-	NETWORK,
-}
-
-enum AiDifficulty {
-	SELECTABLE,
-	EASY,
-	MEDIUM,
-	HARD,
-}
-
 enum GameMode { SINGLE, HOTSEAT, NETWORK }
 
 # TODO: Should be generated
