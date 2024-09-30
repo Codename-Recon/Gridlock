@@ -284,7 +284,6 @@ func _ready() -> void:
 		else:
 			players = get_node("Players")
 		_sort_players()
-		_global.last_loaded_map = self
 
 
 func _init() -> void:
