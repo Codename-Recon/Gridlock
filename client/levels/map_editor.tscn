@@ -13,6 +13,13 @@ script/source = "extends Control
 @onready var map_editor: MapEditor = $MapEditor
 @onready var map_editor_ui: MapEditorUI = $CanvasLayer/MapEditorUI
 
+var _global: GlobalGlobal = Global
+
+
+func _ready() -> void:
+	_global.loaded_map = $Map
+	
+
 func _on_map_editor_ui_load_selected(file_path: String) -> void:
 	var json_map: String = MapFile.load_from_file(file_path)
 	var new_map: Map = MapFile.deserialize(json_map)
@@ -21,6 +28,7 @@ func _on_map_editor_ui_load_selected(file_path: String) -> void:
 	add_child(new_map)
 	map_editor.map = new_map
 	map_editor_ui.map = new_map
+	_global.loaded_map = new_map
 	old_map.queue_free()
 	map_editor_ui.reload_map_data()
 	map_editor.create_tile_map_by_map(new_map)
