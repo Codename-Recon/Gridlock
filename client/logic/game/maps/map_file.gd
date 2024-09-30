@@ -122,6 +122,7 @@ static func deserialize(json_map: String) -> Map:
 		player_dic["@path"] = "res://logic/game/maps/map_file.gd"
 		player_dic["@subpath"] = "PlayerValues"
 		var player_values: PlayerValues = dict_to_inst(player_dic)
+		player_values.fix()
 		var player: Player = Player.new()
 		player.id = player_values.id
 		player.money = player_values.money
@@ -136,6 +137,7 @@ static func deserialize(json_map: String) -> Map:
 			td["@path"] = "res://logic/game/maps/map_file.gd"
 			td["@subpath"] = "TerrainValues"
 			var terrain_values: TerrainValues = dict_to_inst(td)
+			terrain_values.fix()
 			var pos: Vector2i = Vector2i(x, y) * ProjectSettings.get_setting("global/grid_size")
 			var tile_id: String = terrain_values.tile_id
 			var ground_tile_id: String = terrain_values.ground_tile_id
@@ -148,6 +150,7 @@ static func deserialize(json_map: String) -> Map:
 				ud["@path"] = "res://logic/game/maps/map_file.gd"
 				ud["@subpath"] = "UnitValues"
 				var unit_values: UnitValues = dict_to_inst(ud)
+				unit_values.fix()
 				var unit: Unit = map.create_unit(unit_values.id, pos, unit_values.owner)
 				unit.stats = unit.get_node("UnitStats")
 				unit.stats.health = unit_values.health
@@ -167,6 +170,7 @@ static func _deserialize_cargo(cargo_dic: Dictionary, map: Map) -> Unit:
 	cargo_dic.unit["@path"] = "res://logic/game/maps/map_file.gd"
 	cargo_dic.unit["@subpath"] = "UnitValues"
 	var unit_values: UnitValues = dict_to_inst(cargo_dic)
+	unit_values.fix()
 	var unit_scene: PackedScene = Map.predefined_units_packed_scenes[unit_values.id]
 	var unit: Unit = unit_scene.instantiate()
 	unit.id = unit_values.id

@@ -36,7 +36,7 @@ enum Event {
 	CLICKED_END_ROUND,
 }
 
-enum GameMode { SINGLE, HOTSEAT, NETWORK }
+enum GameMode { SINGLE, HOTSEAT, NETWORK, SCENARIO, BOOTCAMP, CAMPAIGN }
 
 # TODO: Should be generated
 enum Weather { CLEAR, RAIN, SNOW }

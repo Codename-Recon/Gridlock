@@ -4,10 +4,12 @@ extends Node
 const CONFIG_FILE_PATH: String = "user://config.cfg"
 const CONFIG_SECTION: String = "game"
 const RENDERING_SECTION: String = "rendering"
-const MAP_FOLDER_PATH: String = "res://logic/game/maps/"
+const MAP_FOLDER_PATH: String = "res://assets/maps/maps/"
 const MAP_CUSTOM_FOLDER_PATH: String = "user://maps/"
+const SCENARIO_CUSTOM_FOLDER_PATH: String = "user://scenarios/"
 
-@export var selected_map_json: String
+var selected_map_json: String
+var selected_scenario_json: String
 var game_mode: GameConst.GameMode
 var last_loaded_map: Map
 
@@ -41,6 +43,8 @@ func _ready() -> void:
 func _create_missing_folders() -> void:
 	if not DirAccess.dir_exists_absolute(MAP_CUSTOM_FOLDER_PATH):
 		DirAccess.make_dir_recursive_absolute(MAP_CUSTOM_FOLDER_PATH)
+	if not DirAccess.dir_exists_absolute(SCENARIO_CUSTOM_FOLDER_PATH):
+		DirAccess.make_dir_recursive_absolute(SCENARIO_CUSTOM_FOLDER_PATH)
 
 
 func _load_maps(dir_path: String) -> void:
