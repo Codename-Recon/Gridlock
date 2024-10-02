@@ -46,9 +46,6 @@ func reload_maps() -> void:
 
 func _ready() -> void:
 	config.load(CONFIG_FILE_PATH)
-
-
-func _init() -> void:
 	_create_missing_folders()
 
 
@@ -61,6 +58,9 @@ func _create_missing_folders() -> void:
 
 func _load_maps(dir_path: String) -> void:
 	var folder: DirAccess = DirAccess.open(dir_path)
+	if not folder:
+		print_debug("Can't access folder %s" % dir_path)
+		return
 	for file_name: String in folder.get_files():
 		if not file_name.ends_with(".glm"):
 			continue
@@ -74,6 +74,9 @@ func _load_maps(dir_path: String) -> void:
 
 func _load_scenarios(dir_path: String, container: Dictionary) -> void:
 	var folder: DirAccess = DirAccess.open(dir_path)
+	if not folder:
+		print_debug("Can't access folder %s" % dir_path)
+		return
 	for file_name: String in folder.get_files():
 		if not file_name.ends_with(".gls"):
 			continue
