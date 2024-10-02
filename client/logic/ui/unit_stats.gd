@@ -90,6 +90,8 @@ signal round_over_changed
 			round_over = value
 			round_over_changed.emit()
 
+@export var is_hidden: bool = false
+
 @onready var _health_label: Label = %Health as Label
 @onready var _capture_icon: TextureRect = %CaptureIcon as TextureRect
 @onready var _carrying_icon: TextureRect = %CarryingIcon as TextureRect
@@ -109,6 +111,9 @@ func is_unit_damaged() -> bool:
 
 func can_be_refilled() -> bool:
 	return fuel < _parent.values.fuel or ammo < _parent.values.ammo
+	
+func uses_fuel_on_turn() -> bool:
+	return _parent.values.turn_fuel > 0 or _parent.values.hidden_turn_fuel>0
 
 
 func _ready() -> void:

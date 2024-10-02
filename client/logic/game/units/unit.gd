@@ -208,6 +208,11 @@ func repair(health: int) -> void:
 	sound.play("Repair")
 	stats.health += health
 
+func process_turn_fuel() -> void:
+	if stats.is_hidden:
+		stats.fuel -= values.hidden_turn_fuel
+	else:
+		stats.fuel -= values.turn_fuel
 
 # capture building on terrain currently standing on. returns true on success
 func capture() -> bool:
@@ -382,6 +387,7 @@ func _move_on_curve() -> void:
 
 
 func _end_move() -> void:
+	# Here we should consume the fuel, right?
 	var terrain: Terrain = _global.last_loaded_map.get_terrain_by_position(global_position)
 	var tmp_transform: Transform3D = global_transform
 	reparent(terrain)
