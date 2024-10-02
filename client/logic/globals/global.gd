@@ -35,6 +35,8 @@ func save_config(key: String, value: Variant, section: String = CONFIG_SECTION) 
 
 func reload_maps() -> void:
 	maps.clear()
+	bootcamps.clear()
+	scenarios.clear()
 	_load_maps(MAP_FOLDER_PATH)
 	_load_maps(MAP_CUSTOM_FOLDER_PATH)
 	_load_scenarios(BOOTCAMP_FOLDER_PATH, bootcamps)
