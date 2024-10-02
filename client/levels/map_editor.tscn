@@ -12,7 +12,6 @@ script/source = "extends Control
 
 @onready var map_editor: MapEditor = $MapEditor
 @onready var map_editor_ui: MapEditorUI = $CanvasLayer/MapEditorUI
-@onready var map: Map = $Map
 
 var _global: GlobalGlobal = Global
 
