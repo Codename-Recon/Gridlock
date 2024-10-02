@@ -3,13 +3,14 @@ extends Node
 
 signal action_done
 
+@export var notification_panel_scene: PackedScene
+
 var _reload_to_menu: bool = false
 
 @onready var accept_dialog: AcceptDialog = $AcceptDialog
 @onready var markdown_dialog: Window = $MarkdownDialog
 @onready var markdown_dialog_label: MarkdownLabel = $MarkdownDialog/MarkdownLabel
 @onready var markdown_dialog_button_container: HBoxContainer = $MarkdownDialog/HBoxContainer
-@onready var notification_panel: Panel = $Notification
 @onready var notifications_list: VBoxContainer = $CanvasLayer/NotificationsList
 
 
@@ -40,7 +41,7 @@ func spawn_markdown(title: String, content: String, action: Button) -> void:
 func spawn_notification(
 	title: String, buttons: Array[Button], timeout: int = 0
 ) -> NotificationPanel:
-	var notice: NotificationPanel = notification_panel.duplicate()
+	var notice: NotificationPanel = notification_panel_scene.instantiate()
 	notice.title = title
 	notice.actions = buttons
 	notice.timeout = timeout
