@@ -46,6 +46,9 @@ func reload_maps() -> void:
 
 func _ready() -> void:
 	config.load(CONFIG_FILE_PATH)
+
+
+func _init() -> void:
 	_create_missing_folders()
 
 
