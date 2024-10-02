@@ -17,8 +17,6 @@ script/source = "extends Control
 @onready var v_box_container: VBoxContainer = %VBoxContainer
 @onready var spawn_spot: Marker2D = %SpawnSpot
 
-
-
 var last_selected_map: PackedScene
 var last_instantiated_map: Map
 
@@ -73,12 +71,20 @@ func _on_visibility_changed() -> void:
 		if not last_selected_map:
 			_button_next.disabled = true
 		_clear_map_list()
-		for map_name: String in _global.maps:
-			var element: MapSelectableElement = map_select_element_scene.instantiate()
-			element.map_json = _global.maps[map_name]
-			element.map_selected.connect(_on_element_clicked)
-			v_box_container.add_child(element)
-			_add_v_split()
+		if game_mode == GameConst.GameMode.BOOTCAMP:
+			for bootcamp_name: String in _global.bootcamps:
+				var element: MapSelectableElement = map_select_element_scene.instantiate()
+				element.map_json = _global.bootcamps[bootcamp_name][\"map\"]
+				element.map_selected.connect(_on_element_clicked)
+				v_box_container.add_child(element)
+				_add_v_split()
+		else:
+			for map_name: String in _global.maps:
+				var element: MapSelectableElement = map_select_element_scene.instantiate()
+				element.map_json = _global.maps[map_name]
+				element.map_selected.connect(_on_element_clicked)
+				v_box_container.add_child(element)
+				_add_v_split()
 	else:
 		last_selected_map = null
 "
@@ -221,6 +227,6 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="Menu/ButtonBack" to="." method="_on_button_back_pressed"]

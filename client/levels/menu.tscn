@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="9_ekkjc"]
 [ext_resource type="Script" path="res://logic/ui/components/button_to_scene.gd" id="9_jte0r"]
 [ext_resource type="PackedScene" uid="uid://lsu858yvaswd" path="res://levels/map_editor.tscn" id="10_rjvs6"]
-[ext_resource type="PackedScene" uid="uid://b6kyqmss2ywu" path="res://logic/ui/map_selection_element.tscn" id="16_yagnk"]
+[ext_resource type="PackedScene" uid="uid://b6kyqmss2ywu" path="res://logic/ui/map_selection_element.tscn" id="17_n3hys"]
 [ext_resource type="Script" path="res://addons/markdownlabel/markdownlabel.gd" id="19_8a2oa"]
 [ext_resource type="Script" path="res://logic/ui/components/button_to_uri.gd" id="19_cd8qn"]
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h1_format.gd" id="20_1swx7"]
@@ -266,6 +266,7 @@ grow_vertical = 2
 theme = ExtResource("1_eqavw")
 script = SubResource("GDScript_a3jqb")
 music = ExtResource("2_pyafi")
+metadata/_edit_horizontal_guides_ = [-199.0]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_s3gg3")
@@ -399,16 +400,16 @@ title = "SINGLEPLAYER_MENU"
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
-[node name="ButtonTutorial" type="Button" parent="SingleplayerMenu"]
+[node name="ButtonTutorial" type="Button" parent="SingleplayerMenu" node_paths=PackedStringArray("next_menu")]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 56.0
+offset_bottom = 61.0
 grow_horizontal = 2
-disabled = true
 text = "BOOTCAMP"
 icon = SubResource("AtlasTexture_bmpwf")
-script = ExtResource("40_om04v")
+script = ExtResource("34_rl1iq")
+next_menu = NodePath("../../BootcampSelection")
 
 [node name="ButtonCampaign" type="Button" parent="SingleplayerMenu"]
 layout_mode = 1
@@ -775,8 +776,19 @@ offset_top = -344.0
 offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../SingleplayerMenu")
-map_select_element_scene = ExtResource("16_yagnk")
+map_select_element_scene = ExtResource("17_n3hys")
 metadata/_edit_layout_mode = 1
+
+[node name="BootcampSelection" parent="." node_paths=PackedStringArray("back_control") instance=ExtResource("46_qlnwy")]
+visible = false
+layout_mode = 1
+offset_left = 238.0
+offset_top = 106.0
+offset_right = -237.0
+offset_bottom = -106.0
+back_control = NodePath("../SingleplayerMenu")
+map_select_element_scene = ExtResource("17_n3hys")
+game_mode = 4
 
 [node name="MultiplayerHotSeatMapSelection" parent="." node_paths=PackedStringArray("back_control") instance=ExtResource("46_qlnwy")]
 visible = false
@@ -791,7 +803,7 @@ offset_top = -344.0
 offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../MultiplayerMenu")
-map_select_element_scene = ExtResource("16_yagnk")
+map_select_element_scene = ExtResource("17_n3hys")
 game_mode = 1
 metadata/_edit_layout_mode = 1
 
@@ -809,7 +821,7 @@ offset_right = 562.5
 offset_bottom = 344.0
 back_control = NodePath("../MPLobbyListMenu")
 next_control = NodePath("../MPLobbyMenu")
-map_select_element_scene = ExtResource("16_yagnk")
+map_select_element_scene = ExtResource("17_n3hys")
 next_button_text_override = "HOST"
 game_mode = 2
 metadata/_edit_layout_mode = 1
