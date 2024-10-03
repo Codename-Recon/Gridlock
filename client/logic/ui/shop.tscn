@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://df4e0v877neen"]
 
 [ext_resource type="Script" path="res://logic/ui/shop.gd" id="1_gpmly"]
-[ext_resource type="Script" path="res://logic/ui/game_buttons.gd" id="3_s7hqe"]
+[ext_resource type="Script" path="res://logic/ui/components/game_buttons.gd" id="3_s7hqe"]
 [ext_resource type="PackedScene" uid="uid://dwneuqauiaxqd" path="res://logic/ui/shop_element.tscn" id="4_lsf8q"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1ai7k"]

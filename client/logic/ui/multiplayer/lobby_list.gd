@@ -3,8 +3,8 @@ extends Menu
 @export var username_text: TextEdit
 @export var lobby_list_container: VBoxContainer
 @export var lobby_menu: Menu
+@export var lobby_element_scene: PackedScene
 
-var lobby_element_scene: PackedScene = preload("res://logic/ui/lobby_selection_element.tscn")
 var name_file_path: String = "res://assets/text/names.txt"
 var username_changed_in_text_edit: bool = false
 

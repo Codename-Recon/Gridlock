@@ -49,3 +49,6 @@ The files listed in here are released under the [Creative Commons Attribution-Sh
 
 ### client/splash_screen.png
 - Hunter99
+
+### client/assets/images/game/menu/map_icons.png
+- Hunter99

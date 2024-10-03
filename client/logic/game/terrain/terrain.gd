@@ -177,7 +177,7 @@ static func get_astar_path_as_terrains(
 	var result: PackedVector2Array = get_astar_path(start, end, terrains, unit, end_can_be_outside)
 	var result_terrains: Array[Terrain] = []
 	for pos: Vector2 in result:
-		result_terrains.append(_global.last_loaded_map.get_terrain_by_position(pos))
+		result_terrains.append(_global.loaded_map.get_terrain_by_position(pos))
 	return result_terrains
 
 

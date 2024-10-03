@@ -9,7 +9,7 @@ var last_terrain: Terrain:
 	get:
 		if _current_move_tween.is_running():
 			await _current_move_tween.finished
-		return _global.last_loaded_map.get_terrain_by_position(global_position)
+		return _global.loaded_map.get_terrain_by_position(global_position)
 
 @onready var _cursor: Cursor = $"../Cursor"
 @onready var _current_move_tween: Tween
@@ -22,8 +22,8 @@ func is_mouse_still_inside() -> bool:
 
 
 func reset() -> void:
-	if _global.last_loaded_map and _global.last_loaded_map.terrains.size() > 0:
-		var terrain: Terrain = _global.last_loaded_map.terrains[0]
+	if _global.loaded_map and _global.loaded_map.terrains.size() > 0:
+		var terrain: Terrain = _global.loaded_map.terrains[0]
 		last_mouse_position = Vector2(-1, -1)
 		_move_selection(terrain)
 
@@ -31,9 +31,9 @@ func reset() -> void:
 func _process(delta: float) -> void:
 	if not movement_enabled:
 		return
-	if _global.last_loaded_map and _global.last_loaded_map.terrains.size() > 0:
-		if _global.last_loaded_map.get_terrain_by_position(_cursor.get_tile_position()):
-			var terrain: Terrain = _global.last_loaded_map.get_terrain_by_position(
+	if _global.loaded_map and _global.loaded_map.terrains.size() > 0:
+		if _global.loaded_map.get_terrain_by_position(_cursor.get_tile_position()):
+			var terrain: Terrain = _global.loaded_map.get_terrain_by_position(
 				_cursor.get_tile_position()
 			)
 			_move_selection(terrain)

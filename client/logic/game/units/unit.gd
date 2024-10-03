@@ -157,12 +157,12 @@ func _lamda_calculate_distance(a: Terrain, b: Terrain) -> bool:
 
 
 func calculate_possible_terrains_to_move() -> void:
-	if not is_on_map():
+	if not _global.loaded_map or not is_on_map():
 		_possible_terrains_to_move_buffer = []
 		possible_terrains_to_move_calculated.emit()
 		return
 	_possible_terrains_to_move_calculating = true
-	var terrains: Array[Terrain] = _global.last_loaded_map.terrains
+	var terrains: Array[Terrain] = _global.loaded_map.terrains
 	terrains = Terrain.filter_movable_terrains(terrains, self, true, true)
 
 	# Sort by distance; First entry is the farthest terrain
@@ -172,7 +172,7 @@ func calculate_possible_terrains_to_move() -> void:
 		var terrain: Terrain = terrains[0]
 		terrains.erase(terrain)
 		var path: Array[Terrain] = Terrain.get_astar_path_as_terrains(
-			get_terrain(), terrain, _global.last_loaded_map.terrains, self
+			get_terrain(), terrain, _global.loaded_map.terrains, self
 		)
 		var cost: int = -get_terrain().get_movement_cost(self, GameConst.Weather.CLEAR)
 		for t: Terrain in path:
@@ -382,7 +382,7 @@ func _move_on_curve() -> void:
 
 
 func _end_move() -> void:
-	var terrain: Terrain = _global.last_loaded_map.get_terrain_by_position(global_position)
+	var terrain: Terrain = _global.loaded_map.get_terrain_by_position(global_position)
 	var tmp_transform: Transform3D = global_transform
 	reparent(terrain)
 	global_transform = tmp_transform

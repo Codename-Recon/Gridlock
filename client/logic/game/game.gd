@@ -25,21 +25,24 @@ func _ready() -> void:
 	match _global.game_mode:
 		GameConst.GameMode.SINGLE:
 			for player: Player in map.players.get_children():
-				player.input_type = GameConst.InputType.AI
+				player.type = Player.Type.AI
 			var first_player: Player = map.players.get_children()[0]
-			first_player.input_type = GameConst.InputType.HUMAN
+			first_player.type = Player.Type.HUMAN
 		GameConst.GameMode.HOTSEAT:
 			for player: Player in map.players.get_children():
-				player.input_type = GameConst.InputType.HUMAN
+				player.type = Player.Type.HUMAN
 		GameConst.GameMode.NETWORK:
 			for player: Player in map.players.get_children():
-				player.input_type = GameConst.InputType.NETWORK
+				player.type = Player.Type.NETWORK
 	game_input.global_position = map.map_center
+	_global.loaded_map = map
 	map_loaded.emit()
+
 
 func _on_music_finished() -> void:
 	_set_music()
-	
+
+
 func _set_music() -> void:
 	var new_music: AudioStream = musics.pick_random()
 	if musics.size() > 1:
@@ -47,3 +50,8 @@ func _set_music() -> void:
 			new_music = musics.pick_random()
 	Music.change_music(new_music)
 	_last_music = new_music
+
+
+func _exit_tree() -> void:
+	_global.loaded_map.queue_free()
+	_global.loaded_map = null

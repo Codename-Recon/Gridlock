@@ -2,6 +2,18 @@
 class_name Player
 extends Node
 
+enum Type {
+	HUMAN,
+	AI,
+	NETWORK,
+}
+
+enum AiDifficulty {
+	EASY,
+	MEDIUM,
+	HARD,
+}
+
 var id: int:
 	set(value):
 		color = ProjectSettings.get_setting("game/player_color")[value - 1]
@@ -9,8 +21,8 @@ var id: int:
 
 var money: int = 0
 var team: int = 0
-var input_type: GameConst.InputType = GameConst.InputType.HUMAN
-var ai_difficulty: GameConst.AiDifficulty = GameConst.AiDifficulty.EASY
+var type: Type = Type.HUMAN
+var ai_difficulty: AiDifficulty = AiDifficulty.EASY
 var color: Color
 
 

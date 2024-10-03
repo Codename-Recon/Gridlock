@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="26_j0w8f"]
 [ext_resource type="Script" path="res://logic/ui/escape_panel.gd" id="26_o1gt5"]
 [ext_resource type="Script" path="res://logic/ui/round_label.gd" id="27_lmqwv"]
-[ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="29_fbj1t"]
+[ext_resource type="Script" path="res://logic/ui/components/game_buttons_menu_switch.gd" id="29_fbj1t"]
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="29_jy0gc"]
 [ext_resource type="PackedScene" uid="uid://c4qct2liggfuy" path="res://logic/ui/settings_content.tscn" id="30_umdul"]
 [ext_resource type="AudioStream" uid="uid://kkificbsstvo" path="res://assets/sounds/ui/confirmation_001.ogg" id="36_v003w"]

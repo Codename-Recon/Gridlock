@@ -29,7 +29,7 @@ Music="*res://logic/globals/music.tscn"
 Global="*res://logic/globals/global.tscn"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 Multiplayer="*res://logic/globals/multiplayer.tscn"
-Messages="*res://logic/globals/messages.tscn"
+Messages="*res://logic/globals/messages/messages.tscn"
 Types="*res://logic/globals/types.tscn"
 
 [debug]

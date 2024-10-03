@@ -47,6 +47,8 @@
 ### [Eva Icons](https://akveo.github.io/eva-icons/)
   * 2D Art
 
+### [Buch](https://opengameart.org/content/medals-3)
+  * 2D Art
 
 ## Game Engine
 
