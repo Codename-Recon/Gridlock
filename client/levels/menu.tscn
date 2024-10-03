@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://crj13jqmktmtn"]
+[gd_scene load_steps=64 format=3 uid="uid://crj13jqmktmtn"]
 
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="9_ekkjc"]
 [ext_resource type="Script" path="res://logic/ui/components/button_to_scene.gd" id="9_jte0r"]
 [ext_resource type="PackedScene" uid="uid://lsu858yvaswd" path="res://levels/map_editor.tscn" id="10_rjvs6"]
+[ext_resource type="PackedScene" uid="uid://blwqsjqd2eqtm" path="res://logic/ui/multiplayer/lobby_selection_element.tscn" id="14_06sj0"]
+[ext_resource type="PackedScene" uid="uid://d2b55kmtnuwsh" path="res://logic/ui/multiplayer/lobby_user_element.tscn" id="16_43wla"]
 [ext_resource type="PackedScene" uid="uid://b6kyqmss2ywu" path="res://logic/ui/map_selection_element.tscn" id="17_n3hys"]
 [ext_resource type="Script" path="res://addons/markdownlabel/markdownlabel.gd" id="19_8a2oa"]
 [ext_resource type="Script" path="res://logic/ui/components/button_to_uri.gd" id="19_cd8qn"]
@@ -19,13 +21,13 @@
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h5_format.gd" id="24_w2k3p"]
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h6_format.gd" id="25_4uox6"]
 [ext_resource type="Script" path="res://logic/ui/new_version_checker.gd" id="25_eht35"]
-[ext_resource type="Script" path="res://logic/ui/game_buttons_menu_switch.gd" id="34_rl1iq"]
-[ext_resource type="Script" path="res://logic/ui/game_buttons.gd" id="40_om04v"]
+[ext_resource type="Script" path="res://logic/ui/components/game_buttons_menu_switch.gd" id="34_rl1iq"]
+[ext_resource type="Script" path="res://logic/ui/components/game_buttons.gd" id="40_om04v"]
 [ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="41_n387a"]
-[ext_resource type="Script" path="res://logic/ui/multiplayer_menu.gd" id="44_lyjww"]
+[ext_resource type="Script" path="res://logic/ui/multiplayer/multiplayer_menu.gd" id="44_lyjww"]
 [ext_resource type="PackedScene" uid="uid://cqf0atgg02hdq" path="res://logic/ui/map_selection.tscn" id="46_qlnwy"]
-[ext_resource type="Script" path="res://logic/ui/lobby_list.gd" id="47_e0sht"]
-[ext_resource type="Script" path="res://logic/ui/lobby.gd" id="50_pl5uo"]
+[ext_resource type="Script" path="res://logic/ui/multiplayer/lobby_list.gd" id="47_e0sht"]
+[ext_resource type="Script" path="res://logic/ui/multiplayer/lobby.gd" id="50_pl5uo"]
 [ext_resource type="PackedScene" uid="uid://c4qct2liggfuy" path="res://logic/ui/settings_content.tscn" id="50_xtsh5"]
 
 [sub_resource type="GDScript" id="GDScript_a3jqb"]
@@ -573,6 +575,7 @@ script = ExtResource("47_e0sht")
 username_text = NodePath("ControlUsername/TextEditUsername")
 lobby_list_container = NodePath("ControlLobbyList/VBoxContainer")
 lobby_menu = NodePath("../MPLobbyMenu")
+lobby_element_scene = ExtResource("14_06sj0")
 title = "MULTIPLAYER_MENU"
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
@@ -679,6 +682,7 @@ grow_vertical = 2
 script = ExtResource("50_pl5uo")
 lobby_container = NodePath("ControlLobbyList/VBoxContainer")
 start_button = NodePath("HBoxContainerLobby/ButtonStart")
+user_element_scene = ExtResource("16_43wla")
 title = "LOBBY_MENU"
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true

@@ -2,8 +2,8 @@ extends Menu
 
 @export var lobby_container: VBoxContainer
 @export var start_button: GameButton
+@export var user_element_scene: PackedScene
 
-var user_element_scene: PackedScene = preload("res://logic/ui/lobby_user_element.tscn")
 var _multiplayer: GlobalMultiplayer = Multiplayer
 var _global: GlobalGlobal = Global
 

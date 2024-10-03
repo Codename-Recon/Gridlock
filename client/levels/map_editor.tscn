@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://rtyseghcw68e" path="res://assets/images/game/game/background.jpg" id="1_3fgmx"]
 [ext_resource type="PackedScene" uid="uid://dj1137ma426k8" path="res://logic/ui/game_input.tscn" id="1_4rtpd"]
-[ext_resource type="Script" path="res://logic/ui/map_editor.gd" id="1_j3yxc"]
+[ext_resource type="Script" path="res://logic/ui/editor/map_editor.gd" id="1_j3yxc"]
 [ext_resource type="TileSet" uid="uid://b6taw5w4s7s5i" path="res://assets/resources/game/tiles.tres" id="2_44dmf"]
-[ext_resource type="PackedScene" uid="uid://hds34errxgf3" path="res://logic/ui/map_editor_ui.tscn" id="5_63t8i"]
+[ext_resource type="PackedScene" uid="uid://hds34errxgf3" path="res://logic/ui/editor/map_editor_ui.tscn" id="5_63t8i"]
 [ext_resource type="Script" path="res://logic/game/maps/map.gd" id="5_b0ipg"]
 
 [sub_resource type="GDScript" id="GDScript_ofqvf"]
