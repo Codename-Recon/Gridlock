@@ -1,8 +1,36 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6kyqmss2ywu"]
+[gd_scene load_steps=16 format=3 uid="uid://b6kyqmss2ywu"]
 
 [ext_resource type="Script" path="res://logic/ui/map_selection_element.gd" id="1_818xk"]
 [ext_resource type="Texture2D" uid="uid://bwu5hdlkp18bw" path="res://assets/images/theme/greySheet.png" id="2_hfn6w"]
-[ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="3_5mir4"]
+[ext_resource type="Texture2D" uid="uid://ce3n3elampgnf" path="res://assets/images/game/menu/map_icons.png" id="4_1lvly"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y7va"]
+atlas = ExtResource("4_1lvly")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi12h"]
+atlas = ExtResource("4_1lvly")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xveuy"]
+atlas = ExtResource("4_1lvly")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brhln"]
+atlas = ExtResource("4_1lvly")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fckm"]
+atlas = ExtResource("4_1lvly")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e88c6"]
+atlas = ExtResource("4_1lvly")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44fbu"]
+atlas = ExtResource("4_1lvly")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ch5xk"]
 atlas = ExtResource("2_hfn6w")
@@ -27,8 +55,8 @@ texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1pta4"]
-atlas = ExtResource("3_5mir4")
-region = Rect2(192, 0, 32, 31)
+atlas = ExtResource("4_1lvly")
+region = Rect2(0, 0, 32, 32)
 
 [node name="MapSelectionElement" type="Control"]
 custom_minimum_size = Vector2(0, 100)
@@ -38,6 +66,7 @@ offset_right = 448.0
 offset_bottom = 100.0
 mouse_filter = 1
 script = ExtResource("1_818xk")
+icons = Array[Texture]([SubResource("AtlasTexture_5y7va"), SubResource("AtlasTexture_bi12h"), SubResource("AtlasTexture_xveuy"), SubResource("AtlasTexture_brhln"), SubResource("AtlasTexture_2fckm"), SubResource("AtlasTexture_e88c6"), SubResource("AtlasTexture_44fbu")])
 
 [node name="Element" type="Panel" parent="."]
 layout_mode = 0
@@ -50,7 +79,7 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_5nec8")
 metadata/_edit_layout_mode = 1
 
-[node name="UnitWindow" type="Control" parent="Element"]
+[node name="IconWindow" type="Control" parent="Element"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,7 +91,7 @@ grow_vertical = 2
 mouse_filter = 1
 metadata/_edit_layout_mode = 1
 
-[node name="Panel" type="Panel" parent="Element/UnitWindow"]
+[node name="Panel" type="Panel" parent="Element/IconWindow"]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -78,8 +107,7 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qclkp")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Element/UnitWindow/Panel"]
-modulate = Color(0.599893, 0.599893, 0.599893, 1)
+[node name="TextureRect" type="TextureRect" parent="Element/IconWindow/Panel"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0

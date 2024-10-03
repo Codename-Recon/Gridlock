@@ -3,7 +3,19 @@ extends SelectableElement
 
 signal map_selected(map_json: String)
 
-@export var map_json: String
+enum IconType{
+	MAP,
+	LOCKED,
+	UNKNOWN_RANK,
+	C_RANK,
+	B_RANK,
+	A_RANK,
+	S_RANK
+}
+
+@export var icons: Array[Texture]
+
+var map_json: String
 
 @onready var title: Label = $Element/Title
 @onready var select_overlay: ColorRect = $SelectOverlay
