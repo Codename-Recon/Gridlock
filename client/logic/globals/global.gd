@@ -9,6 +9,8 @@ const MAP_CUSTOM_FOLDER_PATH: String = "user://maps/"
 const BOOTCAMP_FOLDER_PATH: String = "res://assets/maps/bootcamp/"
 const SCENARIO_FOLDER_PATH: String = "res://assets/maps/scenarios/"
 const SCENARIO_CUSTOM_FOLDER_PATH: String = "user://scenarios/"
+const SCENARIO_PROGRESS_PASSWORD: String = "Cheating is bad"
+const SCENARIO_PROGRESS_FILE: String = "user://progress.dat"
 
 var selected_map_json: String
 var selected_scenario_json: String
@@ -23,6 +25,7 @@ var menu_scene: PackedScene = load("res://levels/menu.tscn")
 var gameover_scene: PackedScene = load("res://levels/game_over_screen.tscn")
 
 var config: ConfigFile = ConfigFile.new()
+var progress: ConfigFile = ConfigFile.new()
 var maps: Dictionary = {}
 var bootcamps: Dictionary = {}
 var scenarios: Dictionary = {}
@@ -44,8 +47,36 @@ func reload_maps() -> void:
 	_load_scenarios(SCENARIO_CUSTOM_FOLDER_PATH, scenarios)
 
 
+func generate_scenario_id(map_json: String, scenario_json: String) -> String:
+	var md5: String = (map_json + scenario_json).md5_text()
+	return md5
+
+
+func save_scenario_progress(scenatio_id: String, stats: Scenario.Stats) -> void:
+	var dict: Dictionary = inst_to_dict(stats)
+	for key: String in dict:
+		if key == "@path" or key == "@subpath":
+			continue
+		progress.set_value(scenatio_id, key, dict[key])
+	progress.save_encrypted_pass(SCENARIO_PROGRESS_FILE, SCENARIO_PROGRESS_PASSWORD)
+
+
+func load_scenario_progress(scenatio_id: String) -> Scenario.Stats:
+	var stats: Scenario.Stats = Scenario.Stats.new()
+	var dict: Dictionary = inst_to_dict(stats)
+	dict["@path"] = "res://logic/game/maps/scenario.gd"
+	dict["@subpath"] = "Stats"
+	for key: String in dict:
+		if key == "@path" or key == "@subpath":
+			continue
+		dict[key] = progress.get_value(scenatio_id, key)
+	stats = dict_to_inst(dict)
+	return stats
+
+
 func _ready() -> void:
 	config.load(CONFIG_FILE_PATH)
+	progress.load_encrypted_pass(SCENARIO_PROGRESS_FILE, SCENARIO_PROGRESS_PASSWORD)
 	_create_missing_folders()
 
 
