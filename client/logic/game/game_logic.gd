@@ -597,9 +597,15 @@ func _do_state_repairing(local: bool = true) -> void:
 # consume fuel on finish turn
 func _do_state_consuming(local: bool = true) -> void:
 	for unit: Unit in map.units:
-		if unit.stats.uses_fuel_on_turn() and unit.player_owned == player_turns[0]:
-			unit.process_turn_fuel()
-			# here should detect and destroy the unit when fuel is 0 or lower and the unit should be destroyed
+		if unit.player_owned == player_turns[0]:
+			if unit.stats.uses_fuel_on_turn():
+				unit.process_turn_fuel()
+
+			if unit.stats.can_destroy_on_empty_fuel() and unit.stats.fuel<=0:
+				await unit.play_die()
+				await _check_ending_condition_units(unit)
+				unit.queue_free()
+				await unit.tree_exited
 
 	if local:
 		state = GameConst.State.SELECTING
