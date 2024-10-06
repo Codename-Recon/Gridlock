@@ -115,9 +115,6 @@ func can_be_refilled() -> bool:
 func uses_fuel_on_turn() -> bool:
 	return _parent.values.turn_fuel > 0 or _parent.values.hidden_turn_fuel > 0
 
-func uses_fuel_on_turn() -> bool:
-	return _parent.values.turn_fuel > 0 or _parent.values.hidden_turn_fuel>0
-
 func can_destroy_on_empty_fuel() -> bool:
 	# only units that consume fuel in idle can be destroyed if get run of petrol,
 	# in the future, we can have extra properties for that if really needed
