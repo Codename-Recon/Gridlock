@@ -111,6 +111,9 @@ func is_unit_damaged() -> bool:
 
 func can_be_refilled() -> bool:
 	return fuel < _parent.values.fuel or ammo < _parent.values.ammo
+	
+func uses_fuel_on_turn() -> bool:
+	return _parent.values.turn_fuel > 0 or _parent.values.hidden_turn_fuel > 0
 
 func uses_fuel_on_turn() -> bool:
 	return _parent.values.turn_fuel > 0 or _parent.values.hidden_turn_fuel>0
