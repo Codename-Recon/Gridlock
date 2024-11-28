@@ -21,6 +21,11 @@ func _ready() -> void:
 	particle_material.color.g = _global.last_player_won_color.g
 	particle_material.color.b = _global.last_player_won_color.b
 	($Label as Label).text = \"%s %s %s\" %[tr(\"PLAYER\"), _global.last_player_won_name, tr(\"WON\")]
+	
+	if _global.game_mode == GameConst.GameMode.SCENARIO or \\
+		_global.game_mode == GameConst.GameMode.BOOTCAMP or \\
+		_global.game_mode == GameConst.GameMode.CAMPAIGN:
+			_global.save_current_scenario_progress
 
 
 func _process(delta: float) -> void:

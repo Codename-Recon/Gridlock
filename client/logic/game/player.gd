@@ -26,5 +26,15 @@ var ai_difficulty: AiDifficulty = AiDifficulty.EASY
 var color: Color
 
 
+func is_enemy(player: Player) -> bool:
+	if player == self:
+		return false
+	if player.team == 0:
+		return true
+	if player.team != team:
+		return true
+	return false
+
+
 func _ready() -> void:
 	color = ProjectSettings.get_setting("game/player_color")[id - 1]

@@ -34,6 +34,12 @@ func _ready() -> void:
 		GameConst.GameMode.NETWORK:
 			for player: Player in map.players.get_children():
 				player.type = Player.Type.NETWORK
+		GameConst.GameMode.BOOTCAMP:
+			_global.loaded_scenario = ScenarioFile.deserialize(_global.selected_scenario_json)
+		GameConst.GameMode.SCENARIO:
+			_global.loaded_scenario = ScenarioFile.deserialize(_global.selected_scenario_json)
+		GameConst.GameMode.CAMPAIGN:
+			_global.loaded_scenario = ScenarioFile.deserialize(_global.selected_scenario_json)
 	game_input.global_position = map.map_center
 	_global.loaded_map = map
 	map_loaded.emit()

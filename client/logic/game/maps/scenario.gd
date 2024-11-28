@@ -1,6 +1,7 @@
 class_name Scenario
 extends RefCounted
 
+var id: String
 var order: int
 var stats: Stats
 var conditions: Conditions

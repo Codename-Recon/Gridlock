@@ -8,7 +8,7 @@ const TERRAIN_STATS: PackedScene = preload("res://logic/ui/terrain_stats.tscn")
 @export var map_name: String
 @export var author: String
 @export var source: String
-@export var game_round: int = 0  # TODO: Implement this variable in the game instead of the local one in game script
+@export var game_round: int = 0
 @export_multiline var duplicate_result: String = ""
 
 var players: Node

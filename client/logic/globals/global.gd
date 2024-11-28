@@ -16,6 +16,7 @@ var selected_map_json: String
 var selected_scenario_json: String
 var game_mode: GameConst.GameMode
 var loaded_map: Map
+var loaded_scenario: Scenario
 
 var last_player_won_name: String = "X"
 var last_player_won_color: Color = Color.GREEN
@@ -47,9 +48,9 @@ func reload_maps() -> void:
 	_load_scenarios(SCENARIO_CUSTOM_FOLDER_PATH, scenarios)
 
 
-func generate_scenario_id(map_json: String, scenario_json: String) -> String:
-	var md5: String = (map_json + scenario_json).md5_text()
-	return md5
+func save_current_scenario_progress() -> void:
+	var stats: ScenarioProgress = generate_scenario_progress(loaded_map, loaded_scenario)
+	save_scenario_progress(loaded_scenario.id, stats)
 
 
 func save_scenario_progress(scenatio_id: String, stats: ScenarioProgress) -> void:
@@ -73,19 +74,22 @@ func load_scenario_progress(scenatio_id: String) -> ScenarioProgress:
 	stats = dict_to_inst(dict)
 	return stats
 
+
 ## Calculates the scenario score based on rounds and kd value ratio.
-func generate_scenario_progress(rounds: int, kill_value: int, death_value: int, a_round: int, c_round: int) -> ScenarioProgress:
+func generate_scenario_progress(map: Map, scenario: Scenario) -> ScenarioProgress:
+	var killed_value: int = scenario.stats.killed_value
+	var lost_value: int = scenario.stats.lost_value
 	var stats: ScenarioProgress = ScenarioProgress.new()
-	stats.rounds = rounds
-	if rounds < 0 or kill_value < 0 or death_value < 0:
+	if map.game_round < 0 or killed_value < 0 or lost_value < 0:
 		printerr("Rounds, kill value or death value can't be smaller than zero.")
 		return stats
+	stats.round = map.game_round
 		
 	# Calculation kill death score with a ratio. It is possible to have a negative score.
 	# This score is for fine-tuning the final score.
-	if death_value == 0:
-		death_value = 1 # to prevent division by zero
-	var kd_value_ratio: float = float(kill_value) / float(death_value)
+	if lost_value == 0:
+		lost_value = 1 # to prevent division by zero
+	var kd_value_ratio: float = float(killed_value) / float(lost_value)
 	stats.kd_value_ratio = kd_value_ratio
 	var kd_score_scale: int = ProjectSettings.get_setting("global/scenario/kd_score_scale")
 	var kd_score_cap: int = ProjectSettings.get_setting("global/scenario/kd_score_cap")
@@ -94,9 +98,11 @@ func generate_scenario_progress(rounds: int, kill_value: int, death_value: int, 
 		kd_score = kd_score_cap
 	
 	# Calculating the round score based on a linear function
+	var a_round: int = scenario.conditions.a_round
+	var c_round: int = scenario.conditions.c_round
 	var sloap: float = -2 / (3 * (c_round - a_round))
 	var intercept: float = 1 + (2 * a_round) / (3 * (c_round - a_round))
-	var round_score_factor: float = sloap * rounds + intercept
+	var round_score_factor: float = sloap * stats.round + intercept
 	if round_score_factor < 0:
 		round_score_factor = 0
 	var round_score_scale: int = ProjectSettings.get_setting("global/scenario/round_score_scale")
@@ -155,6 +161,6 @@ func _load_scenarios(dir_path: String, container: Dictionary) -> void:
 
 
 class ScenarioProgress extends NumberFix:
-	var rounds: int
+	var round: int
 	var kd_value_ratio: int
 	var score: int

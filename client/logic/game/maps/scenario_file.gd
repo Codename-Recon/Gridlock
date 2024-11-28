@@ -29,6 +29,7 @@ static func load_from_file(file_path: String) -> Array[String]:
 static func serialize(scenario: Scenario) -> String:
 	var scenario_values: ScenarioValues = ScenarioValues.new()
 	scenario_values.version = SCENARIO_VERSION
+	scenario_values.version = scenario.id
 	scenario_values.order = scenario.order
 	
 	var stat_values: StatValues = StatValues.new()
@@ -54,6 +55,7 @@ static func deserialize(json_scenario: String) -> Scenario:
 	dic["@subpath"] = "ScenarioValues"
 	var scenario_values: ScenarioValues = dict_to_inst(dic)
 	
+	scenario.id = scenario_values.id
 	scenario.order = scenario_values.order
 	
 	scenario_values.stats["@path"] = "res://logic/game/maps/scenario_file.gd"
@@ -76,6 +78,7 @@ static func deserialize(json_scenario: String) -> Scenario:
 
 class ScenarioValues extends NumberFix:
 	var version: String
+	var id: String
 	var order: int
 	var stats: Dictionary
 	var conditions: Dictionary
