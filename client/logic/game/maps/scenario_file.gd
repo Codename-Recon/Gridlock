@@ -38,11 +38,8 @@ static func serialize(scenario: Scenario) -> String:
 	
 	var condition_value: ConditionValues = ConditionValues.new()
 	condition_value.max_round = scenario.conditions.max_round
-	
-	var s_rank_stats: StatValues = StatValues.new()
-	s_rank_stats.killed_value = scenario.conditions.s_rank_stats.killed_value
-	s_rank_stats.lost_value = scenario.conditions.s_rank_stats.lost_value
-	condition_value.s_rank_stats = inst_to_dict(s_rank_stats)
+	condition_value.a_round = scenario.conditions.a_round
+	condition_value.c_round = scenario.conditions.c_round
 	
 	scenario_values.conditions = inst_to_dict(condition_value)
 	
@@ -71,13 +68,8 @@ static func deserialize(json_scenario: String) -> Scenario:
 	var condition_values: ConditionValues = dict_to_inst(scenario_values.conditions)
 	scenario.conditions = Scenario.Conditions.new()
 	scenario.conditions.max_round = condition_values.max_round
-	
-	condition_values.s_rank_stats["@path"] = "res://logic/game/maps/scenario_file.gd"
-	condition_values.s_rank_stats["@subpath"] = "StatValues"
-	var s_rank_stats: StatValues = dict_to_inst(condition_values.s_rank_stats)
-	scenario.conditions.s_rank_stats = Scenario.Stats.new()
-	scenario.conditions.s_rank_stats.killed_value = s_rank_stats.killed_value
-	scenario.conditions.s_rank_stats.lost_value = s_rank_stats.lost_value
+	scenario.conditions.a_round = condition_values.a_round
+	scenario.conditions.c_round = condition_values.c_round
 	
 	return scenario
 
@@ -97,4 +89,5 @@ class StatValues extends NumberFix:
 
 class ConditionValues extends NumberFix:
 	var max_round: int
-	var s_rank_stats: Dictionary
+	var a_round: int
+	var c_round: int

@@ -52,7 +52,7 @@ func generate_scenario_id(map_json: String, scenario_json: String) -> String:
 	return md5
 
 
-func save_scenario_progress(scenatio_id: String, stats: Scenario.Stats) -> void:
+func save_scenario_progress(scenatio_id: String, stats: ScenarioProgress) -> void:
 	var dict: Dictionary = inst_to_dict(stats)
 	for key: String in dict:
 		if key == "@path" or key == "@subpath":
@@ -71,6 +71,39 @@ func load_scenario_progress(scenatio_id: String) -> ScenarioProgress:
 			continue
 		dict[key] = progress.get_value(scenatio_id, key)
 	stats = dict_to_inst(dict)
+	return stats
+
+## Calculates the scenario score based on rounds and kd value ratio.
+func generate_scenario_progress(rounds: int, kill_value: int, death_value: int, a_round: int, c_round: int) -> ScenarioProgress:
+	var stats: ScenarioProgress = ScenarioProgress.new()
+	stats.rounds = rounds
+	if rounds < 0 or kill_value < 0 or death_value < 0:
+		printerr("Rounds, kill value or death value can't be smaller than zero.")
+		return stats
+		
+	# Calculation kill death score with a ratio. It is possible to have a negative score.
+	# This score is for fine-tuning the final score.
+	if death_value == 0:
+		death_value = 1 # to prevent division by zero
+	var kd_value_ratio: float = float(kill_value) / float(death_value)
+	stats.kd_value_ratio = kd_value_ratio
+	var kd_score_scale: int = ProjectSettings.get_setting("global/scenario/kd_score_scale")
+	var kd_score_cap: int = ProjectSettings.get_setting("global/scenario/kd_score_cap")
+	var kd_score: int = int(kd_value_ratio * kd_score_scale) - kd_score_scale
+	if kd_score > kd_score_cap:
+		kd_score = kd_score_cap
+	
+	# Calculating the round score based on a linear function
+	var sloap: float = -2 / (3 * (c_round - a_round))
+	var intercept: float = 1 + (2 * a_round) / (3 * (c_round - a_round))
+	var round_score_factor: float = sloap * rounds + intercept
+	if round_score_factor < 0:
+		round_score_factor = 0
+	var round_score_scale: int = ProjectSettings.get_setting("global/scenario/round_score_scale")
+	var round_score: int = int(round_score_factor * round_score_scale)
+	
+	stats.score = round_score + kd_score
+	
 	return stats
 
 

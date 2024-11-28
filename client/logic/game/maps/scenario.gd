@@ -13,4 +13,5 @@ class Stats:
 
 class Conditions:
 	var max_round: int
-	var s_rank_stats: Stats
+	var a_round: int
+	var c_round: int
