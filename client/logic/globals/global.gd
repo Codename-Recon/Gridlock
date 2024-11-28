@@ -61,8 +61,8 @@ func save_scenario_progress(scenatio_id: String, stats: Scenario.Stats) -> void:
 	progress.save_encrypted_pass(SCENARIO_PROGRESS_FILE, SCENARIO_PROGRESS_PASSWORD)
 
 
-func load_scenario_progress(scenatio_id: String) -> Scenario.Stats:
-	var stats: Scenario.Stats = Scenario.Stats.new()
+func load_scenario_progress(scenatio_id: String) -> ScenarioProgress:
+	var stats: ScenarioProgress = ScenarioProgress.new()
 	var dict: Dictionary = inst_to_dict(stats)
 	dict["@path"] = "res://logic/globals/global.gd"
 	dict["@subpath"] = "ScenarioProgress"
