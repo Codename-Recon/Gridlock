@@ -7,11 +7,8 @@ var conditions: Conditions
 
 
 class Stats:
-	var killed_units: int
 	var killed_value: int
-	var lost_units: int
 	var lost_value: int
-	var captured: int
 
 
 class Conditions:

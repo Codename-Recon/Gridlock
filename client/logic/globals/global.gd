@@ -64,8 +64,8 @@ func save_scenario_progress(scenatio_id: String, stats: Scenario.Stats) -> void:
 func load_scenario_progress(scenatio_id: String) -> Scenario.Stats:
 	var stats: Scenario.Stats = Scenario.Stats.new()
 	var dict: Dictionary = inst_to_dict(stats)
-	dict["@path"] = "res://logic/game/maps/scenario.gd"
-	dict["@subpath"] = "Stats"
+	dict["@path"] = "res://logic/globals/global.gd"
+	dict["@subpath"] = "ScenarioProgress"
 	for key: String in dict:
 		if key == "@path" or key == "@subpath":
 			continue
@@ -119,3 +119,9 @@ func _load_scenarios(dir_path: String, container: Dictionary) -> void:
 		var map: Map = MapFile.deserialize(map_json)
 		container[map.map_name] = {"map": map_json, "scenario": scenario_json}
 		map.queue_free()
+
+
+class ScenarioProgress extends NumberFix:
+	var rounds: int
+	var kd_value_ratio: int
+	var score: int

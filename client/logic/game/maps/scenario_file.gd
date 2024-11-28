@@ -32,22 +32,16 @@ static func serialize(scenario: Scenario) -> String:
 	scenario_values.order = scenario.order
 	
 	var stat_values: StatValues = StatValues.new()
-	stat_values.killed_units = scenario.stats.killed_units
 	stat_values.killed_value = scenario.stats.killed_value
-	stat_values.lost_units = scenario.stats.lost_units
 	stat_values.lost_value = scenario.stats.lost_value
-	stat_values.captured = scenario.stats.captured
 	scenario_values.stats = inst_to_dict(stat_values)
 	
 	var condition_value: ConditionValues = ConditionValues.new()
 	condition_value.max_round = scenario.conditions.max_round
 	
 	var s_rank_stats: StatValues = StatValues.new()
-	s_rank_stats.killed_units = scenario.conditions.s_rank_stats.killed_units
 	s_rank_stats.killed_value = scenario.conditions.s_rank_stats.killed_value
-	s_rank_stats.lost_units = scenario.conditions.s_rank_stats.lost_units
 	s_rank_stats.lost_value = scenario.conditions.s_rank_stats.lost_value
-	s_rank_stats.captured = scenario.conditions.s_rank_stats.captured
 	condition_value.s_rank_stats = inst_to_dict(s_rank_stats)
 	
 	scenario_values.conditions = inst_to_dict(condition_value)
@@ -69,11 +63,8 @@ static func deserialize(json_scenario: String) -> Scenario:
 	scenario_values.stats["@subpath"] = "StatValues"
 	var stat_values: StatValues = dict_to_inst(scenario_values.stats)
 	scenario.stats = Scenario.Stats.new()
-	scenario.stats.killed_units = stat_values.killed_units
 	scenario.stats.killed_value = stat_values.killed_value
-	scenario.stats.lost_units = stat_values.lost_units
 	scenario.stats.lost_value = stat_values.lost_value
-	scenario.stats.captured = stat_values.captured
 	
 	scenario_values.conditions["@path"] = "res://logic/game/maps/scenario_file.gd"
 	scenario_values.conditions["@subpath"] = "ConditionValues"
@@ -85,11 +76,8 @@ static func deserialize(json_scenario: String) -> Scenario:
 	condition_values.s_rank_stats["@subpath"] = "StatValues"
 	var s_rank_stats: StatValues = dict_to_inst(condition_values.s_rank_stats)
 	scenario.conditions.s_rank_stats = Scenario.Stats.new()
-	scenario.conditions.s_rank_stats.killed_units = s_rank_stats.killed_units
 	scenario.conditions.s_rank_stats.killed_value = s_rank_stats.killed_value
-	scenario.conditions.s_rank_stats.lost_units = s_rank_stats.lost_units
 	scenario.conditions.s_rank_stats.lost_value = s_rank_stats.lost_value
-	scenario.conditions.s_rank_stats.captured = s_rank_stats.captured
 	
 	return scenario
 
@@ -103,11 +91,8 @@ class ScenarioValues extends NumberFix:
 
 
 class StatValues extends NumberFix:
-	var killed_units: int
 	var killed_value: int
-	var lost_units: int
 	var lost_value: int
-	var captured: int
 
 
 class ConditionValues extends NumberFix:
