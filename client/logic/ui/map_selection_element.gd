@@ -1,7 +1,7 @@
 class_name MapSelectableElement
 extends SelectableElement
 
-signal map_selected(map_json: String)
+signal map_selected(map_json: String, scenario_json: String)
 
 enum IconType{
 	MAP,
@@ -16,6 +16,7 @@ enum IconType{
 @export var icons: Array[Texture]
 
 var map_json: String
+var scenario_json: String
 
 @onready var title: Label = $Element/Title
 @onready var select_overlay: ColorRect = $SelectOverlay
@@ -30,4 +31,4 @@ func _ready() -> void:
 
 
 func _on_selected() -> void:
-	map_selected.emit(map_json)
+	map_selected.emit(map_json, scenario_json)

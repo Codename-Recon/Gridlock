@@ -25,7 +25,7 @@ func _ready() -> void:
 	if _global.game_mode == GameConst.GameMode.SCENARIO or \\
 		_global.game_mode == GameConst.GameMode.BOOTCAMP or \\
 		_global.game_mode == GameConst.GameMode.CAMPAIGN:
-			_global.save_current_scenario_progress
+			_global.save_current_scenario_progress()
 
 
 func _process(delta: float) -> void:

@@ -56,8 +56,3 @@ func _set_music() -> void:
 			new_music = musics.pick_random()
 	Music.change_music(new_music)
 	_last_music = new_music
-
-
-func _exit_tree() -> void:
-	_global.loaded_map.queue_free()
-	_global.loaded_map = null
