@@ -33,7 +33,7 @@ var scenario_json: String
 
 func lock() -> void:
 	icon = IconType.LOCKED
-
+	deactivated = true
 
 func _ready() -> void:
 	super()
