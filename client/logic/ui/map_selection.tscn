@@ -72,23 +72,49 @@ func _on_visibility_changed() -> void:
 		if not last_selected_map:
 			_button_next.disabled = true
 		_clear_map_list()
-		if game_mode == GameConst.GameMode.BOOTCAMP:
-			for bootcamp_name: String in _global.bootcamps:
-				var element: MapSelectableElement = map_select_element_scene.instantiate()
-				element.map_json = _global.bootcamps[bootcamp_name][\"map\"]
-				element.scenario_json = _global.bootcamps[bootcamp_name][\"scenario\"]
-				element.map_selected.connect(_on_element_clicked)
-				v_box_container.add_child(element)
-				_add_v_split()
-		else:
-			for map_name: String in _global.maps:
-				var element: MapSelectableElement = map_select_element_scene.instantiate()
-				element.map_json = _global.maps[map_name]
-				element.map_selected.connect(_on_element_clicked)
-				v_box_container.add_child(element)
-				_add_v_split()
+		match game_mode:
+			GameConst.GameMode.BOOTCAMP:
+				var pool: Array = []
+				for bootcamp_name: String in _global.bootcamps:
+					pool.append([
+						_global.bootcamps[bootcamp_name][\"map\"], 
+						_global.bootcamps[bootcamp_name][\"scenario\"]
+					])
+				# Sort bootcamp missions, so they can be locked by the last unplayed mission
+				pool.sort_custom(_sort_bootcamp_maps)
+				
+				var locking: bool = false
+				for scenario_pack: Array in pool:
+					var element: MapSelectableElement = map_select_element_scene.instantiate()
+					element.map_json = scenario_pack[0]
+					element.scenario_json = scenario_pack[1]
+					element.game_mode = game_mode
+					element.map_selected.connect(_on_element_clicked)
+					v_box_container.add_child(element)
+					_add_v_split()
+					if locking:
+						element.lock()
+						continue
+					# Check if current mission has been finished. If not, lock other missions
+					var scenario: Scenario = ScenarioFile.deserialize(element.scenario_json)
+					if not _global.has_scenario_progress(scenario.id):
+						locking = true
+			_:
+				for map_name: String in _global.maps:
+					var element: MapSelectableElement = map_select_element_scene.instantiate()
+					element.map_json = _global.maps[map_name]
+					element.game_mode = game_mode
+					element.map_selected.connect(_on_element_clicked)
+					v_box_container.add_child(element)
+					_add_v_split()
 	else:
 		last_selected_map = null
+
+
+func _sort_bootcamp_maps(a: Array, b: Array) -> bool:
+	var scenario_a: Scenario = ScenarioFile.deserialize(a[1] as String)
+	var scenario_b: Scenario = ScenarioFile.deserialize(b[1] as String)
+	return scenario_a.order < scenario_b.order
 "
 
 [sub_resource type="GDScript" id="GDScript_6sf6c"]

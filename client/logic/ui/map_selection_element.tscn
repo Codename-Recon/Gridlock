@@ -107,7 +107,7 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qclkp")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Element/IconWindow/Panel"]
+[node name="IconRect" type="TextureRect" parent="Element/IconWindow/Panel"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0

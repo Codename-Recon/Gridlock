@@ -15,11 +15,24 @@ enum IconType{
 
 @export var icons: Array[Texture]
 
+var icon: IconType:
+	set(value):
+		icon = value
+		icon_rect.texture = icons[int(value)]
+
+var _global: GlobalGlobal = Global
+
+var game_mode: GameConst.GameMode
 var map_json: String
 var scenario_json: String
 
 @onready var title: Label = $Element/Title
 @onready var select_overlay: ColorRect = $SelectOverlay
+@onready var icon_rect: TextureRect = $Element/IconWindow/Panel/IconRect
+
+
+func lock() -> void:
+	icon = IconType.LOCKED
 
 
 func _ready() -> void:
@@ -28,6 +41,21 @@ func _ready() -> void:
 	var map: Map = MapFile.deserialize(map_json)
 	title.text = map.map_name
 	map.queue_free()
+	match game_mode:
+		GameConst.GameMode.BOOTCAMP:
+			var scenario: Scenario = ScenarioFile.deserialize(scenario_json)
+			if _global.has_scenario_progress(scenario.id):
+				var progress: GlobalGlobal.ScenarioProgress = _global.load_scenario_progress(scenario.id)
+				if progress.score < 500:
+					icon = IconType.C_RANK
+				elif progress.score < 1000:
+					icon = IconType.B_RANK
+				elif progress.score < 1500:
+					icon = IconType.A_RANK
+				else:
+					icon = IconType.S_RANK
+			else:
+				icon = IconType.UNKNOWN_RANK
 
 
 func _on_selected() -> void:

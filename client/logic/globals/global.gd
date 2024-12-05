@@ -53,16 +53,20 @@ func save_current_scenario_progress() -> void:
 	save_scenario_progress(loaded_scenario.id, stats)
 
 
-func save_scenario_progress(scenatio_id: String, stats: ScenarioProgress) -> void:
+func save_scenario_progress(scenario_id: String, stats: ScenarioProgress) -> void:
 	var dict: Dictionary = inst_to_dict(stats)
 	for key: String in dict:
 		if key == "@path" or key == "@subpath":
 			continue
-		progress.set_value(scenatio_id, key, dict[key])
+		progress.set_value(scenario_id, key, dict[key])
 	progress.save_encrypted_pass(SCENARIO_PROGRESS_FILE, SCENARIO_PROGRESS_PASSWORD)
 
 
-func load_scenario_progress(scenatio_id: String) -> ScenarioProgress:
+func has_scenario_progress(scenario_id: String) -> bool:
+	return progress.has_section(scenario_id)
+
+
+func load_scenario_progress(scenario_id: String) -> ScenarioProgress:
 	var stats: ScenarioProgress = ScenarioProgress.new()
 	var dict: Dictionary = inst_to_dict(stats)
 	dict["@path"] = "res://logic/globals/global.gd"
@@ -70,7 +74,7 @@ func load_scenario_progress(scenatio_id: String) -> ScenarioProgress:
 	for key: String in dict:
 		if key == "@path" or key == "@subpath":
 			continue
-		dict[key] = progress.get_value(scenatio_id, key)
+		dict[key] = progress.get_value(scenario_id, key)
 	stats = dict_to_inst(dict)
 	return stats
 
@@ -155,9 +159,8 @@ func _load_scenarios(dir_path: String, container: Dictionary) -> void:
 		)
 		var map_json: String = data[0]
 		var scenario_json: String = data[1]
-		var map: Map = MapFile.deserialize(map_json)
-		container[map.map_name] = {"map": map_json, "scenario": scenario_json}
-		map.queue_free()
+		var scenario: Scenario = ScenarioFile.deserialize(scenario_json)
+		container[scenario.id] = {"map": map_json, "scenario": scenario_json}
 
 
 class ScenarioProgress extends NumberFix:

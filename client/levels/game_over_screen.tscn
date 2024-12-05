@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://mg07c0df86gt"]
+[gd_scene load_steps=10 format=3 uid="uid://mg07c0df86gt"]
 
 [ext_resource type="AudioStream" uid="uid://b1pk5opdj7u3v" path="res://assets/musics/awesomeness.wav" id="1_2btkr"]
 [ext_resource type="Texture2D" uid="uid://c13usnq45dkxh" path="res://assets/images/game/primitives/rect.png" id="1_yktdt"]
+[ext_resource type="PackedScene" uid="uid://crj13jqmktmtn" path="res://levels/menu.tscn" id="2_iww1s"]
 
 [sub_resource type="GDScript" id="GDScript_esdbq"]
 script/source = "extends Control
@@ -30,9 +31,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_released(\"select_first\"):
-		# TODO: Using PackedScene crashes the game. It looks like because of a scene loop (menu -> game -> game over -> menu...)
-		get_tree().change_scene_to_file(\"res://levels/menu.tscn\")
-	
+		get_tree().change_scene_to_packed(menu_scene)
 "
 
 [sub_resource type="Animation" id="Animation_tncdr"]
@@ -97,6 +96,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_esdbq")
 music = ExtResource("1_2btkr")
+menu_scene = ExtResource("2_iww1s")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
