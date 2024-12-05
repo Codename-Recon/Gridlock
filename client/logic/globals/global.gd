@@ -48,9 +48,19 @@ func reload_maps() -> void:
 	_load_scenarios(SCENARIO_CUSTOM_FOLDER_PATH, scenarios)
 
 
-func save_current_scenario_progress() -> void:
+## Tries to save the current progress, if the score has imporved. 
+## Returns false if the progress has not improved
+func save_current_scenario_progress() -> bool:
 	var stats: ScenarioProgress = generate_scenario_progress(loaded_map, loaded_scenario)
-	save_scenario_progress(loaded_scenario.id, stats)
+	if has_scenario_progress(loaded_scenario.id):
+		var old_stats: ScenarioProgress = load_scenario_progress(loaded_scenario.id)
+		if old_stats.score > stats.score:
+			return false
+		save_scenario_progress(loaded_scenario.id, stats)
+		return true
+	else:
+		save_scenario_progress(loaded_scenario.id, stats)
+		return true
 
 
 func save_scenario_progress(scenario_id: String, stats: ScenarioProgress) -> void:
