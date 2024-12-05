@@ -149,8 +149,11 @@ func _process_human(delta: float) -> void:
 		GameConst.State.EARNING:
 			await _do_state_earning()
 		GameConst.State.REPAIRING:
+			# This should not be in the Selecting? 
 			_game_input.enable_all()
 			await _do_state_repairing()
+		GameConst.State.CONSUMING:
+			await _do_state_consuming()
 		GameConst.State.SELECTING:
 			match event:
 				GameConst.Event.CLICKED_LEFT:
@@ -231,6 +234,8 @@ func _process_ai(delta: float) -> void:
 			_ai_on_way_capture_terrains = []
 		GameConst.State.REPAIRING:
 			await _do_state_repairing()
+		GameConst.State.CONSUMING:
+			await _do_state_consuming()
 		GameConst.State.SELECTING:
 			match ai_phase:
 				0:
@@ -479,6 +484,8 @@ func _process_network(delta: float) -> void:
 			await _do_state_earning(false)
 		GameConst.State.REPAIRING:
 			await _do_state_repairing(false)
+		GameConst.State.CONSUMING:
+			await _do_state_consuming()
 		GameConst.State.SELECTING:
 			match event:
 				GameConst.Event.CLICKED_LEFT:
@@ -583,6 +590,22 @@ func _do_state_repairing(local: bool = true) -> void:
 				unit.get_terrain().add_child(info_refill)
 				unit.refill()
 				await info_refill.finished
+	if local:
+		state = GameConst.State.CONSUMING
+
+# consume fuel on finish turn
+func _do_state_consuming(local: bool = true) -> void:
+	for unit: Unit in map.units:
+		if unit.player_owned == player_turns[0]:
+			if unit.stats.uses_fuel_on_turn():
+				unit.process_turn_fuel()
+
+			if unit.stats.can_destroy_on_empty_fuel() and unit.stats.fuel<=0:
+				await unit.play_die()
+				await _check_ending_condition_units(unit)
+				unit.queue_free()
+				await unit.tree_exited
+
 	if local:
 		state = GameConst.State.SELECTING
 

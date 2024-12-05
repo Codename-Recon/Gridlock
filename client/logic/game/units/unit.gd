@@ -208,6 +208,11 @@ func repair(health: int) -> void:
 	sound.play("Repair")
 	stats.health += health
 
+func process_turn_fuel() -> void:
+	if stats.is_hidden:
+		stats.fuel -= values.hidden_turn_fuel
+	else:
+		stats.fuel -= values.turn_fuel
 
 # capture building on terrain currently standing on. returns true on success
 func capture() -> bool:

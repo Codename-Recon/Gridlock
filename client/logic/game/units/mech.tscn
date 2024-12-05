@@ -18,7 +18,7 @@ shader_parameter/shift_level_h = 0.326
 shader_parameter/shift_level_s = 0.332
 shader_parameter/shift_level_b = 0.557
 shader_parameter/old_color = Color(0.678553, 0.082063, 0.560815, 1)
-shader_parameter/new_color = Color(0, 0, 1, 1)
+shader_parameter/new_color = Color(1, 0, 0, 1)
 shader_parameter/shift_shades_threshold = 1.0
 shader_parameter/shift_shades_factor = 1.0
 
@@ -980,16 +980,13 @@ material = SubResource("ShaderMaterial_ratio")
 sprite_frames = SubResource("SpriteFrames_cet6y")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.467114
 offset = Vector2(0, -2)
-flip_h = true
 
 [node name="UnitShadow" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.2)
 z_index = -1
 scale = Vector2(0.95, 0.6175)
 offset = Vector2(0, 4)
-flip_h = true
 script = ExtResource("4_smmuv")
 shadow_alpha = 0.2
 shadow_scale = 0.95
