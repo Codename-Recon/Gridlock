@@ -2,6 +2,18 @@
 class_name Player
 extends Node
 
+enum Type {
+	HUMAN,
+	AI,
+	NETWORK,
+}
+
+enum AiDifficulty {
+	EASY,
+	MEDIUM,
+	HARD,
+}
+
 var id: int:
 	set(value):
 		color = ProjectSettings.get_setting("game/player_color")[value - 1]
@@ -9,9 +21,19 @@ var id: int:
 
 var money: int = 0
 var team: int = 0
-var input_type: GameConst.InputType = GameConst.InputType.HUMAN
-var ai_difficulty: GameConst.AiDifficulty = GameConst.AiDifficulty.EASY
+var type: Type = Type.HUMAN
+var ai_difficulty: AiDifficulty = AiDifficulty.EASY
 var color: Color
+
+
+func is_enemy(player: Player) -> bool:
+	if player == self:
+		return false
+	if player.team == 0:
+		return true
+	if player.team != team:
+		return true
+	return false
 
 
 func _ready() -> void:

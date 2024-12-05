@@ -37,20 +37,7 @@ enum Event {
 	CLICKED_END_ROUND,
 }
 
-enum InputType {
-	HUMAN,
-	AI,
-	NETWORK,
-}
-
-enum AiDifficulty {
-	SELECTABLE,
-	EASY,
-	MEDIUM,
-	HARD,
-}
-
-enum GameMode { SINGLE, HOTSEAT, NETWORK }
+enum GameMode { SINGLE, HOTSEAT, NETWORK, SCENARIO, BOOTCAMP, CAMPAIGN }
 
 # TODO: Should be generated
 enum Weather { CLEAR, RAIN, SNOW }

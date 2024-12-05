@@ -29,7 +29,7 @@ Music="*res://logic/globals/music.tscn"
 Global="*res://logic/globals/global.tscn"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 Multiplayer="*res://logic/globals/multiplayer.tscn"
-Messages="*res://logic/globals/messages.tscn"
+Messages="*res://logic/globals/messages/messages.tscn"
 Types="*res://logic/globals/types.tscn"
 
 [debug]
@@ -109,6 +109,9 @@ audio/music_tween_time=3.0
 audio/sound_min_value=-70.0
 audio/sound_max_value=0.0
 network/https=true
+scenario/kd_score_scale=100
+scenario/kd_score_cap=500
+scenario/round_score_scale=1500
 
 [gui]
 

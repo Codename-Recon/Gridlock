@@ -17,8 +17,6 @@ script/source = "extends Control
 @onready var v_box_container: VBoxContainer = %VBoxContainer
 @onready var spawn_spot: Marker2D = %SpawnSpot
 
-
-
 var last_selected_map: PackedScene
 var last_instantiated_map: Map
 
@@ -56,7 +54,7 @@ func _on_button_start_pressed() -> void:
 		get_tree().change_scene_to_packed(_global.game_scene)
 
 
-func _on_element_clicked(map_json: String) -> void:
+func _on_element_clicked(map_json: String, scenario_json: String) -> void:
 	for child: Node in spawn_spot.get_children():
 		child.queue_free()
 	if last_instantiated_map:
@@ -64,6 +62,7 @@ func _on_element_clicked(map_json: String) -> void:
 	last_instantiated_map = MapFile.deserialize(map_json)
 	spawn_spot.add_child(last_instantiated_map)
 	_global.selected_map_json = map_json
+	_global.selected_scenario_json = scenario_json
 	_global.game_mode = game_mode
 	_button_next.disabled = false
 	camera_2d.position = last_instantiated_map.map_center
@@ -73,14 +72,49 @@ func _on_visibility_changed() -> void:
 		if not last_selected_map:
 			_button_next.disabled = true
 		_clear_map_list()
-		for map_name: String in _global.maps:
-			var element: MapSelectableElement = map_select_element_scene.instantiate()
-			element.map_json = _global.maps[map_name]
-			element.map_selected.connect(_on_element_clicked)
-			v_box_container.add_child(element)
-			_add_v_split()
+		match game_mode:
+			GameConst.GameMode.BOOTCAMP:
+				var pool: Array = []
+				for bootcamp_name: String in _global.bootcamps:
+					pool.append([
+						_global.bootcamps[bootcamp_name][\"map\"], 
+						_global.bootcamps[bootcamp_name][\"scenario\"]
+					])
+				# Sort bootcamp missions, so they can be locked by the last unplayed mission
+				pool.sort_custom(_sort_bootcamp_maps)
+				
+				var locking: bool = false
+				for scenario_pack: Array in pool:
+					var element: MapSelectableElement = map_select_element_scene.instantiate()
+					element.map_json = scenario_pack[0]
+					element.scenario_json = scenario_pack[1]
+					element.game_mode = game_mode
+					element.map_selected.connect(_on_element_clicked)
+					v_box_container.add_child(element)
+					_add_v_split()
+					if locking:
+						element.lock()
+						continue
+					# Check if current mission has been finished. If not, lock other missions
+					var scenario: Scenario = ScenarioFile.deserialize(element.scenario_json)
+					if not _global.has_scenario_progress(scenario.id):
+						locking = true
+			_:
+				for map_name: String in _global.maps:
+					var element: MapSelectableElement = map_select_element_scene.instantiate()
+					element.map_json = _global.maps[map_name]
+					element.game_mode = game_mode
+					element.map_selected.connect(_on_element_clicked)
+					v_box_container.add_child(element)
+					_add_v_split()
 	else:
 		last_selected_map = null
+
+
+func _sort_bootcamp_maps(a: Array, b: Array) -> bool:
+	var scenario_a: Scenario = ScenarioFile.deserialize(a[1] as String)
+	var scenario_b: Scenario = ScenarioFile.deserialize(b[1] as String)
+	return scenario_a.order < scenario_b.order
 "
 
 [sub_resource type="GDScript" id="GDScript_6sf6c"]
@@ -221,6 +255,6 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="Menu/ButtonNext" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="Menu/ButtonBack" to="." method="_on_button_back_pressed"]

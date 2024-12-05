@@ -103,7 +103,6 @@ func create_tile_map_by_map(new_map: Map) -> void:
 			var atlas_pos: Vector2i = source.get_tile_id(idx)
 			tile_map.set_cell(cell, 0, atlas_pos)
 	_tile_buffer = _create_tile_buffer()
-	map = new_map
 
 
 func _ready() -> void:

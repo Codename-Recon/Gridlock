@@ -32,12 +32,12 @@ var event: GameConst.Event = GameConst.Event.NONE:
 			print_debug("Event %s" % GameConst.Event.keys()[value])
 			event = value
 
-var input: GameConst.InputType = GameConst.InputType.HUMAN:
+var input: Player.Type = Player.Type.HUMAN:
 	set(value):
 		print_debug(
 			(
 				"Input changed from %s to %s"
-				% [GameConst.InputType.keys()[input], GameConst.InputType.keys()[value]]
+				% [Player.Type.keys()[input], Player.Type.keys()[value]]
 			)
 		)
 		input = value
@@ -66,7 +66,6 @@ var join_terrains: Array[Terrain]
 var _move_arrow_node: MoveArrow
 var map: Map
 var player_turns: Array[Player]
-var turn_round: int = 0
 var own_player_id: int
 
 var _state_event_id: int = 0
@@ -108,11 +107,11 @@ func _process(delta: float) -> void:
 		if not _fsm_blocked:
 			_fsm_blocked = true
 			match input:
-				GameConst.InputType.HUMAN:
+				Player.Type.HUMAN:
 					await _process_human(delta)
-				GameConst.InputType.AI:
+				Player.Type.AI:
 					await _process_ai(delta)
-				GameConst.InputType.NETWORK:
+				Player.Type.NETWORK:
 					await _process_network(delta)
 			_fsm_blocked = false
 
@@ -803,6 +802,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 						last_selected_unit = null
 						attacking_unit.play_die()
 						await attacking_unit.died
+						_handle_scenario_kd_value(attacking_unit)
 						await _check_ending_condition_units(attacking_unit)
 						attacking_unit.queue_free()
 						await attacking_unit.tree_exited
@@ -810,6 +810,7 @@ func _do_state_attacking_clicked_left(local: bool = true) -> void:
 		else:
 			defending_unit.play_die()
 			await defending_unit.died
+			_handle_scenario_kd_value(defending_unit)
 			if defending_unit.is_capturing():
 				defending_unit.uncapture()
 			await _check_ending_condition_units(defending_unit)
@@ -1082,13 +1083,12 @@ func _do_state_ending(local: bool = true) -> void:
 	_unrefill()
 	_unenter()
 	_undeploy()
-	turn_round += 1
-	# TODO: change players not to be packed scenes, so they don't have to be instantiated to get some information (maybe a pool of already instantiated players...)
+	map.game_round += 1
 	_round_label.player_name = str(player_turns[0].id)
 	_round_rect.color.r = player_turns[0].color.r
 	_round_rect.color.g = player_turns[0].color.g
 	_round_rect.color.b = player_turns[0].color.b
-	_round_number_label.text = str(turn_round)
+	_round_number_label.text = str(map.game_round)
 	_round_number_label.add_theme_color_override("font_color", player_turns[0].color)
 	_money_label.text = str(player_turns[0].money)
 	_money_label.add_theme_color_override("font_color", player_turns[0].color)
@@ -1098,9 +1098,9 @@ func _do_state_ending(local: bool = true) -> void:
 	_calculate_all_unit_possible_move_terrain()
 	await round_change_ended
 	# changing to input type (human, ai or network)
-	input = player_turns[0].input_type
+	input = player_turns[0].type
 	# has to check with input (local doesn't work) since it's still in the network state machine
-	if input != GameConst.InputType.NETWORK:
+	if input != Player.Type.NETWORK:
 		state = GameConst.State.EARNING
 
 
@@ -1271,7 +1271,7 @@ func _create_and_set_attack_area(
 		if target_terrain.get_none_diagonal_distance(unit.get_terrain()) > 0:
 			if not unit.values.can_move_and_attack:
 				return
-	var possible_terrains: Array[Terrain] = _global.last_loaded_map.terrains
+	var possible_terrains: Array[Terrain] = _global.loaded_map.terrains
 	possible_terrains = Terrain.filter_attackable_terrains(possible_terrains, unit, target_terrain)
 	for terrain: Terrain in possible_terrains:
 		if not terrain:
@@ -1433,8 +1433,8 @@ func _on_game_map_loaded() -> void:
 	# set network players, so one network player is human
 	_set_network_player_stats()
 	# at the beginning the state starts with end game (for animation aso.)
-	if player_turns[0].input_type == GameConst.InputType.NETWORK:
-		input = player_turns[0].input_type
+	if player_turns[0].type == Player.Type.NETWORK:
+		input = player_turns[0].type
 	else:
 		state = GameConst.State.ENDING
 	# set first player back so it starts with first player with a turn
@@ -1608,6 +1608,20 @@ func _check_ending_condition_units(lost_unit: Unit) -> void:
 		await _handle_player_death(lost_unit.player_owned)
 
 
+func _handle_scenario_kd_value(lost_unit: Unit) -> void:
+	if _global.game_mode == GameConst.GameMode.SCENARIO or \
+	_global.game_mode == GameConst.GameMode.BOOTCAMP or \
+	_global.game_mode == GameConst.GameMode.CAMPAIGN:
+		if lost_unit.player_owned == map.get_player(1):
+			_global.loaded_scenario.stats.lost_value += lost_unit.values.cost
+		elif lost_unit.player_owned.team == 0:
+			_global.loaded_scenario.stats.killed_value += lost_unit.values.cost
+		elif lost_unit.player_owned.team == map.get_player(1).team:
+			_global.loaded_scenario.stats.lost_value += lost_unit.values.cost
+		else:
+			_global.loaded_scenario.stats.killed_value += lost_unit.values.cost
+
+
 ## Handles the death of a player and invokes game over screen when a winner exists
 func _handle_player_death(player: Player) -> void:
 	player_turns.erase(player)
@@ -1621,13 +1635,13 @@ func _handle_player_death(player: Player) -> void:
 
 
 func _set_network_player_stats() -> void:
-	if player_turns[0].input_type == GameConst.InputType.NETWORK:
+	if player_turns[0].type == Player.Type.NETWORK:
 		if _multiplayer.client_role == _multiplayer.ClientRole.HOST:
-			player_turns[0].input_type = GameConst.InputType.HUMAN
+			player_turns[0].type = Player.Type.HUMAN
 			own_player_id = player_turns[0].id
-	if player_turns[1].input_type == GameConst.InputType.NETWORK:
+	if player_turns[1].type == Player.Type.NETWORK:
 		if _multiplayer.client_role == _multiplayer.ClientRole.CLIENT:
-			player_turns[1].input_type = GameConst.InputType.HUMAN
+			player_turns[1].type = Player.Type.HUMAN
 			own_player_id = player_turns[1].id
 
 

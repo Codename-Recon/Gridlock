@@ -1,5 +1,4 @@
 @icon("res://assets/images/icons/nodes/layers-outline.svg")
-@tool
 class_name Map
 extends Node2D
 
@@ -9,7 +8,7 @@ const TERRAIN_STATS: PackedScene = preload("res://logic/ui/terrain_stats.tscn")
 @export var map_name: String
 @export var author: String
 @export var source: String
-@export var game_round: int = 0  # TODO: Implement this variable in the game instead of the local one in game script
+@export var game_round: int = 0
 @export_multiline var duplicate_result: String = ""
 
 var players: Node
@@ -275,16 +274,14 @@ func sort_terrain_by_position() -> void:
 		move_child(children[i], i)
 
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		if not has_node("Players"):
-			_players_node = Node.new()
-			_players_node.name = "Players"
-			add_child(_players_node)
-			players = _players_node
-		else:
-			players = get_node("Players")
-		_sort_players()
-		_global.last_loaded_map = self
+	if not has_node("Players"):
+		_players_node = Node.new()
+		_players_node.name = "Players"
+		add_child(_players_node)
+		players = _players_node
+	else:
+		players = get_node("Players")
+	_sort_players()
 
 
 func _init() -> void:

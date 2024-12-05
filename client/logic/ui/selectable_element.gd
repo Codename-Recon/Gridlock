@@ -17,14 +17,17 @@ func _ready() -> void:
 
 
 func _gui_input(event: InputEvent) -> void:
+	if deactivated:
+		return
 	if event.is_action_pressed("select_first"):
 		selected.emit()
 
 
 func _on_mouse_entered() -> void:
-	if not deactivated:
-		entered.emit(self)
-		_select_overlay.show()
+	if deactivated:
+		return
+	entered.emit(self)
+	_select_overlay.show()
 
 
 func _on_mouse_exited() -> void:
