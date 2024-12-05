@@ -1589,7 +1589,11 @@ func _handle_scenario_kd_value(lost_unit: Unit) -> void:
 	if _global.game_mode == GameConst.GameMode.SCENARIO or \
 	_global.game_mode == GameConst.GameMode.BOOTCAMP or \
 	_global.game_mode == GameConst.GameMode.CAMPAIGN:
-		if lost_unit.player_owned.team == map.get_player(1).team:
+		if lost_unit.player_owned == map.get_player(1):
+			_global.loaded_scenario.stats.lost_value += lost_unit.values.cost
+		elif lost_unit.player_owned.team == 0:
+			_global.loaded_scenario.stats.killed_value += lost_unit.values.cost
+		elif lost_unit.player_owned.team == map.get_player(1).team:
 			_global.loaded_scenario.stats.lost_value += lost_unit.values.cost
 		else:
 			_global.loaded_scenario.stats.killed_value += lost_unit.values.cost
