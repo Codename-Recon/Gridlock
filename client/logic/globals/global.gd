@@ -104,8 +104,8 @@ func generate_scenario_progress(map: Map, scenario: Scenario) -> ScenarioProgres
 	# Calculating the round score based on a linear function
 	var a_round: int = scenario.conditions.a_round
 	var c_round: int = scenario.conditions.c_round
-	var sloap: float = -2 / (3 * (c_round - a_round))
-	var intercept: float = 1 + (2 * a_round) / (3 * (c_round - a_round))
+	var sloap: float = -2.0 / (3.0 * (c_round - a_round))
+	var intercept: float = 1.0 + (2.0 * a_round) / (3.0 * (c_round - a_round))
 	var round_score_factor: float = sloap * stats.round + intercept
 	if round_score_factor < 0:
 		round_score_factor = 0
