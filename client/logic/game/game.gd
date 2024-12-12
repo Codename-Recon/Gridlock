@@ -11,11 +11,13 @@ var _last_music: AudioStream
 var _global: GlobalGlobal = Global
 var _multiplayer: GlobalMultiplayer = Multiplayer
 
+
 func end_game() -> void:
 	map_slot.remove_child(map_slot.get_child(0)) # removing map from tree, so it doesn't get freed when changing scene
 	get_tree().change_scene_to_packed(_global.gameover_scene)
 	if _multiplayer.client_role != _multiplayer.ClientRole.NONE:
 		_multiplayer.nakama_disconnect_from_match()
+
 
 func _ready() -> void:
 	Music.music_finished.connect(_on_music_finished)

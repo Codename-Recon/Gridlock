@@ -1,7 +1,10 @@
 
 The files listed in here are released under the [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
 
-# Sound
+# Music
+### client/assets/musics/Main Menu.mp3
+- Harmless
+
 ### client/assets/musics/Immaculate_Command__Georges_DeMorgans_Theme_Codename_RECON.mp3
 - Harmless
 
