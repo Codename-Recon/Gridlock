@@ -496,7 +496,7 @@ metadata/_edit_use_custom_anchors = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
@@ -868,7 +868,6 @@ bus = &"Sound"
 [connection signal="selection_moved" from="Interface/SubViewportContainer/SubViewport/GameInput" to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_game_input_selection_moved"]
 [connection signal="selection_moved" from="Interface/SubViewportContainer/SubViewport/GameInput" to="Interface/BoardAnalytic" method="_update"]
 [connection signal="action_selected" from="Interface/ActionPanel" to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_panel_action_selected"]
-[connection signal="resized" from="Interface/ActionPanel/VBoxContainer" to="Interface/ActionPanel" method="_on_v_box_container_resized"]
 [connection signal="pressed" from="Interface/RoundButton" to="Interface/SubViewportContainer/SubViewport/GameLogic" method="_on_round_button_pressed"]
 [connection signal="pressed" from="Interface/EscapePanel/EscapeMenu/ExitButton" to="Interface/EscapePanel" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="Interface/EscapePanel/EscapeMenu/BackButton" to="Interface/EscapePanel" method="_on_back_button_pressed"]
