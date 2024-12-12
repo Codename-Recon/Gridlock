@@ -13,10 +13,6 @@ extends GridContainer
 @onready var fuel_label: Label = %FuelLabel
 
 
-func _ready() -> void:
-	pass  # Replace with function body.
-
-
 func _update(terrain: Terrain) -> void:
 	if not terrain:
 		terrain_name.visible = false

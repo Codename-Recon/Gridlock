@@ -39,19 +39,27 @@ func _process(_delta: float) -> void:
 
 
 func set_buttons(actions: Array[GameConst.Actions]) -> void:
+	_reset_size()
 	for action: GameConst.Actions in _buttons:
 		var button: Button = _buttons[action]
 		if action in actions: 
 			button.show()
 		else:
 			button.hide()
-
-
-func _on_v_box_container_resized() -> void:
-	size.y = ($VBoxContainer as BoxContainer).size.y
+	_update_size.call_deferred()
 
 
 func _button_pressed(action: GameConst.Actions) -> void:
 	action_pressed = action
 	action_selected.emit()
 	hide()
+
+
+func _reset_size() -> void:
+	v_box_container.size.y = 0
+	size.y = 0
+
+
+func _update_size() -> void:
+	size.y = v_box_container.size.y
+	v_box_container.position = Vector2.ZERO

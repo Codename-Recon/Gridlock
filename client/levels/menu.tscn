@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://7ycggs2j6mce" path="res://logic/ui/menu.tscn" id="1_6wj44"]
 [ext_resource type="Theme" uid="uid://b8gh8yii80x7e" path="res://assets/resources/theme/default_theme.tres" id="1_eqavw"]
 [ext_resource type="Environment" uid="uid://cnfs7yc8vv2d" path="res://assets/resources/game/ingame_environment.tres" id="1_s3gg3"]
-[ext_resource type="AudioStream" uid="uid://bochpfaxckbqm" path="res://assets/musics/Cyberpunk Moonlight Sonata v2.mp3" id="2_pyafi"]
+[ext_resource type="AudioStream" uid="uid://isjoo1cuvv1p" path="res://assets/musics/Main_Menu.mp3" id="2_rfbin"]
 [ext_resource type="Texture2D" uid="uid://bbhva0hqxsspk" path="res://assets/images/game/menu/background.jpg" id="5_e7t5i"]
 [ext_resource type="Texture2D" uid="uid://dcaigyrib56ot" path="res://assets/images/icons/ui/sheet_white1x.png" id="7_1imcl"]
 [ext_resource type="Texture2D" uid="uid://w0iurlfll57u" path="res://assets/images/icons/ui/iconsDefault.png" id="9_ekkjc"]
@@ -267,7 +267,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_eqavw")
 script = SubResource("GDScript_a3jqb")
-music = ExtResource("2_pyafi")
+music = ExtResource("2_rfbin")
 metadata/_edit_horizontal_guides_ = [-199.0]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -786,10 +786,15 @@ metadata/_edit_layout_mode = 1
 [node name="BootcampSelection" parent="." node_paths=PackedStringArray("back_control") instance=ExtResource("46_qlnwy")]
 visible = false
 layout_mode = 1
-offset_left = 238.0
-offset_top = 106.0
-offset_right = -237.0
-offset_bottom = -106.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -562.5
+offset_top = -344.0
+offset_right = 562.5
+offset_bottom = 344.0
 back_control = NodePath("../SingleplayerMenu")
 map_select_element_scene = ExtResource("17_n3hys")
 game_mode = 4
