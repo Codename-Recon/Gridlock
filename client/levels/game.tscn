@@ -410,6 +410,8 @@ mouse_filter = 1
 theme = ExtResource("1_81uaa")
 script = ExtResource("9_gl6qd")
 musics = Array[AudioStream]([ExtResource("2_mnjkf"), ExtResource("3_ikdhv")])
+metadata/_edit_vertical_guides_ = [45.0, 1600.0, 1555.0]
+metadata/_edit_horizontal_guides_ = [864.0, 36.0]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_6xhvo")
@@ -541,10 +543,10 @@ icon = SubResource("AtlasTexture_10xuy")
 
 [node name="MoneyPanel" type="Panel" parent="Interface"]
 layout_mode = 0
-offset_left = 13.0
-offset_top = 8.0
-offset_right = 213.0
-offset_bottom = 54.0
+offset_left = 45.0
+offset_top = 36.0
+offset_right = 245.0
+offset_bottom = 82.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2lgku")
 
 [node name="MoneyLabel" type="Label" parent="Interface/MoneyPanel"]
@@ -575,10 +577,10 @@ texture = SubResource("AtlasTexture_ammf5")
 
 [node name="RoundPanel" type="Panel" parent="Interface"]
 layout_mode = 0
-offset_left = 237.0
-offset_top = 8.0
-offset_right = 362.0
-offset_bottom = 54.0
+offset_left = 269.0
+offset_top = 36.0
+offset_right = 394.0
+offset_bottom = 82.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2lgku")
 
 [node name="RoundNumberLabel" type="Label" parent="Interface/RoundPanel"]
@@ -617,10 +619,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -289.0
-offset_top = -84.0
-offset_right = -18.0
-offset_bottom = -12.0
+offset_left = -316.0
+offset_top = -109.0
+offset_right = -45.0
+offset_bottom = -37.0
 theme_override_colors/font_outline_color = Color(0.709804, 0.439216, 0.321569, 1)
 theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = SubResource("StyleBoxTexture_rrm6m")

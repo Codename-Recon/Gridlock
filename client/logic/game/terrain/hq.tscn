@@ -2,24 +2,24 @@
 
 [ext_resource type="Script" path="res://logic/game/terrain/terrain.gd" id="1_27knf"]
 [ext_resource type="Shader" uid="uid://bq8q1ltxmyovr" path="res://logic/shaders/color_shift.tres" id="2_nceg3"]
-[ext_resource type="Texture2D" uid="uid://b4pxuxb2m8ko8" path="res://assets/images/game/tilemap_packed.png" id="3_233tq"]
+[ext_resource type="Texture2D" uid="uid://ddv1x4jcoikmt" path="res://assets/images/game/terrain.png" id="3_58heh"]
 [ext_resource type="PackedScene" uid="uid://54war5m37akr" path="res://logic/ui/terrain_stats.tscn" id="4_ypvtb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dj43m"]
 resource_local_to_scene = true
 shader = ExtResource("2_nceg3")
 shader_parameter/shifting = true
-shader_parameter/shift_level_h = 0.095
-shader_parameter/shift_level_s = 0.236
+shader_parameter/shift_level_h = 0.264
+shader_parameter/shift_level_s = 0.348
 shader_parameter/shift_level_b = 1.0
-shader_parameter/old_color = Color(0.262821, 0.584268, 0.270634, 1)
-shader_parameter/new_color = Color(0.705882, 0.705882, 0.705882, 1)
-shader_parameter/shift_shades_threshold = 1.0
+shader_parameter/old_color = Color(1, 0.595987, 0.717632, 1)
+shader_parameter/new_color = Color(0.156516, 0.821718, 0.64142, 1)
+shader_parameter/shift_shades_threshold = 0.0
 shader_parameter/shift_shades_factor = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vyerd"]
-atlas = ExtResource("3_233tq")
-region = Rect2(288, 32, 32, 32)
+atlas = ExtResource("3_58heh")
+region = Rect2(384, 1184, 32, 32)
 
 [node name="HQ" type="Node2D"]
 script = ExtResource("1_27knf")
