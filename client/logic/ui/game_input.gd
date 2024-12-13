@@ -53,6 +53,7 @@ var _camera_move_speed: float
 var _camera_zoom_speed: float
 var _camera_max_zoom: float
 var _camera_min_zoom: float
+var _edge_scroll_zone: int
 
 
 func enable_all() -> void:
@@ -70,10 +71,11 @@ func set_selection(type: SelectionType) -> void:
 
 func _ready() -> void:
 	_target_camera_zoom = zoom
-	_camera_move_speed = ProjectSettings.get_setting("global/camera_move_speed")
-	_camera_zoom_speed = ProjectSettings.get_setting("global/camera_zoom_speed")
-	_camera_max_zoom = ProjectSettings.get_setting("global/camera_max_zoom")
-	_camera_min_zoom = ProjectSettings.get_setting("global/camera_min_zoom")
+	_camera_move_speed = ProjectSettings.get_setting("global/input/camera_move_speed")
+	_camera_zoom_speed = ProjectSettings.get_setting("global/input/camera_zoom_speed")
+	_camera_max_zoom = ProjectSettings.get_setting("global/input/camera_max_zoom")
+	_camera_min_zoom = ProjectSettings.get_setting("global/input/camera_min_zoom")
+	_edge_scroll_zone = ProjectSettings.get_setting("global/input/edge_scroll_zone")
 	set_selection(SelectionType.DEFAULT)
 
 
@@ -81,17 +83,45 @@ func _process(delta: float) -> void:
 	if not input_enabled:
 		return
 	_handle_camera_input(delta)
+	_handle_edge_scrolling(delta)
+
+
+func _handle_edge_scrolling(delta: float) -> void:
+	var rect: Rect2 = get_window().get_visible_rect()
+	var mouse: Vector2 = get_window().get_mouse_position()
+	if camera_movement_enabled and rect.has_point(mouse):
+		# Check if mouse is near screen edges
+		if mouse.x < _edge_scroll_zone:  # Left edge
+			_scroll_camera(delta, Vector2.LEFT)
+		elif mouse.x > rect.size.x - _edge_scroll_zone: # Right edge
+			_scroll_camera(delta, Vector2.RIGHT)
+		if mouse.y < _edge_scroll_zone: # Top edge
+			_scroll_camera(delta, Vector2.UP)
+		elif mouse.y > rect.size.y - _edge_scroll_zone: # Bottom edge
+			_scroll_camera(delta, Vector2.DOWN)
 
 
 func _handle_camera_input(delta: float) -> void:
 	if camera_movement_enabled:
 		if Input.is_action_pressed("move_up"):
-			global_translate(Vector2.UP * delta * _camera_move_speed)
+			_scroll_camera(delta, Vector2.UP)
 		if Input.is_action_pressed("move_down"):
-			global_translate(Vector2.DOWN * delta * _camera_move_speed)
+			_scroll_camera(delta, Vector2.DOWN)
 		if Input.is_action_pressed("move_left"):
-			global_translate(Vector2.LEFT * delta * _camera_move_speed * 1.5)
+			_scroll_camera(delta, Vector2.LEFT)
 		if Input.is_action_pressed("move_right"):
+			_scroll_camera(delta, Vector2.RIGHT)
+
+
+func _scroll_camera(delta: float, direction: Vector2) -> void:
+	match direction:
+		Vector2.UP:
+			global_translate(Vector2.UP * delta * _camera_move_speed)
+		Vector2.DOWN:
+			global_translate(Vector2.DOWN * delta * _camera_move_speed)
+		Vector2.LEFT:
+			global_translate(Vector2.LEFT * delta * _camera_move_speed * 1.5)
+		Vector2.RIGHT:
 			global_translate(Vector2.RIGHT * delta * _camera_move_speed * 1.5)
 
 
