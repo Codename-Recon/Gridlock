@@ -10,6 +10,7 @@ signal selection_moved(terrain: Terrain)
 enum SelectionType { DEFAULT, ATTACK }
 
 const ZOOM_RESOLUTION: int = 128  # should be a base 2 number to prevent texture bleeding
+const WEB_WINDOW_SHRINK: int = -8
 
 @onready var cursor: Cursor = $Decouple/Cursor
 @onready var selection: Selection = $Decouple/Selection
@@ -88,6 +89,9 @@ func _process(delta: float) -> void:
 
 func _handle_edge_scrolling(delta: float) -> void:
 	var rect: Rect2 = get_window().get_visible_rect()
+	# Web fix, since web can't detect a mouse outside of its window
+	if OS.get_name() == "Web":
+		rect = rect.grow(WEB_WINDOW_SHRINK)
 	var mouse: Vector2 = get_window().get_mouse_position()
 	if camera_movement_enabled and rect.has_point(mouse):
 		# Check if mouse is near screen edges
